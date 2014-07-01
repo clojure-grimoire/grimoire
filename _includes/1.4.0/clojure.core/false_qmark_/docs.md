@@ -1,0 +1,5 @@
+## Arities
+[x]
+
+## Documentation
+Returns true if x is the value false, false otherwise.

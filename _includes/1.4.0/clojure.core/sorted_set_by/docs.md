@@ -1,0 +1,5 @@
+## Arities
+[comparator & keys]
+
+## Documentation
+Returns a new sorted set with supplied keys, using the supplied comparator.

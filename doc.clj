@@ -30,9 +30,20 @@
 ;; /<clojure-version>/<namespace>/
 ;; /<clojure-version>/<namespace>/<symbol>/
 
-(defn var->name [v] (-> v .sym str))
-(defn var->ns   [v] (-> v .ns ns-name str))
-(defn macro?    [v] (:macro (meta v)))
+(defn var->name [v]
+  {:pre [(var? v)]}
+  (-> v .sym str))
+
+(defn var->ns [v]
+  {:pre [(var? v)]}
+  (-> v .ns ns-name str))
+
+(defn macro? [v]
+  {:pre [(var? v)]}
+  (:macro (meta v)))
+
+(defn debug-dir [dir]
+  (println (str dir) (.isDirectory dir)))
 
 ;; clojure.repl/source-fn
 (defn source-fn
@@ -44,7 +55,7 @@
 
   Example: (source-fn #'clojure.core/filter)"
   [v]
-  {:pre  [(var? v)]
+  {:pre [(var? v)]
    :post [(string? %)]}
   (when-let [filepath (:file (meta v))]
     (when-let [strm (.getResourceAsStream (RT/baseLoader) filepath)]
@@ -59,28 +70,30 @@
           (str text))))))
 
 (defn lq [& more]
-  (str "{% " (reduce str (interpose " " more)) " %}"))
+  (str "{%% " (reduce str (interpose " " more)) " %%}\n"))
 
 (defn render-yaml
   [mapping]
   (str "---\n"
        (->> mapping
-            (map (fn [k v] (str k ": " v)))
+            (map (fn [[k v]] (str k ": " v)))
             (reduce str))
        "---\n"))
 
 (defn write-docs-for-var
   [[ns-dir inc-dir] var]
+  {:pre [(var? var)]}
   (let [namespace                       (-> var .ns ns-name str)
         raw-symbol                      (-> var .sym str)
-        symbol                          (munge symbol)
-        {:keys [arglists doc] :as meta} (meta var)
-        source                          (source-fn symbol)]
-    (with-open [sym-inc-dir (file inc-dir ("/" symbol))]
+        symbol                          (munge raw-symbol)
+        {:keys [arglists doc] :as meta} (meta var)]
+    (let [sym-inc-dir (file inc-dir symbol)]
       (.mkdir sym-inc-dir)
 
+      (debug-dir sym-inc-dir)
+
       ;; write docstring file
-      (with-open [inc-doc-file (file sym-inc-dir "/docs.md")]
+      (let [inc-doc-file (file sym-inc-dir "docs.md")]
         (->> (format (str "## Arities\n"
                           "%s\n"
                           "## Documentation\n"
@@ -89,29 +102,38 @@
                      doc)
              (spit inc-doc-file)))
 
-      ;; write source file
-      (with-open [inc-src-file (file sym-inc-dir "/src.md")]
-        (->> (format (str "## source\n"
-                          (lq "highlight" "clojure" "linenos")
-                          "%s\n"
-                          (lq "endhighlight"))
-                     (source-fn var)
-                     (spit inc-src-file))))
+      (when (fn? @var)
+        ;; write source file
+        (let [inc-src-file (file sym-inc-dir "src.md")]
+          (->> (format (str "## source\n"
+                            (lq "highlight" "clojure" "linenos")
+                            "%s\n"
+                            (lq "endhighlight"))
+                       (source-fn var))
+               (spit inc-src-file))))
 
-      (with-open [ex-file (file sym-inc-dir "/examples.md")]
+      (let [ex-file (file sym-inc-dir "examples.md")]
         ;; ensure the examples file
         (.createNewFile ex-file)))
 
     ;; write template files
     ;; /<clojure-version>/<namespace>/<symbol>.md
-    (with-open [dst-file (file ns-dir (str "/" symbol ".md"))]
+    (let [dst-file (file ns-dir (str "./" symbol ".md"))]
       (->> (str (render-yaml [["layout" "fn"]
                               ["title"  (str namespace "/" raw-symbol)]])
-                (lq "include" (str inc-dir "/" symbol "/docs.md"))
-                (lq "include" (str include "/" symbol "/examples.md"))
-                (lq "include" (str inc-dir "/" symbol "/src.md")))
+                (lq "include" (str ns-dir "/" symbol "/docs.md"))
+                (lq "include" (str ns-dir "/" symbol "/examples.md"))
+                (when (fn? @var)
+                  (lq "include" (str ns-dir "/" symbol "/src.md"))))
            (format)
            (spit dst-file)))))
+
+(defn var->link
+  [v]
+  {:pre [(var? v)]}
+  (format "[%s](%s)"
+          (str (var->ns v) "/" (var->name v))
+          (str ",/" (munge (var->name v)))))
 
 (defn write-docs-for-ns
   [dirs ns]
@@ -119,20 +141,41 @@
         ns-vars                   (map second (ns-publics ns))
         macros                    (filter macro? ns-vars)
         fns                       (filter (comp not macro?) ns-vars)]
-    (with-open [version-ns-dir  (file version-dir "/" (name ns))
-                include-ns-dir  (file include-dir "/" (name ns))]
+    (let [version-ns-dir  (file version-dir (name ns))
+          include-ns-dir  (file include-dir (name ns))]
       (.mkdir version-ns-dir)
+      (debug-dir version-ns-dir)
+
       (.mkdir include-ns-dir)
+      (debug-dir include-ns-dir)
 
       ;; write per symbol docs
       (doseq [var ns-vars]
-        (write-docs-for-var [version-ns-dir include-ns-dir] var))
+        (try
+          (write-docs-for-var [version-ns-dir include-ns-dir] var)
+          (catch java.lang.AssertionError e
+            (println (str "Warning: Failed to write docs for" var)))))
 
       ;; write namespace index
       (let [index-file (file version-ns-dir ".md")]
-        )
+        (println index-file) ;; remove this once I'm sure it works
+        (let [f (file index-file)]
+          (->> (str (render-yaml [["layout" "ns"]
+                                  ["title"  (name ns)]])
+                    "## Macros\n"
+                    (->> macros
+                         (map var->link)
+                         (interpose \newline)
+                         (reduce str))
 
-      )))
+                    "## Vars\n"
+
+                    "## Functions\n"
+                    (->> fns
+                         (map var->link)
+                         (interpose \newline)
+                         (reduce str)))
+               (spit f)))))))
 
 (def namespaces
   [;; Clojure "core"
@@ -168,14 +211,18 @@
   []
   (let [{:keys [major minor incremental]} *clojure-version*
         version-str                       (format "%s.%s.%s" major minor incremental)]
-    (with-open [version-dir (file (str "./" version-str))
-                include-dir (file (str "./_include/" version-str))]
+    (println version-str)
+    (let [version-dir (file (str "./" version-str))
+          include-dir (file (str "./_includes/" version-str))]
       (.mkdir version-dir)
+      (debug-dir version-dir)
       (.mkdir include-dir)
+      (debug-dir include-dir)
+
+      (println "Made root folders...")
 
       (doseq [ns namespaces]
-        (try (require ns)
-             (write-docs-for-ns [version-dir include-dir] ns)
-             (catch Exception e
-               (println e)
-               nil))))))
+        (require ns)
+        (write-docs-for-ns [version-dir include-dir] ns)))))
+
+(-main)

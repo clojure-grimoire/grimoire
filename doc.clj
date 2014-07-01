@@ -90,12 +90,22 @@
    "1.5.1" "1.5.0"
    "1.5.0" "1.4.0"})
 
+(defn my-munge [s]
+  (-> s
+      munge
+      (replace "*" "\\*")
+      (replace "." "_DOT_")
+      (replace #"^_*" "")
+      (replace #"_*$" "")
+      lower-case))
+
 (defn write-docs-for-var
   [[ns-dir inc-dir] var]
   {:pre [(var? var)]}
   (let [namespace                         (-> var .ns ns-name str)
         raw-symbol                        (-> var .sym str)
-        symbol                            (lower-case (munge raw-symbol))
+        symbol                            (my-munge raw-symbol)
+        md-symbol                         (replace raw-symbol "*" "\\*")
         {:keys [arglists doc] :as meta}   (meta var)
         {:keys [major minor incremental]} *clojure-version*
         version-str                       (format "%s.%s.%s" major minor incremental)]
@@ -143,8 +153,10 @@
     (let [dst-file (file ns-dir (str "./" symbol ".md"))]
       (->> (str (render-yaml [["layout"    "fn"]
                               ["namespace" namespace]
-                              ["symbol"    raw-symbol]])
-                (format "\n# [%s](../)/%s\n\n" namespace raw-symbol)
+                              ["symbol"    (pr-str md-symbol)]])
+                (format "\n# [%s](../)/%s\n\n"
+                        namespace
+                        md-symbol)
                 (lq "include" (trim-dot (str ns-dir "/" symbol "/docs.md")))
                 (lq "include" (trim-dot (str ns-dir "/" symbol "/examples.md")))
                 (if (fn? @var)
@@ -153,12 +165,6 @@
                 "\n")
            (format)
            (spit dst-file)))))
-
-(defn my-munge [s]
-  (-> s
-      munge
-      (replace "*" "\\*")
-      lower-case))
 
 (defn var->link
   [v]

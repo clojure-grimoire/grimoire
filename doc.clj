@@ -1,6 +1,6 @@
 (ns doc
   (:require [clojure.java.io :refer :all]
-            [clojure.string :refer [lower-case]])
+            [clojure.string :refer [lower-case replace-first]])
   (:import [java.io LineNumberReader InputStreamReader PushbackReader]
            [clojure.lang RT]))
 
@@ -81,12 +81,16 @@
             (reduce str))
        "---\n"))
 
+(defn trim-dot
+  [s]
+  (replace-first s "./" ""))
+
 (defn write-docs-for-var
   [[ns-dir inc-dir] var]
   {:pre [(var? var)]}
   (let [namespace                       (-> var .ns ns-name str)
         raw-symbol                      (-> var .sym str)
-        symbol                          (munge raw-symbol)
+        symbol                          (lower-case (munge raw-symbol))
         {:keys [arglists doc] :as meta} (meta var)]
     (let [sym-inc-dir (file inc-dir symbol)]
       (.mkdir sym-inc-dir)
@@ -99,7 +103,9 @@
                           "%s\n"
                           "## Documentation\n"
                           "%s")
-                     (->> arglists (interpose \newline) (reduce str))
+                     (->> arglists
+                          (interpose \newline)
+                          (reduce str))
                      doc)
              (spit inc-doc-file)))
 
@@ -121,11 +127,14 @@
     ;; /<clojure-version>/<namespace>/<symbol>.md
     (let [dst-file (file ns-dir (str "./" symbol ".md"))]
       (->> (str (render-yaml [["layout" "fn"]
-                              ["title"  (str namespace "/" raw-symbol)]])
-                (lq "include" (str "\"" ns-dir "/" symbol "/docs.md" "\""))
-                (lq "include" (str "\"" ns-dir "/" symbol "/examples.md" "\""))
-                (when (fn? @var)
-                  (lq "include" (str "\"" ns-dir "/" symbol "/src.md" "\""))))
+                              ["title"  (str "\"" namespace "/" raw-symbol "\"")]])
+                "\n"
+                (lq "include" (trim-dot (str ns-dir "/" symbol "/docs.md")))
+                (lq "include" (trim-dot (str ns-dir "/" symbol "/examples.md")))
+                (if (fn? @var)
+                  (lq "include" (trim-dot (str ns-dir "/" symbol "/src.md")))
+                  "")
+                "\n")
            (format)
            (spit dst-file)))))
 

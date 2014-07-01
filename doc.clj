@@ -144,7 +144,10 @@
                           f (str "./_includes/" i)]
                       (if (.exists (file f))
                         (str "{% include " i " %}\n")
-                        (str "No examples for version " version-str "\n"))))
+                        (str "No examples for version " version-str "\n"
+                             "\n"
+                             "[Please add examples!](https://github.com/arrdem/grimoire/edit/master/_includes/"
+                                                     version-str "/" namespace "/" symbol "/examples.md)\n"))))
                (spit ex-file)))))
                 
     ;; write template files

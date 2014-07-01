@@ -1,5 +1,6 @@
 (ns doc
-  (:require [clojure.java.io :refer :all])
+  (:require [clojure.java.io :refer :all]
+            [clojure.string :refer [lower-case]])
   (:import [java.io LineNumberReader InputStreamReader PushbackReader]
            [clojure.lang RT]))
 
@@ -76,7 +77,7 @@
   [mapping]
   (str "---\n"
        (->> mapping
-            (map (fn [[k v]] (str k ": " v)))
+            (map (fn [[k v]] (str k ": " v "\n")))
             (reduce str))
        "---\n"))
 
@@ -98,7 +99,7 @@
                           "%s\n"
                           "## Documentation\n"
                           "%s")
-                     (->> arglists (interpose \newline) str)
+                     (->> arglists (interpose \newline) (reduce str))
                      doc)
              (spit inc-doc-file)))
 
@@ -121,10 +122,10 @@
     (let [dst-file (file ns-dir (str "./" symbol ".md"))]
       (->> (str (render-yaml [["layout" "fn"]
                               ["title"  (str namespace "/" raw-symbol)]])
-                (lq "include" (str ns-dir "/" symbol "/docs.md"))
-                (lq "include" (str ns-dir "/" symbol "/examples.md"))
+                (lq "include" (str "\"" ns-dir "/" symbol "/docs.md" "\""))
+                (lq "include" (str "\"" ns-dir "/" symbol "/examples.md" "\""))
                 (when (fn? @var)
-                  (lq "include" (str ns-dir "/" symbol "/src.md"))))
+                  (lq "include" (str "\"" ns-dir "/" symbol "/src.md" "\""))))
            (format)
            (spit dst-file)))))
 
@@ -133,14 +134,17 @@
   {:pre [(var? v)]}
   (format "[%s](%s)"
           (str (var->ns v) "/" (var->name v))
-          (str ",/" (munge (var->name v)))))
+          (str "./" (munge (var->name v)))))
 
 (defn write-docs-for-ns
   [dirs ns]
   (let [[version-dir include-dir] dirs
         ns-vars                   (map second (ns-publics ns))
         macros                    (filter macro? ns-vars)
-        fns                       (filter (comp not macro?) ns-vars)]
+        fns                       (filter #(and (fn? @%1)
+                                                (not (macro? %1)))
+                                          ns-vars)
+        vars                      (filter #(not (fn? @%1)) ns-vars)]
     (let [version-ns-dir  (file version-dir (name ns))
           include-ns-dir  (file include-dir (name ns))]
       (.mkdir version-ns-dir)

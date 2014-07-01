@@ -1,0 +1,10 @@
+# Site settings
+title: Grimoire
+email: me@arrdem.com
+description: "Community documentation of Clojure"
+baseurl: ""
+url: "http://yourdomain.com"
+
+# Build settings
+markdown: kramdown
+permalink: pretty

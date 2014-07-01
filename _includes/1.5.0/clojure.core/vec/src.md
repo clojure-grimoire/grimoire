@@ -1,0 +1,12 @@
+## source
+{% highlight clojure linenos %}
+(defn vec
+  "Creates a new vector containing the contents of coll. Java arrays
+  will be aliased and should not be modified."
+  {:added "1.0"
+   :static true}
+  ([coll]
+   (if (instance? java.util.Collection coll)
+     (clojure.lang.LazilyPersistentVector/create coll)
+     (. clojure.lang.LazilyPersistentVector (createOwning (to-array coll))))))
+{% endhighlight %}

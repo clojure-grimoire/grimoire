@@ -1,0 +1,5 @@
+## Arities
+[sep coll]
+
+## Documentation
+Returns a lazy seq of the elements of coll separated by sep

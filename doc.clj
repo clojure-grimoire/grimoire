@@ -72,32 +72,46 @@
 (defn write-docs-for-var
   [[ns-dir inc-dir] var]
   (let [namespace                       (-> var .ns ns-name str)
-        symbol                          (-> var .sym str munge)
+        raw-symbol                      (-> var .sym str)
+        symbol                          (munge symbol)
         {:keys [arglists doc] :as meta} (meta var)
         source                          (source-fn symbol)]
+    (with-open [sym-inc-dir (file inc-dir ("/" symbol))]
+      (.mkdir sym-inc-dir)
 
-    ;; write docstring file
-    (with-open [inc-doc-file (file inc-dir (str "/" symbol "/docs.md"))]
-      (->> (format (str "## Arities\n"
-                        "%s\n"
-                        "## Documentation\n"
-                        "%s")
-                   (->> arglists (interpose \newline) str)
-                   doc)
-           (spit inc-doc-file)))
+      ;; write docstring file
+      (with-open [inc-doc-file (file sym-inc-dir "/docs.md")]
+        (->> (format (str "## Arities\n"
+                          "%s\n"
+                          "## Documentation\n"
+                          "%s")
+                     (->> arglists (interpose \newline) str)
+                     doc)
+             (spit inc-doc-file)))
 
-    ;; write source file
-    (with-open [inc-src-file (file inc-dir (str "/" symbol "/src.md"))]
-      (->> (format (str "## source\n"
-                        (lq "highlight" "clojure" "linenos")
-                        "%s\n"
-                        (lq "endhighlight"))
-                   (source-fn var)
-           (spit inc-src-file))))
+      ;; write source file
+      (with-open [inc-src-file (file sym-inc-dir "/src.md")]
+        (->> (format (str "## source\n"
+                          (lq "highlight" "clojure" "linenos")
+                          "%s\n"
+                          (lq "endhighlight"))
+                     (source-fn var)
+                     (spit inc-src-file))))
+
+      (with-open [ex-file (file sym-inc-dir "/examples.md")]
+        ;; ensure the examples file
+        (.createNewFile ex-file)))
 
     ;; write template files
     ;; /<clojure-version>/<namespace>/<symbol>.md
-    ))
+    (with-open [dst-file (file ns-dir (str "/" symbol ".md"))]
+      (->> (str (render-yaml [["layout" "fn"]
+                              ["title"  (str namespace "/" raw-symbol)]])
+                (lq "include" (str inc-dir "/" symbol "/docs.md"))
+                (lq "include" (str include "/" symbol "/examples.md"))
+                (lq "include" (str inc-dir "/" symbol "/src.md")))
+           (format)
+           (spit dst-file)))))
 
 (defn write-docs-for-ns
   [dirs ns]

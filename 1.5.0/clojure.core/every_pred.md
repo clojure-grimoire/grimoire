@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: every-pred
+symbol: "every-pred"
 ---
 
 # [clojure.core](../)/every-pred

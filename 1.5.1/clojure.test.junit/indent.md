@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test.junit
-symbol: indent
+symbol: "indent"
 ---
 
 # [clojure.test.junit](../)/indent

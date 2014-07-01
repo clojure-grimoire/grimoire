@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.pprint
-symbol: pprint-newline
+symbol: "pprint-newline"
 ---
 
 # [clojure.pprint](../)/pprint-newline

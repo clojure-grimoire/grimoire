@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: clojure-version
+symbol: "clojure-version"
 ---
 
 # [clojure.core](../)/clojure-version

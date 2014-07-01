@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.pprint
-symbol: simple-dispatch
+symbol: "simple-dispatch"
 ---
 
 # [clojure.pprint](../)/simple-dispatch

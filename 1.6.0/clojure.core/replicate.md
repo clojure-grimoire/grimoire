@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: replicate
+symbol: "replicate"
 ---
 
 # [clojure.core](../)/replicate

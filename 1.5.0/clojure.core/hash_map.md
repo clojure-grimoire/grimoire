@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: hash-map
+symbol: "hash-map"
 ---
 
 # [clojure.core](../)/hash-map

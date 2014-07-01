@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: partition-all
+symbol: "partition-all"
 ---
 
 # [clojure.core](../)/partition-all

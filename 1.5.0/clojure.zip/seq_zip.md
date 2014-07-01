@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: seq-zip
+symbol: "seq-zip"
 ---
 
 # [clojure.zip](../)/seq-zip

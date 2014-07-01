@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: delay
+symbol: "delay"
 ---
 
 # [clojure.core](../)/delay

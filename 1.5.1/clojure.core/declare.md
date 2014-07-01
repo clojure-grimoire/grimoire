@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: declare
+symbol: "declare"
 ---
 
 # [clojure.core](../)/declare

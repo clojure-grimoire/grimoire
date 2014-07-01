@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: aset-boolean
+symbol: "aset-boolean"
 ---
 
 # [clojure.core](../)/aset-boolean

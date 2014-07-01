@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: replace
+symbol: "replace"
 ---
 
 # [clojure.zip](../)/replace

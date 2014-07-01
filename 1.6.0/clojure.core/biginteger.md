@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: biginteger
+symbol: "biginteger"
 ---
 
 # [clojure.core](../)/biginteger

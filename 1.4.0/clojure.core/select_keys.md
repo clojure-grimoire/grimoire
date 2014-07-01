@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: select-keys
+symbol: "select-keys"
 ---
 
 # [clojure.core](../)/select-keys

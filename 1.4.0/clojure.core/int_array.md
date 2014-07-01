@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: int-array
+symbol: "int-array"
 ---
 
 # [clojure.core](../)/int-array

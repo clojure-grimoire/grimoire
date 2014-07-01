@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: restart-agent
+symbol: "restart-agent"
 ---
 
 # [clojure.core](../)/restart-agent

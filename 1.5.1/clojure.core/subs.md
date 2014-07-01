@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: subs
+symbol: "subs"
 ---
 
 # [clojure.core](../)/subs

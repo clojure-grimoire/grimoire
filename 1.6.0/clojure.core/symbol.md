@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: symbol
+symbol: "symbol"
 ---
 
 # [clojure.core](../)/symbol

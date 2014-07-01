@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: trampoline
+symbol: "trampoline"
 ---
 
 # [clojure.core](../)/trampoline

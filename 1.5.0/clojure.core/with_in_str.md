@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: with-in-str
+symbol: "with-in-str"
 ---
 
 # [clojure.core](../)/with-in-str

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: sorted-set-by
+symbol: "sorted-set-by"
 ---
 
 # [clojure.core](../)/sorted-set-by

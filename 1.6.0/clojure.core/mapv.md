@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: mapv
+symbol: "mapv"
 ---
 
 # [clojure.core](../)/mapv

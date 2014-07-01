@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: re-find
+symbol: "re-find"
 ---
 
 # [clojure.core](../)/re-find

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: run-all-tests
+symbol: "run-all-tests"
 ---
 
 # [clojure.test](../)/run-all-tests

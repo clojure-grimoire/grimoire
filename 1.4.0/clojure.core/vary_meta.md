@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: vary-meta
+symbol: "vary-meta"
 ---
 
 # [clojure.core](../)/vary-meta

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: alter-var-root
+symbol: "alter-var-root"
 ---
 
 # [clojure.core](../)/alter-var-root

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: atom
+symbol: "atom"
 ---
 
 # [clojure.core](../)/atom

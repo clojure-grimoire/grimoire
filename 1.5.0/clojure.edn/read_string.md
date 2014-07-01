@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.edn
-symbol: read-string
+symbol: "read-string"
 ---
 
 # [clojure.edn](../)/read-string

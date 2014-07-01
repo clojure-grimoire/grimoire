@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: slurp
+symbol: "slurp"
 ---
 
 # [clojure.core](../)/slurp

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: bit-or
+symbol: "bit-or"
 ---
 
 # [clojure.core](../)/bit-or

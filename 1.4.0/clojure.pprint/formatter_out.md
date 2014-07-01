@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.pprint
-symbol: formatter-out
+symbol: "formatter-out"
 ---
 
 # [clojure.pprint](../)/formatter-out

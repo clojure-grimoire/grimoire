@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.walk
-symbol: prewalk-demo
+symbol: "prewalk-demo"
 ---
 
 # [clojure.walk](../)/prewalk-demo

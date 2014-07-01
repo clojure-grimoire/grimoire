@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: longs
+symbol: "longs"
 ---
 
 # [clojure.core](../)/longs

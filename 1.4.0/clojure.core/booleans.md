@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: booleans
+symbol: "booleans"
 ---
 
 # [clojure.core](../)/booleans

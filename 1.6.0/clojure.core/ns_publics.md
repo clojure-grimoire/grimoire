@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: ns-publics
+symbol: "ns-publics"
 ---
 
 # [clojure.core](../)/ns-publics

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: remove-ns
+symbol: "remove-ns"
 ---
 
 # [clojure.core](../)/remove-ns

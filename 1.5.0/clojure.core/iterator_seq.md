@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: iterator-seq
+symbol: "iterator-seq"
 ---
 
 # [clojure.core](../)/iterator-seq

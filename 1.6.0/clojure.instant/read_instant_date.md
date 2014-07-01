@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.instant
-symbol: read-instant-date
+symbol: "read-instant-date"
 ---
 
 # [clojure.instant](../)/read-instant-date

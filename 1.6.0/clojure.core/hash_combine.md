@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: hash-combine
+symbol: "hash-combine"
 ---
 
 # [clojure.core](../)/hash-combine

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: bigdec
+symbol: "bigdec"
 ---
 
 # [clojure.core](../)/bigdec

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: replace
+symbol: "replace"
 ---
 
 # [clojure.core](../)/replace

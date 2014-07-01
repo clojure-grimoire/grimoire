@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test.junit
-symbol: error-el
+symbol: "error-el"
 ---
 
 # [clojure.test.junit](../)/error-el

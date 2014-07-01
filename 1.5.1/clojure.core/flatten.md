@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: flatten
+symbol: "flatten"
 ---
 
 # [clojure.core](../)/flatten

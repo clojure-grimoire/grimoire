@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: range
+symbol: "range"
 ---
 
 # [clojure.core](../)/range

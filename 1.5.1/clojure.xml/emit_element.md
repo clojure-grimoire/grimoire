@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.xml
-symbol: emit-element
+symbol: "emit-element"
 ---
 
 # [clojure.xml](../)/emit-element

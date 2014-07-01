@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.pprint
-symbol: pprint-indent
+symbol: "pprint-indent"
 ---
 
 # [clojure.pprint](../)/pprint-indent

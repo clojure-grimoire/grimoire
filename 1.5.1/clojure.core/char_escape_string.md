@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: char-escape-string
+symbol: "char-escape-string"
 ---
 
 # [clojure.core](../)/char-escape-string

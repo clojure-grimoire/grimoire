@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.repl
-symbol: find-doc
+symbol: "find-doc"
 ---
 
 # [clojure.repl](../)/find-doc

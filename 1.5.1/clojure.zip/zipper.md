@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: zipper
+symbol: "zipper"
 ---
 
 # [clojure.zip](../)/zipper

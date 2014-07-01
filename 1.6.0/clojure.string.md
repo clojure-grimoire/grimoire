@@ -24,4 +24,4 @@ title: clojure.string
 [clojure.string/trimr](./trimr)
 [clojure.string/trim](./trim)
 [clojure.string/triml](./triml)
-[clojure.string/blank?](./blank_qmark_)
+[clojure.string/blank?](./blank_qmark)

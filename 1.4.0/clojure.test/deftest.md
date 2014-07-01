@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: deftest
+symbol: "deftest"
 ---
 
 # [clojure.test](../)/deftest

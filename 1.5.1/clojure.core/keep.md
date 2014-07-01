@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: keep
+symbol: "keep"
 ---
 
 # [clojure.core](../)/keep

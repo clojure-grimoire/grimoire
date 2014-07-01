@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: prefers
+symbol: "prefers"
 ---
 
 # [clojure.core](../)/prefers

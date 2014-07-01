@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.shell
-symbol: with-sh-dir
+symbol: "with-sh-dir"
 ---
 
 # [clojure.java.shell](../)/with-sh-dir

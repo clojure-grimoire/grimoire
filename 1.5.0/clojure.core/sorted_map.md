@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: sorted-map
+symbol: "sorted-map"
 ---
 
 # [clojure.core](../)/sorted-map

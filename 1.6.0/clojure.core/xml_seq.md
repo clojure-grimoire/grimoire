@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: xml-seq
+symbol: "xml-seq"
 ---
 
 # [clojure.core](../)/xml-seq

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: byte-array
+symbol: "byte-array"
 ---
 
 # [clojure.core](../)/byte-array

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: prev
+symbol: "prev"
 ---
 
 # [clojure.zip](../)/prev

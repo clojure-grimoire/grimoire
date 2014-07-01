@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: ns-interns
+symbol: "ns-interns"
 ---
 
 # [clojure.core](../)/ns-interns

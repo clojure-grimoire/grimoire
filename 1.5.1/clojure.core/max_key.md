@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: max-key
+symbol: "max-key"
 ---
 
 # [clojure.core](../)/max-key

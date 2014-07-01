@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.repl
-symbol: pst
+symbol: "pst"
 ---
 
 # [clojure.repl](../)/pst

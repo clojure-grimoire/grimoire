@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: find-ns
+symbol: "find-ns"
 ---
 
 # [clojure.core](../)/find-ns

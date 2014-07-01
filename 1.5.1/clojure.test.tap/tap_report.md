@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test.tap
-symbol: tap-report
+symbol: "tap-report"
 ---
 
 # [clojure.test.tap](../)/tap-report

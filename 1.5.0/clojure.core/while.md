@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: while
+symbol: "while"
 ---
 
 # [clojure.core](../)/while

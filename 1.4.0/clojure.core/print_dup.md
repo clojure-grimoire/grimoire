@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: print-dup
+symbol: "print-dup"
 ---
 
 # [clojure.core](../)/print-dup

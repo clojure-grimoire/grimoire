@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: await1
+symbol: "await1"
 ---
 
 # [clojure.core](../)/await1

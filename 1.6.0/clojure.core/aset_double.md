@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: aset-double
+symbol: "aset-double"
 ---
 
 # [clojure.core](../)/aset-double

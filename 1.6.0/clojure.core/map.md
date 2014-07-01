@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: map
+symbol: "map"
 ---
 
 # [clojure.core](../)/map

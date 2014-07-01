@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.instant
-symbol: validated
+symbol: "validated"
 ---
 
 # [clojure.instant](../)/validated

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: load-string
+symbol: "load-string"
 ---
 
 # [clojure.core](../)/load-string

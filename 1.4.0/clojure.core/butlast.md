@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: butlast
+symbol: "butlast"
 ---
 
 # [clojure.core](../)/butlast

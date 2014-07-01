@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: push-thread-bindings
+symbol: "push-thread-bindings"
 ---
 
 # [clojure.core](../)/push-thread-bindings

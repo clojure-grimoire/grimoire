@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: with-out-str
+symbol: "with-out-str"
 ---
 
 # [clojure.core](../)/with-out-str

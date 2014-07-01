@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: deftype
+symbol: "deftype"
 ---
 
 # [clojure.core](../)/deftype

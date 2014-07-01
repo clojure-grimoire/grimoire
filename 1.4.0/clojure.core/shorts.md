@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: shorts
+symbol: "shorts"
 ---
 
 # [clojure.core](../)/shorts

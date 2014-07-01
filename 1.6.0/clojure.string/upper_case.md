@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.string
-symbol: upper-case
+symbol: "upper-case"
 ---
 
 # [clojure.string](../)/upper-case

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: promise
+symbol: "promise"
 ---
 
 # [clojure.core](../)/promise

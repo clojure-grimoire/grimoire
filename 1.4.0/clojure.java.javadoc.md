@@ -6,11 +6,11 @@ title: clojure.java.javadoc
 
 
 ## Vars
-[clojure.java.javadoc/\*remote-javadocs\*](./_star_remote_javadocs_star_)
-[clojure.java.javadoc/\*feeling-lucky\*](./_star_feeling_lucky_star_)
-[clojure.java.javadoc/\*feeling-lucky-url\*](./_star_feeling_lucky_url_star_)
-[clojure.java.javadoc/\*core-java-api\*](./_star_core_java_api_star_)
-[clojure.java.javadoc/\*local-javadocs\*](./_star_local_javadocs_star_)
+[clojure.java.javadoc/\*remote-javadocs\*](./star_remote_javadocs_star)
+[clojure.java.javadoc/\*feeling-lucky\*](./star_feeling_lucky_star)
+[clojure.java.javadoc/\*feeling-lucky-url\*](./star_feeling_lucky_url_star)
+[clojure.java.javadoc/\*core-java-api\*](./star_core_java_api_star)
+[clojure.java.javadoc/\*local-javadocs\*](./star_local_javadocs_star)
 
 ## Functions
 [clojure.java.javadoc/javadoc](./javadoc)

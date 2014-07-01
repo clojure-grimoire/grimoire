@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: dotimes
+symbol: "dotimes"
 ---
 
 # [clojure.core](../)/dotimes

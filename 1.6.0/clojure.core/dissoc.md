@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: dissoc
+symbol: "dissoc"
 ---
 
 # [clojure.core](../)/dissoc

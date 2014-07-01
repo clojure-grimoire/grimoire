@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: double-array
+symbol: "double-array"
 ---
 
 # [clojure.core](../)/double-array

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: definline
+symbol: "definline"
 ---
 
 # [clojure.core](../)/definline

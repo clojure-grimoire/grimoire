@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: find-keyword
+symbol: "find-keyword"
 ---
 
 # [clojure.core](../)/find-keyword

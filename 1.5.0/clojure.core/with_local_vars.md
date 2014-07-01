@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: with-local-vars
+symbol: "with-local-vars"
 ---
 
 # [clojure.core](../)/with-local-vars

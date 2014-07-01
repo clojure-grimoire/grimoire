@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.pprint
-symbol: cl-format
+symbol: "cl-format"
 ---
 
 # [clojure.pprint](../)/cl-format

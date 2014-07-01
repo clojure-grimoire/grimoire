@@ -12,7 +12,7 @@ title: clojure.repl
 
 ## Functions
 [clojure.repl/stack-element-str](./stack_element_str)
-[clojure.repl/set-break-handler!](./set_break_handler_bang_)
+[clojure.repl/set-break-handler!](./set_break_handler_bang)
 [clojure.repl/find-doc](./find_doc)
 [clojure.repl/thread-stopper](./thread_stopper)
 [clojure.repl/demunge](./demunge)

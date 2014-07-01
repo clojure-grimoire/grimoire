@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: assoc
+symbol: "assoc"
 ---
 
 # [clojure.core](../)/assoc

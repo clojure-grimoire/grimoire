@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: frequencies
+symbol: "frequencies"
 ---
 
 # [clojure.core](../)/frequencies

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: find-var
+symbol: "find-var"
 ---
 
 # [clojure.core](../)/find-var

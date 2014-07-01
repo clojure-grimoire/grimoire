@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: conj
+symbol: "conj"
 ---
 
 # [clojure.core](../)/conj

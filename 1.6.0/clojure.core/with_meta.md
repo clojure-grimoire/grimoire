@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: with-meta
+symbol: "with-meta"
 ---
 
 # [clojure.core](../)/with-meta

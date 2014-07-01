@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: juxt
+symbol: "juxt"
 ---
 
 # [clojure.core](../)/juxt

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: set
+symbol: "set"
 ---
 
 # [clojure.core](../)/set

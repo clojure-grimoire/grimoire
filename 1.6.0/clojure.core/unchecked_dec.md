@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: unchecked-dec
+symbol: "unchecked-dec"
 ---
 
 # [clojure.core](../)/unchecked-dec

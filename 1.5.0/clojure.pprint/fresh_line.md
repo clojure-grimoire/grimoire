@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.pprint
-symbol: fresh-line
+symbol: "fresh-line"
 ---
 
 # [clojure.pprint](../)/fresh-line

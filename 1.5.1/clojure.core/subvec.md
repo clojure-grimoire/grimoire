@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: subvec
+symbol: "subvec"
 ---
 
 # [clojure.core](../)/subvec

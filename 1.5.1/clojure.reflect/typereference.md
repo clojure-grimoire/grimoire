@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.reflect
-symbol: TypeReference
+symbol: "TypeReference"
 ---
 
 # [clojure.reflect](../)/TypeReference

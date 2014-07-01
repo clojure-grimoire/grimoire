@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: append-child
+symbol: "append-child"
 ---
 
 # [clojure.zip](../)/append-child

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: filterv
+symbol: "filterv"
 ---
 
 # [clojure.core](../)/filterv

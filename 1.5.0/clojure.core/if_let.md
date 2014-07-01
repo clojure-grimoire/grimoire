@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: if-let
+symbol: "if-let"
 ---
 
 # [clojure.core](../)/if-let

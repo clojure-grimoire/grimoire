@@ -16,7 +16,7 @@ title: clojure.repl
 [clojure.repl/find-doc](./find_doc)
 [clojure.repl/pst](./pst)
 [clojure.repl/dir-fn](./dir_fn)
-[clojure.repl/set-break-handler!](./set_break_handler_bang_)
+[clojure.repl/set-break-handler!](./set_break_handler_bang)
 [clojure.repl/root-cause](./root_cause)
 [clojure.repl/demunge](./demunge)
 [clojure.repl/thread-stopper](./thread_stopper)

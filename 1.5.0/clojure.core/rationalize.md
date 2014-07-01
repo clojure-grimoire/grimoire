@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: rationalize
+symbol: "rationalize"
 ---
 
 # [clojure.core](../)/rationalize

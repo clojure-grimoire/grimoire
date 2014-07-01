@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.repl
-symbol: thread-stopper
+symbol: "thread-stopper"
 ---
 
 # [clojure.repl](../)/thread-stopper

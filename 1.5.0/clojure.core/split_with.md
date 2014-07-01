@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: split-with
+symbol: "split-with"
 ---
 
 # [clojure.core](../)/split-with

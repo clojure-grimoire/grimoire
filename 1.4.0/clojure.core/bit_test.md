@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: bit-test
+symbol: "bit-test"
 ---
 
 # [clojure.core](../)/bit-test

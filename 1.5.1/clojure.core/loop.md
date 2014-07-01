@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: loop
+symbol: "loop"
 ---
 
 # [clojure.core](../)/loop

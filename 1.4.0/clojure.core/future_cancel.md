@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: future-cancel
+symbol: "future-cancel"
 ---
 
 # [clojure.core](../)/future-cancel

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: distinct
+symbol: "distinct"
 ---
 
 # [clojure.core](../)/distinct

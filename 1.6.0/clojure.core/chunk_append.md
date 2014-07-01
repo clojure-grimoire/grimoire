@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: chunk-append
+symbol: "chunk-append"
 ---
 
 # [clojure.core](../)/chunk-append

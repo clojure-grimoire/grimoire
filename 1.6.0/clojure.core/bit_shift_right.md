@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: bit-shift-right
+symbol: "bit-shift-right"
 ---
 
 # [clojure.core](../)/bit-shift-right

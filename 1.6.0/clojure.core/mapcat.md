@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: mapcat
+symbol: "mapcat"
 ---
 
 # [clojure.core](../)/mapcat

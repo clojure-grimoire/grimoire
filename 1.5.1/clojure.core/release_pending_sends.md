@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: release-pending-sends
+symbol: "release-pending-sends"
 ---
 
 # [clojure.core](../)/release-pending-sends

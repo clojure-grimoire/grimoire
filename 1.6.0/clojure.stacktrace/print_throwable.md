@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.stacktrace
-symbol: print-throwable
+symbol: "print-throwable"
 ---
 
 # [clojure.stacktrace](../)/print-throwable

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.stacktrace
-symbol: root-cause
+symbol: "root-cause"
 ---
 
 # [clojure.stacktrace](../)/root-cause

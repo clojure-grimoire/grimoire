@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: remove
+symbol: "remove"
 ---
 
 # [clojure.core](../)/remove

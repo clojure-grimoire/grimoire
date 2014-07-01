@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.repl
-symbol: source
+symbol: "source"
 ---
 
 # [clojure.repl](../)/source

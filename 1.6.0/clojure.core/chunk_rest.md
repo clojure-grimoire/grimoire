@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: chunk-rest
+symbol: "chunk-rest"
 ---
 
 # [clojure.core](../)/chunk-rest

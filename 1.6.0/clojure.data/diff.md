@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.data
-symbol: diff
+symbol: "diff"
 ---
 
 # [clojure.data](../)/diff

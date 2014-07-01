@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: resultset-seq
+symbol: "resultset-seq"
 ---
 
 # [clojure.core](../)/resultset-seq

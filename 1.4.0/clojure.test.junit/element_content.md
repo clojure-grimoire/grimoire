@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test.junit
-symbol: element-content
+symbol: "element-content"
 ---
 
 # [clojure.test.junit](../)/element-content

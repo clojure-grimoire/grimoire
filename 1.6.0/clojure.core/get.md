@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: get
+symbol: "get"
 ---
 
 # [clojure.core](../)/get

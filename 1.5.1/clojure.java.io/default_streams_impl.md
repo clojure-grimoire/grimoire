@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.io
-symbol: default-streams-impl
+symbol: "default-streams-impl"
 ---
 
 # [clojure.java.io](../)/default-streams-impl

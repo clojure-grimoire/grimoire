@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.string
-symbol: replace-first
+symbol: "replace-first"
 ---
 
 # [clojure.string](../)/replace-first

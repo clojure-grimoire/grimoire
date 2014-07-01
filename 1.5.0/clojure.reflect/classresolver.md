@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.reflect
-symbol: ClassResolver
+symbol: "ClassResolver"
 ---
 
 # [clojure.reflect](../)/ClassResolver

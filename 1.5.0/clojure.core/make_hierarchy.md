@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: make-hierarchy
+symbol: "make-hierarchy"
 ---
 
 # [clojure.core](../)/make-hierarchy

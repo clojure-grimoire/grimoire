@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: children
+symbol: "children"
 ---
 
 # [clojure.zip](../)/children

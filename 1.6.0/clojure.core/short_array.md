@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: short-array
+symbol: "short-array"
 ---
 
 # [clojure.core](../)/short-array

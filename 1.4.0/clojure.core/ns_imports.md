@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: ns-imports
+symbol: "ns-imports"
 ---
 
 # [clojure.core](../)/ns-imports

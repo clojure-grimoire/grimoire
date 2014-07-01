@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: ancestors
+symbol: "ancestors"
 ---
 
 # [clojure.core](../)/ancestors

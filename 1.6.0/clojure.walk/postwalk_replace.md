@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.walk
-symbol: postwalk-replace
+symbol: "postwalk-replace"
 ---
 
 # [clojure.walk](../)/postwalk-replace

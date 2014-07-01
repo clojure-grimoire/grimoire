@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.pprint
-symbol: print-table
+symbol: "print-table"
 ---
 
 # [clojure.pprint](../)/print-table

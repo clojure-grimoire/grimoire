@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: ns
+symbol: "ns"
 ---
 
 # [clojure.core](../)/ns

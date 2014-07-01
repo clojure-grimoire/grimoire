@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: loaded-libs
+symbol: "loaded-libs"
 ---
 
 # [clojure.core](../)/loaded-libs

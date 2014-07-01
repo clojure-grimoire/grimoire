@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.reflect
-symbol: map->Method
+symbol: "map->Method"
 ---
 
 # [clojure.reflect](../)/map->Method

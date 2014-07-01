@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: last
+symbol: "last"
 ---
 
 # [clojure.core](../)/last

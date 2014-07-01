@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: up
+symbol: "up"
 ---
 
 # [clojure.zip](../)/up

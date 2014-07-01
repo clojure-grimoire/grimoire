@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: unchecked-subtract-int
+symbol: "unchecked-subtract-int"
 ---
 
 # [clojure.core](../)/unchecked-subtract-int

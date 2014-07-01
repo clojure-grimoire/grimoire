@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: test-var
+symbol: "test-var"
 ---
 
 # [clojure.test](../)/test-var

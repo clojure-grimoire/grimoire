@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: sort
+symbol: "sort"
 ---
 
 # [clojure.core](../)/sort

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: drop-last
+symbol: "drop-last"
 ---
 
 # [clojure.core](../)/drop-last

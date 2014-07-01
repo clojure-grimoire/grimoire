@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: re-matcher
+symbol: "re-matcher"
 ---
 
 # [clojure.core](../)/re-matcher

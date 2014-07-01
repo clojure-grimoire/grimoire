@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: ns-unmap
+symbol: "ns-unmap"
 ---
 
 # [clojure.core](../)/ns-unmap

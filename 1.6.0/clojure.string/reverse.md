@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.string
-symbol: reverse
+symbol: "reverse"
 ---
 
 # [clojure.string](../)/reverse

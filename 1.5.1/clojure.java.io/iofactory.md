@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.io
-symbol: IOFactory
+symbol: "IOFactory"
 ---
 
 # [clojure.java.io](../)/IOFactory

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: second
+symbol: "second"
 ---
 
 # [clojure.core](../)/second

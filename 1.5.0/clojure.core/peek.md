@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: peek
+symbol: "peek"
 ---
 
 # [clojure.core](../)/peek

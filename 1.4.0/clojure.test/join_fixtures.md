@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: join-fixtures
+symbol: "join-fixtures"
 ---
 
 # [clojure.test](../)/join-fixtures

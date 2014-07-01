@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.set
-symbol: project
+symbol: "project"
 ---
 
 # [clojure.set](../)/project

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: enumeration-seq
+symbol: "enumeration-seq"
 ---
 
 # [clojure.core](../)/enumeration-seq

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: format
+symbol: "format"
 ---
 
 # [clojure.core](../)/format

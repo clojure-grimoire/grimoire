@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: get-validator
+symbol: "get-validator"
 ---
 
 # [clojure.core](../)/get-validator

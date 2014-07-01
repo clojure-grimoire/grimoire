@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: aset-float
+symbol: "aset-float"
 ---
 
 # [clojure.core](../)/aset-float

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: floats
+symbol: "floats"
 ---
 
 # [clojure.core](../)/floats

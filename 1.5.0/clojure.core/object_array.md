@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: object-array
+symbol: "object-array"
 ---
 
 # [clojure.core](../)/object-array

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: insert-left
+symbol: "insert-left"
 ---
 
 # [clojure.zip](../)/insert-left

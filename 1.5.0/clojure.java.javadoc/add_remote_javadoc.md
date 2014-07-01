@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.javadoc
-symbol: add-remote-javadoc
+symbol: "add-remote-javadoc"
 ---
 
 # [clojure.java.javadoc](../)/add-remote-javadoc

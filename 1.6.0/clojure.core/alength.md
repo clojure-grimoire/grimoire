@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: alength
+symbol: "alength"
 ---
 
 # [clojure.core](../)/alength

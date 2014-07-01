@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: comment
+symbol: "comment"
 ---
 
 # [clojure.core](../)/comment

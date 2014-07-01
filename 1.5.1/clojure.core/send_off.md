@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: send-off
+symbol: "send-off"
 ---
 
 # [clojure.core](../)/send-off

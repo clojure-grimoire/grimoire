@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.string
-symbol: trimr
+symbol: "trimr"
 ---
 
 # [clojure.string](../)/trimr

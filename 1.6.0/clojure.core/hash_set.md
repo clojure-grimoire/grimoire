@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: hash-set
+symbol: "hash-set"
 ---
 
 # [clojure.core](../)/hash-set

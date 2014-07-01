@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: keyword
+symbol: "keyword"
 ---
 
 # [clojure.core](../)/keyword

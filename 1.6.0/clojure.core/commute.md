@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: commute
+symbol: "commute"
 ---
 
 # [clojure.core](../)/commute

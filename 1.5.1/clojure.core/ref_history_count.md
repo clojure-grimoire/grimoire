@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: ref-history-count
+symbol: "ref-history-count"
 ---
 
 # [clojure.core](../)/ref-history-count

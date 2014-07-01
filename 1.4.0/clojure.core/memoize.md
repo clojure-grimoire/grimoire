@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: memoize
+symbol: "memoize"
 ---
 
 # [clojure.core](../)/memoize

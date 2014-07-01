@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: ns-resolve
+symbol: "ns-resolve"
 ---
 
 # [clojure.core](../)/ns-resolve

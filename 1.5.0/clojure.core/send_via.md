@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: send-via
+symbol: "send-via"
 ---
 
 # [clojure.core](../)/send-via

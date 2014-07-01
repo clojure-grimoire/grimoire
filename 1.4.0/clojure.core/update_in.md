@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: update-in
+symbol: "update-in"
 ---
 
 # [clojure.core](../)/update-in

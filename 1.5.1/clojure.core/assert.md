@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: assert
+symbol: "assert"
 ---
 
 # [clojure.core](../)/assert

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.data
-symbol: EqualityPartition
+symbol: "EqualityPartition"
 ---
 
 # [clojure.data](../)/EqualityPartition

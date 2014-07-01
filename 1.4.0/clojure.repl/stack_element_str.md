@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.repl
-symbol: stack-element-str
+symbol: "stack-element-str"
 ---
 
 # [clojure.repl](../)/stack-element-str

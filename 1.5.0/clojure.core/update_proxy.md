@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: update-proxy
+symbol: "update-proxy"
 ---
 
 # [clojure.core](../)/update-proxy

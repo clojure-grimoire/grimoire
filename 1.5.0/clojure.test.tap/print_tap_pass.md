@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test.tap
-symbol: print-tap-pass
+symbol: "print-tap-pass"
 ---
 
 # [clojure.test.tap](../)/print-tap-pass

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: proxy-mappings
+symbol: "proxy-mappings"
 ---
 
 # [clojure.core](../)/proxy-mappings

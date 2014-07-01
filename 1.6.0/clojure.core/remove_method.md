@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: remove-method
+symbol: "remove-method"
 ---
 
 # [clojure.core](../)/remove-method

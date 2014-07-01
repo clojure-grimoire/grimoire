@@ -7,8 +7,8 @@ title: clojure.test.junit
 
 ## Vars
 [clojure.test.junit/junit-report](./junit_report)
-[clojure.test.junit/\*depth\*](./_star_depth_star_)
-[clojure.test.junit/\*var-context\*](./_star_var_context_star_)
+[clojure.test.junit/\*depth\*](./star_depth_star)
+[clojure.test.junit/\*var-context\*](./star_var_context_star)
 
 ## Functions
 [clojure.test.junit/start-case](./start_case)

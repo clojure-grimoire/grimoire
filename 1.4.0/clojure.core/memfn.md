@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: memfn
+symbol: "memfn"
 ---
 
 # [clojure.core](../)/memfn

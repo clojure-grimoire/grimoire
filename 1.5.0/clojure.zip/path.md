@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: path
+symbol: "path"
 ---
 
 # [clojure.zip](../)/path

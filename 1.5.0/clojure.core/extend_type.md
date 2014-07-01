@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: extend-type
+symbol: "extend-type"
 ---
 
 # [clojure.core](../)/extend-type

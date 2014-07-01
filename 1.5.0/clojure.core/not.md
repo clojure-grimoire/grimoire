@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: not
+symbol: "not"
 ---
 
 # [clojure.core](../)/not

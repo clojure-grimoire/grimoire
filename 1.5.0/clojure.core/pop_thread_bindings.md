@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: pop-thread-bindings
+symbol: "pop-thread-bindings"
 ---
 
 # [clojure.core](../)/pop-thread-bindings

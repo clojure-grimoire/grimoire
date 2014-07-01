@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: intern
+symbol: "intern"
 ---
 
 # [clojure.core](../)/intern

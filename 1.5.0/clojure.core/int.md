@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: int
+symbol: "int"
 ---
 
 # [clojure.core](../)/int

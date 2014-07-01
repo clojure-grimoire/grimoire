@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: extend-protocol
+symbol: "extend-protocol"
 ---
 
 # [clojure.core](../)/extend-protocol

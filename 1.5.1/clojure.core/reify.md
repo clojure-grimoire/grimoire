@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: reify
+symbol: "reify"
 ---
 
 # [clojure.core](../)/reify

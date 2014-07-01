@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: nfirst
+symbol: "nfirst"
 ---
 
 # [clojure.core](../)/nfirst

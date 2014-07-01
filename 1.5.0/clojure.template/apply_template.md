@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.template
-symbol: apply-template
+symbol: "apply-template"
 ---
 
 # [clojure.template](../)/apply-template

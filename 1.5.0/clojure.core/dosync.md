@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: dosync
+symbol: "dosync"
 ---
 
 # [clojure.core](../)/dosync

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: long-array
+symbol: "long-array"
 ---
 
 # [clojure.core](../)/long-array

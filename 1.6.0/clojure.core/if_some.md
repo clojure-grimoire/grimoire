@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: if-some
+symbol: "if-some"
 ---
 
 # [clojure.core](../)/if-some

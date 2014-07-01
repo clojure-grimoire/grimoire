@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.set
-symbol: intersection
+symbol: "intersection"
 ---
 
 # [clojure.set](../)/intersection

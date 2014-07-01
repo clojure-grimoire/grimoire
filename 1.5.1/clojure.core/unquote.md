@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: unquote
+symbol: "unquote"
 ---
 
 # [clojure.core](../)/unquote

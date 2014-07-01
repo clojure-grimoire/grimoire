@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: doto
+symbol: "doto"
 ---
 
 # [clojure.core](../)/doto

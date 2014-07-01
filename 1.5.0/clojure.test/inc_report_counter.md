@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: inc-report-counter
+symbol: "inc-report-counter"
 ---
 
 # [clojure.test](../)/inc-report-counter

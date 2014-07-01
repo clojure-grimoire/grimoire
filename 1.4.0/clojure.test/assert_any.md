@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: assert-any
+symbol: "assert-any"
 ---
 
 # [clojure.test](../)/assert-any

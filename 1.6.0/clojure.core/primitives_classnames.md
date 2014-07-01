@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: primitives-classnames
+symbol: "primitives-classnames"
 ---
 
 # [clojure.core](../)/primitives-classnames

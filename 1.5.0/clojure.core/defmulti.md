@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: defmulti
+symbol: "defmulti"
 ---
 
 # [clojure.core](../)/defmulti

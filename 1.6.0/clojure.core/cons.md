@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: cons
+symbol: "cons"
 ---
 
 # [clojure.core](../)/cons

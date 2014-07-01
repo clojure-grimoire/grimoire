@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.string
-symbol: escape
+symbol: "escape"
 ---
 
 # [clojure.string](../)/escape

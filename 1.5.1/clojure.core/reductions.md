@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: reductions
+symbol: "reductions"
 ---
 
 # [clojure.core](../)/reductions

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: macroexpand-1
+symbol: "macroexpand-1"
 ---
 
 # [clojure.core](../)/macroexpand-1

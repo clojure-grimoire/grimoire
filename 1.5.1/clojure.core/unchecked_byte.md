@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: unchecked-byte
+symbol: "unchecked-byte"
 ---
 
 # [clojure.core](../)/unchecked-byte

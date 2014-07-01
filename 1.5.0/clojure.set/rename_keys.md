@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.set
-symbol: rename-keys
+symbol: "rename-keys"
 ---
 
 # [clojure.set](../)/rename-keys

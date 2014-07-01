@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: supers
+symbol: "supers"
 ---
 
 # [clojure.core](../)/supers

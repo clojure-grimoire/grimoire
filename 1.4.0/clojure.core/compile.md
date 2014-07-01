@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: compile
+symbol: "compile"
 ---
 
 # [clojure.core](../)/compile

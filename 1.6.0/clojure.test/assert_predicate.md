@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: assert-predicate
+symbol: "assert-predicate"
 ---
 
 # [clojure.test](../)/assert-predicate

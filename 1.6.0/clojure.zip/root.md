@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: root
+symbol: "root"
 ---
 
 # [clojure.zip](../)/root

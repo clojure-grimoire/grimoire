@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: alter
+symbol: "alter"
 ---
 
 # [clojure.core](../)/alter

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.instant
-symbol: read-instant-calendar
+symbol: "read-instant-calendar"
 ---
 
 # [clojure.instant](../)/read-instant-calendar

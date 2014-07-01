@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: shuffle
+symbol: "shuffle"
 ---
 
 # [clojure.core](../)/shuffle

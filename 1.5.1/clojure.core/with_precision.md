@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: with-precision
+symbol: "with-precision"
 ---
 
 # [clojure.core](../)/with-precision

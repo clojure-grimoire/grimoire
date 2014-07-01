@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: underive
+symbol: "underive"
 ---
 
 # [clojure.core](../)/underive

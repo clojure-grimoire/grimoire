@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: when-first
+symbol: "when-first"
 ---
 
 # [clojure.core](../)/when-first

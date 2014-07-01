@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: struct-map
+symbol: "struct-map"
 ---
 
 # [clojure.core](../)/struct-map

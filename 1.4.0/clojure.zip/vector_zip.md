@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: vector-zip
+symbol: "vector-zip"
 ---
 
 # [clojure.zip](../)/vector-zip

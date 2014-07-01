@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: reduce-kv
+symbol: "reduce-kv"
 ---
 
 # [clojure.core](../)/reduce-kv

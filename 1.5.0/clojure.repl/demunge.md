@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.repl
-symbol: demunge
+symbol: "demunge"
 ---
 
 # [clojure.repl](../)/demunge

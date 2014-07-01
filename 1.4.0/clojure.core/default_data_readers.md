@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: default-data-readers
+symbol: "default-data-readers"
 ---
 
 # [clojure.core](../)/default-data-readers

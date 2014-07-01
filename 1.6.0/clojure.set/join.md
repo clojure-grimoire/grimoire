@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.set
-symbol: join
+symbol: "join"
 ---
 
 # [clojure.set](../)/join

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: unchecked-multiply-int
+symbol: "unchecked-multiply-int"
 ---
 
 # [clojure.core](../)/unchecked-multiply-int

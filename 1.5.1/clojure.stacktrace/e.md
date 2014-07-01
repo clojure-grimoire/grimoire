@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.stacktrace
-symbol: e
+symbol: "e"
 ---
 
 # [clojure.stacktrace](../)/e

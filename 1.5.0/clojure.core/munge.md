@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: munge
+symbol: "munge"
 ---
 
 # [clojure.core](../)/munge

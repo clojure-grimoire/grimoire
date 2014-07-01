@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: find-protocol-method
+symbol: "find-protocol-method"
 ---
 
 # [clojure.core](../)/find-protocol-method

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.stacktrace
-symbol: print-trace-element
+symbol: "print-trace-element"
 ---
 
 # [clojure.stacktrace](../)/print-trace-element

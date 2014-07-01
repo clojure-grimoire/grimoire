@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: unquote-splicing
+symbol: "unquote-splicing"
 ---
 
 # [clojure.core](../)/unquote-splicing

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: for
+symbol: "for"
 ---
 
 # [clojure.core](../)/for

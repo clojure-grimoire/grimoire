@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: with-open
+symbol: "with-open"
 ---
 
 # [clojure.core](../)/with-open

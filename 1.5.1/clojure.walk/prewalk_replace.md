@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.walk
-symbol: prewalk-replace
+symbol: "prewalk-replace"
 ---
 
 # [clojure.walk](../)/prewalk-replace

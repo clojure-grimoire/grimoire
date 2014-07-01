@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: gen-interface
+symbol: "gen-interface"
 ---
 
 # [clojure.core](../)/gen-interface

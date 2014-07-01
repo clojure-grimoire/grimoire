@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: eval
+symbol: "eval"
 ---
 
 # [clojure.core](../)/eval

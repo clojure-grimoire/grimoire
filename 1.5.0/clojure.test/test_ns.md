@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: test-ns
+symbol: "test-ns"
 ---
 
 # [clojure.test](../)/test-ns

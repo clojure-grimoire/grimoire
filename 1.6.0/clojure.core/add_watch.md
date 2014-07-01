@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: add-watch
+symbol: "add-watch"
 ---
 
 # [clojure.core](../)/add-watch

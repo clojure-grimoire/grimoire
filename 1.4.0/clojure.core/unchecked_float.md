@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: unchecked-float
+symbol: "unchecked-float"
 ---
 
 # [clojure.core](../)/unchecked-float

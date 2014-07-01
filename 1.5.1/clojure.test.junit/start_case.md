@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test.junit
-symbol: start-case
+symbol: "start-case"
 ---
 
 # [clojure.test.junit](../)/start-case

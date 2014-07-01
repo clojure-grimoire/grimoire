@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: binding
+symbol: "binding"
 ---
 
 # [clojure.core](../)/binding

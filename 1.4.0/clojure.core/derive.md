@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: derive
+symbol: "derive"
 ---
 
 # [clojure.core](../)/derive

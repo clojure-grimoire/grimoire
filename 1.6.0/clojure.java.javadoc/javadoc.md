@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.javadoc
-symbol: javadoc
+symbol: "javadoc"
 ---
 
 # [clojure.java.javadoc](../)/javadoc

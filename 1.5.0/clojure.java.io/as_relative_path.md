@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.io
-symbol: as-relative-path
+symbol: "as-relative-path"
 ---
 
 # [clojure.java.io](../)/as-relative-path

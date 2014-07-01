@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test.junit
-symbol: suite-attrs
+symbol: "suite-attrs"
 ---
 
 # [clojure.test.junit](../)/suite-attrs

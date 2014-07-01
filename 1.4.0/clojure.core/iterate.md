@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: iterate
+symbol: "iterate"
 ---
 
 # [clojure.core](../)/iterate

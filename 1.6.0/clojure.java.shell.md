@@ -7,8 +7,8 @@ title: clojure.java.shell
 [clojure.java.shell/with-sh-dir](./with_sh_dir)
 
 ## Vars
-[clojure.java.shell/\*sh-env\*](./_star_sh_env_star_)
-[clojure.java.shell/\*sh-dir\*](./_star_sh_dir_star_)
+[clojure.java.shell/\*sh-env\*](./star_sh_env_star)
+[clojure.java.shell/\*sh-dir\*](./star_sh_dir_star)
 
 ## Functions
 [clojure.java.shell/sh](./sh)

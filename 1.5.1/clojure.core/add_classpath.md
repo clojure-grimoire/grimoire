@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: add-classpath
+symbol: "add-classpath"
 ---
 
 # [clojure.core](../)/add-classpath

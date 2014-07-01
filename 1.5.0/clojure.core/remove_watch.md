@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: remove-watch
+symbol: "remove-watch"
 ---
 
 # [clojure.core](../)/remove-watch

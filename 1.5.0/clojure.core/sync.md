@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: sync
+symbol: "sync"
 ---
 
 # [clojure.core](../)/sync

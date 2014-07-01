@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: sequence
+symbol: "sequence"
 ---
 
 # [clojure.core](../)/sequence

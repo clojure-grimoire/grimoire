@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.walk
-symbol: macroexpand-all
+symbol: "macroexpand-all"
 ---
 
 # [clojure.walk](../)/macroexpand-all

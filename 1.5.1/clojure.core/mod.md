@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: mod
+symbol: "mod"
 ---
 
 # [clojure.core](../)/mod

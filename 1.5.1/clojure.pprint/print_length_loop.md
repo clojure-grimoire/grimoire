@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.pprint
-symbol: print-length-loop
+symbol: "print-length-loop"
 ---
 
 # [clojure.pprint](../)/print-length-loop

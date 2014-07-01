@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: interpose
+symbol: "interpose"
 ---
 
 # [clojure.core](../)/interpose

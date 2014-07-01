@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: method-sig
+symbol: "method-sig"
 ---
 
 # [clojure.core](../)/method-sig

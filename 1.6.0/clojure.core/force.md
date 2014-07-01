@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: force
+symbol: "force"
 ---
 
 # [clojure.core](../)/force

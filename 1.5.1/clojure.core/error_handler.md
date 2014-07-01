@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: error-handler
+symbol: "error-handler"
 ---
 
 # [clojure.core](../)/error-handler

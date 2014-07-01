@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: bound-fn
+symbol: "bound-fn"
 ---
 
 # [clojure.core](../)/bound-fn

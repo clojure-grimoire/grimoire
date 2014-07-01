@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: defrecord
+symbol: "defrecord"
 ---
 
 # [clojure.core](../)/defrecord

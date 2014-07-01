@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: fnext
+symbol: "fnext"
 ---
 
 # [clojure.core](../)/fnext

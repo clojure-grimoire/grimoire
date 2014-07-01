@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: vector-of
+symbol: "vector-of"
 ---
 
 # [clojure.core](../)/vector-of

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: case
+symbol: "case"
 ---
 
 # [clojure.core](../)/case

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.io
-symbol: make-parents
+symbol: "make-parents"
 ---
 
 # [clojure.java.io](../)/make-parents

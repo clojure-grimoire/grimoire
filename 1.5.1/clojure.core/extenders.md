@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: extenders
+symbol: "extenders"
 ---
 
 # [clojure.core](../)/extenders

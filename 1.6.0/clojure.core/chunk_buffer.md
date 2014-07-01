@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: chunk-buffer
+symbol: "chunk-buffer"
 ---
 
 # [clojure.core](../)/chunk-buffer

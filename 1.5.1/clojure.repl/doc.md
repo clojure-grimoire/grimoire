@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.repl
-symbol: doc
+symbol: "doc"
 ---
 
 # [clojure.repl](../)/doc

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: or
+symbol: "or"
 ---
 
 # [clojure.core](../)/or

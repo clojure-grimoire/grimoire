@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: rights
+symbol: "rights"
 ---
 
 # [clojure.zip](../)/rights

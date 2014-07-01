@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.walk
-symbol: keywordize-keys
+symbol: "keywordize-keys"
 ---
 
 # [clojure.walk](../)/keywordize-keys

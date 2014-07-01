@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: aset-short
+symbol: "aset-short"
 ---
 
 # [clojure.core](../)/aset-short

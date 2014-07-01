@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: zipmap
+symbol: "zipmap"
 ---
 
 # [clojure.core](../)/zipmap

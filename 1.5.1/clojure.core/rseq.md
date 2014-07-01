@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: rseq
+symbol: "rseq"
 ---
 
 # [clojure.core](../)/rseq

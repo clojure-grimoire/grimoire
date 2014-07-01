@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.xml
-symbol: content-handler
+symbol: "content-handler"
 ---
 
 # [clojure.xml](../)/content-handler

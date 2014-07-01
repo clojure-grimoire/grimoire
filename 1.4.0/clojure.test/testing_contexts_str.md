@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: testing-contexts-str
+symbol: "testing-contexts-str"
 ---
 
 # [clojure.test](../)/testing-contexts-str

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: ns-refers
+symbol: "ns-refers"
 ---
 
 # [clojure.core](../)/ns-refers

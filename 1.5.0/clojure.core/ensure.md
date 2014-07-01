@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: ensure
+symbol: "ensure"
 ---
 
 # [clojure.core](../)/ensure

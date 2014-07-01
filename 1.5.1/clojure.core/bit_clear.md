@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: bit-clear
+symbol: "bit-clear"
 ---
 
 # [clojure.core](../)/bit-clear

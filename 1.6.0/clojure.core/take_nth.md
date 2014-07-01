@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: take-nth
+symbol: "take-nth"
 ---
 
 # [clojure.core](../)/take-nth

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.string
-symbol: trim-newline
+symbol: "trim-newline"
 ---
 
 # [clojure.string](../)/trim-newline

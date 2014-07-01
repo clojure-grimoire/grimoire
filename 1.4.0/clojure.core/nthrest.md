@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: nthrest
+symbol: "nthrest"
 ---
 
 # [clojure.core](../)/nthrest

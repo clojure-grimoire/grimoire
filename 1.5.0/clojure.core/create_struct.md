@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: create-struct
+symbol: "create-struct"
 ---
 
 # [clojure.core](../)/create-struct

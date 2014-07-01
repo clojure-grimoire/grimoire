@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: clear-agent-errors
+symbol: "clear-agent-errors"
 ---
 
 # [clojure.core](../)/clear-agent-errors

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: leftmost
+symbol: "leftmost"
 ---
 
 # [clojure.zip](../)/leftmost

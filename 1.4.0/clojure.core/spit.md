@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: spit
+symbol: "spit"
 ---
 
 # [clojure.core](../)/spit

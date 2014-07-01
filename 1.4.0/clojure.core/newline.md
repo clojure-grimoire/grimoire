@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: newline
+symbol: "newline"
 ---
 
 # [clojure.core](../)/newline

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.pprint
-symbol: with-pprint-dispatch
+symbol: "with-pprint-dispatch"
 ---
 
 # [clojure.pprint](../)/with-pprint-dispatch

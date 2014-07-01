@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: when-not
+symbol: "when-not"
 ---
 
 # [clojure.core](../)/when-not

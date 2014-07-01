@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test.tap
-symbol: with-tap-output
+symbol: "with-tap-output"
 ---
 
 # [clojure.test.tap](../)/with-tap-output

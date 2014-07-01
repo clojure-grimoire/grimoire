@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: get-possibly-unbound-var
+symbol: "get-possibly-unbound-var"
 ---
 
 # [clojure.test](../)/get-possibly-unbound-var

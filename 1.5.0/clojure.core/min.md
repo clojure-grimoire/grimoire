@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: min
+symbol: "min"
 ---
 
 # [clojure.core](../)/min

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.reflect
-symbol: reflect
+symbol: "reflect"
 ---
 
 # [clojure.reflect](../)/reflect

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: constantly
+symbol: "constantly"
 ---
 
 # [clojure.core](../)/constantly

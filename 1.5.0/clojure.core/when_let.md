@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: when-let
+symbol: "when-let"
 ---
 
 # [clojure.core](../)/when-let

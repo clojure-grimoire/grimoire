@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: gen-class
+symbol: "gen-class"
 ---
 
 # [clojure.core](../)/gen-class

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: unchecked-long
+symbol: "unchecked-long"
 ---
 
 # [clojure.core](../)/unchecked-long

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: print-method
+symbol: "print-method"
 ---
 
 # [clojure.core](../)/print-method

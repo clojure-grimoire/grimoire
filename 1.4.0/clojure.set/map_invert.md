@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.set
-symbol: map-invert
+symbol: "map-invert"
 ---
 
 # [clojure.set](../)/map-invert

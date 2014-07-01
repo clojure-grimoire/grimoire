@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: make-array
+symbol: "make-array"
 ---
 
 # [clojure.core](../)/make-array

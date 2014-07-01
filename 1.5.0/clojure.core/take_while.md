@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: take-while
+symbol: "take-while"
 ---
 
 # [clojure.core](../)/take-while

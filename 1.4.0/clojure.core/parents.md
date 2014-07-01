@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: parents
+symbol: "parents"
 ---
 
 # [clojure.core](../)/parents

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: drop-while
+symbol: "drop-while"
 ---
 
 # [clojure.core](../)/drop-while

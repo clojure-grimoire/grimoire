@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: load
+symbol: "load"
 ---
 
 # [clojure.core](../)/load

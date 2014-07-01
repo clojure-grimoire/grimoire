@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.xml
-symbol: tag
+symbol: "tag"
 ---
 
 # [clojure.xml](../)/tag

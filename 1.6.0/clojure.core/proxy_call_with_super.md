@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: proxy-call-with-super
+symbol: "proxy-call-with-super"
 ---
 
 # [clojure.core](../)/proxy-call-with-super

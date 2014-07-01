@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: methods
+symbol: "methods"
 ---
 
 # [clojure.core](../)/methods

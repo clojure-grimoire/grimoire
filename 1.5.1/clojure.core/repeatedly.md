@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: repeatedly
+symbol: "repeatedly"
 ---
 
 # [clojure.core](../)/repeatedly

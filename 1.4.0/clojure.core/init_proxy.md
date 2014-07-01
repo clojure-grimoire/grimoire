@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: init-proxy
+symbol: "init-proxy"
 ---
 
 # [clojure.core](../)/init-proxy

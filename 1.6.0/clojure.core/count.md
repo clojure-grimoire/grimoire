@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: count
+symbol: "count"
 ---
 
 # [clojure.core](../)/count

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: empty
+symbol: "empty"
 ---
 
 # [clojure.core](../)/empty

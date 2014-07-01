@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: re-pattern
+symbol: "re-pattern"
 ---
 
 # [clojure.core](../)/re-pattern

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: reduce
+symbol: "reduce"
 ---
 
 # [clojure.core](../)/reduce

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: flush
+symbol: "flush"
 ---
 
 # [clojure.core](../)/flush

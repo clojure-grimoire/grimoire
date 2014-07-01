@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.walk
-symbol: stringify-keys
+symbol: "stringify-keys"
 ---
 
 # [clojure.walk](../)/stringify-keys

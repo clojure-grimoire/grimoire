@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: keep-indexed
+symbol: "keep-indexed"
 ---
 
 # [clojure.core](../)/keep-indexed

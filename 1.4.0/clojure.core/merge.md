@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: merge
+symbol: "merge"
 ---
 
 # [clojure.core](../)/merge

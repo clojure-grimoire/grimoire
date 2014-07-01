@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: shutdown-agents
+symbol: "shutdown-agents"
 ---
 
 # [clojure.core](../)/shutdown-agents

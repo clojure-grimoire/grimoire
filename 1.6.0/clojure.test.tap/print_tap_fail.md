@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test.tap
-symbol: print-tap-fail
+symbol: "print-tap-fail"
 ---
 
 # [clojure.test.tap](../)/print-tap-fail

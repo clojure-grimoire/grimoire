@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: cond
+symbol: "cond"
 ---
 
 # [clojure.core](../)/cond

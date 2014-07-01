@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: aclone
+symbol: "aclone"
 ---
 
 # [clojure.core](../)/aclone

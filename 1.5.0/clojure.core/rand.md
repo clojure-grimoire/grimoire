@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: rand
+symbol: "rand"
 ---
 
 # [clojure.core](../)/rand

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: get-thread-bindings
+symbol: "get-thread-bindings"
 ---
 
 # [clojure.core](../)/get-thread-bindings

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.repl
-symbol: apropos
+symbol: "apropos"
 ---
 
 # [clojure.repl](../)/apropos

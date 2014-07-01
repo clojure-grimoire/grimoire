@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.reflect
-symbol: map->Constructor
+symbol: "map->Constructor"
 ---
 
 # [clojure.reflect](../)/map->Constructor

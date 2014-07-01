@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: ns-map
+symbol: "ns-map"
 ---
 
 # [clojure.core](../)/ns-map

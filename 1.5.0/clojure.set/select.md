@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.set
-symbol: select
+symbol: "select"
 ---
 
 # [clojure.set](../)/select

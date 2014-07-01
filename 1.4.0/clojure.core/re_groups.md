@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: re-groups
+symbol: "re-groups"
 ---
 
 # [clojure.core](../)/re-groups

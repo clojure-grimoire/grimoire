@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test.junit
-symbol: start-suite
+symbol: "start-suite"
 ---
 
 # [clojure.test.junit](../)/start-suite

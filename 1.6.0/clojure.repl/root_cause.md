@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.repl
-symbol: root-cause
+symbol: "root-cause"
 ---
 
 # [clojure.repl](../)/root-cause

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.string
-symbol: join
+symbol: "join"
 ---
 
 # [clojure.string](../)/join

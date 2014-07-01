@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.xml
-symbol: parse
+symbol: "parse"
 ---
 
 # [clojure.xml](../)/parse

@@ -6,9 +6,9 @@ title: clojure.test.junit
 [clojure.test.junit/with-junit-output](./with_junit_output)
 
 ## Vars
-[clojure.test.junit/\*depth\*](./_star_depth_star_)
+[clojure.test.junit/\*depth\*](./star_depth_star)
 [clojure.test.junit/junit-report](./junit_report)
-[clojure.test.junit/\*var-context\*](./_star_var_context_star_)
+[clojure.test.junit/\*var-context\*](./star_var_context_star)
 
 ## Functions
 [clojure.test.junit/start-suite](./start_suite)

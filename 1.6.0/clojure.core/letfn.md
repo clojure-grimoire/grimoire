@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: letfn
+symbol: "letfn"
 ---
 
 # [clojure.core](../)/letfn

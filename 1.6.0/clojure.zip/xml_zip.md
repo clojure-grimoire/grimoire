@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: xml-zip
+symbol: "xml-zip"
 ---
 
 # [clojure.zip](../)/xml-zip

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: areduce
+symbol: "areduce"
 ---
 
 # [clojure.core](../)/areduce

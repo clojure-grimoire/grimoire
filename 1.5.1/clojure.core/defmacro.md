@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: defmacro
+symbol: "defmacro"
 ---
 
 # [clojure.core](../)/defmacro

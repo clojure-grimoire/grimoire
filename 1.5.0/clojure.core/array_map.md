@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: array-map
+symbol: "array-map"
 ---
 
 # [clojure.core](../)/array-map

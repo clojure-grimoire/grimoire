@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: bit-set
+symbol: "bit-set"
 ---
 
 # [clojure.core](../)/bit-set

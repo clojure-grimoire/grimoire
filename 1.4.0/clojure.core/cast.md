@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: cast
+symbol: "cast"
 ---
 
 # [clojure.core](../)/cast

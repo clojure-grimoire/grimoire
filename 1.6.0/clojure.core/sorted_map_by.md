@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: sorted-map-by
+symbol: "sorted-map-by"
 ---
 
 # [clojure.core](../)/sorted-map-by

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: unchecked-add
+symbol: "unchecked-add"
 ---
 
 # [clojure.core](../)/unchecked-add

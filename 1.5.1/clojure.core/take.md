@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: take
+symbol: "take"
 ---
 
 # [clojure.core](../)/take

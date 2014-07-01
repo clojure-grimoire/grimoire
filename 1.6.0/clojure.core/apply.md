@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: apply
+symbol: "apply"
 ---
 
 # [clojure.core](../)/apply

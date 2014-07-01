@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: accessor
+symbol: "accessor"
 ---
 
 # [clojure.core](../)/accessor

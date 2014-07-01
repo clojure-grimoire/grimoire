@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: printf
+symbol: "printf"
 ---
 
 # [clojure.core](../)/printf

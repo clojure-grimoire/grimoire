@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.shell
-symbol: sh
+symbol: "sh"
 ---
 
 # [clojure.java.shell](../)/sh

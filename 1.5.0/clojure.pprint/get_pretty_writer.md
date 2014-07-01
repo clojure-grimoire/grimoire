@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.pprint
-symbol: get-pretty-writer
+symbol: "get-pretty-writer"
 ---
 
 # [clojure.pprint](../)/get-pretty-writer

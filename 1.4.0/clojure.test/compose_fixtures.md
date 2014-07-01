@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: compose-fixtures
+symbol: "compose-fixtures"
 ---
 
 # [clojure.test](../)/compose-fixtures

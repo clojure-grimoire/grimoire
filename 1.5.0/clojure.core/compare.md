@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: compare
+symbol: "compare"
 ---
 
 # [clojure.core](../)/compare

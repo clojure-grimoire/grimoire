@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test.tap
-symbol: print-tap-plan
+symbol: "print-tap-plan"
 ---
 
 # [clojure.test.tap](../)/print-tap-plan

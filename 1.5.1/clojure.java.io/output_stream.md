@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.io
-symbol: output-stream
+symbol: "output-stream"
 ---
 
 # [clojure.java.io](../)/output-stream

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: interleave
+symbol: "interleave"
 ---
 
 # [clojure.core](../)/interleave

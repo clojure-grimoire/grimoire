@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: unchecked-char
+symbol: "unchecked-char"
 ---
 
 # [clojure.core](../)/unchecked-char

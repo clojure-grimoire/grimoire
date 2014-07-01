@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.io
-symbol: resource
+symbol: "resource"
 ---
 
 # [clojure.java.io](../)/resource

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: char-array
+symbol: "char-array"
 ---
 
 # [clojure.core](../)/char-array

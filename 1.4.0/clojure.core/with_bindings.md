@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: with-bindings
+symbol: "with-bindings"
 ---
 
 # [clojure.core](../)/with-bindings

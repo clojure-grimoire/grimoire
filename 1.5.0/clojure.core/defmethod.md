@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: defmethod
+symbol: "defmethod"
 ---
 
 # [clojure.core](../)/defmethod

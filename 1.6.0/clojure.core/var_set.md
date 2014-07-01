@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: var-set
+symbol: "var-set"
 ---
 
 # [clojure.core](../)/var-set

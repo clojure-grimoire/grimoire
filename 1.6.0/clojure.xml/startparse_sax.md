@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.xml
-symbol: startparse-sax
+symbol: "startparse-sax"
 ---
 
 # [clojure.xml](../)/startparse-sax

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.string
-symbol: re-quote-replacement
+symbol: "re-quote-replacement"
 ---
 
 # [clojure.string](../)/re-quote-replacement

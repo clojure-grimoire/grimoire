@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: rand-nth
+symbol: "rand-nth"
 ---
 
 # [clojure.core](../)/rand-nth

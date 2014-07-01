@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: print-ctor
+symbol: "print-ctor"
 ---
 
 # [clojure.core](../)/print-ctor

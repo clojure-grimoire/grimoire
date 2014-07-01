@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.shell
-symbol: with-sh-env
+symbol: "with-sh-env"
 ---
 
 # [clojure.java.shell](../)/with-sh-env

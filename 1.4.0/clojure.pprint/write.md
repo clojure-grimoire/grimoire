@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.pprint
-symbol: write
+symbol: "write"
 ---
 
 # [clojure.pprint](../)/write

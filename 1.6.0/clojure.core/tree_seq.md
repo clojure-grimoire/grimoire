@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: tree-seq
+symbol: "tree-seq"
 ---
 
 # [clojure.core](../)/tree-seq

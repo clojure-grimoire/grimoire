@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: vector
+symbol: "vector"
 ---
 
 # [clojure.core](../)/vector

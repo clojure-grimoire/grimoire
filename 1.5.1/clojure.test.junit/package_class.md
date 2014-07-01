@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test.junit
-symbol: package-class
+symbol: "package-class"
 ---
 
 # [clojure.test.junit](../)/package-class

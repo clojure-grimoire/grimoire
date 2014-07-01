@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: to-array
+symbol: "to-array"
 ---
 
 # [clojure.core](../)/to-array

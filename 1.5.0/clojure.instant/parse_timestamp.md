@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.instant
-symbol: parse-timestamp
+symbol: "parse-timestamp"
 ---
 
 # [clojure.instant](../)/parse-timestamp

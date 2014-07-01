@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: get-proxy-class
+symbol: "get-proxy-class"
 ---
 
 # [clojure.core](../)/get-proxy-class

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: descendants
+symbol: "descendants"
 ---
 
 # [clojure.core](../)/descendants

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.string
-symbol: lower-case
+symbol: "lower-case"
 ---
 
 # [clojure.string](../)/lower-case

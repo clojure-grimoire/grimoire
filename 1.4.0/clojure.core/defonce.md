@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: defonce
+symbol: "defonce"
 ---
 
 # [clojure.core](../)/defonce

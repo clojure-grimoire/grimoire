@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: re-seq
+symbol: "re-seq"
 ---
 
 # [clojure.core](../)/re-seq

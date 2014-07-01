@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: quot
+symbol: "quot"
 ---
 
 # [clojure.core](../)/quot

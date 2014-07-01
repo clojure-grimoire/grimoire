@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: require
+symbol: "require"
 ---
 
 # [clojure.core](../)/require

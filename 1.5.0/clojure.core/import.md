@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: import
+symbol: "import"
 ---
 
 # [clojure.core](../)/import

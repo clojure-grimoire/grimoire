@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.browse
-symbol: browse-url
+symbol: "browse-url"
 ---
 
 # [clojure.java.browse](../)/browse-url

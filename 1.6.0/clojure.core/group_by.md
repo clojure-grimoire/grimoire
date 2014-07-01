@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: group-by
+symbol: "group-by"
 ---
 
 # [clojure.core](../)/group-by

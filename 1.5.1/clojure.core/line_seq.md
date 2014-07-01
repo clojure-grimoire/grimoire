@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: line-seq
+symbol: "line-seq"
 ---
 
 # [clojure.core](../)/line-seq

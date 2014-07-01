@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: float-array
+symbol: "float-array"
 ---
 
 # [clojure.core](../)/float-array

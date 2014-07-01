@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: with-redefs
+symbol: "with-redefs"
 ---
 
 # [clojure.core](../)/with-redefs

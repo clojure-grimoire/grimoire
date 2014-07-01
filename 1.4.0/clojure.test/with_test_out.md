@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: with-test-out
+symbol: "with-test-out"
 ---
 
 # [clojure.test](../)/with-test-out

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.string
-symbol: capitalize
+symbol: "capitalize"
 ---
 
 # [clojure.string](../)/capitalize

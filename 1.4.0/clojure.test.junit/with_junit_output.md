@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test.junit
-symbol: with-junit-output
+symbol: "with-junit-output"
 ---
 
 # [clojure.test.junit](../)/with-junit-output

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: destructure
+symbol: "destructure"
 ---
 
 # [clojure.core](../)/destructure

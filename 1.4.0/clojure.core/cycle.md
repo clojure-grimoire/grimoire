@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: cycle
+symbol: "cycle"
 ---
 
 # [clojure.core](../)/cycle

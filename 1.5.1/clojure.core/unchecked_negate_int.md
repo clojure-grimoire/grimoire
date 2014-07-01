@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: unchecked-negate-int
+symbol: "unchecked-negate-int"
 ---
 
 # [clojure.core](../)/unchecked-negate-int

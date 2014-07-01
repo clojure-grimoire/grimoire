@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: take-last
+symbol: "take-last"
 ---
 
 # [clojure.core](../)/take-last

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.io
-symbol: Coercions
+symbol: "Coercions"
 ---
 
 # [clojure.java.io](../)/Coercions

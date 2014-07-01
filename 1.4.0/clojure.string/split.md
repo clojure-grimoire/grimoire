@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.string
-symbol: split
+symbol: "split"
 ---
 
 # [clojure.string](../)/split

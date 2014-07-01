@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: vals
+symbol: "vals"
 ---
 
 # [clojure.core](../)/vals

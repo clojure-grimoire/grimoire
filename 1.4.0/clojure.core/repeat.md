@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: repeat
+symbol: "repeat"
 ---
 
 # [clojure.core](../)/repeat

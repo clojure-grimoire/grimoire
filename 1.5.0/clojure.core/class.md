@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: class
+symbol: "class"
 ---
 
 # [clojure.core](../)/class

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.io
-symbol: file
+symbol: "file"
 ---
 
 # [clojure.java.io](../)/file

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: unchecked-double
+symbol: "unchecked-double"
 ---
 
 # [clojure.core](../)/unchecked-double

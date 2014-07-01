@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: max
+symbol: "max"
 ---
 
 # [clojure.core](../)/max

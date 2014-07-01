@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: lazy-seq
+symbol: "lazy-seq"
 ---
 
 # [clojure.core](../)/lazy-seq

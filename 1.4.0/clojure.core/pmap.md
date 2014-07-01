@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: pmap
+symbol: "pmap"
 ---
 
 # [clojure.core](../)/pmap

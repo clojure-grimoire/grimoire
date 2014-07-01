@@ -3,7 +3,7 @@ layout: ns
 title: clojure.test
 ---
 ## Macros
-[clojure.test/deftest-](./deftest_)
+[clojure.test/deftest-](./deftest)
 [clojure.test/deftest](./deftest)
 [clojure.test/is](./is)
 [clojure.test/testing](./testing)
@@ -14,16 +14,16 @@ title: clojure.test
 [clojure.test/with-test](./with_test)
 
 ## Vars
-[clojure.test/\*initial-report-counters\*](./_star_initial_report_counters_star_)
-[clojure.test/\*testing-vars\*](./_star_testing_vars_star_)
+[clojure.test/\*initial-report-counters\*](./star_initial_report_counters_star)
+[clojure.test/\*testing-vars\*](./star_testing_vars_star)
 [clojure.test/use-fixtures](./use_fixtures)
-[clojure.test/\*test-out\*](./_star_test_out_star_)
+[clojure.test/\*test-out\*](./star_test_out_star)
 [clojure.test/report](./report)
-[clojure.test/\*report-counters\*](./_star_report_counters_star_)
-[clojure.test/\*load-tests\*](./_star_load_tests_star_)
+[clojure.test/\*report-counters\*](./star_report_counters_star)
+[clojure.test/\*load-tests\*](./star_load_tests_star)
 [clojure.test/assert-expr](./assert_expr)
-[clojure.test/\*stack-trace-depth\*](./_star_stack_trace_depth_star_)
-[clojure.test/\*testing-contexts\*](./_star_testing_contexts_star_)
+[clojure.test/\*stack-trace-depth\*](./star_stack_trace_depth_star)
+[clojure.test/\*testing-contexts\*](./star_testing_contexts_star)
 
 ## Functions
 [clojure.test/join-fixtures](./join_fixtures)
@@ -34,12 +34,12 @@ title: clojure.test
 [clojure.test/run-tests](./run_tests)
 [clojure.test/do-report](./do_report)
 [clojure.test/test-ns](./test_ns)
-[clojure.test/function?](./function_qmark_)
+[clojure.test/function?](./function_qmark)
 [clojure.test/file-position](./file_position)
 [clojure.test/test-all-vars](./test_all_vars)
 [clojure.test/run-all-tests](./run_all_tests)
 [clojure.test/assert-any](./assert_any)
 [clojure.test/inc-report-counter](./inc_report_counter)
-[clojure.test/successful?](./successful_qmark_)
+[clojure.test/successful?](./successful_qmark)
 [clojure.test/compose-fixtures](./compose_fixtures)
 [clojure.test/test-var](./test_var)

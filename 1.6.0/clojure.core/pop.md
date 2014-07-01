@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: pop
+symbol: "pop"
 ---
 
 # [clojure.core](../)/pop

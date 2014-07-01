@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: prn
+symbol: "prn"
 ---
 
 # [clojure.core](../)/prn

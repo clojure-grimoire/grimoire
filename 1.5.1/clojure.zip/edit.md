@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: edit
+symbol: "edit"
 ---
 
 # [clojure.zip](../)/edit

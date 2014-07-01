@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: var-get
+symbol: "var-get"
 ---
 
 # [clojure.core](../)/var-get

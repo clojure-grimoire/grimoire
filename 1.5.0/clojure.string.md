@@ -22,6 +22,6 @@ title: clojure.string
 [clojure.string/reverse](./reverse)
 [clojure.string/capitalize](./capitalize)
 [clojure.string/escape](./escape)
-[clojure.string/blank?](./blank_qmark_)
+[clojure.string/blank?](./blank_qmark)
 [clojure.string/replace-first](./replace_first)
 [clojure.string/trim-newline](./trim_newline)

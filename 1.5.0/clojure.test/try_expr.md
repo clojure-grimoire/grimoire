@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: try-expr
+symbol: "try-expr"
 ---
 
 # [clojure.test](../)/try-expr

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.xml
-symbol: attrs
+symbol: "attrs"
 ---
 
 # [clojure.xml](../)/attrs

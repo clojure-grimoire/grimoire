@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: ffirst
+symbol: "ffirst"
 ---
 
 # [clojure.core](../)/ffirst

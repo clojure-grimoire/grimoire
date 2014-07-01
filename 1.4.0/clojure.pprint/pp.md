@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.pprint
-symbol: pp
+symbol: "pp"
 ---
 
 # [clojure.pprint](../)/pp

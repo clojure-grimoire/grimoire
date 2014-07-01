@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.set
-symbol: difference
+symbol: "difference"
 ---
 
 # [clojure.set](../)/difference

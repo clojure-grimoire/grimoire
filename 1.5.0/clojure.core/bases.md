@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: bases
+symbol: "bases"
 ---
 
 # [clojure.core](../)/bases

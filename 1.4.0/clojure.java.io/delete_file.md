@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.io
-symbol: delete-file
+symbol: "delete-file"
 ---
 
 # [clojure.java.io](../)/delete-file

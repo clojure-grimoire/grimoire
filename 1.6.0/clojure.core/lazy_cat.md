@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: lazy-cat
+symbol: "lazy-cat"
 ---
 
 # [clojure.core](../)/lazy-cat

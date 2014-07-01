@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: set-test
+symbol: "set-test"
 ---
 
 # [clojure.test](../)/set-test

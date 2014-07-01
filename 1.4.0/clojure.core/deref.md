@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: deref
+symbol: "deref"
 ---
 
 # [clojure.core](../)/deref

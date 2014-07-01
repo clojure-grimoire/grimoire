@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: min-key
+symbol: "min-key"
 ---
 
 # [clojure.core](../)/min-key

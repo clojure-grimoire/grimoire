@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.pprint
-symbol: write-out
+symbol: "write-out"
 ---
 
 # [clojure.pprint](../)/write-out

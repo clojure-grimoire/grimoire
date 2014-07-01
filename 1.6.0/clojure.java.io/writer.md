@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.io
-symbol: writer
+symbol: "writer"
 ---
 
 # [clojure.java.io](../)/writer

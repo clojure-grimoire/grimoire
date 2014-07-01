@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: denominator
+symbol: "denominator"
 ---
 
 # [clojure.core](../)/denominator

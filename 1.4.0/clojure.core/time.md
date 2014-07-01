@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: time
+symbol: "time"
 ---
 
 # [clojure.core](../)/time

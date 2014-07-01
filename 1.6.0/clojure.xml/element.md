@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.xml
-symbol: element
+symbol: "element"
 ---
 
 # [clojure.xml](../)/element

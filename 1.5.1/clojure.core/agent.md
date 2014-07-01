@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: agent
+symbol: "agent"
 ---
 
 # [clojure.core](../)/agent

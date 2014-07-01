@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: if-not
+symbol: "if-not"
 ---
 
 # [clojure.core](../)/if-not

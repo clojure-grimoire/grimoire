@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: unchecked-inc
+symbol: "unchecked-inc"
 ---
 
 # [clojure.core](../)/unchecked-inc

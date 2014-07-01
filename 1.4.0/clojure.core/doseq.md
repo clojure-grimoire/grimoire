@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: doseq
+symbol: "doseq"
 ---
 
 # [clojure.core](../)/doseq

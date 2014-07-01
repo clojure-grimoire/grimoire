@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: bit-flip
+symbol: "bit-flip"
 ---
 
 # [clojure.core](../)/bit-flip

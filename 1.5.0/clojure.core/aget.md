@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: aget
+symbol: "aget"
 ---
 
 # [clojure.core](../)/aget

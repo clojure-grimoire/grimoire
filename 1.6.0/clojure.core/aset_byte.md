@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: aset-byte
+symbol: "aset-byte"
 ---
 
 # [clojure.core](../)/aset-byte

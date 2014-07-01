@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: split-at
+symbol: "split-at"
 ---
 
 # [clojure.core](../)/split-at

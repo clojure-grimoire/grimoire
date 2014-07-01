@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: get-method
+symbol: "get-method"
 ---
 
 # [clojure.core](../)/get-method

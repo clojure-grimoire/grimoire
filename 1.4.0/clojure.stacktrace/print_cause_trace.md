@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.stacktrace
-symbol: print-cause-trace
+symbol: "print-cause-trace"
 ---
 
 # [clojure.stacktrace](../)/print-cause-trace

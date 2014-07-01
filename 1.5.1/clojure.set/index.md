@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.set
-symbol: index
+symbol: "index"
 ---
 
 # [clojure.set](../)/index

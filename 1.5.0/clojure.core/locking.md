@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: locking
+symbol: "locking"
 ---
 
 # [clojure.core](../)/locking

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: next
+symbol: "next"
 ---
 
 # [clojure.zip](../)/next

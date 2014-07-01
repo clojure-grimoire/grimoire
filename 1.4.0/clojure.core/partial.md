@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: partial
+symbol: "partial"
 ---
 
 # [clojure.core](../)/partial

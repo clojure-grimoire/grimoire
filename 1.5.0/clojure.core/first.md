@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: first
+symbol: "first"
 ---
 
 # [clojure.core](../)/first

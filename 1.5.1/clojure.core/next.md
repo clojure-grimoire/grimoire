@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: next
+symbol: "next"
 ---
 
 # [clojure.core](../)/next

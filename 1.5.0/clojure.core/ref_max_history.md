@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: ref-max-history
+symbol: "ref-max-history"
 ---
 
 # [clojure.core](../)/ref-max-history

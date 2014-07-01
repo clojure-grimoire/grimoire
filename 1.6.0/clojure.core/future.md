@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: future
+symbol: "future"
 ---
 
 # [clojure.core](../)/future

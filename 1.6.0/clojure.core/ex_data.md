@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: ex-data
+symbol: "ex-data"
 ---
 
 # [clojure.core](../)/ex-data

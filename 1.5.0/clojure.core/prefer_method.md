@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: prefer-method
+symbol: "prefer-method"
 ---
 
 # [clojure.core](../)/prefer-method

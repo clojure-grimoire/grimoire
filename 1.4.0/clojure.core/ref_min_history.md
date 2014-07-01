@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: ref-min-history
+symbol: "ref-min-history"
 ---
 
 # [clojure.core](../)/ref-min-history

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: deliver
+symbol: "deliver"
 ---
 
 # [clojure.core](../)/deliver

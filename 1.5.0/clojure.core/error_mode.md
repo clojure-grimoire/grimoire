@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: error-mode
+symbol: "error-mode"
 ---
 
 # [clojure.core](../)/error-mode

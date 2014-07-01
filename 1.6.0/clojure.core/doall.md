@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: doall
+symbol: "doall"
 ---
 
 # [clojure.core](../)/doall

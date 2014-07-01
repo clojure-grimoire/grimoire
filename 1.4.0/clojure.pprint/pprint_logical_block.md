@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.pprint
-symbol: pprint-logical-block
+symbol: "pprint-logical-block"
 ---
 
 # [clojure.pprint](../)/pprint-logical-block

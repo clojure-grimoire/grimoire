@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.io
-symbol: reader
+symbol: "reader"
 ---
 
 # [clojure.java.io](../)/reader

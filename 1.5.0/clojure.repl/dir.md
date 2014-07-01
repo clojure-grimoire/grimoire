@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.repl
-symbol: dir
+symbol: "dir"
 ---
 
 # [clojure.repl](../)/dir

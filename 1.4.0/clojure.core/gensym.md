@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: gensym
+symbol: "gensym"
 ---
 
 # [clojure.core](../)/gensym

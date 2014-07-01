@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: definterface
+symbol: "definterface"
 ---
 
 # [clojure.core](../)/definterface

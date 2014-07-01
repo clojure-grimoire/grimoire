@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: map-indexed
+symbol: "map-indexed"
 ---
 
 # [clojure.core](../)/map-indexed

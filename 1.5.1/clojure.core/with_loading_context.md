@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: with-loading-context
+symbol: "with-loading-context"
 ---
 
 # [clojure.core](../)/with-loading-context

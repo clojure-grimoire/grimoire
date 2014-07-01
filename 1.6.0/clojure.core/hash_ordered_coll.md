@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: hash-ordered-coll
+symbol: "hash-ordered-coll"
 ---
 
 # [clojure.core](../)/hash-ordered-coll

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: filter
+symbol: "filter"
 ---
 
 # [clojure.core](../)/filter

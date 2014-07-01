@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: file-seq
+symbol: "file-seq"
 ---
 
 # [clojure.core](../)/file-seq

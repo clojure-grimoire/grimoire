@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: condp
+symbol: "condp"
 ---
 
 # [clojure.core](../)/condp

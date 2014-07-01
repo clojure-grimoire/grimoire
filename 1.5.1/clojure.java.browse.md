@@ -6,7 +6,7 @@ title: clojure.java.browse
 
 
 ## Vars
-[clojure.java.browse/\*open-url-script\*](./_star_open_url_script_star_)
+[clojure.java.browse/\*open-url-script\*](./star_open_url_script_star)
 
 ## Functions
 [clojure.java.browse/browse-url](./browse_url)

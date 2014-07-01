@@ -12,14 +12,14 @@ title: clojure.pprint
 
 ## Vars
 [clojure.pprint/simple-dispatch](./simple_dispatch)
-[clojure.pprint/\*print-suppress-namespaces\*](./_star_print_suppress_namespaces_star_)
-[clojure.pprint/\*print-pretty\*](./_star_print_pretty_star_)
-[clojure.pprint/\*print-pprint-dispatch\*](./_star_print_pprint_dispatch_star_)
+[clojure.pprint/\*print-suppress-namespaces\*](./star_print_suppress_namespaces_star)
+[clojure.pprint/\*print-pretty\*](./star_print_pretty_star)
+[clojure.pprint/\*print-pprint-dispatch\*](./star_print_pprint_dispatch_star)
 [clojure.pprint/code-dispatch](./code_dispatch)
-[clojure.pprint/\*print-radix\*](./_star_print_radix_star_)
-[clojure.pprint/\*print-miser-width\*](./_star_print_miser_width_star_)
-[clojure.pprint/\*print-right-margin\*](./_star_print_right_margin_star_)
-[clojure.pprint/\*print-base\*](./_star_print_base_star_)
+[clojure.pprint/\*print-radix\*](./star_print_radix_star)
+[clojure.pprint/\*print-miser-width\*](./star_print_miser_width_star)
+[clojure.pprint/\*print-right-margin\*](./star_print_right_margin_star)
+[clojure.pprint/\*print-base\*](./star_print_base_star)
 
 ## Functions
 [clojure.pprint/pprint](./pprint)

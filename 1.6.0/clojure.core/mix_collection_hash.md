@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: mix-collection-hash
+symbol: "mix-collection-hash"
 ---
 
 # [clojure.core](../)/mix-collection-hash

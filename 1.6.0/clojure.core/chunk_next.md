@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: chunk-next
+symbol: "chunk-next"
 ---
 
 # [clojure.core](../)/chunk-next

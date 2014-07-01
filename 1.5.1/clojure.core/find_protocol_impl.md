@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: find-protocol-impl
+symbol: "find-protocol-impl"
 ---
 
 # [clojure.core](../)/find-protocol-impl

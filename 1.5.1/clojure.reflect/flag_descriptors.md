@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.reflect
-symbol: flag-descriptors
+symbol: "flag-descriptors"
 ---
 
 # [clojure.reflect](../)/flag-descriptors

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: defprotocol
+symbol: "defprotocol"
 ---
 
 # [clojure.core](../)/defprotocol

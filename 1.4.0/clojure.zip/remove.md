@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.zip
-symbol: remove
+symbol: "remove"
 ---
 
 # [clojure.zip](../)/remove

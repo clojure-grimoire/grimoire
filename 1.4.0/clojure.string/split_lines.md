@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.string
-symbol: split-lines
+symbol: "split-lines"
 ---
 
 # [clojure.string](../)/split-lines

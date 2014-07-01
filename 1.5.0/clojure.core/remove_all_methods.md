@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: remove-all-methods
+symbol: "remove-all-methods"
 ---
 
 # [clojure.core](../)/remove-all-methods

@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: nth
+symbol: "nth"
 ---
 
 # [clojure.core](../)/nth

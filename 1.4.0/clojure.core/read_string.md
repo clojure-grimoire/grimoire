@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: read-string
+symbol: "read-string"
 ---
 
 # [clojure.core](../)/read-string

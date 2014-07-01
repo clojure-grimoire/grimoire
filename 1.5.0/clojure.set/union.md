@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.set
-symbol: union
+symbol: "union"
 ---
 
 # [clojure.set](../)/union

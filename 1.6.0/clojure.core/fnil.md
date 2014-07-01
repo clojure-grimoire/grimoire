@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: fnil
+symbol: "fnil"
 ---
 
 # [clojure.core](../)/fnil

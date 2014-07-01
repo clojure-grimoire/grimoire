@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.javadoc
-symbol: add-local-javadoc
+symbol: "add-local-javadoc"
 ---
 
 # [clojure.java.javadoc](../)/add-local-javadoc

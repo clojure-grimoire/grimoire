@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.java.io
-symbol: copy
+symbol: "copy"
 ---
 
 # [clojure.java.io](../)/copy

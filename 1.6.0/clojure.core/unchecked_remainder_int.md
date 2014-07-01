@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: unchecked-remainder-int
+symbol: "unchecked-remainder-int"
 ---
 
 # [clojure.core](../)/unchecked-remainder-int

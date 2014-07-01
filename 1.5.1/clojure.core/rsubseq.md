@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: rsubseq
+symbol: "rsubseq"
 ---
 
 # [clojure.core](../)/rsubseq

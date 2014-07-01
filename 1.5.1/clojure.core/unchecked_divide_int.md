@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: unchecked-divide-int
+symbol: "unchecked-divide-int"
 ---
 
 # [clojure.core](../)/unchecked-divide-int

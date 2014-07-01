@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: alias
+symbol: "alias"
 ---
 
 # [clojure.core](../)/alias

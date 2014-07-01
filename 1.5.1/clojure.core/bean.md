@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: bean
+symbol: "bean"
 ---
 
 # [clojure.core](../)/bean

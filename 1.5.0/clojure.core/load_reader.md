@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.core
-symbol: load-reader
+symbol: "load-reader"
 ---
 
 # [clojure.core](../)/load-reader

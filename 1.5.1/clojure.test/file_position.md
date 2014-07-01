@@ -1,7 +1,7 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: file-position
+symbol: "file-position"
 ---
 
 # [clojure.test](../)/file-position

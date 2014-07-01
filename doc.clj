@@ -128,18 +128,16 @@
 
       (let [ex-file (file sym-inc-dir "examples.md")]
         ;; ensure the examples file
-        (when-not false ; (.exists ex-file)
-          (spit ex-file (str "## Examples\n"
-                             "\n"
-                             (let [v (prior-clojure-version version-str)
-                                   i (str v "/" namespace "/" symbol "/examples.md")
-                                   f (str "./_includes/" i)]
-                               (if (.exists (file f))
-                                 (str "{% markdown " i " %}")
-                                 (println "Couldn't find file " f)))
-                             "\n"
-                             "None yet! Please contribute some.\n")))))
-
+        (when-not (.exists ex-file)
+          (->> (str (let [v (prior-clojure-version version-str)
+                          i (str v "/" namespace "/" symbol "/examples.md")
+                          f (str "./_includes/" i)]
+                      (when (.exists (file f))
+                        (str "{% include " i " %}\n")))
+                    "\n"
+                    "No examples for version " version-str "\n")
+               (spit ex-file)))))
+                
     ;; write template files
     ;; /<clojure-version>/<namespace>/<symbol>.md
     (let [dst-file (file ns-dir (str "./" symbol ".md"))]
@@ -191,11 +189,10 @@
         (try
           (write-docs-for-var [version-ns-dir include-ns-dir] var)
           (catch java.lang.AssertionError e
-            (println (str "Warning: Failed to write docs for" var)))))
+            (println "Warning: Failed to write docs for" var))))
 
       ;; write namespace index
       (let [index-file (file version-ns-dir (str "../" ns ".md"))]
-        (println index-file) ;; remove this once I'm sure it works
         (let [f (file index-file)]
           (->> (str (render-yaml [["layout" "ns"]
                                   ["title"  (name ns)]])
@@ -263,14 +260,20 @@
 
       (println "Made root folders...")
 
-      (doseq [ns namespaces]
-        (require ns)
-        (write-docs-for-ns [version-dir include-dir] ns)))
+      (doseq [n namespaces]
+        (when-not (and (= n 'clojure.edn)
+                       (= version-str "1.4.0"))
+          (require n)
+          (write-docs-for-ns [version-dir include-dir] n))))
 
     (let [version-file (file (str "./" version-str ".md"))]
       (->> (str (render-yaml [["layout"  "release"]
                               ["version" version-str]])
-                "\n## Release information\n\n## Namespaces\n\n"
+                "\n"
+                "## Release information\n"
+                "\n"
+                "## Namespaces\n"
+                "\n"
                 (->> namespaces
                      (map name)
                      (map #(format "- [%s](./%s/)\n" %1 %1))

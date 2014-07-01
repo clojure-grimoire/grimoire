@@ -1,4 +1,3 @@
-## Examples
+{% include 1.5.0/clojure.test/inc_report_counter/examples.md %}
 
-{% markdown 1.5.0/clojure.test/inc_report_counter/examples.md %}
-None yet! Please contribute some.
+No examples for version 1.5.1

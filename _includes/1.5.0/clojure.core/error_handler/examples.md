@@ -1,4 +1,3 @@
-## Examples
+{% include 1.4.0/clojure.core/error_handler/examples.md %}
 
-{% markdown 1.4.0/clojure.core/error_handler/examples.md %}
-None yet! Please contribute some.
+No examples for version 1.5.0

@@ -1,4 +1,2 @@
-## Examples
 
-
-None yet! Please contribute some.
+No examples for version 1.6.0

@@ -1,4 +1,3 @@
-## Examples
+{% include 1.5.0/clojure.template/do_template/examples.md %}
 
-{% markdown 1.5.0/clojure.template/do_template/examples.md %}
-None yet! Please contribute some.
+No examples for version 1.5.1

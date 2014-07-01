@@ -2,7 +2,10 @@
 layout: page
 ---
 
+## Documented Clojure Versions
+
 {% assign pages_list = site.pages %}
+<ul>
 {% for node in pages_list reversed %}
   {% if node.layout == "release" %}
     <li>
@@ -10,6 +13,7 @@ layout: page
     </li>
   {% endif %}
 {% endfor %}
+</ul>
 
 {% markdown about.md %}
 

@@ -2,8 +2,8 @@
 title: Grimoire
 email: me@arrdem.com
 description: "Community documentation of Clojure"
-baseurl: ""
-url: "http://yourdomain.com"
+baseurl: "http://www.arrdem.com/grimoire/"
+url: "http://www.arrdem.com/grimoire/"
 
 # Build settings
 markdown: kramdown

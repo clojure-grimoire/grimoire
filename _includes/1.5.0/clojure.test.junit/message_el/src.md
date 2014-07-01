@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn message-el
   [tag message expected-str actual-str]

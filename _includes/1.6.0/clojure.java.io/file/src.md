@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^File file
   "Returns a java.io.File, passing each arg to as-file.  Multiple-arg

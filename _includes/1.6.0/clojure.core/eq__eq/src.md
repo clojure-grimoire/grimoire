@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ==
   "Returns non-nil if nums all have the equivalent

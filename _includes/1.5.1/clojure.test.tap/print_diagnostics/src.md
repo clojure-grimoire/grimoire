@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn print-diagnostics [data]
   (when (seq t/*testing-contexts*)

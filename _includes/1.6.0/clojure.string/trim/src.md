@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^String trim
   "Removes whitespace from both ends of string."

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro ns
   "Sets *ns* to the namespace named by name (unevaluated), creating it

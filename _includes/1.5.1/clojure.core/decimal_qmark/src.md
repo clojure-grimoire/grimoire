@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn decimal?
   "Returns true if n is a BigDecimal"

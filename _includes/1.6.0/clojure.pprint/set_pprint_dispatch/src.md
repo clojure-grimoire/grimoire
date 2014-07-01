@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn set-pprint-dispatch  
   "Set the pretty print dispatch function to a function matching (fn [obj] ...)

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro defprotocol 
   "A protocol is a named set of named methods and their signatures:

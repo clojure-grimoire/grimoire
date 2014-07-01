@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn deref
   "Also reader macro: @ref/@agent/@var/@atom/@delay/@future/@promise. Within a transaction,

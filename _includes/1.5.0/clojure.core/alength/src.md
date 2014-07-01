@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn alength
   "Returns the length of the Java array. Works on arrays of all

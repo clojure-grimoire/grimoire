@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn var?
   "Returns true if v is of type clojure.lang.Var"

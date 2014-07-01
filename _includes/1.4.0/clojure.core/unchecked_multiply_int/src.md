@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-multiply-int
   "Returns the product of x and y, both int.

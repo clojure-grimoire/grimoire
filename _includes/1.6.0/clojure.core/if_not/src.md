@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro if-not
   "Evaluates test. If logical false, evaluates and returns then expr, 

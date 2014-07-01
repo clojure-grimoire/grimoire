@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn reduce
   "f should be a function of 2 arguments. If val is not supplied,

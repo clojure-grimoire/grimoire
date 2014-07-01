@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn mod
   "Modulus of num and div. Truncates toward negative infinity."

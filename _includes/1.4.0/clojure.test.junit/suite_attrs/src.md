@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn suite-attrs
   [package classname]

@@ -7,6 +7,10 @@ symbol: "shuffle"
 # [clojure.core](../)/shuffle
 
 {% include 1.6.0/clojure.core/shuffle/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.core/shuffle/examples.md %}
+## Source
 {% include 1.6.0/clojure.core/shuffle/src.md %}
 

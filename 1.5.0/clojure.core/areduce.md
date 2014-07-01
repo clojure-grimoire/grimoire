@@ -7,6 +7,10 @@ symbol: "areduce"
 # [clojure.core](../)/areduce
 
 {% include 1.5.0/clojure.core/areduce/docs.md %}
+
+##Examples
+
 {% include 1.5.0/clojure.core/areduce/examples.md %}
+## Source
 {% include 1.5.0/clojure.core/areduce/src.md %}
 

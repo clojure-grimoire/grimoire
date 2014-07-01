@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ns-unmap
   "Removes the mappings for the symbol from the namespace."

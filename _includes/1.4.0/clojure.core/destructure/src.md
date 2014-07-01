@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn destructure [bindings]
   (let [bents (partition 2 bindings)

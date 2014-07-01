@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn float-array
   "Creates an array of floats"

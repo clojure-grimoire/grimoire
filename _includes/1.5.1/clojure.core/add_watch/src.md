@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn add-watch
   "Alpha - subject to change.

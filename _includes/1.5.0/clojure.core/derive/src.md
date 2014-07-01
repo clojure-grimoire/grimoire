@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn derive
   "Establishes a parent/child relationship between parent and

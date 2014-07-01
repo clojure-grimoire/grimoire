@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ns-resolve
   "Returns the var or Class to which a symbol will be resolved in the

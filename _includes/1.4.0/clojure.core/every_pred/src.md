@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn every-pred
   "Takes a set of predicates and returns a function f that returns true if all of its

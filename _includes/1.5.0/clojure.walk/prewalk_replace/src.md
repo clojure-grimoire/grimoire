@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn prewalk-replace
   "Recursively transforms form by replacing keys in smap with their

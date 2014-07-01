@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn compare
   "Comparator. Returns a negative number, zero, or a positive number

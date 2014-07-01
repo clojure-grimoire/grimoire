@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn bit-test
   "Test bit at index n"

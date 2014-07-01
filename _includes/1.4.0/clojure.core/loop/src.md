@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro loop
   "Evaluates the exprs in a lexical context in which the symbols in

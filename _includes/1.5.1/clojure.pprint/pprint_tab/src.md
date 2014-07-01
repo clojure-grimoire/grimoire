@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn pprint-tab 
   "Tab at this point in the pretty printing stream. kind specifies whether the tab

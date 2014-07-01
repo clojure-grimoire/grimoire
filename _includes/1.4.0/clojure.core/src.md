@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn -
   "If no ys are supplied, returns the negation of x, else subtracts

@@ -7,6 +7,10 @@ symbol: "ref-min-history"
 # [clojure.core](../)/ref-min-history
 
 {% include 1.5.1/clojure.core/ref_min_history/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/ref_min_history/examples.md %}
+## Source
 {% include 1.5.1/clojure.core/ref_min_history/src.md %}
 

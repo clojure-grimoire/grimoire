@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn send-via
   "Dispatch an action to an agent. Returns the agent immediately.

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn partition
   "Returns a lazy sequence of lists of n items each, at offsets step

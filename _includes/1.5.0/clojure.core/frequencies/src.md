@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn frequencies
   "Returns a map from distinct items in coll to the number of times

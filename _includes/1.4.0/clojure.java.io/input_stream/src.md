@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^InputStream input-stream
   "Attempts to coerce its argument into an open java.io.InputStream.

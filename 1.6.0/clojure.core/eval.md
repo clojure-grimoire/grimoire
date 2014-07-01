@@ -7,6 +7,10 @@ symbol: "eval"
 # [clojure.core](../)/eval
 
 {% include 1.6.0/clojure.core/eval/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.core/eval/examples.md %}
+## Source
 {% include 1.6.0/clojure.core/eval/src.md %}
 

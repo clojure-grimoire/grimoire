@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn the-ns
   "If passed a namespace, returns it. Else, when passed a symbol,

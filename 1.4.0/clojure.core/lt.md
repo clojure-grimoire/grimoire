@@ -7,6 +7,10 @@ symbol: "<"
 # [clojure.core](../)/<
 
 {% include 1.4.0/clojure.core/lt/docs.md %}
+
+##Examples
+
 {% include 1.4.0/clojure.core/lt/examples.md %}
+## Source
 {% include 1.4.0/clojure.core/lt/src.md %}
 

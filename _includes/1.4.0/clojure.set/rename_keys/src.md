@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn rename-keys
   "Returns the map with the keys in kmap renamed to the vals in kmap"

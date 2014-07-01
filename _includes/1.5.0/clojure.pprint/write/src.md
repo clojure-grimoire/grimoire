@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn write 
   "Write an object subject to the current bindings of the printer control variables.

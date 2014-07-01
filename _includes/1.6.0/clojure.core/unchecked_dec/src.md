@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-dec
   "Returns a number one less than x, a long.

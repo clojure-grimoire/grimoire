@@ -7,6 +7,10 @@ symbol: ".."
 # [clojure.core](../)/..
 
 {% include 1.5.0/clojure.core/dot__dot/docs.md %}
+
+##Examples
+
 {% include 1.5.0/clojure.core/dot__dot/examples.md %}
+## Source
 {% include 1.5.0/clojure.core/dot__dot/src.md %}
 

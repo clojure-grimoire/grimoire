@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (deftype ArrayChunk [^clojure.core.ArrayManager am arr ^int off ^int end]
   

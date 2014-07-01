@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn print-table
   "Prints a collection of maps in a textual table. Prints table headings

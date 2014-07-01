@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro comment
   "Ignores body, yields nil"

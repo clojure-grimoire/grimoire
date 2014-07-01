@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro while
   "Repeatedly executes body while test expression is true. Presumes

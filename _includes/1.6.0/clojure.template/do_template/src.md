@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro do-template
   "Repeatedly copies expr (in a do block) for each group of arguments

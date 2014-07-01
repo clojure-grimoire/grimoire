@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn partition-all
   "Returns a lazy sequence of lists like partition, but may include

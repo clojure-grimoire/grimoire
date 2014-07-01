@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn symbol
   "Returns a Symbol with the given namespace and name."

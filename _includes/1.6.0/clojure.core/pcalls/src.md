@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn pcalls
   "Executes the no-arg fns in parallel, returning a lazy sequence of

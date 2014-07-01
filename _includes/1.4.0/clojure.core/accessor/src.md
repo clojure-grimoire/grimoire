@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn accessor
   "Returns a fn that, given an instance of a structmap with the basis,

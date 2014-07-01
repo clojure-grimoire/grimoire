@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn fn?
   "Returns true if x implements Fn, i.e. is an object created via fn."

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro deftype
   "Alpha - subject to change

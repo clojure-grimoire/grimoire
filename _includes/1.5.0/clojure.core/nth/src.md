@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn nth
   "Returns the value at the index. get returns nil if index out of

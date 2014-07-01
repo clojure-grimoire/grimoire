@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn find-ns
   "Returns the namespace named by the symbol or nil if it doesn't exist."

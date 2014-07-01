@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn special-symbol?
   "Returns true if s names a special form"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn zipper
   "Creates a new zipper structure. 

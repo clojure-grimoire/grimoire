@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn pop!
   "Removes the last item from a transient vector. If

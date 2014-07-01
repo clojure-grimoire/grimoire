@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-subtract-int
   "Returns the difference of x and y, both int.

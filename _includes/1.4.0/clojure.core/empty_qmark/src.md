@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn empty?
   "Returns true if coll has no items - same as (not (seq coll)).

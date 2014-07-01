@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn add-watch
   "Adds a watch function to an agent/atom/var/ref reference. The watch

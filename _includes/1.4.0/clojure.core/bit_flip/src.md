@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn bit-flip
   "Flip bit at index n"

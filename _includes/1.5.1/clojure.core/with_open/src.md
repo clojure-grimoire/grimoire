@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro with-open
   "bindings => [name init ...]

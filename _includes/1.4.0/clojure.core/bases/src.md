@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn bases
   "Returns the immediate superclass and direct interfaces of c, if any"

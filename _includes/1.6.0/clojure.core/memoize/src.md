@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn memoize
   "Returns a memoized version of a referentially transparent function. The

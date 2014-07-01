@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn enumeration-seq
   "Returns a seq on a java.util.Enumeration"

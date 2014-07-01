@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn validated
   "Return a function which constructs and instant by calling constructor

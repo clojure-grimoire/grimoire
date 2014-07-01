@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro definline
   "Experimental - like defmacro, except defines a named function whose

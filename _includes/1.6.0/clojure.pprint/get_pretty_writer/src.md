@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn get-pretty-writer 
   "Returns the java.io.Writer passed in wrapped in a pretty writer proxy, unless it's 

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn inc
   "Returns a number one greater than num. Does not auto-promote

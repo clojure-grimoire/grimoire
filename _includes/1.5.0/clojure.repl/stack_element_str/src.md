@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn stack-element-str
   "Returns a (possibly unmunged) string representation of a StackTraceElement"

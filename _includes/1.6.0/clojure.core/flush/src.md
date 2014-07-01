@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn flush
   "Flushes the output stream that is the current value of

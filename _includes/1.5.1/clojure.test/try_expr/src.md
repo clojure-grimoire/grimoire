@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro try-expr
   "Used by the 'is' macro to catch unexpected exceptions.

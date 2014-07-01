@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-subtract
   "Returns the difference of x and y, both long.

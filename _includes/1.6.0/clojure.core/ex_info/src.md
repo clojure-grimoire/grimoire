@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ex-info
   "Create an instance of ExceptionInfo, a RuntimeException subclass

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn vector
   "Creates a new vector containing the args."

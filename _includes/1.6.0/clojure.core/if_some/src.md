@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro if-some
   "bindings => binding-form test

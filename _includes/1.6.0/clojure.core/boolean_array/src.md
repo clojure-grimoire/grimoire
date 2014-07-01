@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn boolean-array
   "Creates an array of booleans"

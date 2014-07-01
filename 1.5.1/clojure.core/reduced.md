@@ -7,6 +7,10 @@ symbol: "reduced"
 # [clojure.core](../)/reduced
 
 {% include 1.5.1/clojure.core/reduced/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/reduced/examples.md %}
+## Source
 {% include 1.5.1/clojure.core/reduced/src.md %}
 

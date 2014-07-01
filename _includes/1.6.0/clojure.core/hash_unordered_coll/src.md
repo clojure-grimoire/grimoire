@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn hash-unordered-coll
   "Returns the hash code, consistent with =, for an external unordered

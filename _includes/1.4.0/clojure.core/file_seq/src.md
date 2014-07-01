@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn file-seq
   "A tree seq on java.io.Files"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn mapv
   "Returns a vector consisting of the result of applying f to the

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn zero?
   "Returns true if num is zero, else false"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn split-lines
   "Splits s on \\n or \\r\\n."

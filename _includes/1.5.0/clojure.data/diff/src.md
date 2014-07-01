@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn diff
   "Recursively compares a and b, returning a tuple of

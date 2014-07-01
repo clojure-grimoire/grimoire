@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn -cache-protocol-fn [^clojure.lang.AFunction pf x ^Class c ^clojure.lang.IFn interf]
   (let [cache  (.__methodImplCache pf)

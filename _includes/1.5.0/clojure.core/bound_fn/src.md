@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro bound-fn
   "Returns a function defined by the given fntail, which will install the

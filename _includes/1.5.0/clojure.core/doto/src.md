@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro doto
   "Evaluates x then calls all of the methods and functions with the

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn bigint
   "Coerce to BigInt"

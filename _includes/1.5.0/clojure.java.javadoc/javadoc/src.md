@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn javadoc
   "Opens a browser window displaying the javadoc for the argument.

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn partial
   "Takes a function f and fewer than the normal arguments to f, and

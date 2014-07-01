@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn numerator
   "Returns the numerator part of a Ratio."

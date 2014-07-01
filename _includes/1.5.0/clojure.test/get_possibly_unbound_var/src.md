@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn get-possibly-unbound-var
   "Like var-get but returns nil if the var is unbound."

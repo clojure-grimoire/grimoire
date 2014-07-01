@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^Writer writer
   "Attempts to coerce its argument into an open java.io.Writer.

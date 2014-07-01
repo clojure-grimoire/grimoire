@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ns-refers
   "Returns a map of the refer mappings for the namespace."

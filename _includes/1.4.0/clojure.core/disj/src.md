@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn disj
   "disj[oin]. Returns a new set of the same (hashed/sorted) type, that

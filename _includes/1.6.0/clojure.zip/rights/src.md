@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn rights
   "Returns a seq of the right siblings of this loc"

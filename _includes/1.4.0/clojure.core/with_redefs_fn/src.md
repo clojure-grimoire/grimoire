@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn with-redefs-fn
   "Temporarily redefines Vars during a call to func.  Each val of

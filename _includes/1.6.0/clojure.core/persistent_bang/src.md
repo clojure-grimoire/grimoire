@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn persistent! 
   "Returns a new, persistent version of the transient collection, in

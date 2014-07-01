@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn keyword
   "Returns a Keyword with the given namespace and name.  Do not use :

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn assert-any
   "Returns generic assertion code for any test, including macros, Java

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn mix-collection-hash
   "Mix final collection hash for ordered or unordered collections.

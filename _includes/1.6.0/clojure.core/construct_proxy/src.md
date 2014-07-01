@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn construct-proxy
   "Takes a proxy class and any arguments for its superclass ctor and

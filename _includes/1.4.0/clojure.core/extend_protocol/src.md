@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro extend-protocol 
   "Useful when you want to provide several implementations of the same

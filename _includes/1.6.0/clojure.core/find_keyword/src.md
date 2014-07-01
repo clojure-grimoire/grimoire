@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn find-keyword
   "Returns a Keyword with the given namespace and name if one already

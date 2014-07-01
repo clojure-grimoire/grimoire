@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn run-all-tests
   "Runs all tests in all namespaces; prints results.

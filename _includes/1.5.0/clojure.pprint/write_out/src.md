@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn write-out 
   "Write an object to *out* subject to the current bindings of the printer control 

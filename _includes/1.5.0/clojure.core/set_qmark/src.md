@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn set?
   "Returns true if x implements IPersistentSet"

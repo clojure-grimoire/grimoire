@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-float
   "Coerce to float. Subject to rounding."

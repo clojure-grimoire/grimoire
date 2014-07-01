@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn find
   "Returns the map entry for key, or nil if key not present."

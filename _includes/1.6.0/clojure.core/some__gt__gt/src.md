@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro some->>
   "When expr is not nil, threads it into the first form (via ->>),

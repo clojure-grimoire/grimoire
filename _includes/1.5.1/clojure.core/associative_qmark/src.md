@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn associative?
  "Returns true if coll implements Associative"

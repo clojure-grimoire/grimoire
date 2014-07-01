@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn transient 
   "Alpha - subject to change.

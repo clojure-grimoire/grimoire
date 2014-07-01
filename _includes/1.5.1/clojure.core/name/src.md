@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn name
   "Returns the name String of a string, symbol or keyword."

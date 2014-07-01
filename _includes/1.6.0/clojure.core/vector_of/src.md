@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn vector-of 
   "Creates a new vector of a single primitive type t, where t is one

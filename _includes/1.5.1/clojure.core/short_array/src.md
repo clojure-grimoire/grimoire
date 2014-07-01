@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn short-array
   "Creates an array of shorts"

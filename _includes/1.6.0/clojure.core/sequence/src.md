@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn sequence
   "Coerces coll to a (possibly empty) sequence, if it is not already

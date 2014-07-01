@@ -7,6 +7,10 @@ symbol: "insert-child"
 # [clojure.zip](../)/insert-child
 
 {% include 1.5.0/clojure.zip/insert_child/docs.md %}
+
+##Examples
+
 {% include 1.5.0/clojure.zip/insert_child/examples.md %}
+## Source
 {% include 1.5.0/clojure.zip/insert_child/src.md %}
 

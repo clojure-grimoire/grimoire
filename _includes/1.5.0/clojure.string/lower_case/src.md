@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^String lower-case
   "Converts string to all lower-case."

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro reify 
   "reify is a macro with the following structure:

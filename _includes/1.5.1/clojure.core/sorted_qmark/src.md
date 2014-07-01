@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn sorted?
  "Returns true if coll implements Sorted"

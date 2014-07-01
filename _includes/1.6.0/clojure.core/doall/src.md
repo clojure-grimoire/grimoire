@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn doall
   "When lazy sequences are produced via functions that have side

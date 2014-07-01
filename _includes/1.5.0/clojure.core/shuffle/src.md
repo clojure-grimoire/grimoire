@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn shuffle
   "Return a random permutation of coll"

@@ -7,6 +7,10 @@ symbol: "zero?"
 # [clojure.core](../)/zero?
 
 {% include 1.6.0/clojure.core/zero_qmark/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.core/zero_qmark/examples.md %}
+## Source
 {% include 1.6.0/clojure.core/zero_qmark/src.md %}
 

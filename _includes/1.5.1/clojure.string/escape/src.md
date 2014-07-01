@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^String escape
   "Return a new string, using cmap to escape each character ch

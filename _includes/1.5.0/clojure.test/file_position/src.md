@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn file-position
   "Returns a vector [filename line-number] for the nth call up the

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro ..
   "form => fieldName-symbol or (instanceMethodName-symbol args*)

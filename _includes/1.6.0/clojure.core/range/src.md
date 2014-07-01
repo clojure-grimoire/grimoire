@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn range
   "Returns a lazy seq of nums from start (inclusive) to end

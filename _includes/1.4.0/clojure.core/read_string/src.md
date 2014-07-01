@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn read-string
   "Reads one object from the string s"

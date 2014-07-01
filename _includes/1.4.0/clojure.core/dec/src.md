@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn dec
   "Returns a number one less than num. Does not auto-promote

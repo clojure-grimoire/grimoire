@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn right
   "Returns the loc of the right sibling of the node at this loc, or nil"

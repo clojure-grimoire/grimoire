@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn get-method
   "Given a multimethod and a dispatch value, returns the dispatch fn

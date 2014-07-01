@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^String replace
   "Replaces all instance of match with replacement in s.

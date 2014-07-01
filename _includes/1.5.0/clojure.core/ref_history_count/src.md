@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ref-history-count
   "Returns the history count of a ref"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^String triml
   "Removes whitespace from the left side of string."

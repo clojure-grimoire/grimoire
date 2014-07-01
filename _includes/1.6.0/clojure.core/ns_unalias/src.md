@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ns-unalias
   "Removes the alias for the symbol from the namespace."

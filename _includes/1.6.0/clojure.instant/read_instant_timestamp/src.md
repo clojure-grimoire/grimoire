@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (def read-instant-timestamp
   "To read an instant as a java.sql.Timestamp, bind *data-readers* to a

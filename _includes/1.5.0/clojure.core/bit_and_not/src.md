@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn bit-and-not
   "Bitwise and with complement"

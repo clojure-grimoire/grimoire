@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn get-in
   "Returns the value in a nested associative structure,

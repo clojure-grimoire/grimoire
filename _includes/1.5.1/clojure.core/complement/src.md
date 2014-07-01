@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn complement
   "Takes a fn f and returns a fn that takes the same arguments as f,

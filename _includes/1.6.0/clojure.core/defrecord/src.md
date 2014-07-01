@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro defrecord
   "(defrecord name [fields*]  options* specs*)

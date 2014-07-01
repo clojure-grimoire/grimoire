@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn coll?
   "Returns true if x implements IPersistentCollection"

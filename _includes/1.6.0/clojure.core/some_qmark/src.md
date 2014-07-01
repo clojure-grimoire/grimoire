@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn some?
   "Returns true if x is not nil, false otherwise."

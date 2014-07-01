@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (definline booleans
   "Casts to boolean[]"

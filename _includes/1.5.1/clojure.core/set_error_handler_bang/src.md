@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn set-error-handler!
   "Sets the error-handler of agent a to handler-fn.  If an action

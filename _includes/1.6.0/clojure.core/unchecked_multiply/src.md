@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-multiply
   "Returns the product of x and y, both long.

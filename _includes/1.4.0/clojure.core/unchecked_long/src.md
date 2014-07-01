@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-long
   "Coerce to long. Subject to rounding or truncation."

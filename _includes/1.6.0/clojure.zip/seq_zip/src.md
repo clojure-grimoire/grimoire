@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn seq-zip
   "Returns a zipper for nested sequences, given a root sequence"

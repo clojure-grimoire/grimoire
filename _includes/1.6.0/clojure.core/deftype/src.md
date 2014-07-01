@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro deftype
   "(deftype name [fields*]  options* specs*)

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^OutputStream output-stream
   "Attempts to coerce its argument into an open java.io.OutputStream.

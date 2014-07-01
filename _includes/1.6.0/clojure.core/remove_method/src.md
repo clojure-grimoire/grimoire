@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn remove-method
   "Removes the method of multimethod associated with dispatch-value."

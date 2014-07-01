@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn print-throwable
   "Prints the class and message of a Throwable."

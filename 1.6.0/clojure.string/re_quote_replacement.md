@@ -7,6 +7,10 @@ symbol: "re-quote-replacement"
 # [clojure.string](../)/re-quote-replacement
 
 {% include 1.6.0/clojure.string/re_quote_replacement/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.string/re_quote_replacement/examples.md %}
+## Source
 {% include 1.6.0/clojure.string/re_quote_replacement/src.md %}
 

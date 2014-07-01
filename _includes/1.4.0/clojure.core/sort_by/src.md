@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn sort-by
   "Returns a sorted sequence of the items in coll, where the sort

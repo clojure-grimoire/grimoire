@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn replace
   "Given a map of replacement pairs and a vector/collection, returns a

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^String re-quote-replacement
   "Given a replacement string that you wish to be a literal

@@ -7,6 +7,10 @@ symbol: "testing"
 # [clojure.test](../)/testing
 
 {% include 1.6.0/clojure.test/testing/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.test/testing/examples.md %}
+## Source
 {% include 1.6.0/clojure.test/testing/src.md %}
 

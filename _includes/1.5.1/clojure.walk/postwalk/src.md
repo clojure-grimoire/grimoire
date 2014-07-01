@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn postwalk
   "Performs a depth-first, post-order traversal of form.  Calls f on

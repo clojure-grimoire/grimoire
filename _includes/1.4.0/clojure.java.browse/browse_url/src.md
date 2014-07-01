@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn browse-url
   "Open url in a browser"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ratio?
   "Returns true if n is a Ratio"

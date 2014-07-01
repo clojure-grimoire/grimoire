@@ -7,5 +7,8 @@ symbol: "Coercions"
 # [clojure.java.io](../)/Coercions
 
 {% include 1.6.0/clojure.java.io/coercions/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.java.io/coercions/examples.md %}
 

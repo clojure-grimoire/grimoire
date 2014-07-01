@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn print-trace-element
   "Prints a Clojure-oriented view of one element in a stack trace."

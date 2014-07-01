@@ -7,6 +7,10 @@ symbol: "flatten"
 # [clojure.core](../)/flatten
 
 {% include 1.6.0/clojure.core/flatten/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.core/flatten/examples.md %}
+## Source
 {% include 1.6.0/clojure.core/flatten/src.md %}
 

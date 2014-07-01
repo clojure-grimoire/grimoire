@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-remainder-int
   "Returns the remainder of division of x by y, both int.

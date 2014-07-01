@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn cl-format 
   "An implementation of a Common Lisp compatible format function. cl-format formats its

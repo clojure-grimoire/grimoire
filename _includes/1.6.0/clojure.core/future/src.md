@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro future
   "Takes a body of expressions and yields a future object that will

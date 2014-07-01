@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn subs
   "Returns the substring of s beginning at start inclusive, and ending

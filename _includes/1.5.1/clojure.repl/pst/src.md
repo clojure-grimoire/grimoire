@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn pst
   "Prints a stack trace of the exception, to the depth requested. If none supplied, uses the root cause of the

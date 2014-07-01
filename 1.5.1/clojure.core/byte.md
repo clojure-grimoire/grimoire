@@ -7,6 +7,10 @@ symbol: "byte"
 # [clojure.core](../)/byte
 
 {% include 1.5.1/clojure.core/byte/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/byte/examples.md %}
+## Source
 {% include 1.5.1/clojure.core/byte/src.md %}
 

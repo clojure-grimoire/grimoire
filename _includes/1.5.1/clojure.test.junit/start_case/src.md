@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn start-case
   [name classname]

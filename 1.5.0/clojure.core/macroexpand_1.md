@@ -7,6 +7,10 @@ symbol: "macroexpand-1"
 # [clojure.core](../)/macroexpand-1
 
 {% include 1.5.0/clojure.core/macroexpand_1/docs.md %}
+
+##Examples
+
 {% include 1.5.0/clojure.core/macroexpand_1/examples.md %}
+## Source
 {% include 1.5.0/clojure.core/macroexpand_1/src.md %}
 

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^URL resource
   "Returns the URL for a named resource. Use the context class loader

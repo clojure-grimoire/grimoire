@@ -7,5 +7,8 @@ symbol: "\\*agent\\*"
 # [clojure.core](../)/\*agent\*
 
 {% include 1.5.1/clojure.core/star_agent_star/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/star_agent_star/examples.md %}
 

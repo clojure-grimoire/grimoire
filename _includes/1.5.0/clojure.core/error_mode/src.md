@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn error-mode
   "Returns the error-mode of agent a.  See set-error-mode!"

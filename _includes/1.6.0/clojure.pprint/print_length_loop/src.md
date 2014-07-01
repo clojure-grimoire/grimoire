@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro print-length-loop
   "A version of loop that iterates at most *print-length* times. This is designed 

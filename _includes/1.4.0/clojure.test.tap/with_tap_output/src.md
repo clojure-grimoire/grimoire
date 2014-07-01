@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro with-tap-output
   "Execute body with modified test reporting functions that produce

@@ -7,6 +7,10 @@ symbol: "satisfies?"
 # [clojure.core](../)/satisfies?
 
 {% include 1.4.0/clojure.core/satisfies_qmark/docs.md %}
+
+##Examples
+
 {% include 1.4.0/clojure.core/satisfies_qmark/examples.md %}
+## Source
 {% include 1.4.0/clojure.core/satisfies_qmark/src.md %}
 

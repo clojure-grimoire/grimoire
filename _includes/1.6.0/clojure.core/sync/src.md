@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro sync
   "transaction-flags => TBD, pass nil for now

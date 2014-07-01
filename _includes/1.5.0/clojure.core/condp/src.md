@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro condp
   "Takes a binary predicate, an expression, and a set of clauses.

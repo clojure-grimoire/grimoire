@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn class
   "Returns the Class of x"

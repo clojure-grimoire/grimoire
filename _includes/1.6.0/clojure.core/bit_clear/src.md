@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn bit-clear
   "Clear bit at index n"

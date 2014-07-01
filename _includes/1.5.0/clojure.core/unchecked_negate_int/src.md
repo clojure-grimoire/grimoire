@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-negate-int
   "Returns the negation of x, an int.

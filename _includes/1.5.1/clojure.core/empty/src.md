@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn empty
   "Returns an empty collection of the same category as coll, or nil"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn counted?
  "Returns true if coll implements count in constant time"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn source-fn
   "Returns a string of the source code for the given symbol, if it can

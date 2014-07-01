@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro definterface
   "Creates a new Java interface with the given name and method sigs.

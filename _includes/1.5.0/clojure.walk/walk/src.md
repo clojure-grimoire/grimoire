@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn walk
   "Traverses form, an arbitrary data structure.  inner and outer are

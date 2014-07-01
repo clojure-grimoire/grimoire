@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn map-invert
   "Returns the map with the vals mapped to the keys."

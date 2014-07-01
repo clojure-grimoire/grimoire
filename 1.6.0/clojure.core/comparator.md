@@ -7,6 +7,10 @@ symbol: "comparator"
 # [clojure.core](../)/comparator
 
 {% include 1.6.0/clojure.core/comparator/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.core/comparator/examples.md %}
+## Source
 {% include 1.6.0/clojure.core/comparator/src.md %}
 

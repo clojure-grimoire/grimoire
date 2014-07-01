@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn methods
   "Given a multimethod, returns a map of dispatch values -> dispatch fns"

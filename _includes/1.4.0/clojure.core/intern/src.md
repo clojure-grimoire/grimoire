@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn intern
   "Finds or creates a var named by the symbol name in the namespace

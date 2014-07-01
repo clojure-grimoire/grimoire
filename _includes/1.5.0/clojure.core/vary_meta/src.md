@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn vary-meta
  "Returns an object of the same type and value as obj, with

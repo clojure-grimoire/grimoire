@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn demunge
   "Given a string representation of a fn class,

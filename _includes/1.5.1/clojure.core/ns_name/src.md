@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ns-name
   "Returns the name of the namespace, a symbol."

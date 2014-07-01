@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn repeatedly
   "Takes a function of no args, presumably with side effects, and

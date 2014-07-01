@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ex-data
   "Returns exception data (a map) if ex is an IExceptionInfo.

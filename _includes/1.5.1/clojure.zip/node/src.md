@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn node
   "Returns the node at loc"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn byte-array
   "Creates an array of bytes"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn max-key
   "Returns the x for which (k x), a number, is greatest."

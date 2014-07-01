@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn assoc-in
   "Associates a value in a nested associative structure, where ks is a

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn var-get
   "Gets the value in the var object"

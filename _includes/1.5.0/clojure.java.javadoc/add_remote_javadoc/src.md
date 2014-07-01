@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn add-remote-javadoc
   "Adds to the list of remote Javadoc URLs.  package-prefix is the

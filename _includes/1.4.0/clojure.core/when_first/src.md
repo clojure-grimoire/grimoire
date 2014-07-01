@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro when-first
   "bindings => x xs

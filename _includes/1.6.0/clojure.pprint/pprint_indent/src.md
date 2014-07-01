@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn pprint-indent 
   "Create an indent at this point in the pretty printing stream. This defines how 

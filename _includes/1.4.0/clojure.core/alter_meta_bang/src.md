@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn alter-meta!
   "Atomically sets the metadata for a namespace/var/ref/agent/atom to be:

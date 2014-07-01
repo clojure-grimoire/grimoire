@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn set
   "Returns a set of the distinct elements of coll."

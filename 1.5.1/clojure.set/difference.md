@@ -7,6 +7,10 @@ symbol: "difference"
 # [clojure.set](../)/difference
 
 {% include 1.5.1/clojure.set/difference/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.set/difference/examples.md %}
+## Source
 {% include 1.5.1/clojure.set/difference/src.md %}
 

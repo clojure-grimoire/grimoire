@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn distinct
   "Returns a lazy sequence of the elements of coll with duplicates removed"

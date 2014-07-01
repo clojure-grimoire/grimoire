@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn index
   "Returns a map of the distinct values of ks in the xrel mapped to a

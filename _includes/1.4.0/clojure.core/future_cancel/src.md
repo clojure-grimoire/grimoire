@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn future-cancel
   "Cancels the future, if possible."

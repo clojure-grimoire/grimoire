@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn remove-watch
   "Removes a watch (set by add-watch) from a reference"

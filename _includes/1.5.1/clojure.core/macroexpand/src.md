@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn macroexpand
   "Repeatedly calls macroexpand-1 on form until it no longer

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn replicate
   "DEPRECATED: Use 'repeat' instead.

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn proxy-name
  {:tag String} 

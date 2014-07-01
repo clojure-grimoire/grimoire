@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn to-array
   "Returns an array of Objects containing the contents of coll, which

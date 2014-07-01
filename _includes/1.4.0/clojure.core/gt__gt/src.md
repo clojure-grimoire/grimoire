@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro ->>
   "Threads the expr through the forms. Inserts x as the

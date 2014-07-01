@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn keyword?
   "Return true if x is a Keyword"

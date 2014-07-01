@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro with-precision
   "Sets the precision and rounding mode to be used for BigDecimal operations.

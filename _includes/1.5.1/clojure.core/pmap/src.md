@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn pmap
   "Like map, except f is applied in parallel. Semi-lazy in that the

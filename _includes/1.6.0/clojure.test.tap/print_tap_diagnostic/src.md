@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn print-tap-diagnostic
   "Prints a TAP diagnostic line.  data is a (possibly multi-line)

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn clear-agent-errors
   "DEPRECATED: Use 'restart-agent' instead.

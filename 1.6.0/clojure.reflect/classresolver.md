@@ -7,5 +7,8 @@ symbol: "ClassResolver"
 # [clojure.reflect](../)/ClassResolver
 
 {% include 1.6.0/clojure.reflect/classresolver/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.reflect/classresolver/examples.md %}
 

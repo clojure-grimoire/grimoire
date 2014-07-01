@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro binding
   "binding => var-symbol init-expr

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn descendants
   "Returns the immediate and indirect children of tag, through a

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn aclone
   "Returns a clone of the Java array. Works on arrays of known

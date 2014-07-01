@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro with-out-str
   "Evaluates exprs in a context in which *out* is bound to a fresh

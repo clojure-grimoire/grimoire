@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn successful?
   "Returns true if the given test summary indicates all tests

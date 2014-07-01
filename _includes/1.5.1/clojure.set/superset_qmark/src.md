@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn superset? 
   "Is set1 a superset of set2?"

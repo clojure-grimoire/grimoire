@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn float?
   "Returns true if n is a floating point number"

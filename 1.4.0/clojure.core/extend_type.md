@@ -7,6 +7,10 @@ symbol: "extend-type"
 # [clojure.core](../)/extend-type
 
 {% include 1.4.0/clojure.core/extend_type/docs.md %}
+
+##Examples
+
 {% include 1.4.0/clojure.core/extend_type/examples.md %}
+## Source
 {% include 1.4.0/clojure.core/extend_type/src.md %}
 

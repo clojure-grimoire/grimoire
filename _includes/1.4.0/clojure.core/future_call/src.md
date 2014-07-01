@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn future-call 
   "Takes a function of no args and yields a future object that will

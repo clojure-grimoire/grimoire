@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn swap!
   "Atomically swaps the value of atom to be:

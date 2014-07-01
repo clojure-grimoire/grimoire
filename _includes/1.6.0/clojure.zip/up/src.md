@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn up
   "Returns the loc of the parent of the node at this loc, or nil if at

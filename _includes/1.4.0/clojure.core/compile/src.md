@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn compile
   "Compiles the namespace named by the symbol lib into a set of

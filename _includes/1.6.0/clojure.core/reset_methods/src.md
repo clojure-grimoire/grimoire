@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn -reset-methods [protocol]
   (doseq [[^clojure.lang.Var v build] (:method-builders protocol)]

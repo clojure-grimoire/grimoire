@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn long-array
   "Creates an array of longs"

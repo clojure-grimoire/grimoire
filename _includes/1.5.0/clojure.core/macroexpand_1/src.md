@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn macroexpand-1
   "If form represents a macro form, returns its expansion,

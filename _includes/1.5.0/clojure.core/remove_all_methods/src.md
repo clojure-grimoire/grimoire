@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn remove-all-methods
   "Removes all of the methods of multimethod."

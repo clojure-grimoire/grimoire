@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn not
   "Returns true if x is logical false, false otherwise."

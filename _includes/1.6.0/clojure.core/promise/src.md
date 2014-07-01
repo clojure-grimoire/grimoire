@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn promise
   "Returns a promise object that can be read with deref/@, and set,

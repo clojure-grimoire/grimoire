@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn apropos
   "Given a regular expression or stringable thing, return a seq of

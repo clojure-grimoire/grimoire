@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro source
   "Prints the source code for the given symbol, if it can find it.

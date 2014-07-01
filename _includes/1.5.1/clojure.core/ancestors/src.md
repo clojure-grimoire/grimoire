@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ancestors
   "Returns the immediate and indirect parents of tag, either via a Java type

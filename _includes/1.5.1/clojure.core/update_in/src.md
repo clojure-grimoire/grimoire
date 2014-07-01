@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn update-in
   "'Updates' a value in a nested associative structure, where ks is a

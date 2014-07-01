@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn pos?
   "Returns true if num is greater than zero, else false"

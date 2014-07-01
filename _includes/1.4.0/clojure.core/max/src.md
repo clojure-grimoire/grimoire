@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn max
   "Returns the greatest of the nums."

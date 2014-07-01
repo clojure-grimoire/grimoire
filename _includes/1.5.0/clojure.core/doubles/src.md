@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (definline doubles
   "Casts to double[]"

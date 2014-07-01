@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn gensym
   "Returns a new symbol with a unique name. If a prefix string is

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn partition-by
   "Applies f to each value in coll, splitting it each time f returns

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro doc
   "Prints documentation for a var or special form given its name"

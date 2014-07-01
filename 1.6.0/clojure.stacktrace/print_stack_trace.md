@@ -7,6 +7,10 @@ symbol: "print-stack-trace"
 # [clojure.stacktrace](../)/print-stack-trace
 
 {% include 1.6.0/clojure.stacktrace/print_stack_trace/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.stacktrace/print_stack_trace/examples.md %}
+## Source
 {% include 1.6.0/clojure.stacktrace/print_stack_trace/src.md %}
 

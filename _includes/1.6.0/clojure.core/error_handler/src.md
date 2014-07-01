@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn error-handler
   "Returns the error-handler of agent a, or nil if there is none.

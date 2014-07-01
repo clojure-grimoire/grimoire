@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn compare-and-set!
   "Atomically sets the value of atom to newval if and only if the

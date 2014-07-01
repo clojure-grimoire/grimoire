@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn count
   "Returns the number of items in the collection. (count nil) returns

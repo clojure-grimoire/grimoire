@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro with-test
   "Takes any definition form (that returns a Var) as the first argument.

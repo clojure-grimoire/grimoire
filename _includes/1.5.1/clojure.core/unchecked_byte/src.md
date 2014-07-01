@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-byte
   "Coerce to byte. Subject to rounding or truncation."

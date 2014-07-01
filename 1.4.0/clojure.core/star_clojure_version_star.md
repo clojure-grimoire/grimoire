@@ -7,5 +7,8 @@ symbol: "\\*clojure-version\\*"
 # [clojure.core](../)/\*clojure-version\*
 
 {% include 1.4.0/clojure.core/star_clojure_version_star/docs.md %}
+
+##Examples
+
 {% include 1.4.0/clojure.core/star_clojure_version_star/examples.md %}
 

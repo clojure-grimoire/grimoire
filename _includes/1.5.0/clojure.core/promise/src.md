@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn promise
   "Alpha - subject to change.

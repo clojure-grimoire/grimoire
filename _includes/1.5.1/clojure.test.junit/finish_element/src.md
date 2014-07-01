@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn finish-element
   [tag pretty]

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ref-max-history
   "Gets the max-history of a ref, or sets it and returns the ref"

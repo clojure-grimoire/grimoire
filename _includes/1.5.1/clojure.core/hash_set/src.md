@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn hash-set
   "Returns a new hash set with supplied keys.  Any equal keys are

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn reset-meta!
   "Atomically resets the metadata for a namespace/var/ref/agent/atom"

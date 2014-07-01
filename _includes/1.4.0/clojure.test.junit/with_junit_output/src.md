@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro with-junit-output
   "Execute body with modified test-is reporting functions that write

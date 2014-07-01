@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn namespace-munge
   "Convert a Clojure namespace name to a legal Java package name."

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn pop
   "For a list or queue, returns a new list/queue without the first

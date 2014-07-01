@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn rational? 
   "Returns true if n is a rational number"

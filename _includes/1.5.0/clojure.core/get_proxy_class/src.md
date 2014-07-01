@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn get-proxy-class 
   "Takes an optional single class followed by zero or more

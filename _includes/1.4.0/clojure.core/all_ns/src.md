@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn all-ns
   "Returns a sequence of all namespaces."

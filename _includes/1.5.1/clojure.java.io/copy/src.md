@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn copy
   "Copies input to output.  Returns nil or throws IOException.

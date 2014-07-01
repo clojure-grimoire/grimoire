@@ -7,6 +7,10 @@ symbol: "doseq"
 # [clojure.core](../)/doseq
 
 {% include 1.5.1/clojure.core/doseq/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/doseq/examples.md %}
+## Source
 {% include 1.5.1/clojure.core/doseq/src.md %}
 

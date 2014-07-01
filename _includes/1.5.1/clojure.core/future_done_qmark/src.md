@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn future-done?
   "Returns true if future f is done"

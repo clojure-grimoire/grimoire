@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn alias
   "Add an alias in the current namespace to another

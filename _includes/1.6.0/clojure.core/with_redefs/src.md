@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro with-redefs
   "binding => var-symbol temp-value-expr

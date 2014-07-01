@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn trampoline
   "trampoline can be used to convert algorithms requiring mutual

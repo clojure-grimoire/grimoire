@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro with-sh-dir
   "Sets the directory for use with sh, see sh for details."

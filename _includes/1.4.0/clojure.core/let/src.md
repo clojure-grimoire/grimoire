@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro let
   "binding => binding-form init-expr

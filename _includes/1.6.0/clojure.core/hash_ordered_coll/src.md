@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn hash-ordered-coll
   "Returns the hash code, consistent with =, for an external ordered

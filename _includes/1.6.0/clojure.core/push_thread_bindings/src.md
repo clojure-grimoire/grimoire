@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn push-thread-bindings
   "WARNING: This is a low-level function. Prefer high-level macros like

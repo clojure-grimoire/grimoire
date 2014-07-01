@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn persistent! 
   "Alpha - subject to change.

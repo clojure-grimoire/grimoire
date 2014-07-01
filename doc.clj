@@ -129,8 +129,7 @@
       (when (fn? @var)
         ;; write source file
         (let [inc-src-file (file sym-inc-dir "src.md")]
-          (->> (format (str "## source\n"
-                            (lq "highlight" "clojure" "linenos")
+          (->> (format (str (lq "highlight" "clojure" "linenos")
                             "%s\n"
                             (lq "endhighlight"))
                        (source-fn var))
@@ -144,7 +143,7 @@
                           f (str "./_includes/" i)]
                       (if (.exists (file f))
                         (str "{% include " i " %}\n")
-                        (str "No examples for version " version-str "\n"
+                        (str "No examples for version " version-str "or newer\n"
                              "\n"
                              "[Please add examples!](https://github.com/arrdem/grimoire/edit/master/_includes/"
                                                      version-str "/" namespace "/" symbol "/examples.md)\n"))))
@@ -160,9 +159,11 @@
                         namespace
                         md-symbol)
                 (lq "include" (trim-dot (str ns-dir "/" symbol "/docs.md")))
+                "\n##Examples\n\n"
                 (lq "include" (trim-dot (str ns-dir "/" symbol "/examples.md")))
                 (if (fn? @var)
-                  (lq "include" (trim-dot (str ns-dir "/" symbol "/src.md")))
+                  (str "## Source\n"
+                       (lq "include" (trim-dot (str ns-dir "/" symbol "/src.md"))))
                   "")
                 "\n")
            (format)

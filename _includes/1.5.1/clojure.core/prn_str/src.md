@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn prn-str
   "prn to a string, returning it"

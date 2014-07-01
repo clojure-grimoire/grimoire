@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn find-var
   "Returns the global var named by the namespace-qualified symbol, or

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn println-str
   "println to a string, returning it"

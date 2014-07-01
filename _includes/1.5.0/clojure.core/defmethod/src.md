@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro defmethod
   "Creates and installs a new method of multimethod associated with dispatch-value. "

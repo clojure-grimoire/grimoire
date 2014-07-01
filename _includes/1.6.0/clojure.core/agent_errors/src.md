@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn agent-errors
   "DEPRECATED: Use 'agent-error' instead.

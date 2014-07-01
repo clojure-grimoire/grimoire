@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn test-var
   "If v has a function in its :test metadata, calls that function,

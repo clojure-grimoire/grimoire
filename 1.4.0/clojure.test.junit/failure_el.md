@@ -7,6 +7,10 @@ symbol: "failure-el"
 # [clojure.test.junit](../)/failure-el
 
 {% include 1.4.0/clojure.test.junit/failure_el/docs.md %}
+
+##Examples
+
 {% include 1.4.0/clojure.test.junit/failure_el/examples.md %}
+## Source
 {% include 1.4.0/clojure.test.junit/failure_el/src.md %}
 

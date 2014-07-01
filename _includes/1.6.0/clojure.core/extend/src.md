@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn extend 
   "Implementations of protocol methods can be provided using the extend construct:

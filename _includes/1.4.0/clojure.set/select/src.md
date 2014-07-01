@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn select
   "Returns a set of the elements for which pred is true"

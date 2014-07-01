@@ -7,6 +7,10 @@ symbol: "line-seq"
 # [clojure.core](../)/line-seq
 
 {% include 1.5.1/clojure.core/line_seq/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/line_seq/examples.md %}
+## Source
 {% include 1.5.1/clojure.core/line_seq/src.md %}
 

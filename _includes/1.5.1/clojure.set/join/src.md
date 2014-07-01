@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn join
   "When passed 2 rels, returns the rel corresponding to the natural

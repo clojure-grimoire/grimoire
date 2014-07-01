@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro lazy-seq
   "Takes a body of expressions that returns an ISeq or nil, and yields

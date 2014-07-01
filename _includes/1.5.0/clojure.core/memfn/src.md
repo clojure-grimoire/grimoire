@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro memfn
   "Expands into code that creates a fn that expects to be passed an

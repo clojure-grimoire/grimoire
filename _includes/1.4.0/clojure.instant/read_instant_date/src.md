@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (def read-instant-date
   "To read an instant as a java.util.Date, bind *data-readers* to a map with

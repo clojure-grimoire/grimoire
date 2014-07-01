@@ -7,6 +7,10 @@ symbol: "sorted-map"
 # [clojure.core](../)/sorted-map
 
 {% include 1.6.0/clojure.core/sorted_map/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.core/sorted_map/examples.md %}
+## Source
 {% include 1.6.0/clojure.core/sorted_map/src.md %}
 

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn print-cause-trace
   "Like print-stack-trace but prints chained exceptions (causes)."

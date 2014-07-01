@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro proxy
   "class-and-interfaces - a vector of class names

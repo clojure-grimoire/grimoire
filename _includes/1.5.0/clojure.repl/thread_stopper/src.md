@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn thread-stopper
   "Returns a function that takes one arg and uses that as an exception message

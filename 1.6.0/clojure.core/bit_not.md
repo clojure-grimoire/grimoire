@@ -7,6 +7,10 @@ symbol: "bit-not"
 # [clojure.core](../)/bit-not
 
 {% include 1.6.0/clojure.core/bit_not/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.core/bit_not/examples.md %}
+## Source
 {% include 1.6.0/clojure.core/bit_not/src.md %}
 

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn set-error-mode!
   "Sets the error-mode of agent a to mode-keyword, which must be

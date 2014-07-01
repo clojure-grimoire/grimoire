@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro defn-
   "same as defn, yielding non-public def"

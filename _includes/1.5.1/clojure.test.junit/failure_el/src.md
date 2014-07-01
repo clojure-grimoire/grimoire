@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn failure-el
   [message expected actual]

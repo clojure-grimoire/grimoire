@@ -7,6 +7,10 @@ symbol: "unchecked-float"
 # [clojure.core](../)/unchecked-float
 
 {% include 1.5.0/clojure.core/unchecked_float/docs.md %}
+
+##Examples
+
 {% include 1.5.0/clojure.core/unchecked_float/examples.md %}
+## Source
 {% include 1.5.0/clojure.core/unchecked_float/src.md %}
 

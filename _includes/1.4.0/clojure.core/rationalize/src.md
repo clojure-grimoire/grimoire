@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn rationalize
   "returns the rational value of num"

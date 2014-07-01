@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn split-with
   "Returns a vector of [(take-while pred coll) (drop-while pred coll)]"

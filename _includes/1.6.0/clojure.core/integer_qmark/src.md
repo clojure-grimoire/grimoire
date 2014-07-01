@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn integer?
   "Returns true if n is an integer"

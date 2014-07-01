@@ -7,6 +7,10 @@ symbol: "+'"
 # [clojure.core](../)/+'
 
 {% include 1.5.1/clojure.core/plus__singlequote/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/plus__singlequote/examples.md %}
+## Source
 {% include 1.5.1/clojure.core/plus__singlequote/src.md %}
 

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn bean
   "Takes a Java object and returns a read-only implementation of the

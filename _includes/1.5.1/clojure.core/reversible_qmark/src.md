@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn reversible?
  "Returns true if coll implements Reversible"

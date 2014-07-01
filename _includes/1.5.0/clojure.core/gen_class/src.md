@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro gen-class 
   "When compiling, generates compiled bytecode for a class with the

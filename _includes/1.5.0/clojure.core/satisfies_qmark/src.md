@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn satisfies? 
   "Returns true if x satisfies the protocol"

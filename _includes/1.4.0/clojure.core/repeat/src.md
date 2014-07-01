@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn repeat
   "Returns a lazy (infinite!, or length n if supplied) sequence of xs."

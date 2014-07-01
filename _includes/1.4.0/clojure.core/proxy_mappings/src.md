@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn proxy-mappings
   "Takes a proxy instance and returns the proxy's fn map."

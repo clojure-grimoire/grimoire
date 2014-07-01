@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn create-ns
   "Create a new namespace named by the symbol if one doesn't already

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro is
   "Generic assertion macro.  'form' is any predicate test.

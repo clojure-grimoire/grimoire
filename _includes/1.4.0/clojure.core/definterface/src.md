@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro definterface 
   [name & sigs]

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro areduce
   "Reduces an expression across an array a, using an index named idx,

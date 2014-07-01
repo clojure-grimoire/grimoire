@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn line-seq
   "Returns the lines of text from rdr as a lazy sequence of strings.

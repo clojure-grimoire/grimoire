@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn subseq
   "sc must be a sorted collection, test(s) one of <, <=, > or

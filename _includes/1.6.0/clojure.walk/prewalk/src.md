@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn prewalk
   "Like postwalk, but does pre-order traversal."

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn vector-zip
   "Returns a zipper for nested vectors, given a root vector"

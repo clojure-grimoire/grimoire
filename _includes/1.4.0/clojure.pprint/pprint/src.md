@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn pprint 
   "Pretty print object to the optional output writer. If the writer is not provided, 

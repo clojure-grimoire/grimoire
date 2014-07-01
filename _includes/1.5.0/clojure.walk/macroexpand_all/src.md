@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn macroexpand-all
   "Recursively performs all possible macroexpansions in form."

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn interleave
   "Returns a lazy seq of the first item in each coll, then the second etc."

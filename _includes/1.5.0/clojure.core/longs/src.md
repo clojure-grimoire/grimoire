@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (definline longs
   "Casts to long[]"

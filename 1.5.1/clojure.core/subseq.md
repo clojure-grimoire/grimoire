@@ -7,6 +7,10 @@ symbol: "subseq"
 # [clojure.core](../)/subseq
 
 {% include 1.5.1/clojure.core/subseq/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/subseq/examples.md %}
+## Source
 {% include 1.5.1/clojure.core/subseq/src.md %}
 

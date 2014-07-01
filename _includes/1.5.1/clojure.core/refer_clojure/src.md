@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro refer-clojure
   "Same as (refer 'clojure.core <filters>)"

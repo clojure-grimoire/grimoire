@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn set-validator!
   "Sets the validator-fn for a var/ref/agent/atom. validator-fn must be nil or a

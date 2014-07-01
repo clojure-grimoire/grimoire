@@ -7,5 +7,8 @@ symbol: "\\*open-url-script\\*"
 # [clojure.java.browse](../)/\*open-url-script\*
 
 {% include 1.5.0/clojure.java.browse/star_open_url_script_star/docs.md %}
+
+##Examples
+
 {% include 1.5.0/clojure.java.browse/star_open_url_script_star/examples.md %}
 

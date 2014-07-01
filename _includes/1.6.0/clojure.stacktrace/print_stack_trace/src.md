@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn print-stack-trace
   "Prints a Clojure-oriented stack trace of tr, a Throwable.

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn symbol?
   "Return true if x is a Symbol"

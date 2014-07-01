@@ -7,5 +7,8 @@ symbol: "\\*file\\*"
 # [clojure.core](../)/\*file\*
 
 {% include 1.5.1/clojure.core/star_file_star/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/star_file_star/examples.md %}
 

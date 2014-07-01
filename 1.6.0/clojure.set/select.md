@@ -7,6 +7,10 @@ symbol: "select"
 # [clojure.set](../)/select
 
 {% include 1.6.0/clojure.set/select/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.set/select/examples.md %}
+## Source
 {% include 1.6.0/clojure.set/select/src.md %}
 

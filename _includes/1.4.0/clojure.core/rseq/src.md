@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn rseq
   "Returns, in constant time, a seq of the items in rev (which

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn print-table
   "Alpha - subject to change.

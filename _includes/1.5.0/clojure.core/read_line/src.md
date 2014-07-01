@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn read-line
   "Reads the next line from stream that is the current value of *in* ."

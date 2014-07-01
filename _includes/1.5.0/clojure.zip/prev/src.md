@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn prev
   "Moves to the previous loc in the hierarchy, depth-first. If already

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn re-groups
   "Returns the groups from the most recent match/find. If there are no

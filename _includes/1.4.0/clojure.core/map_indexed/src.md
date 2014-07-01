@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn map-indexed
   "Returns a lazy sequence consisting of the result of applying f to 0

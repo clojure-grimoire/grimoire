@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn list*
   "Creates a new list containing the items prepended to the rest, the

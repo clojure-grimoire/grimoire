@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro defmulti
   "Creates a new multimethod with the associated dispatch function.

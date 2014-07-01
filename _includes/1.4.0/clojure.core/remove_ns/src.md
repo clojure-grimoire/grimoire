@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn remove-ns
   "Removes the namespace named by the symbol. Use with caution.

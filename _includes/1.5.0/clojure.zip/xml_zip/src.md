@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn xml-zip
   "Returns a zipper for xml elements (as from xml/parse),

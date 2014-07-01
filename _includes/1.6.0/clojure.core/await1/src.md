@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^:static await1 [^clojure.lang.Agent a]
   (when (pos? (.getQueueCount a))

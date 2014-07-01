@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn re-seq
   "Returns a lazy sequence of successive matches of pattern in string,

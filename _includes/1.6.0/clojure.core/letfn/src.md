@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro letfn 
   "fnspec ==> (fname [params*] exprs) or (fname ([params*] exprs)+)

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn future?
   "Returns true if x is a future"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro locking
   "Executes exprs in an implicit do, while holding the monitor of x.

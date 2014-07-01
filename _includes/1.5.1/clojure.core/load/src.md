@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn load
   "Loads Clojure code from resources in classpath. A path is interpreted as

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn delete-file
   "Delete file f. Raise an exception if it fails unless silently is true."

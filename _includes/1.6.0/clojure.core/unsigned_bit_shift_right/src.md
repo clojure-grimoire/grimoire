@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unsigned-bit-shift-right
   "Bitwise shift right, without sign-extension."

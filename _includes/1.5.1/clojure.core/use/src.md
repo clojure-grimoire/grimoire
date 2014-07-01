@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn use
   "Like 'require, but also refers to each lib's namespace using

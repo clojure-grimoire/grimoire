@@ -7,6 +7,10 @@ symbol: "unchecked-byte"
 # [clojure.core](../)/unchecked-byte
 
 {% include 1.5.1/clojure.core/unchecked_byte/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/unchecked_byte/examples.md %}
+## Source
 {% include 1.5.1/clojure.core/unchecked_byte/src.md %}
 

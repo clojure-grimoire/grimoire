@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn double
   "Coerce to double"

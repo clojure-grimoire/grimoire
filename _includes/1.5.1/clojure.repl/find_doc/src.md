@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn find-doc
   "Prints documentation for any var whose documentation or name

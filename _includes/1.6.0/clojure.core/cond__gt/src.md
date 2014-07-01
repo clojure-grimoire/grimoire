@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro cond->
   "Takes an expression and a set of test/form pairs. Threads expr (via ->)

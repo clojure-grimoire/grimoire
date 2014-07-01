@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro for
   "List comprehension. Takes a vector of one or more

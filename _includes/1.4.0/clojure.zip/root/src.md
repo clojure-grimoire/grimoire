@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn root
   "zips all the way up and returns the root node, reflecting any

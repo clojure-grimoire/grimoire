@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn key
   "Returns the key of the map entry."

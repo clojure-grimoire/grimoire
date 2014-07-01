@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ns-interns
   "Returns a map of the intern mappings for the namespace."

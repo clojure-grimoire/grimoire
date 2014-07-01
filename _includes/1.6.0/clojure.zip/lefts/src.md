@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn lefts
   "Returns a seq of the left siblings of this loc"

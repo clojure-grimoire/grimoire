@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro io!
   "If an io! block occurs in a transaction, throws an

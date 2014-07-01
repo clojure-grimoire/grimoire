@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn interpose
   "Returns a lazy seq of the elements of coll separated by sep"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn supers
   "Returns the immediate and indirect superclasses and interfaces of c, if any"

@@ -7,6 +7,10 @@ symbol: "triml"
 # [clojure.string](../)/triml
 
 {% include 1.4.0/clojure.string/triml/docs.md %}
+
+##Examples
+
 {% include 1.4.0/clojure.string/triml/examples.md %}
+## Source
 {% include 1.4.0/clojure.string/triml/src.md %}
 

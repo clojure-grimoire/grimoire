@@ -7,5 +7,8 @@ symbol: "\\*verbose-defrecords\\*"
 # [clojure.core](../)/\*verbose-defrecords\*
 
 {% include 1.5.1/clojure.core/star_verbose_defrecords_star/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/star_verbose_defrecords_star/examples.md %}
 

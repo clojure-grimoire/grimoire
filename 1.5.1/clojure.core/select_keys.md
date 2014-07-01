@@ -7,6 +7,10 @@ symbol: "select-keys"
 # [clojure.core](../)/select-keys
 
 {% include 1.5.1/clojure.core/select_keys/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/select_keys/examples.md %}
+## Source
 {% include 1.5.1/clojure.core/select_keys/src.md %}
 

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn get-validator
   "Gets the validator-fn for a var/ref/agent/atom."

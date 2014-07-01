@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn object-array
   "Creates an array of objects"

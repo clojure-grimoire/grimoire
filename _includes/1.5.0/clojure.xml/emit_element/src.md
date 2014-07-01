@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn emit-element [e]
   (if (instance? String e)

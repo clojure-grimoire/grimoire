@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn peek
   "For a list or queue, same as first, for a vector, same as, but much

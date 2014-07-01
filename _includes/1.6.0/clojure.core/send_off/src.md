@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn send-off
   "Dispatch a potentially blocking action to an agent. Returns the

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn take-while
   "Returns a lazy sequence of successive items from coll while

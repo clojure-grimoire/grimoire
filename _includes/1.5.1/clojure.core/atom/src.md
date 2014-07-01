@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn atom
   "Creates and returns an Atom with an initial value of x and zero or

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro with-in-str
   "Evaluates body in a context in which *in* is bound to a fresh

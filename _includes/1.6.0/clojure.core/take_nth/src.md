@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn take-nth
   "Returns a lazy seq of every nth item in coll."

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro extend-type 
   "A macro that expands into an extend call. Useful when you are

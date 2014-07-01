@@ -7,6 +7,10 @@ symbol: "sorted?"
 # [clojure.core](../)/sorted?
 
 {% include 1.4.0/clojure.core/sorted_qmark/docs.md %}
+
+##Examples
+
 {% include 1.4.0/clojure.core/sorted_qmark/examples.md %}
+## Source
 {% include 1.4.0/clojure.core/sorted_qmark/src.md %}
 

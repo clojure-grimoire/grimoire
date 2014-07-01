@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn type 
   "Returns the :type metadata of x, or its Class if none"

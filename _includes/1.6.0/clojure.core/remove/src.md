@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn remove
   "Returns a lazy sequence of the items in coll for which

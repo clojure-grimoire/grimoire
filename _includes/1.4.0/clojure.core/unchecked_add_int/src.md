@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-add-int
   "Returns the sum of x and y, both int.

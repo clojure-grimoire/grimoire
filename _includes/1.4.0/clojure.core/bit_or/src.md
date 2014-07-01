@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn bit-or
   "Bitwise or"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn insert-right
   "Inserts the item as the right sibling of the node at this loc,

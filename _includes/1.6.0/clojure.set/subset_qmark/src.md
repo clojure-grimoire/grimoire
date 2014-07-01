@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn subset? 
   "Is set1 a subset of set2?"

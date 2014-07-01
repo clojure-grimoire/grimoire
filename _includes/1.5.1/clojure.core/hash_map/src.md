@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn hash-map
   "keyval => key val

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn proxy-call-with-super [call this meth]
  (let [m (proxy-mappings this)]

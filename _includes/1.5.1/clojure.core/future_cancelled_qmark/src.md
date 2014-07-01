@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn future-cancelled?
   "Returns true if future f is cancelled"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn sorted-set-by
   "Returns a new sorted set with supplied keys, using the supplied comparator."

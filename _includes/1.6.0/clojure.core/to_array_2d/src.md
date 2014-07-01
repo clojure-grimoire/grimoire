@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn to-array-2d
   "Returns a (potentially-ragged) 2-dimensional array of Objects

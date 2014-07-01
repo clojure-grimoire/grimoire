@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn stringify-keys
   "Recursively transforms all map keys from keywords to strings."

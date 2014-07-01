@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn inc-report-counter
   "Increments the named counter in *report-counters*, a ref to a map.

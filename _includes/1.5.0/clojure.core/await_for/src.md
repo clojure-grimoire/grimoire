@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn await-for
   "Blocks the current thread until all actions dispatched thus

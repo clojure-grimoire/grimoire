@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro deftest-
   "Like deftest but creates a private var."

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn tree-seq
   "Returns a lazy sequence of the nodes in a tree, via a depth-first walk.

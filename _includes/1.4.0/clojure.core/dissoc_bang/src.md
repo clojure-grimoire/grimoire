@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn dissoc!
   "Alpha - subject to change.

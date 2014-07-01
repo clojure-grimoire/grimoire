@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn create-struct
   "Returns a structure basis object."

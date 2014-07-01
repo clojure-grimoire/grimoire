@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro when
   "Evaluates test. If logical true, evaluates body in an implicit do."

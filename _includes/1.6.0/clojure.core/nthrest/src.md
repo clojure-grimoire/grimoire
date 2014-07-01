@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn nthrest
   "Returns the nth rest of coll, coll when n is 0."

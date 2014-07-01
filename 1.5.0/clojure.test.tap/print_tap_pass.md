@@ -7,6 +7,10 @@ symbol: "print-tap-pass"
 # [clojure.test.tap](../)/print-tap-pass
 
 {% include 1.5.0/clojure.test.tap/print_tap_pass/docs.md %}
+
+##Examples
+
 {% include 1.5.0/clojure.test.tap/print_tap_pass/examples.md %}
+## Source
 {% include 1.5.0/clojure.test.tap/print_tap_pass/src.md %}
 

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (def read-instant-calendar
   "To read an instant as a java.util.Calendar, bind *data-readers* to a map with

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn test-all-vars
   "Calls test-var on every var interned in the namespace, with fixtures."

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (def parse-timestamp
      "Parse a string containing an RFC3339-like like timestamp.

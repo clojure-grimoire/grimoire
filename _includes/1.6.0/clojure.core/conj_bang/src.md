@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn conj!
   "Adds x to the transient collection, and return coll. The 'addition'

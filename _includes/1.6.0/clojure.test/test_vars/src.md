@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn test-vars
   "Groups vars by their namespace and runs test-vars on them with

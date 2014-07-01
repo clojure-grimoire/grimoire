@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn newline
   "Writes a platform-specific newline to *out*"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro lazy-cat
   "Expands to code which yields a lazy sequence of the concatenation

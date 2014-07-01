@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro pprint-logical-block 
   "Execute the body as a pretty printing logical block with output to *out* which 

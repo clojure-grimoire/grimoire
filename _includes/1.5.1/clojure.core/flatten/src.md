@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn flatten
   "Takes any nested combination of sequential things (lists, vectors,

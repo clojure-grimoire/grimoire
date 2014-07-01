@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn identical?
   "Tests if 2 arguments are the same object"

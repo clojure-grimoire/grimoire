@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn re-find
   "Returns the next regex match, if any, of string to pattern, using

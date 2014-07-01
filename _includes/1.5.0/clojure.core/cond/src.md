@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro cond
   "Takes a set of test/expr pairs. It evaluates each test one at a

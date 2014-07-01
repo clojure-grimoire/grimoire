@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro are
   "Checks multiple assertions with a template expression.

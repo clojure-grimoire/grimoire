@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn quot
   "quot[ient] of dividing numerator by denominator."

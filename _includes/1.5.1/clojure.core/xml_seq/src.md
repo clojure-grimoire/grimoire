@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn xml-seq
   "A tree seq on the xml elements as per xml/parse"

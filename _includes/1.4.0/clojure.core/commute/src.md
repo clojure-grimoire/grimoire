@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn commute
   "Must be called in a transaction. Sets the in-transaction-value of

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn restart-agent
   "When an agent is failed, changes the agent state to new-state and

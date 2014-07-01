@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro pp 
   "A convenience macro that pretty prints the last thing output. This is

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^String join
   "Returns a string of all elements in coll, as returned by (seq coll),

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn extenders 
   "Returns a collection of the types explicitly extending protocol"

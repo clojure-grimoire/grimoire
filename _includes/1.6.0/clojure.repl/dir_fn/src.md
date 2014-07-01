@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn dir-fn
   "Returns a sorted seq of symbols naming public vars in

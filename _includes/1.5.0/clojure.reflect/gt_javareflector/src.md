@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (deftype JavaReflector [classloader]
   Reflector

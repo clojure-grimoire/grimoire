@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn number?
   "Returns true if x is a Number"

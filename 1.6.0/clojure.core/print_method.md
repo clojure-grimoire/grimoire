@@ -7,5 +7,8 @@ symbol: "print-method"
 # [clojure.core](../)/print-method
 
 {% include 1.6.0/clojure.core/print_method/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.core/print_method/examples.md %}
 

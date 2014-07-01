@@ -7,6 +7,10 @@ symbol: "identity"
 # [clojure.core](../)/identity
 
 {% include 1.5.1/clojure.core/identity/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/identity/examples.md %}
+## Source
 {% include 1.5.1/clojure.core/identity/src.md %}
 

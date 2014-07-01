@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn print-ctor [o print-args ^Writer w]
   (.write w "#=(")

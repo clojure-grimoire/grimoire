@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn require
   "Loads libs, skipping any that are already loaded. Each argument is

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn await
   "Blocks the current thread (indefinitely!) until all actions

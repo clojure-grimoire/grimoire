@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn pprint-newline
   "Print a conditional newline to a pretty printing stream. kind specifies if the 

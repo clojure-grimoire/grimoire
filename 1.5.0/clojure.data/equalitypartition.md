@@ -7,5 +7,8 @@ symbol: "EqualityPartition"
 # [clojure.data](../)/EqualityPartition
 
 {% include 1.5.0/clojure.data/equalitypartition/docs.md %}
+
+##Examples
+
 {% include 1.5.0/clojure.data/equalitypartition/examples.md %}
 

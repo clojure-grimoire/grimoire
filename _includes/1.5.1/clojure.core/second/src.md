@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (def
  ^{:doc "Same as (first (next x))"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn remove
   "Removes the node at loc, returning the loc that would have preceded

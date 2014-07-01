@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn array-map
   "Constructs an array-map."

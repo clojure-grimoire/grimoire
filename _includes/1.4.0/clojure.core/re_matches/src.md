@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn re-matches
   "Returns the match, if any, of string to pattern, using

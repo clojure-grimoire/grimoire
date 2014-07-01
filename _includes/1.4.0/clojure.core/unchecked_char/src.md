@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-char
   "Coerce to char. Subject to rounding or truncation."

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn sort
   "Returns a sorted sequence of the items in coll. If no comparator is

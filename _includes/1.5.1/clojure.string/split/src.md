@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn split
   "Splits string on a regular expression.  Optional argument limit is

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^String capitalize
   "Converts first character of the string to upper-case, all other

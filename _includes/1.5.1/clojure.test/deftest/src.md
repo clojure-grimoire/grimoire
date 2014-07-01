@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro deftest
   "Defines a test function with no arguments.  Test functions may call

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn shutdown-agents
   "Initiates a shutdown of the thread pools that back the agent

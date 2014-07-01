@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn reduce-kv
   "Reduces an associative collection. f should be a function of 3

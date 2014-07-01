@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn fresh-line
   "Make a newline if *out* is not already at the beginning of the line. If *out* is

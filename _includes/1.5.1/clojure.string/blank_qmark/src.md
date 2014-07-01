@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn blank?
   "True if s is nil, empty, or contains only whitespace."

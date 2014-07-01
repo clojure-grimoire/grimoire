@@ -7,5 +7,8 @@ symbol: "\\*testing-vars\\*"
 # [clojure.test](../)/\*testing-vars\*
 
 {% include 1.6.0/clojure.test/star_testing_vars_star/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.test/star_testing_vars_star/examples.md %}
 

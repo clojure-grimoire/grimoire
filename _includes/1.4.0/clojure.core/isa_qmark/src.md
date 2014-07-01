@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn isa?
   "Returns true if (= child parent), or child is directly or indirectly derived from

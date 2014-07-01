@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn spit
   "Opposite of slurp.  Opens f with writer, writes content, then

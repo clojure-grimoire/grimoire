@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn long
   "Coerce to long"

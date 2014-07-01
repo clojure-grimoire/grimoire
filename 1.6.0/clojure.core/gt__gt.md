@@ -7,6 +7,10 @@ symbol: "->>"
 # [clojure.core](../)/->>
 
 {% include 1.6.0/clojure.core/gt__gt/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.core/gt__gt/examples.md %}
+## Source
 {% include 1.6.0/clojure.core/gt__gt/src.md %}
 

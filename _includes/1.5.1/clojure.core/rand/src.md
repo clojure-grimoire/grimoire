@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn rand
   "Returns a random floating point number between 0 (inclusive) and

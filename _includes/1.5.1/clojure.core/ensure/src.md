@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ensure
   "Must be called in a transaction. Protects the ref from modification

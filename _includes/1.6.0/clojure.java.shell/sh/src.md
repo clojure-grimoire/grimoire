@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn sh
   "Passes the given strings to Runtime.exec() to launch a sub-process.

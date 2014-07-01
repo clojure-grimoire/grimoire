@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro defstruct
   "Same as (def name (create-struct keys...))"

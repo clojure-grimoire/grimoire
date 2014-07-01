@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (def
  ^{:tag Boolean

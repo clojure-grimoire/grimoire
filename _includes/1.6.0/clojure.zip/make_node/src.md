@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn make-node
   "Returns a new branch node, given an existing node and new

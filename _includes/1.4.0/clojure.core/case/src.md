@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro case 
   "Takes an expression, and a set of clauses.

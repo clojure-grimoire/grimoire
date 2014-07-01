@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^Reader reader
   "Attempts to coerce its argument into an open java.io.Reader.

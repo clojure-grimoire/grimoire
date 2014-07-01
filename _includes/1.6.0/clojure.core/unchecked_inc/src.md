@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-inc
   "Returns a number one greater than x, a long.

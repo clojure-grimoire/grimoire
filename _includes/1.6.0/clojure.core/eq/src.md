@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn =
   "Equality. Returns true if x equals y, false if not. Same as

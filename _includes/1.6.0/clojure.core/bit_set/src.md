@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn bit-set
   "Set bit at index n"

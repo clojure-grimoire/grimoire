@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro and
   "Evaluates exprs one at a time, from left to right. If a form

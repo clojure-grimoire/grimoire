@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn merge
   "Returns a map that consists of the rest of the maps conj-ed onto

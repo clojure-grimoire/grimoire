@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn int-array
   "Creates an array of ints"

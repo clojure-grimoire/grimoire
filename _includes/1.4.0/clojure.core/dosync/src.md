@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro dosync
   "Runs the exprs (in an implicit do) in a transaction that encompasses

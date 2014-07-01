@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn make-parents
   "Given the same arg(s) as for file, creates all parent directories of

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^String replace-first
   "Replaces the first instance of match with replacement in s.

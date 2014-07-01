@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn fnil
   "Takes a function f, and returns a function that calls f, replacing

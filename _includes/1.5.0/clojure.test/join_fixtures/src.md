@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn join-fixtures
   "Composes a collection of fixtures, in order.  Always returns a valid

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro with-loading-context [& body]
   `((fn loading# [] 

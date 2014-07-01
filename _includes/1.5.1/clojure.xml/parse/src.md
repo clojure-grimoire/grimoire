@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn parse
   "Parses and loads the source s, which can be a File, InputStream or

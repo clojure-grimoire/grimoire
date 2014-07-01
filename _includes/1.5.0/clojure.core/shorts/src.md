@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (definline shorts
   "Casts to shorts[]"

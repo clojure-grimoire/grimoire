@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (deftype Vec [^clojure.core.ArrayManager am ^int cnt ^int shift ^clojure.core.VecNode root tail _meta]
   Object

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn prefer-method
   "Causes the multimethod to prefer matches of dispatch-val-x over dispatch-val-y 

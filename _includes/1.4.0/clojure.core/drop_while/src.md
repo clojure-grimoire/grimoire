@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn drop-while
   "Returns a lazy sequence of the items in coll starting from the first

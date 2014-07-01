@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ref
   "Creates and returns a Ref with an initial value of x and zero or

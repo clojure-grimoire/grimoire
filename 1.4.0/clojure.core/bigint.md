@@ -7,6 +7,10 @@ symbol: "bigint"
 # [clojure.core](../)/bigint
 
 {% include 1.4.0/clojure.core/bigint/docs.md %}
+
+##Examples
+
 {% include 1.4.0/clojure.core/bigint/examples.md %}
+## Source
 {% include 1.4.0/clojure.core/bigint/src.md %}
 

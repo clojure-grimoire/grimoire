@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ns-publics
   "Returns a map of the public intern mappings for the namespace."

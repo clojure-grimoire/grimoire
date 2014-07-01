@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn test-ns
   "If the namespace defines a function named test-ns-hook, calls that.

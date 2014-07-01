@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro gen-interface
   "When compiling, generates compiled bytecode for an interface with

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn double-array
   "Creates an array of doubles"

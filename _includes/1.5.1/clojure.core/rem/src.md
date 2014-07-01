@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn rem
   "remainder of dividing numerator by denominator."

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn some-fn
   "Takes a set of predicates and returns a function f that returns the first logical true value

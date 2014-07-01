@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn set-break-handler!
   "Register INT signal handler.  After calling this, Ctrl-C will cause

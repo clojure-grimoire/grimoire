@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro dotimes
   "bindings => name n

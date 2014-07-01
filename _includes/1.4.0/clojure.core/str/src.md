@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn str
   "With no args, returns the empty string. With one arg x, returns

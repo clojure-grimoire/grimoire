@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ns-aliases
   "Returns a map of the aliases for the namespace."

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn extends? 
   "Returns true if atype extends protocol"

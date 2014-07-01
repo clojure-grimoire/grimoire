@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn list?
   "Returns true if x implements IPersistentList"

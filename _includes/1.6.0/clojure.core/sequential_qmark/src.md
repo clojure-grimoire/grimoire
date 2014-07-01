@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn sequential?
  "Returns true if coll implements Sequential"

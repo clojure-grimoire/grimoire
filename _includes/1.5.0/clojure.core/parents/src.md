@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn parents
   "Returns the immediate parents of tag, either via a Java type

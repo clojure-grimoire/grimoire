@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn record?
   "Returns true if x is a record"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn read
   "Reads the next object from stream, which must be an instance of

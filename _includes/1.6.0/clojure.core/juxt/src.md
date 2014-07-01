@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn juxt 
   "Takes a set of functions and returns a fn that is the juxtaposition

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn distinct?
   "Returns true if no two of the arguments are ="

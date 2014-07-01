@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn find-protocol-impl [protocol x]
   (if (instance? (:on-interface protocol) x)

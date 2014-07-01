@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn thread-bound?
   "Returns true if all of the vars provided as arguments have thread-local bindings.

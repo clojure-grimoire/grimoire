@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro amap
   "Maps an expression across an array a, using an index named idx, and

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn intersection
   "Return a set that is the intersection of the input sets"

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn test
   "test [v] finds fn at key :test in var metadata and calls it,

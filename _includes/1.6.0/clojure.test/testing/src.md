@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro testing
   "Adds a new string to the list of testing contexts.  May be nested,

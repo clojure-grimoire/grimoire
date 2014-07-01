@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn compose-fixtures
   "Composes two fixture functions, creating a new fixture function

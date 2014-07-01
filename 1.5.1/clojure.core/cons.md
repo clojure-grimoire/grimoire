@@ -7,6 +7,10 @@ symbol: "cons"
 # [clojure.core](../)/cons
 
 {% include 1.5.1/clojure.core/cons/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/cons/examples.md %}
+## Source
 {% include 1.5.1/clojure.core/cons/src.md %}
 

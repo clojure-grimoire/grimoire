@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-divide-int
   "Returns the division of x by y, both int.

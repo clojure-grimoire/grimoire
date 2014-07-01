@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn underive
   "Removes a parent/child relationship between parent and

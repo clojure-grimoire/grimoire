@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro as->
   "Binds name to expr, evaluates the first form in the lexical context

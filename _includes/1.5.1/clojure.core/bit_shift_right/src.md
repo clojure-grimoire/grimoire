@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn bit-shift-right
   "Bitwise shift right"

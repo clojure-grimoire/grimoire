@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro import 
   "import-list => (package-symbol class-name-symbols*)

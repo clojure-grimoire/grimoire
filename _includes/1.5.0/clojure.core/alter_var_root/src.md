@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn alter-var-root
   "Atomically alters the root binding of var v by applying f to its

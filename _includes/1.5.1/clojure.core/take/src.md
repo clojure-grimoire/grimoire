@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn take
   "Returns a lazy sequence of the first n items in coll, or all items if

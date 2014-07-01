@@ -7,6 +7,10 @@ symbol: "find-doc"
 # [clojure.repl](../)/find-doc
 
 {% include 1.6.0/clojure.repl/find_doc/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.repl/find_doc/examples.md %}
+## Source
 {% include 1.6.0/clojure.repl/find_doc/src.md %}
 

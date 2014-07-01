@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn reductions
   "Returns a lazy seq of the intermediate values of the reduction (as

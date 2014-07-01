@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn set-agent-send-executor!
   "Sets the ExecutorService to be used by send"

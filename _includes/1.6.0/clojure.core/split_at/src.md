@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn split-at
   "Returns a vector of [(take n coll) (drop n coll)]"

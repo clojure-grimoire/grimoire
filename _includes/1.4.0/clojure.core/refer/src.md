@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn refer
   "refers to all public vars of ns, subject to filters.

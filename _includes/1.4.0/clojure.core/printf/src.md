@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn printf
   "Prints formatted output, as per format"

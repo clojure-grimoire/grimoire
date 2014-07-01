@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn add-local-javadoc
   "Adds to the list of local Javadoc paths."

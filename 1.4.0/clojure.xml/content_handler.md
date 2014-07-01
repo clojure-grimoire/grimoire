@@ -7,5 +7,8 @@ symbol: "content-handler"
 # [clojure.xml](../)/content-handler
 
 {% include 1.4.0/clojure.xml/content_handler/docs.md %}
+
+##Examples
+
 {% include 1.4.0/clojure.xml/content_handler/examples.md %}
 

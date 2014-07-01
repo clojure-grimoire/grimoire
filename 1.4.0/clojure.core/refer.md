@@ -7,6 +7,10 @@ symbol: "refer"
 # [clojure.core](../)/refer
 
 {% include 1.4.0/clojure.core/refer/docs.md %}
+
+##Examples
+
 {% include 1.4.0/clojure.core/refer/examples.md %}
+## Source
 {% include 1.4.0/clojure.core/refer/src.md %}
 

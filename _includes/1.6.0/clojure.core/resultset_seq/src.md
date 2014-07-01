@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn resultset-seq
   "Creates and returns a lazy sequence of structmaps corresponding to

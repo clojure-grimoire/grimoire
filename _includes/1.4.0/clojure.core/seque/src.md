@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn seque
   "Creates a queued seq on another (presumably lazy) seq s. The queued

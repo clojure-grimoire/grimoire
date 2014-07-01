@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn select-keys
   "Returns a map containing only those entries in map whose key is in keys"

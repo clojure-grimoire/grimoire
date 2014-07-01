@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-double
   "Coerce to double. Subject to rounding."

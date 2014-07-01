@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn replace
   "Replaces the node at this loc, without moving"

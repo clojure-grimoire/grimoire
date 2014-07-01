@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (definline floats
   "Casts to float[]"

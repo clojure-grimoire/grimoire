@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn rand-nth
   "Return a random element of the (sequential) collection. Will have

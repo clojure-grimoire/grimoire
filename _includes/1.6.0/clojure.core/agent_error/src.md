@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn agent-error
   "Returns the exception thrown during an asynchronous action of the

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn group-by 
   "Returns a map of the elements of coll keyed by the result of

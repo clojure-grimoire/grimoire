@@ -7,6 +7,10 @@ symbol: "var?"
 # [clojure.core](../)/var?
 
 {% include 1.4.0/clojure.core/var_qmark/docs.md %}
+
+##Examples
+
 {% include 1.4.0/clojure.core/var_qmark/examples.md %}
+## Source
 {% include 1.4.0/clojure.core/var_qmark/src.md %}
 

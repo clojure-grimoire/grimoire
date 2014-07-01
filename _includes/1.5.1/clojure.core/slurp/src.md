@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn slurp
   "Opens a reader on f and reads all its contents, returning a string.

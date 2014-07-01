@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro doseq
   "Repeatedly executes body (presumably for side-effects) with

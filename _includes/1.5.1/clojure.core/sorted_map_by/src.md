@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn sorted-map-by
   "keyval => key val

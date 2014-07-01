@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn filterv
   "Returns a vector of the items in coll for which

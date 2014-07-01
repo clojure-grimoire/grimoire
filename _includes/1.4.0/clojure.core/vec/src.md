@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn vec
   "Creates a new vector containing the contents of coll."

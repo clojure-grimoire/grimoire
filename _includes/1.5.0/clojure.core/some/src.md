@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn some
   "Returns the first logical true value of (pred x) for any x in coll,

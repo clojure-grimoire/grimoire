@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn byte
   "Coerce to byte"

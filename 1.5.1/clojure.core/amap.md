@@ -7,6 +7,10 @@ symbol: "amap"
 # [clojure.core](../)/amap
 
 {% include 1.5.1/clojure.core/amap/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/amap/examples.md %}
+## Source
 {% include 1.5.1/clojure.core/amap/src.md %}
 

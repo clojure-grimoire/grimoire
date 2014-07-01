@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn char-array
   "Creates an array of chars"

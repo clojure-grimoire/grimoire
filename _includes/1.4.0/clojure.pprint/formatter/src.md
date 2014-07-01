@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro formatter
   "Makes a function which can directly run format-in. The function is

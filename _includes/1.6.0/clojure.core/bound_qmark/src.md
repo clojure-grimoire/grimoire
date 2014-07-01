@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn bound?
   "Returns true if all of the vars provided as arguments have any bound value, root or thread-local.

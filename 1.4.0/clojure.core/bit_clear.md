@@ -7,6 +7,10 @@ symbol: "bit-clear"
 # [clojure.core](../)/bit-clear
 
 {% include 1.4.0/clojure.core/bit_clear/docs.md %}
+
+##Examples
+
 {% include 1.4.0/clojure.core/bit_clear/examples.md %}
+## Source
 {% include 1.4.0/clojure.core/bit_clear/src.md %}
 

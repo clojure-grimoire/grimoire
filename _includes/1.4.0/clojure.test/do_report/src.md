@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn do-report
   "Add file and line information to a test result and call report.

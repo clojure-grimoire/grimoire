@@ -7,6 +7,10 @@ symbol: "ints"
 # [clojure.core](../)/ints
 
 {% include 1.4.0/clojure.core/ints/docs.md %}
+
+##Examples
+
 {% include 1.4.0/clojure.core/ints/examples.md %}
+## Source
 {% include 1.4.0/clojure.core/ints/src.md %}
 

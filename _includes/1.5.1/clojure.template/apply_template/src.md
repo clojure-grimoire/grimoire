@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn apply-template
   "For use in macros.  argv is an argument list, as in defn.  expr is

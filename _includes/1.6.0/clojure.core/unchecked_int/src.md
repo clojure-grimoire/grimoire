@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn unchecked-int
   "Coerce to int. Subject to rounding or truncation."

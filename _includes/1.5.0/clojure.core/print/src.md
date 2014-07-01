@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn print
   "Prints the object(s) to the output stream that is the current value

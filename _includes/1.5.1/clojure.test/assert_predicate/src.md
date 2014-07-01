@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn assert-predicate
   "Returns generic assertion code for any functional predicate.  The

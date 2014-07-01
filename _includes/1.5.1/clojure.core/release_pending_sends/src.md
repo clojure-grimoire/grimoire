@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn release-pending-sends
   "Normally, actions sent directly or indirectly during another action

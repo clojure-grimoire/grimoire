@@ -7,6 +7,10 @@ symbol: "get-possibly-unbound-var"
 # [clojure.test](../)/get-possibly-unbound-var
 
 {% include 1.4.0/clojure.test/get_possibly_unbound_var/docs.md %}
+
+##Examples
+
 {% include 1.4.0/clojure.test/get_possibly_unbound_var/examples.md %}
+## Source
 {% include 1.4.0/clojure.test/get_possibly_unbound_var/src.md %}
 

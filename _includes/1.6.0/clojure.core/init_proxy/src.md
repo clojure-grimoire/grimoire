@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn init-proxy
   "Takes a proxy instance and a map of strings (which must

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn testing-vars-str
   "Returns a string representation of the current test.  Renders names

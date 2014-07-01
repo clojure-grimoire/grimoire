@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn /
   "If no denominators are supplied, returns 1/numerator,

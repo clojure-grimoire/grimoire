@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ^String as-relative-path
   "Take an as-file-able thing and return a string if it is

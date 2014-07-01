@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn contains?
   "Returns true if key is present in the given collection, otherwise

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn min
   "Returns the least of the nums."

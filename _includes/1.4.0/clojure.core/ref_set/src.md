@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn ref-set
   "Must be called in a transaction. Sets the value of ref.

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn assoc!
   "When applied to a transient map, adds mapping of key(s) to

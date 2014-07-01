@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn dissoc
   "dissoc[iate]. Returns a new map of the same (hashed/sorted) type,

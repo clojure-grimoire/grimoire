@@ -7,6 +7,10 @@ symbol: "source"
 # [clojure.repl](../)/source
 
 {% include 1.6.0/clojure.repl/source/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.repl/source/examples.md %}
+## Source
 {% include 1.6.0/clojure.repl/source/src.md %}
 

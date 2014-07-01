@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro delay
   "Takes a body of expressions and yields a Delay object that will

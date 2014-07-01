@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro set-test
   "Experimental.

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (def
  ^{:arglists '([^clojure.lang.IObj obj m])

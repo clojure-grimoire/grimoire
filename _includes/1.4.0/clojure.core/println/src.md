@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn println
   "Same as print followed by (newline)"

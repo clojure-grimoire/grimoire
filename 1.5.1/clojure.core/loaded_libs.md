@@ -7,6 +7,10 @@ symbol: "loaded-libs"
 # [clojure.core](../)/loaded-libs
 
 {% include 1.5.1/clojure.core/loaded_libs/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.core/loaded_libs/examples.md %}
+## Source
 {% include 1.5.1/clojure.core/loaded_libs/src.md %}
 

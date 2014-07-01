@@ -7,5 +7,8 @@ symbol: "\\*remote-javadocs\\*"
 # [clojure.java.javadoc](../)/\*remote-javadocs\*
 
 {% include 1.5.0/clojure.java.javadoc/star_remote_javadocs_star/docs.md %}
+
+##Examples
+
 {% include 1.5.0/clojure.java.javadoc/star_remote_javadocs_star/examples.md %}
 

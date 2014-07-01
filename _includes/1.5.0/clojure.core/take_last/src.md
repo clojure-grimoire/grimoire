@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn take-last
   "Returns a seq of the last n items in coll.  Depending on the type

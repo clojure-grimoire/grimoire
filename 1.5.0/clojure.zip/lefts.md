@@ -7,6 +7,10 @@ symbol: "lefts"
 # [clojure.zip](../)/lefts
 
 {% include 1.5.0/clojure.zip/lefts/docs.md %}
+
+##Examples
+
 {% include 1.5.0/clojure.zip/lefts/examples.md %}
+## Source
 {% include 1.5.0/clojure.zip/lefts/src.md %}
 

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn subvec
   "Returns a persistent vector of the items in vector from

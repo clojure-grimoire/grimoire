@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn struct
   "Returns a new structmap instance with the keys of the

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn not-empty
   "If coll is empty, returns nil, else coll"

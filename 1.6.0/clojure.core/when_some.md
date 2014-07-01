@@ -7,6 +7,10 @@ symbol: "when-some"
 # [clojure.core](../)/when-some
 
 {% include 1.6.0/clojure.core/when_some/docs.md %}
+
+##Examples
+
 {% include 1.6.0/clojure.core/when_some/examples.md %}
+## Source
 {% include 1.6.0/clojure.core/when_some/src.md %}
 

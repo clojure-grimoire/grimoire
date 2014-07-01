@@ -7,6 +7,10 @@ symbol: "aset-int"
 # [clojure.core](../)/aset-int
 
 {% include 1.4.0/clojure.core/aset_int/docs.md %}
+
+##Examples
+
 {% include 1.4.0/clojure.core/aset_int/examples.md %}
+## Source
 {% include 1.4.0/clojure.core/aset_int/src.md %}
 

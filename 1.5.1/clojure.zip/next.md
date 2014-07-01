@@ -7,6 +7,10 @@ symbol: "next"
 # [clojure.zip](../)/next
 
 {% include 1.5.1/clojure.zip/next/docs.md %}
+
+##Examples
+
 {% include 1.5.1/clojure.zip/next/examples.md %}
+## Source
 {% include 1.5.1/clojure.zip/next/src.md %}
 

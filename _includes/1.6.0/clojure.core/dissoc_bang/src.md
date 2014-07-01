@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn dissoc!
   "Returns a transient map that doesn't contain a mapping for key(s)."

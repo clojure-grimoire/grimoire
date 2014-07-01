@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn make-array
   "Creates and returns an array of instances of the specified class of

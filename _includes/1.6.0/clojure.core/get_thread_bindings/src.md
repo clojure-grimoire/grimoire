@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn get-thread-bindings
   "Get a map with the Var/value pairs which is currently in effect for the

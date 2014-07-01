@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn into-array
   "Returns an array with components set to the values in aseq. The array's

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn *
   "Returns the product of nums. (*) returns 1. Does not auto-promote

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn +
   "Returns the sum of nums. (+) returns 0. Does not auto-promote

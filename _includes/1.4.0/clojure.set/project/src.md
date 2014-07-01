@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn project
   "Returns a rel of the elements of xrel with only the keys in ks"

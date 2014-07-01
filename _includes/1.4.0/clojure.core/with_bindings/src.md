@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defmacro with-bindings
   "Takes a map of Var/value pairs. Installs for the given Vars the associated

@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn keep
   "Returns a lazy sequence of the non-nil results of (f item). Note,

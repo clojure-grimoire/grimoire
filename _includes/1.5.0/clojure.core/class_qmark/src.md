@@ -1,4 +1,3 @@
-## source
 {% highlight clojure linenos %}
 (defn class?
   "Returns true if x is an instance of Class"

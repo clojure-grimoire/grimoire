@@ -1,6 +1,6 @@
 (ns doc
   (:require [clojure.java.io :refer :all]
-            [clojure.string :refer [lower-case replace-first]])
+            [clojure.string :refer [lower-case replace-first replace]])
   (:import [java.io LineNumberReader InputStreamReader PushbackReader]
            [clojure.lang RT]))
 
@@ -44,7 +44,7 @@
   (:macro (meta v)))
 
 (defn debug-dir [dir]
-  (println (str dir) (.isDirectory dir)))
+  )
 
 ;; clojure.repl/source-fn
 (defn source-fn
@@ -100,9 +100,9 @@
       ;; write docstring file
       (let [inc-doc-file (file sym-inc-dir "docs.md")]
         (->> (format (str "## Arities\n"
-                          "%s\n"
+                          "%s\n\n"
                           "## Documentation\n"
-                          "%s")
+                          "%s\n")
                      (->> arglists
                           (interpose \newline)
                           (reduce str))
@@ -121,14 +121,16 @@
 
       (let [ex-file (file sym-inc-dir "examples.md")]
         ;; ensure the examples file
-        (.createNewFile ex-file)))
+        (when-not (.exists ex-file)
+          (spit ex-file "## Examples\n\nNone yet! Please contribute some.\n"))))
 
     ;; write template files
     ;; /<clojure-version>/<namespace>/<symbol>.md
     (let [dst-file (file ns-dir (str "./" symbol ".md"))]
-      (->> (str (render-yaml [["layout" "fn"]
-                              ["title"  (str "\"" namespace "/" raw-symbol "\"")]])
-                "\n"
+      (->> (str (render-yaml [["layout"    "fn"]
+                              ["namespace" namespace]
+                              ["symbol"    raw-symbol]])
+                (format "\n# [%s](../)/%s\n\n" namespace raw-symbol)
                 (lq "include" (trim-dot (str ns-dir "/" symbol "/docs.md")))
                 (lq "include" (trim-dot (str ns-dir "/" symbol "/examples.md")))
                 (if (fn? @var)
@@ -138,12 +140,18 @@
            (format)
            (spit dst-file)))))
 
+(defn my-munge [s]
+  (-> s
+      munge
+      (replace "*" "\\*")
+      lower-case))
+
 (defn var->link
   [v]
   {:pre [(var? v)]}
   (format "[%s](%s)"
-          (str (var->ns v) "/" (var->name v))
-          (str "./" (munge (var->name v)))))
+          (str (var->ns v) "/" (replace (var->name v) "*" "\\*"))
+          (str "./" (-> v var->name my-munge))))
 
 (defn write-docs-for-ns
   [dirs ns]
@@ -170,7 +178,7 @@
             (println (str "Warning: Failed to write docs for" var)))))
 
       ;; write namespace index
-      (let [index-file (file version-ns-dir ".md")]
+      (let [index-file (file version-ns-dir (str "../" ns ".md"))]
         (println index-file) ;; remove this once I'm sure it works
         (let [f (file index-file)]
           (->> (str (render-yaml [["layout" "ns"]
@@ -181,9 +189,14 @@
                          (interpose \newline)
                          (reduce str))
 
-                    "## Vars\n"
+                    "\n\n## Vars\n"
 
-                    "## Functions\n"
+                    (->> vars
+                         (map var->link)
+                         (interpose \newline)
+                         (reduce str))
+
+                    "\n\n## Functions\n"
                     (->> fns
                          (map var->link)
                          (interpose \newline)

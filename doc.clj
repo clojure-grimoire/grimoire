@@ -85,13 +85,20 @@
   [s]
   (replace-first s "./" ""))
 
+(def prior-clojure-version
+  {"1.6.0" "1.5.1"
+   "1.5.1" "1.5.0"
+   "1.5.0" "1.4.0"})
+
 (defn write-docs-for-var
   [[ns-dir inc-dir] var]
   {:pre [(var? var)]}
-  (let [namespace                       (-> var .ns ns-name str)
-        raw-symbol                      (-> var .sym str)
-        symbol                          (lower-case (munge raw-symbol))
-        {:keys [arglists doc] :as meta} (meta var)]
+  (let [namespace                         (-> var .ns ns-name str)
+        raw-symbol                        (-> var .sym str)
+        symbol                            (lower-case (munge raw-symbol))
+        {:keys [arglists doc] :as meta}   (meta var)
+        {:keys [major minor incremental]} *clojure-version*
+        version-str                       (format "%s.%s.%s" major minor incremental)]
     (let [sym-inc-dir (file inc-dir symbol)]
       (.mkdir sym-inc-dir)
 
@@ -121,8 +128,17 @@
 
       (let [ex-file (file sym-inc-dir "examples.md")]
         ;; ensure the examples file
-        (when-not (.exists ex-file)
-          (spit ex-file "## Examples\n\nNone yet! Please contribute some.\n"))))
+        (when-not false ; (.exists ex-file)
+          (spit ex-file (str "## Examples\n"
+                             "\n"
+                             (let [v (prior-clojure-version version-str)
+                                   i (str v "/" namespace "/" symbol "/examples.md")
+                                   f (str "./_includes/" i)]
+                               (if (.exists (file f))
+                                 (str "{% markdown " i " %}")
+                                 (println "Couldn't find file " f)))
+                             "\n"
+                             "None yet! Please contribute some.\n")))))
 
     ;; write template files
     ;; /<clojure-version>/<namespace>/<symbol>.md

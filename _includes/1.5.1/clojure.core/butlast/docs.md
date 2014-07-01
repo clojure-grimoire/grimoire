@@ -1,0 +1,5 @@
+## Arities
+[coll]
+
+## Documentation
+Return a seq of all but the last item in coll, in linear time

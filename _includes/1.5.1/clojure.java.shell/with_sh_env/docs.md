@@ -1,0 +1,5 @@
+## Arities
+[env & forms]
+
+## Documentation
+Sets the environment for use with sh, see sh for details.

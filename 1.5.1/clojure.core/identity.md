@@ -1,0 +1,12 @@
+---
+layout: fn
+namespace: clojure.core
+symbol: identity
+---
+
+# [clojure.core](../)/identity
+
+{% include 1.5.1/clojure.core/identity/docs.md %}
+{% include 1.5.1/clojure.core/identity/examples.md %}
+{% include 1.5.1/clojure.core/identity/src.md %}
+

@@ -275,6 +275,9 @@
                 "## Namespaces\n"
                 "\n"
                 (->> namespaces
+                     (filter (fn [n]
+                               (not (and (= n 'clojure.edn)
+                                         (= version-str "1.4.0")))))
                      (map name)
                      (map #(format "- [%s](./%s/)\n" %1 %1))
                      (reduce str)))

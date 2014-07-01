@@ -1,5 +1,5 @@
 clean:
-	rm -rf _site
+	rm -rf _site _includes/*.*.*/ *.*.*/ *.*.*.md
 
 build: clean versions
 	jekyll build

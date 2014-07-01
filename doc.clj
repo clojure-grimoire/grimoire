@@ -15,38 +15,27 @@
 ;; munge a given fully qualified name if we have a search feature at
 ;; all.
 ;;
+;; Everything under /_include/ is where the data goes
+;;
+;; /<clojure-version>/ is to be YAML templates built from include
+;; data. There may even be a way to get jekyll to build all that.
+;;
 ;; /
+;; /_include/<clojure-version>/<namespace>/
+;; /_include/<clojure-version>/<namespace>/<symbol>/source.md
+;; /_include/<clojure-version>/<namespace>/<symbol>/docs.md
+;; /_include/<clojure-version>/<namespace>/<symbol>/examples.md
+;; /_include/<clojure-version>/<namespace>/<symbol>/index.md
 ;; /<clojure-version>/
 ;; /<clojure-version>/<namespace>/
 ;; /<clojure-version>/<namespace>/<symbol>/source.md
-;; /<clojure-version>/<namespace>/<symbol>/docs.md      ;; <- aritiy strings goe here?
-;; /<clojure-version>/<namespace>/<symbol>/examples.md  ;; <- user maintained, we just need to touch it
-;; /<clojure-version>/<namespace>/<symbol>/index.md     ;; <-
+;; /<clojure-version>/<namespace>/<symbol>/docs.md
+;; /<clojure-version>/<namespace>/<symbol>/examples.md
+;; /<clojure-version>/<namespace>/<symbol>/index.md
 
-(defn var-name
-  [v]
-  (symbol
-   (-> v .ns ns-name str)
-   (-> v .sym str)))
-
-(defn print-vars
-  [vars]
-  (doseq [var vars]
-    (println "***" (str (var-name var)))
-    (println "")
-    (println "**** Arities")
-    (println "")
-    (doseq [arity (:arglists (meta var))]
-      (println arity))
-    (println "")
-
-    (println "**** Docs")
-    (println "")
-    (println (:doc (meta var)))
-    (println "")))
-
-(defn macro? [var]
-  (:macro (meta var)))
+(defn var->name [v] (-> v .sym str))
+(defn var->ns   [v] (-> v .ns ns-name str))
+(defn macro?    [v] (:macro (meta v)))
 
 ;; clojure.repl/source-fn
 (defn source-fn
@@ -56,80 +45,77 @@
   it can't find the source.  For most REPL usage, 'source' is more
   convenient.
 
-  Example: (source-fn 'filter)"
-  [x]
-  (when-let [v (resolve x)]
-    (when-let [filepath (:file (meta v))]
-      (when-let [strm (.getResourceAsStream (RT/baseLoader) filepath)]
-        (with-open [rdr (LineNumberReader. (InputStreamReader. strm))]
-          (dotimes [_ (dec (:line (meta v)))] (.readLine rdr))
-          (let [text (StringBuilder.)
-                pbr (proxy [PushbackReader] [rdr]
-                      (read [] (let [i (proxy-super read)]
-                                 (.append text (char i))
-                                 i)))]
-            (read (PushbackReader. pbr))
-            (str text)))))))
+  Example: (source-fn #'clojure.core/filter)"
+  [v]
+  {:pre  [(var? v)]
+   :post [(string? %)]}
+  (when-let [filepath (:file (meta v))]
+    (when-let [strm (.getResourceAsStream (RT/baseLoader) filepath)]
+      (with-open [rdr (LineNumberReader. (InputStreamReader. strm))]
+        (dotimes [_ (dec (:line (meta v)))] (.readLine rdr))
+        (let [text (StringBuilder.)
+              pbr (proxy [PushbackReader] [rdr]
+                    (read [] (let [i (proxy-super read)]
+                               (.append text (char i))
+                               i)))]
+          (read (PushbackReader. pbr))
+          (str text))))))
 
 (defn write-docs-for-var
-  "dir-root is gonna be /<version>/"
-  [dir-root var]
-  (let [namespace (-> var .ns ns-name str)
-        symbol    (-> var .sym str munge)
-        target (file dir-root "/" symbol ".html") ;; FIXME: do I need the .html? are we writing .yaml or something?
+  [[ns-dir inc-dir] var]
+  (let [namespace                       (-> var .ns ns-name str)
+        symbol                          (-> var .sym str munge)
         {:keys [arglists doc] :as meta} (meta var)
-        source (source-fn symbol)]
+        source                          (source-fn symbol)]
 
-    )
-  ;; write docstring file
-  (with-open [doc-file (file dir-root "/" symbol "/docs.md")]
-    (spit doc-file
-          (format "# Arities\n%s\n# Documentation\n%s"
-                  (->> arities (interpose \newline) str)
-                  doc)))
+    ;; write docstring file
+    (with-open [inc-doc-file (file inc-dir (str "/" symbol "/docs.md"))]
+      (->> (format (str "## Arities\n"
+                        "%s\n"
+                        "## Documentation\n"
+                        "%s")
+                   (->> arglists (interpose \newline) str)
+                   doc)
+           (spit inc-doc-file)))
 
-  ;; write metadata file?
-  (with-open [meta-file (file dir-root "/" symbol "/docs.md")]
-    ;; le ghetto JSON emitter
-    (->> meta
-         (map (comp str                            ;; MAP ALL THE THINGS
-                    (partial map pr-str)
-                    (partial apply interpose \:)))
-         (interpose \,)
-         (reduce str)
-         (format "{%s}")
-         (spit meta-file)))
+    ;; write source file
+    (with-open [inc-src-file (file inc-dir (str "/" symbol "/src.md"))]
+      (->> (format (str "## source\n"
+                        "{% highlight clojure linenos %}\n"
+                        "%s\n"
+                        "{% endhighlight %}\n")
+                   (source-fn var)
+           (spit inc-src-file))))
 
-  ;; write source file
+    ;; write template files
 
-
-  )
+    ;; FIXME: write the following files, note that they are all {%include %}s
+    ;; /<clojure-version>/<namespace>/<symbol>/source.md
+    ;; /<clojure-version>/<namespace>/<symbol>/docs.md
+    ;; /<clojure-version>/<namespace>/<symbol>/examples.md
+    ;; /<clojure-version>/<namespace>/<symbol>/index.md
+    ))
 
 (defn write-docs-for-ns
-  [version-dir ns]
-  (let [core    (map second (ns-publics ns))
-        macros  (filter macro? core)
-        fns     (filter (comp not macro?) core)
-        ns-root (file version-dir "/" (name ns))]
+  [dirs ns]
+  (let [[version-dir include-dir] dirs
+        ns-vars                   (map second (ns-publics ns))
+        macros                    (filter macro? ns-vars)
+        fns                       (filter (comp not macro?) ns-vars)]
+    (with-open [version-ns-dir  (file version-dir "/" (name ns))
+                include-ns-dir  (file include-dir "/" (name ns))]
+      (.mkdir version-ns-dir)
+      (.mkdir include-ns-dir)
 
-    (.mkdir ns-root) ;;
+      ;; write per symbol docs
+      (doseq [var ns-vars]
+        (write-docs-for-var [version-ns-dir include-ns-dir] var))
 
-    ;; write per symbol docs
-    (doseq [sym core]
-      (write-docs-for-var ns-root sym))
-
-    ;; write namespace index
-
-    (let [index-file (file ns-root "/index.html")]
-      (spit index-file
-            (format "<h1>%s</h1><h2>Functions</h2><" (name ns)))
-      (doseq [var core]
-        (spit index-file
-              (format "<a href=\"%s\">%s</a>"))
+      ;; write namespace index
+      (let [index-file (file version-ns-dir ".md")]
         )
-      )
-    )
-  )
+
+      )))
 
 (def namespaces
   [;; Clojure "core"
@@ -163,12 +149,16 @@
 
 (defn -main
   []
-  (let [{:keys [major minor incremental]} *clojure-version*]
-    (with-open [version-dir (file (format "%s.%s.%s" major minor incremental))]
-      (.mkdir version-dir) ;; gonna need that
+  (let [{:keys [major minor incremental]} *clojure-version*
+        version-str                       (format "%s.%s.%s" major minor incremental)]
+    (with-open [version-dir (file (str "./" version-str))
+                include-dir (file (str "./_include/" version-str))]
+      (.mkdir version-dir)
+      (.mkdir include-dir)
 
       (doseq [ns namespaces]
         (try (require ns)
-             (write-docs-for-ns version-dir ns)
+             (write-docs-for-ns [version-dir include-dir] ns)
              (catch Exception e
+               (println e)
                nil))))))

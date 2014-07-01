@@ -142,10 +142,9 @@
           (->> (str (let [v (prior-clojure-version version-str)
                           i (str v "/" namespace "/" symbol "/examples.md")
                           f (str "./_includes/" i)]
-                      (when (.exists (file f))
-                        (str "{% include " i " %}\n")))
-                    "\n"
-                    "No examples for version " version-str "\n")
+                      (if (.exists (file f))
+                        (str "{% include " i " %}\n")
+                        (str "No examples for version " version-str "\n"))))
                (spit ex-file)))))
                 
     ;; write template files

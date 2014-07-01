@@ -249,6 +249,16 @@
 
       (doseq [ns namespaces]
         (require ns)
-        (write-docs-for-ns [version-dir include-dir] ns)))))
+        (write-docs-for-ns [version-dir include-dir] ns)))
+
+    (let [version-file (file (str "./" version-str ".md"))]
+      (->> (str (render-yaml [["layout"  "release"]
+                              ["version" version-str]])
+                "\n## Release information\n\n## Namespaces\n\n"
+                (->> namespaces
+                     (map name)
+                     (map #(format "- [%s](./%s/)\n" %1 %1))
+                     (reduce str)))
+           (spit version-file)))))
 
 (-main)

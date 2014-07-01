@@ -1,0 +1,12 @@
+---
+layout: fn
+namespace: clojure.core
+symbol: neg?
+---
+
+# [clojure.core](../)/neg?
+
+{% include 1.6.0/clojure.core/neg_qmark_/docs.md %}
+{% include 1.6.0/clojure.core/neg_qmark_/examples.md %}
+{% include 1.6.0/clojure.core/neg_qmark_/src.md %}
+

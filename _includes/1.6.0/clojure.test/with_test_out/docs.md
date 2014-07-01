@@ -1,0 +1,5 @@
+## Arities
+[& body]
+
+## Documentation
+Runs body with *out* bound to the value of *test-out*.

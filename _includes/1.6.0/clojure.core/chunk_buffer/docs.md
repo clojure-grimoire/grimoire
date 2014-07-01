@@ -1,0 +1,5 @@
+## Arities
+[capacity]
+
+## Documentation
+null

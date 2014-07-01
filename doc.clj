@@ -28,10 +28,7 @@
 ;; /_include/<clojure-version>/<namespace>/<symbol>/index.md
 ;; /<clojure-version>/
 ;; /<clojure-version>/<namespace>/
-;; /<clojure-version>/<namespace>/<symbol>/source.md
-;; /<clojure-version>/<namespace>/<symbol>/docs.md
-;; /<clojure-version>/<namespace>/<symbol>/examples.md
-;; /<clojure-version>/<namespace>/<symbol>/index.md
+;; /<clojure-version>/<namespace>/<symbol>/
 
 (defn var->name [v] (-> v .sym str))
 (defn var->ns   [v] (-> v .ns ns-name str))
@@ -61,6 +58,17 @@
           (read (PushbackReader. pbr))
           (str text))))))
 
+(defn lq [& more]
+  (str "{% " (reduce str (interpose " " more)) " %}"))
+
+(defn render-yaml
+  [mapping]
+  (str "---\n"
+       (->> mapping
+            (map (fn [k v] (str k ": " v)))
+            (reduce str))
+       "---\n"))
+
 (defn write-docs-for-var
   [[ns-dir inc-dir] var]
   (let [namespace                       (-> var .ns ns-name str)
@@ -81,19 +89,14 @@
     ;; write source file
     (with-open [inc-src-file (file inc-dir (str "/" symbol "/src.md"))]
       (->> (format (str "## source\n"
-                        "{% highlight clojure linenos %}\n"
+                        (lq "highlight" "clojure" "linenos")
                         "%s\n"
-                        "{% endhighlight %}\n")
+                        (lq "endhighlight"))
                    (source-fn var)
            (spit inc-src-file))))
 
     ;; write template files
-
-    ;; FIXME: write the following files, note that they are all {%include %}s
-    ;; /<clojure-version>/<namespace>/<symbol>/source.md
-    ;; /<clojure-version>/<namespace>/<symbol>/docs.md
-    ;; /<clojure-version>/<namespace>/<symbol>/examples.md
-    ;; /<clojure-version>/<namespace>/<symbol>/index.md
+    ;; /<clojure-version>/<namespace>/<symbol>.md
     ))
 
 (defn write-docs-for-ns

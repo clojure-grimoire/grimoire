@@ -143,12 +143,12 @@
                           f (str "./_includes/" i)]
                       (if (.exists (file f))
                         (str "{% include " i " %}\n")
-                        (str "No examples for version " version-str "or newer\n"
+                        (str "No examples for version " version-str " or newer\n"
                              "\n"
                              "[Please add examples!](https://github.com/arrdem/grimoire/edit/master/_includes/"
                                                      version-str "/" namespace "/" symbol "/examples.md)\n"))))
                (spit ex-file)))))
-                
+
     ;; write template files
     ;; /<clojure-version>/<namespace>/<symbol>.md
     (let [dst-file (file ns-dir (str "./" symbol ".md"))]

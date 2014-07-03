@@ -174,10 +174,11 @@
 
 (defn var->link
   [v]
-  {:pre [(var? v)]}
+  {:pre  [(var? v)]
+   :post [(string? %)]}
   (format "[%s](%s)"
-          (str (var->ns v) "/" (replace (var->name v) "*" "\\*"))
-          (str "./" (-> v var->name my-munge))))
+          (replace (var->name v) "*" "\\*")
+          (str "./" (-> v var->name my-munge) "/")))
 
 (defn write-docs-for-ns
   [dirs ns]

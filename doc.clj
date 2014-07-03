@@ -226,10 +226,10 @@
                     "## Macros\n\n"
                     (index-vars macros)
 
-                    "\n\n## Vars\n"
+                    "\n\n## Vars\n\n"
                     (index-vars vars)
 
-                    "\n\n## Functions\n"
+                    "\n\n## Functions\n\n"
                     (index-vars fns))
                (spit f)))))))
 

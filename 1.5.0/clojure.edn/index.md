@@ -5,9 +5,12 @@ title: clojure.edn
 ## Macros
 
 
+
 ## Vars
 
 
 ## Functions
-[read-string](./read_string)
-[read](./read)
+### R
+
+[read](./read/)
+[read-string](./read_string/)

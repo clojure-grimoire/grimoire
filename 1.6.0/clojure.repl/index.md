@@ -3,21 +3,55 @@ layout: ns
 title: clojure.repl
 ---
 ## Macros
-[doc](./doc)
-[dir](./dir)
-[source](./source)
+
+### D
+
+[dir](./dir/)
+[doc](./doc/)
+
+
+### S
+
+[source](./source/)
+
 
 ## Vars
 
 
 ## Functions
-[source-fn](./source_fn)
-[stack-element-str](./stack_element_str)
-[find-doc](./find_doc)
-[pst](./pst)
-[dir-fn](./dir_fn)
-[set-break-handler!](./set_break_handler_bang)
-[root-cause](./root_cause)
-[demunge](./demunge)
-[thread-stopper](./thread_stopper)
-[apropos](./apropos)
+### S
+
+[set-break-handler!](./set_break_handler_bang/)
+[source-fn](./source_fn/)
+[stack-element-str](./stack_element_str/)
+
+
+### F
+
+[find-doc](./find_doc/)
+
+
+### P
+
+[pst](./pst/)
+
+
+### D
+
+[demunge](./demunge/)
+[dir-fn](./dir_fn/)
+
+
+### R
+
+[root-cause](./root_cause/)
+
+
+### T
+
+[thread-stopper](./thread_stopper/)
+
+
+### A
+
+[apropos](./apropos/)

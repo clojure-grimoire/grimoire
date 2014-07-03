@@ -3,10 +3,16 @@ layout: ns
 title: clojure.template
 ---
 ## Macros
-[do-template](./do_template)
+
+### D
+
+[do-template](./do_template/)
+
 
 ## Vars
 
 
 ## Functions
-[apply-template](./apply_template)
+### A
+
+[apply-template](./apply_template/)

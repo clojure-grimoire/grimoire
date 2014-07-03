@@ -3,12 +3,21 @@ layout: ns
 title: clojure.java.shell
 ---
 ## Macros
-[with-sh-env](./with_sh_env)
-[with-sh-dir](./with_sh_dir)
+
+### W
+
+[with-sh-dir](./with_sh_dir/)
+[with-sh-env](./with_sh_env/)
+
 
 ## Vars
-[\*sh-env\*](./star_sh_env_star)
-[\*sh-dir\*](./star_sh_dir_star)
+### *
+
+[\*sh-dir\*](./star_sh_dir_star/)
+[\*sh-env\*](./star_sh_env_star/)
+
 
 ## Functions
-[sh](./sh)
+### S
+
+[sh](./sh/)

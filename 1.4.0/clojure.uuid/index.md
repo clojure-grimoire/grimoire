@@ -5,6 +5,7 @@ title: clojure.uuid
 ## Macros
 
 
+
 ## Vars
 
 

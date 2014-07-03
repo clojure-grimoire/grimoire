@@ -1,6 +1,6 @@
 (ns doc
   (:require [clojure.java.io :refer :all]
-            [clojure.string :refer [lower-case replace-first replace]])
+            [clojure.string :refer [lower-case upper-case replace-first replace]])
   (:import [java.io LineNumberReader InputStreamReader PushbackReader]
            [clojure.lang RT]))
 
@@ -176,9 +176,23 @@
   [v]
   {:pre  [(var? v)]
    :post [(string? %)]}
-  (format "[%s](%s)"
+  (format "[%s](%s)\n"
           (replace (var->name v) "*" "\\*")
           (str "./" (-> v var->name my-munge) "/")))
+
+(defn index-vars
+  [var-seq]
+  {:pre  [(every? var? var-seq)]
+   :post [(string? %)]}
+  (let [f      (comp first var->name)
+        blocks (group-by f var-seq)]
+    (->> (for [[heading vars] blocks]
+           (str (format "### %s\n\n" (-> heading upper-case str))
+                (->> (for [var (sort-by var->name vars)]
+                       (var->link var))
+                     (reduce str))))
+         (interpose "\n\n")
+         (reduce str))))
 
 (defn write-docs-for-ns
   [dirs ns]
@@ -209,24 +223,14 @@
         (let [f (file index-file)]
           (->> (str (render-yaml [["layout" "ns"]
                                   ["title"  (name ns)]])
-                    "## Macros\n"
-                    (->> macros
-                         (map var->link)
-                         (interpose \newline)
-                         (reduce str))
+                    "## Macros\n\n"
+                    (index-vars macros)
 
                     "\n\n## Vars\n"
-
-                    (->> vars
-                         (map var->link)
-                         (interpose \newline)
-                         (reduce str))
+                    (index-vars vars)
 
                     "\n\n## Functions\n"
-                    (->> fns
-                         (map var->link)
-                         (interpose \newline)
-                         (reduce str)))
+                    (index-vars fns))
                (spit f)))))))
 
 (def namespaces

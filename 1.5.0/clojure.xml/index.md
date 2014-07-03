@@ -5,19 +5,49 @@ title: clojure.xml
 ## Macros
 
 
+
 ## Vars
-[content-handler](./content_handler)
-[\*stack\*](./star_stack_star)
-[attrs](./attrs)
-[element](./element)
-[tag](./tag)
-[\*current\*](./star_current_star)
-[content](./content)
-[\*state\*](./star_state_star)
-[\*sb\*](./star_sb_star)
+### C
+
+[content](./content/)
+[content-handler](./content_handler/)
+
+
+### *
+
+[\*current\*](./star_current_star/)
+[\*sb\*](./star_sb_star/)
+[\*stack\*](./star_stack_star/)
+[\*state\*](./star_state_star/)
+
+
+### A
+
+[attrs](./attrs/)
+
+
+### E
+
+[element](./element/)
+
+
+### T
+
+[tag](./tag/)
+
 
 ## Functions
-[startparse-sax](./startparse_sax)
-[parse](./parse)
-[emit-element](./emit_element)
-[emit](./emit)
+### S
+
+[startparse-sax](./startparse_sax/)
+
+
+### P
+
+[parse](./parse/)
+
+
+### E
+
+[emit](./emit/)
+[emit-element](./emit_element/)

@@ -5,11 +5,25 @@ title: clojure.data
 ## Macros
 
 
+
 ## Vars
-[Diff](./diff)
-[EqualityPartition](./equalitypartition)
+### D
+
+[Diff](./diff/)
+
+
+### E
+
+[EqualityPartition](./equalitypartition/)
+
 
 ## Functions
-[diff-similar](./diff_similar)
-[equality-partition](./equality_partition)
-[diff](./diff)
+### D
+
+[diff](./diff/)
+[diff-similar](./diff_similar/)
+
+
+### E
+
+[equality-partition](./equality_partition/)

@@ -5,35 +5,98 @@ title: clojure.zip
 ## Macros
 
 
+
 ## Vars
 
 
 ## Functions
-[lefts](./lefts)
-[down](./down)
-[insert-left](./insert_left)
-[up](./up)
-[next](./next)
-[path](./path)
-[children](./children)
-[vector-zip](./vector_zip)
-[append-child](./append_child)
-[zipper](./zipper)
-[branch?](./branch_qmark)
-[end?](./end_qmark)
-[leftmost](./leftmost)
-[edit](./edit)
-[replace](./replace)
-[insert-right](./insert_right)
-[root](./root)
-[insert-child](./insert_child)
-[prev](./prev)
-[seq-zip](./seq_zip)
-[xml-zip](./xml_zip)
-[make-node](./make_node)
-[rights](./rights)
-[node](./node)
-[right](./right)
-[left](./left)
-[remove](./remove)
-[rightmost](./rightmost)
+### A
+
+[append-child](./append_child/)
+
+
+### B
+
+[branch?](./branch_qmark/)
+
+
+### C
+
+[children](./children/)
+
+
+### D
+
+[down](./down/)
+
+
+### E
+
+[edit](./edit/)
+[end?](./end_qmark/)
+
+
+### I
+
+[insert-child](./insert_child/)
+[insert-left](./insert_left/)
+[insert-right](./insert_right/)
+
+
+### L
+
+[left](./left/)
+[leftmost](./leftmost/)
+[lefts](./lefts/)
+
+
+### M
+
+[make-node](./make_node/)
+
+
+### N
+
+[next](./next/)
+[node](./node/)
+
+
+### P
+
+[path](./path/)
+[prev](./prev/)
+
+
+### R
+
+[remove](./remove/)
+[replace](./replace/)
+[right](./right/)
+[rightmost](./rightmost/)
+[rights](./rights/)
+[root](./root/)
+
+
+### S
+
+[seq-zip](./seq_zip/)
+
+
+### U
+
+[up](./up/)
+
+
+### V
+
+[vector-zip](./vector_zip/)
+
+
+### X
+
+[xml-zip](./xml_zip/)
+
+
+### Z
+
+[zipper](./zipper/)

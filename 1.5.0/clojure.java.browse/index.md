@@ -5,8 +5,14 @@ title: clojure.java.browse
 ## Macros
 
 
+
 ## Vars
-[\*open-url-script\*](./star_open_url_script_star)
+### *
+
+[\*open-url-script\*](./star_open_url_script_star/)
+
 
 ## Functions
-[browse-url](./browse_url)
+### B
+
+[browse-url](./browse_url/)

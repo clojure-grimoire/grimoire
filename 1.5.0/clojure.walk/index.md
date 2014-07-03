@@ -5,17 +5,36 @@ title: clojure.walk
 ## Macros
 
 
+
 ## Vars
 
 
 ## Functions
-[walk](./walk)
-[prewalk-demo](./prewalk_demo)
-[postwalk-demo](./postwalk_demo)
-[keywordize-keys](./keywordize_keys)
-[stringify-keys](./stringify_keys)
-[prewalk](./prewalk)
-[postwalk](./postwalk)
-[postwalk-replace](./postwalk_replace)
-[macroexpand-all](./macroexpand_all)
-[prewalk-replace](./prewalk_replace)
+### W
+
+[walk](./walk/)
+
+
+### P
+
+[postwalk](./postwalk/)
+[postwalk-demo](./postwalk_demo/)
+[postwalk-replace](./postwalk_replace/)
+[prewalk](./prewalk/)
+[prewalk-demo](./prewalk_demo/)
+[prewalk-replace](./prewalk_replace/)
+
+
+### K
+
+[keywordize-keys](./keywordize_keys/)
+
+
+### S
+
+[stringify-keys](./stringify_keys/)
+
+
+### M
+
+[macroexpand-all](./macroexpand_all/)

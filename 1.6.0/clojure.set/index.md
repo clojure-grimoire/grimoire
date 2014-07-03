@@ -5,19 +5,50 @@ title: clojure.set
 ## Macros
 
 
+
 ## Vars
 
 
 ## Functions
-[union](./union)
-[map-invert](./map_invert)
-[join](./join)
-[select](./select)
-[intersection](./intersection)
-[superset?](./superset_qmark)
-[index](./index)
-[subset?](./subset_qmark)
-[rename](./rename)
-[rename-keys](./rename_keys)
-[project](./project)
-[difference](./difference)
+### U
+
+[union](./union/)
+
+
+### M
+
+[map-invert](./map_invert/)
+
+
+### J
+
+[join](./join/)
+
+
+### S
+
+[select](./select/)
+[subset?](./subset_qmark/)
+[superset?](./superset_qmark/)
+
+
+### I
+
+[index](./index/)
+[intersection](./intersection/)
+
+
+### R
+
+[rename](./rename/)
+[rename-keys](./rename_keys/)
+
+
+### P
+
+[project](./project/)
+
+
+### D
+
+[difference](./difference/)

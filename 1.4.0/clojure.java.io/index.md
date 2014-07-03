@@ -5,25 +5,71 @@ title: clojure.java.io
 ## Macros
 
 
+
 ## Vars
-[default-streams-impl](./default_streams_impl)
-[Coercions](./coercions)
-[IOFactory](./iofactory)
+### D
+
+[default-streams-impl](./default_streams_impl/)
+
+
+### C
+
+[Coercions](./coercions/)
+
+
+### I
+
+[IOFactory](./iofactory/)
+
 
 ## Functions
-[output-stream](./output_stream)
-[copy](./copy)
-[file](./file)
-[writer](./writer)
-[as-relative-path](./as_relative_path)
-[make-output-stream](./make_output_stream)
-[make-parents](./make_parents)
-[reader](./reader)
-[delete-file](./delete_file)
-[as-file](./as_file)
-[resource](./resource)
-[input-stream](./input_stream)
-[make-input-stream](./make_input_stream)
-[make-writer](./make_writer)
-[as-url](./as_url)
-[make-reader](./make_reader)
+### A
+
+[as-file](./as_file/)
+[as-relative-path](./as_relative_path/)
+[as-url](./as_url/)
+
+
+### C
+
+[copy](./copy/)
+
+
+### D
+
+[delete-file](./delete_file/)
+
+
+### F
+
+[file](./file/)
+
+
+### I
+
+[input-stream](./input_stream/)
+
+
+### M
+
+[make-input-stream](./make_input_stream/)
+[make-output-stream](./make_output_stream/)
+[make-parents](./make_parents/)
+[make-reader](./make_reader/)
+[make-writer](./make_writer/)
+
+
+### O
+
+[output-stream](./output_stream/)
+
+
+### R
+
+[reader](./reader/)
+[resource](./resource/)
+
+
+### W
+
+[writer](./writer/)

@@ -3,25 +3,62 @@ layout: ns
 title: clojure.test.junit
 ---
 ## Macros
-[with-junit-output](./with_junit_output)
+
+### W
+
+[with-junit-output](./with_junit_output/)
+
 
 ## Vars
-[\*depth\*](./star_depth_star)
-[junit-report](./junit_report)
-[\*var-context\*](./star_var_context_star)
+### *
+
+[\*depth\*](./star_depth_star/)
+[\*var-context\*](./star_var_context_star/)
+
+
+### J
+
+[junit-report](./junit_report/)
+
 
 ## Functions
-[start-suite](./start_suite)
-[failure-el](./failure_el)
-[indent](./indent)
-[finish-case](./finish_case)
-[message-el](./message_el)
-[element-content](./element_content)
-[finish-element](./finish_element)
-[start-element](./start_element)
-[error-el](./error_el)
-[suite-attrs](./suite_attrs)
-[test-name](./test_name)
-[package-class](./package_class)
-[finish-suite](./finish_suite)
-[start-case](./start_case)
+### S
+
+[start-case](./start_case/)
+[start-element](./start_element/)
+[start-suite](./start_suite/)
+[suite-attrs](./suite_attrs/)
+
+
+### F
+
+[failure-el](./failure_el/)
+[finish-case](./finish_case/)
+[finish-element](./finish_element/)
+[finish-suite](./finish_suite/)
+
+
+### I
+
+[indent](./indent/)
+
+
+### M
+
+[message-el](./message_el/)
+
+
+### E
+
+[element-content](./element_content/)
+[error-el](./error_el/)
+
+
+### T
+
+[test-name](./test_name/)
+
+
+### P
+
+[package-class](./package_class/)

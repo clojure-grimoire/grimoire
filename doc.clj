@@ -43,9 +43,6 @@
   {:pre [(var? v)]}
   (:macro (meta v)))
 
-(defn debug-dir [dir]
-  )
-
 ;; clojure.repl/source-fn
 (defn source-fn
   "Returns a string of the source code for the given symbol, if it can
@@ -111,8 +108,6 @@
         version-str                       (format "%s.%s.%s" major minor incremental)]
     (let [sym-inc-dir (file inc-dir symbol)]
       (.mkdir sym-inc-dir)
-
-      (debug-dir sym-inc-dir)
 
       ;; write docstring file
       (let [inc-doc-file (file sym-inc-dir "docs.md")]
@@ -206,10 +201,7 @@
     (let [version-ns-dir  (file version-dir (name ns))
           include-ns-dir  (file include-dir (name ns))]
       (.mkdir version-ns-dir)
-      (debug-dir version-ns-dir)
-
       (.mkdir include-ns-dir)
-      (debug-dir include-ns-dir)
 
       ;; write per symbol docs
       (doseq [var ns-vars]
@@ -271,9 +263,7 @@
     (let [version-dir (file (str "./" version-str))
           include-dir (file (str "./_includes/" version-str))]
       (.mkdir version-dir)
-      (debug-dir version-dir)
       (.mkdir include-dir)
-      (debug-dir include-dir)
 
       (println "Made root folders...")
 

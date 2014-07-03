@@ -216,14 +216,21 @@
         (let [f (file index-file)]
           (->> (str (render-yaml [["layout" "ns"]
                                   ["title"  (name ns)]])
-                    "## Macros\n\n"
-                    (index-vars macros)
+                    (when macros
+                      (str "## Macros\n\n"
+                           (index-vars macros)))
 
-                    "\n\n## Vars\n\n"
-                    (index-vars vars)
+                    "\n\n"
 
-                    "\n\n## Functions\n\n"
-                    (index-vars fns))
+                    (when vars
+                      (str "## Vars\n\n"
+                           (index-vars vars)))
+
+                    "\n\n"
+                    
+                    (when fns
+                      (str "## Functions\n\n"
+                           (index-vars fns))))
                (spit f)))))))
 
 (def namespaces

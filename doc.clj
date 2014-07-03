@@ -151,7 +151,10 @@
 
     ;; write template files
     ;; /<clojure-version>/<namespace>/<symbol>.md
-    (let [dst-file (file ns-dir (str "./" symbol ".md"))]
+    (let [dst-dir (file (str ns-dir "/" symbol))
+          dst-file (file dst-dir "index.md")]
+      (.mkdir dst-dir)
+
       (->> (str (render-yaml [["layout"    "fn"]
                               ["namespace" namespace]
                               ["symbol"    (pr-str md-symbol)]])
@@ -201,7 +204,7 @@
             (println "Warning: Failed to write docs for" var))))
 
       ;; write namespace index
-      (let [index-file (file version-ns-dir (str "../" ns ".md"))]
+      (let [index-file (file version-ns-dir (str "index.md"))]
         (let [f (file index-file)]
           (->> (str (render-yaml [["layout" "ns"]
                                   ["title"  (name ns)]])
@@ -273,23 +276,23 @@
         (when-not (and (= n 'clojure.edn)
                        (= version-str "1.4.0"))
           (require n)
-          (write-docs-for-ns [version-dir include-dir] n))))
+          (write-docs-for-ns [version-dir include-dir] n)))
 
-    (let [version-file (file (str "./" version-str ".md"))]
-      (->> (str (render-yaml [["layout"  "release"]
-                              ["version" version-str]])
-                "\n"
-                "## Release information\n"
-                "\n"
-                "## Namespaces\n"
-                "\n"
-                (->> namespaces
-                     (filter (fn [n]
-                               (not (and (= n 'clojure.edn)
-                                         (= version-str "1.4.0")))))
-                     (map name)
-                     (map #(format "- [%s](./%s/)\n" %1 %1))
-                     (reduce str)))
-           (spit version-file)))))
+      (let [version-file (file version-dir "index.md")]
+        (->> (str (render-yaml [["layout"  "release"]
+                                ["version" version-str]])
+                  "\n"
+                  "## Release information\n"
+                  "\n"
+                  "## Namespaces\n"
+                  "\n"
+                  (->> namespaces
+                       (filter (fn [n]
+                                 (not (and (= n 'clojure.edn)
+                                           (= version-str "1.4.0")))))
+                       (map name)
+                       (map #(format "- [%s](./%s/)\n" %1 %1))
+                       (reduce str)))
+             (spit version-file))))))
 
 (-main)

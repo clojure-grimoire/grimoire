@@ -180,7 +180,8 @@
   {:pre  [(every? var? var-seq)]
    :post [(string? %)]}
   (let [f      (comp first var->name)
-        blocks (group-by f var-seq)]
+        blocks (group-by f var-seq)
+        blocks (sort-by first blocks)]
     (->> (for [[heading vars] blocks]
            (str (format "### %s\n\n" (-> heading upper-case str))
                 (->> (for [var (sort-by var->name vars)]

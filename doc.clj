@@ -114,7 +114,9 @@
         (->> (format (str "## Arities\n"
                           "%s\n\n"
                           "## Documentation\n"
-                          "%s\n")
+                          "{%%raw%%}\n"
+                          "%s\n"
+                          "{%%endraw%%}\n")
                      (->> arglists
                           (interpose \newline)
                           (reduce str))

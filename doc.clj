@@ -150,8 +150,8 @@
                     (when (= version-str "1.6.0")
                       (str "No examples for version " version-str "\n"
                            "\n"
-                           "[Please add examples!](https://github.com/arrdem/grimoire/edit/master/_includes/"
-                                                   version-str "/" namespace "/" symbol "/examples.md)\n")))
+                           "[Please add examples!](https://github.com/arrdem/grimoire/edit/master/"
+                                                   ex-file ")\n")))
                (spit ex-file)))))
 
     ;; write template files
@@ -222,10 +222,22 @@
             (println "Warning: Failed to write docs for" var))))
 
       ;; write namespace index
-      (let [index-file (file version-ns-dir (str "index.md"))]
+      (let [index-file (file version-ns-dir "index.md")
+            index-inc-file (file include-ns-dir "index.md")]
+
+        (when-not (.exists index-inc-file)
+          (->> (str "No namespace specific documentation!\n"
+                    "\n"
+                    "[Please add commentary!](https://github.com/arrdem/grimoire/edit/master/"
+                                              index-inc-file ")\n\n")
+               (spit index-inc-file)))
+
         (let [f (file index-file)]
           (->> (str (render-yaml [["layout" "ns"]
                                   ["title"  (name ns)]])
+
+                    (str "{% markdown " version-ns-dir  "/index.md %}\n\n")
+
                     (when macros
                       (str "## Macros\n\n"
                            (index-vars macros)))
@@ -278,8 +290,8 @@
   (let [{:keys [major minor incremental]} *clojure-version*
         version-str                       (format "%s.%s.%s" major minor incremental)]
     (println version-str)
-    (let [version-dir (file (str "./" version-str))
-          include-dir (file (str "./_includes/" version-str))]
+    (let [version-dir (file version-str)
+          include-dir (file (str "_includes/" version-str))]
       (.mkdir version-dir)
       (.mkdir include-dir)
 

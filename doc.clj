@@ -89,12 +89,18 @@
 
 (defn my-munge [s]
   (-> s
-      munge
-      (replace "*" "\\*")
-      (replace "." "_DOT_")
-      (replace #"^_*" "")
-      (replace #"_*$" "")
-      lower-case))
+      (replace "*" "_STAR")
+      (replace "?" "_QMARK")
+      (replace "." "_DOT")
+      (replace "<" "_LT")
+      (replace ">" "_GT")
+      (replace "-" "_DASH")
+      (replace "/" "_SLASH")
+      (replace "!" "_BANG")
+      (replace "=" "_EQ")
+      (replace "+" "_PLUS")
+      (replace "'" "_SQUOTE")
+      (replace #"^_*" "")))
 
 (defn write-docs-for-var
   [[ns-dir inc-dir] var]
@@ -138,12 +144,13 @@
           (->> (str (let [v (prior-clojure-version version-str)
                           i (str v "/" namespace "/" symbol "/examples.md")
                           f (str "./_includes/" i)]
-                      (if (.exists (file f))
-                        (str "{% include " i " %}\n")
-                        (str "No examples for version " version-str " or newer\n"
-                             "\n"
-                             "[Please add examples!](https://github.com/arrdem/grimoire/edit/master/_includes/"
-                                                     version-str "/" namespace "/" symbol "/examples.md)\n"))))
+                      (when (.exists (file f))
+                        (str "{% include " i " %}\n")))
+                    (when (= version-str "1.6.0")
+                      (str "No examples for version " version-str "\n"
+                           "\n"
+                           "[Please add examples!](https://github.com/arrdem/grimoire/edit/master/_includes/"
+                                                   version-str "/" namespace "/" symbol "/examples.md)\n")))
                (spit ex-file)))))
 
     ;; write template files

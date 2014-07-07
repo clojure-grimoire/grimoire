@@ -89,18 +89,19 @@
 
 (defn my-munge [s]
   (-> s
-      (replace "*" "_STAR")
-      (replace "?" "_QMARK")
-      (replace "." "_DOT")
-      (replace "<" "_LT")
-      (replace ">" "_GT")
-      (replace "-" "_DASH")
-      (replace "/" "_SLASH")
-      (replace "!" "_BANG")
-      (replace "=" "_EQ")
-      (replace "+" "_PLUS")
-      (replace "'" "_SQUOTE")
-      (replace #"^_*" "")))
+      (replace "*" "_STAR_")
+      (replace "?" "_QMARK_")
+      (replace "." "_DOT_")
+      (replace "<" "_LT_")
+      (replace ">" "_GT_")
+      (replace "-" "_DASH_")
+      (replace "/" "_SLASH_")
+      (replace "!" "_BANG_")
+      (replace "=" "_EQ_")
+      (replace "+" "_PLUS_")
+      (replace "'" "_SQUOTE_")
+      (replace #"^_*" "")
+      (replace #"_*$" "")))
 
 (defn write-docs-for-var
   [[ns-dir inc-dir] var]

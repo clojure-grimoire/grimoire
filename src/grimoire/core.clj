@@ -107,6 +107,15 @@
       (replace #"^_*" "")
       (replace #"_*$" "")))
 
+(defn write-example
+  [i {:keys [body] :as example}]
+  (str "### Example " i "\n"
+       "{% highlight clojure linenos %}\n"
+       "{% raw %}\n"
+       body
+       "{% endraw %}\n"
+       "{% endhighlight %}\n\n\n"))
+
 (defn write-docs-for-var
   [[ns-dir inc-dir] var]
   {:pre [(var? var)]}
@@ -153,15 +162,10 @@
                         (str "{% include " i " %}\n")))
 
                     (when (= version-str "1.4.0")
-                      (str "{% highlight clojure %}\n"
-                           "{% raw %}\n"
-                           (-> (->> (cd/examples-core namespace raw-symbol)
-                                    :examples
-                                    (map :body)
-                                    (reduce str))
-                               (replace #"[ \t]+\n" ""))
-                           "{% endraw %}\n"
-                           "{% endhighlight %}\n"))
+                      (if-let [examples (-> (cd/examples-core namespace raw-symbol) :examples)]
+                        (->> examples 
+                             (map-indexed write-example)
+                             (reduce str))))
 
                     (when (= version-str "1.6.0")
                       (str "\n"

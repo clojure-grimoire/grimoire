@@ -9,3 +9,9 @@ url: "http://www.arrdem.com/grimoire/"
 markdown: kramdown
 highlighter: pygments
 permalink: pretty
+
+JB:
+  analytics:
+    provider: google
+    google:
+      tracking_id: "UA-44001831-2"

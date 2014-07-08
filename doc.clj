@@ -55,17 +55,18 @@
   [v]
   {:pre [(var? v)]
    :post [(string? %)]}
-  (when-let [filepath (:file (meta v))]
-    (when-let [strm (.getResourceAsStream (RT/baseLoader) filepath)]
-      (with-open [rdr (LineNumberReader. (InputStreamReader. strm))]
-        (dotimes [_ (dec (:line (meta v)))] (.readLine rdr))
-        (let [text (StringBuilder.)
-              pbr (proxy [PushbackReader] [rdr]
-                    (read [] (let [i (proxy-super read)]
-                               (.append text (char i))
-                               i)))]
-          (read (PushbackReader. pbr))
-          (str text))))))
+  (or (when-let [filepath (:file (meta v))]
+        (when-let [strm (.getResourceAsStream (RT/baseLoader) filepath)]
+          (with-open [rdr (LineNumberReader. (InputStreamReader. strm))]
+            (dotimes [_ (dec (:line (meta v)))] (.readLine rdr))
+            (let [text (StringBuilder.)
+                  pbr (proxy [PushbackReader] [rdr]
+                        (read [] (let [i (proxy-super read)]
+                                   (.append text (char i))
+                                   i)))]
+              (read (PushbackReader. pbr))
+              (str text)))))
+      ";; Source not found!\n;; Black magic likely in this var's definition"))
 
 (defn lq [& more]
   (str "{%% " (reduce str (interpose " " more)) " %%}\n"))

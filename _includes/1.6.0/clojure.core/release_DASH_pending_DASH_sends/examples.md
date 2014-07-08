@@ -1,4 +1,3 @@
-{% include 1.5.1/clojure.core/release_DASH_pending_DASH_sends/examples.md %}
-No examples for version 1.6.0
+{% include 1.5.0/clojure.core/release_DASH_pending_DASH_sends/examples.md %}
 
 [Please add examples!](https://github.com/arrdem/grimoire/edit/master/_includes/1.6.0/clojure.core/release_DASH_pending_DASH_sends/examples.md)

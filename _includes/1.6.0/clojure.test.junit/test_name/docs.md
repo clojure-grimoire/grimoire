@@ -1,5 +1,0 @@
-## Arities
-[vars]
-
-## Documentation
-null

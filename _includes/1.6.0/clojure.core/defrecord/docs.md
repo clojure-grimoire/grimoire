@@ -2,6 +2,7 @@
 [name [& fields] & opts+specs]
 
 ## Documentation
+{%raw%}
 (defrecord name [fields*]  options* specs*)
   
   Currently there are no options.
@@ -66,3 +67,4 @@
   Given (defrecord TypeName ...), two factory functions will be
   defined: ->TypeName, taking positional parameters for the fields,
   and map->TypeName, taking a map of keywords to field values.
+{%endraw%}

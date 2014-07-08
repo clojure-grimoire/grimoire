@@ -2,6 +2,7 @@
 [s match replacement]
 
 ## Documentation
+{%raw%}
 Replaces all instance of match with replacement in s.
 
    match/replacement can be:
@@ -11,3 +12,4 @@ Replaces all instance of match with replacement in s.
    pattern / (string or function of match).
 
    See also replace-first.
+{%endraw%}

@@ -2,6 +2,7 @@
 [x & opts]
 
 ## Documentation
+{%raw%}
 Attempts to coerce its argument into an open java.io.Writer.
    Default implementations always return a java.io.BufferedWriter.
 
@@ -14,3 +15,4 @@ Attempts to coerce its argument into an open java.io.Writer.
 
    Should be used inside with-open to ensure the Writer is properly
    closed.
+{%endraw%}

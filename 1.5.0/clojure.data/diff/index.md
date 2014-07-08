@@ -1,14 +1,16 @@
 ---
 layout: fn
 namespace: clojure.data
-symbol: "Diff"
+symbol: "diff"
 ---
 
-# [clojure.data](../)/Diff
+# [clojure.data](../)/diff
 
 {% include 1.5.0/clojure.data/diff/docs.md %}
 
 ##Examples
 
 {% include 1.5.0/clojure.data/diff/examples.md %}
+## Source
+{% include 1.5.0/clojure.data/diff/src.md %}
 

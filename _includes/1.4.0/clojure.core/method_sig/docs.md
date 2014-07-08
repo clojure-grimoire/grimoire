@@ -1,5 +1,0 @@
-## Arities
-[meth]
-
-## Documentation
-null

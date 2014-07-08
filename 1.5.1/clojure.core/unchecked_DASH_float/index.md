@@ -1,0 +1,16 @@
+---
+layout: fn
+namespace: clojure.core
+symbol: "unchecked-float"
+---
+
+# [clojure.core](../)/unchecked-float
+
+{% include 1.5.1/clojure.core/unchecked_DASH_float/docs.md %}
+
+##Examples
+
+{% include 1.5.1/clojure.core/unchecked_DASH_float/examples.md %}
+## Source
+{% include 1.5.1/clojure.core/unchecked_DASH_float/src.md %}
+

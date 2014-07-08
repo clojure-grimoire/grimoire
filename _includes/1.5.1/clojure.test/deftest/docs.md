@@ -2,6 +2,7 @@
 [name & body]
 
 ## Documentation
+{%raw%}
 Defines a test function with no arguments.  Test functions may call
   other tests, so tests may be composed.  If you compose tests, you
   should also define a function named test-ns-hook; run-tests will
@@ -12,3 +13,4 @@ Defines a test function with no arguments.  Test functions may call
   itself.
 
   When *load-tests* is false, deftest is ignored.
+{%endraw%}

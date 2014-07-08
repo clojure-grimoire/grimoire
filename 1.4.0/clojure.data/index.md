@@ -2,14 +2,32 @@
 layout: ns
 title: clojure.data
 ---
+{% markdown 1.4.0/clojure.data/index.md %}
+
 ## Macros
 
 
+
 ## Vars
-[Diff](./diff)
-[EqualityPartition](./equalitypartition)
+
+### D
+
+[Diff](./Diff/)
+
+
+### E
+
+[EqualityPartition](./EqualityPartition/)
+
 
 ## Functions
-[diff](./diff)
-[equality-partition](./equality_partition)
-[diff-similar](./diff_similar)
+
+### D
+
+[diff](./diff/)
+[diff-similar](./diff_DASH_similar/)
+
+
+### E
+
+[equality-partition](./equality_DASH_partition/)

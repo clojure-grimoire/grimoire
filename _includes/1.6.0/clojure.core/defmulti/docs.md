@@ -2,6 +2,7 @@
 [name docstring? attr-map? dispatch-fn & options]
 
 ## Documentation
+{%raw%}
 Creates a new multimethod with the associated dispatch function.
   The docstring and attribute-map are optional.
 
@@ -24,3 +25,4 @@ Creates a new multimethod with the associated dispatch function.
   Multimethods expect the value of the hierarchy option to be supplied as
   a reference type e.g. a var (i.e. via the Var-quote dispatch macro #'
   or the var special form).
+{%endraw%}

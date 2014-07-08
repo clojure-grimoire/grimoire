@@ -2,34 +2,83 @@
 layout: ns
 title: clojure.pprint
 ---
+{% markdown 1.6.0/clojure.pprint/index.md %}
+
 ## Macros
-[print-length-loop](./print_length_loop)
-[pprint-logical-block](./pprint_logical_block)
-[pp](./pp)
-[formatter-out](./formatter_out)
-[formatter](./formatter)
-[with-pprint-dispatch](./with_pprint_dispatch)
+
+### F
+
+[formatter](./formatter/)
+[formatter-out](./formatter_DASH_out/)
+
+
+### P
+
+[pp](./pp/)
+[pprint-logical-block](./pprint_DASH_logical_DASH_block/)
+[print-length-loop](./print_DASH_length_DASH_loop/)
+
+
+### W
+
+[with-pprint-dispatch](./with_DASH_pprint_DASH_dispatch/)
+
 
 ## Vars
-[simple-dispatch](./simple_dispatch)
-[\*print-suppress-namespaces\*](./star_print_suppress_namespaces_star)
-[\*print-pretty\*](./star_print_pretty_star)
-[\*print-pprint-dispatch\*](./star_print_pprint_dispatch_star)
-[code-dispatch](./code_dispatch)
-[\*print-radix\*](./star_print_radix_star)
-[\*print-miser-width\*](./star_print_miser_width_star)
-[\*print-right-margin\*](./star_print_right_margin_star)
-[\*print-base\*](./star_print_base_star)
+
+### *
+
+[\*print-base\*](./STAR_print_DASH_base_STAR/)
+[\*print-miser-width\*](./STAR_print_DASH_miser_DASH_width_STAR/)
+[\*print-pprint-dispatch\*](./STAR_print_DASH_pprint_DASH_dispatch_STAR/)
+[\*print-pretty\*](./STAR_print_DASH_pretty_STAR/)
+[\*print-radix\*](./STAR_print_DASH_radix_STAR/)
+[\*print-right-margin\*](./STAR_print_DASH_right_DASH_margin_STAR/)
+[\*print-suppress-namespaces\*](./STAR_print_DASH_suppress_DASH_namespaces_STAR/)
+
+
+### C
+
+[code-dispatch](./code_DASH_dispatch/)
+
+
+### S
+
+[simple-dispatch](./simple_DASH_dispatch/)
+
 
 ## Functions
-[pprint](./pprint)
-[get-pretty-writer](./get_pretty_writer)
-[pprint-newline](./pprint_newline)
-[pprint-tab](./pprint_tab)
-[print-table](./print_table)
-[set-pprint-dispatch](./set_pprint_dispatch)
-[fresh-line](./fresh_line)
-[pprint-indent](./pprint_indent)
-[cl-format](./cl_format)
-[write](./write)
-[write-out](./write_out)
+
+### C
+
+[cl-format](./cl_DASH_format/)
+
+
+### F
+
+[fresh-line](./fresh_DASH_line/)
+
+
+### G
+
+[get-pretty-writer](./get_DASH_pretty_DASH_writer/)
+
+
+### P
+
+[pprint](./pprint/)
+[pprint-indent](./pprint_DASH_indent/)
+[pprint-newline](./pprint_DASH_newline/)
+[pprint-tab](./pprint_DASH_tab/)
+[print-table](./print_DASH_table/)
+
+
+### S
+
+[set-pprint-dispatch](./set_DASH_pprint_DASH_dispatch/)
+
+
+### W
+
+[write](./write/)
+[write-out](./write_DASH_out/)

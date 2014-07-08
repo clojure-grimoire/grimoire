@@ -2,6 +2,7 @@
 [name [& fields] & opts+specs]
 
 ## Documentation
+{%raw%}
 (deftype name [fields*]  options* specs*)
   
   Currently there are no options.
@@ -62,3 +63,4 @@
 
   Given (deftype TypeName ...), a factory function called ->TypeName
   will be defined, taking positional parameters for the fields
+{%endraw%}

@@ -2,11 +2,21 @@
 layout: ns
 title: clojure.template
 ---
+{% markdown 1.5.0/clojure.template/index.md %}
+
 ## Macros
-[do-template](./do_template)
+
+### D
+
+[do-template](./do_DASH_template/)
+
 
 ## Vars
 
 
+
 ## Functions
-[apply-template](./apply_template)
+
+### A
+
+[apply-template](./apply_DASH_template/)

@@ -1,0 +1,7 @@
+## Arities
+
+
+## Documentation
+{%raw%}
+The agent currently running an action on this thread, else nil
+{%endraw%}

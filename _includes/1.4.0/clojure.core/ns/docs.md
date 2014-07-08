@@ -2,6 +2,7 @@
 [name docstring? attr-map? references*]
 
 ## Documentation
+{%raw%}
 Sets *ns* to the namespace named by name (unevaluated), creating it
   if needed.  references can be zero or more of: (:refer-clojure ...)
   (:require ...) (:use ...) (:import ...) (:load ...) (:gen-class)
@@ -22,3 +23,4 @@ Sets *ns* to the namespace named by name (unevaluated), creating it
     (:use (my.lib this that))
     (:import (java.util Date Timer Random)
              (java.sql Connection Statement)))
+{%endraw%}

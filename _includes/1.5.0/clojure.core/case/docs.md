@@ -2,6 +2,7 @@
 [e & clauses]
 
 ## Documentation
+{%raw%}
 Takes an expression, and a set of clauses.
 
   Each clause can take the form of either:
@@ -24,3 +25,4 @@ Takes an expression, and a set of clauses.
   lists are used to group multiple constants that map to the same
   expression, a vector can be used to match a list if needed. The
   test-constants need not be all of the same type.
+{%endraw%}

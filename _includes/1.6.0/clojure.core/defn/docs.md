@@ -1,5 +1,11 @@
 ## Arities
-[name & decls]
+[name doc-string? attr-map? [params*] prepost-map? body]
+[name doc-string? attr-map? ([params*] prepost-map? body) + attr-map?]
 
 ## Documentation
-same as defn, yielding non-public def
+{%raw%}
+Same as (def name (fn [params* ] exprs*)) or (def
+    name (fn ([params* ] exprs*)+)) with any doc-string or attrs added
+    to the var metadata. prepost-map defines a map with optional keys
+    :pre and :post that contain collections of pre or post conditions.
+{%endraw%}

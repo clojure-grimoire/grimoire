@@ -2,6 +2,7 @@
 [bindings & body]
 
 ## Documentation
+{%raw%}
 binding => var-symbol init-expr
 
   Creates new bindings for the (already-existing) vars, with the
@@ -9,3 +10,4 @@ binding => var-symbol init-expr
   re-establishes the bindings that existed before.  The new bindings
   are made in parallel (unlike let); all init-exprs are evaluated
   before the vars are bound to their new values.
+{%endraw%}

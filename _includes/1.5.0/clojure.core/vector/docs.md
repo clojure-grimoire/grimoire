@@ -7,4 +7,6 @@
 [a b c d & args]
 
 ## Documentation
+{%raw%}
 Creates a new vector containing the args.
+{%endraw%}

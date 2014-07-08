@@ -2,6 +2,7 @@
 [flags-ignored-for-now & body]
 
 ## Documentation
+{%raw%}
 transaction-flags => TBD, pass nil for now
 
   Runs the exprs (in an implicit do) in a transaction that encompasses
@@ -9,3 +10,4 @@ transaction-flags => TBD, pass nil for now
   running on this thread. Any uncaught exception will abort the
   transaction and flow out of sync. The exprs may be run more than
   once, but any effects on Refs will be atomic.
+{%endraw%}

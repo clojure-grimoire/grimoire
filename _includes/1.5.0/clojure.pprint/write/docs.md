@@ -2,6 +2,7 @@
 [object & kw-args]
 
 ## Documentation
+{%raw%}
 Write an object subject to the current bindings of the printer control variables.
 Use the kw-args argument to override individual variables for this call (and any 
 recursive calls). Returns the string result if :stream is nil or nil otherwise.
@@ -24,3 +25,4 @@ The following keyword arguments can be passed with values:
 
   * = not yet supported
 
+{%endraw%}

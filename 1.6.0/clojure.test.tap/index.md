@@ -2,15 +2,28 @@
 layout: ns
 title: clojure.test.tap
 ---
+{% markdown 1.6.0/clojure.test.tap/index.md %}
+
 ## Macros
-[with-tap-output](./with_tap_output)
+
+### W
+
+[with-tap-output](./with_DASH_tap_DASH_output/)
+
 
 ## Vars
-[tap-report](./tap_report)
+
+### T
+
+[tap-report](./tap_DASH_report/)
+
 
 ## Functions
-[print-tap-diagnostic](./print_tap_diagnostic)
-[print-tap-plan](./print_tap_plan)
-[print-diagnostics](./print_diagnostics)
-[print-tap-pass](./print_tap_pass)
-[print-tap-fail](./print_tap_fail)
+
+### P
+
+[print-diagnostics](./print_DASH_diagnostics/)
+[print-tap-diagnostic](./print_DASH_tap_DASH_diagnostic/)
+[print-tap-fail](./print_DASH_tap_DASH_fail/)
+[print-tap-pass](./print_DASH_tap_DASH_pass/)
+[print-tap-plan](./print_DASH_tap_DASH_plan/)

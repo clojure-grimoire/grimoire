@@ -3,6 +3,7 @@
 [form msg]
 
 ## Documentation
+{%raw%}
 Generic assertion macro.  'form' is any predicate test.
   'msg' is an optional message to attach to the assertion.
   
@@ -16,3 +17,4 @@ Generic assertion macro.  'form' is any predicate test.
   (is (thrown-with-msg? c re body)) checks that an instance of c is
   thrown AND that the message on the exception matches (with
   re-find) the regular expression re.
+{%endraw%}

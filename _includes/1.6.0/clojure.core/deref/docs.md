@@ -3,6 +3,7 @@
 [ref timeout-ms timeout-val]
 
 ## Documentation
+{%raw%}
 Also reader macro: @ref/@agent/@var/@atom/@delay/@future/@promise. Within a transaction,
   returns the in-transaction-value of ref, else returns the
   most-recently-committed value of ref. When applied to a var, agent
@@ -13,3 +14,4 @@ Also reader macro: @ref/@agent/@var/@atom/@delay/@future/@promise. Within a tran
   used for blocking references (futures and promises), and will return
   timeout-val if the timeout (in milliseconds) is reached before a
   value is available. See also - realized?.
+{%endraw%}

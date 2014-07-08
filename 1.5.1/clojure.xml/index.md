@@ -2,22 +2,56 @@
 layout: ns
 title: clojure.xml
 ---
+{% markdown 1.5.1/clojure.xml/index.md %}
+
 ## Macros
 
 
+
 ## Vars
-[content-handler](./content_handler)
-[\*stack\*](./star_stack_star)
-[attrs](./attrs)
-[element](./element)
-[tag](./tag)
-[\*current\*](./star_current_star)
-[content](./content)
-[\*state\*](./star_state_star)
-[\*sb\*](./star_sb_star)
+
+### *
+
+[\*current\*](./STAR_current_STAR/)
+[\*sb\*](./STAR_sb_STAR/)
+[\*stack\*](./STAR_stack_STAR/)
+[\*state\*](./STAR_state_STAR/)
+
+
+### A
+
+[attrs](./attrs/)
+
+
+### C
+
+[content](./content/)
+[content-handler](./content_DASH_handler/)
+
+
+### E
+
+[element](./element/)
+
+
+### T
+
+[tag](./tag/)
+
 
 ## Functions
-[startparse-sax](./startparse_sax)
-[parse](./parse)
-[emit-element](./emit_element)
-[emit](./emit)
+
+### E
+
+[emit](./emit/)
+[emit-element](./emit_DASH_element/)
+
+
+### P
+
+[parse](./parse/)
+
+
+### S
+
+[startparse-sax](./startparse_DASH_sax/)

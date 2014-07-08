@@ -2,6 +2,7 @@
 [branch? children make-node root]
 
 ## Documentation
+{%raw%}
 Creates a new zipper structure. 
 
   branch? is a fn that, given a node, returns true if can have
@@ -13,3 +14,4 @@ Creates a new zipper structure.
   make-node is a fn that, given an existing node and a seq of
   children, returns a new branch node with the supplied children.
   root is the root node.
+{%endraw%}

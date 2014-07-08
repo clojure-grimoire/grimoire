@@ -2,6 +2,7 @@
 [name docstring? attr-map? dispatch-fn & options]
 
 ## Documentation
+{%raw%}
 Creates a new multimethod with the associated dispatch function.
   The docstring and attribute-map are optional.
 
@@ -9,3 +10,4 @@ Creates a new multimethod with the associated dispatch function.
     :default    the default dispatch value, defaults to :default
     :hierarchy  the isa? hierarchy to use for dispatching
                 defaults to the global hierarchy
+{%endraw%}

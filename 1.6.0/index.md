@@ -5,6 +5,8 @@ version: 1.6.0
 
 ## Release information
 
+{% markdown 1.6.0/index.md %}
+
 ## Namespaces
 
 - [clojure.core](./clojure.core/)

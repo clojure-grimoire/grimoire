@@ -2,6 +2,7 @@
 [& args]
 
 ## Documentation
+{%raw%}
 Loads libs, skipping any that are already loaded. Each argument is
   either a libspec that identifies a lib, a prefix list that identifies
   multiple libs whose names share a common prefix, or a flag that modifies
@@ -60,3 +61,4 @@ Loads libs, skipping any that are already loaded. Each argument is
   abbreviated as 's'.
 
   (require '(clojure zip [set :as s]))
+{%endraw%}

@@ -3,6 +3,7 @@
 [x & options]
 
 ## Documentation
+{%raw%}
 Creates and returns an Atom with an initial value of x and zero or
   more options (in any order):
 
@@ -15,3 +16,4 @@ Creates and returns an Atom with an initial value of x and zero or
   argument, which will be passed the intended new state on any state
   change. If the new state is unacceptable, the validate-fn should
   return false or throw an exception.
+{%endraw%}

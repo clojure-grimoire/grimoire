@@ -2,6 +2,7 @@
 [x & opts]
 
 ## Documentation
+{%raw%}
 Attempts to coerce its argument into an open java.io.Reader.
    Default implementations always return a java.io.BufferedReader.
 
@@ -15,3 +16,4 @@ Attempts to coerce its argument into an open java.io.Reader.
 
    Should be used inside with-open to ensure the Reader is properly
    closed.
+{%endraw%}

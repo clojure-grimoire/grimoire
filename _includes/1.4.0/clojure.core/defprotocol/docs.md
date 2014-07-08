@@ -2,6 +2,7 @@
 [name & opts+sigs]
 
 ## Documentation
+{%raw%}
 A protocol is a named set of named methods and their signatures:
   (defprotocol AProtocolName
 
@@ -51,3 +52,4 @@ A protocol is a named set of named methods and their signatures:
         (bar-me [this] x)
         (bar-me [this y] x))))
   => 17
+{%endraw%}

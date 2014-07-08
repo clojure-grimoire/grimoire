@@ -2,4 +2,6 @@
 [bindings]
 
 ## Documentation
+{%raw%}
 null
+{%endraw%}

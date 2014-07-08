@@ -4,6 +4,7 @@
 [opts stream]
 
 ## Documentation
+{%raw%}
 Reads the next object from stream, which must be an instance of
   java.io.PushbackReader or some derivee.  stream defaults to the
   current value of *in*.
@@ -17,3 +18,4 @@ Reads the next object from stream, which must be an instance of
               When not supplied, only the default-data-readers will be used.
   :default - A function of two args, that will, if present and no reader is found for a tag,
              be called with the tag and the value.
+{%endraw%}

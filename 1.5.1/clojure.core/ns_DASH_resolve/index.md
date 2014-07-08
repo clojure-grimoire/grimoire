@@ -1,0 +1,16 @@
+---
+layout: fn
+namespace: clojure.core
+symbol: "ns-resolve"
+---
+
+# [clojure.core](../)/ns-resolve
+
+{% include 1.5.1/clojure.core/ns_DASH_resolve/docs.md %}
+
+##Examples
+
+{% include 1.5.1/clojure.core/ns_DASH_resolve/examples.md %}
+## Source
+{% include 1.5.1/clojure.core/ns_DASH_resolve/src.md %}
+

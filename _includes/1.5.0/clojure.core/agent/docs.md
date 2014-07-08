@@ -2,6 +2,7 @@
 [state & options]
 
 ## Documentation
+{%raw%}
 Creates and returns an agent with an initial value of state and
   zero or more options (in any order):
 
@@ -23,3 +24,4 @@ Creates and returns an agent with an initial value of state and
   :continue (the default if an error-handler is given) or :fail (the
   default if no error-handler is given) -- see set-error-mode! for
   details.
+{%endraw%}

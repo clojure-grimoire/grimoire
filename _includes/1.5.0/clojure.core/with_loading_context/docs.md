@@ -1,5 +1,0 @@
-## Arities
-[& body]
-
-## Documentation
-null

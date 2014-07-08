@@ -2,6 +2,7 @@
 [& args]
 
 ## Documentation
+{%raw%}
 Passes the given strings to Runtime.exec() to launch a sub-process.
 
   Options are
@@ -32,3 +33,4 @@ Passes the given strings to Runtime.exec() to launch a sub-process.
     :exit => sub-process's exit code
     :out  => sub-process's stdout (as byte[] or String)
     :err  => sub-process's stderr (String via platform default encoding)
+{%endraw%}

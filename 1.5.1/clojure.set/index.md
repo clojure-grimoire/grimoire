@@ -1,16 +1,58 @@
 ---
-layout: fn
-namespace: clojure.set
-symbol: "index"
+layout: ns
+title: clojure.set
 ---
+{% markdown 1.5.1/clojure.set/index.md %}
 
-# [clojure.set](../)/index
+## Macros
 
-{% include 1.5.1/clojure.set/index/docs.md %}
 
-##Examples
 
-{% include 1.5.1/clojure.set/index/examples.md %}
-## Source
-{% include 1.5.1/clojure.set/index/src.md %}
+## Vars
 
+
+
+## Functions
+
+### D
+
+[difference](./difference/)
+
+
+### I
+
+[index](./index/)
+[intersection](./intersection/)
+
+
+### J
+
+[join](./join/)
+
+
+### M
+
+[map-invert](./map_DASH_invert/)
+
+
+### P
+
+[project](./project/)
+
+
+### R
+
+[rename](./rename/)
+[rename-keys](./rename_DASH_keys/)
+
+
+### S
+
+[select](./select/)
+[subset?](./subset_QMARK/)
+[superset?](./superset_QMARK/)
+
+
+### U
+
+[union](./union/)

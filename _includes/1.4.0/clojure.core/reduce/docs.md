@@ -3,6 +3,7 @@
 [f val coll]
 
 ## Documentation
+{%raw%}
 f should be a function of 2 arguments. If val is not supplied,
   returns the result of applying f to the first 2 items in coll, then
   applying f to that result and the 3rd item, etc. If coll contains no
@@ -12,3 +13,4 @@ f should be a function of 2 arguments. If val is not supplied,
   result of applying f to val and the first item in coll, then
   applying f to that result and the 2nd item, etc. If coll contains no
   items, returns val and f is not called.
+{%endraw%}

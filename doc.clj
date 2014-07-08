@@ -1,6 +1,6 @@
 (ns doc
   (:require [clojure.java.io :refer :all]
-            [clojure.string :refer [lower-case replace-first replace]])
+            [clojure.string :refer [lower-case upper-case replace-first replace]])
   (:import [java.io LineNumberReader InputStreamReader PushbackReader]
            [clojure.lang RT]))
 
@@ -43,9 +43,6 @@
   {:pre [(var? v)]}
   (:macro (meta v)))
 
-(defn debug-dir [dir]
-  )
-
 ;; clojure.repl/source-fn
 (defn source-fn
   "Returns a string of the source code for the given symbol, if it can
@@ -58,17 +55,18 @@
   [v]
   {:pre [(var? v)]
    :post [(string? %)]}
-  (when-let [filepath (:file (meta v))]
-    (when-let [strm (.getResourceAsStream (RT/baseLoader) filepath)]
-      (with-open [rdr (LineNumberReader. (InputStreamReader. strm))]
-        (dotimes [_ (dec (:line (meta v)))] (.readLine rdr))
-        (let [text (StringBuilder.)
-              pbr (proxy [PushbackReader] [rdr]
-                    (read [] (let [i (proxy-super read)]
-                               (.append text (char i))
-                               i)))]
-          (read (PushbackReader. pbr))
-          (str text))))))
+  (or (when-let [filepath (:file (meta v))]
+        (when-let [strm (.getResourceAsStream (RT/baseLoader) filepath)]
+          (with-open [rdr (LineNumberReader. (InputStreamReader. strm))]
+            (dotimes [_ (dec (:line (meta v)))] (.readLine rdr))
+            (let [text (StringBuilder.)
+                  pbr (proxy [PushbackReader] [rdr]
+                        (read [] (let [i (proxy-super read)]
+                                   (.append text (char i))
+                                   i)))]
+              (read (PushbackReader. pbr))
+              (str text)))))
+      ";; Source not found!\n;; Black magic likely in this var's definition"))
 
 (defn lq [& more]
   (str "{%% " (reduce str (interpose " " more)) " %%}\n"))
@@ -92,12 +90,19 @@
 
 (defn my-munge [s]
   (-> s
-      munge
-      (replace "*" "\\*")
+      (replace "*" "_STAR_")
+      (replace "?" "_QMARK_")
       (replace "." "_DOT_")
+      (replace "<" "_LT_")
+      (replace ">" "_GT_")
+      (replace "-" "_DASH_")
+      (replace "/" "_SLASH_")
+      (replace "!" "_BANG_")
+      (replace "=" "_EQ_")
+      (replace "+" "_PLUS_")
+      (replace "'" "_SQUOTE_")
       (replace #"^_*" "")
-      (replace #"_*$" "")
-      lower-case))
+      (replace #"_*$" "")))
 
 (defn write-docs-for-var
   [[ns-dir inc-dir] var]
@@ -112,14 +117,14 @@
     (let [sym-inc-dir (file inc-dir symbol)]
       (.mkdir sym-inc-dir)
 
-      (debug-dir sym-inc-dir)
-
       ;; write docstring file
       (let [inc-doc-file (file sym-inc-dir "docs.md")]
         (->> (format (str "## Arities\n"
                           "%s\n\n"
                           "## Documentation\n"
-                          "%s\n")
+                          "{%%raw%%}\n"
+                          "%s\n"
+                          "{%%endraw%%}\n")
                      (->> arglists
                           (interpose \newline)
                           (reduce str))
@@ -141,17 +146,21 @@
           (->> (str (let [v (prior-clojure-version version-str)
                           i (str v "/" namespace "/" symbol "/examples.md")
                           f (str "./_includes/" i)]
-                      (if (.exists (file f))
-                        (str "{% include " i " %}\n")
-                        (str "No examples for version " version-str "or newer\n"
-                             "\n"
-                             "[Please add examples!](https://github.com/arrdem/grimoire/edit/master/_includes/"
-                                                     version-str "/" namespace "/" symbol "/examples.md)\n"))))
+                      (when (.exists (file f))
+                        (str "{% include " i " %}\n")))
+                    (when (= version-str "1.6.0")
+                      (str "No examples for version " version-str "\n"
+                           "\n"
+                           "[Please add examples!](https://github.com/arrdem/grimoire/edit/master/"
+                                                   ex-file ")\n")))
                (spit ex-file)))))
-                
+
     ;; write template files
     ;; /<clojure-version>/<namespace>/<symbol>.md
-    (let [dst-file (file ns-dir (str "./" symbol ".md"))]
+    (let [dst-dir (file (str ns-dir "/" symbol))
+          dst-file (file dst-dir "index.md")]
+      (.mkdir dst-dir)
+
       (->> (str (render-yaml [["layout"    "fn"]
                               ["namespace" namespace]
                               ["symbol"    (pr-str md-symbol)]])
@@ -171,10 +180,26 @@
 
 (defn var->link
   [v]
-  {:pre [(var? v)]}
-  (format "[%s](%s)"
-          (str (var->ns v) "/" (replace (var->name v) "*" "\\*"))
-          (str "./" (-> v var->name my-munge))))
+  {:pre  [(var? v)]
+   :post [(string? %)]}
+  (format "[%s](%s)\n"
+          (replace (var->name v) "*" "\\*")
+          (str "./" (-> v var->name my-munge) "/")))
+
+(defn index-vars
+  [var-seq]
+  {:pre  [(every? var? var-seq)]
+   :post [(string? %)]}
+  (let [f      (comp first var->name)
+        blocks (group-by f var-seq)
+        blocks (sort-by first blocks)]
+    (->> (for [[heading vars] blocks]
+           (str (format "### %s\n\n" (-> heading upper-case str))
+                (->> (for [var (sort-by var->name vars)]
+                       (var->link var))
+                     (reduce str))))
+         (interpose "\n\n")
+         (reduce str))))
 
 (defn write-docs-for-ns
   [dirs ns]
@@ -188,10 +213,7 @@
     (let [version-ns-dir  (file version-dir (name ns))
           include-ns-dir  (file include-dir (name ns))]
       (.mkdir version-ns-dir)
-      (debug-dir version-ns-dir)
-
       (.mkdir include-ns-dir)
-      (debug-dir include-ns-dir)
 
       ;; write per symbol docs
       (doseq [var ns-vars]
@@ -201,28 +223,37 @@
             (println "Warning: Failed to write docs for" var))))
 
       ;; write namespace index
-      (let [index-file (file version-ns-dir (str "../" ns ".md"))]
+      (let [index-file (file version-ns-dir "index.md")
+            index-inc-file (file include-ns-dir "index.md")]
+
+        (when-not (.exists index-inc-file)
+          (->> (str "No namespace specific documentation!\n"
+                    "\n"
+                    "[Please add commentary!](https://github.com/arrdem/grimoire/edit/master/"
+                                              index-inc-file ")\n\n")
+               (spit index-inc-file)))
+
         (let [f (file index-file)]
           (->> (str (render-yaml [["layout" "ns"]
                                   ["title"  (name ns)]])
-                    "## Macros\n"
-                    (->> macros
-                         (map var->link)
-                         (interpose \newline)
-                         (reduce str))
 
-                    "\n\n## Vars\n"
+                    (str "{% markdown " version-ns-dir  "/index.md %}\n\n")
 
-                    (->> vars
-                         (map var->link)
-                         (interpose \newline)
-                         (reduce str))
+                    (when macros
+                      (str "## Macros\n\n"
+                           (index-vars macros)))
 
-                    "\n\n## Functions\n"
-                    (->> fns
-                         (map var->link)
-                         (interpose \newline)
-                         (reduce str)))
+                    "\n\n"
+
+                    (when vars
+                      (str "## Vars\n\n"
+                           (index-vars vars)))
+
+                    "\n\n"
+                    
+                    (when fns
+                      (str "## Functions\n\n"
+                           (index-vars fns))))
                (spit f)))))))
 
 (def namespaces
@@ -260,12 +291,10 @@
   (let [{:keys [major minor incremental]} *clojure-version*
         version-str                       (format "%s.%s.%s" major minor incremental)]
     (println version-str)
-    (let [version-dir (file (str "./" version-str))
-          include-dir (file (str "./_includes/" version-str))]
+    (let [version-dir (file version-str)
+          include-dir (file (str "_includes/" version-str))]
       (.mkdir version-dir)
-      (debug-dir version-dir)
       (.mkdir include-dir)
-      (debug-dir include-dir)
 
       (println "Made root folders...")
 
@@ -273,23 +302,23 @@
         (when-not (and (= n 'clojure.edn)
                        (= version-str "1.4.0"))
           (require n)
-          (write-docs-for-ns [version-dir include-dir] n))))
+          (write-docs-for-ns [version-dir include-dir] n)))
 
-    (let [version-file (file (str "./" version-str ".md"))]
-      (->> (str (render-yaml [["layout"  "release"]
-                              ["version" version-str]])
-                "\n"
-                "## Release information\n"
-                "\n"
-                "## Namespaces\n"
-                "\n"
-                (->> namespaces
-                     (filter (fn [n]
-                               (not (and (= n 'clojure.edn)
-                                         (= version-str "1.4.0")))))
-                     (map name)
-                     (map #(format "- [%s](./%s/)\n" %1 %1))
-                     (reduce str)))
-           (spit version-file)))))
+      (let [version-file (file version-dir "index.md")]
+        (->> (str (render-yaml [["layout"  "release"]
+                                ["version" version-str]])
+                  "\n"
+                  "## Release information\n"
+                  "\n"
+                  "## Namespaces\n"
+                  "\n"
+                  (->> namespaces
+                       (filter (fn [n]
+                                 (not (and (= n 'clojure.edn)
+                                           (= version-str "1.4.0")))))
+                       (map name)
+                       (map #(format "- [%s](./%s/)\n" %1 %1))
+                       (reduce str)))
+             (spit version-file))))))
 
 (-main)

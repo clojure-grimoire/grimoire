@@ -1,5 +1,0 @@
-## Arities
-
-
-## Documentation
-bound in a repl thread to the second most recent value printed

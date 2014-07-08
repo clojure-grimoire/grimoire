@@ -2,6 +2,7 @@
 [name [& fields] & opts+specs]
 
 ## Documentation
+{%raw%}
 Alpha - subject to change
   
   (defrecord name [fields*]  options* specs*)
@@ -68,3 +69,4 @@ Alpha - subject to change
   Given (defrecord TypeName ...), two factory functions will be
   defined: ->TypeName, taking positional parameters for the fields,
   and map->TypeName, taking a map of keywords to field values.
+{%endraw%}

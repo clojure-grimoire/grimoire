@@ -1,0 +1,16 @@
+---
+layout: fn
+namespace: clojure.core
+symbol: "cond->>"
+---
+
+# [clojure.core](../)/cond->>
+
+{% include 1.6.0/clojure.core/cond_DASH__GT__GT/docs.md %}
+
+##Examples
+
+{% include 1.6.0/clojure.core/cond_DASH__GT__GT/examples.md %}
+## Source
+{% include 1.6.0/clojure.core/cond_DASH__GT__GT/src.md %}
+

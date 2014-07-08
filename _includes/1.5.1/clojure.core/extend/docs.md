@@ -2,6 +2,7 @@
 [atype & proto+mmaps]
 
 ## Documentation
+{%raw%}
 Implementations of protocol methods can be provided using the extend construct:
 
   (extend AType
@@ -36,3 +37,4 @@ Implementations of protocol methods can be provided using the extend construct:
 
   See also:
   extends?, satisfies?, extenders
+{%endraw%}

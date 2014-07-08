@@ -2,6 +2,7 @@
 [class-and-interfaces args & fs]
 
 ## Documentation
+{%raw%}
 class-and-interfaces - a vector of class names
 
   args - a (possibly empty) vector of arguments to the superclass
@@ -25,3 +26,4 @@ class-and-interfaces - a vector of class names
   be provided to override protected methods, they have no other access
   to protected members, nor to super, as these capabilities cannot be
   proxied.
+{%endraw%}

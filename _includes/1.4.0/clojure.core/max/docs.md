@@ -4,4 +4,6 @@
 [x y & more]
 
 ## Documentation
+{%raw%}
 Returns the greatest of the nums.
+{%endraw%}

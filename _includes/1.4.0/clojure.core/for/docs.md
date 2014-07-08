@@ -2,6 +2,7 @@
 [seq-exprs body-expr]
 
 ## Documentation
+{%raw%}
 List comprehension. Takes a vector of one or more
    binding-form/collection-expr pairs, each followed by zero or more
    modifiers, and yields a lazy sequence of evaluations of expr.
@@ -11,3 +12,4 @@ List comprehension. Takes a vector of one or more
    :while test, :when test.
 
   (take 100 (for [x (range 100000000) y (range 1000000) :while (< y x)] [x y]))
+{%endraw%}

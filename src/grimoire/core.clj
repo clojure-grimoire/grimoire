@@ -1,6 +1,8 @@
 (ns grimoire.core
+  (:refer-clojure :exclude [replace])
   (:require [clojure.java.io :refer :all]
-            [clojure.string :refer [lower-case upper-case replace-first replace]])
+            [clojure.string :refer [lower-case upper-case replace-first replace]]
+            [cd-client.core :as cd])
   (:import [java.io LineNumberReader InputStreamReader PushbackReader]
            [clojure.lang RT]))
 
@@ -84,9 +86,10 @@
   (replace-first s "./" ""))
 
 (def prior-clojure-version
-  {"1.6.0" "1.5.1"
-   "1.5.1" "1.5.0"
-   "1.5.0" "1.4.0"})
+  {;; 1.3.0 -> nil
+   "1.4.0" "1.3.0"
+   "1.5.0" "1.4.0",
+   "1.6.0" "1.5.0"})
 
 (defn my-munge [s]
   (-> s
@@ -148,9 +151,20 @@
                           f (str "./_includes/" i)]
                       (when (.exists (file f))
                         (str "{% include " i " %}\n")))
+
+                    (when (= version-str "1.4.0")
+                      (str "{% highlight clojure %}\n"
+                           "{% raw %}\n"
+                           (-> (->> (cd/examples-core namespace raw-symbol)
+                                    :examples
+                                    (map :body)
+                                    (reduce str))
+                               (replace #"[ \t]+\n" ""))
+                           "{% endraw %}\n"
+                           "{% endhighlight %}\n"))
+
                     (when (= version-str "1.6.0")
-                      (str "No examples for version " version-str "\n"
-                           "\n"
+                      (str "\n"
                            "[Please add examples!](https://github.com/arrdem/grimoire/edit/master/"
                                                    ex-file ")\n")))
                (spit ex-file)))))
@@ -254,7 +268,10 @@
                     (when fns
                       (str "## Functions\n\n"
                            (index-vars fns))))
-               (spit f)))))))
+               (spit f))))))
+
+  (println "Finished" ns)
+  nil)
 
 (def namespaces
   [;; Clojure "core"
@@ -288,6 +305,8 @@
 
 (defn -main
   []
+  (cd/set-web-mode!)
+
   (let [{:keys [major minor incremental]} *clojure-version*
         version-str                       (format "%s.%s.%s" major minor incremental)]
     (println version-str)

@@ -304,11 +304,21 @@
           (require n)
           (write-docs-for-ns [version-dir include-dir] n)))
 
+      (let [version-inc-file (file include-dir "index.md")]
+        (when-not (.exists version-inc-file)
+          (->> (str "No release specific documentation!\n"
+                    "\n"
+                    "[Please add changelog!](https://github.com/arrdem/grimoire/edit/master/"
+                                             version-inc-file ")\n\n")
+               (spit version-inc-file))))
+
       (let [version-file (file version-dir "index.md")]
         (->> (str (render-yaml [["layout"  "release"]
                                 ["version" version-str]])
                   "\n"
                   "## Release information\n"
+                  "\n"
+                  (str "{% markdown " version-file " %}\n")
                   "\n"
                   "## Namespaces\n"
                   "\n"

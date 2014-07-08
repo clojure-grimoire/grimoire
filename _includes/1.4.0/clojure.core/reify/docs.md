@@ -2,6 +2,7 @@
 [& opts+specs]
 
 ## Documentation
+{%raw%}
 reify is a macro with the following structure:
 
  (reify options* specs*)
@@ -52,3 +53,4 @@ reify is a macro with the following structure:
   
   (meta ^{:k :v} (reify Object (toString [this] "foo")))
   == {:k :v}
+{%endraw%}

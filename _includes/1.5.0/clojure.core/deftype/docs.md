@@ -2,6 +2,7 @@
 [name [& fields] & opts+specs]
 
 ## Documentation
+{%raw%}
 Alpha - subject to change
   
   (deftype name [fields*]  options* specs*)
@@ -64,3 +65,4 @@ Alpha - subject to change
 
   Given (deftype TypeName ...), a factory function called ->TypeName
   will be defined, taking positional parameters for the fields
+{%endraw%}

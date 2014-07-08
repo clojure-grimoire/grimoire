@@ -2,6 +2,7 @@
 [input output & opts]
 
 ## Documentation
+{%raw%}
 Copies input to output.  Returns nil or throws IOException.
   Input may be an InputStream, Reader, File, byte[], or String.
   Output may be an OutputStream, Writer, or File.
@@ -14,3 +15,4 @@ Copies input to output.  Returns nil or throws IOException.
 
   Does not close any streams except those it opens itself 
   (on a File).
+{%endraw%}

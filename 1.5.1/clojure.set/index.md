@@ -2,22 +2,57 @@
 layout: ns
 title: clojure.set
 ---
+{% markdown 1.5.1/clojure.set/index.md %}
+
 ## Macros
+
 
 
 ## Vars
 
 
+
 ## Functions
-[rename-keys](./rename_keys)
-[union](./union)
-[select](./select)
-[project](./project)
-[superset?](./superset_qmark)
-[join](./join)
-[subset?](./subset_qmark)
-[intersection](./intersection)
-[map-invert](./map_invert)
-[difference](./difference)
-[rename](./rename)
-[index](./index)
+
+### D
+
+[difference](./difference/)
+
+
+### I
+
+[index](./index/)
+[intersection](./intersection/)
+
+
+### J
+
+[join](./join/)
+
+
+### M
+
+[map-invert](./map_DASH_invert/)
+
+
+### P
+
+[project](./project/)
+
+
+### R
+
+[rename](./rename/)
+[rename-keys](./rename_DASH_keys/)
+
+
+### S
+
+[select](./select/)
+[subset?](./subset_QMARK/)
+[superset?](./superset_QMARK/)
+
+
+### U
+
+[union](./union/)

@@ -1,5 +1,0 @@
-## Arities
-[x]
-
-## Documentation
-Returns true if x implements IPersistentSet

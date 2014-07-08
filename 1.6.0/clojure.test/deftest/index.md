@@ -1,10 +1,10 @@
 ---
 layout: fn
 namespace: clojure.test
-symbol: "deftest-"
+symbol: "deftest"
 ---
 
-# [clojure.test](../)/deftest-
+# [clojure.test](../)/deftest
 
 {% include 1.6.0/clojure.test/deftest/docs.md %}
 

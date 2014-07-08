@@ -1,5 +1,0 @@
-## Arities
-[loc]
-
-## Documentation
-Returns true if loc represents the end of a depth-first walk

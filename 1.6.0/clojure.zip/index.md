@@ -2,38 +2,105 @@
 layout: ns
 title: clojure.zip
 ---
+{% markdown 1.6.0/clojure.zip/index.md %}
+
 ## Macros
+
 
 
 ## Vars
 
 
+
 ## Functions
-[rightmost](./rightmost)
-[insert-child](./insert_child)
-[left](./left)
-[path](./path)
-[leftmost](./leftmost)
-[append-child](./append_child)
-[branch?](./branch_qmark)
-[children](./children)
-[remove](./remove)
-[down](./down)
-[replace](./replace)
-[zipper](./zipper)
-[end?](./end_qmark)
-[edit](./edit)
-[make-node](./make_node)
-[vector-zip](./vector_zip)
-[node](./node)
-[up](./up)
-[insert-right](./insert_right)
-[rights](./rights)
-[root](./root)
-[next](./next)
-[seq-zip](./seq_zip)
-[insert-left](./insert_left)
-[prev](./prev)
-[right](./right)
-[lefts](./lefts)
-[xml-zip](./xml_zip)
+
+### A
+
+[append-child](./append_DASH_child/)
+
+
+### B
+
+[branch?](./branch_QMARK/)
+
+
+### C
+
+[children](./children/)
+
+
+### D
+
+[down](./down/)
+
+
+### E
+
+[edit](./edit/)
+[end?](./end_QMARK/)
+
+
+### I
+
+[insert-child](./insert_DASH_child/)
+[insert-left](./insert_DASH_left/)
+[insert-right](./insert_DASH_right/)
+
+
+### L
+
+[left](./left/)
+[leftmost](./leftmost/)
+[lefts](./lefts/)
+
+
+### M
+
+[make-node](./make_DASH_node/)
+
+
+### N
+
+[next](./next/)
+[node](./node/)
+
+
+### P
+
+[path](./path/)
+[prev](./prev/)
+
+
+### R
+
+[remove](./remove/)
+[replace](./replace/)
+[right](./right/)
+[rightmost](./rightmost/)
+[rights](./rights/)
+[root](./root/)
+
+
+### S
+
+[seq-zip](./seq_DASH_zip/)
+
+
+### U
+
+[up](./up/)
+
+
+### V
+
+[vector-zip](./vector_DASH_zip/)
+
+
+### X
+
+[xml-zip](./xml_DASH_zip/)
+
+
+### Z
+
+[zipper](./zipper/)

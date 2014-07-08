@@ -2,6 +2,7 @@
 [a b]
 
 ## Documentation
+{%raw%}
 Recursively compares a and b, returning a tuple of
   [things-only-in-a things-only-in-b things-in-both].
   Comparison rules:
@@ -13,3 +14,4 @@ Recursively compares a and b, returning a tuple of
     by their indexes, with results returned as vectors.
   * Everything else (including strings!) is treated as
     an atom and compared for equality.
+{%endraw%}

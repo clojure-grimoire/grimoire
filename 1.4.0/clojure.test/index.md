@@ -2,44 +2,125 @@
 layout: ns
 title: clojure.test
 ---
+{% markdown 1.4.0/clojure.test/index.md %}
+
 ## Macros
-[deftest-](./deftest)
-[deftest](./deftest)
-[is](./is)
-[testing](./testing)
-[try-expr](./try_expr)
-[are](./are)
-[with-test-out](./with_test_out)
-[set-test](./set_test)
-[with-test](./with_test)
+
+### A
+
+[are](./are/)
+
+
+### D
+
+[deftest](./deftest/)
+[deftest-](./deftest_DASH/)
+
+
+### I
+
+[is](./is/)
+
+
+### S
+
+[set-test](./set_DASH_test/)
+
+
+### T
+
+[testing](./testing/)
+[try-expr](./try_DASH_expr/)
+
+
+### W
+
+[with-test](./with_DASH_test/)
+[with-test-out](./with_DASH_test_DASH_out/)
+
 
 ## Vars
-[\*initial-report-counters\*](./star_initial_report_counters_star)
-[\*testing-vars\*](./star_testing_vars_star)
-[use-fixtures](./use_fixtures)
-[\*test-out\*](./star_test_out_star)
-[report](./report)
-[\*report-counters\*](./star_report_counters_star)
-[\*load-tests\*](./star_load_tests_star)
-[assert-expr](./assert_expr)
-[\*stack-trace-depth\*](./star_stack_trace_depth_star)
-[\*testing-contexts\*](./star_testing_contexts_star)
+
+### *
+
+[\*initial-report-counters\*](./STAR_initial_DASH_report_DASH_counters_STAR/)
+[\*load-tests\*](./STAR_load_DASH_tests_STAR/)
+[\*report-counters\*](./STAR_report_DASH_counters_STAR/)
+[\*stack-trace-depth\*](./STAR_stack_DASH_trace_DASH_depth_STAR/)
+[\*test-out\*](./STAR_test_DASH_out_STAR/)
+[\*testing-contexts\*](./STAR_testing_DASH_contexts_STAR/)
+[\*testing-vars\*](./STAR_testing_DASH_vars_STAR/)
+
+
+### A
+
+[assert-expr](./assert_DASH_expr/)
+
+
+### R
+
+[report](./report/)
+
+
+### U
+
+[use-fixtures](./use_DASH_fixtures/)
+
 
 ## Functions
-[join-fixtures](./join_fixtures)
-[assert-predicate](./assert_predicate)
-[testing-contexts-str](./testing_contexts_str)
-[testing-vars-str](./testing_vars_str)
-[get-possibly-unbound-var](./get_possibly_unbound_var)
-[run-tests](./run_tests)
-[do-report](./do_report)
-[test-ns](./test_ns)
-[function?](./function_qmark)
-[file-position](./file_position)
-[test-all-vars](./test_all_vars)
-[run-all-tests](./run_all_tests)
-[assert-any](./assert_any)
-[inc-report-counter](./inc_report_counter)
-[successful?](./successful_qmark)
-[compose-fixtures](./compose_fixtures)
-[test-var](./test_var)
+
+### A
+
+[assert-any](./assert_DASH_any/)
+[assert-predicate](./assert_DASH_predicate/)
+
+
+### C
+
+[compose-fixtures](./compose_DASH_fixtures/)
+
+
+### D
+
+[do-report](./do_DASH_report/)
+
+
+### F
+
+[file-position](./file_DASH_position/)
+[function?](./function_QMARK/)
+
+
+### G
+
+[get-possibly-unbound-var](./get_DASH_possibly_DASH_unbound_DASH_var/)
+
+
+### I
+
+[inc-report-counter](./inc_DASH_report_DASH_counter/)
+
+
+### J
+
+[join-fixtures](./join_DASH_fixtures/)
+
+
+### R
+
+[run-all-tests](./run_DASH_all_DASH_tests/)
+[run-tests](./run_DASH_tests/)
+
+
+### S
+
+[successful?](./successful_QMARK/)
+
+
+### T
+
+[test-all-vars](./test_DASH_all_DASH_vars/)
+[test-ns](./test_DASH_ns/)
+[test-var](./test_DASH_var/)
+[testing-contexts-str](./testing_DASH_contexts_DASH_str/)
+[testing-vars-str](./testing_DASH_vars_DASH_str/)

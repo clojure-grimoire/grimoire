@@ -2,26 +2,65 @@
 layout: ns
 title: clojure.string
 ---
+{% markdown 1.6.0/clojure.string/index.md %}
+
 ## Macros
+
 
 
 ## Vars
 
 
+
 ## Functions
-[capitalize](./capitalize)
-[reverse](./reverse)
-[join](./join)
-[replace-first](./replace_first)
-[escape](./escape)
-[re-quote-replacement](./re_quote_replacement)
-[replace](./replace)
-[split-lines](./split_lines)
-[lower-case](./lower_case)
-[trim-newline](./trim_newline)
-[upper-case](./upper_case)
-[split](./split)
-[trimr](./trimr)
-[trim](./trim)
-[triml](./triml)
-[blank?](./blank_qmark)
+
+### B
+
+[blank?](./blank_QMARK/)
+
+
+### C
+
+[capitalize](./capitalize/)
+
+
+### E
+
+[escape](./escape/)
+
+
+### J
+
+[join](./join/)
+
+
+### L
+
+[lower-case](./lower_DASH_case/)
+
+
+### R
+
+[re-quote-replacement](./re_DASH_quote_DASH_replacement/)
+[replace](./replace/)
+[replace-first](./replace_DASH_first/)
+[reverse](./reverse/)
+
+
+### S
+
+[split](./split/)
+[split-lines](./split_DASH_lines/)
+
+
+### T
+
+[trim](./trim/)
+[trim-newline](./trim_DASH_newline/)
+[triml](./triml/)
+[trimr](./trimr/)
+
+
+### U
+
+[upper-case](./upper_DASH_case/)

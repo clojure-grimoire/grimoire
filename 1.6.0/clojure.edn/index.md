@@ -2,12 +2,19 @@
 layout: ns
 title: clojure.edn
 ---
+{% markdown 1.6.0/clojure.edn/index.md %}
+
 ## Macros
+
 
 
 ## Vars
 
 
+
 ## Functions
-[read-string](./read_string)
-[read](./read)
+
+### R
+
+[read](./read/)
+[read-string](./read_DASH_string/)

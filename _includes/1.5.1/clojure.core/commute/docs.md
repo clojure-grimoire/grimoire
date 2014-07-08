@@ -2,6 +2,7 @@
 [ref fun & args]
 
 ## Documentation
+{%raw%}
 Must be called in a transaction. Sets the in-transaction-value of
   ref to:
 
@@ -16,3 +17,4 @@ Must be called in a transaction. Sets the in-transaction-value of
   Thus fun should be commutative, or, failing that, you must accept
   last-one-in-wins behavior.  commute allows for more concurrency than
   ref-set.
+{%endraw%}

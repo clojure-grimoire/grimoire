@@ -3,6 +3,7 @@
 [x & options]
 
 ## Documentation
+{%raw%}
 Creates and returns a Ref with an initial value of x and zero or
   more options (in any order):
 
@@ -25,3 +26,4 @@ Creates and returns a Ref with an initial value of x and zero or
   set :min-history to ensure it will be available when first needed (instead
   of after a read fault). History is limited, and the limit can be set
   with :max-history.
+{%endraw%}

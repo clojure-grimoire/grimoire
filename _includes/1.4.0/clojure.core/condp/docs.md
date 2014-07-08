@@ -2,6 +2,7 @@
 [pred expr & clauses]
 
 ## Documentation
+{%raw%}
 Takes a binary predicate, an expression, and a set of clauses.
   Each clause can take the form of either:
 
@@ -20,3 +21,4 @@ Takes a binary predicate, an expression, and a set of clauses.
   and its value will be returned if no clause matches. If no default
   expression is provided and no clause matches, an
   IllegalArgumentException is thrown.
+{%endraw%}

@@ -2,16 +2,31 @@
 layout: ns
 title: clojure.stacktrace
 ---
+{% markdown 1.5.0/clojure.stacktrace/index.md %}
+
 ## Macros
+
 
 
 ## Vars
 
 
+
 ## Functions
-[print-trace-element](./print_trace_element)
-[e](./e)
-[root-cause](./root_cause)
-[print-cause-trace](./print_cause_trace)
-[print-stack-trace](./print_stack_trace)
-[print-throwable](./print_throwable)
+
+### E
+
+[e](./e/)
+
+
+### P
+
+[print-cause-trace](./print_DASH_cause_DASH_trace/)
+[print-stack-trace](./print_DASH_stack_DASH_trace/)
+[print-throwable](./print_DASH_throwable/)
+[print-trace-element](./print_DASH_trace_DASH_element/)
+
+
+### R
+
+[root-cause](./root_DASH_cause/)

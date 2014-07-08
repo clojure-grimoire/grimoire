@@ -2,26 +2,64 @@
 layout: ns
 title: clojure.reflect
 ---
+{% markdown 1.5.1/clojure.reflect/index.md %}
+
 ## Macros
 
 
+
 ## Vars
-[ClassResolver](./classresolver)
-[Reflector](./reflector)
-[TypeReference](./typereference)
-[flag-descriptors](./flag_descriptors)
+
+### C
+
+[ClassResolver](./ClassResolver/)
+
+
+### R
+
+[Reflector](./Reflector/)
+
+
+### T
+
+[TypeReference](./TypeReference/)
+
+
+### F
+
+[flag-descriptors](./flag_DASH_descriptors/)
+
 
 ## Functions
-[->AsmReflector](./gt_asmreflector)
-[map->Method](./map__gt_method)
-[->Field](./gt_field)
-[->Method](./gt_method)
-[map->Constructor](./map__gt_constructor)
-[->JavaReflector](./gt_javareflector)
-[type-reflect](./type_reflect)
-[do-reflect](./do_reflect)
-[typename](./typename)
-[->Constructor](./gt_constructor)
-[reflect](./reflect)
-[map->Field](./map__gt_field)
-[resolve-class](./resolve_class)
+
+### -
+
+[->AsmReflector](./DASH__GT_AsmReflector/)
+[->Constructor](./DASH__GT_Constructor/)
+[->Field](./DASH__GT_Field/)
+[->JavaReflector](./DASH__GT_JavaReflector/)
+[->Method](./DASH__GT_Method/)
+
+
+### D
+
+[do-reflect](./do_DASH_reflect/)
+
+
+### M
+
+[map->Constructor](./map_DASH__GT_Constructor/)
+[map->Field](./map_DASH__GT_Field/)
+[map->Method](./map_DASH__GT_Method/)
+
+
+### R
+
+[reflect](./reflect/)
+[resolve-class](./resolve_DASH_class/)
+
+
+### T
+
+[type-reflect](./type_DASH_reflect/)
+[typename](./typename/)

@@ -2,6 +2,7 @@
 [argv expr & args]
 
 ## Documentation
+{%raw%}
 Checks multiple assertions with a template expression.
   See clojure.template/do-template for an explanation of
   templates.
@@ -14,3 +15,4 @@ Checks multiple assertions with a template expression.
                (is (= 4 (* 2 2))))
 
   Note: This breaks some reporting features, such as line numbers.
+{%endraw%}

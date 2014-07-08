@@ -2,13 +2,26 @@
 layout: ns
 title: clojure.java.shell
 ---
+{% markdown 1.4.0/clojure.java.shell/index.md %}
+
 ## Macros
-[with-sh-env](./with_sh_env)
-[with-sh-dir](./with_sh_dir)
+
+### W
+
+[with-sh-dir](./with_DASH_sh_DASH_dir/)
+[with-sh-env](./with_DASH_sh_DASH_env/)
+
 
 ## Vars
-[\*sh-env\*](./star_sh_env_star)
-[\*sh-dir\*](./star_sh_dir_star)
+
+### *
+
+[\*sh-dir\*](./STAR_sh_DASH_dir_STAR/)
+[\*sh-env\*](./STAR_sh_DASH_env_STAR/)
+
 
 ## Functions
-[sh](./sh)
+
+### S
+
+[sh](./sh/)

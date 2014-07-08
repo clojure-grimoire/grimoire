@@ -110,9 +110,11 @@
 (defn write-example
   [i {:keys [body] :as example}]
   (str "### Example " i "\n"
+       "[permalink](#example-" i ")\n"
+       "\n"
        "{% highlight clojure linenos %}\n"
        "{% raw %}\n"
-       body
+       (replace body #"[\t ]+\n" "\n")
        "{% endraw %}\n"
        "{% endhighlight %}\n\n\n"))
 

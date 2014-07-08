@@ -2,7 +2,6 @@
 title: Grimoire
 email: me@arrdem.com
 description: "Community documentation of Clojure"
-baseurl: "/"
 url: "http://grimoire.arrdem.com"
 
 # Build settings

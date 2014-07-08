@@ -1,4 +1,4 @@
-(ns doc
+(ns grimoire.core
   (:require [clojure.java.io :refer :all]
             [clojure.string :refer [lower-case upper-case replace-first replace]])
   (:import [java.io LineNumberReader InputStreamReader PushbackReader]
@@ -330,5 +330,3 @@
                        (map #(format "- [%s](./%s/)\n" %1 %1))
                        (reduce str)))
              (spit version-file))))))
-
-(-main)

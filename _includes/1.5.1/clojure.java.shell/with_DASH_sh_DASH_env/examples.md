@@ -1,1 +1,0 @@
-{% include 1.5.0/clojure.java.shell/with_DASH_sh_DASH_env/examples.md %}

@@ -148,11 +148,12 @@
       (when (fn? @var)
         ;; write source file
         (let [inc-src-file (file sym-inc-dir "src.md")]
-          (->> (format (str (lq "highlight" "clojure" "linenos")
-                            "%s\n"
-                            (lq "endhighlight"))
-                       (source-fn var))
-               (spit inc-src-file))))
+          (when-not (.exists inc-src-file)
+            (->> (format (str (lq "highlight" "clojure" "linenos")
+                              "%s\n"
+                              (lq "endhighlight"))
+                         (source-fn var))
+                 (spit inc-src-file)))))
 
       (let [ex-file (file sym-inc-dir "examples.md")]
         ;; ensure the examples file
@@ -179,24 +180,26 @@
     ;; /<clojure-version>/<namespace>/<symbol>.md
     (let [dst-dir (file (str ns-dir "/" symbol))
           dst-file (file dst-dir "index.md")]
-      (.mkdir dst-dir)
+      (when-not (.exists dst-dir)
+        (.mkdir dst-dir))
 
-      (->> (str (render-yaml [["layout"    "fn"]
-                              ["namespace" namespace]
-                              ["symbol"    (pr-str md-symbol)]])
-                (format "\n# [%s](../)/%s\n\n"
-                        namespace
-                        md-symbol)
-                (lq "include" (trim-dot (str ns-dir "/" symbol "/docs.md")))
-                "\n##Examples\n\n"
-                (lq "include" (trim-dot (str ns-dir "/" symbol "/examples.md")))
-                (if (fn? @var)
-                  (str "## Source\n"
-                       (lq "include" (trim-dot (str ns-dir "/" symbol "/src.md"))))
-                  "")
-                "\n")
-           (format)
-           (spit dst-file)))))
+      (when-not (.exists dst-file)
+        (->> (str (render-yaml [["layout"    "fn"]
+                                ["namespace" namespace]
+                                ["symbol"    (pr-str md-symbol)]])
+                  (format "\n# [%s](../)/%s\n\n"
+                          namespace
+                          md-symbol)
+                  (lq "include" (trim-dot (str ns-dir "/" symbol "/docs.md")))
+                  "\n##Examples\n\n"
+                  (lq "include" (trim-dot (str ns-dir "/" symbol "/examples.md")))
+                  (if (fn? @var)
+                    (str "## Source\n"
+                         (lq "include" (trim-dot (str ns-dir "/" symbol "/src.md"))))
+                    "")
+                  "\n")
+             (format)
+             (spit dst-file))))))
 
 (defn var->link
   [v]
@@ -254,27 +257,28 @@
                (spit index-inc-file)))
 
         (let [f (file index-file)]
-          (->> (str (render-yaml [["layout" "ns"]
-                                  ["title"  (name ns)]])
-
-                    (str "{% markdown " version-ns-dir  "/index.md %}\n\n")
-
-                    (when macros
-                      (str "## Macros\n\n"
-                           (index-vars macros)))
-
-                    "\n\n"
-
-                    (when vars
-                      (str "## Vars\n\n"
-                           (index-vars vars)))
-
-                    "\n\n"
-                    
-                    (when fns
-                      (str "## Functions\n\n"
-                           (index-vars fns))))
-               (spit f))))))
+          (when-not (.exists f)
+            (->> (str (render-yaml [["layout" "ns"]
+                                    ["title"  (name ns)]])
+                      
+                      (str "{% markdown " version-ns-dir  "/index.md %}\n\n")
+                      
+                      (when macros
+                        (str "## Macros\n\n"
+                             (index-vars macros)))
+                      
+                      "\n\n"
+                      
+                      (when vars
+                        (str "## Vars\n\n"
+                             (index-vars vars)))
+                      
+                      "\n\n"
+                      
+                      (when fns
+                        (str "## Functions\n\n"
+                             (index-vars fns))))
+                 (spit f)))))))
 
   (println "Finished" ns)
   nil)
@@ -318,8 +322,11 @@
     (println version-str)
     (let [version-dir (file version-str)
           include-dir (file (str "_includes/" version-str))]
-      (.mkdir version-dir)
-      (.mkdir include-dir)
+      (when-not (.exists version-dir)
+        (.mkdir version-dir))
+
+      (when-not (.exists include-dir)
+        (.mkdir include-dir))
 
       (println "Made root folders...")
 
@@ -338,20 +345,21 @@
                (spit version-inc-file))))
 
       (let [version-file (file version-dir "index.md")]
-        (->> (str (render-yaml [["layout"  "release"]
-                                ["version" version-str]])
-                  "\n"
-                  "## Release information\n"
-                  "\n"
-                  (str "{% markdown " version-file " %}\n")
-                  "\n"
-                  "## Namespaces\n"
-                  "\n"
-                  (->> namespaces
-                       (filter (fn [n]
-                                 (not (and (= n 'clojure.edn)
-                                           (= version-str "1.4.0")))))
-                       (map name)
-                       (map #(format "- [%s](./%s/)\n" %1 %1))
-                       (reduce str)))
-             (spit version-file))))))
+        (when-not (.exists version-file)
+          (->> (str (render-yaml [["layout"  "release"]
+                                  ["version" version-str]])
+                    "\n"
+                    "## Release information\n"
+                    "\n"
+                    (str "{% markdown " version-file " %}\n")
+                    "\n"
+                    "## Namespaces\n"
+                    "\n"
+                    (->> namespaces
+                         (filter (fn [n]
+                                   (not (and (= n 'clojure.edn)
+                                             (= version-str "1.4.0")))))
+                         (map name)
+                         (map #(format "- [%s](./%s/)\n" %1 %1))
+                         (reduce str)))
+               (spit version-file)))))))

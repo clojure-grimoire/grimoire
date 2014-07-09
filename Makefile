@@ -1,10 +1,7 @@
-clean:
-	rm -rf _site _includes/*.*.*/ *.*.*/ *.*.*.md *.jar
-
-build: clean versions
+build: versions
 	jekyll build
 
-test: clean versions
+test: versions
 	jekyll serve
 
 versions:

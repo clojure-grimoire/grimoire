@@ -1,0 +1,33 @@
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="{{ site.baseurl }}">
+          {{ site.title }}
+        </a>
+      </h1>
+      <p class="lead">{{ site.description }}</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}">Home</a>
+
+      <a class="sidebar-nav-item" href="/1.6.0/">Clojure 1.6</a>
+      <a class="sidebar-nav-item" href="/1.5.0/">Clojure 1.5</a>
+      <a class="sidebar-nav-item" href="/1.4.0/">Clojure 1.4</a>
+      
+      <a class="sidebar-nav-item" href="/about/">About</a>
+      <a class="sidebar-nav-item" href="/contributing/">Contributing</a>
+      
+      <br />
+      More
+      <br />
+      <a class="sidebar-nav-item" href="{{site.author.github}}">Github</a>
+      <a class="sidebar-nav-item" href="{{site.author.me}}">Me</a>
+
+      <span class="sidebar-nav-item">Currently v{{ site.version }}</span>
+    </nav>
+
+    <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
+  </div>
+</div>

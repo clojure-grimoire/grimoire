@@ -3,6 +3,8 @@ title: Grimoire
 email: me@arrdem.com
 description: "Community documentation of Clojure"
 url: "http://grimoire.arrdem.com"
+baseurl: /
+version: 0.1.0
 
 # Build settings
 markdown: kramdown
@@ -14,3 +16,7 @@ JB:
     provider: google
     google:
       tracking_id: "UA-44001831-2"
+
+author:
+  me:      "http://arrdem.com/"
+  github:  "https://github.com/arrdem/grimoire"

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "declare"
 ---
 
-# [clojure.core](../)/declare
+# [Clojure 1.4.0](../../)/[clojure.core](../)/declare
 
 {% include 1.4.0/clojure.core/declare/docs.md %}
 

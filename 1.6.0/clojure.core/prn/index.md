@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "prn"
 ---
 
-# [clojure.core](../)/prn
+# [Clojure 1.6.0](../../)/[clojure.core](../)/prn
 
 {% include 1.6.0/clojure.core/prn/docs.md %}
 

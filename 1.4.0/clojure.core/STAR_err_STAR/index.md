@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "\\*err\\*"
 ---
 
-# [clojure.core](../)/\*err\*
+# [Clojure 1.4.0](../../)/[clojure.core](../)/\*err\*
 
 {% include 1.4.0/clojure.core/STAR_err_STAR/docs.md %}
 

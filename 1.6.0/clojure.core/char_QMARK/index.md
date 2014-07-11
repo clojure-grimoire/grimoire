@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "char?"
 ---
 
-# [clojure.core](../)/char?
+# [Clojure 1.6.0](../../)/[clojure.core](../)/char?
 
 {% include 1.6.0/clojure.core/char_QMARK/docs.md %}
 

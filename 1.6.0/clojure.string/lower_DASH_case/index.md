@@ -4,7 +4,7 @@ namespace: clojure.string
 symbol: "lower-case"
 ---
 
-# [clojure.string](../)/lower-case
+# [Clojure 1.6.0](../../)/[clojure.string](../)/lower-case
 
 {% include 1.6.0/clojure.string/lower_DASH_case/docs.md %}
 

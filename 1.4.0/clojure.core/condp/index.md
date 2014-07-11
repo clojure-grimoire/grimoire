@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "condp"
 ---
 
-# [clojure.core](../)/condp
+# [Clojure 1.4.0](../../)/[clojure.core](../)/condp
 
 {% include 1.4.0/clojure.core/condp/docs.md %}
 

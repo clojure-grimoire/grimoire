@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "dec'"
 ---
 
-# [clojure.core](../)/dec'
+# [Clojure 1.6.0](../../)/[clojure.core](../)/dec'
 
 {% include 1.6.0/clojure.core/dec_SQUOTE/docs.md %}
 

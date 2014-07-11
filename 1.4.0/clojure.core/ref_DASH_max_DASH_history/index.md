@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ref-max-history"
 ---
 
-# [clojure.core](../)/ref-max-history
+# [Clojure 1.4.0](../../)/[clojure.core](../)/ref-max-history
 
 {% include 1.4.0/clojure.core/ref_DASH_max_DASH_history/docs.md %}
 

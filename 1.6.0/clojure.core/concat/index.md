@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "concat"
 ---
 
-# [clojure.core](../)/concat
+# [Clojure 1.6.0](../../)/[clojure.core](../)/concat
 
 {% include 1.6.0/clojure.core/concat/docs.md %}
 

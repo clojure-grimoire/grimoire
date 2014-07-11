@@ -1,8 +1,11 @@
 ---
 layout: ns
-title: clojure.pprint
 ---
+# [Clojure 1.4.0](../)/clojure.pprint
+
 {% markdown 1.4.0/clojure.pprint/index.md %}
+
+
 
 ## Macros
 

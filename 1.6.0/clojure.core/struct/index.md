@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "struct"
 ---
 
-# [clojure.core](../)/struct
+# [Clojure 1.6.0](../../)/[clojure.core](../)/struct
 
 {% include 1.6.0/clojure.core/struct/docs.md %}
 

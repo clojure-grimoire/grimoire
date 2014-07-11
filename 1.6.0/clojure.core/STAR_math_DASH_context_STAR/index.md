@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "\\*math-context\\*"
 ---
 
-# [clojure.core](../)/\*math-context\*
+# [Clojure 1.6.0](../../)/[clojure.core](../)/\*math-context\*
 
 {% include 1.6.0/clojure.core/STAR_math_DASH_context_STAR/docs.md %}
 

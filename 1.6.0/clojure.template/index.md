@@ -1,8 +1,11 @@
 ---
 layout: ns
-title: clojure.template
 ---
+# [Clojure 1.6.0](../)/clojure.template
+
 {% markdown 1.6.0/clojure.template/index.md %}
+
+
 
 ## Macros
 

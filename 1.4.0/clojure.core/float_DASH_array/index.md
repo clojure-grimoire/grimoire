@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "float-array"
 ---
 
-# [clojure.core](../)/float-array
+# [Clojure 1.4.0](../../)/[clojure.core](../)/float-array
 
 {% include 1.4.0/clojure.core/float_DASH_array/docs.md %}
 

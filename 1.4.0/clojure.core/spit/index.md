@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "spit"
 ---
 
-# [clojure.core](../)/spit
+# [Clojure 1.4.0](../../)/[clojure.core](../)/spit
 
 {% include 1.4.0/clojure.core/spit/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.reflect
 symbol: "->JavaReflector"
 ---
 
-# [clojure.reflect](../)/->JavaReflector
+# [Clojure 1.6.0](../../)/[clojure.reflect](../)/->JavaReflector
 
 {% include 1.6.0/clojure.reflect/DASH__GT_JavaReflector/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.pprint
 symbol: "print-length-loop"
 ---
 
-# [clojure.pprint](../)/print-length-loop
+# [Clojure 1.4.0](../../)/[clojure.pprint](../)/print-length-loop
 
 {% include 1.4.0/clojure.pprint/print_DASH_length_DASH_loop/docs.md %}
 

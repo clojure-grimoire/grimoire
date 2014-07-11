@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "interleave"
 ---
 
-# [clojure.core](../)/interleave
+# [Clojure 1.4.0](../../)/[clojure.core](../)/interleave
 
 {% include 1.4.0/clojure.core/interleave/docs.md %}
 

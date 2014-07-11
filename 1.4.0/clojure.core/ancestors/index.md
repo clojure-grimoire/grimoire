@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ancestors"
 ---
 
-# [clojure.core](../)/ancestors
+# [Clojure 1.4.0](../../)/[clojure.core](../)/ancestors
 
 {% include 1.4.0/clojure.core/ancestors/docs.md %}
 

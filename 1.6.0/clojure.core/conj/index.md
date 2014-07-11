@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "conj"
 ---
 
-# [clojure.core](../)/conj
+# [Clojure 1.6.0](../../)/[clojure.core](../)/conj
 
 {% include 1.6.0/clojure.core/conj/docs.md %}
 

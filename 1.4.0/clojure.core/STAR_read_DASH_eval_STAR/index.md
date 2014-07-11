@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "\\*read-eval\\*"
 ---
 
-# [clojure.core](../)/\*read-eval\*
+# [Clojure 1.4.0](../../)/[clojure.core](../)/\*read-eval\*
 
 {% include 1.4.0/clojure.core/STAR_read_DASH_eval_STAR/docs.md %}
 

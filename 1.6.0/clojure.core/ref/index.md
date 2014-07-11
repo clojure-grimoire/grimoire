@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ref"
 ---
 
-# [clojure.core](../)/ref
+# [Clojure 1.6.0](../../)/[clojure.core](../)/ref
 
 {% include 1.6.0/clojure.core/ref/docs.md %}
 

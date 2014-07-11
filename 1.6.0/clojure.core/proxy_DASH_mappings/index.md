@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "proxy-mappings"
 ---
 
-# [clojure.core](../)/proxy-mappings
+# [Clojure 1.6.0](../../)/[clojure.core](../)/proxy-mappings
 
 {% include 1.6.0/clojure.core/proxy_DASH_mappings/docs.md %}
 

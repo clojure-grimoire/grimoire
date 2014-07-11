@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "supers"
 ---
 
-# [clojure.core](../)/supers
+# [Clojure 1.6.0](../../)/[clojure.core](../)/supers
 
 {% include 1.6.0/clojure.core/supers/docs.md %}
 

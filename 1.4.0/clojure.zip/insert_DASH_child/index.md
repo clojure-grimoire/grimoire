@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "insert-child"
 ---
 
-# [clojure.zip](../)/insert-child
+# [Clojure 1.4.0](../../)/[clojure.zip](../)/insert-child
 
 {% include 1.4.0/clojure.zip/insert_DASH_child/docs.md %}
 

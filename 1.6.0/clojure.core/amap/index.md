@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "amap"
 ---
 
-# [clojure.core](../)/amap
+# [Clojure 1.6.0](../../)/[clojure.core](../)/amap
 
 {% include 1.6.0/clojure.core/amap/docs.md %}
 

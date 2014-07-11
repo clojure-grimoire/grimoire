@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "map-indexed"
 ---
 
-# [clojure.core](../)/map-indexed
+# [Clojure 1.6.0](../../)/[clojure.core](../)/map-indexed
 
 {% include 1.6.0/clojure.core/map_DASH_indexed/docs.md %}
 

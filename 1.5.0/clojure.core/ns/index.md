@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ns"
 ---
 
-# [clojure.core](../)/ns
+# [Clojure 1.5.0](../../)/[clojure.core](../)/ns
 
 {% include 1.5.0/clojure.core/ns/docs.md %}
 

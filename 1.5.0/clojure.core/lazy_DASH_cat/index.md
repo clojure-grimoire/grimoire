@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "lazy-cat"
 ---
 
-# [clojure.core](../)/lazy-cat
+# [Clojure 1.5.0](../../)/[clojure.core](../)/lazy-cat
 
 {% include 1.5.0/clojure.core/lazy_DASH_cat/docs.md %}
 

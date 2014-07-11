@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "sort"
 ---
 
-# [clojure.core](../)/sort
+# [Clojure 1.6.0](../../)/[clojure.core](../)/sort
 
 {% include 1.6.0/clojure.core/sort/docs.md %}
 

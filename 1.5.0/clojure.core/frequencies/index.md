@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "frequencies"
 ---
 
-# [clojure.core](../)/frequencies
+# [Clojure 1.5.0](../../)/[clojure.core](../)/frequencies
 
 {% include 1.5.0/clojure.core/frequencies/docs.md %}
 

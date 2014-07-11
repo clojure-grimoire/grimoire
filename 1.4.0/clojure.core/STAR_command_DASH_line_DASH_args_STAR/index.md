@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "\\*command-line-args\\*"
 ---
 
-# [clojure.core](../)/\*command-line-args\*
+# [Clojure 1.4.0](../../)/[clojure.core](../)/\*command-line-args\*
 
 {% include 1.4.0/clojure.core/STAR_command_DASH_line_DASH_args_STAR/docs.md %}
 

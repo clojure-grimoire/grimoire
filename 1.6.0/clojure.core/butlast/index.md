@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "butlast"
 ---
 
-# [clojure.core](../)/butlast
+# [Clojure 1.6.0](../../)/[clojure.core](../)/butlast
 
 {% include 1.6.0/clojure.core/butlast/docs.md %}
 

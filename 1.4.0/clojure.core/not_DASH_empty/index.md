@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "not-empty"
 ---
 
-# [clojure.core](../)/not-empty
+# [Clojure 1.4.0](../../)/[clojure.core](../)/not-empty
 
 {% include 1.4.0/clojure.core/not_DASH_empty/docs.md %}
 

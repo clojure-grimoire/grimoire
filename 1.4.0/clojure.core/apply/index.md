@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "apply"
 ---
 
-# [clojure.core](../)/apply
+# [Clojure 1.4.0](../../)/[clojure.core](../)/apply
 
 {% include 1.4.0/clojure.core/apply/docs.md %}
 

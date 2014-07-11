@@ -4,11 +4,13 @@ namespace: clojure.test
 symbol: "report"
 ---
 
-# [clojure.test](../)/report
+# [Clojure 1.6.0](../../)/[clojure.test](../)/report
 
 {% include 1.6.0/clojure.test/report/docs.md %}
 
 ##Examples
 
 {% include 1.6.0/clojure.test/report/examples.md %}
+## Source
+{% include 1.6.0/clojure.test/report/src.md %}
 

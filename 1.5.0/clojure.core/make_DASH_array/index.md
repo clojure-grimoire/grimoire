@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "make-array"
 ---
 
-# [clojure.core](../)/make-array
+# [Clojure 1.5.0](../../)/[clojure.core](../)/make-array
 
 {% include 1.5.0/clojure.core/make_DASH_array/docs.md %}
 

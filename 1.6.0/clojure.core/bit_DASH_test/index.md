@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "bit-test"
 ---
 
-# [clojure.core](../)/bit-test
+# [Clojure 1.6.0](../../)/[clojure.core](../)/bit-test
 
 {% include 1.6.0/clojure.core/bit_DASH_test/docs.md %}
 

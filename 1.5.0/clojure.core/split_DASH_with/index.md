@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "split-with"
 ---
 
-# [clojure.core](../)/split-with
+# [Clojure 1.5.0](../../)/[clojure.core](../)/split-with
 
 {% include 1.5.0/clojure.core/split_DASH_with/docs.md %}
 

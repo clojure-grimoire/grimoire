@@ -4,7 +4,7 @@ namespace: clojure.pprint
 symbol: "pprint-tab"
 ---
 
-# [clojure.pprint](../)/pprint-tab
+# [Clojure 1.6.0](../../)/[clojure.pprint](../)/pprint-tab
 
 {% include 1.6.0/clojure.pprint/pprint_DASH_tab/docs.md %}
 

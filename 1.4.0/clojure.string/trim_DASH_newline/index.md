@@ -4,7 +4,7 @@ namespace: clojure.string
 symbol: "trim-newline"
 ---
 
-# [clojure.string](../)/trim-newline
+# [Clojure 1.4.0](../../)/[clojure.string](../)/trim-newline
 
 {% include 1.4.0/clojure.string/trim_DASH_newline/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "special-symbol?"
 ---
 
-# [clojure.core](../)/special-symbol?
+# [Clojure 1.4.0](../../)/[clojure.core](../)/special-symbol?
 
 {% include 1.4.0/clojure.core/special_DASH_symbol_QMARK/docs.md %}
 

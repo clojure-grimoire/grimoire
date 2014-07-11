@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "chunk-buffer"
 ---
 
-# [clojure.core](../)/chunk-buffer
+# [Clojure 1.5.0](../../)/[clojure.core](../)/chunk-buffer
 
 {% include 1.5.0/clojure.core/chunk_DASH_buffer/docs.md %}
 

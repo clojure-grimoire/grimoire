@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "remove"
 ---
 
-# [clojure.zip](../)/remove
+# [Clojure 1.5.0](../../)/[clojure.zip](../)/remove
 
 {% include 1.5.0/clojure.zip/remove/docs.md %}
 

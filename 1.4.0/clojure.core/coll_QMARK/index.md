@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "coll?"
 ---
 
-# [clojure.core](../)/coll?
+# [Clojure 1.4.0](../../)/[clojure.core](../)/coll?
 
 {% include 1.4.0/clojure.core/coll_QMARK/docs.md %}
 

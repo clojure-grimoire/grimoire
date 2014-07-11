@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "comparator"
 ---
 
-# [clojure.core](../)/comparator
+# [Clojure 1.4.0](../../)/[clojure.core](../)/comparator
 
 {% include 1.4.0/clojure.core/comparator/docs.md %}
 

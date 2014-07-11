@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "reversible?"
 ---
 
-# [clojure.core](../)/reversible?
+# [Clojure 1.5.0](../../)/[clojure.core](../)/reversible?
 
 {% include 1.5.0/clojure.core/reversible_QMARK/docs.md %}
 

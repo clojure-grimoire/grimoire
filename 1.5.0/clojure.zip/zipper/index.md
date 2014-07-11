@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "zipper"
 ---
 
-# [clojure.zip](../)/zipper
+# [Clojure 1.5.0](../../)/[clojure.zip](../)/zipper
 
 {% include 1.5.0/clojure.zip/zipper/docs.md %}
 

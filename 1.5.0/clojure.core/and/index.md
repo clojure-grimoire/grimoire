@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "and"
 ---
 
-# [clojure.core](../)/and
+# [Clojure 1.5.0](../../)/[clojure.core](../)/and
 
 {% include 1.5.0/clojure.core/and/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "release-pending-sends"
 ---
 
-# [clojure.core](../)/release-pending-sends
+# [Clojure 1.5.0](../../)/[clojure.core](../)/release-pending-sends
 
 {% include 1.5.0/clojure.core/release_DASH_pending_DASH_sends/docs.md %}
 

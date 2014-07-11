@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "get-in"
 ---
 
-# [clojure.core](../)/get-in
+# [Clojure 1.5.0](../../)/[clojure.core](../)/get-in
 
 {% include 1.5.0/clojure.core/get_DASH_in/docs.md %}
 

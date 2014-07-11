@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "sorted-set-by"
 ---
 
-# [clojure.core](../)/sorted-set-by
+# [Clojure 1.4.0](../../)/[clojure.core](../)/sorted-set-by
 
 {% include 1.4.0/clojure.core/sorted_DASH_set_DASH_by/docs.md %}
 

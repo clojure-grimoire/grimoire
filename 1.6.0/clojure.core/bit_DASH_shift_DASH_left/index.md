@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "bit-shift-left"
 ---
 
-# [clojure.core](../)/bit-shift-left
+# [Clojure 1.6.0](../../)/[clojure.core](../)/bit-shift-left
 
 {% include 1.6.0/clojure.core/bit_DASH_shift_DASH_left/docs.md %}
 

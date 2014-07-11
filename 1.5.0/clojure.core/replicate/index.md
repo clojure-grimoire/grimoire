@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "replicate"
 ---
 
-# [clojure.core](../)/replicate
+# [Clojure 1.5.0](../../)/[clojure.core](../)/replicate
 
 {% include 1.5.0/clojure.core/replicate/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "remove-method"
 ---
 
-# [clojure.core](../)/remove-method
+# [Clojure 1.6.0](../../)/[clojure.core](../)/remove-method
 
 {% include 1.6.0/clojure.core/remove_DASH_method/docs.md %}
 

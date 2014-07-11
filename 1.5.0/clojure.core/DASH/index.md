@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "-"
 ---
 
-# [clojure.core](../)/-
+# [Clojure 1.5.0](../../)/[clojure.core](../)/-
 
 {% include 1.5.0/clojure.core/DASH/docs.md %}
 

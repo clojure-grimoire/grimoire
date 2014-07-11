@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "commute"
 ---
 
-# [clojure.core](../)/commute
+# [Clojure 1.4.0](../../)/[clojure.core](../)/commute
 
 {% include 1.4.0/clojure.core/commute/docs.md %}
 

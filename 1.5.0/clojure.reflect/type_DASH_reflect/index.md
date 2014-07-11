@@ -4,7 +4,7 @@ namespace: clojure.reflect
 symbol: "type-reflect"
 ---
 
-# [clojure.reflect](../)/type-reflect
+# [Clojure 1.5.0](../../)/[clojure.reflect](../)/type-reflect
 
 {% include 1.5.0/clojure.reflect/type_DASH_reflect/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.set
 symbol: "map-invert"
 ---
 
-# [clojure.set](../)/map-invert
+# [Clojure 1.4.0](../../)/[clojure.set](../)/map-invert
 
 {% include 1.4.0/clojure.set/map_DASH_invert/docs.md %}
 

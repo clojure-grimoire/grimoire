@@ -1,8 +1,11 @@
 ---
 layout: ns
-title: clojure.instant
 ---
+# [Clojure 1.4.0](../)/clojure.instant
+
 {% markdown 1.4.0/clojure.instant/index.md %}
+
+
 
 ## Macros
 

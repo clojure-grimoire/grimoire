@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "edit"
 ---
 
-# [clojure.zip](../)/edit
+# [Clojure 1.5.0](../../)/[clojure.zip](../)/edit
 
 {% include 1.5.0/clojure.zip/edit/docs.md %}
 

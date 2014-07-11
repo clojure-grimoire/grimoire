@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "create-struct"
 ---
 
-# [clojure.core](../)/create-struct
+# [Clojure 1.6.0](../../)/[clojure.core](../)/create-struct
 
 {% include 1.6.0/clojure.core/create_DASH_struct/docs.md %}
 

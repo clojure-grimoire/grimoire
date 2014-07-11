@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "not-any?"
 ---
 
-# [clojure.core](../)/not-any?
+# [Clojure 1.5.0](../../)/[clojure.core](../)/not-any?
 
 {% include 1.5.0/clojure.core/not_DASH_any_QMARK/docs.md %}
 

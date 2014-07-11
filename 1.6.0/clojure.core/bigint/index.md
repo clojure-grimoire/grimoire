@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "bigint"
 ---
 
-# [clojure.core](../)/bigint
+# [Clojure 1.6.0](../../)/[clojure.core](../)/bigint
 
 {% include 1.6.0/clojure.core/bigint/docs.md %}
 

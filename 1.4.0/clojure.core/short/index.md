@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "short"
 ---
 
-# [clojure.core](../)/short
+# [Clojure 1.4.0](../../)/[clojure.core](../)/short
 
 {% include 1.4.0/clojure.core/short/docs.md %}
 

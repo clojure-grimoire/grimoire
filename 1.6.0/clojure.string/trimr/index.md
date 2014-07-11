@@ -4,7 +4,7 @@ namespace: clojure.string
 symbol: "trimr"
 ---
 
-# [clojure.string](../)/trimr
+# [Clojure 1.6.0](../../)/[clojure.string](../)/trimr
 
 {% include 1.6.0/clojure.string/trimr/docs.md %}
 

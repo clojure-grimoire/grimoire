@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "zero?"
 ---
 
-# [clojure.core](../)/zero?
+# [Clojure 1.5.0](../../)/[clojure.core](../)/zero?
 
 {% include 1.5.0/clojure.core/zero_QMARK/docs.md %}
 

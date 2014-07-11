@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "destructure"
 ---
 
-# [clojure.core](../)/destructure
+# [Clojure 1.4.0](../../)/[clojure.core](../)/destructure
 
 {% include 1.4.0/clojure.core/destructure/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "memoize"
 ---
 
-# [clojure.core](../)/memoize
+# [Clojure 1.4.0](../../)/[clojure.core](../)/memoize
 
 {% include 1.4.0/clojure.core/memoize/docs.md %}
 

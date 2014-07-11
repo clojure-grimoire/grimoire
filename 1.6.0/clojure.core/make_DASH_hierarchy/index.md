@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "make-hierarchy"
 ---
 
-# [clojure.core](../)/make-hierarchy
+# [Clojure 1.6.0](../../)/[clojure.core](../)/make-hierarchy
 
 {% include 1.6.0/clojure.core/make_DASH_hierarchy/docs.md %}
 

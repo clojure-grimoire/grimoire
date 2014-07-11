@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "xml-zip"
 ---
 
-# [clojure.zip](../)/xml-zip
+# [Clojure 1.4.0](../../)/[clojure.zip](../)/xml-zip
 
 {% include 1.4.0/clojure.zip/xml_DASH_zip/docs.md %}
 

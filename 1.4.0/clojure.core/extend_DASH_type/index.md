@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "extend-type"
 ---
 
-# [clojure.core](../)/extend-type
+# [Clojure 1.4.0](../../)/[clojure.core](../)/extend-type
 
 {% include 1.4.0/clojure.core/extend_DASH_type/docs.md %}
 

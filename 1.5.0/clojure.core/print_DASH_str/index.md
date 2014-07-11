@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "print-str"
 ---
 
-# [clojure.core](../)/print-str
+# [Clojure 1.5.0](../../)/[clojure.core](../)/print-str
 
 {% include 1.5.0/clojure.core/print_DASH_str/docs.md %}
 

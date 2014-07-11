@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "with-precision"
 ---
 
-# [clojure.core](../)/with-precision
+# [Clojure 1.5.0](../../)/[clojure.core](../)/with-precision
 
 {% include 1.5.0/clojure.core/with_DASH_precision/docs.md %}
 

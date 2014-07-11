@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "rem"
 ---
 
-# [clojure.core](../)/rem
+# [Clojure 1.4.0](../../)/[clojure.core](../)/rem
 
 {% include 1.4.0/clojure.core/rem/docs.md %}
 

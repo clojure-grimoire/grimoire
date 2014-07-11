@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "quot"
 ---
 
-# [clojure.core](../)/quot
+# [Clojure 1.4.0](../../)/[clojure.core](../)/quot
 
 {% include 1.4.0/clojure.core/quot/docs.md %}
 

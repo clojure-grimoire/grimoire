@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "prefer-method"
 ---
 
-# [clojure.core](../)/prefer-method
+# [Clojure 1.4.0](../../)/[clojure.core](../)/prefer-method
 
 {% include 1.4.0/clojure.core/prefer_DASH_method/docs.md %}
 

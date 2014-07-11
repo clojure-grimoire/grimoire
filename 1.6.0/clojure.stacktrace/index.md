@@ -1,8 +1,11 @@
 ---
 layout: ns
-title: clojure.stacktrace
 ---
+# [Clojure 1.6.0](../)/clojure.stacktrace
+
 {% markdown 1.6.0/clojure.stacktrace/index.md %}
+
+
 
 ## Macros
 

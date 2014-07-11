@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "vary-meta"
 ---
 
-# [clojure.core](../)/vary-meta
+# [Clojure 1.6.0](../../)/[clojure.core](../)/vary-meta
 
 {% include 1.6.0/clojure.core/vary_DASH_meta/docs.md %}
 

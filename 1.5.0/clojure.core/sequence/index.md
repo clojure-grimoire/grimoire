@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "sequence"
 ---
 
-# [clojure.core](../)/sequence
+# [Clojure 1.5.0](../../)/[clojure.core](../)/sequence
 
 {% include 1.5.0/clojure.core/sequence/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "dorun"
 ---
 
-# [clojure.core](../)/dorun
+# [Clojure 1.6.0](../../)/[clojure.core](../)/dorun
 
 {% include 1.6.0/clojure.core/dorun/docs.md %}
 

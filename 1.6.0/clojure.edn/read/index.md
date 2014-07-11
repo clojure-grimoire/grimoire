@@ -4,7 +4,7 @@ namespace: clojure.edn
 symbol: "read"
 ---
 
-# [clojure.edn](../)/read
+# [Clojure 1.6.0](../../)/[clojure.edn](../)/read
 
 {% include 1.6.0/clojure.edn/read/docs.md %}
 

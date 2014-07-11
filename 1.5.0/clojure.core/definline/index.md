@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "definline"
 ---
 
-# [clojure.core](../)/definline
+# [Clojure 1.5.0](../../)/[clojure.core](../)/definline
 
 {% include 1.5.0/clojure.core/definline/docs.md %}
 

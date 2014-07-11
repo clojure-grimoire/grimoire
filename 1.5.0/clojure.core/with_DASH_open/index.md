@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "with-open"
 ---
 
-# [clojure.core](../)/with-open
+# [Clojure 1.5.0](../../)/[clojure.core](../)/with-open
 
 {% include 1.5.0/clojure.core/with_DASH_open/docs.md %}
 

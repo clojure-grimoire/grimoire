@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "trampoline"
 ---
 
-# [clojure.core](../)/trampoline
+# [Clojure 1.6.0](../../)/[clojure.core](../)/trampoline
 
 {% include 1.6.0/clojure.core/trampoline/docs.md %}
 

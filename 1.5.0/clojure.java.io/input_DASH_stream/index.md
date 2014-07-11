@@ -4,7 +4,7 @@ namespace: clojure.java.io
 symbol: "input-stream"
 ---
 
-# [clojure.java.io](../)/input-stream
+# [Clojure 1.5.0](../../)/[clojure.java.io](../)/input-stream
 
 {% include 1.5.0/clojure.java.io/input_DASH_stream/docs.md %}
 

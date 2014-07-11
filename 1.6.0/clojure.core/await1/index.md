@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "await1"
 ---
 
-# [clojure.core](../)/await1
+# [Clojure 1.6.0](../../)/[clojure.core](../)/await1
 
 {% include 1.6.0/clojure.core/await1/docs.md %}
 

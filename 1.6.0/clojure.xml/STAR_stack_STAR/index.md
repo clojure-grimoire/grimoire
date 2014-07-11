@@ -4,11 +4,13 @@ namespace: clojure.xml
 symbol: "\\*stack\\*"
 ---
 
-# [clojure.xml](../)/\*stack\*
+# [Clojure 1.6.0](../../)/[clojure.xml](../)/\*stack\*
 
 {% include 1.6.0/clojure.xml/STAR_stack_STAR/docs.md %}
 
 ##Examples
 
 {% include 1.6.0/clojure.xml/STAR_stack_STAR/examples.md %}
+## Source
+{% include 1.6.0/clojure.xml/STAR_stack_STAR/src.md %}
 

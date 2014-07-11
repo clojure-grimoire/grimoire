@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ex-data"
 ---
 
-# [clojure.core](../)/ex-data
+# [Clojure 1.6.0](../../)/[clojure.core](../)/ex-data
 
 {% include 1.6.0/clojure.core/ex_DASH_data/docs.md %}
 

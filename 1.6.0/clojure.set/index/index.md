@@ -4,7 +4,7 @@ namespace: clojure.set
 symbol: "index"
 ---
 
-# [clojure.set](../)/index
+# [Clojure 1.6.0](../../)/[clojure.set](../)/index
 
 {% include 1.6.0/clojure.set/index/docs.md %}
 

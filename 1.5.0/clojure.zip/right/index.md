@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "right"
 ---
 
-# [clojure.zip](../)/right
+# [Clojure 1.5.0](../../)/[clojure.zip](../)/right
 
 {% include 1.5.0/clojure.zip/right/docs.md %}
 

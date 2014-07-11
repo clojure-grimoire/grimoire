@@ -4,7 +4,7 @@ namespace: clojure.string
 symbol: "split"
 ---
 
-# [clojure.string](../)/split
+# [Clojure 1.5.0](../../)/[clojure.string](../)/split
 
 {% include 1.5.0/clojure.string/split/docs.md %}
 

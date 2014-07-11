@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "instance?"
 ---
 
-# [clojure.core](../)/instance?
+# [Clojure 1.4.0](../../)/[clojure.core](../)/instance?
 
 {% include 1.4.0/clojure.core/instance_QMARK/docs.md %}
 

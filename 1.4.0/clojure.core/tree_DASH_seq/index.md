@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "tree-seq"
 ---
 
-# [clojure.core](../)/tree-seq
+# [Clojure 1.4.0](../../)/[clojure.core](../)/tree-seq
 
 {% include 1.4.0/clojure.core/tree_DASH_seq/docs.md %}
 

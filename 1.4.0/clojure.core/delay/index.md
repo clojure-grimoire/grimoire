@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "delay"
 ---
 
-# [clojure.core](../)/delay
+# [Clojure 1.4.0](../../)/[clojure.core](../)/delay
 
 {% include 1.4.0/clojure.core/delay/docs.md %}
 

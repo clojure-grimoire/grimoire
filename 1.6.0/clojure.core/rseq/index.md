@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "rseq"
 ---
 
-# [clojure.core](../)/rseq
+# [Clojure 1.6.0](../../)/[clojure.core](../)/rseq
 
 {% include 1.6.0/clojure.core/rseq/docs.md %}
 

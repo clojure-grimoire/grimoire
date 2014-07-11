@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "\\*use-context-classloader\\*"
 ---
 
-# [clojure.core](../)/\*use-context-classloader\*
+# [Clojure 1.6.0](../../)/[clojure.core](../)/\*use-context-classloader\*
 
 {% include 1.6.0/clojure.core/STAR_use_DASH_context_DASH_classloader_STAR/docs.md %}
 

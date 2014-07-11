@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "rand-nth"
 ---
 
-# [clojure.core](../)/rand-nth
+# [Clojure 1.5.0](../../)/[clojure.core](../)/rand-nth
 
 {% include 1.5.0/clojure.core/rand_DASH_nth/docs.md %}
 

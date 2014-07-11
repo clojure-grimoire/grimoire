@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "char-array"
 ---
 
-# [clojure.core](../)/char-array
+# [Clojure 1.5.0](../../)/[clojure.core](../)/char-array
 
 {% include 1.5.0/clojure.core/char_DASH_array/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "filterv"
 ---
 
-# [clojure.core](../)/filterv
+# [Clojure 1.5.0](../../)/[clojure.core](../)/filterv
 
 {% include 1.5.0/clojure.core/filterv/docs.md %}
 

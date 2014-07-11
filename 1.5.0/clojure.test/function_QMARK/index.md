@@ -4,7 +4,7 @@ namespace: clojure.test
 symbol: "function?"
 ---
 
-# [clojure.test](../)/function?
+# [Clojure 1.5.0](../../)/[clojure.test](../)/function?
 
 {% include 1.5.0/clojure.test/function_QMARK/docs.md %}
 

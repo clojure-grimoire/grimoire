@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "locking"
 ---
 
-# [clojure.core](../)/locking
+# [Clojure 1.5.0](../../)/[clojure.core](../)/locking
 
 {% include 1.5.0/clojure.core/locking/docs.md %}
 

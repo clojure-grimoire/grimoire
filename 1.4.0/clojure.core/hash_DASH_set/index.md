@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "hash-set"
 ---
 
-# [clojure.core](../)/hash-set
+# [Clojure 1.4.0](../../)/[clojure.core](../)/hash-set
 
 {% include 1.4.0/clojure.core/hash_DASH_set/docs.md %}
 

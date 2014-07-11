@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "resultset-seq"
 ---
 
-# [clojure.core](../)/resultset-seq
+# [Clojure 1.4.0](../../)/[clojure.core](../)/resultset-seq
 
 {% include 1.4.0/clojure.core/resultset_DASH_seq/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "path"
 ---
 
-# [clojure.zip](../)/path
+# [Clojure 1.4.0](../../)/[clojure.zip](../)/path
 
 {% include 1.4.0/clojure.zip/path/docs.md %}
 

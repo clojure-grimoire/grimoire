@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "init-proxy"
 ---
 
-# [clojure.core](../)/init-proxy
+# [Clojure 1.5.0](../../)/[clojure.core](../)/init-proxy
 
 {% include 1.5.0/clojure.core/init_DASH_proxy/docs.md %}
 

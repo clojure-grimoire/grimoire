@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "defonce"
 ---
 
-# [clojure.core](../)/defonce
+# [Clojure 1.5.0](../../)/[clojure.core](../)/defonce
 
 {% include 1.5.0/clojure.core/defonce/docs.md %}
 

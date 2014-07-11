@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "rsubseq"
 ---
 
-# [clojure.core](../)/rsubseq
+# [Clojure 1.6.0](../../)/[clojure.core](../)/rsubseq
 
 {% include 1.6.0/clojure.core/rsubseq/docs.md %}
 

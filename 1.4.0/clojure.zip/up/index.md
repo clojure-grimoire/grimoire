@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "up"
 ---
 
-# [clojure.zip](../)/up
+# [Clojure 1.4.0](../../)/[clojure.zip](../)/up
 
 {% include 1.4.0/clojure.zip/up/docs.md %}
 

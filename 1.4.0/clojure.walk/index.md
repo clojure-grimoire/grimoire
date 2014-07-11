@@ -1,8 +1,11 @@
 ---
 layout: ns
-title: clojure.walk
 ---
+# [Clojure 1.4.0](../)/clojure.walk
+
 {% markdown 1.4.0/clojure.walk/index.md %}
+
+
 
 ## Macros
 

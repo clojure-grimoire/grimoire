@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "persistent!"
 ---
 
-# [clojure.core](../)/persistent!
+# [Clojure 1.4.0](../../)/[clojure.core](../)/persistent!
 
 {% include 1.4.0/clojure.core/persistent_BANG/docs.md %}
 

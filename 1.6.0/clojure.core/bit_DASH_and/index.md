@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "bit-and"
 ---
 
-# [clojure.core](../)/bit-and
+# [Clojure 1.6.0](../../)/[clojure.core](../)/bit-and
 
 {% include 1.6.0/clojure.core/bit_DASH_and/docs.md %}
 

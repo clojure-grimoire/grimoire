@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "the-ns"
 ---
 
-# [clojure.core](../)/the-ns
+# [Clojure 1.4.0](../../)/[clojure.core](../)/the-ns
 
 {% include 1.4.0/clojure.core/the_DASH_ns/docs.md %}
 

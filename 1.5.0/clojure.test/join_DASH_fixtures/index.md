@@ -4,7 +4,7 @@ namespace: clojure.test
 symbol: "join-fixtures"
 ---
 
-# [clojure.test](../)/join-fixtures
+# [Clojure 1.5.0](../../)/[clojure.test](../)/join-fixtures
 
 {% include 1.5.0/clojure.test/join_DASH_fixtures/docs.md %}
 

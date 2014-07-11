@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "unchecked-long"
 ---
 
-# [clojure.core](../)/unchecked-long
+# [Clojure 1.5.0](../../)/[clojure.core](../)/unchecked-long
 
 {% include 1.5.0/clojure.core/unchecked_DASH_long/docs.md %}
 

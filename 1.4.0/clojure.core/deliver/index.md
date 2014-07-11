@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "deliver"
 ---
 
-# [clojure.core](../)/deliver
+# [Clojure 1.4.0](../../)/[clojure.core](../)/deliver
 
 {% include 1.4.0/clojure.core/deliver/docs.md %}
 

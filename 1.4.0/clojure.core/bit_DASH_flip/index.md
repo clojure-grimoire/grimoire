@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "bit-flip"
 ---
 
-# [clojure.core](../)/bit-flip
+# [Clojure 1.4.0](../../)/[clojure.core](../)/bit-flip
 
 {% include 1.4.0/clojure.core/bit_DASH_flip/docs.md %}
 

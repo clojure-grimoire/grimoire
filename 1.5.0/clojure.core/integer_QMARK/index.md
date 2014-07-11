@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "integer?"
 ---
 
-# [clojure.core](../)/integer?
+# [Clojure 1.5.0](../../)/[clojure.core](../)/integer?
 
 {% include 1.5.0/clojure.core/integer_QMARK/docs.md %}
 

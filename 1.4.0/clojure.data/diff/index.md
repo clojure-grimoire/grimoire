@@ -4,7 +4,7 @@ namespace: clojure.data
 symbol: "diff"
 ---
 
-# [clojure.data](../)/diff
+# [Clojure 1.4.0](../../)/[clojure.data](../)/diff
 
 {% include 1.4.0/clojure.data/diff/docs.md %}
 

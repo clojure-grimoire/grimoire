@@ -4,7 +4,7 @@ namespace: clojure.pprint
 symbol: "print-table"
 ---
 
-# [clojure.pprint](../)/print-table
+# [Clojure 1.4.0](../../)/[clojure.pprint](../)/print-table
 
 {% include 1.4.0/clojure.pprint/print_DASH_table/docs.md %}
 

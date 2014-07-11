@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "doseq"
 ---
 
-# [clojure.core](../)/doseq
+# [Clojure 1.6.0](../../)/[clojure.core](../)/doseq
 
 {% include 1.6.0/clojure.core/doseq/docs.md %}
 

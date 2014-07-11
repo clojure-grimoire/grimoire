@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "to-array-2d"
 ---
 
-# [clojure.core](../)/to-array-2d
+# [Clojure 1.6.0](../../)/[clojure.core](../)/to-array-2d
 
 {% include 1.6.0/clojure.core/to_DASH_array_DASH_2d/docs.md %}
 

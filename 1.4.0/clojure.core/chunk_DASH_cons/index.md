@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "chunk-cons"
 ---
 
-# [clojure.core](../)/chunk-cons
+# [Clojure 1.4.0](../../)/[clojure.core](../)/chunk-cons
 
 {% include 1.4.0/clojure.core/chunk_DASH_cons/docs.md %}
 

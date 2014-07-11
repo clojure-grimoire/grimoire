@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "extend-protocol"
 ---
 
-# [clojure.core](../)/extend-protocol
+# [Clojure 1.4.0](../../)/[clojure.core](../)/extend-protocol
 
 {% include 1.4.0/clojure.core/extend_DASH_protocol/docs.md %}
 

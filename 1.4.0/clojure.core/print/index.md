@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "print"
 ---
 
-# [clojure.core](../)/print
+# [Clojure 1.4.0](../../)/[clojure.core](../)/print
 
 {% include 1.4.0/clojure.core/print/docs.md %}
 

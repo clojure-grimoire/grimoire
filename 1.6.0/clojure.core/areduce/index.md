@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "areduce"
 ---
 
-# [clojure.core](../)/areduce
+# [Clojure 1.6.0](../../)/[clojure.core](../)/areduce
 
 {% include 1.6.0/clojure.core/areduce/docs.md %}
 

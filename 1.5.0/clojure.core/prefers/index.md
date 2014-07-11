@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "prefers"
 ---
 
-# [clojure.core](../)/prefers
+# [Clojure 1.5.0](../../)/[clojure.core](../)/prefers
 
 {% include 1.5.0/clojure.core/prefers/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.java.javadoc
 symbol: "add-remote-javadoc"
 ---
 
-# [clojure.java.javadoc](../)/add-remote-javadoc
+# [Clojure 1.4.0](../../)/[clojure.java.javadoc](../)/add-remote-javadoc
 
 {% include 1.4.0/clojure.java.javadoc/add_DASH_remote_DASH_javadoc/docs.md %}
 

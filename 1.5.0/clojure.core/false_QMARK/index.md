@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "false?"
 ---
 
-# [clojure.core](../)/false?
+# [Clojure 1.5.0](../../)/[clojure.core](../)/false?
 
 {% include 1.5.0/clojure.core/false_QMARK/docs.md %}
 

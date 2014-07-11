@@ -4,7 +4,7 @@ namespace: clojure.repl
 symbol: "pst"
 ---
 
-# [clojure.repl](../)/pst
+# [Clojure 1.6.0](../../)/[clojure.repl](../)/pst
 
 {% include 1.6.0/clojure.repl/pst/docs.md %}
 

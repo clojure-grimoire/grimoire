@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "bigdec"
 ---
 
-# [clojure.core](../)/bigdec
+# [Clojure 1.4.0](../../)/[clojure.core](../)/bigdec
 
 {% include 1.4.0/clojure.core/bigdec/docs.md %}
 

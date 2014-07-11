@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "every-pred"
 ---
 
-# [clojure.core](../)/every-pred
+# [Clojure 1.5.0](../../)/[clojure.core](../)/every-pred
 
 {% include 1.5.0/clojure.core/every_DASH_pred/docs.md %}
 

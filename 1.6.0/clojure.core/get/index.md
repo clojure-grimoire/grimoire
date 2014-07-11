@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "get"
 ---
 
-# [clojure.core](../)/get
+# [Clojure 1.6.0](../../)/[clojure.core](../)/get
 
 {% include 1.6.0/clojure.core/get/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "assert"
 ---
 
-# [clojure.core](../)/assert
+# [Clojure 1.4.0](../../)/[clojure.core](../)/assert
 
 {% include 1.4.0/clojure.core/assert/docs.md %}
 

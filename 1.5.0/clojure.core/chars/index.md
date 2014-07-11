@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "chars"
 ---
 
-# [clojure.core](../)/chars
+# [Clojure 1.5.0](../../)/[clojure.core](../)/chars
 
 {% include 1.5.0/clojure.core/chars/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.test.junit
 symbol: "finish-case"
 ---
 
-# [clojure.test.junit](../)/finish-case
+# [Clojure 1.4.0](../../)/[clojure.test.junit](../)/finish-case
 
 {% include 1.4.0/clojure.test.junit/finish_DASH_case/docs.md %}
 

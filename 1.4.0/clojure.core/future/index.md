@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "future"
 ---
 
-# [clojure.core](../)/future
+# [Clojure 1.4.0](../../)/[clojure.core](../)/future
 
 {% include 1.4.0/clojure.core/future/docs.md %}
 

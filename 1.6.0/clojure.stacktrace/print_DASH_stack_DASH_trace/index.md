@@ -4,7 +4,7 @@ namespace: clojure.stacktrace
 symbol: "print-stack-trace"
 ---
 
-# [clojure.stacktrace](../)/print-stack-trace
+# [Clojure 1.6.0](../../)/[clojure.stacktrace](../)/print-stack-trace
 
 {% include 1.6.0/clojure.stacktrace/print_DASH_stack_DASH_trace/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "derive"
 ---
 
-# [clojure.core](../)/derive
+# [Clojure 1.4.0](../../)/[clojure.core](../)/derive
 
 {% include 1.4.0/clojure.core/derive/docs.md %}
 

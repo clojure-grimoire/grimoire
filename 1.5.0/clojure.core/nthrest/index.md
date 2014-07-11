@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "nthrest"
 ---
 
-# [clojure.core](../)/nthrest
+# [Clojure 1.5.0](../../)/[clojure.core](../)/nthrest
 
 {% include 1.5.0/clojure.core/nthrest/docs.md %}
 

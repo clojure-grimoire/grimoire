@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "sorted?"
 ---
 
-# [clojure.core](../)/sorted?
+# [Clojure 1.5.0](../../)/[clojure.core](../)/sorted?
 
 {% include 1.5.0/clojure.core/sorted_QMARK/docs.md %}
 

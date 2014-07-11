@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "identity"
 ---
 
-# [clojure.core](../)/identity
+# [Clojure 1.4.0](../../)/[clojure.core](../)/identity
 
 {% include 1.4.0/clojure.core/identity/docs.md %}
 

@@ -1,8 +1,11 @@
 ---
 layout: ns
-title: clojure.java.shell
 ---
+# [Clojure 1.6.0](../)/clojure.java.shell
+
 {% markdown 1.6.0/clojure.java.shell/index.md %}
+
+
 
 ## Macros
 

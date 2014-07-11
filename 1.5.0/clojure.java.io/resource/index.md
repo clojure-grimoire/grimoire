@@ -4,7 +4,7 @@ namespace: clojure.java.io
 symbol: "resource"
 ---
 
-# [clojure.java.io](../)/resource
+# [Clojure 1.5.0](../../)/[clojure.java.io](../)/resource
 
 {% include 1.5.0/clojure.java.io/resource/docs.md %}
 

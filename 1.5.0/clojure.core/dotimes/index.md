@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "dotimes"
 ---
 
-# [clojure.core](../)/dotimes
+# [Clojure 1.5.0](../../)/[clojure.core](../)/dotimes
 
 {% include 1.5.0/clojure.core/dotimes/docs.md %}
 

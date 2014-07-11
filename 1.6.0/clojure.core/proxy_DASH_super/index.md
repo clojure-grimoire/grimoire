@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "proxy-super"
 ---
 
-# [clojure.core](../)/proxy-super
+# [Clojure 1.6.0](../../)/[clojure.core](../)/proxy-super
 
 {% include 1.6.0/clojure.core/proxy_DASH_super/docs.md %}
 

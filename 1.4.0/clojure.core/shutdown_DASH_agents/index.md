@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "shutdown-agents"
 ---
 
-# [clojure.core](../)/shutdown-agents
+# [Clojure 1.4.0](../../)/[clojure.core](../)/shutdown-agents
 
 {% include 1.4.0/clojure.core/shutdown_DASH_agents/docs.md %}
 

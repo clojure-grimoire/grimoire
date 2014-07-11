@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "peek"
 ---
 
-# [clojure.core](../)/peek
+# [Clojure 1.4.0](../../)/[clojure.core](../)/peek
 
 {% include 1.4.0/clojure.core/peek/docs.md %}
 

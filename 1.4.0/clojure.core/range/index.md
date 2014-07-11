@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "range"
 ---
 
-# [clojure.core](../)/range
+# [Clojure 1.4.0](../../)/[clojure.core](../)/range
 
 {% include 1.4.0/clojure.core/range/docs.md %}
 

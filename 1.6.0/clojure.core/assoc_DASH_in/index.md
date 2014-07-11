@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "assoc-in"
 ---
 
-# [clojure.core](../)/assoc-in
+# [Clojure 1.6.0](../../)/[clojure.core](../)/assoc-in
 
 {% include 1.6.0/clojure.core/assoc_DASH_in/docs.md %}
 

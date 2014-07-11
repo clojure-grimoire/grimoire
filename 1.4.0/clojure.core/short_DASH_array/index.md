@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "short-array"
 ---
 
-# [clojure.core](../)/short-array
+# [Clojure 1.4.0](../../)/[clojure.core](../)/short-array
 
 {% include 1.4.0/clojure.core/short_DASH_array/docs.md %}
 

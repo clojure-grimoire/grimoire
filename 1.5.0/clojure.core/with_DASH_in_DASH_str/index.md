@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "with-in-str"
 ---
 
-# [clojure.core](../)/with-in-str
+# [Clojure 1.5.0](../../)/[clojure.core](../)/with-in-str
 
 {% include 1.5.0/clojure.core/with_DASH_in_DASH_str/docs.md %}
 

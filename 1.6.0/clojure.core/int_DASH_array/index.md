@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "int-array"
 ---
 
-# [clojure.core](../)/int-array
+# [Clojure 1.6.0](../../)/[clojure.core](../)/int-array
 
 {% include 1.6.0/clojure.core/int_DASH_array/docs.md %}
 

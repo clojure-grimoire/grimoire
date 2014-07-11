@@ -4,7 +4,7 @@ namespace: clojure.stacktrace
 symbol: "print-throwable"
 ---
 
-# [clojure.stacktrace](../)/print-throwable
+# [Clojure 1.6.0](../../)/[clojure.stacktrace](../)/print-throwable
 
 {% include 1.6.0/clojure.stacktrace/print_DASH_throwable/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.test
 symbol: "is"
 ---
 
-# [clojure.test](../)/is
+# [Clojure 1.6.0](../../)/[clojure.test](../)/is
 
 {% include 1.6.0/clojure.test/is/docs.md %}
 

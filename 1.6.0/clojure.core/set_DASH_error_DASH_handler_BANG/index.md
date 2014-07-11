@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "set-error-handler!"
 ---
 
-# [clojure.core](../)/set-error-handler!
+# [Clojure 1.6.0](../../)/[clojure.core](../)/set-error-handler!
 
 {% include 1.6.0/clojure.core/set_DASH_error_DASH_handler_BANG/docs.md %}
 

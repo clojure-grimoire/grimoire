@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "+'"
 ---
 
-# [clojure.core](../)/+'
+# [Clojure 1.6.0](../../)/[clojure.core](../)/+'
 
 {% include 1.6.0/clojure.core/PLUS__SQUOTE/docs.md %}
 

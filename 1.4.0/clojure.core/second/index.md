@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "second"
 ---
 
-# [clojure.core](../)/second
+# [Clojure 1.4.0](../../)/[clojure.core](../)/second
 
 {% include 1.4.0/clojure.core/second/docs.md %}
 

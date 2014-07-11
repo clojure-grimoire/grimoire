@@ -4,7 +4,7 @@ namespace: clojure.walk
 symbol: "walk"
 ---
 
-# [clojure.walk](../)/walk
+# [Clojure 1.5.0](../../)/[clojure.walk](../)/walk
 
 {% include 1.5.0/clojure.walk/walk/docs.md %}
 

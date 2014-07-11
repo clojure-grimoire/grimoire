@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "odd?"
 ---
 
-# [clojure.core](../)/odd?
+# [Clojure 1.6.0](../../)/[clojure.core](../)/odd?
 
 {% include 1.6.0/clojure.core/odd_QMARK/docs.md %}
 

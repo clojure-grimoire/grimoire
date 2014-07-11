@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "\\*compile-path\\*"
 ---
 
-# [clojure.core](../)/\*compile-path\*
+# [Clojure 1.5.0](../../)/[clojure.core](../)/\*compile-path\*
 
 {% include 1.5.0/clojure.core/STAR_compile_DASH_path_STAR/docs.md %}
 

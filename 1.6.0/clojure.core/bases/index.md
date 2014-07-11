@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "bases"
 ---
 
-# [clojure.core](../)/bases
+# [Clojure 1.6.0](../../)/[clojure.core](../)/bases
 
 {% include 1.6.0/clojure.core/bases/docs.md %}
 

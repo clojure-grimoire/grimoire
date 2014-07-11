@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "drop-last"
 ---
 
-# [clojure.core](../)/drop-last
+# [Clojure 1.5.0](../../)/[clojure.core](../)/drop-last
 
 {% include 1.5.0/clojure.core/drop_DASH_last/docs.md %}
 

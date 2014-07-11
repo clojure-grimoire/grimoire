@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "cycle"
 ---
 
-# [clojure.core](../)/cycle
+# [Clojure 1.6.0](../../)/[clojure.core](../)/cycle
 
 {% include 1.6.0/clojure.core/cycle/docs.md %}
 

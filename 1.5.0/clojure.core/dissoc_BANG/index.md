@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "dissoc!"
 ---
 
-# [clojure.core](../)/dissoc!
+# [Clojure 1.5.0](../../)/[clojure.core](../)/dissoc!
 
 {% include 1.5.0/clojure.core/dissoc_BANG/docs.md %}
 

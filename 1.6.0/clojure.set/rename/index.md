@@ -4,7 +4,7 @@ namespace: clojure.set
 symbol: "rename"
 ---
 
-# [clojure.set](../)/rename
+# [Clojure 1.6.0](../../)/[clojure.set](../)/rename
 
 {% include 1.6.0/clojure.set/rename/docs.md %}
 

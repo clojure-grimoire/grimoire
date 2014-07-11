@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ns-map"
 ---
 
-# [clojure.core](../)/ns-map
+# [Clojure 1.6.0](../../)/[clojure.core](../)/ns-map
 
 {% include 1.6.0/clojure.core/ns_DASH_map/docs.md %}
 

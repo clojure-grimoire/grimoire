@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "struct-map"
 ---
 
-# [clojure.core](../)/struct-map
+# [Clojure 1.4.0](../../)/[clojure.core](../)/struct-map
 
 {% include 1.4.0/clojure.core/struct_DASH_map/docs.md %}
 

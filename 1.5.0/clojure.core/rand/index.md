@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "rand"
 ---
 
-# [clojure.core](../)/rand
+# [Clojure 1.5.0](../../)/[clojure.core](../)/rand
 
 {% include 1.5.0/clojure.core/rand/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.test.junit
 symbol: "element-content"
 ---
 
-# [clojure.test.junit](../)/element-content
+# [Clojure 1.4.0](../../)/[clojure.test.junit](../)/element-content
 
 {% include 1.4.0/clojure.test.junit/element_DASH_content/docs.md %}
 

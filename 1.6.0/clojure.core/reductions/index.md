@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "reductions"
 ---
 
-# [clojure.core](../)/reductions
+# [Clojure 1.6.0](../../)/[clojure.core](../)/reductions
 
 {% include 1.6.0/clojure.core/reductions/docs.md %}
 

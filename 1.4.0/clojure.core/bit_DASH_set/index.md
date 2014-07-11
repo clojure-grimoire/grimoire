@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "bit-set"
 ---
 
-# [clojure.core](../)/bit-set
+# [Clojure 1.4.0](../../)/[clojure.core](../)/bit-set
 
 {% include 1.4.0/clojure.core/bit_DASH_set/docs.md %}
 

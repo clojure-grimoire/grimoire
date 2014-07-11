@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "set"
 ---
 
-# [clojure.core](../)/set
+# [Clojure 1.5.0](../../)/[clojure.core](../)/set
 
 {% include 1.5.0/clojure.core/set/docs.md %}
 

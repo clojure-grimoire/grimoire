@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "long"
 ---
 
-# [clojure.core](../)/long
+# [Clojure 1.6.0](../../)/[clojure.core](../)/long
 
 {% include 1.6.0/clojure.core/long/docs.md %}
 

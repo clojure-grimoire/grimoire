@@ -4,7 +4,7 @@ namespace: clojure.reflect
 symbol: "->AsmReflector"
 ---
 
-# [clojure.reflect](../)/->AsmReflector
+# [Clojure 1.5.0](../../)/[clojure.reflect](../)/->AsmReflector
 
 {% include 1.5.0/clojure.reflect/DASH__GT_AsmReflector/docs.md %}
 

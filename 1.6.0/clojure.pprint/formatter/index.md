@@ -4,7 +4,7 @@ namespace: clojure.pprint
 symbol: "formatter"
 ---
 
-# [clojure.pprint](../)/formatter
+# [Clojure 1.6.0](../../)/[clojure.pprint](../)/formatter
 
 {% include 1.6.0/clojure.pprint/formatter/docs.md %}
 

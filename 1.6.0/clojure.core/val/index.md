@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "val"
 ---
 
-# [clojure.core](../)/val
+# [Clojure 1.6.0](../../)/[clojure.core](../)/val
 
 {% include 1.6.0/clojure.core/val/docs.md %}
 

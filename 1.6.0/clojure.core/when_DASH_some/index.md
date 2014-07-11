@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "when-some"
 ---
 
-# [clojure.core](../)/when-some
+# [Clojure 1.6.0](../../)/[clojure.core](../)/when-some
 
 {% include 1.6.0/clojure.core/when_DASH_some/docs.md %}
 

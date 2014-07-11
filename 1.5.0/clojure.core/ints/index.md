@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ints"
 ---
 
-# [clojure.core](../)/ints
+# [Clojure 1.5.0](../../)/[clojure.core](../)/ints
 
 {% include 1.5.0/clojure.core/ints/docs.md %}
 

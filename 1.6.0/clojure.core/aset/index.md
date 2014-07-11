@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "aset"
 ---
 
-# [clojure.core](../)/aset
+# [Clojure 1.6.0](../../)/[clojure.core](../)/aset
 
 {% include 1.6.0/clojure.core/aset/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "find-protocol-method"
 ---
 
-# [clojure.core](../)/find-protocol-method
+# [Clojure 1.5.0](../../)/[clojure.core](../)/find-protocol-method
 
 {% include 1.5.0/clojure.core/find_DASH_protocol_DASH_method/docs.md %}
 

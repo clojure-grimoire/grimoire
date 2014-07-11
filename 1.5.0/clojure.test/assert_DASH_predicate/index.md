@@ -4,7 +4,7 @@ namespace: clojure.test
 symbol: "assert-predicate"
 ---
 
-# [clojure.test](../)/assert-predicate
+# [Clojure 1.5.0](../../)/[clojure.test](../)/assert-predicate
 
 {% include 1.5.0/clojure.test/assert_DASH_predicate/docs.md %}
 

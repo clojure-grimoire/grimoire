@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "bound?"
 ---
 
-# [clojure.core](../)/bound?
+# [Clojure 1.4.0](../../)/[clojure.core](../)/bound?
 
 {% include 1.4.0/clojure.core/bound_QMARK/docs.md %}
 

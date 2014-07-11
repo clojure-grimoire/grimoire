@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "\\*out\\*"
 ---
 
-# [clojure.core](../)/\*out\*
+# [Clojure 1.6.0](../../)/[clojure.core](../)/\*out\*
 
 {% include 1.6.0/clojure.core/STAR_out_STAR/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "resolve"
 ---
 
-# [clojure.core](../)/resolve
+# [Clojure 1.4.0](../../)/[clojure.core](../)/resolve
 
 {% include 1.4.0/clojure.core/resolve/docs.md %}
 

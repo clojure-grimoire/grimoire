@@ -1,8 +1,11 @@
 ---
 layout: ns
-title: clojure.reflect
 ---
+# [Clojure 1.5.0](../)/clojure.reflect
+
 {% markdown 1.5.0/clojure.reflect/index.md %}
+
+
 
 ## Macros
 

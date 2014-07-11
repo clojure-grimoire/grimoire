@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "add-watch"
 ---
 
-# [clojure.core](../)/add-watch
+# [Clojure 1.6.0](../../)/[clojure.core](../)/add-watch
 
 {% include 1.6.0/clojure.core/add_DASH_watch/docs.md %}
 

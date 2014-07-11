@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "doall"
 ---
 
-# [clojure.core](../)/doall
+# [Clojure 1.5.0](../../)/[clojure.core](../)/doall
 
 {% include 1.5.0/clojure.core/doall/docs.md %}
 

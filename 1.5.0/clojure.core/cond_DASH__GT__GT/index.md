@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "cond->>"
 ---
 
-# [clojure.core](../)/cond->>
+# [Clojure 1.5.0](../../)/[clojure.core](../)/cond->>
 
 {% include 1.5.0/clojure.core/cond_DASH__GT__GT/docs.md %}
 

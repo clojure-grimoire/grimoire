@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "hash"
 ---
 
-# [clojure.core](../)/hash
+# [Clojure 1.6.0](../../)/[clojure.core](../)/hash
 
 {% include 1.6.0/clojure.core/hash/docs.md %}
 

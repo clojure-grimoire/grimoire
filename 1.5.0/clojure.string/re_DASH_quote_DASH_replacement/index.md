@@ -4,7 +4,7 @@ namespace: clojure.string
 symbol: "re-quote-replacement"
 ---
 
-# [clojure.string](../)/re-quote-replacement
+# [Clojure 1.5.0](../../)/[clojure.string](../)/re-quote-replacement
 
 {% include 1.5.0/clojure.string/re_DASH_quote_DASH_replacement/docs.md %}
 

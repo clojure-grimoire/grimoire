@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "realized?"
 ---
 
-# [clojure.core](../)/realized?
+# [Clojure 1.5.0](../../)/[clojure.core](../)/realized?
 
 {% include 1.5.0/clojure.core/realized_QMARK/docs.md %}
 

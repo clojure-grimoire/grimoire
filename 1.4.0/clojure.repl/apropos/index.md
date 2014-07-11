@@ -4,7 +4,7 @@ namespace: clojure.repl
 symbol: "apropos"
 ---
 
-# [clojure.repl](../)/apropos
+# [Clojure 1.4.0](../../)/[clojure.repl](../)/apropos
 
 {% include 1.4.0/clojure.repl/apropos/docs.md %}
 

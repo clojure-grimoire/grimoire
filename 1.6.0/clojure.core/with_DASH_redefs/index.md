@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "with-redefs"
 ---
 
-# [clojure.core](../)/with-redefs
+# [Clojure 1.6.0](../../)/[clojure.core](../)/with-redefs
 
 {% include 1.6.0/clojure.core/with_DASH_redefs/docs.md %}
 

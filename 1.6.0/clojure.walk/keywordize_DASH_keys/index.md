@@ -4,7 +4,7 @@ namespace: clojure.walk
 symbol: "keywordize-keys"
 ---
 
-# [clojure.walk](../)/keywordize-keys
+# [Clojure 1.6.0](../../)/[clojure.walk](../)/keywordize-keys
 
 {% include 1.6.0/clojure.walk/keywordize_DASH_keys/docs.md %}
 

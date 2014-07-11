@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "printf"
 ---
 
-# [clojure.core](../)/printf
+# [Clojure 1.6.0](../../)/[clojure.core](../)/printf
 
 {% include 1.6.0/clojure.core/printf/docs.md %}
 

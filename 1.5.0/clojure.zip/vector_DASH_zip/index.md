@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "vector-zip"
 ---
 
-# [clojure.zip](../)/vector-zip
+# [Clojure 1.5.0](../../)/[clojure.zip](../)/vector-zip
 
 {% include 1.5.0/clojure.zip/vector_DASH_zip/docs.md %}
 

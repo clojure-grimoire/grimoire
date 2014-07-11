@@ -1,8 +1,11 @@
 ---
 layout: ns
-title: clojure.edn
 ---
+# [Clojure 1.6.0](../)/clojure.edn
+
 {% markdown 1.6.0/clojure.edn/index.md %}
+
+
 
 ## Macros
 

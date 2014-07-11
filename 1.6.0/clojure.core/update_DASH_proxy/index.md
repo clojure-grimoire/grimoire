@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "update-proxy"
 ---
 
-# [clojure.core](../)/update-proxy
+# [Clojure 1.6.0](../../)/[clojure.core](../)/update-proxy
 
 {% include 1.6.0/clojure.core/update_DASH_proxy/docs.md %}
 

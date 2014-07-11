@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "io!"
 ---
 
-# [clojure.core](../)/io!
+# [Clojure 1.5.0](../../)/[clojure.core](../)/io!
 
 {% include 1.5.0/clojure.core/io_BANG/docs.md %}
 

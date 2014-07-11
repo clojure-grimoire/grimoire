@@ -4,7 +4,7 @@ namespace: clojure.string
 symbol: "join"
 ---
 
-# [clojure.string](../)/join
+# [Clojure 1.4.0](../../)/[clojure.string](../)/join
 
 {% include 1.4.0/clojure.string/join/docs.md %}
 

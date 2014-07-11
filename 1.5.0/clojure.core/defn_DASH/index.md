@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "defn-"
 ---
 
-# [clojure.core](../)/defn-
+# [Clojure 1.5.0](../../)/[clojure.core](../)/defn-
 
 {% include 1.5.0/clojure.core/defn_DASH/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.repl
 symbol: "doc"
 ---
 
-# [clojure.repl](../)/doc
+# [Clojure 1.6.0](../../)/[clojure.repl](../)/doc
 
 {% include 1.6.0/clojure.repl/doc/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "class?"
 ---
 
-# [clojure.core](../)/class?
+# [Clojure 1.5.0](../../)/[clojure.core](../)/class?
 
 {% include 1.5.0/clojure.core/class_QMARK/docs.md %}
 

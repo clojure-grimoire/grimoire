@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "extend"
 ---
 
-# [clojure.core](../)/extend
+# [Clojure 1.6.0](../../)/[clojure.core](../)/extend
 
 {% include 1.6.0/clojure.core/extend/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "get-thread-bindings"
 ---
 
-# [clojure.core](../)/get-thread-bindings
+# [Clojure 1.4.0](../../)/[clojure.core](../)/get-thread-bindings
 
 {% include 1.4.0/clojure.core/get_DASH_thread_DASH_bindings/docs.md %}
 

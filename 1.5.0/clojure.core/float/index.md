@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "float"
 ---
 
-# [clojure.core](../)/float
+# [Clojure 1.5.0](../../)/[clojure.core](../)/float
 
 {% include 1.5.0/clojure.core/float/docs.md %}
 

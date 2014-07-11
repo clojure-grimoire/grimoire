@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "alength"
 ---
 
-# [clojure.core](../)/alength
+# [Clojure 1.6.0](../../)/[clojure.core](../)/alength
 
 {% include 1.6.0/clojure.core/alength/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "unchecked-subtract"
 ---
 
-# [clojure.core](../)/unchecked-subtract
+# [Clojure 1.6.0](../../)/[clojure.core](../)/unchecked-subtract
 
 {% include 1.6.0/clojure.core/unchecked_DASH_subtract/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.test
 symbol: "with-test-out"
 ---
 
-# [clojure.test](../)/with-test-out
+# [Clojure 1.5.0](../../)/[clojure.test](../)/with-test-out
 
 {% include 1.5.0/clojure.test/with_DASH_test_DASH_out/docs.md %}
 

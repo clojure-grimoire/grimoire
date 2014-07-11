@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ensure"
 ---
 
-# [clojure.core](../)/ensure
+# [Clojure 1.6.0](../../)/[clojure.core](../)/ensure
 
 {% include 1.6.0/clojure.core/ensure/docs.md %}
 

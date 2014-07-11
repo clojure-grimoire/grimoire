@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "var-set"
 ---
 
-# [clojure.core](../)/var-set
+# [Clojure 1.6.0](../../)/[clojure.core](../)/var-set
 
 {% include 1.6.0/clojure.core/var_DASH_set/docs.md %}
 

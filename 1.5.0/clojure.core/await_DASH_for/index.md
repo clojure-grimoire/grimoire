@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "await-for"
 ---
 
-# [clojure.core](../)/await-for
+# [Clojure 1.5.0](../../)/[clojure.core](../)/await-for
 
 {% include 1.5.0/clojure.core/await_DASH_for/docs.md %}
 

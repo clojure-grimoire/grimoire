@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "alter-var-root"
 ---
 
-# [clojure.core](../)/alter-var-root
+# [Clojure 1.4.0](../../)/[clojure.core](../)/alter-var-root
 
 {% include 1.4.0/clojure.core/alter_DASH_var_DASH_root/docs.md %}
 

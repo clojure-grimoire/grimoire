@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "prn-str"
 ---
 
-# [clojure.core](../)/prn-str
+# [Clojure 1.5.0](../../)/[clojure.core](../)/prn-str
 
 {% include 1.5.0/clojure.core/prn_DASH_str/docs.md %}
 

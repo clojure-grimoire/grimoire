@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "take-last"
 ---
 
-# [clojure.core](../)/take-last
+# [Clojure 1.6.0](../../)/[clojure.core](../)/take-last
 
 {% include 1.6.0/clojure.core/take_DASH_last/docs.md %}
 

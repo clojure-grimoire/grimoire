@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "take-while"
 ---
 
-# [clojure.core](../)/take-while
+# [Clojure 1.4.0](../../)/[clojure.core](../)/take-while
 
 {% include 1.4.0/clojure.core/take_DASH_while/docs.md %}
 

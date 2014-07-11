@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "byte-array"
 ---
 
-# [clojure.core](../)/byte-array
+# [Clojure 1.5.0](../../)/[clojure.core](../)/byte-array
 
 {% include 1.5.0/clojure.core/byte_DASH_array/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.java.io
 symbol: "as-relative-path"
 ---
 
-# [clojure.java.io](../)/as-relative-path
+# [Clojure 1.6.0](../../)/[clojure.java.io](../)/as-relative-path
 
 {% include 1.6.0/clojure.java.io/as_DASH_relative_DASH_path/docs.md %}
 

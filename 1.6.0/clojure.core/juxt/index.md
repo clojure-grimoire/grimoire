@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "juxt"
 ---
 
-# [clojure.core](../)/juxt
+# [Clojure 1.6.0](../../)/[clojure.core](../)/juxt
 
 {% include 1.6.0/clojure.core/juxt/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "pcalls"
 ---
 
-# [clojure.core](../)/pcalls
+# [Clojure 1.6.0](../../)/[clojure.core](../)/pcalls
 
 {% include 1.6.0/clojure.core/pcalls/docs.md %}
 

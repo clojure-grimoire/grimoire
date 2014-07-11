@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "decimal?"
 ---
 
-# [clojure.core](../)/decimal?
+# [Clojure 1.5.0](../../)/[clojure.core](../)/decimal?
 
 {% include 1.5.0/clojure.core/decimal_QMARK/docs.md %}
 

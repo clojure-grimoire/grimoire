@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "unchecked-negate"
 ---
 
-# [clojure.core](../)/unchecked-negate
+# [Clojure 1.4.0](../../)/[clojure.core](../)/unchecked-negate
 
 {% include 1.4.0/clojure.core/unchecked_DASH_negate/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "memfn"
 ---
 
-# [clojure.core](../)/memfn
+# [Clojure 1.6.0](../../)/[clojure.core](../)/memfn
 
 {% include 1.6.0/clojure.core/memfn/docs.md %}
 

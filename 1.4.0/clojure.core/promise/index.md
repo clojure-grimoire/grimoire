@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "promise"
 ---
 
-# [clojure.core](../)/promise
+# [Clojure 1.4.0](../../)/[clojure.core](../)/promise
 
 {% include 1.4.0/clojure.core/promise/docs.md %}
 

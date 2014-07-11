@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "cons"
 ---
 
-# [clojure.core](../)/cons
+# [Clojure 1.4.0](../../)/[clojure.core](../)/cons
 
 {% include 1.4.0/clojure.core/cons/docs.md %}
 

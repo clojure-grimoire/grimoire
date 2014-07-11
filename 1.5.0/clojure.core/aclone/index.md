@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "aclone"
 ---
 
-# [clojure.core](../)/aclone
+# [Clojure 1.5.0](../../)/[clojure.core](../)/aclone
 
 {% include 1.5.0/clojure.core/aclone/docs.md %}
 

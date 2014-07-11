@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ns-unmap"
 ---
 
-# [clojure.core](../)/ns-unmap
+# [Clojure 1.5.0](../../)/[clojure.core](../)/ns-unmap
 
 {% include 1.5.0/clojure.core/ns_DASH_unmap/docs.md %}
 

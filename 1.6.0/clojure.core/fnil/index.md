@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "fnil"
 ---
 
-# [clojure.core](../)/fnil
+# [Clojure 1.6.0](../../)/[clojure.core](../)/fnil
 
 {% include 1.6.0/clojure.core/fnil/docs.md %}
 

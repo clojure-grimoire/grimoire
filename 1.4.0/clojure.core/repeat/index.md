@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "repeat"
 ---
 
-# [clojure.core](../)/repeat
+# [Clojure 1.4.0](../../)/[clojure.core](../)/repeat
 
 {% include 1.4.0/clojure.core/repeat/docs.md %}
 

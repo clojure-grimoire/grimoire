@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "merge"
 ---
 
-# [clojure.core](../)/merge
+# [Clojure 1.6.0](../../)/[clojure.core](../)/merge
 
 {% include 1.6.0/clojure.core/merge/docs.md %}
 

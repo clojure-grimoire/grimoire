@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "agent-errors"
 ---
 
-# [clojure.core](../)/agent-errors
+# [Clojure 1.5.0](../../)/[clojure.core](../)/agent-errors
 
 {% include 1.5.0/clojure.core/agent_DASH_errors/docs.md %}
 

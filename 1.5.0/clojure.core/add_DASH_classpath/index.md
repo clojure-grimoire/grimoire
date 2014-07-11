@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "add-classpath"
 ---
 
-# [clojure.core](../)/add-classpath
+# [Clojure 1.5.0](../../)/[clojure.core](../)/add-classpath
 
 {% include 1.5.0/clojure.core/add_DASH_classpath/docs.md %}
 

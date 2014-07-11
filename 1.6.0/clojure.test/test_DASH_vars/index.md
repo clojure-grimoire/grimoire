@@ -4,7 +4,7 @@ namespace: clojure.test
 symbol: "test-vars"
 ---
 
-# [clojure.test](../)/test-vars
+# [Clojure 1.6.0](../../)/[clojure.test](../)/test-vars
 
 {% include 1.6.0/clojure.test/test_DASH_vars/docs.md %}
 

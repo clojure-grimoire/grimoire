@@ -4,7 +4,7 @@ namespace: clojure.test
 symbol: "set-test"
 ---
 
-# [clojure.test](../)/set-test
+# [Clojure 1.6.0](../../)/[clojure.test](../)/set-test
 
 {% include 1.6.0/clojure.test/set_DASH_test/docs.md %}
 

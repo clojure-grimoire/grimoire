@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "\\*file\\*"
 ---
 
-# [clojure.core](../)/\*file\*
+# [Clojure 1.4.0](../../)/[clojure.core](../)/\*file\*
 
 {% include 1.4.0/clojure.core/STAR_file_STAR/docs.md %}
 

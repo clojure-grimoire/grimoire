@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "set-validator!"
 ---
 
-# [clojure.core](../)/set-validator!
+# [Clojure 1.6.0](../../)/[clojure.core](../)/set-validator!
 
 {% include 1.6.0/clojure.core/set_DASH_validator_BANG/docs.md %}
 

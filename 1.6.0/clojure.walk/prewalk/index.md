@@ -4,7 +4,7 @@ namespace: clojure.walk
 symbol: "prewalk"
 ---
 
-# [clojure.walk](../)/prewalk
+# [Clojure 1.6.0](../../)/[clojure.walk](../)/prewalk
 
 {% include 1.6.0/clojure.walk/prewalk/docs.md %}
 

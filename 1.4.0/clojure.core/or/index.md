@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "or"
 ---
 
-# [clojure.core](../)/or
+# [Clojure 1.4.0](../../)/[clojure.core](../)/or
 
 {% include 1.4.0/clojure.core/or/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "partition"
 ---
 
-# [clojure.core](../)/partition
+# [Clojure 1.6.0](../../)/[clojure.core](../)/partition
 
 {% include 1.6.0/clojure.core/partition/docs.md %}
 

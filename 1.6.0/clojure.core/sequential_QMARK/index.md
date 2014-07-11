@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "sequential?"
 ---
 
-# [clojure.core](../)/sequential?
+# [Clojure 1.6.0](../../)/[clojure.core](../)/sequential?
 
 {% include 1.6.0/clojure.core/sequential_QMARK/docs.md %}
 

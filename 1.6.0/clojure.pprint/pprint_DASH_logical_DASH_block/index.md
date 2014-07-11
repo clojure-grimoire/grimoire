@@ -4,7 +4,7 @@ namespace: clojure.pprint
 symbol: "pprint-logical-block"
 ---
 
-# [clojure.pprint](../)/pprint-logical-block
+# [Clojure 1.6.0](../../)/[clojure.pprint](../)/pprint-logical-block
 
 {% include 1.6.0/clojure.pprint/pprint_DASH_logical_DASH_block/docs.md %}
 

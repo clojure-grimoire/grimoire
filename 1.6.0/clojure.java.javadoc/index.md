@@ -1,8 +1,11 @@
 ---
 layout: ns
-title: clojure.java.javadoc
 ---
+# [Clojure 1.6.0](../)/clojure.java.javadoc
+
 {% markdown 1.6.0/clojure.java.javadoc/index.md %}
+
+
 
 ## Macros
 

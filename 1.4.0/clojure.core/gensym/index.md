@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "gensym"
 ---
 
-# [clojure.core](../)/gensym
+# [Clojure 1.4.0](../../)/[clojure.core](../)/gensym
 
 {% include 1.4.0/clojure.core/gensym/docs.md %}
 

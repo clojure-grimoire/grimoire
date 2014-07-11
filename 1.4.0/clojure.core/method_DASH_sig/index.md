@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "method-sig"
 ---
 
-# [clojure.core](../)/method-sig
+# [Clojure 1.4.0](../../)/[clojure.core](../)/method-sig
 
 {% include 1.4.0/clojure.core/method_DASH_sig/docs.md %}
 

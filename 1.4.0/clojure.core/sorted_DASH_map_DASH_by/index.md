@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "sorted-map-by"
 ---
 
-# [clojure.core](../)/sorted-map-by
+# [Clojure 1.4.0](../../)/[clojure.core](../)/sorted-map-by
 
 {% include 1.4.0/clojure.core/sorted_DASH_map_DASH_by/docs.md %}
 

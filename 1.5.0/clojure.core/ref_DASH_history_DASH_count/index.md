@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ref-history-count"
 ---
 
-# [clojure.core](../)/ref-history-count
+# [Clojure 1.5.0](../../)/[clojure.core](../)/ref-history-count
 
 {% include 1.5.0/clojure.core/ref_DASH_history_DASH_count/docs.md %}
 

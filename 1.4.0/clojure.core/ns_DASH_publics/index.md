@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ns-publics"
 ---
 
-# [clojure.core](../)/ns-publics
+# [Clojure 1.4.0](../../)/[clojure.core](../)/ns-publics
 
 {% include 1.4.0/clojure.core/ns_DASH_publics/docs.md %}
 

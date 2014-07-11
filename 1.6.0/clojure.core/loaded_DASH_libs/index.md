@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "loaded-libs"
 ---
 
-# [clojure.core](../)/loaded-libs
+# [Clojure 1.6.0](../../)/[clojure.core](../)/loaded-libs
 
 {% include 1.6.0/clojure.core/loaded_DASH_libs/docs.md %}
 

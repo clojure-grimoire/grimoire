@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "defn"
 ---
 
-# [clojure.core](../)/defn
+# [Clojure 1.6.0](../../)/[clojure.core](../)/defn
 
 {% include 1.6.0/clojure.core/defn/docs.md %}
 

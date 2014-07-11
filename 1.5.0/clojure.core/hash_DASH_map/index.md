@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "hash-map"
 ---
 
-# [clojure.core](../)/hash-map
+# [Clojure 1.5.0](../../)/[clojure.core](../)/hash-map
 
 {% include 1.5.0/clojure.core/hash_DASH_map/docs.md %}
 

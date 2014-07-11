@@ -4,7 +4,8 @@ email: me@arrdem.com
 description: "Community documentation of Clojure"
 url: "http://grimoire.arrdem.com"
 baseurl: /
-version: 0.1.0
+version: "0.1.0"
+clojure_version: "1.6.0"
 
 # Build settings
 markdown: kramdown

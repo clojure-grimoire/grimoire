@@ -11,6 +11,4 @@ symbol: "typename"
 ##Examples
 
 {% include 1.6.0/clojure.reflect/typename/examples.md %}
-## Source
-{% include 1.6.0/clojure.reflect/typename/src.md %}
 

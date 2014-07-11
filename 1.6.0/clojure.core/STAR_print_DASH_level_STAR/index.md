@@ -11,4 +11,6 @@ symbol: "\\*print-level\\*"
 ##Examples
 
 {% include 1.6.0/clojure.core/STAR_print_DASH_level_STAR/examples.md %}
+## Source
+{% include 1.6.0/clojure.core/STAR_print_DASH_level_STAR/src.md %}
 

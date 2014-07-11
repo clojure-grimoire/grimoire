@@ -11,4 +11,6 @@ symbol: "\\*load-tests\\*"
 ##Examples
 
 {% include 1.5.0/clojure.test/STAR_load_DASH_tests_STAR/examples.md %}
+## Source
+{% include 1.5.0/clojure.test/STAR_load_DASH_tests_STAR/src.md %}
 

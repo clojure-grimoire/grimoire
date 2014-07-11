@@ -11,4 +11,6 @@ symbol: "element"
 ##Examples
 
 {% include 1.6.0/clojure.xml/element/examples.md %}
+## Source
+{% include 1.6.0/clojure.xml/element/src.md %}
 

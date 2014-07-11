@@ -11,4 +11,6 @@ symbol: "code-dispatch"
 ##Examples
 
 {% include 1.5.0/clojure.pprint/code_DASH_dispatch/examples.md %}
+## Source
+{% include 1.5.0/clojure.pprint/code_DASH_dispatch/src.md %}
 

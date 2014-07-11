@@ -11,4 +11,6 @@ symbol: "default-data-readers"
 ##Examples
 
 {% include 1.4.0/clojure.core/default_DASH_data_DASH_readers/examples.md %}
+## Source
+{% include 1.4.0/clojure.core/default_DASH_data_DASH_readers/src.md %}
 

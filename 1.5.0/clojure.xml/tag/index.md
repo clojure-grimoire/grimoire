@@ -11,4 +11,6 @@ symbol: "tag"
 ##Examples
 
 {% include 1.5.0/clojure.xml/tag/examples.md %}
+## Source
+{% include 1.5.0/clojure.xml/tag/src.md %}
 

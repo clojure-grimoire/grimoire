@@ -11,4 +11,6 @@ symbol: "\\*stack\\*"
 ##Examples
 
 {% include 1.5.0/clojure.xml/STAR_stack_STAR/examples.md %}
+## Source
+{% include 1.5.0/clojure.xml/STAR_stack_STAR/src.md %}
 

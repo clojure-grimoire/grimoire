@@ -11,6 +11,4 @@ symbol: "diff-similar"
 ##Examples
 
 {% include 1.6.0/clojure.data/diff_DASH_similar/examples.md %}
-## Source
-{% include 1.6.0/clojure.data/diff_DASH_similar/src.md %}
 

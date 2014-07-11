@@ -11,4 +11,6 @@ symbol: "\\*sh-env\\*"
 ##Examples
 
 {% include 1.6.0/clojure.java.shell/STAR_sh_DASH_env_STAR/examples.md %}
+## Source
+{% include 1.6.0/clojure.java.shell/STAR_sh_DASH_env_STAR/src.md %}
 

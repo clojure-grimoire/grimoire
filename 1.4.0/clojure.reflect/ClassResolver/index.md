@@ -11,4 +11,6 @@ symbol: "ClassResolver"
 ##Examples
 
 {% include 1.4.0/clojure.reflect/ClassResolver/examples.md %}
+## Source
+{% include 1.4.0/clojure.reflect/ClassResolver/src.md %}
 

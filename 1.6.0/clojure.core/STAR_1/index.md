@@ -11,4 +11,6 @@ symbol: "\\*1"
 ##Examples
 
 {% include 1.6.0/clojure.core/STAR_1/examples.md %}
+## Source
+{% include 1.6.0/clojure.core/STAR_1/src.md %}
 

@@ -11,4 +11,6 @@ symbol: "EqualityPartition"
 ##Examples
 
 {% include 1.6.0/clojure.data/EqualityPartition/examples.md %}
+## Source
+{% include 1.6.0/clojure.data/EqualityPartition/src.md %}
 

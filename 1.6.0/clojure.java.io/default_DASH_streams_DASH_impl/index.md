@@ -11,4 +11,6 @@ symbol: "default-streams-impl"
 ##Examples
 
 {% include 1.6.0/clojure.java.io/default_DASH_streams_DASH_impl/examples.md %}
+## Source
+{% include 1.6.0/clojure.java.io/default_DASH_streams_DASH_impl/src.md %}
 

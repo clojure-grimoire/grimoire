@@ -11,4 +11,6 @@ symbol: "content"
 ##Examples
 
 {% include 1.6.0/clojure.xml/content/examples.md %}
+## Source
+{% include 1.6.0/clojure.xml/content/src.md %}
 

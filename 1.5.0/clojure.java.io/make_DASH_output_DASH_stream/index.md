@@ -11,6 +11,4 @@ symbol: "make-output-stream"
 ##Examples
 
 {% include 1.5.0/clojure.java.io/make_DASH_output_DASH_stream/examples.md %}
-## Source
-{% include 1.5.0/clojure.java.io/make_DASH_output_DASH_stream/src.md %}
 

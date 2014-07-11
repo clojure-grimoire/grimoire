@@ -11,4 +11,6 @@ symbol: "junit-report"
 ##Examples
 
 {% include 1.6.0/clojure.test.junit/junit_DASH_report/examples.md %}
+## Source
+{% include 1.6.0/clojure.test.junit/junit_DASH_report/src.md %}
 

@@ -11,4 +11,6 @@ symbol: "char-name-string"
 ##Examples
 
 {% include 1.4.0/clojure.core/char_DASH_name_DASH_string/examples.md %}
+## Source
+{% include 1.4.0/clojure.core/char_DASH_name_DASH_string/src.md %}
 

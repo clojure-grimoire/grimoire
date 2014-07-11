@@ -11,4 +11,6 @@ symbol: "Diff"
 ##Examples
 
 {% include 1.4.0/clojure.data/Diff/examples.md %}
+## Source
+{% include 1.4.0/clojure.data/Diff/src.md %}
 

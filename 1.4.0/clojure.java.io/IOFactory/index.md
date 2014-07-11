@@ -11,4 +11,6 @@ symbol: "IOFactory"
 ##Examples
 
 {% include 1.4.0/clojure.java.io/IOFactory/examples.md %}
+## Source
+{% include 1.4.0/clojure.java.io/IOFactory/src.md %}
 

@@ -11,4 +11,6 @@ symbol: "\\*local-javadocs\\*"
 ##Examples
 
 {% include 1.4.0/clojure.java.javadoc/STAR_local_DASH_javadocs_STAR/examples.md %}
+## Source
+{% include 1.4.0/clojure.java.javadoc/STAR_local_DASH_javadocs_STAR/src.md %}
 

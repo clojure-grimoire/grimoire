@@ -11,4 +11,6 @@ symbol: "\\*initial-report-counters\\*"
 ##Examples
 
 {% include 1.6.0/clojure.test/STAR_initial_DASH_report_DASH_counters_STAR/examples.md %}
+## Source
+{% include 1.6.0/clojure.test/STAR_initial_DASH_report_DASH_counters_STAR/src.md %}
 

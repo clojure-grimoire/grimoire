@@ -11,4 +11,6 @@ symbol: "\\*print-pprint-dispatch\\*"
 ##Examples
 
 {% include 1.4.0/clojure.pprint/STAR_print_DASH_pprint_DASH_dispatch_STAR/examples.md %}
+## Source
+{% include 1.4.0/clojure.pprint/STAR_print_DASH_pprint_DASH_dispatch_STAR/src.md %}
 

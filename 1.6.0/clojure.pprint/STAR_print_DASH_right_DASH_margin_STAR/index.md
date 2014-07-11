@@ -11,4 +11,6 @@ symbol: "\\*print-right-margin\\*"
 ##Examples
 
 {% include 1.6.0/clojure.pprint/STAR_print_DASH_right_DASH_margin_STAR/examples.md %}
+## Source
+{% include 1.6.0/clojure.pprint/STAR_print_DASH_right_DASH_margin_STAR/src.md %}
 

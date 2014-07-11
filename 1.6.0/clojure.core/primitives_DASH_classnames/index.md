@@ -11,4 +11,6 @@ symbol: "primitives-classnames"
 ##Examples
 
 {% include 1.6.0/clojure.core/primitives_DASH_classnames/examples.md %}
+## Source
+{% include 1.6.0/clojure.core/primitives_DASH_classnames/src.md %}
 

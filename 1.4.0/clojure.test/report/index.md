@@ -11,4 +11,6 @@ symbol: "report"
 ##Examples
 
 {% include 1.4.0/clojure.test/report/examples.md %}
+## Source
+{% include 1.4.0/clojure.test/report/src.md %}
 

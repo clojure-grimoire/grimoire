@@ -11,4 +11,6 @@ symbol: "Coercions"
 ##Examples
 
 {% include 1.4.0/clojure.java.io/Coercions/examples.md %}
+## Source
+{% include 1.4.0/clojure.java.io/Coercions/src.md %}
 

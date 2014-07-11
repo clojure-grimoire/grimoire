@@ -11,4 +11,6 @@ symbol: "\\*test-out\\*"
 ##Examples
 
 {% include 1.6.0/clojure.test/STAR_test_DASH_out_STAR/examples.md %}
+## Source
+{% include 1.6.0/clojure.test/STAR_test_DASH_out_STAR/src.md %}
 

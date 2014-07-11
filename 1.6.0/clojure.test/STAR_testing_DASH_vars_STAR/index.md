@@ -11,4 +11,6 @@ symbol: "\\*testing-vars\\*"
 ##Examples
 
 {% include 1.6.0/clojure.test/STAR_testing_DASH_vars_STAR/examples.md %}
+## Source
+{% include 1.6.0/clojure.test/STAR_testing_DASH_vars_STAR/src.md %}
 

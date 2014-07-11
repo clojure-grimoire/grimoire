@@ -11,4 +11,6 @@ symbol: "\\*print-radix\\*"
 ##Examples
 
 {% include 1.6.0/clojure.pprint/STAR_print_DASH_radix_STAR/examples.md %}
+## Source
+{% include 1.6.0/clojure.pprint/STAR_print_DASH_radix_STAR/src.md %}
 

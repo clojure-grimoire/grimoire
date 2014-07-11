@@ -11,4 +11,6 @@ symbol: "tap-report"
 ##Examples
 
 {% include 1.4.0/clojure.test.tap/tap_DASH_report/examples.md %}
+## Source
+{% include 1.4.0/clojure.test.tap/tap_DASH_report/src.md %}
 

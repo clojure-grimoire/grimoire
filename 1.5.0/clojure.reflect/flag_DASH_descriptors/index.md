@@ -11,4 +11,6 @@ symbol: "flag-descriptors"
 ##Examples
 
 {% include 1.5.0/clojure.reflect/flag_DASH_descriptors/examples.md %}
+## Source
+{% include 1.5.0/clojure.reflect/flag_DASH_descriptors/src.md %}
 

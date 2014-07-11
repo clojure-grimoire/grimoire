@@ -11,4 +11,6 @@ symbol: "attrs"
 ##Examples
 
 {% include 1.4.0/clojure.xml/attrs/examples.md %}
+## Source
+{% include 1.4.0/clojure.xml/attrs/src.md %}
 

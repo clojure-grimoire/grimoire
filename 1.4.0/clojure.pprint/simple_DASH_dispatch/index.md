@@ -11,4 +11,6 @@ symbol: "simple-dispatch"
 ##Examples
 
 {% include 1.4.0/clojure.pprint/simple_DASH_dispatch/examples.md %}
+## Source
+{% include 1.4.0/clojure.pprint/simple_DASH_dispatch/src.md %}
 

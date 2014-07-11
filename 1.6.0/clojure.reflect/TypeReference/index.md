@@ -11,4 +11,6 @@ symbol: "TypeReference"
 ##Examples
 
 {% include 1.6.0/clojure.reflect/TypeReference/examples.md %}
+## Source
+{% include 1.6.0/clojure.reflect/TypeReference/src.md %}
 

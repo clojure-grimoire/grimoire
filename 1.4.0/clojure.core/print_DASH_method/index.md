@@ -11,4 +11,6 @@ symbol: "print-method"
 ##Examples
 
 {% include 1.4.0/clojure.core/print_DASH_method/examples.md %}
+## Source
+{% include 1.4.0/clojure.core/print_DASH_method/src.md %}
 

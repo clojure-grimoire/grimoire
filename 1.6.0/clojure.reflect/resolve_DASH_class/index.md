@@ -11,6 +11,4 @@ symbol: "resolve-class"
 ##Examples
 
 {% include 1.6.0/clojure.reflect/resolve_DASH_class/examples.md %}
-## Source
-{% include 1.6.0/clojure.reflect/resolve_DASH_class/src.md %}
 

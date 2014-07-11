@@ -11,4 +11,6 @@ symbol: "\\*remote-javadocs\\*"
 ##Examples
 
 {% include 1.6.0/clojure.java.javadoc/STAR_remote_DASH_javadocs_STAR/examples.md %}
+## Source
+{% include 1.6.0/clojure.java.javadoc/STAR_remote_DASH_javadocs_STAR/src.md %}
 

@@ -11,6 +11,4 @@ symbol: "make-input-stream"
 ##Examples
 
 {% include 1.6.0/clojure.java.io/make_DASH_input_DASH_stream/examples.md %}
-## Source
-{% include 1.6.0/clojure.java.io/make_DASH_input_DASH_stream/src.md %}
 

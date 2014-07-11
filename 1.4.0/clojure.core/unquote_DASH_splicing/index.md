@@ -11,4 +11,6 @@ symbol: "unquote-splicing"
 ##Examples
 
 {% include 1.4.0/clojure.core/unquote_DASH_splicing/examples.md %}
+## Source
+{% include 1.4.0/clojure.core/unquote_DASH_splicing/src.md %}
 

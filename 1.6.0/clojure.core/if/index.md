@@ -1,0 +1,16 @@
+---
+layout: fn
+namespace: clojure.core
+symbol: "if"
+---
+
+# [Clojure 1.6.0](../../)/[clojure.core](../)/if
+
+{% include 1.6.0/clojure.core/if/docs.md %}
+
+##Examples
+
+{% include 1.6.0/clojure.core/if/examples.md %}
+## Source
+{% include 1.6.0/clojure.core/if/src.md %}
+

@@ -11,4 +11,6 @@ symbol: "\\*feeling-lucky\\*"
 ##Examples
 
 {% include 1.6.0/clojure.java.javadoc/STAR_feeling_DASH_lucky_STAR/examples.md %}
+## Source
+{% include 1.6.0/clojure.java.javadoc/STAR_feeling_DASH_lucky_STAR/src.md %}
 

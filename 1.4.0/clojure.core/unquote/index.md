@@ -11,4 +11,6 @@ symbol: "unquote"
 ##Examples
 
 {% include 1.4.0/clojure.core/unquote/examples.md %}
+## Source
+{% include 1.4.0/clojure.core/unquote/src.md %}
 

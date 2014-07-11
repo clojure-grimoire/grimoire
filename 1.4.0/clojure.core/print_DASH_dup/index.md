@@ -11,4 +11,6 @@ symbol: "print-dup"
 ##Examples
 
 {% include 1.4.0/clojure.core/print_DASH_dup/examples.md %}
+## Source
+{% include 1.4.0/clojure.core/print_DASH_dup/src.md %}
 

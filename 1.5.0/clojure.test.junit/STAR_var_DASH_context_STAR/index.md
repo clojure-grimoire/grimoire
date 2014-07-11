@@ -11,4 +11,6 @@ symbol: "\\*var-context\\*"
 ##Examples
 
 {% include 1.5.0/clojure.test.junit/STAR_var_DASH_context_STAR/examples.md %}
+## Source
+{% include 1.5.0/clojure.test.junit/STAR_var_DASH_context_STAR/src.md %}
 

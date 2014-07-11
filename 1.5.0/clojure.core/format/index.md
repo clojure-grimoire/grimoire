@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "format"
 ---
 
-# [clojure.core](../)/format
+# [Clojure 1.5.0](../../)/[clojure.core](../)/format
 
 {% include 1.5.0/clojure.core/format/docs.md %}
 

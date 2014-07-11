@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "-cache-protocol-fn"
 ---
 
-# [clojure.core](../)/-cache-protocol-fn
+# [Clojure 1.5.0](../../)/[clojure.core](../)/-cache-protocol-fn
 
 {% include 1.5.0/clojure.core/DASH_cache_DASH_protocol_DASH_fn/docs.md %}
 

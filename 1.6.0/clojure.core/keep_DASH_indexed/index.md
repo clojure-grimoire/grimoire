@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "keep-indexed"
 ---
 
-# [clojure.core](../)/keep-indexed
+# [Clojure 1.6.0](../../)/[clojure.core](../)/keep-indexed
 
 {% include 1.6.0/clojure.core/keep_DASH_indexed/docs.md %}
 

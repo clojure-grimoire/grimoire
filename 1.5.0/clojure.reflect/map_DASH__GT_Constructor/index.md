@@ -4,7 +4,7 @@ namespace: clojure.reflect
 symbol: "map->Constructor"
 ---
 
-# [clojure.reflect](../)/map->Constructor
+# [Clojure 1.5.0](../../)/[clojure.reflect](../)/map->Constructor
 
 {% include 1.5.0/clojure.reflect/map_DASH__GT_Constructor/docs.md %}
 

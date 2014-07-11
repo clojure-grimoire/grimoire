@@ -4,7 +4,7 @@ namespace: clojure.reflect
 symbol: "map->Method"
 ---
 
-# [clojure.reflect](../)/map->Method
+# [Clojure 1.6.0](../../)/[clojure.reflect](../)/map->Method
 
 {% include 1.6.0/clojure.reflect/map_DASH__GT_Method/docs.md %}
 

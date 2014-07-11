@@ -4,7 +4,7 @@ namespace: clojure.stacktrace
 symbol: "e"
 ---
 
-# [clojure.stacktrace](../)/e
+# [Clojure 1.6.0](../../)/[clojure.stacktrace](../)/e
 
 {% include 1.6.0/clojure.stacktrace/e/docs.md %}
 

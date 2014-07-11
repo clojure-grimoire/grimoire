@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "var-get"
 ---
 
-# [clojure.core](../)/var-get
+# [Clojure 1.6.0](../../)/[clojure.core](../)/var-get
 
 {% include 1.6.0/clojure.core/var_DASH_get/docs.md %}
 

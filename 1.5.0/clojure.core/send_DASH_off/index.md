@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "send-off"
 ---
 
-# [clojure.core](../)/send-off
+# [Clojure 1.5.0](../../)/[clojure.core](../)/send-off
 
 {% include 1.5.0/clojure.core/send_DASH_off/docs.md %}
 

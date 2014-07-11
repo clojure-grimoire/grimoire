@@ -4,7 +4,7 @@ namespace: clojure.java.io
 symbol: "make-output-stream"
 ---
 
-# [clojure.java.io](../)/make-output-stream
+# [Clojure 1.6.0](../../)/[clojure.java.io](../)/make-output-stream
 
 {% include 1.6.0/clojure.java.io/make_DASH_output_DASH_stream/docs.md %}
 

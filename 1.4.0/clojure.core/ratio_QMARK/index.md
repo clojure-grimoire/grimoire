@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ratio?"
 ---
 
-# [clojure.core](../)/ratio?
+# [Clojure 1.4.0](../../)/[clojure.core](../)/ratio?
 
 {% include 1.4.0/clojure.core/ratio_QMARK/docs.md %}
 

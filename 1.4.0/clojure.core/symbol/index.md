@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "symbol"
 ---
 
-# [clojure.core](../)/symbol
+# [Clojure 1.4.0](../../)/[clojure.core](../)/symbol
 
 {% include 1.4.0/clojure.core/symbol/docs.md %}
 

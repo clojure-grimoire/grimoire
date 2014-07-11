@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "print-simple"
 ---
 
-# [clojure.core](../)/print-simple
+# [Clojure 1.4.0](../../)/[clojure.core](../)/print-simple
 
 {% include 1.4.0/clojure.core/print_DASH_simple/docs.md %}
 

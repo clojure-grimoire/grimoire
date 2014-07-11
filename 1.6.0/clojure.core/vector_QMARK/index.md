@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "vector?"
 ---
 
-# [clojure.core](../)/vector?
+# [Clojure 1.6.0](../../)/[clojure.core](../)/vector?
 
 {% include 1.6.0/clojure.core/vector_QMARK/docs.md %}
 

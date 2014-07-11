@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: ">="
 ---
 
-# [clojure.core](../)/>=
+# [Clojure 1.4.0](../../)/[clojure.core](../)/>=
 
 {% include 1.4.0/clojure.core/GT__EQ/docs.md %}
 

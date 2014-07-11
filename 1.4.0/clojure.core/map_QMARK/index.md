@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "map?"
 ---
 
-# [clojure.core](../)/map?
+# [Clojure 1.4.0](../../)/[clojure.core](../)/map?
 
 {% include 1.4.0/clojure.core/map_QMARK/docs.md %}
 

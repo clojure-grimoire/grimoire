@@ -4,7 +4,7 @@ namespace: clojure.string
 symbol: "blank?"
 ---
 
-# [clojure.string](../)/blank?
+# [Clojure 1.6.0](../../)/[clojure.string](../)/blank?
 
 {% include 1.6.0/clojure.string/blank_QMARK/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "unchecked-float"
 ---
 
-# [clojure.core](../)/unchecked-float
+# [Clojure 1.6.0](../../)/[clojure.core](../)/unchecked-float
 
 {% include 1.6.0/clojure.core/unchecked_DASH_float/docs.md %}
 

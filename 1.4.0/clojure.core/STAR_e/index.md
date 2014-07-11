@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "\\*e"
 ---
 
-# [clojure.core](../)/\*e
+# [Clojure 1.4.0](../../)/[clojure.core](../)/\*e
 
 {% include 1.4.0/clojure.core/STAR_e/docs.md %}
 

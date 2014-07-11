@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "chunk-first"
 ---
 
-# [clojure.core](../)/chunk-first
+# [Clojure 1.6.0](../../)/[clojure.core](../)/chunk-first
 
 {% include 1.6.0/clojure.core/chunk_DASH_first/docs.md %}
 

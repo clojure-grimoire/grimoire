@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "gen-class"
 ---
 
-# [clojure.core](../)/gen-class
+# [Clojure 1.5.0](../../)/[clojure.core](../)/gen-class
 
 {% include 1.5.0/clojure.core/gen_DASH_class/docs.md %}
 

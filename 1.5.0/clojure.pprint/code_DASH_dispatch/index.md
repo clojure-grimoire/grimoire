@@ -4,7 +4,7 @@ namespace: clojure.pprint
 symbol: "code-dispatch"
 ---
 
-# [clojure.pprint](../)/code-dispatch
+# [Clojure 1.5.0](../../)/[clojure.pprint](../)/code-dispatch
 
 {% include 1.5.0/clojure.pprint/code_DASH_dispatch/docs.md %}
 

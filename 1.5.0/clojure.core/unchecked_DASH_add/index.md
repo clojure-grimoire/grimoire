@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "unchecked-add"
 ---
 
-# [clojure.core](../)/unchecked-add
+# [Clojure 1.5.0](../../)/[clojure.core](../)/unchecked-add
 
 {% include 1.5.0/clojure.core/unchecked_DASH_add/docs.md %}
 

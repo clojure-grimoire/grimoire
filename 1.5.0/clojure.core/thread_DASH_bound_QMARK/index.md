@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "thread-bound?"
 ---
 
-# [clojure.core](../)/thread-bound?
+# [Clojure 1.5.0](../../)/[clojure.core](../)/thread-bound?
 
 {% include 1.5.0/clojure.core/thread_DASH_bound_QMARK/docs.md %}
 

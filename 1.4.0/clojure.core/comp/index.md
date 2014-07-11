@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "comp"
 ---
 
-# [clojure.core](../)/comp
+# [Clojure 1.4.0](../../)/[clojure.core](../)/comp
 
 {% include 1.4.0/clojure.core/comp/docs.md %}
 

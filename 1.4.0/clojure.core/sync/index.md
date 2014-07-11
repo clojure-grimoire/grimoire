@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "sync"
 ---
 
-# [clojure.core](../)/sync
+# [Clojure 1.4.0](../../)/[clojure.core](../)/sync
 
 {% include 1.4.0/clojure.core/sync/docs.md %}
 

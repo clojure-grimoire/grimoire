@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "distinct"
 ---
 
-# [clojure.core](../)/distinct
+# [Clojure 1.6.0](../../)/[clojure.core](../)/distinct
 
 {% include 1.6.0/clojure.core/distinct/docs.md %}
 

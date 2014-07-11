@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "accessor"
 ---
 
-# [clojure.core](../)/accessor
+# [Clojure 1.4.0](../../)/[clojure.core](../)/accessor
 
 {% include 1.4.0/clojure.core/accessor/docs.md %}
 

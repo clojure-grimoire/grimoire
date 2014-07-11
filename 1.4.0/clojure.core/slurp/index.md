@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "slurp"
 ---
 
-# [clojure.core](../)/slurp
+# [Clojure 1.4.0](../../)/[clojure.core](../)/slurp
 
 {% include 1.4.0/clojure.core/slurp/docs.md %}
 

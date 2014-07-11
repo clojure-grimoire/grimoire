@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "dosync"
 ---
 
-# [clojure.core](../)/dosync
+# [Clojure 1.6.0](../../)/[clojure.core](../)/dosync
 
 {% include 1.6.0/clojure.core/dosync/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.walk
 symbol: "prewalk-replace"
 ---
 
-# [clojure.walk](../)/prewalk-replace
+# [Clojure 1.5.0](../../)/[clojure.walk](../)/prewalk-replace
 
 {% include 1.5.0/clojure.walk/prewalk_DASH_replace/docs.md %}
 

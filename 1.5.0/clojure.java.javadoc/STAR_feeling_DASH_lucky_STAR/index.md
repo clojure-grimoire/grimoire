@@ -4,7 +4,7 @@ namespace: clojure.java.javadoc
 symbol: "\\*feeling-lucky\\*"
 ---
 
-# [clojure.java.javadoc](../)/\*feeling-lucky\*
+# [Clojure 1.5.0](../../)/[clojure.java.javadoc](../)/\*feeling-lucky\*
 
 {% include 1.5.0/clojure.java.javadoc/STAR_feeling_DASH_lucky_STAR/docs.md %}
 

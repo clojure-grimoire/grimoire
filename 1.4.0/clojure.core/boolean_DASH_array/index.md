@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "boolean-array"
 ---
 
-# [clojure.core](../)/boolean-array
+# [Clojure 1.4.0](../../)/[clojure.core](../)/boolean-array
 
 {% include 1.4.0/clojure.core/boolean_DASH_array/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.xml
 symbol: "element"
 ---
 
-# [clojure.xml](../)/element
+# [Clojure 1.4.0](../../)/[clojure.xml](../)/element
 
 {% include 1.4.0/clojure.xml/element/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.java.io
 symbol: "delete-file"
 ---
 
-# [clojure.java.io](../)/delete-file
+# [Clojure 1.6.0](../../)/[clojure.java.io](../)/delete-file
 
 {% include 1.6.0/clojure.java.io/delete_DASH_file/docs.md %}
 

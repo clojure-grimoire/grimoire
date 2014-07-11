@@ -187,9 +187,8 @@
         (->> (str (render-yaml [["layout"    "fn"]
                                 ["namespace" namespace]
                                 ["symbol"    (pr-str md-symbol)]])
-                  (format "\n# [%s](../)/%s\n\n"
-                          namespace
-                          md-symbol)
+                  (format "\n# [Clojure %s](../../)/[%s](../)/%s\n\n"
+                          version-str namespace   md-symbol)
                   (lq "include" (trim-dot (str ns-dir "/" symbol "/docs.md")))
                   "\n##Examples\n\n"
                   (lq "include" (trim-dot (str ns-dir "/" symbol "/examples.md")))
@@ -226,13 +225,15 @@
 
 (defn write-docs-for-ns
   [dirs ns]
-  (let [[version-dir include-dir] dirs
-        ns-vars                   (map second (ns-publics ns))
-        macros                    (filter macro? ns-vars)
-        fns                       (filter #(and (fn? @%1)
-                                                (not (macro? %1)))
-                                          ns-vars)
-        vars                      (filter #(not (fn? @%1)) ns-vars)]
+  (let [[version-dir include-dir]         dirs
+        ns-vars                           (map second (ns-publics ns))
+        macros                            (filter macro? ns-vars)
+        fns                               (filter #(and (fn? @%1)
+                                                        (not (macro? %1)))
+                                                  ns-vars)
+        vars                              (filter #(not (fn? @%1)) ns-vars)
+        {:keys [major minor incremental]} *clojure-version*
+        version-str                       (format "%s.%s.%s" major minor incremental)]
     (let [version-ns-dir  (file version-dir (name ns))
           include-ns-dir  (file include-dir (name ns))]
       (.mkdir version-ns-dir)
@@ -258,9 +259,9 @@
 
         (let [f (file index-file)]
           (when-not (.exists f)
-            (->> (str (render-yaml [["layout" "ns"]
-                                    ["title"  (name ns)]])
-                      
+            (->> (str (render-yaml [["layout" "ns"]])
+                      (format "# [Clojure %s](../)/%s\n\n" version-str (str ns))
+
                       (str "{% markdown " version-ns-dir  "/index.md %}\n\n")
                       
                       (when macros

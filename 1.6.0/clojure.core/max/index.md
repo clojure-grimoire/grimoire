@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "max"
 ---
 
-# [clojure.core](../)/max
+# [Clojure 1.6.0](../../)/[clojure.core](../)/max
 
 {% include 1.6.0/clojure.core/max/docs.md %}
 

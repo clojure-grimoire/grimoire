@@ -1,7 +1,8 @@
 ---
 layout: ns
-title: clojure.string
 ---
+# [Clojure 1.4.0](../)/clojure.string
+
 {% markdown 1.4.0/clojure.string/index.md %}
 
 ## Macros

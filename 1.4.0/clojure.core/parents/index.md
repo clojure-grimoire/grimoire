@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "parents"
 ---
 
-# [clojure.core](../)/parents
+# [Clojure 1.4.0](../../)/[clojure.core](../)/parents
 
 {% include 1.4.0/clojure.core/parents/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "unsigned-bit-shift-right"
 ---
 
-# [clojure.core](../)/unsigned-bit-shift-right
+# [Clojure 1.6.0](../../)/[clojure.core](../)/unsigned-bit-shift-right
 
 {% include 1.6.0/clojure.core/unsigned_DASH_bit_DASH_shift_DASH_right/docs.md %}
 

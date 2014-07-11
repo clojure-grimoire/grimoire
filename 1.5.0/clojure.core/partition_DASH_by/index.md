@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "partition-by"
 ---
 
-# [clojure.core](../)/partition-by
+# [Clojure 1.5.0](../../)/[clojure.core](../)/partition-by
 
 {% include 1.5.0/clojure.core/partition_DASH_by/docs.md %}
 

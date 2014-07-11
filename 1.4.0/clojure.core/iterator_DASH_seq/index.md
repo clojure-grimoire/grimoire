@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "iterator-seq"
 ---
 
-# [clojure.core](../)/iterator-seq
+# [Clojure 1.4.0](../../)/[clojure.core](../)/iterator-seq
 
 {% include 1.4.0/clojure.core/iterator_DASH_seq/docs.md %}
 

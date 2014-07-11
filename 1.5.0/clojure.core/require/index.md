@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "require"
 ---
 
-# [clojure.core](../)/require
+# [Clojure 1.5.0](../../)/[clojure.core](../)/require
 
 {% include 1.5.0/clojure.core/require/docs.md %}
 

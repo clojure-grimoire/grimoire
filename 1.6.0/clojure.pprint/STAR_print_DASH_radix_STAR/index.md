@@ -4,7 +4,7 @@ namespace: clojure.pprint
 symbol: "\\*print-radix\\*"
 ---
 
-# [clojure.pprint](../)/\*print-radix\*
+# [Clojure 1.6.0](../../)/[clojure.pprint](../)/\*print-radix\*
 
 {% include 1.6.0/clojure.pprint/STAR_print_DASH_radix_STAR/docs.md %}
 

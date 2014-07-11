@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "every?"
 ---
 
-# [clojure.core](../)/every?
+# [Clojure 1.5.0](../../)/[clojure.core](../)/every?
 
 {% include 1.5.0/clojure.core/every_QMARK/docs.md %}
 

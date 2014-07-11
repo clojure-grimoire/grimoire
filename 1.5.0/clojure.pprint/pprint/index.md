@@ -4,7 +4,7 @@ namespace: clojure.pprint
 symbol: "pprint"
 ---
 
-# [clojure.pprint](../)/pprint
+# [Clojure 1.5.0](../../)/[clojure.pprint](../)/pprint
 
 {% include 1.5.0/clojure.pprint/pprint/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "lazy-seq"
 ---
 
-# [clojure.core](../)/lazy-seq
+# [Clojure 1.4.0](../../)/[clojure.core](../)/lazy-seq
 
 {% include 1.4.0/clojure.core/lazy_DASH_seq/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "re-seq"
 ---
 
-# [clojure.core](../)/re-seq
+# [Clojure 1.6.0](../../)/[clojure.core](../)/re-seq
 
 {% include 1.6.0/clojure.core/re_DASH_seq/docs.md %}
 

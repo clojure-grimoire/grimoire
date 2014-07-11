@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "defrecord"
 ---
 
-# [clojure.core](../)/defrecord
+# [Clojure 1.4.0](../../)/[clojure.core](../)/defrecord
 
 {% include 1.4.0/clojure.core/defrecord/docs.md %}
 

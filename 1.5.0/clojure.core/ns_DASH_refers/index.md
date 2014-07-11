@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ns-refers"
 ---
 
-# [clojure.core](../)/ns-refers
+# [Clojure 1.5.0](../../)/[clojure.core](../)/ns-refers
 
 {% include 1.5.0/clojure.core/ns_DASH_refers/docs.md %}
 

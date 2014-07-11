@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "sort-by"
 ---
 
-# [clojure.core](../)/sort-by
+# [Clojure 1.5.0](../../)/[clojure.core](../)/sort-by
 
 {% include 1.5.0/clojure.core/sort_DASH_by/docs.md %}
 

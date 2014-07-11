@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "load"
 ---
 
-# [clojure.core](../)/load
+# [Clojure 1.4.0](../../)/[clojure.core](../)/load
 
 {% include 1.4.0/clojure.core/load/docs.md %}
 

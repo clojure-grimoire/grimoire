@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "isa?"
 ---
 
-# [clojure.core](../)/isa?
+# [Clojure 1.5.0](../../)/[clojure.core](../)/isa?
 
 {% include 1.5.0/clojure.core/isa_QMARK/docs.md %}
 

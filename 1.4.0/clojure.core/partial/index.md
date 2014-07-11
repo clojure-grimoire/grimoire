@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "partial"
 ---
 
-# [clojure.core](../)/partial
+# [Clojure 1.4.0](../../)/[clojure.core](../)/partial
 
 {% include 1.4.0/clojure.core/partial/docs.md %}
 

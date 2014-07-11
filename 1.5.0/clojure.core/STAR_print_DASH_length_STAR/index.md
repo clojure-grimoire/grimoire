@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "\\*print-length\\*"
 ---
 
-# [clojure.core](../)/\*print-length\*
+# [Clojure 1.5.0](../../)/[clojure.core](../)/\*print-length\*
 
 {% include 1.5.0/clojure.core/STAR_print_DASH_length_STAR/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.pprint
 symbol: "\\*print-pretty\\*"
 ---
 
-# [clojure.pprint](../)/\*print-pretty\*
+# [Clojure 1.6.0](../../)/[clojure.pprint](../)/\*print-pretty\*
 
 {% include 1.6.0/clojure.pprint/STAR_print_DASH_pretty_STAR/docs.md %}
 

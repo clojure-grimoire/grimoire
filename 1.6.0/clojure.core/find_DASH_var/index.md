@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "find-var"
 ---
 
-# [clojure.core](../)/find-var
+# [Clojure 1.6.0](../../)/[clojure.core](../)/find-var
 
 {% include 1.6.0/clojure.core/find_DASH_var/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "assoc!"
 ---
 
-# [clojure.core](../)/assoc!
+# [Clojure 1.4.0](../../)/[clojure.core](../)/assoc!
 
 {% include 1.4.0/clojure.core/assoc_BANG/docs.md %}
 

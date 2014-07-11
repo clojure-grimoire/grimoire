@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "doubles"
 ---
 
-# [clojure.core](../)/doubles
+# [Clojure 1.5.0](../../)/[clojure.core](../)/doubles
 
 {% include 1.5.0/clojure.core/doubles/docs.md %}
 

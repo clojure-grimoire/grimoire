@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "import"
 ---
 
-# [clojure.core](../)/import
+# [Clojure 1.5.0](../../)/[clojure.core](../)/import
 
 {% include 1.5.0/clojure.core/import/docs.md %}
 

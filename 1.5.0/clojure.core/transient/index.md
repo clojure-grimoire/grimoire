@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "transient"
 ---
 
-# [clojure.core](../)/transient
+# [Clojure 1.5.0](../../)/[clojure.core](../)/transient
 
 {% include 1.5.0/clojure.core/transient/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "rational?"
 ---
 
-# [clojure.core](../)/rational?
+# [Clojure 1.6.0](../../)/[clojure.core](../)/rational?
 
 {% include 1.6.0/clojure.core/rational_QMARK/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "print-ctor"
 ---
 
-# [clojure.core](../)/print-ctor
+# [Clojure 1.4.0](../../)/[clojure.core](../)/print-ctor
 
 {% include 1.4.0/clojure.core/print_DASH_ctor/docs.md %}
 

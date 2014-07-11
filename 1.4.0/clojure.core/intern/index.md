@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "intern"
 ---
 
-# [clojure.core](../)/intern
+# [Clojure 1.4.0](../../)/[clojure.core](../)/intern
 
 {% include 1.4.0/clojure.core/intern/docs.md %}
 

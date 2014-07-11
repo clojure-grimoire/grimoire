@@ -4,7 +4,7 @@ namespace: clojure.walk
 symbol: "stringify-keys"
 ---
 
-# [clojure.walk](../)/stringify-keys
+# [Clojure 1.4.0](../../)/[clojure.walk](../)/stringify-keys
 
 {% include 1.4.0/clojure.walk/stringify_DASH_keys/docs.md %}
 

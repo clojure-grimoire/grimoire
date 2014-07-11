@@ -1,7 +1,8 @@
 ---
 layout: ns
-title: clojure.zip
 ---
+# [Clojure 1.4.0](../)/clojure.zip
+
 {% markdown 1.4.0/clojure.zip/index.md %}
 
 ## Macros

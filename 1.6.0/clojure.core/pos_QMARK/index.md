@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "pos?"
 ---
 
-# [clojure.core](../)/pos?
+# [Clojure 1.6.0](../../)/[clojure.core](../)/pos?
 
 {% include 1.6.0/clojure.core/pos_QMARK/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "update-in"
 ---
 
-# [clojure.core](../)/update-in
+# [Clojure 1.4.0](../../)/[clojure.core](../)/update-in
 
 {% include 1.4.0/clojure.core/update_DASH_in/docs.md %}
 

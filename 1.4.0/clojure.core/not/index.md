@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "not"
 ---
 
-# [clojure.core](../)/not
+# [Clojure 1.4.0](../../)/[clojure.core](../)/not
 
 {% include 1.4.0/clojure.core/not/docs.md %}
 

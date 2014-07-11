@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "meta"
 ---
 
-# [clojure.core](../)/meta
+# [Clojure 1.5.0](../../)/[clojure.core](../)/meta
 
 {% include 1.5.0/clojure.core/meta/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "create-ns"
 ---
 
-# [clojure.core](../)/create-ns
+# [Clojure 1.6.0](../../)/[clojure.core](../)/create-ns
 
 {% include 1.6.0/clojure.core/create_DASH_ns/docs.md %}
 

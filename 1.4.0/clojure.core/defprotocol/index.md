@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "defprotocol"
 ---
 
-# [clojure.core](../)/defprotocol
+# [Clojure 1.4.0](../../)/[clojure.core](../)/defprotocol
 
 {% include 1.4.0/clojure.core/defprotocol/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "definterface"
 ---
 
-# [clojure.core](../)/definterface
+# [Clojure 1.5.0](../../)/[clojure.core](../)/definterface
 
 {% include 1.5.0/clojure.core/definterface/docs.md %}
 

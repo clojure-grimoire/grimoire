@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "doto"
 ---
 
-# [clojure.core](../)/doto
+# [Clojure 1.6.0](../../)/[clojure.core](../)/doto
 
 {% include 1.6.0/clojure.core/doto/docs.md %}
 

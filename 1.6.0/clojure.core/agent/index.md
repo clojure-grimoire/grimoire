@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "agent"
 ---
 
-# [clojure.core](../)/agent
+# [Clojure 1.6.0](../../)/[clojure.core](../)/agent
 
 {% include 1.6.0/clojure.core/agent/docs.md %}
 

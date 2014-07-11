@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "defmethod"
 ---
 
-# [clojure.core](../)/defmethod
+# [Clojure 1.4.0](../../)/[clojure.core](../)/defmethod
 
 {% include 1.4.0/clojure.core/defmethod/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "\\*clojure-version\\*"
 ---
 
-# [clojure.core](../)/\*clojure-version\*
+# [Clojure 1.6.0](../../)/[clojure.core](../)/\*clojure-version\*
 
 {% include 1.6.0/clojure.core/STAR_clojure_DASH_version_STAR/docs.md %}
 

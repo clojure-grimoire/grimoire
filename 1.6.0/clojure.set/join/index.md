@@ -4,7 +4,7 @@ namespace: clojure.set
 symbol: "join"
 ---
 
-# [clojure.set](../)/join
+# [Clojure 1.6.0](../../)/[clojure.set](../)/join
 
 {% include 1.6.0/clojure.set/join/docs.md %}
 

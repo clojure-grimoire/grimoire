@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "fn"
 ---
 
-# [clojure.core](../)/fn
+# [Clojure 1.5.0](../../)/[clojure.core](../)/fn
 
 {% include 1.5.0/clojure.core/fn/docs.md %}
 

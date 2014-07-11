@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "-reset-methods"
 ---
 
-# [clojure.core](../)/-reset-methods
+# [Clojure 1.6.0](../../)/[clojure.core](../)/-reset-methods
 
 {% include 1.6.0/clojure.core/DASH_reset_DASH_methods/docs.md %}
 

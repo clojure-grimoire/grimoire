@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "aset-long"
 ---
 
-# [clojure.core](../)/aset-long
+# [Clojure 1.4.0](../../)/[clojure.core](../)/aset-long
 
 {% include 1.4.0/clojure.core/aset_DASH_long/docs.md %}
 

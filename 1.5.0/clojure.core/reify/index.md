@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "reify"
 ---
 
-# [clojure.core](../)/reify
+# [Clojure 1.5.0](../../)/[clojure.core](../)/reify
 
 {% include 1.5.0/clojure.core/reify/docs.md %}
 

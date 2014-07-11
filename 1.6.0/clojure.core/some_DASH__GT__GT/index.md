@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "some->>"
 ---
 
-# [clojure.core](../)/some->>
+# [Clojure 1.6.0](../../)/[clojure.core](../)/some->>
 
 {% include 1.6.0/clojure.core/some_DASH__GT__GT/docs.md %}
 

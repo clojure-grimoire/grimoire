@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "drop"
 ---
 
-# [clojure.core](../)/drop
+# [Clojure 1.4.0](../../)/[clojure.core](../)/drop
 
 {% include 1.4.0/clojure.core/drop/docs.md %}
 

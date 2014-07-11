@@ -4,7 +4,7 @@ namespace: clojure.set
 symbol: "difference"
 ---
 
-# [clojure.set](../)/difference
+# [Clojure 1.4.0](../../)/[clojure.set](../)/difference
 
 {% include 1.4.0/clojure.set/difference/docs.md %}
 

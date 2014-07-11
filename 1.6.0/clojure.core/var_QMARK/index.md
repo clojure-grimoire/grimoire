@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "var?"
 ---
 
-# [clojure.core](../)/var?
+# [Clojure 1.6.0](../../)/[clojure.core](../)/var?
 
 {% include 1.6.0/clojure.core/var_QMARK/docs.md %}
 

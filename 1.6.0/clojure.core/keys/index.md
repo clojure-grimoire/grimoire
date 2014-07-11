@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "keys"
 ---
 
-# [clojure.core](../)/keys
+# [Clojure 1.6.0](../../)/[clojure.core](../)/keys
 
 {% include 1.6.0/clojure.core/keys/docs.md %}
 

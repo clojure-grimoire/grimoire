@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "if-not"
 ---
 
-# [clojure.core](../)/if-not
+# [Clojure 1.5.0](../../)/[clojure.core](../)/if-not
 
 {% include 1.5.0/clojure.core/if_DASH_not/docs.md %}
 

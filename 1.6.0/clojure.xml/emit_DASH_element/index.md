@@ -4,7 +4,7 @@ namespace: clojure.xml
 symbol: "emit-element"
 ---
 
-# [clojure.xml](../)/emit-element
+# [Clojure 1.6.0](../../)/[clojure.xml](../)/emit-element
 
 {% include 1.6.0/clojure.xml/emit_DASH_element/docs.md %}
 

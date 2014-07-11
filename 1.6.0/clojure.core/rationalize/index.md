@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "rationalize"
 ---
 
-# [clojure.core](../)/rationalize
+# [Clojure 1.6.0](../../)/[clojure.core](../)/rationalize
 
 {% include 1.6.0/clojure.core/rationalize/docs.md %}
 

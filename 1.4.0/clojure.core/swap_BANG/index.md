@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "swap!"
 ---
 
-# [clojure.core](../)/swap!
+# [Clojure 1.4.0](../../)/[clojure.core](../)/swap!
 
 {% include 1.4.0/clojure.core/swap_BANG/docs.md %}
 

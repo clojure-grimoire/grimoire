@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "repeatedly"
 ---
 
-# [clojure.core](../)/repeatedly
+# [Clojure 1.4.0](../../)/[clojure.core](../)/repeatedly
 
 {% include 1.4.0/clojure.core/repeatedly/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "read"
 ---
 
-# [clojure.core](../)/read
+# [Clojure 1.4.0](../../)/[clojure.core](../)/read
 
 {% include 1.4.0/clojure.core/read/docs.md %}
 

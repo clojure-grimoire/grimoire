@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "defmacro"
 ---
 
-# [clojure.core](../)/defmacro
+# [Clojure 1.5.0](../../)/[clojure.core](../)/defmacro
 
 {% include 1.5.0/clojure.core/defmacro/docs.md %}
 

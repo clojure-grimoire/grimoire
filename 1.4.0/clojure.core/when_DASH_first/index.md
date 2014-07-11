@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "when-first"
 ---
 
-# [clojure.core](../)/when-first
+# [Clojure 1.4.0](../../)/[clojure.core](../)/when-first
 
 {% include 1.4.0/clojure.core/when_DASH_first/docs.md %}
 

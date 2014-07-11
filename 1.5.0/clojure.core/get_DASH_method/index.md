@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "get-method"
 ---
 
-# [clojure.core](../)/get-method
+# [Clojure 1.5.0](../../)/[clojure.core](../)/get-method
 
 {% include 1.5.0/clojure.core/get_DASH_method/docs.md %}
 

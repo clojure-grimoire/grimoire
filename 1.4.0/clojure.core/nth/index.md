@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "nth"
 ---
 
-# [clojure.core](../)/nth
+# [Clojure 1.4.0](../../)/[clojure.core](../)/nth
 
 {% include 1.4.0/clojure.core/nth/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "shuffle"
 ---
 
-# [clojure.core](../)/shuffle
+# [Clojure 1.6.0](../../)/[clojure.core](../)/shuffle
 
 {% include 1.6.0/clojure.core/shuffle/docs.md %}
 

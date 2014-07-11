@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "bit-xor"
 ---
 
-# [clojure.core](../)/bit-xor
+# [Clojure 1.6.0](../../)/[clojure.core](../)/bit-xor
 
 {% include 1.6.0/clojure.core/bit_DASH_xor/docs.md %}
 

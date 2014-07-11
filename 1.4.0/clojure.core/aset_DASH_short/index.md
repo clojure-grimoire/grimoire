@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "aset-short"
 ---
 
-# [clojure.core](../)/aset-short
+# [Clojure 1.4.0](../../)/[clojure.core](../)/aset-short
 
 {% include 1.4.0/clojure.core/aset_DASH_short/docs.md %}
 

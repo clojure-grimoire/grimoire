@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ifn?"
 ---
 
-# [clojure.core](../)/ifn?
+# [Clojure 1.5.0](../../)/[clojure.core](../)/ifn?
 
 {% include 1.5.0/clojure.core/ifn_QMARK/docs.md %}
 

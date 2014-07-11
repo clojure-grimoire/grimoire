@@ -4,7 +4,7 @@ namespace: clojure.test
 symbol: "deftest"
 ---
 
-# [clojure.test](../)/deftest
+# [Clojure 1.5.0](../../)/[clojure.test](../)/deftest
 
 {% include 1.5.0/clojure.test/deftest/docs.md %}
 

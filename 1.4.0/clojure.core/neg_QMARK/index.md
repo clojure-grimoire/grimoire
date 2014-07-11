@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "neg?"
 ---
 
-# [clojure.core](../)/neg?
+# [Clojure 1.4.0](../../)/[clojure.core](../)/neg?
 
 {% include 1.4.0/clojure.core/neg_QMARK/docs.md %}
 

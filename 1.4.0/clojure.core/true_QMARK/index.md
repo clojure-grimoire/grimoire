@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "true?"
 ---
 
-# [clojure.core](../)/true?
+# [Clojure 1.4.0](../../)/[clojure.core](../)/true?
 
 {% include 1.4.0/clojure.core/true_QMARK/docs.md %}
 

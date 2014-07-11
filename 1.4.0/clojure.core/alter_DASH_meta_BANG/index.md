@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "alter-meta!"
 ---
 
-# [clojure.core](../)/alter-meta!
+# [Clojure 1.4.0](../../)/[clojure.core](../)/alter-meta!
 
 {% include 1.4.0/clojure.core/alter_DASH_meta_BANG/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "node"
 ---
 
-# [clojure.zip](../)/node
+# [Clojure 1.5.0](../../)/[clojure.zip](../)/node
 
 {% include 1.5.0/clojure.zip/node/docs.md %}
 

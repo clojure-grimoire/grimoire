@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ns-imports"
 ---
 
-# [clojure.core](../)/ns-imports
+# [Clojure 1.5.0](../../)/[clojure.core](../)/ns-imports
 
 {% include 1.5.0/clojure.core/ns_DASH_imports/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "last"
 ---
 
-# [clojure.core](../)/last
+# [Clojure 1.6.0](../../)/[clojure.core](../)/last
 
 {% include 1.6.0/clojure.core/last/docs.md %}
 

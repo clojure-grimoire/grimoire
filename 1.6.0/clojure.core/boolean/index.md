@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "boolean"
 ---
 
-# [clojure.core](../)/boolean
+# [Clojure 1.6.0](../../)/[clojure.core](../)/boolean
 
 {% include 1.6.0/clojure.core/boolean/docs.md %}
 

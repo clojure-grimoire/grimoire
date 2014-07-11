@@ -4,7 +4,7 @@ namespace: clojure.data
 symbol: "diff-similar"
 ---
 
-# [clojure.data](../)/diff-similar
+# [Clojure 1.4.0](../../)/[clojure.data](../)/diff-similar
 
 {% include 1.4.0/clojure.data/diff_DASH_similar/docs.md %}
 

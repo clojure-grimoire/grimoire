@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "drop-while"
 ---
 
-# [clojure.core](../)/drop-while
+# [Clojure 1.6.0](../../)/[clojure.core](../)/drop-while
 
 {% include 1.6.0/clojure.core/drop_DASH_while/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "identical?"
 ---
 
-# [clojure.core](../)/identical?
+# [Clojure 1.6.0](../../)/[clojure.core](../)/identical?
 
 {% include 1.6.0/clojure.core/identical_QMARK/docs.md %}
 

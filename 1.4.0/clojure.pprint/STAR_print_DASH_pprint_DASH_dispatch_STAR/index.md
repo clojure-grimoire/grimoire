@@ -4,7 +4,7 @@ namespace: clojure.pprint
 symbol: "\\*print-pprint-dispatch\\*"
 ---
 
-# [clojure.pprint](../)/\*print-pprint-dispatch\*
+# [Clojure 1.4.0](../../)/[clojure.pprint](../)/\*print-pprint-dispatch\*
 
 {% include 1.4.0/clojure.pprint/STAR_print_DASH_pprint_DASH_dispatch_STAR/docs.md %}
 

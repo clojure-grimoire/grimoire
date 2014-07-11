@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "bytes"
 ---
 
-# [clojure.core](../)/bytes
+# [Clojure 1.4.0](../../)/[clojure.core](../)/bytes
 
 {% include 1.4.0/clojure.core/bytes/docs.md %}
 

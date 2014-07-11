@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "max-key"
 ---
 
-# [clojure.core](../)/max-key
+# [Clojure 1.6.0](../../)/[clojure.core](../)/max-key
 
 {% include 1.6.0/clojure.core/max_DASH_key/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "bit-not"
 ---
 
-# [clojure.core](../)/bit-not
+# [Clojure 1.5.0](../../)/[clojure.core](../)/bit-not
 
 {% include 1.5.0/clojure.core/bit_DASH_not/docs.md %}
 

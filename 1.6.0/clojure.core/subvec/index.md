@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "subvec"
 ---
 
-# [clojure.core](../)/subvec
+# [Clojure 1.6.0](../../)/[clojure.core](../)/subvec
 
 {% include 1.6.0/clojure.core/subvec/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "min"
 ---
 
-# [clojure.core](../)/min
+# [Clojure 1.4.0](../../)/[clojure.core](../)/min
 
 {% include 1.4.0/clojure.core/min/docs.md %}
 

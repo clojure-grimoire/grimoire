@@ -1,7 +1,8 @@
 ---
 layout: ns
-title: clojure.test.tap
 ---
+# [Clojure 1.5.0](../)/clojure.test.tap
+
 {% markdown 1.5.0/clojure.test.tap/index.md %}
 
 ## Macros

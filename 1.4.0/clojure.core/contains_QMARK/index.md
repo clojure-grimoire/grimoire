@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "contains?"
 ---
 
-# [clojure.core](../)/contains?
+# [Clojure 1.4.0](../../)/[clojure.core](../)/contains?
 
 {% include 1.4.0/clojure.core/contains_QMARK/docs.md %}
 

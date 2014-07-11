@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "bean"
 ---
 
-# [clojure.core](../)/bean
+# [Clojure 1.4.0](../../)/[clojure.core](../)/bean
 
 {% include 1.4.0/clojure.core/bean/docs.md %}
 

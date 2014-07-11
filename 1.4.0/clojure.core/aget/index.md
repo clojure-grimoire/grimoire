@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "aget"
 ---
 
-# [clojure.core](../)/aget
+# [Clojure 1.4.0](../../)/[clojure.core](../)/aget
 
 {% include 1.4.0/clojure.core/aget/docs.md %}
 

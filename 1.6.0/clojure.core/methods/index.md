@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "methods"
 ---
 
-# [clojure.core](../)/methods
+# [Clojure 1.6.0](../../)/[clojure.core](../)/methods
 
 {% include 1.6.0/clojure.core/methods/docs.md %}
 

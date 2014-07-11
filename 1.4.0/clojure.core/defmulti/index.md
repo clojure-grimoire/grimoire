@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "defmulti"
 ---
 
-# [clojure.core](../)/defmulti
+# [Clojure 1.4.0](../../)/[clojure.core](../)/defmulti
 
 {% include 1.4.0/clojure.core/defmulti/docs.md %}
 

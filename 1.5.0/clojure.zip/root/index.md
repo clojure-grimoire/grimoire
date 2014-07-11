@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "root"
 ---
 
-# [clojure.zip](../)/root
+# [Clojure 1.5.0](../../)/[clojure.zip](../)/root
 
 {% include 1.5.0/clojure.zip/root/docs.md %}
 

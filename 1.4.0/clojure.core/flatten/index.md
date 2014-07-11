@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "flatten"
 ---
 
-# [clojure.core](../)/flatten
+# [Clojure 1.4.0](../../)/[clojure.core](../)/flatten
 
 {% include 1.4.0/clojure.core/flatten/docs.md %}
 

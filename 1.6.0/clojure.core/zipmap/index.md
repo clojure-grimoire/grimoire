@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "zipmap"
 ---
 
-# [clojure.core](../)/zipmap
+# [Clojure 1.6.0](../../)/[clojure.core](../)/zipmap
 
 {% include 1.6.0/clojure.core/zipmap/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.string
 symbol: "capitalize"
 ---
 
-# [clojure.string](../)/capitalize
+# [Clojure 1.6.0](../../)/[clojure.string](../)/capitalize
 
 {% include 1.6.0/clojure.string/capitalize/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "empty?"
 ---
 
-# [clojure.core](../)/empty?
+# [Clojure 1.4.0](../../)/[clojure.core](../)/empty?
 
 {% include 1.4.0/clojure.core/empty_QMARK/docs.md %}
 

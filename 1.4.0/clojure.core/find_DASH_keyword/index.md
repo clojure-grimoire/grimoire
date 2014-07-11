@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "find-keyword"
 ---
 
-# [clojure.core](../)/find-keyword
+# [Clojure 1.4.0](../../)/[clojure.core](../)/find-keyword
 
 {% include 1.4.0/clojure.core/find_DASH_keyword/docs.md %}
 

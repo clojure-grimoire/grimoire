@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "numerator"
 ---
 
-# [clojure.core](../)/numerator
+# [Clojure 1.5.0](../../)/[clojure.core](../)/numerator
 
 {% include 1.5.0/clojure.core/numerator/docs.md %}
 

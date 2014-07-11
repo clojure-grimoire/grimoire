@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "make-node"
 ---
 
-# [clojure.zip](../)/make-node
+# [Clojure 1.6.0](../../)/[clojure.zip](../)/make-node
 
 {% include 1.6.0/clojure.zip/make_DASH_node/docs.md %}
 

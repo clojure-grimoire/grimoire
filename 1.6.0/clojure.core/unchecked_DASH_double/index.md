@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "unchecked-double"
 ---
 
-# [clojure.core](../)/unchecked-double
+# [Clojure 1.6.0](../../)/[clojure.core](../)/unchecked-double
 
 {% include 1.6.0/clojure.core/unchecked_DASH_double/docs.md %}
 

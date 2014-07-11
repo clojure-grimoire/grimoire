@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "seq"
 ---
 
-# [clojure.core](../)/seq
+# [Clojure 1.5.0](../../)/[clojure.core](../)/seq
 
 {% include 1.5.0/clojure.core/seq/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "bound-fn"
 ---
 
-# [clojure.core](../)/bound-fn
+# [Clojure 1.6.0](../../)/[clojure.core](../)/bound-fn
 
 {% include 1.6.0/clojure.core/bound_DASH_fn/docs.md %}
 

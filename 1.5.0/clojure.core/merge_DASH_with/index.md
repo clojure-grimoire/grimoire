@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "merge-with"
 ---
 
-# [clojure.core](../)/merge-with
+# [Clojure 1.5.0](../../)/[clojure.core](../)/merge-with
 
 {% include 1.5.0/clojure.core/merge_DASH_with/docs.md %}
 

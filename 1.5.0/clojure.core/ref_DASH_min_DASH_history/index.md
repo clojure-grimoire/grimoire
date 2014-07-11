@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ref-min-history"
 ---
 
-# [clojure.core](../)/ref-min-history
+# [Clojure 1.5.0](../../)/[clojure.core](../)/ref-min-history
 
 {% include 1.5.0/clojure.core/ref_DASH_min_DASH_history/docs.md %}
 

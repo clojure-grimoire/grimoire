@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "let"
 ---
 
-# [clojure.core](../)/let
+# [Clojure 1.5.0](../../)/[clojure.core](../)/let
 
 {% include 1.5.0/clojure.core/let/docs.md %}
 

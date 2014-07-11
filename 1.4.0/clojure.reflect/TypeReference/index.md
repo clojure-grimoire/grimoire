@@ -4,7 +4,7 @@ namespace: clojure.reflect
 symbol: "TypeReference"
 ---
 
-# [clojure.reflect](../)/TypeReference
+# [Clojure 1.4.0](../../)/[clojure.reflect](../)/TypeReference
 
 {% include 1.4.0/clojure.reflect/TypeReference/docs.md %}
 

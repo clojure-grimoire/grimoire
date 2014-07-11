@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "subs"
 ---
 
-# [clojure.core](../)/subs
+# [Clojure 1.5.0](../../)/[clojure.core](../)/subs
 
 {% include 1.5.0/clojure.core/subs/docs.md %}
 

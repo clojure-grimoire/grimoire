@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "ns-unalias"
 ---
 
-# [clojure.core](../)/ns-unalias
+# [Clojure 1.6.0](../../)/[clojure.core](../)/ns-unalias
 
 {% include 1.6.0/clojure.core/ns_DASH_unalias/docs.md %}
 

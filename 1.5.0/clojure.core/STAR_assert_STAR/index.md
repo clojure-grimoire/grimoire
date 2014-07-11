@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "\\*assert\\*"
 ---
 
-# [clojure.core](../)/\*assert\*
+# [Clojure 1.5.0](../../)/[clojure.core](../)/\*assert\*
 
 {% include 1.5.0/clojure.core/STAR_assert_STAR/docs.md %}
 

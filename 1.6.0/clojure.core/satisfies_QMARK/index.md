@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "satisfies?"
 ---
 
-# [clojure.core](../)/satisfies?
+# [Clojure 1.6.0](../../)/[clojure.core](../)/satisfies?
 
 {% include 1.6.0/clojure.core/satisfies_QMARK/docs.md %}
 

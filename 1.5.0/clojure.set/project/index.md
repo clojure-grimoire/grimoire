@@ -4,7 +4,7 @@ namespace: clojure.set
 symbol: "project"
 ---
 
-# [clojure.set](../)/project
+# [Clojure 1.5.0](../../)/[clojure.set](../)/project
 
 {% include 1.5.0/clojure.set/project/docs.md %}
 

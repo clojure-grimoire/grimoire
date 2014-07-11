@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "nthnext"
 ---
 
-# [clojure.core](../)/nthnext
+# [Clojure 1.5.0](../../)/[clojure.core](../)/nthnext
 
 {% include 1.5.0/clojure.core/nthnext/docs.md %}
 

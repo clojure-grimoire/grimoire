@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "gen-interface"
 ---
 
-# [clojure.core](../)/gen-interface
+# [Clojure 1.4.0](../../)/[clojure.core](../)/gen-interface
 
 {% include 1.4.0/clojure.core/gen_DASH_interface/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "map"
 ---
 
-# [clojure.core](../)/map
+# [Clojure 1.6.0](../../)/[clojure.core](../)/map
 
 {% include 1.6.0/clojure.core/map/docs.md %}
 

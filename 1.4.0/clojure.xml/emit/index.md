@@ -4,7 +4,7 @@ namespace: clojure.xml
 symbol: "emit"
 ---
 
-# [clojure.xml](../)/emit
+# [Clojure 1.4.0](../../)/[clojure.xml](../)/emit
 
 {% include 1.4.0/clojure.xml/emit/docs.md %}
 

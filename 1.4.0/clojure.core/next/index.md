@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "next"
 ---
 
-# [clojure.core](../)/next
+# [Clojure 1.4.0](../../)/[clojure.core](../)/next
 
 {% include 1.4.0/clojure.core/next/docs.md %}
 

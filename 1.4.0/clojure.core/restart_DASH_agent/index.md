@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "restart-agent"
 ---
 
-# [clojure.core](../)/restart-agent
+# [Clojure 1.4.0](../../)/[clojure.core](../)/restart-agent
 
 {% include 1.4.0/clojure.core/restart_DASH_agent/docs.md %}
 

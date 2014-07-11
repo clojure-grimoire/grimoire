@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "read-line"
 ---
 
-# [clojure.core](../)/read-line
+# [Clojure 1.4.0](../../)/[clojure.core](../)/read-line
 
 {% include 1.4.0/clojure.core/read_DASH_line/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "enumeration-seq"
 ---
 
-# [clojure.core](../)/enumeration-seq
+# [Clojure 1.5.0](../../)/[clojure.core](../)/enumeration-seq
 
 {% include 1.5.0/clojure.core/enumeration_DASH_seq/docs.md %}
 

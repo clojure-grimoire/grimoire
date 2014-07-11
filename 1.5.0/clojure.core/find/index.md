@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "find"
 ---
 
-# [clojure.core](../)/find
+# [Clojure 1.5.0](../../)/[clojure.core](../)/find
 
 {% include 1.5.0/clojure.core/find/docs.md %}
 

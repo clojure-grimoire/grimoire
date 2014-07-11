@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "with-meta"
 ---
 
-# [clojure.core](../)/with-meta
+# [Clojure 1.4.0](../../)/[clojure.core](../)/with-meta
 
 {% include 1.4.0/clojure.core/with_DASH_meta/docs.md %}
 

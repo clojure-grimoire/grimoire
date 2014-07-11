@@ -4,7 +4,7 @@ namespace: clojure.test
 symbol: "successful?"
 ---
 
-# [clojure.test](../)/successful?
+# [Clojure 1.5.0](../../)/[clojure.test](../)/successful?
 
 {% include 1.5.0/clojure.test/successful_QMARK/docs.md %}
 

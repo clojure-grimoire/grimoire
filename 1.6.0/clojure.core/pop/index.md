@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "pop"
 ---
 
-# [clojure.core](../)/pop
+# [Clojure 1.6.0](../../)/[clojure.core](../)/pop
 
 {% include 1.6.0/clojure.core/pop/docs.md %}
 

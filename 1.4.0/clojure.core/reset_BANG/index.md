@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "reset!"
 ---
 
-# [clojure.core](../)/reset!
+# [Clojure 1.4.0](../../)/[clojure.core](../)/reset!
 
 {% include 1.4.0/clojure.core/reset_BANG/docs.md %}
 

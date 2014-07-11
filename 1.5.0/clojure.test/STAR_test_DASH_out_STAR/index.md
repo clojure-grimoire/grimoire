@@ -4,7 +4,7 @@ namespace: clojure.test
 symbol: "\\*test-out\\*"
 ---
 
-# [clojure.test](../)/\*test-out\*
+# [Clojure 1.5.0](../../)/[clojure.test](../)/\*test-out\*
 
 {% include 1.5.0/clojure.test/STAR_test_DASH_out_STAR/docs.md %}
 

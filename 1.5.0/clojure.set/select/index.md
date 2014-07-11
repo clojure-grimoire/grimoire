@@ -4,7 +4,7 @@ namespace: clojure.set
 symbol: "select"
 ---
 
-# [clojure.set](../)/select
+# [Clojure 1.5.0](../../)/[clojure.set](../)/select
 
 {% include 1.5.0/clojure.set/select/docs.md %}
 

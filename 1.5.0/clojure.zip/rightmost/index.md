@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "rightmost"
 ---
 
-# [clojure.zip](../)/rightmost
+# [Clojure 1.5.0](../../)/[clojure.zip](../)/rightmost
 
 {% include 1.5.0/clojure.zip/rightmost/docs.md %}
 

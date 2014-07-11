@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "reduce-kv"
 ---
 
-# [clojure.core](../)/reduce-kv
+# [Clojure 1.4.0](../../)/[clojure.core](../)/reduce-kv
 
 {% include 1.4.0/clojure.core/reduce_DASH_kv/docs.md %}
 

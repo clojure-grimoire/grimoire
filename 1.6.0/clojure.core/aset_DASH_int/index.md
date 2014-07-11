@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "aset-int"
 ---
 
-# [clojure.core](../)/aset-int
+# [Clojure 1.6.0](../../)/[clojure.core](../)/aset-int
 
 {% include 1.6.0/clojure.core/aset_DASH_int/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.xml
 symbol: "content"
 ---
 
-# [clojure.xml](../)/content
+# [Clojure 1.5.0](../../)/[clojure.xml](../)/content
 
 {% include 1.5.0/clojure.xml/content/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "keep"
 ---
 
-# [clojure.core](../)/keep
+# [Clojure 1.6.0](../../)/[clojure.core](../)/keep
 
 {% include 1.6.0/clojure.core/keep/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "alter"
 ---
 
-# [clojure.core](../)/alter
+# [Clojure 1.4.0](../../)/[clojure.core](../)/alter
 
 {% include 1.4.0/clojure.core/alter/docs.md %}
 

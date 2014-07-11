@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "\\*fn-loader\\*"
 ---
 
-# [clojure.core](../)/\*fn-loader\*
+# [Clojure 1.5.0](../../)/[clojure.core](../)/\*fn-loader\*
 
 {% include 1.5.0/clojure.core/STAR_fn_DASH_loader_STAR/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.xml
 symbol: "content-handler"
 ---
 
-# [clojure.xml](../)/content-handler
+# [Clojure 1.6.0](../../)/[clojure.xml](../)/content-handler
 
 {% include 1.6.0/clojure.xml/content_DASH_handler/docs.md %}
 

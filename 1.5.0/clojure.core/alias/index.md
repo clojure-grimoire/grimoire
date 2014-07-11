@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "alias"
 ---
 
-# [clojure.core](../)/alias
+# [Clojure 1.5.0](../../)/[clojure.core](../)/alias
 
 {% include 1.5.0/clojure.core/alias/docs.md %}
 

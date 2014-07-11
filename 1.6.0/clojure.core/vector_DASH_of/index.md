@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "vector-of"
 ---
 
-# [clojure.core](../)/vector-of
+# [Clojure 1.6.0](../../)/[clojure.core](../)/vector-of
 
 {% include 1.6.0/clojure.core/vector_DASH_of/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "pvalues"
 ---
 
-# [clojure.core](../)/pvalues
+# [Clojure 1.6.0](../../)/[clojure.core](../)/pvalues
 
 {% include 1.6.0/clojure.core/pvalues/docs.md %}
 

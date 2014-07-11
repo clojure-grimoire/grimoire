@@ -4,7 +4,7 @@ namespace: clojure.xml
 symbol: "\\*sb\\*"
 ---
 
-# [clojure.xml](../)/\*sb\*
+# [Clojure 1.6.0](../../)/[clojure.xml](../)/\*sb\*
 
 {% include 1.6.0/clojure.xml/STAR_sb_STAR/docs.md %}
 

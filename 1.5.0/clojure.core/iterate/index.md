@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "iterate"
 ---
 
-# [clojure.core](../)/iterate
+# [Clojure 1.5.0](../../)/[clojure.core](../)/iterate
 
 {% include 1.5.0/clojure.core/iterate/docs.md %}
 

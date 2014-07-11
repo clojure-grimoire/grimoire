@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "first"
 ---
 
-# [clojure.core](../)/first
+# [Clojure 1.6.0](../../)/[clojure.core](../)/first
 
 {% include 1.6.0/clojure.core/first/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "all-ns"
 ---
 
-# [clojure.core](../)/all-ns
+# [Clojure 1.6.0](../../)/[clojure.core](../)/all-ns
 
 {% include 1.6.0/clojure.core/all_DASH_ns/docs.md %}
 

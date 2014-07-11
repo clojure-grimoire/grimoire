@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "load-file"
 ---
 
-# [clojure.core](../)/load-file
+# [Clojure 1.6.0](../../)/[clojure.core](../)/load-file
 
 {% include 1.6.0/clojure.core/load_DASH_file/docs.md %}
 

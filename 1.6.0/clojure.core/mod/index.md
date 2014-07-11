@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "mod"
 ---
 
-# [clojure.core](../)/mod
+# [Clojure 1.6.0](../../)/[clojure.core](../)/mod
 
 {% include 1.6.0/clojure.core/mod/docs.md %}
 

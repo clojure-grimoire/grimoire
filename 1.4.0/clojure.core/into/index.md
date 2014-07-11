@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "into"
 ---
 
-# [clojure.core](../)/into
+# [Clojure 1.4.0](../../)/[clojure.core](../)/into
 
 {% include 1.4.0/clojure.core/into/docs.md %}
 

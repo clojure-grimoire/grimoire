@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "use"
 ---
 
-# [clojure.core](../)/use
+# [Clojure 1.5.0](../../)/[clojure.core](../)/use
 
 {% include 1.5.0/clojure.core/use/docs.md %}
 

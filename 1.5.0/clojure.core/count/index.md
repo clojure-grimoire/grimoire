@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "count"
 ---
 
-# [clojure.core](../)/count
+# [Clojure 1.5.0](../../)/[clojure.core](../)/count
 
 {% include 1.5.0/clojure.core/count/docs.md %}
 

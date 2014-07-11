@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "newline"
 ---
 
-# [clojure.core](../)/newline
+# [Clojure 1.4.0](../../)/[clojure.core](../)/newline
 
 {% include 1.4.0/clojure.core/newline/docs.md %}
 

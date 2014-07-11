@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "chunk-append"
 ---
 
-# [clojure.core](../)/chunk-append
+# [Clojure 1.5.0](../../)/[clojure.core](../)/chunk-append
 
 {% include 1.5.0/clojure.core/chunk_DASH_append/docs.md %}
 

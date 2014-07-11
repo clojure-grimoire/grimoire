@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "case"
 ---
 
-# [clojure.core](../)/case
+# [Clojure 1.4.0](../../)/[clojure.core](../)/case
 
 {% include 1.4.0/clojure.core/case/docs.md %}
 

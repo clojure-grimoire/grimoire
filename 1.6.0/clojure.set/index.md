@@ -1,7 +1,8 @@
 ---
 layout: ns
-title: clojure.set
 ---
+# [Clojure 1.6.0](../)/clojure.set
+
 {% markdown 1.6.0/clojure.set/index.md %}
 
 ## Macros

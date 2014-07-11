@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "with-loading-context"
 ---
 
-# [clojure.core](../)/with-loading-context
+# [Clojure 1.5.0](../../)/[clojure.core](../)/with-loading-context
 
 {% include 1.5.0/clojure.core/with_DASH_loading_DASH_context/docs.md %}
 

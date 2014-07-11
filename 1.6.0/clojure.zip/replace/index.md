@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "replace"
 ---
 
-# [clojure.zip](../)/replace
+# [Clojure 1.6.0](../../)/[clojure.zip](../)/replace
 
 {% include 1.6.0/clojure.zip/replace/docs.md %}
 

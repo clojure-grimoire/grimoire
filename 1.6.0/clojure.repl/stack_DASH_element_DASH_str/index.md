@@ -4,7 +4,7 @@ namespace: clojure.repl
 symbol: "stack-element-str"
 ---
 
-# [clojure.repl](../)/stack-element-str
+# [Clojure 1.6.0](../../)/[clojure.repl](../)/stack-element-str
 
 {% include 1.6.0/clojure.repl/stack_DASH_element_DASH_str/docs.md %}
 

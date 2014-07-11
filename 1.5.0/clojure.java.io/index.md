@@ -1,7 +1,8 @@
 ---
 layout: ns
-title: clojure.java.io
 ---
+# [Clojure 1.5.0](../)/clojure.java.io
+
 {% markdown 1.5.0/clojure.java.io/index.md %}
 
 ## Macros

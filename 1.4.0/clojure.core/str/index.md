@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "str"
 ---
 
-# [clojure.core](../)/str
+# [Clojure 1.4.0](../../)/[clojure.core](../)/str
 
 {% include 1.4.0/clojure.core/str/docs.md %}
 

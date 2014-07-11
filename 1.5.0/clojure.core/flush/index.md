@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "flush"
 ---
 
-# [clojure.core](../)/flush
+# [Clojure 1.5.0](../../)/[clojure.core](../)/flush
 
 {% include 1.5.0/clojure.core/flush/docs.md %}
 

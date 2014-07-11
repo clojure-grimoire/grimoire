@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "unchecked-multiply"
 ---
 
-# [clojure.core](../)/unchecked-multiply
+# [Clojure 1.5.0](../../)/[clojure.core](../)/unchecked-multiply
 
 {% include 1.5.0/clojure.core/unchecked_DASH_multiply/docs.md %}
 

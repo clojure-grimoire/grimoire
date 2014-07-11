@@ -4,7 +4,7 @@ namespace: clojure.java.javadoc
 symbol: "\\*remote-javadocs\\*"
 ---
 
-# [clojure.java.javadoc](../)/\*remote-javadocs\*
+# [Clojure 1.5.0](../../)/[clojure.java.javadoc](../)/\*remote-javadocs\*
 
 {% include 1.5.0/clojure.java.javadoc/STAR_remote_DASH_javadocs_STAR/docs.md %}
 

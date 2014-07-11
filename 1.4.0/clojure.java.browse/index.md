@@ -1,7 +1,8 @@
 ---
 layout: ns
-title: clojure.java.browse
 ---
+# [Clojure 1.4.0](../)/clojure.java.browse
+
 {% markdown 1.4.0/clojure.java.browse/index.md %}
 
 ## Macros

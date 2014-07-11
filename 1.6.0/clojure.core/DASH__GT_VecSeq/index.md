@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "->VecSeq"
 ---
 
-# [clojure.core](../)/->VecSeq
+# [Clojure 1.6.0](../../)/[clojure.core](../)/->VecSeq
 
 {% include 1.6.0/clojure.core/DASH__GT_VecSeq/docs.md %}
 

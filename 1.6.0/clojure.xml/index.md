@@ -1,7 +1,8 @@
 ---
 layout: ns
-title: clojure.xml
 ---
+# [Clojure 1.6.0](../)/clojure.xml
+
 {% markdown 1.6.0/clojure.xml/index.md %}
 
 ## Macros

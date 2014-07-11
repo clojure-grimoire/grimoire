@@ -4,7 +4,7 @@ namespace: clojure.pprint
 symbol: "simple-dispatch"
 ---
 
-# [clojure.pprint](../)/simple-dispatch
+# [Clojure 1.6.0](../../)/[clojure.pprint](../)/simple-dispatch
 
 {% include 1.6.0/clojure.pprint/simple_DASH_dispatch/docs.md %}
 

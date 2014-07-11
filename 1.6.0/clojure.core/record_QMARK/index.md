@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "record?"
 ---
 
-# [clojure.core](../)/record?
+# [Clojure 1.6.0](../../)/[clojure.core](../)/record?
 
 {% include 1.6.0/clojure.core/record_QMARK/docs.md %}
 

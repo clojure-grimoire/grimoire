@@ -4,7 +4,7 @@ namespace: clojure.test.tap
 symbol: "print-tap-fail"
 ---
 
-# [clojure.test.tap](../)/print-tap-fail
+# [Clojure 1.4.0](../../)/[clojure.test.tap](../)/print-tap-fail
 
 {% include 1.4.0/clojure.test.tap/print_DASH_tap_DASH_fail/docs.md %}
 

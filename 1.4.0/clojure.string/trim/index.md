@@ -4,7 +4,7 @@ namespace: clojure.string
 symbol: "trim"
 ---
 
-# [clojure.string](../)/trim
+# [Clojure 1.4.0](../../)/[clojure.string](../)/trim
 
 {% include 1.4.0/clojure.string/trim/docs.md %}
 

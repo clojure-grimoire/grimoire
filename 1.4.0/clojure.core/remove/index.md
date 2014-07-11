@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "remove"
 ---
 
-# [clojure.core](../)/remove
+# [Clojure 1.4.0](../../)/[clojure.core](../)/remove
 
 {% include 1.4.0/clojure.core/remove/docs.md %}
 

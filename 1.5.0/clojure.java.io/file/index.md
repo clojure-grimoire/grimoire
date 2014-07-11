@@ -4,7 +4,7 @@ namespace: clojure.java.io
 symbol: "file"
 ---
 
-# [clojure.java.io](../)/file
+# [Clojure 1.5.0](../../)/[clojure.java.io](../)/file
 
 {% include 1.5.0/clojure.java.io/file/docs.md %}
 

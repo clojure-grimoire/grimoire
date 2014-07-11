@@ -4,7 +4,7 @@ namespace: clojure.test
 symbol: "use-fixtures"
 ---
 
-# [clojure.test](../)/use-fixtures
+# [Clojure 1.6.0](../../)/[clojure.test](../)/use-fixtures
 
 {% include 1.6.0/clojure.test/use_DASH_fixtures/docs.md %}
 

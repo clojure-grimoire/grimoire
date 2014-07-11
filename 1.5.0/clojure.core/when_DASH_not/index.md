@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "when-not"
 ---
 
-# [clojure.core](../)/when-not
+# [Clojure 1.5.0](../../)/[clojure.core](../)/when-not
 
 {% include 1.5.0/clojure.core/when_DASH_not/docs.md %}
 

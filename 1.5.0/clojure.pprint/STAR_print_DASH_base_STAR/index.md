@@ -4,7 +4,7 @@ namespace: clojure.pprint
 symbol: "\\*print-base\\*"
 ---
 
-# [clojure.pprint](../)/\*print-base\*
+# [Clojure 1.5.0](../../)/[clojure.pprint](../)/\*print-base\*
 
 {% include 1.5.0/clojure.pprint/STAR_print_DASH_base_STAR/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "re-find"
 ---
 
-# [clojure.core](../)/re-find
+# [Clojure 1.5.0](../../)/[clojure.core](../)/re-find
 
 {% include 1.5.0/clojure.core/re_DASH_find/docs.md %}
 

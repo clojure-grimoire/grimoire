@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "print-method"
 ---
 
-# [clojure.core](../)/print-method
+# [Clojure 1.5.0](../../)/[clojure.core](../)/print-method
 
 {% include 1.5.0/clojure.core/print_DASH_method/docs.md %}
 

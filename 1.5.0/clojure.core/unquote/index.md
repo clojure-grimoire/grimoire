@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "unquote"
 ---
 
-# [clojure.core](../)/unquote
+# [Clojure 1.5.0](../../)/[clojure.core](../)/unquote
 
 {% include 1.5.0/clojure.core/unquote/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.pprint
 symbol: "pprint-indent"
 ---
 
-# [clojure.pprint](../)/pprint-indent
+# [Clojure 1.6.0](../../)/[clojure.pprint](../)/pprint-indent
 
 {% include 1.6.0/clojure.pprint/pprint_DASH_indent/docs.md %}
 

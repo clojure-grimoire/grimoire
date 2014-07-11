@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "insert-right"
 ---
 
-# [clojure.zip](../)/insert-right
+# [Clojure 1.4.0](../../)/[clojure.zip](../)/insert-right
 
 {% include 1.4.0/clojure.zip/insert_DASH_right/docs.md %}
 

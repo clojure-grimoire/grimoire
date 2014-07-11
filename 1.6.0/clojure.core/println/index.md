@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "println"
 ---
 
-# [clojure.core](../)/println
+# [Clojure 1.6.0](../../)/[clojure.core](../)/println
 
 {% include 1.6.0/clojure.core/println/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "get-proxy-class"
 ---
 
-# [clojure.core](../)/get-proxy-class
+# [Clojure 1.4.0](../../)/[clojure.core](../)/get-proxy-class
 
 {% include 1.4.0/clojure.core/get_DASH_proxy_DASH_class/docs.md %}
 

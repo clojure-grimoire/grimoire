@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "get-validator"
 ---
 
-# [clojure.core](../)/get-validator
+# [Clojure 1.4.0](../../)/[clojure.core](../)/get-validator
 
 {% include 1.4.0/clojure.core/get_DASH_validator/docs.md %}
 

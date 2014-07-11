@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "take-nth"
 ---
 
-# [clojure.core](../)/take-nth
+# [Clojure 1.5.0](../../)/[clojure.core](../)/take-nth
 
 {% include 1.5.0/clojure.core/take_DASH_nth/docs.md %}
 

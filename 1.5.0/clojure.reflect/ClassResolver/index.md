@@ -4,7 +4,7 @@ namespace: clojure.reflect
 symbol: "ClassResolver"
 ---
 
-# [clojure.reflect](../)/ClassResolver
+# [Clojure 1.5.0](../../)/[clojure.reflect](../)/ClassResolver
 
 {% include 1.5.0/clojure.reflect/ClassResolver/docs.md %}
 

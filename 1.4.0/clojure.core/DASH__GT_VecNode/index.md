@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "->VecNode"
 ---
 
-# [clojure.core](../)/->VecNode
+# [Clojure 1.4.0](../../)/[clojure.core](../)/->VecNode
 
 {% include 1.4.0/clojure.core/DASH__GT_VecNode/docs.md %}
 

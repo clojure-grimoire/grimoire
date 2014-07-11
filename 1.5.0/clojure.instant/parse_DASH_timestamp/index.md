@@ -4,7 +4,7 @@ namespace: clojure.instant
 symbol: "parse-timestamp"
 ---
 
-# [clojure.instant](../)/parse-timestamp
+# [Clojure 1.5.0](../../)/[clojure.instant](../)/parse-timestamp
 
 {% include 1.5.0/clojure.instant/parse_DASH_timestamp/docs.md %}
 

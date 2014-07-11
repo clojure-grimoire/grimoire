@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "aset-double"
 ---
 
-# [clojure.core](../)/aset-double
+# [Clojure 1.6.0](../../)/[clojure.core](../)/aset-double
 
 {% include 1.6.0/clojure.core/aset_DASH_double/docs.md %}
 

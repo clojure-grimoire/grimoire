@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "re-matches"
 ---
 
-# [clojure.core](../)/re-matches
+# [Clojure 1.5.0](../../)/[clojure.core](../)/re-matches
 
 {% include 1.5.0/clojure.core/re_DASH_matches/docs.md %}
 

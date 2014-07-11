@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "time"
 ---
 
-# [clojure.core](../)/time
+# [Clojure 1.4.0](../../)/[clojure.core](../)/time
 
 {% include 1.4.0/clojure.core/time/docs.md %}
 

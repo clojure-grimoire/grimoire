@@ -4,7 +4,7 @@ namespace: clojure.xml
 symbol: "attrs"
 ---
 
-# [clojure.xml](../)/attrs
+# [Clojure 1.6.0](../../)/[clojure.xml](../)/attrs
 
 {% include 1.6.0/clojure.xml/attrs/docs.md %}
 

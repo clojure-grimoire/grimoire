@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "interpose"
 ---
 
-# [clojure.core](../)/interpose
+# [Clojure 1.4.0](../../)/[clojure.core](../)/interpose
 
 {% include 1.4.0/clojure.core/interpose/docs.md %}
 

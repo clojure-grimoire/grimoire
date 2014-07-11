@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "munge"
 ---
 
-# [clojure.core](../)/munge
+# [Clojure 1.4.0](../../)/[clojure.core](../)/munge
 
 {% include 1.4.0/clojure.core/munge/docs.md %}
 

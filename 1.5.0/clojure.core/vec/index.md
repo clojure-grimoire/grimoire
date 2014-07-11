@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "vec"
 ---
 
-# [clojure.core](../)/vec
+# [Clojure 1.5.0](../../)/[clojure.core](../)/vec
 
 {% include 1.5.0/clojure.core/vec/docs.md %}
 

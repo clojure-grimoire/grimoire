@@ -4,7 +4,7 @@ namespace: clojure.set
 symbol: "union"
 ---
 
-# [clojure.set](../)/union
+# [Clojure 1.6.0](../../)/[clojure.set](../)/union
 
 {% include 1.6.0/clojure.set/union/docs.md %}
 

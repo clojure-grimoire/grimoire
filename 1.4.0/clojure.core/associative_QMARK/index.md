@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "associative?"
 ---
 
-# [clojure.core](../)/associative?
+# [Clojure 1.4.0](../../)/[clojure.core](../)/associative?
 
 {% include 1.4.0/clojure.core/associative_QMARK/docs.md %}
 

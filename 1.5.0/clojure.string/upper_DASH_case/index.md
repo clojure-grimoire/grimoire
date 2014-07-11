@@ -4,7 +4,7 @@ namespace: clojure.string
 symbol: "upper-case"
 ---
 
-# [clojure.string](../)/upper-case
+# [Clojure 1.5.0](../../)/[clojure.string](../)/upper-case
 
 {% include 1.5.0/clojure.string/upper_DASH_case/docs.md %}
 

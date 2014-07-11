@@ -4,7 +4,7 @@ namespace: clojure.java.browse
 symbol: "browse-url"
 ---
 
-# [clojure.java.browse](../)/browse-url
+# [Clojure 1.6.0](../../)/[clojure.java.browse](../)/browse-url
 
 {% include 1.6.0/clojure.java.browse/browse_DASH_url/docs.md %}
 

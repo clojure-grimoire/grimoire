@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "force"
 ---
 
-# [clojure.core](../)/force
+# [Clojure 1.5.0](../../)/[clojure.core](../)/force
 
 {% include 1.5.0/clojure.core/force/docs.md %}
 

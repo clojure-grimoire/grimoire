@@ -4,7 +4,7 @@ namespace: clojure.string
 symbol: "escape"
 ---
 
-# [clojure.string](../)/escape
+# [Clojure 1.5.0](../../)/[clojure.string](../)/escape
 
 {% include 1.5.0/clojure.string/escape/docs.md %}
 

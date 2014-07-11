@@ -4,7 +4,7 @@ namespace: clojure.test.junit
 symbol: "\\*depth\\*"
 ---
 
-# [clojure.test.junit](../)/\*depth\*
+# [Clojure 1.4.0](../../)/[clojure.test.junit](../)/\*depth\*
 
 {% include 1.4.0/clojure.test.junit/STAR_depth_STAR/docs.md %}
 

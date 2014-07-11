@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "counted?"
 ---
 
-# [clojure.core](../)/counted?
+# [Clojure 1.5.0](../../)/[clojure.core](../)/counted?
 
 {% include 1.5.0/clojure.core/counted_QMARK/docs.md %}
 

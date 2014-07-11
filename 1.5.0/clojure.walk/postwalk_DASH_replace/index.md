@@ -4,7 +4,7 @@ namespace: clojure.walk
 symbol: "postwalk-replace"
 ---
 
-# [clojure.walk](../)/postwalk-replace
+# [Clojure 1.5.0](../../)/[clojure.walk](../)/postwalk-replace
 
 {% include 1.5.0/clojure.walk/postwalk_DASH_replace/docs.md %}
 

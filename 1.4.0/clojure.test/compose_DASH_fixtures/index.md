@@ -4,7 +4,7 @@ namespace: clojure.test
 symbol: "compose-fixtures"
 ---
 
-# [clojure.test](../)/compose-fixtures
+# [Clojure 1.4.0](../../)/[clojure.test](../)/compose-fixtures
 
 {% include 1.4.0/clojure.test/compose_DASH_fixtures/docs.md %}
 

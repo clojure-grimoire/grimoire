@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "\\*print-readably\\*"
 ---
 
-# [clojure.core](../)/\*print-readably\*
+# [Clojure 1.5.0](../../)/[clojure.core](../)/\*print-readably\*
 
 {% include 1.5.0/clojure.core/STAR_print_DASH_readably_STAR/docs.md %}
 

@@ -4,7 +4,7 @@ namespace: clojure.zip
 symbol: "prev"
 ---
 
-# [clojure.zip](../)/prev
+# [Clojure 1.5.0](../../)/[clojure.zip](../)/prev
 
 {% include 1.5.0/clojure.zip/prev/docs.md %}
 

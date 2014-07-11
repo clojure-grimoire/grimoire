@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "unchecked-char"
 ---
 
-# [clojure.core](../)/unchecked-char
+# [Clojure 1.6.0](../../)/[clojure.core](../)/unchecked-char
 
 {% include 1.6.0/clojure.core/unchecked_DASH_char/docs.md %}
 

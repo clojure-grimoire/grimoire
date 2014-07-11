@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "partition-all"
 ---
 
-# [clojure.core](../)/partition-all
+# [Clojure 1.6.0](../../)/[clojure.core](../)/partition-all
 
 {% include 1.6.0/clojure.core/partition_DASH_all/docs.md %}
 

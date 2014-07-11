@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "select-keys"
 ---
 
-# [clojure.core](../)/select-keys
+# [Clojure 1.5.0](../../)/[clojure.core](../)/select-keys
 
 {% include 1.5.0/clojure.core/select_DASH_keys/docs.md %}
 

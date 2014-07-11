@@ -4,7 +4,7 @@ namespace: clojure.core
 symbol: "take"
 ---
 
-# [clojure.core](../)/take
+# [Clojure 1.4.0](../../)/[clojure.core](../)/take
 
 {% include 1.4.0/clojure.core/take/docs.md %}
 

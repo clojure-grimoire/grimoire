@@ -4,7 +4,7 @@ namespace: clojure.set
 symbol: "intersection"
 ---
 
-# [clojure.set](../)/intersection
+# [Clojure 1.5.0](../../)/[clojure.set](../)/intersection
 
 {% include 1.5.0/clojure.set/intersection/docs.md %}
 

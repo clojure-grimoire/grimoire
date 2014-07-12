@@ -2,7 +2,7 @@ body {margin: 0;padding:0;}
 
 .wiki ol.includeWikiList { list-style: none; margin-left: 6px; padding: 0; text-indent: -6px; }
 /* Wiki Rendered Styles */
-.wiki { line-height: 150%; font-family: arial, helvetica, sans-serif; font-size: small; }
+.wiki { line-height: 150%; font-family: arial, helvetica, sans-serif; font-size: 0.8em; }
 .wiki h1 { font-weight: bold; padding: 5px 0 0 0; margin: 0; font-size: 1.4em; }
 .wiki h2 { font-weight: bold; padding: 5px 0 0 0; margin: 0; font-size: 1.3em; }
 .wiki h3 { font-weight: bold; padding: 5px 0 0 0; margin: 0; font-size: 1.1em; }
@@ -131,14 +131,7 @@ body {margin: 0;padding:0;}
 	}
 }
 
-
-@media only screen and (max-width: 800px) {
-	.wiki {
-		font-size: 10px;
-	}
-}
-
-@media only screen and (max-width: 620px) {
+@media only screen and (max-width: 28em) {
 	.page .column {
 		width: 100%;
 	}

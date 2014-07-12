@@ -131,13 +131,6 @@ body {margin: 0;padding:0;}
 	}
 }
 
-
-@media only screen and (max-width: 800px) {
-	.wiki {
-		font-size: 10px;
-	}
-}
-
 @media only screen and (max-width: 620px) {
 	.page .column {
 		width: 100%;

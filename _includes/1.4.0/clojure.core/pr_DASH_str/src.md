@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn pr-str
   "pr to a string, returning it"
   {:tag String

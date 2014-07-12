@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn unchecked-byte
   "Coerce to byte. Subject to rounding or truncation."
   {:inline (fn  [x] `(. clojure.lang.RT (uncheckedByteCast ~x)))

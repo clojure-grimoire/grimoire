@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn bit-test
   "Test bit at index n"
   {:added "1.0"

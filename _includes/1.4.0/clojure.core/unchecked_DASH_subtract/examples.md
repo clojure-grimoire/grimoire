@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; can't interchange INTs with LONGs, only F(int, int) or F(long, long)
 ;; F is a function, not an

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn bases
   "Returns the immediate superclass and direct interfaces of c, if any"
   {:added "1.0"

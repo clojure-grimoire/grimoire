@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; *agent* is often used with send or send-off to set up a repeated
 ;; transformation of an agent's value. For example, to repeatedly

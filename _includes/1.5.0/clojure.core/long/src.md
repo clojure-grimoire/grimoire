@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn long
   "Coerce to long"
   {:inline (fn  [x] `(. clojure.lang.RT (longCast ~x)))

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn keywordize-keys
   "Recursively transforms all map keys from strings to keywords."
   {:added "1.1"}

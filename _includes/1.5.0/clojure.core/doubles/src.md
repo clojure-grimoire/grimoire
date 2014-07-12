@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (definline doubles
   "Casts to double[]"
   {:added "1.0"}

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn bit-and-not
   "Bitwise and with complement"
   {:inline (nary-inline 'andNot)

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn class
   "Returns the Class of x"
   {:added "1.0"

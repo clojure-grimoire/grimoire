@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; This simple example shows each element of the first relation joined
 ;; with each element of the second (because they have no columns in common):

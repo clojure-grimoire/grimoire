@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;these two functions are equivalent
 
@@ -20,7 +20,7 @@ user=> (repeat 5 (rand-int 100))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defn counter []
   (let [tick (atom 0)]

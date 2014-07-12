@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn not=
   "Same as (not (= obj1 obj2))"
   {:tag Boolean

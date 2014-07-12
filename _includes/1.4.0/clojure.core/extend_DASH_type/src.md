@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro extend-type 
   "A macro that expands into an extend call. Useful when you are
   supplying the definitions explicitly inline, extend-type

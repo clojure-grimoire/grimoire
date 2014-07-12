@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro fn
   "params => positional-params* , or positional-params* & next-param
   positional-param => binding-form

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn read-string
   "Reads one object from the string s"
   {:added "1.0"

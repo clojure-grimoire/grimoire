@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn special-symbol?
   "Returns true if s names a special form"
   {:added "1.0"

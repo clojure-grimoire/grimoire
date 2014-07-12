@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro ..
   "form => fieldName-symbol or (instanceMethodName-symbol args*)
 

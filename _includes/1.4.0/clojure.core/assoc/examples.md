@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (assoc {} :key1 "value" :key2 "another value")
 {:key2 "another value", :key1 "value"}
@@ -31,7 +31,7 @@ java.lang.IndexOutOfBoundsException (NO_SOURCE_FILE:0)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (def test-map {:account-no 12345678 :lname "Jones" :fnam "Fred"})
 (assoc test-map :fnam "Sue")

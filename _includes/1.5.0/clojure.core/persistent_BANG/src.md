@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn persistent! 
   "Alpha - subject to change.
   Returns a new, persistent version of the transient collection, in

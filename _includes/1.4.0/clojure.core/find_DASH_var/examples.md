@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (find-var 'map)
 IllegalArgumentException Symbol must be namespace-qualified  clojure.lang.Var.find (Var.java:150)

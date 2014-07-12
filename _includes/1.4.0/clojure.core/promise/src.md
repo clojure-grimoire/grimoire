@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn promise
   "Alpha - subject to change.
   Returns a promise object that can be read with deref/@, and set,

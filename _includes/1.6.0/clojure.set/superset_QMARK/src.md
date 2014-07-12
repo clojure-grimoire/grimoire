@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn superset? 
   "Is set1 a superset of set2?"
   {:added "1.2",

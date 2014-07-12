@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn split-at
   "Returns a vector of [(take n coll) (drop n coll)]"
   {:added "1.0"

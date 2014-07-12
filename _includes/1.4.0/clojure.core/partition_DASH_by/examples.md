@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (partition-by #(= 3 %) [1 2 3 4 5])
 ((1 2) (3) (4 5)){% endraw %}
@@ -11,7 +11,7 @@ user=> (partition-by #(= 3 %) [1 2 3 4 5])
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (partition-by odd? [1 1 1 2 2 3 3])
 ((1 1 1) (2 2) (3 3))
@@ -25,7 +25,7 @@ user=> (partition-by even? [1 1 1 2 2 3 3])
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; (this is part of a solution from 4clojure.com/problem 30)
 user=> (partition-by identity "Leeeeeerrroyyy")

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn error-el
   [message expected actual]
   (message-el 'error

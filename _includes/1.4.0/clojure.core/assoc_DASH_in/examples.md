@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def users [{:name "James" :age 26}  {:name "John" :age 43}])
 
@@ -25,7 +25,7 @@ user=> (assoc-in users [2] {:name "Jack" :age 19})
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (def ppl (atom {"persons" {"joe" {:age 1}}}))
 (swap! ppl assoc-in ["persons" "bob"] {:age 11})

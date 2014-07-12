@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; with-local-vars allows you to write more imperative-style code, for cases
 ;; where you really want to.  factorial isn't a case where it helps, but

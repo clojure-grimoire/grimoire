@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn restart-agent
   "When an agent is failed, changes the agent state to new-state and
   then un-fails the agent so that sends are allowed again.  If

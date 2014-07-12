@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Use the namespace clojure.java.io:
 user=> (use '(clojure.java io))
@@ -13,7 +13,7 @@ user=> (use '(clojure.java io))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Imports only the split function from clojure.string.
 user=> (use '[clojure.string :only (split)])
@@ -43,7 +43,7 @@ user=> (s/split "hello world" #" ")
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (ns some.namespace
   (:require [clojure.contrib.json :as json])

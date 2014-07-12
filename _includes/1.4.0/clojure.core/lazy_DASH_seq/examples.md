@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; The following defines a lazy-seq of all positive numbers.  Note that
 ;; the lazy-seq allows us to make a recursive call in a safe way because
@@ -22,7 +22,7 @@ user=> (take 5 (positive-numbers))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; A lazy-seq of Fibonacci numbers (fn = fn-1 + fn-2)
 ;; The producer function takes exactly two parameters
@@ -37,7 +37,7 @@ user=> (take 5 (fib 1 1))
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; It might be easier to think about the producer function as a function
 ;; that, given element n, produces element n+1 via a recursive call to
@@ -57,7 +57,7 @@ user=> (take 6 (sum-last-2))
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; An example combining lazy sequences with higher order functions
 ;; Generate prime numbers using trial division.

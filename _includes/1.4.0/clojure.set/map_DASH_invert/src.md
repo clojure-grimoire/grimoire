@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn map-invert
   "Returns the map with the vals mapped to the keys."
   {:added "1.0"}

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn parents
   "Returns the immediate parents of tag, either via a Java type
   inheritance relationship or a relationship established via derive. h

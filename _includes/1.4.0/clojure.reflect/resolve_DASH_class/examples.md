@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;;Check if class c exists on the classpath
 (use '[clojure.reflect :only [resolve-class]])

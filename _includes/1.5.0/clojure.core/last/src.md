@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def 
  ^{:arglists '([coll])
    :doc "Return the last item in coll, in linear time"

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ns-name
   "Returns the name of the namespace, a symbol."
   {:added "1.0"

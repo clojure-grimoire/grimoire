@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn subset? 
   "Is set1 a subset of set2?"
   {:added "1.2",

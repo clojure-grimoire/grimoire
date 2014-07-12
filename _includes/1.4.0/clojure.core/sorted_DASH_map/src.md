@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn sorted-map
   "keyval => key val
   Returns a new sorted map with supplied mappings."

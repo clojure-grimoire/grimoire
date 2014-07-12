@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def my-val 5)
 #'user/my-val
@@ -13,7 +13,7 @@ user=> my-val
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def my-function (fn [x] (* x x x)))
 #'user/my-function
@@ -25,7 +25,7 @@ user=> (my-function 4)
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; This is an example of setting a docstring during a def.
 ;; (Note that the clojure.repl namespace which contains the
@@ -46,7 +46,7 @@ user> ted-nugent
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; give function another name
 user=> (def sys-map map)

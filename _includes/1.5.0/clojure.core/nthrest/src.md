@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn nthrest
   "Returns the nth rest of coll, coll when n is 0."
   {:added "1.3"

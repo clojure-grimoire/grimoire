@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Create a string from the given items and store it in x.
 user=> (def x (print-str 1 "foo" \b \a \r {:a 2}))

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def large-vec (vec (range 0 10000)))
 #'user/large-vec
@@ -20,7 +20,7 @@ user=> (time (peek large-vec))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (peek '(:a :b :c))
 :a{% endraw %}

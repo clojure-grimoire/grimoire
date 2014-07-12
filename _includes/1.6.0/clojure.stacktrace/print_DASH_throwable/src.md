@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn print-throwable
   "Prints the class and message of a Throwable."
   {:added "1.1"}

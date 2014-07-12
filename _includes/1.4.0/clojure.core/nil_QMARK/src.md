@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn nil?
   "Returns true if x is nil, false otherwise."
   {:tag Boolean

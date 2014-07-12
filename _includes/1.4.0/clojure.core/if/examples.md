@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defn is-small? [number]
   (if (< number 100) "yes" "no"))
@@ -17,7 +17,7 @@ user=> (is-small? 500)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Be aware that the only two values considered "logical false" in Clojure
 ;; are nil and false, where Clojure's "false" is the Java value Boolean/FALSE

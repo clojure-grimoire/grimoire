@@ -1,3 +1,3 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmulti ^:dynamic junit-report :type)
 {% endhighlight %}

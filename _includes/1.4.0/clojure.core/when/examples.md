@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (when (= 1 1) true)
 true
@@ -14,7 +14,7 @@ nil{% endraw %}
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def has-value (when true
                             (println "Hello World")
@@ -32,7 +32,7 @@ user=> has-value
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; See examples for "if" explaining Clojure's idea of logical true
 ;; and logical false.{% endraw %}

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro time
   "Evaluates expr and prints the time it took.  Returns the value of
  expr."

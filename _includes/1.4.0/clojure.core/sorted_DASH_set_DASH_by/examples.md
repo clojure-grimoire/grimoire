@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user> (sorted-set-by > 3 5 8 2 1)
 #{8 5 3 2 1}{% endraw %}
@@ -11,7 +11,7 @@ user> (sorted-set-by > 3 5 8 2 1)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Be cautious about comparison functions that only compare part of
 ;; the objects:

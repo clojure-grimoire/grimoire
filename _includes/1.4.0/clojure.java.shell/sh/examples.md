@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (use '[clojure.java.shell :only [sh]])
 
@@ -30,7 +30,7 @@ drwxr-xr-x   4 zkim  staff    136 Jul  5 13:15 src
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (use '[clojure.java.shell :only [sh]])
 
@@ -52,7 +52,7 @@ nil{% endraw %}
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (use '[clojure.java.shell :only [sh]])
 nil
@@ -68,7 +68,7 @@ nil{% endraw %}
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; sh is implemented using Clojure futures.  See examples for 'future'
 ;; for discussion of an undesirable 1-minute wait that can occur before
@@ -79,7 +79,7 @@ nil{% endraw %}
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (sh "pwd" :dir "/home/ics/icsdev")
 {:exit 0, :out "/home/ics/icsdev\n", :err ""}{% endraw %}
@@ -89,7 +89,7 @@ nil{% endraw %}
 ### Example 5
 [permalink](#example-5)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (require '[clojure.java.shell :as shell])
 (shell/sh "sh" "-c" "cd /etc; pwd")

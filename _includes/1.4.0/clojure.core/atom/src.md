@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn atom
   "Creates and returns an Atom with an initial value of x and zero or
   more options (in any order):

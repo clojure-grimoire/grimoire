@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; It is useful to combine macroexpand with pprint as the
 ;; default output can be hard to read.
@@ -35,7 +35,7 @@ user=> (clojure.pprint/pprint (macroexpand '(time (print "timing"))))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (macroexpand '(-> c (+ 3) (* 2)))
 (* (clojure.core/-> c (+ 3)) 2)

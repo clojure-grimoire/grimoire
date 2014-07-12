@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (vec '(1 2 3))
 [1 2 3]
@@ -20,7 +20,7 @@ user=> (vec nil)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Warning.  If the arg is a Java array, then the returned vector will alias it,
 ;; and modifying the array will thus modify the vector.  To avoid this, do

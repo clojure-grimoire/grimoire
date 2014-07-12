@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ^String replace
   "Replaces all instance of match with replacement in s.
 

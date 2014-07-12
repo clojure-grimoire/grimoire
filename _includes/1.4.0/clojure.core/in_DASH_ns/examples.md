@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Let's create new namespace, create new variable in it, then access it from another namespace
 
@@ -28,7 +28,7 @@ second-namespace=> first-namespace/my-var
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; The "in-ns" function works almost the same as "ns", but does not load clojure.core
 

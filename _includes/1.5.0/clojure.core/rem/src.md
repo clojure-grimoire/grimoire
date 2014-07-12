@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn rem
   "remainder of dividing numerator by denominator."
   {:added "1.0"

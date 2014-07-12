@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn bigdec
   "Coerce to BigDecimal"
   {:tag BigDecimal

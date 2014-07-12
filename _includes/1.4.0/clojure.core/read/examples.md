@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (read)
 ( + 1 1 ) ; <= User types this
@@ -16,7 +16,7 @@ user=> (eval (read))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; WARNING: You SHOULD NOT use clojure.core/read or
 ;; clojure.core/read-string to read data from untrusted sources.  They

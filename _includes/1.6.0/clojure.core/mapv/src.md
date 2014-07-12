@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn mapv
   "Returns a vector consisting of the result of applying f to the
   set of first items of each coll, followed by applying f to the set

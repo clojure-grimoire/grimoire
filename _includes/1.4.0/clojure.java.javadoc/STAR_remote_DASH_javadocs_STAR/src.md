@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def ^:dynamic *remote-javadocs*
  (ref (sorted-map
        "java." *core-java-api*

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn print-tap-diagnostic
   "Prints a TAP diagnostic line.  data is a (possibly multi-line)
   string."

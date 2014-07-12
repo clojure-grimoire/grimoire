@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (rem 10 9)
 1
@@ -13,7 +13,7 @@ user=> (rem 2 2)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; rem and mod are commonly used to get the remainder.
 ;; mod means Gaussian mod, so the result is always

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro formatter
   "Makes a function which can directly run format-in. The function is
 fn [stream & args] ... and returns nil unless the stream is nil (meaning 

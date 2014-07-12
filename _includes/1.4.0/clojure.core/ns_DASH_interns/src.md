@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ns-interns
   "Returns a map of the intern mappings for the namespace."
   {:added "1.0"

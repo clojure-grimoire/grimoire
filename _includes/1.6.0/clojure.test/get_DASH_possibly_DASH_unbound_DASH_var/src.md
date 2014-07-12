@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn get-possibly-unbound-var
   "Like var-get but returns nil if the var is unbound."
   {:added "1.1"}

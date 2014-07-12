@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn num
   "Coerce to Number"
   {:tag Number

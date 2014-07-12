@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn println-str
   "println to a string, returning it"
   {:tag String

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; As seen on http://clojure.org/transients
 ;; array is initially made transient, modified then
@@ -21,7 +21,7 @@ user=> (vrange2 10)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user> (def foo (transient [1 2 3]))
 #'user/foo

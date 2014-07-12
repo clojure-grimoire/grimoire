@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn find
   "Returns the map entry for key, or nil if key not present."
   {:added "1.0"

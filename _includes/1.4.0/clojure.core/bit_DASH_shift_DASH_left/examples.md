@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 <pre>user=&gt; (bit-shift-left 2r1101 2) ; fill rightmost bits with 0s
 52 
@@ -14,7 +14,7 @@
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;;a bogus bit-array implementation
 

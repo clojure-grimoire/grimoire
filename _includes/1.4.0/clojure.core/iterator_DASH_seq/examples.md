@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Note this is not strictly necessary since keySet is a collection
 ;; implementing Iterable but it does show the usage.

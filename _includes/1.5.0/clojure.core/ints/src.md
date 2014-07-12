@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (definline ints
   "Casts to int[]"
   {:added "1.0"}

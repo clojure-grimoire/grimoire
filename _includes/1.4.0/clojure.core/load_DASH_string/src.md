@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn load-string
   "Sequentially read and evaluate the set of forms contained in the
   string"

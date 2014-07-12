@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn init-proxy
   "Takes a proxy instance and a map of strings (which must
   correspond to methods of the proxy superclass/superinterfaces) to

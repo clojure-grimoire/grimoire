@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn compile
   "Compiles the namespace named by the symbol lib into a set of
   classfiles. The source for the lib must be in a proper

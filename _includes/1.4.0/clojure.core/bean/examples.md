@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (import java.util.Date)
 java.util.Date
@@ -18,7 +18,7 @@ user=> (bean *now*)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; although not reference-able in Clojuredocs, org.clojure/java.data provides a useful, alternative 'from-java' function that works similarly to bean, but more customizable.  See https://github.com/clojure/java.data for more info.{% endraw %}
 {% endhighlight %}

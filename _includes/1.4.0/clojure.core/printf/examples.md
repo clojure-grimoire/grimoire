@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (printf "1 + 2 is %s\n" 3){% endraw %}
 {% endhighlight %}
@@ -10,7 +10,7 @@
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Click the link to clojure.core/format under See also for
 ;; more extensive examples.  printf and format take the same

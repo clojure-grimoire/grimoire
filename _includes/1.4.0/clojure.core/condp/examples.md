@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Taken from the excellent clojure tutorial:
 ;; http://java.ociweb.com/mark/clojure/article.html
@@ -30,7 +30,7 @@ user=> (let [reader (java.io.BufferedReader. *in*) ; stdin
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (condp some [1 2 3 4]
          #{0 6 7} :>> inc
@@ -44,7 +44,7 @@ user=> (condp some [1 2 3 4]
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (condp some [1 2 3 4]
          #{0 6 7} :>> inc
@@ -57,7 +57,7 @@ java.lang.IllegalArgumentException: No matching clause: [1 2 3 4]{% endraw %}
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (condp (comp seq re-seq) "foo=bar"
          #"[+](\w+)"    :>> #(vector (-> % first (nth 1) keyword) true)
@@ -72,7 +72,7 @@ user=> (condp (comp seq re-seq) "foo=bar"
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; See examples for "if" explaining Clojure's idea of logical true
 ;; and logical false.{% endraw %}
@@ -82,7 +82,7 @@ user=> (condp (comp seq re-seq) "foo=bar"
 ### Example 5
 [permalink](#example-5)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;;this is with liberator
 ;;branching on request method
@@ -101,7 +101,7 @@ user=> (condp (comp seq re-seq) "foo=bar"
 ### Example 6
 [permalink](#example-6)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; a recursive function to calculate length
 ;; same as 'count'
@@ -119,7 +119,7 @@ user=> 3{% endraw %}
 ### Example 7
 [permalink](#example-7)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (condp #(%1 2 %2) 3
   = "eq"

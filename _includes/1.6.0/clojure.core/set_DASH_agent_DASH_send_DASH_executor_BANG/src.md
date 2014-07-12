@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn set-agent-send-executor!
   "Sets the ExecutorService to be used by send"
   {:added "1.5"}

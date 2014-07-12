@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn fn?
   "Returns true if x implements Fn, i.e. is an object created via fn."
   {:added "1.0"

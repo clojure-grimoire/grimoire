@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn rand-int
   "Returns a random integer between 0 (inclusive) and n (exclusive)."
   {:added "1.0"

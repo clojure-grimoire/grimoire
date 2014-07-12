@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Returns a keyword with the given namespace and name.  Do not use :
 ;; in the keyword strings, it will be added automatically.
@@ -36,7 +36,7 @@ user=> (keyword (str *ns*) "foo")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; some gotchas to be aware of:
 
@@ -64,7 +64,7 @@ user=> (keyword "/abc/def/ghi")
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; You can define namespaced keywords using '::'
 user=> (def a :foo)

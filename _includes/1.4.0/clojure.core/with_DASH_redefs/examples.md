@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> [(type []) (class [])]
 [clojure.lang.PersistentVector clojure.lang.PersistentVector]
@@ -17,7 +17,7 @@ user=> (with-redefs [type (constantly java.lang.String)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (ns http)
 
@@ -38,7 +38,7 @@ user=> (with-redefs [type (constantly java.lang.String)
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; be careful, with-redefs can permanently change a var if applied concurrently:
 
@@ -54,7 +54,7 @@ user> (ten)
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; redefine var
 (def foo 1)

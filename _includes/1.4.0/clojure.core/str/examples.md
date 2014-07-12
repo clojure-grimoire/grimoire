@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> "some string"
 "some string"
@@ -32,7 +32,7 @@ user=> (str [1 2 3])
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Destructuring with a string, getting just a few characters from it
 user=> (let [[first-char second-char] "abcde"]

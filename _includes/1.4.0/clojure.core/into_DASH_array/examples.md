@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Array's component type is set to (class 2), cannot add Strings.
 ;; This will result in an IllegalArgumentException
@@ -27,7 +27,7 @@ user=> (into-array Byte/TYPE (map byte (range 4)))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; java.nio.file.Paths#get takes (String, String...)
 user=> (java.nio.file.Paths/get "/Users" (into-array ["username" "dev" "clojure"]))
@@ -38,7 +38,7 @@ user=> (java.nio.file.Paths/get "/Users" (into-array ["username" "dev" "clojure"
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Creating an empty array defaults to Object[]
 user=> (into-array [])

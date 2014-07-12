@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn print-diagnostics [data]
   (when (seq t/*testing-contexts*)
     (print-tap-diagnostic (t/testing-contexts-str)))

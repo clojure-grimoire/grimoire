@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn pr
   "Prints the object(s) to the output stream that is the current value
   of *out*.  Prints the object(s), separated by spaces if there is

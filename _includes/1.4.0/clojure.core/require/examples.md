@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Require clojure.java.io and call its file function:
 
@@ -14,7 +14,7 @@ user=> (clojure.java.io/file "filename")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; alias clojure.java.io as io
 user=> (require '[clojure.java.io :as io])
@@ -35,7 +35,7 @@ user=> (io2/file "Filename")
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (ns rosettacode.24game
   (:require [clojure.string :as str]))
@@ -51,7 +51,7 @@ user=> (io2/file "Filename")
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (require '(clojure.contrib [sql :as sql])){% endraw %}
 {% endhighlight %}
@@ -60,7 +60,7 @@ user=> (io2/file "Filename")
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (ns myproject.core
   (:use [clojure.core] :reload)

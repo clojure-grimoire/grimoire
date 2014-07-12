@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro deftest-
   "Like deftest but creates a private var."
   {:added "1.1"}

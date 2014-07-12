@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn pprint-indent 
   "Create an indent at this point in the pretty printing stream. This defines how 
 following lines are indented. relative-to can be either :block or :current depending 

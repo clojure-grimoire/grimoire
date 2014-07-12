@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn set?
   "Returns true if x implements IPersistentSet"
   {:added "1.0"

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn bit-xor
   "Bitwise exclusive or"
   {:inline (nary-inline 'xor)

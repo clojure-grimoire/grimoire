@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn byte-array
   "Creates an array of bytes"
   {:inline (fn [& args] `(. clojure.lang.Numbers byte_array ~@args))

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; The distinction is that re-find tries to find _any part_ of the string
 ;; that matches the pattern, but re-matches only matches if the _entire_
@@ -21,7 +21,7 @@ user=> (re-matches #"hello, (.*)" "hello, world")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Note: See clojure.core/subs for discussion of behavior of substrings
 ;; holding onto references of the original strings, which can
@@ -32,7 +32,7 @@ user=> (re-matches #"hello, (.*)" "hello, world")
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; Regex match flags can be embedded in the regex string.  So, we can convert the normal case-sensitive matching into case-insensitive matching.
 

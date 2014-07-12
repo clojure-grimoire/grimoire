@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn remove-watch
   "Alpha - subject to change.
   Removes a watch (set by add-watch) from a reference"

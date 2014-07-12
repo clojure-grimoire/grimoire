@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn e
   "REPL utility.  Prints a brief stack trace for the root cause of the
   most recent exception."

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def 
 
  ^{:doc "Same as (def name (fn [params* ] exprs*)) or (def

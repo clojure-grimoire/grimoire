@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn package-class
   [name]
   (let [i (.lastIndexOf name ".")]

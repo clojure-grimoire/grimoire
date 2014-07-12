@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn unsigned-bit-shift-right
   "Bitwise shift right, without sign-extension."
   {:inline (fn [x n] `(. clojure.lang.Numbers (unsignedShiftRight ~x ~n)))

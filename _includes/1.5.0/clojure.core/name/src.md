@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn name
   "Returns the name String of a string, symbol or keyword."
   {:tag String

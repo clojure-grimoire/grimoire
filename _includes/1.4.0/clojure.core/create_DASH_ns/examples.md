@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; If you try this, you're doing it wrong
 user=> (create-ns my-new-namespace)
@@ -23,7 +23,7 @@ user=> (create-ns 'my-new-namespace)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Let's create a namespace and check for our result
 ;; the new namespace will be "my-new-namespace"
@@ -46,7 +46,7 @@ user=> (find-ns 'my-new-namespace)
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; You can create a namespace, not switch to it and still work in, by storing it
 

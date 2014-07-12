@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro definterface
   "Creates a new Java interface with the given name and method sigs.
   The method return types and parameter types may be specified with type hints,

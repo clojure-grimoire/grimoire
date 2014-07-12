@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn identity
   "Returns its argument."
   {:added "1.0"

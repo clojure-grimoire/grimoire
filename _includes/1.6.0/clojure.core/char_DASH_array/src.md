@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn char-array
   "Creates an array of chars"
   {:inline (fn [& args] `(. clojure.lang.Numbers char_array ~@args))

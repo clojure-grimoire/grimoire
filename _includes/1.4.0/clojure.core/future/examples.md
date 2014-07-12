@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; A future's calculation is started here and it runs in another thread
 user=> (def f (future (Thread/sleep 10000) (println "done") 100))
@@ -23,7 +23,7 @@ done
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; save the example in a script (e.g. test-future.clj) then run it in the console
 ;;

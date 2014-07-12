@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn printf
   "Prints formatted output, as per format"
   {:added "1.0"

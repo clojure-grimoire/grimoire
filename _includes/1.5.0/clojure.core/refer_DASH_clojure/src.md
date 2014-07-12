@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro refer-clojure
   "Same as (refer 'clojure.core <filters>)"
   {:added "1.0"}

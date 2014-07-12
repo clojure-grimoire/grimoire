@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> "Hello!"
 "Hello!"
@@ -21,7 +21,7 @@ user=> [*1 *2 *3]
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (range 5)
 (0 1 2 3 4)

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Nothing is printed because map returns a lazy-seq
 user=> (def foo (map println [1 2 3]))

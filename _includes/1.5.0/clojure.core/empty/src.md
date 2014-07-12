@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn empty
   "Returns an empty collection of the same category as coll, or nil"
   {:added "1.0"

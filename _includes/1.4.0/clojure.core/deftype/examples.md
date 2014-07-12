@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (import (java.awt.datatransfer Transferable DataFlavor)
                javax.swing.ImageIcon)

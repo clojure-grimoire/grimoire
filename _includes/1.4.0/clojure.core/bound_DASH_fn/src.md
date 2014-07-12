@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro bound-fn
   "Returns a function defined by the given fntail, which will install the
   same bindings in effect as in the thread at the time bound-fn was called.

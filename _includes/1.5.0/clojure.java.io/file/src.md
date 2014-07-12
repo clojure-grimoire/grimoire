@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ^File file
   "Returns a java.io.File, passing each arg to as-file.  Multiple-arg
    versions treat the first argument as parent and subsequent args as

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn select-keys
   "Returns a map containing only those entries in map whose key is in keys"
   {:added "1.0"

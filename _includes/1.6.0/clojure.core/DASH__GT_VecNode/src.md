@@ -1,3 +1,3 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (deftype VecNode [edit arr])
 {% endhighlight %}

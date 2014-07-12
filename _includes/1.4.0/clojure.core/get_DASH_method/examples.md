@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; define a multi-method, then demonstrate that you may use
 ;; get-method in the same way you can call the method directly

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; An example of using the "thread-last" macro to get
 ;; the sum of the first 10 even squares.
@@ -26,7 +26,7 @@ user=> (reduce +
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def c 5)
 user=> (->> c (+ 3) (/ 2) (- 1))

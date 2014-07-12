@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ^String reverse
   "Returns s with its characters reversed."
   {:added "1.2"}

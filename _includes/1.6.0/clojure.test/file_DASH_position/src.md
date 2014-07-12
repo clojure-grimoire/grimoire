@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn file-position
   "Returns a vector [filename line-number] for the nth call up the
   stack.

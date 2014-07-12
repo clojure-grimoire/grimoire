@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ^String capitalize
   "Converts first character of the string to upper-case, all other
   characters to lower-case."

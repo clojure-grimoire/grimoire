@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn identical?
   "Tests if 2 arguments are the same object"
   {:inline (fn [x y] `(. clojure.lang.Util identical ~x ~y))

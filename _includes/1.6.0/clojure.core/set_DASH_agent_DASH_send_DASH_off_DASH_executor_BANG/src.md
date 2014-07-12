@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn set-agent-send-off-executor!
   "Sets the ExecutorService to be used by send-off"
   {:added "1.5"}

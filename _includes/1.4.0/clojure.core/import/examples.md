@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (import java.util.Date)
 java.util.Date
@@ -18,7 +18,7 @@ user=> (str *now*)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Multiple imports at once.
 (import '(java.util Date Calendar)
@@ -30,7 +30,7 @@ user=> (str *now*)
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; importing multiple classes in a namespace
 (ns foo.bar

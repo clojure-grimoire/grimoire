@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (make-array Integer/TYPE 3){% endraw %}
 {% endhighlight %}
@@ -10,7 +10,7 @@
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (pprint (make-array Double/TYPE 3))
 [0.0, 0.0, 0.0]

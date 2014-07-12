@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn file-seq
   "A tree seq on java.io.Files"
   {:added "1.0"

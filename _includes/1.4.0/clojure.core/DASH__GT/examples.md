@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Use of `->` (the "thread-first" macro) can help make code
 ;; more readable by removing nesting. It can be especially
@@ -54,7 +54,7 @@ user=> (((person :employer) :address) :city)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Your own REPL! (Read Eval Print Loop)
 
@@ -100,7 +100,7 @@ user=> (->> (read) (eval) (println) (while true))
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def c 5)
 user=> (-> c (+ 3) (/ 2) (- 1))

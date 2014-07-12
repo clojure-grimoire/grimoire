@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def read-instant-timestamp
   "To read an instant as a java.sql.Timestamp, bind *data-readers* to a
 map with this var as the value for the 'inst key. Timestamp preserves

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro gen-class 
   "When compiling, generates compiled bytecode for a class with the
   given package-qualified :name (which, as all names in these

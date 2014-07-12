@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn proxy-name
  {:tag String} 
  [^Class super interfaces]

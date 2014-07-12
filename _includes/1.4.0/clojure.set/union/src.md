@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn union
   "Return a set that is the union of the input sets"
   {:added "1.0"}

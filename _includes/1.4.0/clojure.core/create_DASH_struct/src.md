@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn create-struct
   "Returns a structure basis object."
   {:added "1.0"

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (empty [1 2 3])
 []
@@ -17,7 +17,7 @@ user=> (swap! (atom (range 10)) empty)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; The output will not necessarily be of the same JVM class as the input
 user=> (class (seq [1]))

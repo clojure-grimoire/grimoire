@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (definline floats
   "Casts to float[]"
   {:added "1.0"}

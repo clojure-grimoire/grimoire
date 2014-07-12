@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Very useful from a REPL
 ;; Paths are specified as strings using canonical file path notation
@@ -18,7 +18,7 @@
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; file located at src/address_book/core.clj
 ;; current dir is src/..
@@ -30,7 +30,7 @@
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; create a clojure file on the fly using spit
 ;; then load it into the REPL and use its function

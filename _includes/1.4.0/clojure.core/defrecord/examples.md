@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; from Stu's examples:
 
@@ -35,7 +35,7 @@
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; This example shows how to implement a Java interface in defrecord.
 ;; We'll implement FileNameMap (because it has a simple interface,
@@ -79,7 +79,7 @@
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; prepare a protocol
 user=> (defprotocol Fun-Time (drinky-drinky [_]))
@@ -106,7 +106,7 @@ user=> (drinky-drinky dude)
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; If you define a defrecord in one namespace and want to use it
 ; from another, first require the namespace and then import
@@ -140,7 +140,7 @@ user=> (drinky-drinky dude)
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; The map->Recordclass form works only in Clojure 1.3 or higher
 

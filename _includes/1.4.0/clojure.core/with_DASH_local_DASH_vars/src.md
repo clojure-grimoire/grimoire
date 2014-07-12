@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro with-local-vars
   "varbinding=> symbol init-expr
 

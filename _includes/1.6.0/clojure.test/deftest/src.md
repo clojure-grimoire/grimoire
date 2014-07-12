@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro deftest
   "Defines a test function with no arguments.  Test functions may call
   other tests, so tests may be composed.  If you compose tests, you

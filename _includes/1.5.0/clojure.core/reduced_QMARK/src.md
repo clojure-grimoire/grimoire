@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn reduced?
   "Returns true if x is the result of a call to reduced"
   {:inline (fn [x] `(clojure.lang.RT/isReduced ~x ))

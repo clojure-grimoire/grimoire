@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (defn sum-even-numbers [nums]
          (if-let [nums (seq (filter even? nums))]
@@ -21,7 +21,7 @@ user=> (sum-even-numbers [1 3 5 7 9 10 12])
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (if-let [x false y true]
          "then"
@@ -46,7 +46,7 @@ user=> (if-let-demo false)
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; This macro is nice when you need to calculate something big. And you need
 ; to use the result but only when it's true:
@@ -69,7 +69,7 @@ user=> (if-let-demo false)
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; See examples for "if" explaining Clojure's idea of logical true
 ;; and logical false.{% endraw %}
@@ -79,7 +79,7 @@ user=> (if-let-demo false)
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;;; with distructuring binding
 

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn print-stack-trace
   "Prints a Clojure-oriented stack trace of tr, a Throwable.
   Prints a maximum of n stack frames (default: unlimited).

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def users [{:name "James" :age 26}  {:name "John" :age 43}])
 #'user/users
@@ -16,7 +16,7 @@ user=> (update-in users [1 :age] inc)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def p {:name "James" :age 26})
 #'user/p
@@ -35,7 +35,7 @@ user=> (update-in p [:age] + 10)
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defn char-cnt [s]
   "Counts occurence of each character in s"
@@ -52,7 +52,7 @@ user=> (update-in p [:age] + 10)
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; f has args
 user=> (update-in {:a 3} [:a] / 4 5)

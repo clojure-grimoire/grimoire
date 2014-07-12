@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn with-redefs-fn
   "Temporarily redefines Vars during a call to func.  Each val of
   binding-map will replace the root value of its key which must be

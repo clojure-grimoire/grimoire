@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; First we define a function that presumably have some expensive computation.
 user=> (defn myfunc[a] (println "doing some work") (+ a 10))

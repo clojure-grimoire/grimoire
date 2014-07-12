@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (gen-class
 	:name "some.package.RefMap"
@@ -68,7 +68,7 @@
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; I found managing state a bit confusing at first.
 ;; here's a dumb little class with a getter and setter for a "location" field.

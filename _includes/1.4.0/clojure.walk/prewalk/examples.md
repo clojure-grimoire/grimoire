@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; From http://stackoverflow.com/questions/8089074/idiomatically-iterating-over-a-2-or-higher-dimensional-sequence-in-clojure/8091544#8091544
 

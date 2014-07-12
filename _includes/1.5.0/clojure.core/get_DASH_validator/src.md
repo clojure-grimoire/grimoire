@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn get-validator
   "Gets the validator-fn for a var/ref/agent/atom."
   {:added "1.0"

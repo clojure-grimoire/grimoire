@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Extract values from a map.
 
@@ -14,7 +14,7 @@ user=> ((juxt :a :b) {:a 1 :b 2 :c 3 :d 4})
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; "Explode" a value.
 
@@ -33,7 +33,7 @@ user=> (into {} (map (juxt identity name) [:a :b :c :d]))
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Get the first character and length of string
 
@@ -46,7 +46,7 @@ user=> ((juxt first count) "Clojure Rocks")
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; sort list of maps by multiple values
 user => (sort-by (juxt :a :b) [{:a 1 :b 3} {:a 1 :b 2} {:a 2 :b 1}]
@@ -57,7 +57,7 @@ user => (sort-by (juxt :a :b) [{:a 1 :b 3} {:a 1 :b 2} {:a 2 :b 1}]
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Create lookup maps via a specific key
 

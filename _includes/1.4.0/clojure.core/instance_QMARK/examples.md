@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (instance? Long 1)
 true
@@ -20,7 +20,7 @@ true
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def al (new java.util.ArrayList))
 #'user/al
@@ -36,7 +36,7 @@ false{% endraw %}
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Some things are more than what they seem to be at first glance
 user=> (instance? clojure.lang.IFn +)

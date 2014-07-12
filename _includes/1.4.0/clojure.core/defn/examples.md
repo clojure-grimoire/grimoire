@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (defn foo [a b c]
 	    (* a b c))
@@ -49,7 +49,7 @@ user=> (boo 1 2 :d 3 :c 4)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (defn bar
          ([a b]   (bar a b 100))
@@ -66,7 +66,7 @@ user=> (bar 5 6 2)
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; You can use destructuring to have keyword arguments. This would be a
 ;; pretty verbose version of map (in an example a bit more verbose than
@@ -93,7 +93,7 @@ user=> (keyworded-map :sequence [1 2 3] :function #(+ % 2))
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defn somefn
   [req1 req2 ;required params

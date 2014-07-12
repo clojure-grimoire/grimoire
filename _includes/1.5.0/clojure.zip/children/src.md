@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn children
   "Returns a seq of the children of node at loc, which must be a branch"
   {:added "1.0"}

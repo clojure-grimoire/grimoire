@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn replicate
   "DEPRECATED: Use 'repeat' instead.
    Returns a lazy seq of n xs."

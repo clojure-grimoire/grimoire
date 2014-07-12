@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro with-junit-output
   "Execute body with modified test-is reporting functions that write
   JUnit-compatible XML output."

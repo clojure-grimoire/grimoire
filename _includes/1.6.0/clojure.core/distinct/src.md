@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn distinct
   "Returns a lazy sequence of the elements of coll with duplicates removed"
   {:added "1.0"

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn even?
   "Returns true if n is even, throws an exception if n is not an integer"
   {:added "1.0"

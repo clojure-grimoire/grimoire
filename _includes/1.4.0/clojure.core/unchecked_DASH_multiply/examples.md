@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; demonstrate the the unchecked-multiply function cannot calculate
 ;; 1 trillion * 10 without throwing an exception

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Convert number into bits:
 user=> (defn bits [n s]
@@ -22,7 +22,7 @@ user=> (map (fn [n] (bits n 3)) (range 8))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (bit-shift-right 2r1101 0)
 13

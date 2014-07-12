@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (deftype JavaReflector [classloader]
   Reflector
   (do-reflect [_ typeref]

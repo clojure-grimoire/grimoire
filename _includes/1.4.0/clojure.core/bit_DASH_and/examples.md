@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (bit-and 2r1100 2r1001)
 8
@@ -16,7 +16,7 @@ user=> (bit-and 12 9)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user> (bit-and 0x08 0xFF)
 8{% endraw %}
@@ -26,7 +26,7 @@ user> (bit-and 0x08 0xFF)
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (Integer/toBinaryString 235)
 "11101011"

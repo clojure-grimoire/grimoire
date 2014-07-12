@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn rational? 
   "Returns true if n is a rational number"
   {:added "1.0"

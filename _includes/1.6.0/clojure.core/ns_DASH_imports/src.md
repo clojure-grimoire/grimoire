@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ns-imports
   "Returns a map of the import mappings for the namespace."
   {:added "1.0"

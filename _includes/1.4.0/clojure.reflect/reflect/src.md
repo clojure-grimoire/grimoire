@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn reflect
   "Alpha - subject to change.
    Reflect on the type of obj (or obj itself if obj is a class).

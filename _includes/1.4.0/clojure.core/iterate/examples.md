@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; iterate Ad Infinitum starting at 5 using the inc (increment) function
 user=> (iterate inc 5)
@@ -24,7 +24,7 @@ user=> (take 20 (iterate (partial + 2) 0))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def powers-of-two (iterate (partial * 2) 1))
 #'user/powers-of-two
@@ -40,7 +40,7 @@ user=> (take 10 powers-of-two)
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; demonstrating the power of iterate
 ;; to generate the Fibonacci sequence

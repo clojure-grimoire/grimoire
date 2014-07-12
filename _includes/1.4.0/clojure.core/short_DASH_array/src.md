@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn short-array
   "Creates an array of shorts"
   {:inline (fn [& args] `(. clojure.lang.Numbers short_array ~@args))

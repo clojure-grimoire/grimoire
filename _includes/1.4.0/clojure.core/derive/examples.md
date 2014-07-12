@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; derive let you build a hierarchy but parents/ancestors/descendants and isa? let you query the hierarchy
 (derive ::rect ::shape)
@@ -13,7 +13,7 @@
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (derive ::Cat ::Feline)
 nil

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn set-error-handler!
   "Sets the error-handler of agent a to handler-fn.  If an action
   being run by the agent throws an exception or doesn't pass the

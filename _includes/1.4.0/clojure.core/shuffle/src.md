@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn shuffle
   "Return a random permutation of coll"
   {:added "1.2"

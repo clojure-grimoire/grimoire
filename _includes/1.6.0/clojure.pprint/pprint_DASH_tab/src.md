@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn pprint-tab 
   "Tab at this point in the pretty printing stream. kind specifies whether the tab
 is :line, :section, :line-relative, or :section-relative. 

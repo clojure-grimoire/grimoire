@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn min-key
   "Returns the x for which (k x), a number, is least."
   {:added "1.0"

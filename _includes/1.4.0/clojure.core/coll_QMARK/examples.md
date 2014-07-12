@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (coll? {})
 true
@@ -33,7 +33,7 @@ false
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (coll? {:a 10 :b 20}) ; map is a collection of map-entries
 true{% endraw %}
@@ -43,7 +43,7 @@ true{% endraw %}
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; contrast to example code for sequential?
 ;;

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; create an array of 10 characters (initially set to blank by default)
 ;; and set one of the elements to the character "a"

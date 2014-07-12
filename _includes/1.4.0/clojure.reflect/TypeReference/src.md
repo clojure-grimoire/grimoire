@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defprotocol TypeReference
   "A TypeReference can be unambiguously converted to a type name on
    the host platform.

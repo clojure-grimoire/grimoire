@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (min 1 2 3 4 5)
 1
@@ -15,7 +15,7 @@ user=> (min 100)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; If elements are already in a sequence, use apply
 user=> (apply min [1 2 3 4 3])

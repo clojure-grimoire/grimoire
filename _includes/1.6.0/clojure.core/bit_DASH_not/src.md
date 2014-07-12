@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn bit-not
   "Bitwise complement"
   {:inline (fn [x] `(. clojure.lang.Numbers (not ~x)))

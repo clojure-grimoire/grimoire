@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (merge-with concat
 		  {"Lisp" ["Common Lisp" "Clojure"]
@@ -20,7 +20,7 @@ nil
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; merge two maps using the addition function
 
@@ -35,7 +35,7 @@ user=> (merge-with +
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; 'merge-with' works with an arbitrary number of maps:
 
@@ -53,7 +53,7 @@ user=> (merge-with +
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Use union to merge sets of elements
 user=> (use 'clojure.set)

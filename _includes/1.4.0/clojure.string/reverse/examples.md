@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user> (reverse "foo")
 "oof"{% endraw %}
@@ -11,7 +11,7 @@ user> (reverse "foo")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; clojure.string/reverse correctly treats UTF-16 surrogate pairs
 ;; as a unit, and does not reverse the 2 Java chars of the pair.  Good!

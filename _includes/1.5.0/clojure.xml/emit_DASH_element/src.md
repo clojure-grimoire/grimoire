@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn emit-element [e]
   (if (instance? String e)
     (println e)

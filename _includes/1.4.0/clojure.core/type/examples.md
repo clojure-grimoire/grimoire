@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Checking numbers
 user=> (type 10)
@@ -58,7 +58,7 @@ java.lang.Exception: Can't take value of a macro: #'clojure.core/fn (NO_SOURCE_F
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;This example demonstrates how to add type information to regular clojure maps
 (defn purchase-order [id date amount]

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defmulti service-charge (fn [acct] [(account-level acct) (:tag acct)]))
 (defmethod service-charge [::acc/Basic ::acc/Checking]   [_] 25)
@@ -13,7 +13,7 @@
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;this example illustrates that the dispatch type
 ;does not have to be a symbol, but can be anything (in this case, it's a string)
@@ -50,7 +50,7 @@
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Implementing factorial using multimethods Note that factorial-like function
 ;; is best implemented using `recur` for enable tail-call optimization to avoid

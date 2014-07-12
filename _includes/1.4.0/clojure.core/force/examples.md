@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; an example for delay using an event-queue
 user> (import  [java.util.concurrent PriorityBlockingQueue])
@@ -112,7 +112,7 @@ user> {% endraw %}
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; the tarai benchmark comparing non-lazy version with lazy-version
 (defn tarai [x y z]

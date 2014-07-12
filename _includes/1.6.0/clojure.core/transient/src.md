@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn transient 
   "Returns a new, transient version of the collection, in constant time."
   {:added "1.1"

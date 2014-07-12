@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn read-line
   "Reads the next line from stream that is the current value of *in* ."
   {:added "1.0"

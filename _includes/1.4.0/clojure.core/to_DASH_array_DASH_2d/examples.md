@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user> (def a (to-array-2d [[1 2 3][4 5 6]]))
 #'user/a
@@ -28,7 +28,7 @@ user> {% endraw %}
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; quick example of a ragged array where the length of each element of the
 ;; 2d array is unique

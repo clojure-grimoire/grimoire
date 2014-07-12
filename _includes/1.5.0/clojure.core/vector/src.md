@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn vector
   "Creates a new vector containing the args."
   {:added "1.0"

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn unchecked-int
   "Coerce to int. Subject to rounding or truncation."
   {:inline (fn  [x] `(. clojure.lang.RT (uncheckedIntCast ~x)))

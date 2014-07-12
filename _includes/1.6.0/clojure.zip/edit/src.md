@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn edit
   "Replaces the node at this loc with the value of (f node args)"
   {:added "1.0"}

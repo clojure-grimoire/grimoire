@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn derive
   "Establishes a parent/child relationship between parent and
   tag. Parent must be a namespace-qualified symbol or keyword and

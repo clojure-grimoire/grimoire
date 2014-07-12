@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn split-lines
   "Splits s on \\n or \\r\\n."
   {:added "1.2"}

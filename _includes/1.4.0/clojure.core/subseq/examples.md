@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Note, that collection passed to subseq must implement Sorted.
 ;; Just passing a collection that has been sorted is not enough.

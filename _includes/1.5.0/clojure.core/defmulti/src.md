@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro defmulti
   "Creates a new multimethod with the associated dispatch function.
   The docstring and attribute-map are optional.

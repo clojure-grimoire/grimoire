@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro with-bindings
   "Takes a map of Var/value pairs. Installs for the given Vars the associated
   values as thread-local bindings. The executes body. Pops the installed

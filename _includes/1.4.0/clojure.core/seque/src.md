@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn seque
   "Creates a queued seq on another (presumably lazy) seq s. The queued
   seq will produce a concrete seq in the background, and can get up to

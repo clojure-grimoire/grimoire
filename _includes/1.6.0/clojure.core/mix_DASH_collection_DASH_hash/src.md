@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn mix-collection-hash
   "Mix final collection hash for ordered or unordered collections.
    hash-basis is the combined collection hash, count is the number

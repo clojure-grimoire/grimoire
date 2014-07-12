@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ^String replace-first
   "Replaces the first instance of match with replacement in s.
 

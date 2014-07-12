@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn vec
   "Creates a new vector containing the contents of coll. Java arrays
   will be aliased and should not be modified."

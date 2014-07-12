@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn type-reflect
   "Alpha - subject to change.
    Reflect on a typeref, returning a map with :bases, :flags, and

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro defn-
   "same as defn, yielding non-public def"
   {:added "1.0"}

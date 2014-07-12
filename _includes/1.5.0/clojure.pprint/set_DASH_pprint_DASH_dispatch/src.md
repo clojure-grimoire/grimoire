@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn set-pprint-dispatch  
   "Set the pretty print dispatch function to a function matching (fn [obj] ...)
 where obj is the object to pretty print. That function will be called with *out* set

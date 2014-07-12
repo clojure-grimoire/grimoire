@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; If you save this program as showargs.clj on a Unix-like system, then the
 ;; following command will produce the output shown.

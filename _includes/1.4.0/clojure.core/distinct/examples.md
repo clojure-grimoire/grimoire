@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (distinct [1 2 1 3 1 4 1 5])
 (1 2 3 4 5){% endraw %}
@@ -11,7 +11,7 @@ user=> (distinct [1 2 1 3 1 4 1 5])
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def fractions
          (for [n (range 1 100) d (range (inc n) 100)]

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmulti assert-expr 
   (fn [msg form]
     (cond

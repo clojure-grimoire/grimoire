@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn hash-ordered-coll
   "Returns the hash code, consistent with =, for an external ordered
    collection implementing Iterable.

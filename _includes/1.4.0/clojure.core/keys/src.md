@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn keys
   "Returns a sequence of the map's keys."
   {:added "1.0"

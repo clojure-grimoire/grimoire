@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn print-table
   "Alpha - subject to change.
    Prints a collection of maps in a textual table. Prints table headings

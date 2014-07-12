@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 <pre>
 user=> (clojure.string/join ", " [1 2 3])
@@ -13,7 +13,7 @@ user=> (clojure.string/join ", " [1 2 3])
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Splits a string on space character and joins
 ;; the resulting collection with a line feed character

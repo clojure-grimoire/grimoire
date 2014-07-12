@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; from http://groups.google.com/group/clojure/msg/71702435ccd1d189
 user> (import java.util.Date)

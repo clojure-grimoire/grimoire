@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn coll?
   "Returns true if x implements IPersistentCollection"
   {:added "1.0"

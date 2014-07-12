@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn sh
   "Passes the given strings to Runtime.exec() to launch a sub-process.
 

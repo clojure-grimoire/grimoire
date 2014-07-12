@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn delete-file
   "Delete file f. Raise an exception if it fails unless silently is true."
   {:added "1.2"}

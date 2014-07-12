@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn mod
   "Modulus of num and div. Truncates toward negative infinity."
   {:added "1.0"

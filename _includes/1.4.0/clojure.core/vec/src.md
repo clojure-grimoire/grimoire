@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn vec
   "Creates a new vector containing the contents of coll."
   {:added "1.0"

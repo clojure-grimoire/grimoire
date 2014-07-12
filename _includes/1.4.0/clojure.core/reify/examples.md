@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (ns foo)
 
@@ -52,7 +52,7 @@
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Using a reified FileFilter implementation to obtain only directory files
 (.listFiles (java.io.File. ".")
@@ -67,7 +67,7 @@
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;;;; This example shows how to reify a multi-arity protocol function
 ;;;; (note the different style in defprotocol vs reify)

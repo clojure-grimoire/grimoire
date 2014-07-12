@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn pop!
   "Alpha - subject to change.
   Removes the last item from a transient vector. If

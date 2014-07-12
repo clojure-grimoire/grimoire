@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (sort-by count ["aaa" "bb" "c"])
 ("c" "bb" "aaa")
@@ -17,7 +17,7 @@ user=> (sort-by first [[1 2] [2 2] [2 3]])
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (sort-by :rank [{:rank 2} {:rank 3} {:rank 1}])
 ({:rank 1} {:rank 2} {:rank 3}){% endraw %}
@@ -27,7 +27,7 @@ user=> (sort-by :rank [{:rank 2} {:rank 3} {:rank 1}])
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (def x [{:foo 2 :bar 11}
         {:bar 99 :foo 1}
@@ -43,7 +43,7 @@ user=> (sort-by :rank [{:rank 2} {:rank 3} {:rank 1}])
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (def x [{:foo 2 :bar 11}
  {:bar 99 :foo 1}
@@ -61,7 +61,7 @@ user=> (sort-by :rank [{:rank 2} {:rank 3} {:rank 1}])
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;sort entries in a map by value
 user=> (sort-by val > {:foo 7, :bar 3, :baz 5})
@@ -72,7 +72,7 @@ user=> (sort-by val > {:foo 7, :bar 3, :baz 5})
 ### Example 5
 [permalink](#example-5)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Warning: You can sort a Java array and get back a sorted immutable Clojure
 ;; data structure, but it will also change the input Java array, by sorting it.

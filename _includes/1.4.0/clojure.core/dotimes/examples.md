@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (dotimes [n 5] (println "n is" n))
 n is 0
@@ -16,7 +16,7 @@ nil{% endraw %}
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (dotimes [n 10] (println (map #(* % (inc n)) (range 1 11))))
 (1 2 3 4 5 6 7 8 9 10)

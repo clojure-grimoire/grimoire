@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn select
   "Returns a set of the elements for which pred is true"
   {:added "1.0"}

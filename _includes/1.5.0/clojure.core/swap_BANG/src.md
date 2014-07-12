@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn swap!
   "Atomically swaps the value of atom to be:
   (apply f current-value-of-atom args). Note that f may be called

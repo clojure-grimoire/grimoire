@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn boolean-array
   "Creates an array of booleans"
   {:inline (fn [& args] `(. clojure.lang.Numbers boolean_array ~@args))

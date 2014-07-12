@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (meta (vary-meta 'foo assoc :a 1))
 {:a 1}
@@ -12,7 +12,7 @@ user=> (meta (vary-meta 'foo assoc :a 1))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; continuing from the previous with-meta example
 user=> (def wm (with-meta [1 2 3] {:my "meta"}))

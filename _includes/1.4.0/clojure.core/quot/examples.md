@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; (quot m n) is the value of m/n, rounded towards 0 to the nearest integer.
 ;; m, n need not be integers.
@@ -30,7 +30,7 @@ ArithmeticException / by zero  clojure.lang.Numbers.quotient (Numbers.java:1764)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; note that the "/" function and the quot function are not equivalent
 

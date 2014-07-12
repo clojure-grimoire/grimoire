@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn zipper
   "Creates a new zipper structure. 
 

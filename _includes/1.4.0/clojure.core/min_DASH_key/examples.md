@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; we have a list of key colours
 ;; We want to find the one closest to a supplied colour
@@ -40,7 +40,7 @@ user=> (rgb-to-key-colour [255 0 0] key-colours)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; "min-key"/"max-key" to "min"/"max" like "sort-by" to "sort"
 (min-key #(Math/abs %) -3 1 4)

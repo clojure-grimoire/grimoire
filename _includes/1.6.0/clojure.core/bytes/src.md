@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (definline bytes
   "Casts to bytes[]"
   {:added "1.1"}

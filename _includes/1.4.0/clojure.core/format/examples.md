@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; See http://download.oracle.com/javase/1.5.0/docs/api/java/util/Formatter.html
 ;; for formatting options.
@@ -14,7 +14,7 @@ user=> (format "Hello there, %s" "bob")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (format "%5d" 3)
 "    3"
@@ -66,7 +66,7 @@ user=> (format-plus "%5d" 12345678901234567890)
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;;  ==== Clojure format/printf and floating-point formats ====
 user=> (format "%.3f" 2.0)

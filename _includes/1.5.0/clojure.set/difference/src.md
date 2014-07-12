@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn difference
   "Return a set that is the first set without elements of the remaining sets"
   {:added "1.0"}

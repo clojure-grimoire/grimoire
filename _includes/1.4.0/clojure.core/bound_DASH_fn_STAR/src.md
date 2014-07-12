@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn bound-fn*
   "Returns a function, which will install the same bindings in effect as in
   the thread at the time bound-fn* was called and then call f with any given

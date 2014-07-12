@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn key
   "Returns the key of the map entry."
   {:added "1.0"

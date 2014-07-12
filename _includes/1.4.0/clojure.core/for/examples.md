@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (for [x [0 1 2 3 4 5]
              :let [y (* x 3)]
@@ -15,7 +15,7 @@ user=> (for [x [0 1 2 3 4 5]
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def digits (seq [1 2 3]))
 user=> (for [x1 digits x2 digits] (* x1 x2))
@@ -26,7 +26,7 @@ user=> (for [x1 digits x2 digits] (* x1 x2))
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (for [x ['a 'b 'c]
              y [1 2 3]]
@@ -39,7 +39,7 @@ user=> (for [x ['a 'b 'c]
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (for [x (range 1 6)
              :let [y (* x x)
@@ -54,7 +54,7 @@ user=> (for [x (range 1 6)
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (for [x (range 3 7)]
     (* x x))
@@ -66,7 +66,7 @@ user=> (for [x (range 1 6)
 ### Example 5
 [permalink](#example-5)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (for [[x y] '([:a 1] [:b 2] [:c 0]) :when (= y 0)] x)
 (:c)
@@ -77,7 +77,7 @@ user=> (for [[x y] '([:a 1] [:b 2] [:c 0]) :when (= y 0)] x)
 ### Example 6
 [permalink](#example-6)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; Demonstrating difference between :when and :while
 
@@ -94,7 +94,7 @@ nil{% endraw %}
 ### Example 7
 [permalink](#example-7)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; Demonstrating difference between :when and :while
 user=> (for [x (range 3) y (range 3) :when (not= x y)] [x y])
@@ -107,7 +107,7 @@ user=> (for [x (range 3) y (range 3) :while (not= x y)] [x y])
 ### Example 8
 [permalink](#example-8)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; More examples illustrating the difference between :when and :while
 
@@ -177,7 +177,7 @@ user=> (for [x (range) :while (< x 10)
 ### Example 9
 [permalink](#example-9)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Here are a couple of examples where the only difference is where
 ;; the :while is placed, but it makes a significant difference in the
@@ -219,7 +219,7 @@ user=> (for [x [1 2 3]
 ### Example 10
 [permalink](#example-10)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defn all-files-present?
 "Takes a list of real file names, and returns a map of files present 1

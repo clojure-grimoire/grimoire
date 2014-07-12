@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn future-done?
   "Returns true if future f is done"
   {:added "1.1"

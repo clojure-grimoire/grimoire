@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; if you have a sequence, perhaps lazy, int-array will figure out the size
 user=> (aget (int-array [1 2 3]) 0)

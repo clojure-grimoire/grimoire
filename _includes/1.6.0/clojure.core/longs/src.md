@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (definline longs
   "Casts to long[]"
   {:added "1.0"}

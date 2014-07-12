@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn future-cancel
   "Cancels the future, if possible."
   {:added "1.1"

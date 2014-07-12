@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn concat
   "Returns a lazy seq representing the concatenation of the elements in the supplied colls."
   {:added "1.0"

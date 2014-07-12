@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn add-watch
   "Alpha - subject to change.
   Adds a watch function to an agent/atom/var/ref reference. The watch

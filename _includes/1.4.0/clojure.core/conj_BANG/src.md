@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn conj!
   "Alpha - subject to change.
   Adds x to the transient collection, and return coll. The 'addition'

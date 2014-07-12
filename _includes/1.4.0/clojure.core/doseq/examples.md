@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (doseq [x [1 2 3]
                y [1 2 3]]
@@ -23,7 +23,7 @@ nil
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (doseq [[x y] (map list [1 2 3] [1 2 3])]
          (prn (* x y)))
@@ -41,7 +41,7 @@ user=> (map list [1 2 3] [1 2 3])
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (doseq [[[a b] [c d]] (map list {:1 1 :2 2} {:3 3 :4 4})]
          (prn (* b d)))
@@ -58,7 +58,7 @@ user=> (map list {:1 1 :2 2} {:3 3 :4 4})
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (doseq [[k v] (map identity {:1 1 :2 2 :3 3})]
          (prn k v))
@@ -84,7 +84,7 @@ nil{% endraw %}
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; Multiple sequences results in a Cartesian cross of their values.
 user=> (doseq [a [1 2]
@@ -101,7 +101,7 @@ nil{% endraw %}
 ### Example 5
 [permalink](#example-5)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; Keywords :let, :when, and :while are supported, the same as "for"
 user=> (doseq [x (range 6)

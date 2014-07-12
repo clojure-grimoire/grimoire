@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn find-protocol-impl [protocol x]
   (if (instance? (:on-interface protocol) x)
     x

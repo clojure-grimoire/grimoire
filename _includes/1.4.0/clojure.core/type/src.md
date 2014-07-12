@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn type 
   "Returns the :type metadata of x, or its Class if none"
   {:added "1.0"

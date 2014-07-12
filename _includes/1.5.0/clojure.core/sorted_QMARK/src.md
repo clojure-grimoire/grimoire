@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn sorted?
  "Returns true if coll implements Sorted"
  {:added "1.0"

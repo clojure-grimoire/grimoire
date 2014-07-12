@@ -88,7 +88,7 @@
   (str "### Example " i "\n"
        "[permalink](#example-" i ")\n"
        "\n"
-       "{% highlight clojure linenos %}\n"
+       "{% highlight clojure %}\n"
        "{% raw %}\n"
        (replace body #"[\t ]+\n" "\n")
        "{% endraw %}\n"
@@ -118,8 +118,8 @@
       (when src
         ;; write source file
         (let [inc-src-file (file sym-inc-dir "src.md")]
-          (when-not (.exists inc-src-file)
-            (->> (format (str (lq "highlight" "clojure" "linenos")
+          (when-not false ; (.exists inc-src-file)
+            (->> (format (str (lq "highlight" "clojure")
                               "%s\n"
                               (lq "endhighlight"))
                          src)
@@ -127,7 +127,7 @@
 
       (let [ex-file (file sym-inc-dir "examples.md")]
         ;; ensure the examples file
-        (when-not (.exists ex-file)
+        (when-not false ; (.exists ex-file)
           (->> (str (let [v (prior-clojure-version version-str)
                           i (str v "/" namespace "/" symbol "/examples.md")
                           f (str "./_includes/" i)]

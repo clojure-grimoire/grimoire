@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro io!
   "If an io! block occurs in a transaction, throws an
   IllegalStateException, else runs body in an implicit do. If the

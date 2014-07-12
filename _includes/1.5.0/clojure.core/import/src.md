@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro import 
   "import-list => (package-symbol class-name-symbols*)
 

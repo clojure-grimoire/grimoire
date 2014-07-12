@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Let's play with a namespace by its name and by its symbol
 user=> (def for-later-use (create-ns 'my-namespace))

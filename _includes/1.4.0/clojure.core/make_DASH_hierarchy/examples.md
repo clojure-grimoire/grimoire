@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; use make-hierarchy to build your own local hierarchy for derive, isa?, etc.
 ;; instead of using the global hierarchy

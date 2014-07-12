@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn pos?
   "Returns true if num is greater than zero, else false"
   {

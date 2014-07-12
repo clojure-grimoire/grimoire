@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro gen-interface
   "When compiling, generates compiled bytecode for an interface with
   the given package-qualified :name (which, as all names in these

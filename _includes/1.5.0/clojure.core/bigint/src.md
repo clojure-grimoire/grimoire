@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn bigint
   "Coerce to BigInt"
   {:tag clojure.lang.BigInt

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn blank?
   "True if s is nil, empty, or contains only whitespace."
   {:added "1.2"}

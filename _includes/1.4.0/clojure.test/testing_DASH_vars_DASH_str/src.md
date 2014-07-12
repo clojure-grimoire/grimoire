@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn testing-vars-str
   "Returns a string representation of the current test.  Renders names
   in *testing-vars* as a list, then the source file and line of

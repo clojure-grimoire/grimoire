@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn agent
   "Creates and returns an agent with an initial value of state and
   zero or more options (in any order):

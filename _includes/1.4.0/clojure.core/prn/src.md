@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn prn
   "Same as pr followed by (newline). Observes *flush-on-newline*"
   {:added "1.0"

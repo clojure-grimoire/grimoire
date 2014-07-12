@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn newline
   "Writes a platform-specific newline to *out*"
   {:added "1.0"

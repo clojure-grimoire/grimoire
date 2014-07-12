@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn cast
   "Throws a ClassCastException if x is not a c, else returns x."
   {:added "1.0"

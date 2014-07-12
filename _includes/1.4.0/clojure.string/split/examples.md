@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (clojure.string/split "q1w2e3r4t5y6u7i8o9p0" #"\d+")
 ["q" "w" "e" "r" "t" "y" "u" "i" "o" "p"]
@@ -14,7 +14,7 @@ user=> (clojure.string/split "q1w2e3r4t5y6u7i8o9p0" #"\d+" 5)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Splits a string on space character and joins
 ;; the resulting collection with a line feed character
@@ -35,7 +35,7 @@ nil{% endraw %}
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (use '[clojure.string :only (split triml)])
 
@@ -71,7 +71,7 @@ user=> (split "Some    words   with\tother whitespace      \n" #"\s")
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (use '[clojure.string :only (split)])
 
@@ -117,7 +117,7 @@ user=> (split "root::0:0:admin:/var/root:" #":" 15)
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (:require [clojure.string :as cstr])
 
@@ -131,7 +131,7 @@ user=> (split "root::0:0:admin:/var/root:" #":" 15)
 ### Example 5
 [permalink](#example-5)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Note: See clojure.core/subs for discussion of behavior of substrings
 ;; holding onto references of the original strings, which can

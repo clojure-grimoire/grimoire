@@ -1,8 +1,11 @@
-build: versions
+cheatsheet:
+	bash cheatsheet.sh
+
+build: versions cheatsheet
 	jekyll build
 
-test: versions
-	jekyll serve
+test: build
+	jekyll serve --skip-initial
 
 versions:
 	lein with-profile 1.4 run

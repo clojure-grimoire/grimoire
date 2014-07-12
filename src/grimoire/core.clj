@@ -294,7 +294,7 @@
                (spit index-inc-file)))
 
         (let [f (file index-file)]
-          (when-not false ;(.exists f)
+          (when-not (.exists f)
             (->> (str (render-yaml [["layout" "ns"]])
                       (format "# [Clojure %s](../)/%s\n\n" version-str (str ns))
 

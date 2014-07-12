@@ -5,8 +5,6 @@ layout: ns
 
 {% markdown 1.4.0/clojure.instant/index.md %}
 
-<a id="tall">Toggle all</a>
-
 
 
 ## Macros <a id="mf">+</a>

@@ -5,91 +5,71 @@ layout: ns
 
 {% markdown 1.6.0/clojure.core/index.md %}
 
-## Special Forms
+<a id="tall">Toggle all</a>
+
+## Special Forms <a id="sff">+</a>
+
+<div id="sforms" markdown="1">
 
 ### .
-
 [.](./DOT/)
 
-
 ### D
-
 [def](./def/)
 [do](./do/)
 
-
 ### I
-
 [if](./if/)
 
-
 ### M
-
 [monitor-enter](./monitor_DASH_enter/)
 [monitor-exit](./monitor_DASH_exit/)
 
-
 ### N
-
 [new](./new/)
 
-
 ### Q
-
 [quote](./quote/)
 
-
 ### R
-
 [recur](./recur/)
 
-
 ### S
-
 [set!](./set_BANG/)
 
-
 ### T
-
 [throw](./throw/)
 [try](./try/)
 
-
 ### V
-
 [var](./var/)
 
+</div>
 
-## Macros
+
+## Macros <a id="mf">+</a>
+
+<div id="macros" markdown="1">
 
 ### -
-
 [->](./DASH__GT/)
 [->>](./DASH__GT__GT/)
 
-
 ### .
-
 [..](./DOT__DOT/)
 
-
 ### A
-
 [amap](./amap/)
 [and](./and/)
 [areduce](./areduce/)
 [as->](./as_DASH__GT/)
 [assert](./assert/)
 
-
 ### B
-
 [binding](./binding/)
 [bound-fn](./bound_DASH_fn/)
 
-
 ### C
-
 [case](./case/)
 [comment](./comment/)
 [cond](./cond/)
@@ -97,9 +77,7 @@ layout: ns
 [cond->>](./cond_DASH__GT__GT/)
 [condp](./condp/)
 
-
 ### D
-
 [declare](./declare/)
 [definline](./definline/)
 [definterface](./definterface/)
@@ -119,37 +97,27 @@ layout: ns
 [dotimes](./dotimes/)
 [doto](./doto/)
 
-
 ### E
-
 [extend-protocol](./extend_DASH_protocol/)
 [extend-type](./extend_DASH_type/)
 
-
 ### F
-
 [fn](./fn/)
 [for](./for/)
 [future](./future/)
 
-
 ### G
-
 [gen-class](./gen_DASH_class/)
 [gen-interface](./gen_DASH_interface/)
 
-
 ### I
-
 [if-let](./if_DASH_let/)
 [if-not](./if_DASH_not/)
 [if-some](./if_DASH_some/)
 [import](./import/)
 [io!](./io_BANG/)
 
-
 ### L
-
 [lazy-cat](./lazy_DASH_cat/)
 [lazy-seq](./lazy_DASH_seq/)
 [let](./let/)
@@ -157,49 +125,33 @@ layout: ns
 [locking](./locking/)
 [loop](./loop/)
 
-
 ### M
-
 [memfn](./memfn/)
 
-
 ### N
-
 [ns](./ns/)
 
-
 ### O
-
 [or](./or/)
 
-
 ### P
-
 [proxy](./proxy/)
 [proxy-super](./proxy_DASH_super/)
 [pvalues](./pvalues/)
 
-
 ### R
-
 [refer-clojure](./refer_DASH_clojure/)
 [reify](./reify/)
 
-
 ### S
-
 [some->](./some_DASH__GT/)
 [some->>](./some_DASH__GT__GT/)
 [sync](./sync/)
 
-
 ### T
-
 [time](./time/)
 
-
 ### W
-
 [when](./when/)
 [when-first](./when_DASH_first/)
 [when-let](./when_DASH_let/)
@@ -215,11 +167,14 @@ layout: ns
 [with-precision](./with_DASH_precision/)
 [with-redefs](./with_DASH_redefs/)
 
+</div>
 
-## Vars
+
+## Vars <a id="vf">+</a>
+
+<div id="vars" markdown="1">
 
 ### *
-
 [\*1](./STAR_1/)
 [\*2](./STAR_2/)
 [\*3](./STAR_3/)
@@ -254,62 +209,47 @@ layout: ns
 [\*verbose-defrecords\*](./STAR_verbose_DASH_defrecords_STAR/)
 [\*warn-on-reflection\*](./STAR_warn_DASH_on_DASH_reflection_STAR/)
 
-
 ### E
-
 [EMPTY-NODE](./EMPTY_DASH_NODE/)
 
-
 ### C
-
 [char-escape-string](./char_DASH_escape_DASH_string/)
 [char-name-string](./char_DASH_name_DASH_string/)
 
-
 ### D
-
 [default-data-readers](./default_DASH_data_DASH_readers/)
 
-
 ### I
-
 [in-ns](./in_DASH_ns/)
 
-
 ### L
-
 [load-file](./load_DASH_file/)
 
-
 ### P
-
 [primitives-classnames](./primitives_DASH_classnames/)
 [print-dup](./print_DASH_dup/)
 [print-method](./print_DASH_method/)
 
-
 ### U
-
 [unquote](./unquote/)
 [unquote-splicing](./unquote_DASH_splicing/)
 
+</div>
 
-## Functions
+
+## Functions <a id="ff">+</a>
+
+<div id="fns" markdown="1">
 
 ### *
-
 [\*](./STAR/)
 [\*'](./STAR__SQUOTE/)
 
-
 ### +
-
 [+](./PLUS/)
 [+'](./PLUS__SQUOTE/)
 
-
 ### -
-
 [-](./DASH/)
 [-'](./DASH__SQUOTE/)
 [->ArrayChunk](./DASH__GT_ArrayChunk/)
@@ -319,32 +259,22 @@ layout: ns
 [-cache-protocol-fn](./DASH_cache_DASH_protocol_DASH_fn/)
 [-reset-methods](./DASH_reset_DASH_methods/)
 
-
 ### /
-
 [/](./SLASH/)
 
-
 ### <
-
 [<](./LT/)
 [<=](./LT__EQ/)
 
-
 ### =
-
 [=](./EQ/)
 [==](./EQ__EQ/)
 
-
 ### >
-
 [>](./GT/)
 [>=](./GT__EQ/)
 
-
 ### A
-
 [accessor](./accessor/)
 [aclone](./aclone/)
 [add-classpath](./add_DASH_classpath/)
@@ -380,9 +310,7 @@ layout: ns
 [await-for](./await_DASH_for/)
 [await1](./await1/)
 
-
 ### B
-
 [bases](./bases/)
 [bean](./bean/)
 [bigdec](./bigdec/)
@@ -409,9 +337,7 @@ layout: ns
 [byte-array](./byte_DASH_array/)
 [bytes](./bytes/)
 
-
 ### C
-
 [cast](./cast/)
 [char](./char/)
 [char-array](./char_DASH_array/)
@@ -450,9 +376,7 @@ layout: ns
 [create-struct](./create_DASH_struct/)
 [cycle](./cycle/)
 
-
 ### D
-
 [dec](./dec/)
 [dec'](./dec_SQUOTE/)
 [decimal?](./decimal_QMARK/)
@@ -478,9 +402,7 @@ layout: ns
 [drop-last](./drop_DASH_last/)
 [drop-while](./drop_DASH_while/)
 
-
 ### E
-
 [empty](./empty/)
 [empty?](./empty_QMARK/)
 [ensure](./ensure/)
@@ -497,9 +419,7 @@ layout: ns
 [extenders](./extenders/)
 [extends?](./extends_QMARK/)
 
-
 ### F
-
 [false?](./false_QMARK/)
 [ffirst](./ffirst/)
 [file-seq](./file_DASH_seq/)
@@ -530,9 +450,7 @@ layout: ns
 [future-done?](./future_DASH_done_QMARK/)
 [future?](./future_QMARK/)
 
-
 ### G
-
 [gensym](./gensym/)
 [get](./get/)
 [get-in](./get_DASH_in/)
@@ -542,9 +460,7 @@ layout: ns
 [get-validator](./get_DASH_validator/)
 [group-by](./group_DASH_by/)
 
-
 ### H
-
 [hash](./hash/)
 [hash-combine](./hash_DASH_combine/)
 [hash-map](./hash_DASH_map/)
@@ -552,9 +468,7 @@ layout: ns
 [hash-set](./hash_DASH_set/)
 [hash-unordered-coll](./hash_DASH_unordered_DASH_coll/)
 
-
 ### I
-
 [identical?](./identical_QMARK/)
 [identity](./identity/)
 [ifn?](./ifn_QMARK/)
@@ -575,14 +489,10 @@ layout: ns
 [iterate](./iterate/)
 [iterator-seq](./iterator_DASH_seq/)
 
-
 ### J
-
 [juxt](./juxt/)
 
-
 ### K
-
 [keep](./keep/)
 [keep-indexed](./keep_DASH_indexed/)
 [key](./key/)
@@ -590,9 +500,7 @@ layout: ns
 [keyword](./keyword/)
 [keyword?](./keyword_QMARK/)
 
-
 ### L
-
 [last](./last/)
 [line-seq](./line_DASH_seq/)
 [list](./list/)
@@ -606,9 +514,7 @@ layout: ns
 [long-array](./long_DASH_array/)
 [longs](./longs/)
 
-
 ### M
-
 [macroexpand](./macroexpand/)
 [macroexpand-1](./macroexpand_DASH_1/)
 [make-array](./make_DASH_array/)
@@ -632,9 +538,7 @@ layout: ns
 [mod](./mod/)
 [munge](./munge/)
 
-
 ### N
-
 [name](./name/)
 [namespace](./namespace/)
 [namespace-munge](./namespace_DASH_munge/)
@@ -666,15 +570,11 @@ layout: ns
 [number?](./number_QMARK/)
 [numerator](./numerator/)
 
-
 ### O
-
 [object-array](./object_DASH_array/)
 [odd?](./odd_QMARK/)
 
-
 ### P
-
 [parents](./parents/)
 [partial](./partial/)
 [partition](./partition/)
@@ -707,14 +607,10 @@ layout: ns
 [proxy-name](./proxy_DASH_name/)
 [push-thread-bindings](./push_DASH_thread_DASH_bindings/)
 
-
 ### Q
-
 [quot](./quot/)
 
-
 ### R
-
 [rand](./rand/)
 [rand-int](./rand_DASH_int/)
 [rand-nth](./rand_DASH_nth/)
@@ -767,9 +663,7 @@ layout: ns
 [rseq](./rseq/)
 [rsubseq](./rsubseq/)
 
-
 ### S
-
 [satisfies?](./satisfies_QMARK/)
 [second](./second/)
 [select-keys](./select_DASH_keys/)
@@ -820,9 +714,7 @@ layout: ns
 [symbol](./symbol/)
 [symbol?](./symbol_QMARK/)
 
-
 ### T
-
 [take](./take/)
 [take-last](./take_DASH_last/)
 [take-nth](./take_DASH_nth/)
@@ -838,9 +730,7 @@ layout: ns
 [true?](./true_QMARK/)
 [type](./type/)
 
-
 ### U
-
 [unchecked-add](./unchecked_DASH_add/)
 [unchecked-add-int](./unchecked_DASH_add_DASH_int/)
 [unchecked-byte](./unchecked_DASH_byte/)
@@ -868,9 +758,7 @@ layout: ns
 [update-proxy](./update_DASH_proxy/)
 [use](./use/)
 
-
 ### V
-
 [val](./val/)
 [vals](./vals/)
 [var-get](./var_DASH_get/)
@@ -882,20 +770,16 @@ layout: ns
 [vector-of](./vector_DASH_of/)
 [vector?](./vector_QMARK/)
 
-
 ### W
-
 [with-bindings\*](./with_DASH_bindings_STAR/)
 [with-meta](./with_DASH_meta/)
 [with-redefs-fn](./with_DASH_redefs_DASH_fn/)
 
-
 ### X
-
 [xml-seq](./xml_DASH_seq/)
 
-
 ### Z
-
 [zero?](./zero_QMARK/)
 [zipmap](./zipmap/)
+
+</div>

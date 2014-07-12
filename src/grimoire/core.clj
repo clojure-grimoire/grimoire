@@ -135,7 +135,7 @@
                         (str "{% include " i " %}\n")))
 
                     (when (= version-str "1.4.0")
-                      (->> examples
+                      (->> @examples
                            (map-indexed write-example)
                            (reduce str)))
 
@@ -188,7 +188,7 @@
       :arglists    arglists
       :src         (#'clojure.repl/source-fn (symbol namespace raw-symbol))
       :examples    (when (= version-str "1.4.0")
-                     (-> (cd/examples-core namespace raw-symbol) :examples))})))
+                     (delay (-> (cd/examples-core namespace raw-symbol) :examples)))})))
 
 (defn var->link
   [v]
@@ -214,11 +214,11 @@
         blocks (group-by f var-seq)
         blocks (sort-by first blocks)]
     (->> (for [[heading vars] blocks]
-           (str (format "### %s\n\n" (-> heading upper-case str))
+           (str (format "### %s\n" (-> heading upper-case str))
                 (->> (for [var (sort-by var->name vars)]
                        (var->link var))
                      (reduce str))))
-         (interpose "\n\n")
+         (interpose "\n")
          (reduce str))))
 
 (defn write-docs-for-specials
@@ -236,7 +236,7 @@
                :raw-symbol  sym
                :arglists    (:forms fake-meta)
                :src         ";; Special forms have no source\n;; Implemented in the compiler."
-               :examples    (-> (cd/examples-core "clojure.core" (name sym)) :examples))))
+               :examples    (delay (-> (cd/examples-core "clojure.core" (name sym)) :examples)))))
       (println "Documented special form" sym))))
 
 
@@ -247,11 +247,11 @@
         blocks  (group-by f var-seq)
         blocks  (sort-by first blocks)]
     (->> (for [[heading vars] blocks]
-           (str (format "### %s\n\n" (-> heading upper-case str))
+           (str (format "### %s\n" (-> heading upper-case str))
                 (->> (for [var (sort-by name vars)]
                        (sym->link var))
                      (reduce str))))
-         (interpose "\n\n")
+         (interpose "\n")
          (reduce str))))
 
 (defn write-docs-for-ns
@@ -301,26 +301,34 @@
                       (str "{% markdown " version-ns-dir  "/index.md %}\n\n")
 
                       (when (= ns 'clojure.core)
-                        (str "## Special Forms\n\n"
-                             (index-specials)))
+                        (str "## Special Forms <a id=\"sff\">+</a>\n\n"
+                             "<div id=\"sforms\" markdown=\"1\">\n\n"
+                             (index-specials)
+                             "\n</div>\n"))
 
                       "\n\n"
 
                       (when macros
-                        (str "## Macros\n\n"
-                             (index-vars macros)))
+                        (str "## Macros <a id=\"mf\">+</a>\n\n"
+                             "<div id=\"macros\" markdown=\"1\">\n\n"
+                             (index-vars macros)
+                             "\n</div>\n"))
 
                       "\n\n"
 
                       (when vars
-                        (str "## Vars\n\n"
-                             (index-vars vars)))
+                        (str "## Vars <a id=\"vf\">+</a>\n\n"
+                             "<div id=\"vars\" markdown=\"1\">\n\n"
+                             (index-vars vars)
+                             "\n</div>\n"))
 
                       "\n\n"
 
                       (when fns
-                        (str "## Functions\n\n"
-                             (index-vars fns))))
+                        (str "## Functions <a id=\"ff\">+</a>\n\n"
+                             "<div id=\"fns\" markdown=\"1\">\n\n"
+                             (index-vars fns)
+                             "\n</div>\n")))
                  (spit f)))))))
 
   (println "Finished" ns)

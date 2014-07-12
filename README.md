@@ -15,16 +15,4 @@ there are a number of templates to build): `jekyll serve -V`.
 
 To rebuild most of the site e.g. examples and index page : `lein run`
 
-To build the cheatsheet home page:
-
-```sh
-$ git clone https://github.com/jafingerhut/clojure-cheatsheets
-$ cd clojure-cheatsheets/src/clj-jvm
-$ lein run links-to-grimoire
-$ cd -
-$ cp clojure-cheatsheets/src/clj-jvm/cheatsheet-full.html .
-$ perl -i -p -e 's%http://grimoire.arrdem.com%{{ site.baseurl }}%g' cheatsheet-full.html
-$ perl -i -p -e 's%/1.6.0%{{ site.clojure_version }}%g' cheatsheet-full.html
-$ perl -i -p -e 's%cheatsheet_files%{{ site.baseurl }}public%g' cheatsheet-full.html
-$ mv -f cheatsheet-full.html _includes/cheatsheet.html
-```
+To build the cheatsheet home page: `./cheatsheet.sh`

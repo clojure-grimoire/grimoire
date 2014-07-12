@@ -265,7 +265,7 @@
 (defn write-docs-for-ns
   [dirs ns]
   (let [[version-dir include-dir]         dirs
-        ns-vars                           (->> (ns-publics ns) keys (remove var-blacklist))
+        ns-vars                           (->> (ns-publics ns) vals (remove var-blacklist))
         macros                            (filter macro? ns-vars)
         fns                               (filter #(and (fn? @%1)
                                                         (not (macro? %1)))

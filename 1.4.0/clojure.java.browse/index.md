@@ -7,10 +7,14 @@ layout: ns
 
 
 
-## Macros <a id="mf">+</a>
 
-<div id="macros" markdown="1">
 
+## Functions <a id="ff">+</a>
+
+<div id="fns" markdown="1">
+
+### B
+[browse-url](./browse_DASH_url/)
 
 </div>
 
@@ -21,15 +25,5 @@ layout: ns
 
 ### *
 [\*open-url-script\*](./STAR_open_DASH_url_DASH_script_STAR/)
-
-</div>
-
-
-## Functions <a id="ff">+</a>
-
-<div id="fns" markdown="1">
-
-### B
-[browse-url](./browse_DASH_url/)
 
 </div>

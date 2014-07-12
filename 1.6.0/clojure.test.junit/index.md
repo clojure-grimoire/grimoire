@@ -17,20 +17,6 @@ layout: ns
 </div>
 
 
-## Vars <a id="vf">+</a>
-
-<div id="vars" markdown="1">
-
-### *
-[\*depth\*](./STAR_depth_STAR/)
-[\*var-context\*](./STAR_var_DASH_context_STAR/)
-
-### J
-[junit-report](./junit_DASH_report/)
-
-</div>
-
-
 ## Functions <a id="ff">+</a>
 
 <div id="fns" markdown="1">
@@ -62,5 +48,19 @@ layout: ns
 
 ### T
 [test-name](./test_DASH_name/)
+
+</div>
+
+
+## Vars <a id="vf">+</a>
+
+<div id="vars" markdown="1">
+
+### *
+[\*depth\*](./STAR_depth_STAR/)
+[\*var-context\*](./STAR_var_DASH_context_STAR/)
+
+### J
+[junit-report](./junit_DASH_report/)
 
 </div>

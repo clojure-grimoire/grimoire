@@ -161,72 +161,6 @@ layout: ns
 </div>
 
 
-## Vars <a id="vf">+</a>
-
-<div id="vars" markdown="1">
-
-### *
-[\*1](./STAR_1/)
-[\*2](./STAR_2/)
-[\*3](./STAR_3/)
-[\*agent\*](./STAR_agent_STAR/)
-[\*allow-unresolved-vars\*](./STAR_allow_DASH_unresolved_DASH_vars_STAR/)
-[\*assert\*](./STAR_assert_STAR/)
-[\*clojure-version\*](./STAR_clojure_DASH_version_STAR/)
-[\*command-line-args\*](./STAR_command_DASH_line_DASH_args_STAR/)
-[\*compile-files\*](./STAR_compile_DASH_files_STAR/)
-[\*compile-path\*](./STAR_compile_DASH_path_STAR/)
-[\*compiler-options\*](./STAR_compiler_DASH_options_STAR/)
-[\*data-readers\*](./STAR_data_DASH_readers_STAR/)
-[\*e](./STAR_e/)
-[\*err\*](./STAR_err_STAR/)
-[\*file\*](./STAR_file_STAR/)
-[\*flush-on-newline\*](./STAR_flush_DASH_on_DASH_newline_STAR/)
-[\*fn-loader\*](./STAR_fn_DASH_loader_STAR/)
-[\*in\*](./STAR_in_STAR/)
-[\*math-context\*](./STAR_math_DASH_context_STAR/)
-[\*ns\*](./STAR_ns_STAR/)
-[\*out\*](./STAR_out_STAR/)
-[\*print-dup\*](./STAR_print_DASH_dup_STAR/)
-[\*print-length\*](./STAR_print_DASH_length_STAR/)
-[\*print-level\*](./STAR_print_DASH_level_STAR/)
-[\*print-meta\*](./STAR_print_DASH_meta_STAR/)
-[\*print-readably\*](./STAR_print_DASH_readably_STAR/)
-[\*read-eval\*](./STAR_read_DASH_eval_STAR/)
-[\*source-path\*](./STAR_source_DASH_path_STAR/)
-[\*unchecked-math\*](./STAR_unchecked_DASH_math_STAR/)
-[\*use-context-classloader\*](./STAR_use_DASH_context_DASH_classloader_STAR/)
-[\*verbose-defrecords\*](./STAR_verbose_DASH_defrecords_STAR/)
-[\*warn-on-reflection\*](./STAR_warn_DASH_on_DASH_reflection_STAR/)
-
-### E
-[EMPTY-NODE](./EMPTY_DASH_NODE/)
-
-### C
-[char-escape-string](./char_DASH_escape_DASH_string/)
-[char-name-string](./char_DASH_name_DASH_string/)
-
-### D
-[default-data-readers](./default_DASH_data_DASH_readers/)
-
-### I
-[in-ns](./in_DASH_ns/)
-
-### L
-[load-file](./load_DASH_file/)
-
-### P
-[primitives-classnames](./primitives_DASH_classnames/)
-[print-dup](./print_DASH_dup/)
-[print-method](./print_DASH_method/)
-
-### U
-[unquote](./unquote/)
-[unquote-splicing](./unquote_DASH_splicing/)
-
-</div>
-
-
 ## Functions <a id="ff">+</a>
 
 <div id="fns" markdown="1">
@@ -760,5 +694,71 @@ layout: ns
 ### Z
 [zero?](./zero_QMARK/)
 [zipmap](./zipmap/)
+
+</div>
+
+
+## Vars <a id="vf">+</a>
+
+<div id="vars" markdown="1">
+
+### *
+[\*1](./STAR_1/)
+[\*2](./STAR_2/)
+[\*3](./STAR_3/)
+[\*agent\*](./STAR_agent_STAR/)
+[\*allow-unresolved-vars\*](./STAR_allow_DASH_unresolved_DASH_vars_STAR/)
+[\*assert\*](./STAR_assert_STAR/)
+[\*clojure-version\*](./STAR_clojure_DASH_version_STAR/)
+[\*command-line-args\*](./STAR_command_DASH_line_DASH_args_STAR/)
+[\*compile-files\*](./STAR_compile_DASH_files_STAR/)
+[\*compile-path\*](./STAR_compile_DASH_path_STAR/)
+[\*compiler-options\*](./STAR_compiler_DASH_options_STAR/)
+[\*data-readers\*](./STAR_data_DASH_readers_STAR/)
+[\*e](./STAR_e/)
+[\*err\*](./STAR_err_STAR/)
+[\*file\*](./STAR_file_STAR/)
+[\*flush-on-newline\*](./STAR_flush_DASH_on_DASH_newline_STAR/)
+[\*fn-loader\*](./STAR_fn_DASH_loader_STAR/)
+[\*in\*](./STAR_in_STAR/)
+[\*math-context\*](./STAR_math_DASH_context_STAR/)
+[\*ns\*](./STAR_ns_STAR/)
+[\*out\*](./STAR_out_STAR/)
+[\*print-dup\*](./STAR_print_DASH_dup_STAR/)
+[\*print-length\*](./STAR_print_DASH_length_STAR/)
+[\*print-level\*](./STAR_print_DASH_level_STAR/)
+[\*print-meta\*](./STAR_print_DASH_meta_STAR/)
+[\*print-readably\*](./STAR_print_DASH_readably_STAR/)
+[\*read-eval\*](./STAR_read_DASH_eval_STAR/)
+[\*source-path\*](./STAR_source_DASH_path_STAR/)
+[\*unchecked-math\*](./STAR_unchecked_DASH_math_STAR/)
+[\*use-context-classloader\*](./STAR_use_DASH_context_DASH_classloader_STAR/)
+[\*verbose-defrecords\*](./STAR_verbose_DASH_defrecords_STAR/)
+[\*warn-on-reflection\*](./STAR_warn_DASH_on_DASH_reflection_STAR/)
+
+### E
+[EMPTY-NODE](./EMPTY_DASH_NODE/)
+
+### C
+[char-escape-string](./char_DASH_escape_DASH_string/)
+[char-name-string](./char_DASH_name_DASH_string/)
+
+### D
+[default-data-readers](./default_DASH_data_DASH_readers/)
+
+### I
+[in-ns](./in_DASH_ns/)
+
+### L
+[load-file](./load_DASH_file/)
+
+### P
+[primitives-classnames](./primitives_DASH_classnames/)
+[print-dup](./print_DASH_dup/)
+[print-method](./print_DASH_method/)
+
+### U
+[unquote](./unquote/)
+[unquote-splicing](./unquote_DASH_splicing/)
 
 </div>

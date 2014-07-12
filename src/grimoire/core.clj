@@ -3,6 +3,7 @@
   (:require [clojure.java.io :refer :all]
             [clojure.string :refer [lower-case upper-case replace-first replace]]
             [clojure.repl]
+            [clojure.data]
             [cd-client.core :as cd])
   (:import [java.io LineNumberReader InputStreamReader PushbackReader]
            [clojure.lang RT]))
@@ -169,6 +170,11 @@
                (format)
                (spit dst-file)))))))
 
+;; FIXME
+;;   This should be a configuration value not hard coded.
+(def var-blacklist
+  #{#'clojure.data/Diff})
+
 (defn write-docs-for-var
   [[ns-dir inc-dir :as files] var]
   {:pre [(var? var)]}
@@ -178,17 +184,18 @@
         {:keys [arglists doc] :as meta}   (meta var)
         {:keys [major minor incremental]} *clojure-version*
         version-str                       (format "%s.%s.%s" major minor incremental)]
-    (write-docs
-     files
-     {:version-str version-str
-      :namespace   namespace
-      :symbol      s
-      :raw-symbol  raw-symbol
-      :doc         doc
-      :arglists    arglists
-      :src         (#'clojure.repl/source-fn (symbol namespace raw-symbol))
-      :examples    (when (= version-str "1.4.0")
-                     (delay (-> (cd/examples-core namespace raw-symbol) :examples)))})))
+    (when-not (var-blacklist var)
+      (write-docs
+       files
+       {:version-str version-str
+        :namespace   namespace
+        :symbol      s
+        :raw-symbol  raw-symbol
+        :doc         doc
+        :arglists    arglists
+        :src         (#'clojure.repl/source-fn (symbol namespace raw-symbol))
+        :examples    (when (= version-str "1.4.0")
+                       (delay (-> (cd/examples-core namespace raw-symbol) :examples)))}))))
 
 (defn var->link
   [v]
@@ -210,9 +217,10 @@
   [var-seq]
   {:pre  [(every? var? var-seq)]
    :post [(string? %)]}
-  (let [f      (comp first var->name)
-        blocks (group-by f var-seq)
-        blocks (sort-by first blocks)]
+  (let [f       (comp first var->name)
+        var-seq (remove var-blacklist var-seq) ;; purge blacklisted vars
+        blocks  (group-by f var-seq)
+        blocks  (sort-by first blocks)]
     (->> (for [[heading vars] blocks]
            (str (format "### %s\n" (-> heading upper-case str))
                 (->> (for [var (sort-by var->name vars)]
@@ -257,7 +265,7 @@
 (defn write-docs-for-ns
   [dirs ns]
   (let [[version-dir include-dir]         dirs
-        ns-vars                           (map second (ns-publics ns))
+        ns-vars                           (->> (ns-publics ns) keys (remove var-blacklist))
         macros                            (filter macro? ns-vars)
         fns                               (filter #(and (fn? @%1)
                                                         (not (macro? %1)))
@@ -305,10 +313,9 @@
                              "<div id=\"sforms\" markdown=\"1\">\n\n"
                              (index-specials)
                              "\n</div>\n"))
-
                       "\n\n"
 
-                      (when macros
+                      (when-not (empty? macros)
                         (str "## Macros <a id=\"mf\">+</a>\n\n"
                              "<div id=\"macros\" markdown=\"1\">\n\n"
                              (index-vars macros)
@@ -316,18 +323,18 @@
 
                       "\n\n"
 
-                      (when vars
-                        (str "## Vars <a id=\"vf\">+</a>\n\n"
-                             "<div id=\"vars\" markdown=\"1\">\n\n"
-                             (index-vars vars)
+                      (when-not (empty? fns)
+                        (str "## Functions <a id=\"ff\">+</a>\n\n"
+                             "<div id=\"fns\" markdown=\"1\">\n\n"
+                             (index-vars fns)
                              "\n</div>\n"))
 
                       "\n\n"
 
-                      (when fns
-                        (str "## Functions <a id=\"ff\">+</a>\n\n"
-                             "<div id=\"fns\" markdown=\"1\">\n\n"
-                             (index-vars fns)
+                      (when-not (empty? vars)
+                        (str "## Vars <a id=\"vf\">+</a>\n\n"
+                             "<div id=\"vars\" markdown=\"1\">\n\n"
+                             (index-vars vars)
                              "\n</div>\n")))
                  (spit f)))))))
 

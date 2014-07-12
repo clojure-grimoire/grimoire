@@ -104,22 +104,23 @@
 
       ;; write docstring file
       (let [inc-doc-file (file sym-inc-dir "docs.md")]
-        (->> (format (str "## Arities\n"
-                          "%s\n\n"
-                          "## Documentation\n"
-                          "{%%raw%%}\n"
-                          "%s\n"
-                          "{%%endraw%%}\n")
-                     (->> arglists
-                          (interpose \newline)
-                          (reduce str))
-                     doc)
-             (spit inc-doc-file)))
+        (when-not (.exists inc-doc-file)
+          (->> (format (str "## Arities\n"
+                            "%s\n\n"
+                            "## Documentation\n"
+                            "{%%raw%%}\n"
+                            "%s\n"
+                            "{%%endraw%%}\n")
+                       (->> arglists
+                            (interpose \newline)
+                            (reduce str))
+                       doc)
+               (spit inc-doc-file))))
 
       (when src
         ;; write source file
         (let [inc-src-file (file sym-inc-dir "src.md")]
-          (when-not false ; (.exists inc-src-file)
+          (when-not (.exists inc-src-file)
             (->> (format (str (lq "highlight" "clojure")
                               "%s\n"
                               (lq "endhighlight"))
@@ -128,7 +129,7 @@
 
       (let [ex-file (file sym-inc-dir "examples.md")]
         ;; ensure the examples file
-        (when-not false ; (.exists ex-file)
+        (when-not (.exists ex-file)
           (->> (str (let [v (prior-clojure-version version-str)
                           i (str v "/" namespace "/" symbol "/examples.md")
                           f (str "./_includes/" i)]
@@ -265,7 +266,7 @@
 (defn write-docs-for-ns
   [dirs ns]
   (let [[version-dir include-dir]         dirs
-        ns-vars                           (->> (ns-publics ns) keys (remove var-blacklist))
+        ns-vars                           (->> (ns-publics ns) vals (remove var-blacklist))
         macros                            (filter macro? ns-vars)
         fns                               (filter #(and (fn? @%1)
                                                         (not (macro? %1)))
@@ -281,11 +282,7 @@
 
       ;; write per symbol docs
       (doseq [var ns-vars]
-        (try
-          (write-docs-for-var files var)
-          (println "Documented" var)
-          (catch java.lang.AssertionError e
-            (println "Warning: Failed to write docs for" var))))
+        (write-docs-for-var files var))
 
       (when (= ns 'clojure.core)
         (write-docs-for-specials files))

@@ -5,8 +5,6 @@ layout: ns
 
 {% markdown 1.5.0/clojure.pprint/index.md %}
 
-<a id="tall">Toggle all</a>
-
 
 
 ## Macros <a id="mf">+</a>

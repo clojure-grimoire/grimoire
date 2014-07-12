@@ -5,8 +5,6 @@ layout: ns
 
 {% markdown 1.4.0/clojure.core/index.md %}
 
-<a id="tall">Toggle all</a>
-
 ## Special Forms <a id="sff">+</a>
 
 <div id="sforms" markdown="1">

@@ -5,32 +5,40 @@ layout: ns
 
 {% markdown 1.4.0/clojure.data/index.md %}
 
-
-
-## Macros
+<a id="tall">Toggle all</a>
 
 
 
-## Vars
+## Macros <a id="mf">+</a>
+
+<div id="macros" markdown="1">
+
+
+</div>
+
+
+## Vars <a id="vf">+</a>
+
+<div id="vars" markdown="1">
 
 ### D
-
 [Diff](./Diff/)
 
-
 ### E
-
 [EqualityPartition](./EqualityPartition/)
 
+</div>
 
-## Functions
+
+## Functions <a id="ff">+</a>
+
+<div id="fns" markdown="1">
 
 ### D
-
 [diff](./diff/)
 [diff-similar](./diff_DASH_similar/)
 
-
 ### E
-
 [equality-partition](./equality_DASH_partition/)
+
+</div>

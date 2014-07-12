@@ -119,7 +119,7 @@
       (when src
         ;; write source file
         (let [inc-src-file (file sym-inc-dir "src.md")]
-          (when-not false ; (.exists inc-src-file)
+          (when-not (.exists inc-src-file)
             (->> (format (str (lq "highlight" "clojure")
                               "%s\n"
                               (lq "endhighlight"))
@@ -128,7 +128,7 @@
 
       (let [ex-file (file sym-inc-dir "examples.md")]
         ;; ensure the examples file
-        (when-not false ; (.exists ex-file)
+        (when-not (.exists ex-file)
           (->> (str (let [v (prior-clojure-version version-str)
                           i (str v "/" namespace "/" symbol "/examples.md")
                           f (str "./_includes/" i)]

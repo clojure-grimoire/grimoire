@@ -7,28 +7,6 @@ layout: ns
 
 
 
-## Macros <a id="mf">+</a>
-
-<div id="macros" markdown="1">
-
-
-</div>
-
-
-## Vars <a id="vf">+</a>
-
-<div id="vars" markdown="1">
-
-### C
-[Coercions](./Coercions/)
-
-### I
-[IOFactory](./IOFactory/)
-
-### D
-[default-streams-impl](./default_DASH_streams_DASH_impl/)
-
-</div>
 
 
 ## Functions <a id="ff">+</a>
@@ -68,5 +46,21 @@ layout: ns
 
 ### W
 [writer](./writer/)
+
+</div>
+
+
+## Vars <a id="vf">+</a>
+
+<div id="vars" markdown="1">
+
+### C
+[Coercions](./Coercions/)
+
+### I
+[IOFactory](./IOFactory/)
+
+### D
+[default-streams-impl](./default_DASH_streams_DASH_impl/)
 
 </div>

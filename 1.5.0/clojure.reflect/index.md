@@ -7,31 +7,6 @@ layout: ns
 
 
 
-## Macros <a id="mf">+</a>
-
-<div id="macros" markdown="1">
-
-
-</div>
-
-
-## Vars <a id="vf">+</a>
-
-<div id="vars" markdown="1">
-
-### C
-[ClassResolver](./ClassResolver/)
-
-### R
-[Reflector](./Reflector/)
-
-### T
-[TypeReference](./TypeReference/)
-
-### F
-[flag-descriptors](./flag_DASH_descriptors/)
-
-</div>
 
 
 ## Functions <a id="ff">+</a>
@@ -60,5 +35,24 @@ layout: ns
 ### T
 [type-reflect](./type_DASH_reflect/)
 [typename](./typename/)
+
+</div>
+
+
+## Vars <a id="vf">+</a>
+
+<div id="vars" markdown="1">
+
+### C
+[ClassResolver](./ClassResolver/)
+
+### R
+[Reflector](./Reflector/)
+
+### T
+[TypeReference](./TypeReference/)
+
+### F
+[flag-descriptors](./flag_DASH_descriptors/)
 
 </div>

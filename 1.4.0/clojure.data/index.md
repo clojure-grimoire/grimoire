@@ -7,25 +7,6 @@ layout: ns
 
 
 
-## Macros <a id="mf">+</a>
-
-<div id="macros" markdown="1">
-
-
-</div>
-
-
-## Vars <a id="vf">+</a>
-
-<div id="vars" markdown="1">
-
-### D
-[Diff](./Diff/)
-
-### E
-[EqualityPartition](./EqualityPartition/)
-
-</div>
 
 
 ## Functions <a id="ff">+</a>
@@ -38,5 +19,15 @@ layout: ns
 
 ### E
 [equality-partition](./equality_DASH_partition/)
+
+</div>
+
+
+## Vars <a id="vf">+</a>
+
+<div id="vars" markdown="1">
+
+### E
+[EqualityPartition](./EqualityPartition/)
 
 </div>

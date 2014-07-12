@@ -18,6 +18,16 @@ layout: ns
 </div>
 
 
+## Functions <a id="ff">+</a>
+
+<div id="fns" markdown="1">
+
+### S
+[sh](./sh/)
+
+</div>
+
+
 ## Vars <a id="vf">+</a>
 
 <div id="vars" markdown="1">
@@ -25,15 +35,5 @@ layout: ns
 ### *
 [\*sh-dir\*](./STAR_sh_DASH_dir_STAR/)
 [\*sh-env\*](./STAR_sh_DASH_env_STAR/)
-
-</div>
-
-
-## Functions <a id="ff">+</a>
-
-<div id="fns" markdown="1">
-
-### S
-[sh](./sh/)
 
 </div>

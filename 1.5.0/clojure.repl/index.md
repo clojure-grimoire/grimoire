@@ -21,14 +21,6 @@ layout: ns
 </div>
 
 
-## Vars <a id="vf">+</a>
-
-<div id="vars" markdown="1">
-
-
-</div>
-
-
 ## Functions <a id="ff">+</a>
 
 <div id="fns" markdown="1">
@@ -58,3 +50,5 @@ layout: ns
 [thread-stopper](./thread_DASH_stopper/)
 
 </div>
+
+

@@ -7,10 +7,21 @@ layout: ns
 
 
 
-## Macros <a id="mf">+</a>
 
-<div id="macros" markdown="1">
 
+## Functions <a id="ff">+</a>
+
+<div id="fns" markdown="1">
+
+### E
+[emit](./emit/)
+[emit-element](./emit_DASH_element/)
+
+### P
+[parse](./parse/)
+
+### S
+[startparse-sax](./startparse_DASH_sax/)
 
 </div>
 
@@ -37,22 +48,5 @@ layout: ns
 
 ### T
 [tag](./tag/)
-
-</div>
-
-
-## Functions <a id="ff">+</a>
-
-<div id="fns" markdown="1">
-
-### E
-[emit](./emit/)
-[emit-element](./emit_DASH_element/)
-
-### P
-[parse](./parse/)
-
-### S
-[startparse-sax](./startparse_DASH_sax/)
 
 </div>

@@ -35,31 +35,6 @@ layout: ns
 </div>
 
 
-## Vars <a id="vf">+</a>
-
-<div id="vars" markdown="1">
-
-### *
-[\*initial-report-counters\*](./STAR_initial_DASH_report_DASH_counters_STAR/)
-[\*load-tests\*](./STAR_load_DASH_tests_STAR/)
-[\*report-counters\*](./STAR_report_DASH_counters_STAR/)
-[\*stack-trace-depth\*](./STAR_stack_DASH_trace_DASH_depth_STAR/)
-[\*test-out\*](./STAR_test_DASH_out_STAR/)
-[\*testing-contexts\*](./STAR_testing_DASH_contexts_STAR/)
-[\*testing-vars\*](./STAR_testing_DASH_vars_STAR/)
-
-### A
-[assert-expr](./assert_DASH_expr/)
-
-### R
-[report](./report/)
-
-### U
-[use-fixtures](./use_DASH_fixtures/)
-
-</div>
-
-
 ## Functions <a id="ff">+</a>
 
 <div id="fns" markdown="1">
@@ -101,5 +76,30 @@ layout: ns
 [test-vars](./test_DASH_vars/)
 [testing-contexts-str](./testing_DASH_contexts_DASH_str/)
 [testing-vars-str](./testing_DASH_vars_DASH_str/)
+
+</div>
+
+
+## Vars <a id="vf">+</a>
+
+<div id="vars" markdown="1">
+
+### *
+[\*initial-report-counters\*](./STAR_initial_DASH_report_DASH_counters_STAR/)
+[\*load-tests\*](./STAR_load_DASH_tests_STAR/)
+[\*report-counters\*](./STAR_report_DASH_counters_STAR/)
+[\*stack-trace-depth\*](./STAR_stack_DASH_trace_DASH_depth_STAR/)
+[\*test-out\*](./STAR_test_DASH_out_STAR/)
+[\*testing-contexts\*](./STAR_testing_DASH_contexts_STAR/)
+[\*testing-vars\*](./STAR_testing_DASH_vars_STAR/)
+
+### A
+[assert-expr](./assert_DASH_expr/)
+
+### R
+[report](./report/)
+
+### U
+[use-fixtures](./use_DASH_fixtures/)
 
 </div>

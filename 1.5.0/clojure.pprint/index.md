@@ -26,28 +26,6 @@ layout: ns
 </div>
 
 
-## Vars <a id="vf">+</a>
-
-<div id="vars" markdown="1">
-
-### *
-[\*print-base\*](./STAR_print_DASH_base_STAR/)
-[\*print-miser-width\*](./STAR_print_DASH_miser_DASH_width_STAR/)
-[\*print-pprint-dispatch\*](./STAR_print_DASH_pprint_DASH_dispatch_STAR/)
-[\*print-pretty\*](./STAR_print_DASH_pretty_STAR/)
-[\*print-radix\*](./STAR_print_DASH_radix_STAR/)
-[\*print-right-margin\*](./STAR_print_DASH_right_DASH_margin_STAR/)
-[\*print-suppress-namespaces\*](./STAR_print_DASH_suppress_DASH_namespaces_STAR/)
-
-### C
-[code-dispatch](./code_DASH_dispatch/)
-
-### S
-[simple-dispatch](./simple_DASH_dispatch/)
-
-</div>
-
-
 ## Functions <a id="ff">+</a>
 
 <div id="fns" markdown="1">
@@ -74,5 +52,27 @@ layout: ns
 ### W
 [write](./write/)
 [write-out](./write_DASH_out/)
+
+</div>
+
+
+## Vars <a id="vf">+</a>
+
+<div id="vars" markdown="1">
+
+### *
+[\*print-base\*](./STAR_print_DASH_base_STAR/)
+[\*print-miser-width\*](./STAR_print_DASH_miser_DASH_width_STAR/)
+[\*print-pprint-dispatch\*](./STAR_print_DASH_pprint_DASH_dispatch_STAR/)
+[\*print-pretty\*](./STAR_print_DASH_pretty_STAR/)
+[\*print-radix\*](./STAR_print_DASH_radix_STAR/)
+[\*print-right-margin\*](./STAR_print_DASH_right_DASH_margin_STAR/)
+[\*print-suppress-namespaces\*](./STAR_print_DASH_suppress_DASH_namespaces_STAR/)
+
+### C
+[code-dispatch](./code_DASH_dispatch/)
+
+### S
+[simple-dispatch](./simple_DASH_dispatch/)
 
 </div>

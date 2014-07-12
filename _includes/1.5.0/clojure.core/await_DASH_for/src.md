@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn await-for
   "Blocks the current thread until all actions dispatched thus
   far (from this thread or agent) to the agents have occurred, or the

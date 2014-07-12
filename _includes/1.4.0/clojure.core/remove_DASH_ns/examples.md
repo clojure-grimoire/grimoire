@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Let's create a namespace and then remove it
 

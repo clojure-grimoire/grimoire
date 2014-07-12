@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Part of a definterface from a Clojure program for the n-body problem
 ;; at the Computer Language Benchmarks Game web site.

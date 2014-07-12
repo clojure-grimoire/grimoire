@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ^String trimr
   "Removes whitespace from the right side of string."
   {:added "1.2"}

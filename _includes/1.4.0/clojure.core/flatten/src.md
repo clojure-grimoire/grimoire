@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn flatten
   "Takes any nested combination of sequential things (lists, vectors,
   etc.) and returns their contents as a single, flat sequence.

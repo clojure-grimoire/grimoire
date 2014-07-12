@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn proxy-mappings
   "Takes a proxy instance and returns the proxy's fn map."
   {:added "1.0"}

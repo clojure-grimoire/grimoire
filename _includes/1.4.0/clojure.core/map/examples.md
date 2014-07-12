@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (map inc [1 2 3 4 5])
 (2 3 4 5 6)
@@ -41,7 +41,7 @@ user=> (apply map vector [[:a :b :c]
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (map #(vector (first %) (* 2 (second %)))
             {:a 1 :b 2 :c 3})
@@ -56,7 +56,7 @@ user=> (into {} *1)
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Use a hash-map as a function to translate values in a collection from the
 ;; given key to the associated value
@@ -73,7 +73,7 @@ user=> (filter identity (map {2 "two" 3 "three"} [5 3 2]))
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; mapping over a hash-map applies (into) first.
 ;; need to use functions that deal with arrays (fn [[key val]] ...)
@@ -96,7 +96,7 @@ nil nil)
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (map fn [a 4 x]
         [b 5 y]
@@ -124,7 +124,7 @@ user=> (list (list 1 'a 4) (list 2 'b 5))
 ### Example 5
 [permalink](#example-5)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; map passed two collection arguments. From 4Clojure Problem #157
 

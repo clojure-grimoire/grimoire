@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn zipmap
   "Returns a map with the keys mapped to the corresponding vals."
   {:added "1.0"

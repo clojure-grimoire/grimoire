@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ns-unmap
   "Removes the mappings for the symbol from the namespace."
   {:added "1.0"

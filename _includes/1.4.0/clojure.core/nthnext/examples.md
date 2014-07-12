@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (nthnext (range 10) 3)
 (3 4 5 6 7 8 9)

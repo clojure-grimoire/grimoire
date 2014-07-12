@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def content-handler
   (let [push-content (fn [e c]
                        (assoc e :content (conj (or (:content e) []) c)))

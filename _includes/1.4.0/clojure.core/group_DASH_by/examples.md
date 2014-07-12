@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (group-by count ["a" "as" "asd" "aa" "asdf" "qwer"])
 {1 ["a"], 2 ["as" "aa"], 3 ["asd"], 4 ["asdf" "qwer"]}
@@ -15,7 +15,7 @@ user=> (group-by odd? (range 10))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; group by a primary key
 user=> (group-by :user-id [{:user-id 1 :uri "/"}

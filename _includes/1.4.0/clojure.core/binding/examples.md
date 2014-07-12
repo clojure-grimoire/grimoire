@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Here are the definitions.
 (defn mymax [x y]
@@ -26,7 +26,7 @@ user=> (binding [max mymax]
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; As of Clojure 1.3, vars need to be explicitly marked as ^:dynamic in order for
 ;; them to be dynamically rebindable:
@@ -53,7 +53,7 @@ user=> (+ x y)
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;;Use t like a "template"
 

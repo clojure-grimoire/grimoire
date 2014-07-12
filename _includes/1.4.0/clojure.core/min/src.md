@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn min
   "Returns the least of the nums."
   {:added "1.0"

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ref
   "Creates and returns a Ref with an initial value of x and zero or
   more options (in any order):

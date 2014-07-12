@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; first create a Java File object using the file function in
 ;; the clojure.java.io package and use that object to create a file-seq

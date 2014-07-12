@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn object-array
   "Creates an array of objects"
   {:inline (fn [arg] `(. clojure.lang.RT object_array ~arg))

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (clojure.string/upper-case "MiXeD cAsE")
 "MIXED CASE"{% endraw %}
@@ -11,7 +11,7 @@ user=> (clojure.string/upper-case "MiXeD cAsE")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Non-character symbols will be returned back
 user=> (clojure.string/upper-case ",.!@#$%^&*()")

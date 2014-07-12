@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro definterface 
   [name & sigs]
   (let [tag (fn [x] (or (:tag (meta x)) Object))

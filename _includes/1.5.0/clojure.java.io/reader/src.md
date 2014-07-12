@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ^Reader reader
   "Attempts to coerce its argument into an open java.io.Reader.
    Default implementations always return a java.io.BufferedReader.

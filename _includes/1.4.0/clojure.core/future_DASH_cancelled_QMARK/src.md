@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn future-cancelled?
   "Returns true if future f is cancelled"
   {:added "1.1"

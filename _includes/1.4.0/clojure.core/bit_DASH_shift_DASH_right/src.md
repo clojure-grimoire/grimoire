@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn bit-shift-right
   "Bitwise shift right"
   {:inline (fn [x n] `(. clojure.lang.Numbers (shiftRight ~x ~n)))

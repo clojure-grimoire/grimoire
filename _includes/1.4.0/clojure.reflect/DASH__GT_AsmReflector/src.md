@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (deftype AsmReflector [class-resolver]
   Reflector
   (do-reflect [_ typeref]

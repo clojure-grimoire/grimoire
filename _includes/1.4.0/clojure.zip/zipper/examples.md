@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Some clojure.zip functions will overwrite clojure.core's definitions
 (use 'clojure.zip)

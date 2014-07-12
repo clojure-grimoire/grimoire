@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; do is used to evaluate multiple expressions in order, usually for the
 ;; purpose of evaluating exprs that have side-effects (such as printing

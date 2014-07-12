@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; The key concept to understand here is that transients are
 ;; not meant to be `bashed in place`; always use the value

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Note that even though println returns nil, doto still returns the HashMap object
 user> (doto (java.util.HashMap.)
@@ -17,7 +17,7 @@ user> (doto (java.util.HashMap.)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; quick demonstration of using a Collections function on the resulting ArrayList
 
@@ -36,7 +36,7 @@ user=>{% endraw %}
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; careful when calling 'dotimes' from within a 'doto' statement
 user=> (doto (java.util.ArrayList.)

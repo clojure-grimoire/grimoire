@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Calculates the hashes for x and y and produces a new hash that represents
 ;; the combination of the two.

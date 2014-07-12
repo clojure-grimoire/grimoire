@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (clojure.string/replace "The color is red" #"red" "blue")
 "The color is blue"{% endraw %}
@@ -11,7 +11,7 @@ user=> (clojure.string/replace "The color is red" #"red" "blue")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (clojure.string/replace "The color is red." #"[aeiou]"  #(str %1 %1))
 "Thee cooloor iis reed."
@@ -22,7 +22,7 @@ user=> (clojure.string/replace "The color is red." #"[aeiou]"  #(str %1 %1))
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Note: When replace-first or replace have a regex pattern as their
 ;; match argument, dollar sign ($) and backslash (\) characters in
@@ -61,7 +61,7 @@ user=> (str/replace "fabulous fodder foo food" #"f(o+)(\S+)" (re-qr "$2$1"))
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; replaces all a's with 1 and all b's with 2
 user=>(clojure.string/replace "a b a" #"a|b" {"a" "1" "b" "2"})
@@ -72,7 +72,7 @@ user=>(clojure.string/replace "a b a" #"a|b" {"a" "1" "b" "2"})
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Note: See clojure.core/subs for discussion of behavior of substrings
 ;; holding onto references of the original strings, which can
@@ -83,7 +83,7 @@ user=>(clojure.string/replace "a b a" #"a|b" {"a" "1" "b" "2"})
 ### Example 5
 [permalink](#example-5)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; To title case
 (clojure.string/replace "hello world" #"\b." #(.toUpperCase %1))

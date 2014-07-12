@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (fn? 5)
 false
@@ -17,7 +17,7 @@ true{% endraw %}
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Even though maps, sets, vectors and keywords behave as functions:
 user=> ({:a 1} :a)

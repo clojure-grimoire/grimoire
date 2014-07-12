@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn alength
   "Returns the length of the Java array. Works on arrays of all
   types."

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn hash-map
   "keyval => key val
   Returns a new hash map with supplied mappings.  If any keys are

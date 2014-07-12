@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn testing-contexts-str
   "Returns a string representation of the current test context. Joins
   strings in *testing-contexts* with spaces."

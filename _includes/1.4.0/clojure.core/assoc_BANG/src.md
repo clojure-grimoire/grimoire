@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn assoc!
   "Alpha - subject to change.
   When applied to a transient map, adds mapping of key(s) to

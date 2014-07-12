@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn left
   "Returns the loc of the left sibling of the node at this loc, or nil"
   {:added "1.0"}

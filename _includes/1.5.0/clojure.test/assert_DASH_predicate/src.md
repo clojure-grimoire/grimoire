@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn assert-predicate
   "Returns generic assertion code for any functional predicate.  The
   'expected' argument to 'report' will contains the original form, the

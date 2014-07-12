@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (ffirst '([]))
 nil
@@ -17,7 +17,7 @@ a{% endraw %}
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (first {:b 2 :a 1 :c 3})
 [:b 2]

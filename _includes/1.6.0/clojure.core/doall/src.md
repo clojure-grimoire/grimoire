@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn doall
   "When lazy sequences are produced via functions that have side
   effects, any effects other than those needed to produce the first

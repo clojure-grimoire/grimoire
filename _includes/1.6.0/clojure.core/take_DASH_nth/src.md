@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn take-nth
   "Returns a lazy seq of every nth item in coll."
   {:added "1.0"

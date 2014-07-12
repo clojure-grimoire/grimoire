@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro defrecord
   "(defrecord name [fields*]  options* specs*)
   

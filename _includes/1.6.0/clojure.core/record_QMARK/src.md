@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn record?
   "Returns true if x is a record"
   {:added "1.6"

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn validated
   "Return a function which constructs and instant by calling constructor
 after first validting that those arguments are in range and otherwise

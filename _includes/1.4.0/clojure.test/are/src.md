@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro are
   "Checks multiple assertions with a template expression.
   See clojure.template/do-template for an explanation of

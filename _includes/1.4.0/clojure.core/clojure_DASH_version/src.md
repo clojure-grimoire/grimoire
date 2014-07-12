@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn
   clojure-version 
   "Returns clojure version as a printable string."

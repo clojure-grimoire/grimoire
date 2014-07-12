@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ratio?
   "Returns true if n is a Ratio"
   {:added "1.0"

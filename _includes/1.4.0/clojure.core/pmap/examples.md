@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; This function operates just like map.  See
 ;; clojure.core/map for more details.
@@ -13,7 +13,7 @@ user=> (pmap inc [1 2 3 4 5])
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; create a function that simulates a long running process using Thread/sleep
 (defn long-running-job [n]
@@ -37,7 +37,7 @@ user=> (time (doall (pmap long-running-job (range 4))))
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; pmap is implemented using Clojure futures.  See examples for 'future'
 ;; for discussion of an undesirable 1-minute wait that can occur before

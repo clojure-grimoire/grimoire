@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn zero?
   "Returns true if num is zero, else false"
   {

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;looping is recursive in Clojure, the loop construct is a hack so that something like tail-recursive-optimization works in clojure.
 user=> (defn my-re-seq [re string]
@@ -27,7 +27,7 @@ user=> (my-re-seq #"\d" "0123456789")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Read decoded MP3 data in loop (requires mp3plugin.jar on class path)
 ;; http://java.sun.com/javase/technologies/desktop/media/jmf/mp3/download.html
@@ -50,7 +50,7 @@ user=> (my-re-seq #"\d" "0123456789")
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (loop [x 10]
   (when (> x 1)
@@ -62,7 +62,7 @@ user=> (my-re-seq #"\d" "0123456789")
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defn find-needle [needle haystack]
   ;loop binds initial values once,
@@ -93,7 +93,7 @@ user=>(find-needle "|" "hay|stack")
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; makes a simple template function that can be used in mustache way: http://mustache.github.com/
 (defn template [tpl env]

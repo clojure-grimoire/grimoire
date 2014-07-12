@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn disj!
   "Alpha - subject to change.
   disj[oin]. Returns a transient set of the same (hashed/sorted) type, that

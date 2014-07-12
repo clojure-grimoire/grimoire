@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn into-array
   "Returns an array with components set to the values in aseq. The array's
   component type is type if provided, or the type of the first value in

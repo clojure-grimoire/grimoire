@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Note how we always use the return value of disj! and conj! in these examples
 ;; for all future modifications, rather than (incorrectly) ignoring the return

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn intern
   "Finds or creates a var named by the symbol name in the namespace
   ns (which can be a symbol or a namespace), setting its root binding

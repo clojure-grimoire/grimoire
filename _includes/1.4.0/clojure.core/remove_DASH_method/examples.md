@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; long example showing setting up a multi-method, then removing one of the
 ;; methods, showing the multi-method has been removed

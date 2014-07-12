@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def
 
  ^{:doc "Like defn, but the resulting function name is declared as a

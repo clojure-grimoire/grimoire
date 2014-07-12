@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn bit-clear
   "Clear bit at index n"
   {:added "1.0"

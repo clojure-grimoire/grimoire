@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn path
   "Returns a seq of nodes leading to this loc"
   {:added "1.0"}

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn dissoc!
   "Returns a transient map that doesn't contain a mapping for key(s)."
   {:added "1.1"

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro with-redefs
   "binding => var-symbol temp-value-expr
 

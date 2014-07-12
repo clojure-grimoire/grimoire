@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn alias
   "Add an alias in the current namespace to another
   namespace. Arguments are two symbols: the alias to be used, and

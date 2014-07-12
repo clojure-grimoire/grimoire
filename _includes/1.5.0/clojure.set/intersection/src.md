@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn intersection
   "Return a set that is the intersection of the input sets"
   {:added "1.0"}

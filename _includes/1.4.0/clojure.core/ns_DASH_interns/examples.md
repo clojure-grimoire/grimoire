@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (take 2 (ns-interns `clojure.core))
 ([sorted-map #'clojure.core/sorted-map] [read-line #'clojure.core/read-line])
@@ -18,7 +18,7 @@ user=>{% endraw %}
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; See also http://clojure.org/namespaces for information on namespaces in Clojure and how to inspect and manipulate them{% endraw %}
 {% endhighlight %}

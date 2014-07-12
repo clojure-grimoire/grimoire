@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn vals
   "Returns a sequence of the map's values."
   {:added "1.0"

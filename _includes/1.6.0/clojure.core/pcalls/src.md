@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn pcalls
   "Executes the no-arg fns in parallel, returning a lazy sequence of
   their values"

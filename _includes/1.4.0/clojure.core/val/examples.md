@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (map val {:a 1 :b 2})
 (1 2)
@@ -12,7 +12,7 @@ user=> (map val {:a 1 :b 2})
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (val (first {:one :two}))
 :two{% endraw %}
@@ -22,7 +22,7 @@ user=> (map val {:a 1 :b 2})
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;syntactic sugar for (val)
 (:doc (meta #'meta)){% endraw %}

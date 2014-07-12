@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 <pre>
 user=> ((some-fn even?) 1)
@@ -17,7 +17,7 @@ true
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; `some-fn` is useful for when you'd use `some` (to find out if any
 ;; values in a given coll satisfy some predicate), but have more than
@@ -39,7 +39,7 @@ true
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;;; http://en.wikipedia.org/wiki/Fizz_buzz
 (def fizzbuzz

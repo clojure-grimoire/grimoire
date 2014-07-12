@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn prewalk-replace
   "Recursively transforms form by replacing keys in smap with their
   values.  Like clojure/replace but works on any data structure.  Does

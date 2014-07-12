@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmulti use-fixtures
   "Wrap test runs in a fixture function to perform setup and
   teardown. Using a fixture-type of :each wraps every test

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn symbol
   "Returns a Symbol with the given namespace and name."
   {:tag clojure.lang.Symbol

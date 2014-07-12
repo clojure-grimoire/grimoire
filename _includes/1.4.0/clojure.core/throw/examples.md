@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 => (throw (Exception. "my exception message"))
 java.lang.Exception: my exception message (NO_SOURCE_FILE:0)

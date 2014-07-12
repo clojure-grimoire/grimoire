@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn aget
   "Returns the value at the index/indices. Works on Java arrays of all
   types."

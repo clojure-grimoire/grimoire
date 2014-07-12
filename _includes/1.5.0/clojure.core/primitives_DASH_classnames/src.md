@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def primitives-classnames
   {Float/TYPE "Float/TYPE"
    Integer/TYPE "Integer/TYPE"

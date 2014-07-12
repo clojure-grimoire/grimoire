@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (deftype ArrayChunk [^clojure.core.ArrayManager am arr ^int off ^int end]
   
   clojure.lang.Indexed

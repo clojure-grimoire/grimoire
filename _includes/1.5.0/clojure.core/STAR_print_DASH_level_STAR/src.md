@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def ^:dynamic
  ^{:doc "*print-level* controls how many levels deep the printer will
   print nested objects. If it is bound to logical false, there is no

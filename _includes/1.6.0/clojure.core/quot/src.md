@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn quot
   "quot[ient] of dividing numerator by denominator."
   {:added "1.0"

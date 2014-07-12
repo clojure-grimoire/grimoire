@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; returns distinct elements
 user=> (set '(1 1 2 3 2 4 5 5))
@@ -29,7 +29,7 @@ user=> (set {:one 1 :two 2 :three 3})
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (set [1 2 3 2 1 2 3])
 -> #{1 2 3}

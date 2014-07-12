@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro with-sh-dir
   "Sets the directory for use with sh, see sh for details."
   {:added "1.2"}

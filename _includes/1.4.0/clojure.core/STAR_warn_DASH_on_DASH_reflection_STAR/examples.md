@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; define two variables then set *warn-on-reflection* to true and try to call
 ;; one of their Java methods. Warnings are generated in both cases

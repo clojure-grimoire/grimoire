@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn max
   "Returns the greatest of the nums."
   {:added "1.0"

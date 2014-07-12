@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (every? even? '(2 4 6))
 true
@@ -13,7 +13,7 @@ false{% endraw %}
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; you can use every? with a set as the predicate to return true if
 ;; every member of a collection is in the set
@@ -34,7 +34,7 @@ false{% endraw %}
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; this is kind of weird IMO... but it works that way (the same for vectors)
 user=> (every? true? '())

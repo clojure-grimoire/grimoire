@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def x [1 2 3 4 5])
 #'user/x
@@ -24,7 +24,7 @@ user=> (read-string (pr-str x))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; you can think of pr-str as the inverse of read-string
 ;; turn string into symbols
@@ -40,7 +40,7 @@ user=> (pr-str '(a b foo :bar))
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defn write-object
   "Serializes an object to disk so it can be opened again later.

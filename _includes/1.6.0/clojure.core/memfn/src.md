@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro memfn
   "Expands into code that creates a fn that expects to be passed an
   object and any args and calls the named instance method on the

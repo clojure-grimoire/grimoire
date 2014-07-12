@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (conj [1 2 3] 4)
 [1 2 3 4]
@@ -36,7 +36,7 @@ user=> (conj #{1 3 4} 2)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;conjoin shows similar behaviour to cons
 (conj ["a" "b" "c"] ["a" "b" "c"] )
@@ -47,7 +47,7 @@ user=> ["a" "b" "c" ["a" "b" "c"]]{% endraw %}
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; conj nil with x or xs
 user=> (conj nil 3)
@@ -60,7 +60,7 @@ user=> (conj nil 3 4)
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; maps and sets are treated differently
 user=> (conj {1 2} {3 4})

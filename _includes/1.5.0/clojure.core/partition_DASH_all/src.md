@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn partition-all
   "Returns a lazy sequence of lists like partition, but may include
   partitions with fewer than n items at the end."

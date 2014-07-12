@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; `project` strips out unwanted key/value pairs from a set of maps.
 ;; Suppose you have these descriptions of cows:

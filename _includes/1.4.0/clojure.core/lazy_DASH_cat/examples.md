@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (lazy-cat [1 2 3] [4 5 6])
 (1 2 3 4 5 6)
@@ -12,7 +12,7 @@ user=> (lazy-cat [1 2 3] [4 5 6])
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; N.B. this example holds onto the head of a lazy seq which should generally be avoided
 (def fib-seq
@@ -25,7 +25,7 @@ user=> (lazy-cat [1 2 3] [4 5 6])
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; When the producer function produces a collection, not an element,
 ;; lazy-cat is usable.

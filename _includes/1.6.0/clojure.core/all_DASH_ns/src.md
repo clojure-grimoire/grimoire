@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn all-ns
   "Returns a sequence of all namespaces."
   {:added "1.0"

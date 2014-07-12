@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn list?
   "Returns true if x implements IPersistentList"
   {:added "1.0"

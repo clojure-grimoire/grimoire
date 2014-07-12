@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn start-element
   [tag pretty & [attrs]]
   (if pretty (indent))

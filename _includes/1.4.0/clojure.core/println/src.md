@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn println
   "Same as print followed by (newline)"
   {:added "1.0"

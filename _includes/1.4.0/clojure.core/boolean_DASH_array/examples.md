@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; create an array of Java boolean's using boolean-array
 ;; and demonstrate that it can be used for input into the standard

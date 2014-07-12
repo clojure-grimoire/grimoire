@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro defstruct
   "Same as (def name (create-struct keys...))"
   {:added "1.0"

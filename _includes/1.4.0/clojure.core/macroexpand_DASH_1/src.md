@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn macroexpand-1
   "If form represents a macro form, returns its expansion,
   else returns form."

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ns-refers
   "Returns a map of the refer mappings for the namespace."
   {:added "1.0"

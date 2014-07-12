@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def boring (constantly 10))
 #'user/boring
@@ -19,7 +19,7 @@ user=> (boring "Is anybody home?")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; A really goofy way to find the size of a collection
 user=> (reduce + (map (constantly 1) [:a :b :c]))
@@ -30,7 +30,7 @@ user=> (reduce + (map (constantly 1) [:a :b :c]))
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; constantly returns a function which always returns the same value
 (map (constantly 9) [1 2 3])

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (reduce + [1 2 3 4 5])
 15
@@ -17,7 +17,7 @@ user=> (reduce + 1 [2 3])
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;converting a vector to a set
 user=> (reduce conj #{} [:a :b :c])
@@ -29,7 +29,7 @@ user=> (reduce conj #{} [:a :b :c])
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Create a word frequency map out of a large string s.
 
@@ -46,7 +46,7 @@ user=> (reduce conj #{} [:a :b :c])
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Calculate primes until 1000
 
@@ -65,7 +65,7 @@ user=> (reduce
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Add one sequence to another:
 user=> (reduce conj [1 2 3] [4 5 6])
@@ -77,7 +77,7 @@ user=> (reduce conj [1 2 3] [4 5 6])
 ### Example 5
 [permalink](#example-5)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; Combine a set of collections into a single collection
 user=> (reduce into [[1 2 3] [:a :b :c] '([4 5] 6)])
@@ -88,7 +88,7 @@ user=> (reduce into [[1 2 3] [:a :b :c] '([4 5] 6)])
 ### Example 6
 [permalink](#example-6)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defn key-pres?
     "This function accepts a value (cmp-val) and a vector of vectors
@@ -111,7 +111,7 @@ user=> (reduce into [[1 2 3] [:a :b :c] '([4 5] 6)])
 ### Example 7
 [permalink](#example-7)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defn reduce-csv-row
     "Accepts a csv-row (a vector) a list of columns to extract,

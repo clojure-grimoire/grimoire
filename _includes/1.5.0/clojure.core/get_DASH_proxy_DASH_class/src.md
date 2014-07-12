@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn get-proxy-class 
   "Takes an optional single class followed by zero or more
   interfaces. If not supplied class defaults to Object.  Creates an

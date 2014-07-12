@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn unchecked-long
   "Coerce to long. Subject to rounding or truncation."
   {:inline (fn  [x] `(. clojure.lang.RT (uncheckedLongCast ~x)))

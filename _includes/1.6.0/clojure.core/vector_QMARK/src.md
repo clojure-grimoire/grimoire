@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def
  ^{:arglists '([x])
    :doc "Return true if x implements IPersistentVector"

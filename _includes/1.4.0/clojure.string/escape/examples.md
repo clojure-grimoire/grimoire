@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; There should be no space between the \ and the &, but I don't know how
 ;; to create that in an example yet.

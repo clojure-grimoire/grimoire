@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn javadoc
   "Opens a browser window displaying the javadoc for the argument.
   Tries *local-javadocs* first, then *remote-javadocs*."

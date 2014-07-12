@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; This example takes a list of keys and a separate list of values and
 ;; inserts them into a map.
@@ -17,7 +17,7 @@ user=> (apply assoc {}
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Simple example:
 user=> (interleave [:a :b :c] [1 2 3])
@@ -28,7 +28,7 @@ user=> (interleave [:a :b :c] [1 2 3])
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; The shortest input stops interleave:
 
@@ -40,7 +40,7 @@ user=> (interleave [:a :b] (iterate inc 1))
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (def s1 [[:000-00-0000 "TYPE 1" "JACKSON" "FRED"]
          [:000-00-0001 "TYPE 2" "SIMPSON" "HOMER"]
@@ -53,7 +53,7 @@ user=> (interleave [:a :b] (iterate inc 1))
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (def s1 [[:000-00-0000 "TYPE 1" "JACKSON" "FRED"]
          [:000-00-0001 "TYPE 2" "SIMPSON" "HOMER"]

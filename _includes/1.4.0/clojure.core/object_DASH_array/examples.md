@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; create an array of Java Objects using object-array
 ;; and demonstrate that it can be used with the Java fill function

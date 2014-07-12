@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro set-test
   "Experimental.
   Sets :test metadata of the named var to a fn with the given body.

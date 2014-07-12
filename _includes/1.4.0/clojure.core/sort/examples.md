@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (sort [3 1 2 4])
 (1 2 3 4)
@@ -22,7 +22,7 @@ user=> (sort-by last {:b 1 :c 3 :a 2})
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; make a struct 'goods'. it assumes that every goods has
 ;; its id number and price.
@@ -59,7 +59,7 @@ user> (sort-by :price < data) ; compare this with the above.
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Warning: You can sort a Java array and get back a sorted immutable Clojure
 ;; data structure, but it will also change the input Java array, by sorting it.

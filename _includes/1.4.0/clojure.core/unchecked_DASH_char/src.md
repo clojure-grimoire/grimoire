@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn unchecked-char
   "Coerce to char. Subject to rounding or truncation."
   {:inline (fn  [x] `(. clojure.lang.RT (uncheckedCharCast ~x)))

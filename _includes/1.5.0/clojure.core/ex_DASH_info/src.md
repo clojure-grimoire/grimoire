@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ex-info
   "Alpha - subject to change.
    Create an instance of ExceptionInfo, a RuntimeException subclass

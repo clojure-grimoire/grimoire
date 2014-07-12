@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn extends? 
   "Returns true if atype extends protocol"
   {:added "1.2"}

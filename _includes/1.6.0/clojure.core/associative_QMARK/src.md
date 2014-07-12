@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn associative?
  "Returns true if coll implements Associative"
  {:added "1.0"

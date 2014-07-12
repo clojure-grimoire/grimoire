@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def
  ^{:arglists '(^clojure.lang.ISeq [coll])
    :doc "Returns a seq on the collection. If the collection is

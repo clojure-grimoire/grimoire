@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn keyword?
   "Return true if x is a Keyword"
   {:added "1.0"

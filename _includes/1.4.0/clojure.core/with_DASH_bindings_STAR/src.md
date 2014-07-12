@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn with-bindings*
   "Takes a map of Var/value pairs. Installs for the given Vars the associated
   values as thread-local bindings. Then calls f with the supplied arguments.

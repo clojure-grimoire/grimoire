@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (definline chars
   "Casts to chars[]"
   {:added "1.1"}

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (even? 2)
 true
@@ -13,7 +13,7 @@ false{% endraw %}
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (filter even? (range 10))
 (0 2 4 6 8){% endraw %}

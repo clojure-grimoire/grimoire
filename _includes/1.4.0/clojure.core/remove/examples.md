@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (remove pos? [1 -2 2 -1 3 7 0])
 (-2 -1 0)

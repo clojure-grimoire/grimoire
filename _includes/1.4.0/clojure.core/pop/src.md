@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn pop
   "For a list or queue, returns a new list/queue without the first
   item, for a vector, returns a new vector without the last item. If

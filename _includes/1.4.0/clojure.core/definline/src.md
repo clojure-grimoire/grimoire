@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro definline
   "Experimental - like defmacro, except defines a named function whose
   body is the expansion, calls to which may be expanded inline as if

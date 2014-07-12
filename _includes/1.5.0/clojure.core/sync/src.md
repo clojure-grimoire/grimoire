@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro sync
   "transaction-flags => TBD, pass nil for now
 

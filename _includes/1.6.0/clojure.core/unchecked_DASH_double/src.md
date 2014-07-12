@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn unchecked-double
   "Coerce to double. Subject to rounding."
   {:inline (fn  [x] `(. clojure.lang.RT (uncheckedDoubleCast ~x)))

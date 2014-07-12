@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn suite-attrs
   [package classname]
   (let [attrs {:name classname}]

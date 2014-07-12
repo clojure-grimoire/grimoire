@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user> (or true false false)
 true
@@ -35,7 +35,7 @@ true{% endraw %}
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; See examples for "if" explaining Clojure's idea of logical true
 ;; and logical false.{% endraw %}

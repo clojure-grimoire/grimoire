@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro source
   "Prints the source code for the given symbol, if it can find it.
   This requires that the symbol resolve to a Var defined in a

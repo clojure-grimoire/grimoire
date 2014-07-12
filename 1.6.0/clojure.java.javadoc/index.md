@@ -7,10 +7,18 @@ layout: ns
 
 
 
-## Macros <a id="mf">+</a>
 
-<div id="macros" markdown="1">
 
+## Functions <a id="ff">+</a>
+
+<div id="fns" markdown="1">
+
+### A
+[add-local-javadoc](./add_DASH_local_DASH_javadoc/)
+[add-remote-javadoc](./add_DASH_remote_DASH_javadoc/)
+
+### J
+[javadoc](./javadoc/)
 
 </div>
 
@@ -25,19 +33,5 @@ layout: ns
 [\*feeling-lucky-url\*](./STAR_feeling_DASH_lucky_DASH_url_STAR/)
 [\*local-javadocs\*](./STAR_local_DASH_javadocs_STAR/)
 [\*remote-javadocs\*](./STAR_remote_DASH_javadocs_STAR/)
-
-</div>
-
-
-## Functions <a id="ff">+</a>
-
-<div id="fns" markdown="1">
-
-### A
-[add-local-javadoc](./add_DASH_local_DASH_javadoc/)
-[add-remote-javadoc](./add_DASH_remote_DASH_javadoc/)
-
-### J
-[javadoc](./javadoc/)
 
 </div>

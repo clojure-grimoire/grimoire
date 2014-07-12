@@ -7,20 +7,6 @@ layout: ns
 
 
 
-## Macros <a id="mf">+</a>
-
-<div id="macros" markdown="1">
-
-
-</div>
-
-
-## Vars <a id="vf">+</a>
-
-<div id="vars" markdown="1">
-
-
-</div>
 
 
 ## Functions <a id="ff">+</a>
@@ -48,3 +34,5 @@ layout: ns
 [walk](./walk/)
 
 </div>
+
+

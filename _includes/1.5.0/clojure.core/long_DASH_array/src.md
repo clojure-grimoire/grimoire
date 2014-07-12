@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn long-array
   "Creates an array of longs"
   {:inline (fn [& args] `(. clojure.lang.Numbers long_array ~@args))

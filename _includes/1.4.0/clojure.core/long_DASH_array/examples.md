@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; create a long array using long-array and show it can be used
 ;; with the standard Java Arrays functions binarySearch and fill

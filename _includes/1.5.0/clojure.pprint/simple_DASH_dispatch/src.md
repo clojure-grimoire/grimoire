@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmulti 
   simple-dispatch
   "The pretty print dispatch function for simple data structure format."

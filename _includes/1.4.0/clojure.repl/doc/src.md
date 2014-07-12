@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro doc
   "Prints documentation for a var or special form given its name"
   {:added "1.0"}

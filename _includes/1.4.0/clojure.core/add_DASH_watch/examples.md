@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Add useful context to watcher function:
 (defn watch-agent [_agent context]
@@ -15,7 +15,7 @@
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; timing of agent actions and watches using nrepl (ymmv)
 user> (def a (agent 0))

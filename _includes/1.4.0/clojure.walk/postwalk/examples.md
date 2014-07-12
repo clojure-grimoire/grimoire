@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (use 'clojure.walk)
 (let [counter (atom -1)]
@@ -16,7 +16,7 @@
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;;example of removing namespaces from all keys in a nested data structure
 (def thing {:page/tags [{:tag/category "lslsls"}]})

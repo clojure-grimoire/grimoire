@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn future-call 
   "Takes a function of no args and yields a future object that will
   invoke the function in another thread, and will cache the result and

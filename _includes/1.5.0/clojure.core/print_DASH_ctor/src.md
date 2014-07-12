@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn print-ctor [o print-args ^Writer w]
   (.write w "#=(")
   (.write w (.getName ^Class (class o)))

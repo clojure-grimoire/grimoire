@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; let is a Clojure special form, a fundamental building block of the language.
 ;;
@@ -52,7 +52,7 @@ user=> (let [[g h] [1 2 3]]
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (let [a (take 5 (range))
              {:keys [b c d] :or {d 10 b 20 c 30}} {:c 50 :d 100}
@@ -70,7 +70,7 @@ I was here!
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; :as example
 
@@ -94,7 +94,7 @@ user=> (let [[x y] [5 3]
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;;; map destructuring, all features
 user=>
@@ -129,7 +129,7 @@ user=>
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;;; no value of a key
 user> (let [{:keys [a b] :as m} (:x {})]

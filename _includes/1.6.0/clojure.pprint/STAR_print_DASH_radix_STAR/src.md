@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def ^:dynamic
  ^{:doc "Print a radix specifier in front of integers and rationals. If *print-base* is 2, 8, 
 or 16, then the radix specifier used is #b, #o, or #x, respectively. Otherwise the 

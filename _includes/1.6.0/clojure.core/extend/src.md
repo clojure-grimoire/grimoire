@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn extend 
   "Implementations of protocol methods can be provided using the extend construct:
 

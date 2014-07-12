@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 <pre>user=&gt; (dissoc {:a 1 :b 2 :c 3}) ; dissoc nothing 
 {:a 1, :b 2, :c 3} 

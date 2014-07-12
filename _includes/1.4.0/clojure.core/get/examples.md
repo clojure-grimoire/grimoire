@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (get [1 2 3] 1)
 2
@@ -19,7 +19,7 @@ user=> (get {:a 1 :b 2} :z "missing")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; to get an index of the element of a vector, use .indexOf
 user=> (def v ["one" "two" "three" "two"])
@@ -37,7 +37,7 @@ user=> (.indexOf v "foo")
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (get (System/getenv) "SHELL")
 "/bin/bash"
@@ -50,7 +50,7 @@ user=> (get (System/getenv) "PATH")
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; 'get' is not the only option
 user=> (def my-map {:a 1 :b 2 :c 3})
@@ -68,7 +68,7 @@ user=> (:b my-map)
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (get '(a b c) 1)
 nil

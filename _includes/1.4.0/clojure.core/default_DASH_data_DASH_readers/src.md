@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def ^{:added "1.4"} default-data-readers
   "Default map of data reader functions provided by Clojure. May be
   overridden by binding *data-readers*."

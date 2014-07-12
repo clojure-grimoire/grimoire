@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; An anonymous function is a function as you'd expect
 user=> (ifn? #("my anonymous function"))

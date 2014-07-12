@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn apply
   "Applies fn f to the argument list formed by prepending intervening arguments to args."
   {:added "1.0"

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn make-array
   "Creates and returns an array of instances of the specified class of
   the specified dimension(s).  Note that a class object is required.

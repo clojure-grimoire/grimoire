@@ -17,16 +17,6 @@ layout: ns
 </div>
 
 
-## Vars <a id="vf">+</a>
-
-<div id="vars" markdown="1">
-
-### T
-[tap-report](./tap_DASH_report/)
-
-</div>
-
-
 ## Functions <a id="ff">+</a>
 
 <div id="fns" markdown="1">
@@ -37,5 +27,15 @@ layout: ns
 [print-tap-fail](./print_DASH_tap_DASH_fail/)
 [print-tap-pass](./print_DASH_tap_DASH_pass/)
 [print-tap-plan](./print_DASH_tap_DASH_plan/)
+
+</div>
+
+
+## Vars <a id="vf">+</a>
+
+<div id="vars" markdown="1">
+
+### T
+[tap-report](./tap_DASH_report/)
 
 </div>

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn struct-map
   "Returns a new structmap instance with the keys of the
   structure-basis. keyvals may contain all, some or none of the basis

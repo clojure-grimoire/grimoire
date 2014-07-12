@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def *strings* ["str1" "str2" "str3"])
 #'user/*strings*
@@ -28,7 +28,7 @@ user=> (str "str1" "str2" "str3")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; If you were to try
 user=> (max [1 2 3])
@@ -51,7 +51,7 @@ user=> (apply max [1 2 3])
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Here's an example that uses the optional second argument, args:
 
@@ -73,7 +73,7 @@ user=> (map vector [:a :b] [:c :d])
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; only functions can be used with apply.  'and' is a macro
 ;; because it needs to evaluate its arguments lazily and so
@@ -89,7 +89,7 @@ user=> (apply and (list true true false true)
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;apply is used to apply an operator to its operands.
 
@@ -107,7 +107,7 @@ user=> (apply and (list true true false true)
 ### Example 5
 [permalink](#example-5)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; You can use map and apply together to drill one level deep in a collection
 ;; of collections, in this case returning a collection of the max of each

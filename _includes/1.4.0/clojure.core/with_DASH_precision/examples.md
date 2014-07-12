@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; The "M" suffix denotes a BigDecimal instance
 ;; http://download.oracle.com/javase/6/docs/api/java/math/BigDecimal.html

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; create a file using spit, then show its contents using slurp
 ;; delete it and verify that it has been deleted by trying to print its

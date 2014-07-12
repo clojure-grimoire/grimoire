@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn xml-seq
   "A tree seq on the xml elements as per xml/parse"
   {:added "1.0"

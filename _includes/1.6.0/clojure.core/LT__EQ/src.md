@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn <=
   "Returns non-nil if nums are in monotonically non-decreasing order,
   otherwise false."

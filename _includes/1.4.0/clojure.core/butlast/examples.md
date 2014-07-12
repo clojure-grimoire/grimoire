@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (butlast [1 2 3])
 (1 2)
@@ -15,7 +15,7 @@ nil{% endraw %}
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;really slow reverse
 ;put the last item of the list at the start of a new list, and recur over all but the last item of the list.

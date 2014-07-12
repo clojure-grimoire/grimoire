@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; `contains?` is straightforward for maps:
 user=> (contains? {:a 1} :a)
@@ -49,7 +49,7 @@ user=> (contains? '(1 2 3) 1) => false
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Can be used to test set membership
 user=> (def s #{"a" "b" "c"})

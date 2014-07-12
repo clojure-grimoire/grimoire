@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (re-seq #"\d" "clojure 1.1.0")
 ("1" "1" "0")
@@ -12,7 +12,7 @@ user=> (re-seq #"\d" "clojure 1.1.0")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Get a sequence of words out of a string.
 user=> (re-seq #"\w+" "mary had a little lamb")
@@ -24,7 +24,7 @@ user=> (re-seq #"\w+" "mary had a little lamb")
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Parenthesized groups in the regex cause each returned match to be a
 ;; vector of matched strings.  See re-find for more examples.
@@ -40,7 +40,7 @@ user=> (re-seq #"(\S+):(\d+)" line)
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Note: See clojure.core/subs for discussion of behavior of substrings
 ;; holding onto references of the original strings, which can

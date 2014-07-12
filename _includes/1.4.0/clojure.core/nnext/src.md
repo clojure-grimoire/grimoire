@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def
  ^{:doc "Same as (next (next x))"
    :arglists '([x])

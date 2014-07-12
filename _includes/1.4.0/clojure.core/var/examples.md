@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;;getting meta-data for a defined symbol (as opposed to what it's pointing to.
 
@@ -20,7 +20,7 @@ user=> (meta (var meta))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 => *clojure-version*
 {:major 1, :minor 5, :incremental 0, :qualifier "RC17"}

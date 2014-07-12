@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (mapcat reverse [[3 2 1 0] [6 5 4] [9 8 7]])
 (0 1 2 3 4 5 6 7 8 9)
@@ -12,7 +12,7 @@ user=> (mapcat reverse [[3 2 1 0] [6 5 4] [9 8 7]])
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (mapcat (fn [[k v]]
                  (for [[k2 v2] v]
@@ -27,7 +27,7 @@ user=> (mapcat (fn [[k v]]
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (require '[clojure.string :as cs])
 nil
@@ -52,7 +52,7 @@ user=> (mapcat #(cs/split % #"\d") ["aa1bb" "cc2dd" "ee3ff"])
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Suppose you've got a function that takes a value
 ;; and returns a list of things from it, for example:
@@ -81,7 +81,7 @@ user=> (mapcat #(cs/split % #"\d") ["aa1bb" "cc2dd" "ee3ff"])
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; Flatten a map, consing keys on to each nested vector
 (mapcat (fn [[k vs]] (map (partial cons k) vs)) {:foo [[1 2] [3 2]] :bar [[3 1]]})

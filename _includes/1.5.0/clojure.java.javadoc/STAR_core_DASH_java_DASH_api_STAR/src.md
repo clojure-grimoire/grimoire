@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def ^:dynamic *core-java-api*
   (case (System/getProperty "java.specification.version")
     "1.5" "http://java.sun.com/j2se/1.5.0/docs/api/"

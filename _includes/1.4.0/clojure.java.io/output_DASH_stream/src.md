@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ^OutputStream output-stream
   "Attempts to coerce its argument into an open java.io.OutputStream.
    Default implementations always return a java.io.BufferedOutputStream.

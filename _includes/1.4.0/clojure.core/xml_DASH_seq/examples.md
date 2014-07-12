@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; data.xml from https://github.com/clojure/data.xml/
 (use '[clojure.data.xml :only [parse-str]])
@@ -25,7 +25,7 @@ user=> (let [xml-text "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (use '[clojure.xml :only [parse]])
 

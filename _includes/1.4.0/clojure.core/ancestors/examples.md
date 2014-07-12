@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; make up a hierarchy a beagle is a sporting breed is a dog is a quadraped is an
 ;; animal
@@ -23,7 +23,7 @@ user=>{% endraw %}
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; use ancestors to show which classes ArrayList derives from and which
 ;; interfaces it implements

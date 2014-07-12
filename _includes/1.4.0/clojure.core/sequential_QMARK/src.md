@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn sequential?
  "Returns true if coll implements Sequential"
  {:added "1.0"

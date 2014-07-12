@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn bit-flip
   "Flip bit at index n"
   {:added "1.0"

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ns-publics
   "Returns a map of the public intern mappings for the namespace."
   {:added "1.0"

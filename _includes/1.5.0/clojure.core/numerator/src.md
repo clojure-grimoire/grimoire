@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn numerator
   "Returns the numerator part of a Ratio."
   {:tag BigInteger

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 <pre>user=&gt; (bit-set 2r1011 2) ; index is 0-based
 15 

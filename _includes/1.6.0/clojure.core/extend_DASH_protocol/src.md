@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro extend-protocol 
   "Useful when you want to provide several implementations of the same
   protocol all at once. Takes a single protocol and the implementation

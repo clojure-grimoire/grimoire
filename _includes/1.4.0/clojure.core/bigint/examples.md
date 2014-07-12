@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (bigint 30)
 30
@@ -21,7 +21,7 @@ true
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user> (= (bigint 42) (clojure.lang.BigInt/fromBigInteger (BigInteger. "42"))
 true
@@ -38,7 +38,7 @@ true
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user> (reduce * (repeat 20 1000))
 ArithmeticException integer overflow  clojure.lang.Numbers.throwIntOverflow (Numbers.java:1388)

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (ns-refers) ;;Oops! we missed a namespace (ns-refers 'user)
 ; Evaluation aborted.

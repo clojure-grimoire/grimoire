@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (gensym "foo")
 foo2020
@@ -18,7 +18,7 @@ user=> (gensym "foo")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (gensym)
 G__2034
@@ -33,7 +33,7 @@ G__2075
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; syntax-reader uses gensym for non-namespace-qualified symbols ending with '#'
 ;; http://clojure.org/reader

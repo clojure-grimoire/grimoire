@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro defprotocol 
   "A protocol is a named set of named methods and their signatures:
   (defprotocol AProtocolName

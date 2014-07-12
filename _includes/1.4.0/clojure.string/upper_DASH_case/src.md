@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ^String upper-case
   "Converts string to all upper-case."
   {:added "1.2"}

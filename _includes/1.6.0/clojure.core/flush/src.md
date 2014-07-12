@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn flush
   "Flushes the output stream that is the current value of
   *out*"

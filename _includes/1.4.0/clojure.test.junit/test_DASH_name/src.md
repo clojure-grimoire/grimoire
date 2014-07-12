@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn test-name
   [vars]
   (apply str (interpose "."

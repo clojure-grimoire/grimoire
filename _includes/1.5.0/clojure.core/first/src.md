@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def
  ^{:arglists '([coll])
    :doc "Returns the first item in the collection. Calls seq on its

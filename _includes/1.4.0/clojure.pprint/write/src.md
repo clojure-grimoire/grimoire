@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn write 
   "Write an object subject to the current bindings of the printer control variables.
 Use the kw-args argument to override individual variables for this call (and any 

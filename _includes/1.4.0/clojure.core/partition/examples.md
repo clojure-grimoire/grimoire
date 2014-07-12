@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (partition 4 (range 20))
 ((0 1 2 3) (4 5 6 7) (8 9 10 11) (12 13 14 15) (16 17 18 19))
@@ -24,7 +24,7 @@ user=> (partition 4 6 ["a" "b" "c" "d"] (range 20))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (partition 3 1 [:a :b :c :d :e :f])
 ((:a :b :c) (:b :c :d) (:c :d :e) (:d :e :f))
@@ -35,7 +35,7 @@ user=> (partition 3 1 [:a :b :c :d :e :f])
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; When there are less than n items in the coll, partition's behaviour
 ;; depends on whether there is a pad or not

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def negative-quotient (comp - /))
 #'user/negative-quotient
@@ -22,7 +22,7 @@ user=> (concat-and-reverse "hello" "clojuredocs")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> ((comp str +) 8 8 8)
 "24"{% endraw %}
@@ -32,7 +32,7 @@ user=> ((comp str +) 8 8 8)
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (map
          (comp - (partial + 3) (partial * 2))
@@ -45,7 +45,7 @@ user=> (map
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (filter (comp not zero?) [0 1 0 2 0 3 0 4])
 (1 2 3 4){% endraw %}
@@ -55,7 +55,7 @@ user=> (filter (comp not zero?) [0 1 0 2 0 3 0 4])
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; make a struct 'goods'. it assumes that every goods has
 ;; its id number and price.
@@ -112,7 +112,7 @@ user> {% endraw %}
 ### Example 5
 [permalink](#example-5)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def countif (comp count filter))
 #'user/countif
@@ -124,7 +124,7 @@ user=> (countif even? [2 3 1 5 4])
 ### Example 6
 [permalink](#example-6)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; Get 2nd to last element from a list
 user=> ( (comp second reverse) '("a" 2 7 "b"))

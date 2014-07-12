@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; adding a mouse pressed callback to a Swing component:
 
@@ -19,7 +19,7 @@
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; BUG: proxy dispatches *only* on name, not arity:
 user=> (let [p (proxy [java.io.InputStream] [] (read [] -1))]
@@ -35,7 +35,7 @@ ArityException Wrong number of args (4) passed to: core$eval213$fn  clojure.lang
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; You can, however, provide multiple-arity functions to get some support
 ;; for overloading

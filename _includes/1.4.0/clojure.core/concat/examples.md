@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 
 user=> (concat [1 2] [3 4])
@@ -22,7 +22,7 @@ user=> (concat [:a :b] nil [1 [2 3] 4])
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (concat "abc" "def")
 (\a \b \c \d \e \f)

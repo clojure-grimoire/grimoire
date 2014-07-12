@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn start-suite
   [name]
   (let [[package classname] (package-class name)]

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Generate a Java class
 (ns org.clojuredocs.test
@@ -20,7 +20,7 @@ Hello, World!
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Let's create a namespace and then assign it as the current namespace
 user=> (create-ns 'my-new-namespace)
@@ -43,7 +43,7 @@ my-new-namespace=>
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Generating a class so we can call Clojure from Java
 (ns com.domain.tiny
@@ -95,7 +95,7 @@ public class Main {
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Create a namespace named demo.namespace.
 (ns demo.namespace)
@@ -114,7 +114,7 @@ user=>(use 'demo.namespace){% endraw %}
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; This example will illustrate changing between namespaces at the repl
 
@@ -158,7 +158,7 @@ nil{% endraw %}
 ### Example 5
 [permalink](#example-5)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (ns rosettacode.24game
   (:require [clojure.string :as str])
@@ -172,7 +172,7 @@ nil{% endraw %}
 ### Example 6
 [permalink](#example-6)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Multiple required namespaces with aliases
 (ns demo.namespace
@@ -185,7 +185,7 @@ nil{% endraw %}
 ### Example 7
 [permalink](#example-7)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; In clojure 1.4 and higher you can use the refer function from within
 ;; a require which is equivalent to (:use foo only [...]) but still
@@ -203,7 +203,7 @@ nil{% endraw %}
 ### Example 8
 [permalink](#example-8)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (ns foo.bar
   (:refer-clojure :exclude [ancestors printf])

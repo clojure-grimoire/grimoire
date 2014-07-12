@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn rationalize
   "returns the rational value of num"
   {:added "1.0"

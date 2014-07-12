@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn float-array
   "Creates an array of floats"
   {:inline (fn [& args] `(. clojure.lang.Numbers float_array ~@args))

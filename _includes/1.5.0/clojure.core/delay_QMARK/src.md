@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn delay?
   "returns true if x is a Delay created with delay"
   {:added "1.0"

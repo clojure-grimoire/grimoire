@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro proxy
   "class-and-interfaces - a vector of class names
 

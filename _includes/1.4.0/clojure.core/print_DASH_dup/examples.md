@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; print-dup can be used for basic serialization
 ;; the following methods write/read clojure forms to/from a file
@@ -23,7 +23,7 @@
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; print-dup is a multimethod, you can extend it to support new types.
 ;; The following statement adds print-dup support to

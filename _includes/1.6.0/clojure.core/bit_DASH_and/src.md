@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn bit-and
   "Bitwise and"
    {:inline (nary-inline 'and)

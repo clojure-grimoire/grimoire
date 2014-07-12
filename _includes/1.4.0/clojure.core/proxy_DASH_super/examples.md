@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Create a proxy for java.util.ArrayList that overrides the add()
 ;; method and calls the super class implementation using proxy-super.

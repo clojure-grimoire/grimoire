@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn distinct?
   "Returns true if no two of the arguments are ="
   {:tag Boolean

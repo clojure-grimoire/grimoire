@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Very useful when working with sequences. Capturing the return value
 ;; of `seq` brings a performance gain in subsequent `first`/`rest`/`next`
@@ -23,7 +23,7 @@ nil
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; See examples for "if" explaining Clojure's idea of logical true
 ;; and logical false.{% endraw %}

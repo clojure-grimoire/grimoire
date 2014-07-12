@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def
  ^{:arglists '([^Class c x])
    :doc "Evaluates x and tests if it is an instance of the class

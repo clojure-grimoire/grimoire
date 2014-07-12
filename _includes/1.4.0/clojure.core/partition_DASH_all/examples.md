@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (partition 4 [0 1 2 3 4 5 6 7 8 9])
 ((0 1 2 3) (4 5 6 7))
@@ -15,7 +15,7 @@ user=> (partition-all 4 [0 1 2 3 4 5 6 7 8 9])
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (partition-all 2 4 [0 1 2 3 4 5 6 7 8 9])
 ((0 1) (4 5) (8 9)){% endraw %}
@@ -25,7 +25,7 @@ user=> (partition-all 2 4 [0 1 2 3 4 5 6 7 8 9])
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 Caution: Partitioning lazy sequence code freeze
 

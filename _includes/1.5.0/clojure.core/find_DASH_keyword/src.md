@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn find-keyword
   "Returns a Keyword with the given namespace and name if one already
   exists.  This function will not intern a new keyword. If the keyword

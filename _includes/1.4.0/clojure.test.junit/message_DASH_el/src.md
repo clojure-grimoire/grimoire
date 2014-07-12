@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn message-el
   [tag message expected-str actual-str]
   (indent)

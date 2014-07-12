@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ^Writer writer
   "Attempts to coerce its argument into an open java.io.Writer.
    Default implementations always return a java.io.BufferedWriter.

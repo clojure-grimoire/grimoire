@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ref-set
   "Must be called in a transaction. Sets the value of ref.
   Returns val."

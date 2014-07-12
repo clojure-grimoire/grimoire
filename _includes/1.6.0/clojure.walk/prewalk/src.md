@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn prewalk
   "Like postwalk, but does pre-order traversal."
   {:added "1.1"}

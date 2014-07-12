@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn hash-unordered-coll
   "Returns the hash code, consistent with =, for an external unordered
    collection implementing Iterable. For maps, the iterator should

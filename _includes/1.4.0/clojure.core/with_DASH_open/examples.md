@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Opens the file 'myfile.txt' and prints out the contents.  The
 ;; 'with-open' ensures that the reader is closed at the end of the
@@ -23,7 +23,7 @@ user=> (with-open [r (java.io.FileReader. "myfile.txt")]
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defn write-csv-file
   "Writes a csv file using a key and an s-o-s (sequence of sequences)"

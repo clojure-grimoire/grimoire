@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (subs "Clojure" 1)
 "lojure"
@@ -20,7 +20,7 @@ java.lang.StringIndexOutOfBoundsException: String index out of range: 20 (NO_SOU
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Note that subs uses method java.lang.String/substring
 ;; http://docs.oracle.com/javase/6/docs/api/java/lang/String.html#substring%28int,%20int%29

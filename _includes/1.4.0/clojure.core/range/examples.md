@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; default value of 'end' is infinity
 user=> (range)
@@ -46,7 +46,7 @@ user=> (range 10 -10 -1)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Since clojure 1.2:
 
@@ -59,7 +59,7 @@ user=> (take 10 (range))
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; finite range over java Integers
 user=> (take 5 (range 42 (java.lang.Integer/MAX_VALUE)))

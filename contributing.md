@@ -9,7 +9,8 @@ the form of pull requests, and is hosted
 
 ### File structure
 
-Each function, variable and macro has three files:
+Each function, variable and macro and special form has at least three
+files:
 
 <pre>
 /_include/$CLOJURE-VERSION/$NAMESPACE/$SYMBOL/docs.md

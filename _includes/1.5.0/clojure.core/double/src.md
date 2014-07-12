@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn double
   "Coerce to double"
   {:inline (fn  [x] `(. clojure.lang.RT (doubleCast ~x)))

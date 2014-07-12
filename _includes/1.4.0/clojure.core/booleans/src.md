@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (definline booleans
   "Casts to boolean[]"
   {:added "1.1"}

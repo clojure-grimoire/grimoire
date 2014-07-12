@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def to-english (partial clojure.pprint/cl-format nil "~@(~@[~R~]~^ ~A.~)"))
 #'user/to-english
@@ -15,7 +15,7 @@ user=> (to-english 1234567890)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def hundred-times (partial * 100))
 #'user/hundred-times
@@ -38,7 +38,7 @@ user=> (add-hundred 5)
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (def subtract-from-hundred (partial - 100))
 
@@ -53,7 +53,7 @@ user=> (subtract-from-hundred 10 20)   ; same as (- 100 10 20)
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; Maps exponent to coefficient
 ; x^3 + 2x + 1

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; future-call is used to implement 'future'.  See examples for 'future'
 ;; for discussion of an undesirable 1-minute wait that can occur before

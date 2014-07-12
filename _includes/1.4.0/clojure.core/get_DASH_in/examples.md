@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; We can use get-in for reaching into nested maps:
 user=> (def m {:username "sally"
@@ -46,7 +46,7 @@ user=> (get-in mv [:pets 1 :type])
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (def s1 [[:000-00-0000 "TYPE 1" "JACKSON" "FRED"]
          [:000-00-0001 "TYPE 2" "SIMPSON" "HOMER"]
@@ -67,7 +67,7 @@ user=> (get-in mv [:pets 1 :type])
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; spam link removed{% endraw %}
 {% endhighlight %}

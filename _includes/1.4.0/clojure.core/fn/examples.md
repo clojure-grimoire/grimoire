@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; simple anonymous function passed to (map )
 user=> (map (fn [x] (* x x)) (range 1 10))
@@ -41,7 +41,7 @@ user=>  ((fn ([a] (inc a)) ([a b] (+ a b))) 3)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; the shortcut form for (fn ) is #( )
 ;; where parameters are referred by their index with the prefix %

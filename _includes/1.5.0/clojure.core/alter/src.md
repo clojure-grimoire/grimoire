@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn alter
   "Must be called in a transaction. Sets the in-transaction-value of
   ref to:

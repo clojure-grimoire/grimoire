@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn rightmost
   "Returns the loc of the rightmost sibling of the node at this loc, or self"
   {:added "1.0"}

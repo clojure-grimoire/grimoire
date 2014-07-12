@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Create a newline-terminated string from the items and store it in x.
 user=> (def x (println-str 1 "foo" \b \a \r {:a 2}))

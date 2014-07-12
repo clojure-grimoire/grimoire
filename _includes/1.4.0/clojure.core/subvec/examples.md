@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; not supplying 'end' returns vector from 'start' to (count vector)
 user=> (subvec [12 3 4 5 6 7] 2)

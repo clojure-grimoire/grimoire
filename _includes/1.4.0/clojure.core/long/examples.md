@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (let [num (* 1234567890 21)] [num (int num) (long num)])
 [25925925690 156121914 25925925690]{% endraw %}
@@ -11,7 +11,7 @@ user=> (let [num (* 1234567890 21)] [num (int num) (long num)])
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (= 21 (long 21))
 true

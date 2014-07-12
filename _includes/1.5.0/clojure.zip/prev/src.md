@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn prev
   "Moves to the previous loc in the hierarchy, depth-first. If already
   at the root, returns nil."

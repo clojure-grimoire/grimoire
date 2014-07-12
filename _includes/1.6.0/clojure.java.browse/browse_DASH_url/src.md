@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn browse-url
   "Open url in a browser"
   {:added "1.2"}

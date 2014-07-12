@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn array-map
   "Constructs an array-map."
   {:added "1.0"

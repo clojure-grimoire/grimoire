@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn integer?
   "Returns true if n is an integer"
   {:added "1.0"

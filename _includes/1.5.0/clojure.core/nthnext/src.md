@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn nthnext
   "Returns the nth next of coll, (seq coll) when n is 0."
   {:added "1.0"

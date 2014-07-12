@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; Maps can be constructed from a sequence of 2-vectors or a sequence
 ; of maps
@@ -21,7 +21,7 @@ user=> (into [] {1 2, 3 4})
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; Items are conj'ed one at a time, which puts them at the head of
 ; the destination list
@@ -34,7 +34,7 @@ user=> (into () '(1 2 3))
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defn test-key-inclusion-cols
   "return all values in column1 that arent' in column2"
@@ -47,7 +47,7 @@ user=> (into () '(1 2 3))
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; Change from one type of map to another
 user=> (into (sorted-map) {:b 2 :c 3 :a 1})

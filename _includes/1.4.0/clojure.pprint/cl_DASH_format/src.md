@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn cl-format 
   "An implementation of a Common Lisp compatible format function. cl-format formats its
 arguments to an output stream or string based on the format control string given. It 

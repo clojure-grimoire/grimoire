@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn underive
   "Removes a parent/child relationship between parent and
   tag. h must be a hierarchy obtained from make-hierarchy, if not

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Each node is a number or a seq,
 ;; so branch?==seq? and children==identity
@@ -25,7 +25,7 @@ user=> (tree-seq seq? identity '((1 2 (3)) (4)))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (tree-seq map? #(interleave (keys %) (vals %)) {:a 1 :b {:c 3 :d 4 :e {:f 6 :g 7}}})
 
@@ -36,7 +36,7 @@ user=> (tree-seq map? #(interleave (keys %) (vals %)) {:a 1 :b {:c 3 :d 4 :e {:f
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Each node is a (node-root child1 child2 ...),
 ;; so branch?==next and children==rest
@@ -56,7 +56,7 @@ user=> (map first (tree-seq next rest '(:A (:B (:D) (:E)) (:C (:F)))))
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; FYI, previous example doesn't always work:
 ;;
@@ -69,7 +69,7 @@ user> (map first (tree-seq next rest '((1 2 (3)) (4))))
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (tree-seq seq? seq [[1 2 [3]] [4]])
 ([[1 2 [3]] [4]])

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; create hash map the long way
 user=> (hash-map)
@@ -29,7 +29,7 @@ user=> (hash-map :key1 'val1, 'key2 :val2, [:compound :key] nil)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (map #(hash-map % 0) (seq "abcdefgh"))
 ({\a 0} {\b 0} {\c 0} {\d 0} {\e 0} {\f 0} {\g 0} {\h 0})
@@ -42,7 +42,7 @@ user=> (apply hash-map (.split "a 1 b 2 c 3" " "))
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; a hash map can be stored in a var by using `def`
 user=> (def person {:name "Steve" :age 24 :salary 7886 :company "Acme"})
@@ -55,7 +55,7 @@ user=> person
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; Take a sequence of sequences (vector of vectors, and create a map
 ; using date as the map key.

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro case 
   "Takes an expression, and a set of clauses.
 

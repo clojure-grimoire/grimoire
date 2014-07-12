@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn unchecked-short
   "Coerce to short. Subject to rounding or truncation."
   {:inline (fn  [x] `(. clojure.lang.RT (uncheckedShortCast ~x)))

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn satisfies? 
   "Returns true if x satisfies the protocol"
   {:added "1.2"}

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn ns-unalias
   "Removes the alias for the symbol from the namespace."
   {:added "1.0"

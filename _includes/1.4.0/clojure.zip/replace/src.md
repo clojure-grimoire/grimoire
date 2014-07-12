@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn replace
   "Replaces the node at this loc, without moving"
   {:added "1.0"}

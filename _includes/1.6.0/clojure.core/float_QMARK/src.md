@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn float?
   "Returns true if n is a floating point number"
   {:added "1.0"

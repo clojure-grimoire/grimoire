@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (hash-set 1 2 1 3 1 4 1 5)
 #{1 2 3 4 5}

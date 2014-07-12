@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; example showing use of multi-methods before and after remove-all-methods
 ;; after removing all the methods, both circle and line tos functions throw

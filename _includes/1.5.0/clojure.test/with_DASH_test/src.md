@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro with-test
   "Takes any definition form (that returns a Var) as the first argument.
   Remaining body goes in the :test metadata function for that Var.

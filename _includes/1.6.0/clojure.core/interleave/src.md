@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn interleave
   "Returns a lazy seq of the first item in each coll, then the second etc."
   {:added "1.0"

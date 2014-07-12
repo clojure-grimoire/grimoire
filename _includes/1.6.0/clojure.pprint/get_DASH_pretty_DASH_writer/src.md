@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn get-pretty-writer 
   "Returns the java.io.Writer passed in wrapped in a pretty writer proxy, unless it's 
 already a pretty writer. Generally, it is unnecessary to call this function, since pprint,

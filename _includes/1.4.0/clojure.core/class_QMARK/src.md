@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn class?
   "Returns true if x is an instance of Class"
   {:added "1.0"

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Creating an agent
 user> (def a (agent 1))
@@ -52,7 +52,7 @@ user> @d
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Create the agent that we will be using
 user=> (def a (agent 0))

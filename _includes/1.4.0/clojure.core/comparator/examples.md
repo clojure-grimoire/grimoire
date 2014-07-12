@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; simple example to create an ArrayList, initially [1,2,0]
 ;; and sort it in descending order

@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (def factorial
   (fn [n]
@@ -18,7 +18,7 @@
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ; A loop that sums the numbers 10 + 9 + 8 + ...
 
@@ -36,7 +36,7 @@
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (loop [i 0]
   (when (< i 5)
@@ -49,7 +49,7 @@
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defn compute-across [func elements value]
   (if (empty? elements)

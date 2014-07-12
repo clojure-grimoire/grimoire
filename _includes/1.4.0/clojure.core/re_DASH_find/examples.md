@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (def *matcher* (re-matcher #"\d+" "abc12345def"))
 #'user/*matcher*
@@ -26,7 +26,7 @@ user=> (re-find #"\d+" "abc12345def")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; re-find can be used to iterate through re matches in the string
 
@@ -57,7 +57,7 @@ nil{% endraw %}
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; When there are parenthesized groups in the pattern and re-find
 ;; finds a match, it returns a vector.  The first item is the part of
@@ -109,7 +109,7 @@ user=> (re-find #"(?:\S+):(\d+)" line)
 ### Example 3
 [permalink](#example-3)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;;It's possible to get variables out of your string with regexp
 
@@ -125,7 +125,7 @@ user=> (nth *1 1)
 ### Example 4
 [permalink](#example-4)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; If your input has line delimiters you can switch on multiline with (?m)
 
@@ -138,7 +138,7 @@ user=>(re-find #"(?im)^target.*$" testcase)
 ### Example 5
 [permalink](#example-5)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Note: See clojure.core/subs for discussion of behavior of substrings
 ;; holding onto references of the original strings, which can

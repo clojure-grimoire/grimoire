@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; `*print-dup*` is very handy when we want to write clojure code/data
 ;; to a file to read it in later.

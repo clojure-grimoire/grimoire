@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 <pre>
 user=> (dorun 5 (repeatedly #(println "hi")))
@@ -19,7 +19,7 @@ nil
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (let [x (atom 0)]
          (dorun (take 10 (repeatedly #(swap! x inc))))
@@ -31,7 +31,7 @@ user=> (let [x (atom 0)]
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (dorun (map #(println "hi" %) ["mum" "dad" "sister"]))
 hi mum

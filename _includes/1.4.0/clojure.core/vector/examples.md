@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; create an empty vector the long way
 user=> (vector)
@@ -40,7 +40,7 @@ true
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Destructuring with a vector, inside a "let" form, a simple case (a symbol
 ;; for each element):
@@ -68,7 +68,7 @@ user=> (let [[first-element second-element third-element fourth-element] my-vect
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; Destructuring with a vector, inside a "let" form, more complex cases:
 

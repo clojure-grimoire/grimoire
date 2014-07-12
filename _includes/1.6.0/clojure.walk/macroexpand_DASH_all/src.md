@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn macroexpand-all
   "Recursively performs all possible macroexpansions in form."
   {:added "1.1"}

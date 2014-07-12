@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (keep-indexed #(if (odd? %1) %2) [:a :b :c :d :e])
 (:b :d){% endraw %}
@@ -11,7 +11,7 @@ user=> (keep-indexed #(if (odd? %1) %2) [:a :b :c :d :e])
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (keep-indexed #(if (pos? %2) %1) [-9 0 29 -7 45 3 -8])
 (2 4 5)
@@ -26,7 +26,7 @@ user=> (keep-indexed (fn [idx v]
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defn position [x coll & {:keys [from-end all] :or {from-end false all false}}]
   (cond

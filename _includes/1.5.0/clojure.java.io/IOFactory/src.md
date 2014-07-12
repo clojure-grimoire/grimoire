@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defprotocol ^{:added "1.2"} IOFactory
   "Factory functions that create ready-to-use, buffered versions of
    the various Java I/O stream types, on top of anything that can

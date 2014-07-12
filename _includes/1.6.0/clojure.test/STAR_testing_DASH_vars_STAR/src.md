@@ -1,3 +1,3 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def ^:dynamic *testing-vars* (list))
 {% endhighlight %}

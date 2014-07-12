@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn some-fn
   "Takes a set of predicates and returns a function f that returns the first logical true value
   returned by one of its composing predicates against any of its arguments, else it returns

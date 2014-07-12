@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn parse
   "Parses and loads the source s, which can be a File, InputStream or
   String naming a URI. Returns a tree of the xml/element struct-map,

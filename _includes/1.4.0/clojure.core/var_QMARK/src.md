@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn var?
   "Returns true if v is of type clojure.lang.Var"
   {:added "1.0"

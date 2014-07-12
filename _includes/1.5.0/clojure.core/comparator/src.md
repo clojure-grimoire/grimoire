@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn comparator
   "Returns an implementation of java.util.Comparator based upon pred."
   {:added "1.0"

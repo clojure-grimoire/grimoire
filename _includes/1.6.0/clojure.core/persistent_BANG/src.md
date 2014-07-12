@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn persistent! 
   "Returns a new, persistent version of the transient collection, in
   constant time. The transient collection cannot be used after this

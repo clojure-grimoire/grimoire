@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (use 'clojure.walk)
 user=> (macroexpand-all '(-> c (+ 3) (* 2)))
@@ -12,7 +12,7 @@ user=> (macroexpand-all '(-> c (+ 3) (* 2)))
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (use 'clojure.walk)
 
@@ -33,7 +33,7 @@ user=> (let* [-> inc] 5)
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; differences between macroexpand-1, macroexpand and macroexpand-all
 

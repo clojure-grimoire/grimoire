@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn munge [s]
   ((if (symbol? s) symbol str) (clojure.lang.Compiler/munge (str s))))
 {% endhighlight %}

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def default-streams-impl
   {:make-reader (fn [x opts] (make-reader (make-input-stream x opts) opts))
    :make-writer (fn [x opts] (make-writer (make-output-stream x opts) opts))

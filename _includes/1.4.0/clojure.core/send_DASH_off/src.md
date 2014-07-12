@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn send-off
   "Dispatch a potentially blocking action to an agent. Returns the
   agent immediately. Subsequently, in a separate thread, the state of

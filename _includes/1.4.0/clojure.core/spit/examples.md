@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (spit "flubber.txt" "test")
 nil
@@ -13,7 +13,7 @@ user=> (slurp "flubber.txt")
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (spit "event.log" "test 1\n" :append true)
 nil
@@ -33,7 +33,7 @@ nil
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defn append-to-file
   "Uses spit to append to a file specified with its name as a string, or

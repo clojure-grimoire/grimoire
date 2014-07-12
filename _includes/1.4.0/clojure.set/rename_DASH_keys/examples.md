@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (rename-keys {:a 1, :b 2} {:a :new-a, :b :new-b})
 {:new-a 1, :new-b 2}
@@ -19,7 +19,7 @@ user=> (rename-keys {:a 1} {:b :new-b})
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; You need to be careful about key collisions.  You probably shouldn't
 ;; depend on the exact behavior.

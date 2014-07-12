@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn vector-zip
   "Returns a zipper for nested vectors, given a root vector"
   {:added "1.0"}

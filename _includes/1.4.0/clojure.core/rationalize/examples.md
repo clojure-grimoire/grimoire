@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 <pre>
 user=> (rationalize 1.5)
@@ -13,7 +13,7 @@ user=> (rationalize 1.5)
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 user=> (rationalize Math/PI)
 3141592653589793/1000000000000000

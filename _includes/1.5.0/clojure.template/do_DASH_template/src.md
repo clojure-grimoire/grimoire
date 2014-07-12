@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro do-template
   "Repeatedly copies expr (in a do block) for each group of arguments
   in values.  values are automatically partitioned by the number of

@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defn xml-zip
   "Returns a zipper for xml elements (as from xml/parse),
   given a root element"

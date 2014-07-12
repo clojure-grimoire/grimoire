@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (defmacro formatter-out
   "Makes a function which can directly run format-in. The function is
 fn [& args] ... and returns nil. This version of the formatter macro is

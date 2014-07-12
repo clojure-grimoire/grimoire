@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 ;; You are having a problem loading a redefined namespace:
 user=> (load "src/clj/com/tizra/layout_expander.clj")

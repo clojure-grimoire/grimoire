@@ -1,7 +1,7 @@
 ### Example 0
 [permalink](#example-0)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defmacro with-tree [tree & body]
   "works on a JTree and restores its expanded paths after executing body"
@@ -27,7 +27,7 @@
 ### Example 1
 [permalink](#example-1)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (defmacro unless [pred a b]
   `(if (not ~pred) ~a ~b))
@@ -41,7 +41,7 @@
 ### Example 2
 [permalink](#example-2)
 
-{% highlight clojure linenos %}
+{% highlight clojure %}
 {% raw %}
 (def dbg 1)
 

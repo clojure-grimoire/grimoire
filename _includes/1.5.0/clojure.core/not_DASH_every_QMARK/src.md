@@ -1,4 +1,4 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def
  ^{:tag Boolean
    :doc "Returns false if (pred x) is logical true for every x in

@@ -1,3 +1,3 @@
-{% highlight clojure linenos %}
+{% highlight clojure %}
 (def attrs (accessor element :attrs))
 {% endhighlight %}

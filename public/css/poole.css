@@ -52,11 +52,11 @@ html {
   font-size: 16px;
   line-height: 1.5;
 }
-@media (min-width: 38em) {
-  html {
-    font-size: 20px;
-  }
-}
+/* @media (min-width: 38em) { */
+/*   html { */
+/*     font-size: 20px; */
+/*   } */
+/* } */
 
 body {
   color: #515151;
@@ -286,9 +286,9 @@ tbody tr:nth-child(odd) th {
  */
 
 .container {
-  max-width: 50rem;
-  padding-left:  1rem;
-  padding-right: 1rem;
+  max-width: 60rem;
+  padding-left:  4rem;
+  padding-right: 0rem;
   margin-left:  auto;
   margin-right: auto;
 }

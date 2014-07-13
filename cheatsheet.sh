@@ -2,11 +2,15 @@
 
 set -e
 
-rm -rf clojure-cheatsheets/
-git clone https://github.com/jafingerhut/clojure-cheatsheets
-pushd .
+if [ ! -d "clojure-cheatsheets" ]; then
+  git clone https://github.com/jafingerhut/clojure-cheatsheets
+fi
 
-cd clojure-cheatsheets/src/clj-jvm
+pushd .
+cd clojure-cheatsheets/
+git reset --hard && git clean -fd && git pull origin master
+
+cd src/clj-jvm
 lein run links-to-grimoire
 popd
 

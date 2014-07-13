@@ -51,16 +51,16 @@ specific Clojure versions.
 
 For Grimoire `0.2.X` Examples should be formatted as follows:
 
-<pre>
+{% raw %}
 ### Example $N
 [permalink](#example-$N)
 {% highlight clojure %}
-{% raw %}
 user=> (- 1)
 -1
-{% endraw %}
 {% endhighlight %}
-</pre>
+{% endraw %}
+
+For safety, also wrap examples in Liquid raw tags.
 
 ### Building & Running Grimoire
 

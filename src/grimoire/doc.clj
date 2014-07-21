@@ -43,9 +43,9 @@
       (when-not (.exists ex-dir)
         (.mkdir ex-dir))
 
-      (doseq [{:keys [body] :as e} @examples]
-        (let [f (io/file ex-dir (str (Math/abs (hash body)) ".log"))]
-          (when-not (.exists f)
+      (when examples
+        (doseq [{:keys [body] :as e} @examples]
+          (let [f (io/file ex-dir (str (Math/abs (hash body)) ".log"))]
             (spit f (-> body (replace #"</?pre>" "")))))))))
 
 ;; FIXME

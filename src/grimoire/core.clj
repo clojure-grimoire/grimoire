@@ -84,14 +84,19 @@
       (replace #"^_*" "")
       (replace #"_*$" "")))
 
-(defn write-example
-  [i {:keys [body] :as example}]
-  (str "### Example " i "\n"
-       "[permalink](#example-" i ")\n"
-       "\n"
+(defn format-example
+  [{:keys [body] :as example}]
+  (str "---\n"
+       "layout: none\n"
+       "tags:\n"
+       (str " - " (:ns example) "/" (:function example) "\n")
+       "---\n\n"
        "{% highlight clojure %}\n"
        "{% raw %}\n"
-       (replace body #"[\t ]+\n" "\n")
+       (-> body
+           (replace #"[\t ]+\n" "\n")
+           (replace #"<pre>" "")
+           (replace #"</pre>" ""))
        "{% endraw %}\n"
        "{% endhighlight %}\n\n\n"))
 
@@ -99,8 +104,10 @@
   [[ns-dir inc-dir]
    {:keys [namespace symbol raw-symbol arglists doc src version-str examples]}]
   (let [md-symbol (replace raw-symbol "*" "\\*")]
-    (let [sym-inc-dir (file inc-dir symbol)]
+    (let [sym-inc-dir (file inc-dir symbol)
+          sym-dir     (file ns-dir symbol)]
       (.mkdir sym-inc-dir)
+      (.mkdir sym-dir)
 
       ;; write docstring file
       (let [inc-doc-file (file sym-inc-dir "docs.md")]
@@ -127,26 +134,20 @@
                          src)
                  (spit inc-src-file)))))
 
-      (let [ex-file (file sym-inc-dir "examples.md")]
+      (let [ex-dir (file sym-dir "_posts")]
         ;; ensure the examples file
-        (when-not (.exists ex-file)
-          (->> (str (let [v (prior-clojure-version version-str)
-                          i (str v "/" namespace "/" symbol "/examples.md")
-                          f (str "./_includes/" i)]
-                      (when (.exists (file f))
-                        (str "{% include " i " %}\n")))
+        (when-not (.exists ex-dir)
+          (.mkdir ex-dir))
 
-                    (when (= version-str "1.4.0")
-                      (->> @examples
-                           (map-indexed write-example)
-                           (reduce str)))
-
-                    (when (= version-str "1.6.0")
-                      (str "\n"
-                           "[Please add examples!](https://github.com/arrdem/grimoire/edit/master/"
-                           ex-file ")\n")))
-               (spit ex-file))))
-
+        (when (= version-str "1.4.0")
+          (doseq [{:keys [updated_at] :as e} @examples]
+            (let [f (file ex-dir (str (Math/abs (hash updated_at)) ".md"))]
+              (when-not (.exists f)
+                (println "Creating example" f)
+                (->> e
+                     format-example
+                     (spit f)))))))
+    
       ;; write template files
       ;; /<clojure-version>/<namespace>/<symbol>.md
       (let [dst-dir (file (str ns-dir "/" symbol))
@@ -154,15 +155,15 @@
         (when-not (.exists dst-dir)
           (.mkdir dst-dir))
 
-        (when-not (.exists dst-file)
+        (when-not false ;(.exists dst-file)
           (->> (str (render-yaml [["layout"    "fn"]
                                   ["namespace" namespace]
-                                  ["symbol"    (pr-str md-symbol)]])
+                                  ["symbol"    (pr-str md-symbol)]
+                                  ["var"       (str namespace "/" md-symbol)]])
                     (format "\n# [Clojure %s](../../)/[%s](../)/%s\n\n"
                             version-str namespace   md-symbol)
                     (lq "include" (trim-dot (str ns-dir "/" symbol "/docs.md")))
-                    "\n##Examples\n\n"
-                    (lq "include" (trim-dot (str ns-dir "/" symbol "/examples.md")))
+                    (lq "include" "examples.md")
                     (if src
                       (str "## Source\n"
                            (lq "include" (trim-dot (str ns-dir "/" symbol "/src.md"))))

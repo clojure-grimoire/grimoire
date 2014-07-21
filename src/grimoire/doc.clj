@@ -126,6 +126,5 @@
 
         (let [namespaces (read-string (slurp input-file))]
           (doseq [n namespaces]
-            (println n)
             (require n)
             (write-docs-for-ns root n)))))))

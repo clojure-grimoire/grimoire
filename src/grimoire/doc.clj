@@ -41,12 +41,12 @@
 
     (let [ex-dir (io/file sym-dir "examples")]
       (when-not (.exists ex-dir)
-        (.mkdir ex-dir))
+        (.mkdir ex-dir)
 
-      (when examples
-        (doseq [{:keys [body] :as e} @examples]
-          (let [f (io/file ex-dir (str (Math/abs (hash body)) ".log"))]
-            (spit f (-> body (replace #"</?pre>" "")))))))))
+        (when examples
+          (doseq [{:keys [body] :as e} @examples]
+            (let [f (io/file ex-dir (str (Math/abs (hash body)) ".log"))]
+              (spit f (-> body (replace #"</?pre>" ""))))))))))
 
 ;; FIXME
 ;;   This should be a configuration value not hard coded.

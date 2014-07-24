@@ -25,17 +25,9 @@
 
 (defn my-munge [s]
   (-> s
-      (replace "*" "_STAR_")
       (replace "?" "_QMARK_")
       (replace "." "_DOT_")
-      (replace "<" "_LT_")
-      (replace ">" "_GT_")
-      (replace "-" "_DASH_")
       (replace "/" "_SLASH_")
-      (replace "!" "_BANG_")
-      (replace "=" "_EQ_")
-      (replace "+" "_PLUS_")
-      (replace "'" "_SQUOTE_")
       (replace #"^_*" "")
       (replace #"_*$" "")))
 

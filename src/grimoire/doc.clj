@@ -30,18 +30,28 @@
       (replace #"/" ".")))
 
 (defn write-docs
-  [root {:keys [symbol raw-symbol arglists doc src examples related]}]
+  [root {:keys [symbol arglists doc src examples related]}]
   (let [sym-dir (io/file root symbol)]
     (.mkdir sym-dir)
 
+    ;; write arities file
+    (let [arities-file (io/file sym-dir "arities")]
+      (when-not (.exists arities-file)
+        (doseq [l arglists]
+          (spit arities-file (str l "\n") :append true))))
+
     ;; write docstring file
-    (let [doc-file (io/file sym-dir "docs.txt")]
+    (let [doc-file (io/file sym-dir "docstring")]
       (when-not (.exists doc-file)
         (spit doc-file doc)))
 
+    (let [extended-doc-file (io/file sym-dir "extended-docstring")]
+      (when-not (.exists extended-doc-file)
+        (spit extended-doc-file "")))
+
     (when src
       ;; write source file
-      (let [src-file (io/file sym-dir "src.txt")]
+      (let [src-file (io/file sym-dir "source")]
         (when-not (.exists src-file)
           (spit src-file src))))
 
@@ -50,6 +60,8 @@
       (when-not (.exists ex-dir)
         (.mkdir ex-dir)
 
+        (spit ex-file "")
+
         (when examples
           (doseq [{:keys [body] :as e} @examples]
             (let [fname (str (Math/abs (hash body)) ".log")
@@ -57,13 +69,14 @@
               (spit f (-> body (replace #"</?pre>" "")))
               (spit ex-file (str fname "\n") :append true))))))
 
-    (when related
-      (let [related-file (io/file sym-dir "related-list")]
+    (let [related-file (io/file sym-dir "related")]
+      (if related
         (doseq [{:keys [file name] :as el} @related]
           (let [file (or file "clojure/core.clj")]
             (spit related-file
                   (str (file->ns file) "/" name)
-                  :append true)))))))
+                  :append true)))
+        (spit related-file "")))))
 
 ;; FIXME
 ;;   This should be a configuration value not hard coded.
@@ -82,7 +95,6 @@
        root
        {:*version-str* *version-str*
         :symbol      s
-        :raw-symbol  raw-symbol
         :doc         doc
         :arglists    arglists
         :src         (#'clojure.repl/source-fn (symbol namespace raw-symbol))
@@ -101,7 +113,6 @@
          (assoc
              :*version-str* *version-str*
              :symbol      (my-munge (name sym))
-             :raw-symbol  sym
              :arglists    (:forms fake-meta)
              :src         ";; Special forms have no source\n;; Implemented in the compiler."
              :examples    (delay (-> (cd/examples-core "clojure.core" (name sym)) :examples))

@@ -35,28 +35,28 @@
     (.mkdir sym-dir)
 
     ;; write arities file
-    (let [arities-file (io/file sym-dir "arities")]
+    (let [arities-file (io/file sym-dir "arities.txt")]
       (when-not (.exists arities-file)
         (doseq [l arglists]
           (spit arities-file (str l "\n") :append true))))
 
     ;; write docstring file
-    (let [doc-file (io/file sym-dir "docstring")]
+    (let [doc-file (io/file sym-dir "docstring.txt")]
       (when-not (.exists doc-file)
         (spit doc-file doc)))
 
-    (let [extended-doc-file (io/file sym-dir "extended-docstring")]
+    (let [extended-doc-file (io/file sym-dir "extended-docstring.txt")]
       (when-not (.exists extended-doc-file)
         (spit extended-doc-file "")))
 
     (when src
       ;; write source file
-      (let [src-file (io/file sym-dir "source")]
+      (let [src-file (io/file sym-dir "source.clj")]
         (when-not (.exists src-file)
           (spit src-file src))))
 
     (let [ex-dir (io/file sym-dir "examples")
-          ex-file (io/file sym-dir "examples-list")]
+          ex-file (io/file sym-dir "examples-list.txt")]
       (when-not (.exists ex-dir)
         (.mkdir ex-dir)
 
@@ -64,12 +64,12 @@
 
         (when examples
           (doseq [{:keys [body] :as e} @examples]
-            (let [fname (str (Math/abs (hash body)) ".log")
+            (let [fname (str (Math/abs (hash body)) ".clj")
                   f (io/file ex-dir fname)]
               (spit f (-> body (replace #"</?pre>" "")))
               (spit ex-file (str fname "\n") :append true))))))
 
-    (let [related-file (io/file sym-dir "related")]
+    (let [related-file (io/file sym-dir "related.txt")]
       (if related
         (doseq [{:keys [file name] :as el} @related]
           (let [file (or file "clojure/core.clj")]

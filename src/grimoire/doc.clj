@@ -39,14 +39,17 @@
         (when-not (.exists src-file)
           (spit src-file src))))
 
-    (let [ex-dir (io/file sym-dir "examples")]
+    (let [ex-dir (io/file sym-dir "examples")
+          ex-file (io/file sym-dir "examples-list")]
       (when-not (.exists ex-dir)
         (.mkdir ex-dir)
 
         (when examples
           (doseq [{:keys [body] :as e} @examples]
-            (let [f (io/file ex-dir (str (Math/abs (hash body)) ".log"))]
-              (spit f (-> body (replace #"</?pre>" ""))))))))))
+            (let [fname (str (Math/abs (hash body)) ".log")
+                  f (io/file ex-dir fname)]
+              (spit f (-> body (replace #"</?pre>" "")))
+              (spit ex-file (str fname "\n") :append true))))))))
 
 ;; FIXME
 ;;   This should be a configuration value not hard coded.

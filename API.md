@@ -14,8 +14,7 @@ resource paths
 /$VERSION/$NAMESPACE/$SYMBOL/docstring.txt
 /$VERSION/$NAMESPACE/$SYMBOL/extended-docstring.txt
 /$VERSION/$NAMESPACE/$SYMBOL/source.clj
-/$VERSION/$NAMESPACE/$SYMBOL/related
-/$VERSION/$NAMESPACE/$SYMBOL/examples-list
+/$VERSION/$NAMESPACE/$SYMBOL/related.txt
 /$VERSION/$NAMESPACE/$SYMBOL/examples/$EXAMPLE_ID.clj
 ```
 

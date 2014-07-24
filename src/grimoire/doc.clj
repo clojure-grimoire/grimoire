@@ -55,19 +55,15 @@
         (when-not (.exists src-file)
           (spit src-file src))))
 
-    (let [ex-dir (io/file sym-dir "examples")
-          ex-file (io/file sym-dir "examples-list.txt")]
+    (let [ex-dir (io/file sym-dir "examples")]
       (when-not (.exists ex-dir)
         (.mkdir ex-dir)
-
-        (spit ex-file "")
 
         (when examples
           (doseq [{:keys [body] :as e} @examples]
             (let [fname (str (Math/abs (hash body)) ".clj")
-                  f (io/file ex-dir fname)]
-              (spit f (-> body (replace #"</?pre>" "")))
-              (spit ex-file (str fname "\n") :append true))))))
+                  f     (io/file ex-dir fname)]
+              (spit f (-> body (replace #"</?pre>" ""))))))))
 
     (let [related-file (io/file sym-dir "related.txt")]
       (if related

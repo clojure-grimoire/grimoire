@@ -9,87 +9,41 @@ the form of pull requests, and is hosted
 
 ### File structure
 
-Each function, variable and macro and special form has at least three
-files:
+Each function, variable and macro and special form has the following files:
 
 <pre>
-/_include/$CLOJURE-VERSION/$NAMESPACE/$SYMBOL/docs.md
-/_include/$CLOJURE-VERSION/$NAMESPACE/$SYMBOL/source.md
-/_include/$CLOJURE-VERSION/$NAMESPACE/$SYMBOL/examples.md
+/resources/$VERSION/$NAMESPACE/$SYMBOL/arities.txt
+/resources/$VERSION/$NAMESPACE/$SYMBOL/docstring.txt
+/resources/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring.txt
+/resources/$VERSION/$NAMESPACE/$SYMBOL/source.clj
+/resources/$VERSION/$NAMESPACE/$SYMBOL/related.txt
+/resources/$VERSION/$NAMESPACE/$SYMBOL/examples/$EXAMPLE_ID.clj
 </pre>
 
-The per-symbol documentation is then generated with a template
-equivalent to the following:
-
-<pre>
-{% raw %}
----
-layout: fn
-namespace: $NAMESPACE
-symbol: $SYMBOL
----
-
-# [$NAMESPACE](../)/$SYMBOL
-
-{% include $CLOJURE-VERSION/$NAMESPACE/$SYMBOL/docs.md %}
-{% include $CLOJURE-VERSION/$NAMESPACE/$SYMBOL/examples.md %}
-{% include $CLOJURE-VERSION/$NAMESPACE/$SYMBOL/src.md %}
-{% endraw %}
-</pre>
-
-Namespaces and Clojure releases also have equivalent files.
+These files have no markup, HTML or formatting beyond that possible in
+plain text and serve double duty as the sources from which the main
+pages are generated and the plain text "API" provided by Grimoire
+0.3.X.
 
 ### Writing Examples
 
-Grimoire "inherits" examples from one version of Clojure to the
-next. The examples for `[org.clojure/clojure "1.6"]` include the
-examples for `[org.clojure/clojure "1.5"]`. The
-`[org.clojure/clojure "1.5"]` include `[org.clojure/clojure "1.4"]`
-and soforth. As described in [contributing](contributing.md) these
-examples are stored in the include directories related to their
-specific Clojure versions.
+Examples are simply raw Clojure REPL sessions with the .clj extension
+dumped to files. As with other resources in the "API", these should be
+simple UTF-8 plain text files with no markup. To add an example,
+simply create a REPL dump file and add it to the appropriate examples
+directory. Nothing else is involved.
 
-For Grimoire `0.2.X` Examples should be formatted as follows:
-
-{% raw %}
-### Example $N
-[permalink](#example-$N)
-{% highlight clojure %}
-user=> (- 1)
--1
-{% endhighlight %}
-{% endraw %}
-
-For safety, also wrap examples in Liquid raw tags.
+REPL sessions are expected to fit the pattern `("user=>" sexpr) +`.
+Results of evaluation should be commented out, as should output to any
+file stream such as stdout or stderr. This is required in the
+interests of providing automatic inter-var linking and other static
+analysis.
 
 ### Building & Running Grimoire
 
-Grimoire is built as a Clojure template generator which uses
-[jekyll](http://jekyllrb.com/) to build generated templates to HTML.
+Grimoire is built as a matching pair of programs: a "database"
+generator which users should not re-run and a webserver which uses the
+filesystem database described above to generate and serve a website.
 
-To run a local instance of Grimoire, clone the repository and run
-`jekyll serve`.
-
-If you have changes to contribute, use `make test` which will rebuild
-the entire site including the cheat sheet and finally `jekyll serve`
-the result. If you have some more fine grained need, such as only
-rebuilding the template files or only rebuilding the cheatsheet, check
-the makefile. There's probabaly a make target in there for whatever
-you need.
-
-**WARNING**: Grimoire's build program is _lazy_. If it detects that a
-file already exists, it won't write it. When making changes to the
-template system, I suggest falsifying the checks for file existance
-where appropriate and rebuilding. Be careful not to commit these
-changes, as we won't take patches which clobber everything to rebuild
-the site.
-
-### Submitting changes
-
-Rather than updating the documentation or examples in the formatted
-files, changes for formatting and content should be applied to the
-individual template files in `_include/`.
-
-Changes to the template files should be applied to the generation
-script and the site should be rebuilt with the resulting changes to
-the rewritten templates.
+`lein with-profile server run` will run the server, against existing
+datafiles.

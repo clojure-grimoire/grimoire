@@ -125,7 +125,7 @@
       (write-docs-for-var ns-dir var))
 
     (when (= ns 'clojure.core)
-      (write-docs-for-specials ns-dir))
+      (write-docs-for-specials ns-dir)))
 
   (println "Finished" ns)
   nil)
@@ -144,7 +144,8 @@
         (when-not (.exists root)
           (.mkdir root))
 
-        (let [namespaces (read-string (slurp input-file))]
+        (let [namespaces (line-seq (io/reader input-file))]
           (doseq [n namespaces]
-            (require n)
-            (write-docs-for-ns root n)))))))
+            (let [n (symbol n)]
+              (require n)
+              (write-docs-for-ns root n))))))))

@@ -111,7 +111,8 @@
              :symbol      (my-munge (name sym))
              :arglists    (:forms fake-meta)
              :src         ";; Special forms have no source\n;; Implemented in the compiler."
-             :examples    (delay (-> (cd/examples-core "clojure.core" (name sym)) :examples))
+             :examples    (when (= *version-str* "1.4.0")
+                            (delay (-> (cd/examples-core "clojure.core" (name sym)) :examples)))
              :related     (when (= *version-str* "1.4.0")
                             (delay (cd/see-also-core "clojure.core" (name sym)))))))
     (println "Documented special form" sym)))

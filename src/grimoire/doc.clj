@@ -101,7 +101,7 @@
      (-> fake-meta
          (assoc
              :*version-str* *version-str*
-             :namespace   'clojure.core
+             :namespace   "clojure.core"
              :symbol      (my-munge (name sym))
              :raw-symbol  sym
              :arglists    (:forms fake-meta)

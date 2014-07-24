@@ -15,13 +15,10 @@
 ;; Intended file structure output
 ;;--------------------------------------------------------------------
 ;; /resources/<clojure-version>/<namespace>/
-;; /resources/<clojure-version>/<namespace>/<symbol>/source.md
-;; /resources/<clojure-version>/<namespace>/<symbol>/docs.md
+;; /resources/<clojure-version>/<namespace>/<symbol>/source.clj
+;; /resources/<clojure-version>/<namespace>/<symbol>/docs
 ;; /resources/<clojure-version>/<namespace>/<symbol>/examples.md
 ;; /resources/<clojure-version>/<namespace>/<symbol>/index.md
-;; /<clojure-version>/
-;; /<clojure-version>/<namespace>/
-;; /<clojure-version>/<namespace>/<symbol>/
 
 (defn file->ns [fpath]
   (-> fpath

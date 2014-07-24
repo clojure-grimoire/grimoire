@@ -30,7 +30,7 @@
       (replace #"/" ".")))
 
 (defn write-docs
-  [root {:keys [namespace symbol raw-symbol arglists doc src examples related]}]
+  [root {:keys [symbol raw-symbol arglists doc src examples related]}]
   (let [sym-dir (io/file root symbol)]
     (.mkdir sym-dir)
 
@@ -81,7 +81,6 @@
       (write-docs
        root
        {:*version-str* *version-str*
-        :namespace   namespace
         :symbol      s
         :raw-symbol  raw-symbol
         :doc         doc
@@ -101,7 +100,6 @@
      (-> fake-meta
          (assoc
              :*version-str* *version-str*
-             :namespace   "clojure.core"
              :symbol      (my-munge (name sym))
              :raw-symbol  sym
              :arglists    (:forms fake-meta)
@@ -127,7 +125,7 @@
       (write-docs-for-var ns-dir var))
 
     (when (= ns 'clojure.core)
-      (write-docs-for-specials root)))
+      (write-docs-for-specials ns-dir))
 
   (println "Finished" ns)
   nil)

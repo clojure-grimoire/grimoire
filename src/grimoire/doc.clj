@@ -23,8 +23,14 @@
 ;; /<clojure-version>/<namespace>/
 ;; /<clojure-version>/<namespace>/<symbol>/
 
+(defn file->ns [fpath]
+  (-> fpath
+      (replace #".clj$" "")
+      (replace #"_" "-")
+      (replace #"/" ".")))
+
 (defn write-docs
-  [root {:keys [namespace symbol raw-symbol arglists doc src examples]}]
+  [root {:keys [namespace symbol raw-symbol arglists doc src examples related]}]
   (let [sym-dir (io/file root symbol)]
     (.mkdir sym-dir)
 
@@ -49,7 +55,15 @@
             (let [fname (str (Math/abs (hash body)) ".log")
                   f (io/file ex-dir fname)]
               (spit f (-> body (replace #"</?pre>" "")))
-              (spit ex-file (str fname "\n") :append true))))))))
+              (spit ex-file (str fname "\n") :append true))))))
+
+    (when related
+      (let [related-file (io/file sym-dir "related-list")]
+        (doseq [{:keys [file name] :as el} @related]
+          (let [file (or file "clojure/core.clj")]
+            (spit related-file
+                  (str (file->ns file) "/" name)
+                  :append true)))))))
 
 ;; FIXME
 ;;   This should be a configuration value not hard coded.
@@ -74,7 +88,10 @@
         :arglists    arglists
         :src         (#'clojure.repl/source-fn (symbol namespace raw-symbol))
         :examples    (when (= *version-str* "1.4.0")
-                       (delay (-> (cd/examples-core namespace raw-symbol) :examples)))}))))
+                       (delay (-> (cd/examples-core namespace raw-symbol) :examples)))
+        :related     (when (= *version-str* "1.4.0")
+                       (delay (cd/see-also-core namespace raw-symbol)))})
+      (println "Documented var" raw-symbol))))
 
 (defn write-docs-for-specials
   [root]
@@ -89,7 +106,9 @@
              :raw-symbol  sym
              :arglists    (:forms fake-meta)
              :src         ";; Special forms have no source\n;; Implemented in the compiler."
-             :examples    (delay (-> (cd/examples-core "clojure.core" (name sym)) :examples)))))
+             :examples    (delay (-> (cd/examples-core "clojure.core" (name sym)) :examples))
+             :related     (when (= *version-str* "1.4.0")
+                            (delay (cd/see-also-core "clojure.core" (name sym)))))))
     (println "Documented special form" sym)))
 
 (defn write-docs-for-ns

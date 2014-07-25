@@ -4,11 +4,13 @@
 ### Example 1
 [permalink](#example-1)
 {% highlight clojure %}
-(reduce (fn [a v] (if-not (a v) (conj a v) (reduced a))) 
-         #{} 
-         infinite-lazy-sequence)
- => #{1 2 3 4}
+(reduce
+  (fn [acc v]
+    (if (< v 5)
+      (conj acc v)
+      (reduced acc)))
+  []
+  (range))
+ => [0 1 2 3 4]
 {% endhighlight %}
 {% endraw %}
-
-[Example sourced from StackOverflow](http://stackoverflow.com/a/15625740/173062)

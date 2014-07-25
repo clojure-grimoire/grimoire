@@ -4,6 +4,9 @@
 ### Example 1
 [permalink](#example-1)
 {% highlight clojure %}
+; Accumulate items into the list while numbers are smaller than 5.
+; Without the (reduced) call the reduce would continue consuming
+; the infinite sequence from range forever.
 (reduce
   (fn [acc v]
     (if (< v 5)

@@ -1,5 +1,5 @@
 (ns grimoire.site
-  (:require [compojure.core :refer :all]
+  (:require [compojure.core :refer [defroutes GET]]
             [grimoire.site.api :as api]
             [grimoire.site.release :as release]
             [ring.adapter.jetty :as ring]
@@ -9,8 +9,9 @@
 
 
 (defroutes routes
-  api/routes
+  ; api/routes
   release/routes
+  (GET "/" [] (release/index))
   (route/resources "/")
   ;(route/not-found (layout/four-oh-four))
   )

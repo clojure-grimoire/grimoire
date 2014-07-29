@@ -1,7 +1,0 @@
-## Arities
-
-
-## Documentation
-{%raw%}
-A clojure.lang.Namespace object representing the current namespace.
-{%endraw%}

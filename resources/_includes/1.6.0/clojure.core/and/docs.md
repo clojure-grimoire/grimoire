@@ -1,0 +1,12 @@
+## Arities
+[]
+[x]
+[x & next]
+
+## Documentation
+{%raw%}
+Evaluates exprs one at a time, from left to right. If a form
+  returns logical false (nil or false), and returns that value and
+  doesn't evaluate any of the other expressions, otherwise it returns
+  the value of the last expr. (and) returns true.
+{%endraw%}

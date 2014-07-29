@@ -2,11 +2,11 @@
   (:require [grimoire.web :as web]))
 
 (defn start! []
-  (web-server/start-web-server!)
+  (web/start-web-server!)
   :ok)
 
 (defn stop! []
-  (web-server/stop-web-server!)
+  (web/stop-web-server!)
   :ok)
 
 (defn restart! []

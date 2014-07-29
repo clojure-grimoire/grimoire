@@ -10,6 +10,10 @@
                    :main grimoire.doc}
              :1.6 {:dependencies [[org.clojure/clojure "1.6.0"]]
                    :main grimoire.doc}
+             :repl {:plugins [[cider/cider-nrepl "0.7.0-SNAPSHOT"]]}
              :server {:dependencies [[compojure "1.1.8"]
-                                     [hiccup "1.0.5"]]
-                      :main grimoire.site}})
+                                     [hiccup "1.0.5"]
+                                     [selmer "0.6.9"]
+                                     [ring "1.3.0"]]
+                      :main grimoire.site}
+             :user [:1.6 :repl :server]})

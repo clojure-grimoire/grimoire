@@ -18,4 +18,4 @@
                                      [hiccup "1.0.5"]]
                       :main         grimoire.web}
              :dev    {:source-paths ["dev"]}
-             :user   [:1.6 :repl :server :dev]})
+             :user   [:1.6 :repl :server :dev :user]})

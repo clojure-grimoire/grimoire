@@ -17,5 +17,6 @@
                                      [compojure "1.1.8"]
                                      [hiccup "1.0.5"]]
                       :main         grimoire.web}
-             :dev    {:source-paths ["dev"]}
+             :dev    {:source-paths ["dev"]
+                      :main         user}
              :user   [:1.6 :repl :server :dev]})

@@ -1,6 +1,6 @@
 (ns grimoire.core
   (:require [grimoire.doc :as doc]
-            [grimpore.site :as site]))
+            [grimoire.site :as site]))
 
 (def usage
 "Usage: lein run [help|doc ns-file|serve]

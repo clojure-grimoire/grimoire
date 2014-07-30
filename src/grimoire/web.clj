@@ -220,11 +220,22 @@
     [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]
     " &raquo; "
     [:a {:href (str (:baseurl site-config) version "/" namespace "/")} namespace]]
-   [:h2 "Vars"]
-   [:ul
-    (for [path (paths version namespace)]
-      [:li [:a {:href (str (:baseurl site-config) (string/join "/" path) "/")}
-            (last path)]])]))
+   (let [keys     ["special" "macro" "fn" "var"]
+         mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
+         grouping (->> (for [path (paths version namespace)]
+                         (let [fp (string/join "/" path)]
+                           {:url  (str (:baseurl site-config) fp "/")
+                            :name (slurp (io/resource (str fp "/name.txt")))
+                            :type (slurp (io/resource (str fp "/type.txt")))}))
+                       (group-by :type))]
+     (for [[k records] grouping]
+       (list
+        [:h2 (get mapping k)]
+        (for [r records]
+          [:li [:a {:href (:url r)} (:name r)]]))))))
+
+(def namespace-page-memo
+  (memoize namespace-page))
 
 (defn example [index path]
   (let []
@@ -245,8 +256,10 @@
        [:h2 symbol]
        [:h3 "Arities"]
        [:p (-> "arities.txt" symbol-file-path resource-file-contents)]
-       [:h3 "Documentation"]
-       [:pre (-> "docstring.txt" symbol-file-path resource-file-contents)]
+       [:h3 "Official Documentation"]
+       [:pre (-> "docstring.md" symbol-file-path markdown-file)]
+       [:h3 "Community Documentation"]
+       [:pre (-> "extended-docstring.md" symbol-file-path markdown-file)]
        (when-let [examples (-> "examples" symbol-file-path symbol-examples seq)]
          (list
           [:h3 "Examples"]
@@ -276,7 +289,7 @@
 
     (context "/:namespace" [namespace]
       (GET "/" [version namespace]
-           (namespace-page version namespace))
+           (namespace-page-memo version namespace))
 
       (context "/:symbol" [symbol]
         (GET "/" {{header-type :type} :headers

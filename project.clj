@@ -11,7 +11,8 @@
              :1.6    {:dependencies [[org.clojure/clojure "1.6.0"]]
                       :main         grimoire.doc}
              :repl   {:plugins [[cider/cider-nrepl "0.7.0-SNAPSHOT"]]}
-             :server {:dependencies [[ring/ring-core "1.3.0"]
+             :server {:dependencies [[org.clojure/clojure "1.6.0"]
+                                     [ring/ring-core "1.3.0"]
                                      [ring/ring-jetty-adapter "1.3.0"]
                                      [selmer "0.6.9"]
                                      [compojure "1.1.8"]

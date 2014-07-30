@@ -17,7 +17,8 @@
                                      [selmer "0.6.9"]
                                      [compojure "1.1.8"]
                                      [hiccup "1.0.5"]
-                                     [markdown-clj "0.9.47"]]
+                                     [markdown-clj "0.9.47"]
+                                     [me.raynes/conch "0.8.0"]]
                       :main         grimoire.web}
              :dev    {:source-paths ["dev"]
                       :main         user}

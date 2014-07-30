@@ -152,7 +152,10 @@
       (some-> file slurp))))
 
 (defn highlight-clojure [text]
-  (let-programs [pygmentize "./pygmentize"]
+  (let-programs [pygmentize
+                 (if (.exists (io/file "./pygmentize"))
+                   "./pygmentize"
+                   "pygmentize")]
     (pygmentize "-fhtml" (str "-l" "clojure")
                 (str "-Ostripnl=False,encoding=utf-8")
                 {:dir "resources/pygments"

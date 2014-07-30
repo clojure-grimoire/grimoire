@@ -109,7 +109,7 @@
    (header page)
    [:body
     (sidebar page)
-    [:wrap (masthead page)
+    [:div.wrap (masthead page)
      [:div {:class "container content"} content]]]
    (foot page)))
 

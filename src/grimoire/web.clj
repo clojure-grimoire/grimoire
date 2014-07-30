@@ -1,11 +1,12 @@
 (ns grimoire.web
   (:require [clojure.java.io :as io]
             [clojure.string :as string]
-            [compojure.core :refer [defroutes context GET]]
+            [compojure.core :as c]
             [compojure.handler :as handler]
             [compojure.route :as route]
             [hiccup.page :as page]
-            [ring.adapter.jetty :as jetty]))
+            [ring.adapter.jetty :as jetty]
+            [ring.util.response :as response]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Site config
@@ -146,25 +147,25 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Routes
 
-(defroutes app
-  (GET "/" []
-       (home-page))
+(c/defroutes app
+  (c/GET "/" []
+         (home-page))
 
   (route/resources "/public")
 
-  (context "/:version" [version]
-    (GET "/" [version]
-         (version-page version))
+  (c/context "/:version" [version]
+    (c/GET "/" [version]
+           (version-page version))
 
-    (context "/:namespace" [namespace]
-      (GET "/" [version namespace]
-           (namespace-page version namespace))
+    (c/context "/:namespace" [namespace]
+      (c/GET "/" [version namespace]
+             (namespace-page version namespace))
 
-      (context "/:symbol" [symbol]
-        (GET "/" {{header-type :type} :headers
-                  {param-type :type} :params}
-             (symbol-page version namespace symbol
-                          (keyword (or header-type param-type "html")))))))
+      (c/context "/:symbol" [symbol]
+        (c/GET "/" {{header-type :type} :headers
+                    {param-type :type} :params}
+               (symbol-page version namespace symbol
+                            (keyword (or header-type param-type "html")))))))
 
   (route/not-found "<h1>Page not found</h1>"))
 
@@ -187,5 +188,5 @@
   (stop-web-server!)
   (start-web-server!))
 
-(defn -main [&args]
+(defn -main [& args]
   (start-web-server!))

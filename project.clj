@@ -15,7 +15,8 @@
                                      [ring/ring-jetty-adapter "1.3.0"]
                                      [selmer "0.6.9"]
                                      [compojure "1.1.8"]
-                                     [hiccup "1.0.5"]]
+                                     [hiccup "1.0.5"]
+                                     [markdown-clj "0.9.47"]]
                       :main         grimoire.web}
              :dev    {:source-paths ["dev"]
                       :main         user}

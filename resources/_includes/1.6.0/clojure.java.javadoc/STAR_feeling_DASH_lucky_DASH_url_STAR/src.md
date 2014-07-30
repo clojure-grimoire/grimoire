@@ -1,3 +1,0 @@
-{% highlight clojure %}
-(def ^:dynamic *feeling-lucky-url* "http://www.google.com/search?btnI=I%27m%20Feeling%20Lucky&q=allinurl:")
-{% endhighlight %}

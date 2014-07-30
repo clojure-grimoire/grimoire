@@ -1,7 +1,0 @@
-## Arities
-[multifn]
-
-## Documentation
-{%raw%}
-Given a multimethod, returns a map of preferred value -> set of other values
-{%endraw%}

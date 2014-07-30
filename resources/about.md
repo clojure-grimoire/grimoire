@@ -18,7 +18,7 @@ changes.
 
 ## Legal
 
-Grimoire is &copy; to Reid Mckenzie {{ site.time | date: '%Y' }}. All
+Grimoire is &copy; to Reid Mckenzie 2014. All
 rights reserved.
 
 Clojure, related trademarks and iconography are &copy; Rich Hickey,

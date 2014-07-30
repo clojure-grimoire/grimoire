@@ -11,19 +11,18 @@ the form of pull requests, and is hosted
 
 Each function, variable and macro and special form has the following files:
 
-<pre>
+```
 /resources/$VERSION/$NAMESPACE/$SYMBOL/arities.txt
 /resources/$VERSION/$NAMESPACE/$SYMBOL/docstring.txt
 /resources/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring.txt
 /resources/$VERSION/$NAMESPACE/$SYMBOL/source.clj
 /resources/$VERSION/$NAMESPACE/$SYMBOL/related.txt
 /resources/$VERSION/$NAMESPACE/$SYMBOL/examples/$EXAMPLE_ID.clj
-</pre>
+```
 
 These files have no markup, HTML or formatting beyond that possible in
 plain text and serve double duty as the sources from which the main
-pages are generated and the plain text "API" provided by Grimoire
-0.3.X.
+pages are generated and the plain text "API" provided by Grimoire 0.3.X.
 
 ### Writing Examples
 

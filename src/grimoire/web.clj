@@ -5,9 +5,10 @@
             [compojure.handler :as handler]
             [compojure.route :as route]
             [hiccup.page :as page]
+            [markdown.core :as md]
+            [me.raynes.conch :refer [let-programs]]
             [ring.adapter.jetty :as jetty]
-            [ring.util.response :as response]
-            [markdown.core :as md]))
+            [ring.util.response :as response]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Site config
@@ -117,7 +118,7 @@
 ;; Pages
 
 (defn cheatsheet [{:keys [baseurl clojure-version]}]
-  (-> "_includes/cheatsheet.html"
+  (-> "cheatsheet.html"
       io/resource
       slurp
       (string/replace #"\{\{ site.baseurl \}\}" baseurl)
@@ -145,6 +146,24 @@
          (map (juxt (comp keyword first) second))
          (into {}))))
 
+(defn resource-file-contents [file]
+  (let [file (io/file file)]
+    (when (.exists file)
+      (some-> file slurp))))
+
+(defn highlight-clojure [text]
+  (let-programs [pygmentize "./pygmentize"]
+    (pygmentize "-fhtml" (str "-l" "clojure")
+                (str "-Ostripnl=False,encoding=utf-8")
+                {:dir "resources/pygments"
+                 :in text})))
+
+(defn clojure-file [file]
+  (some-> file resource-file-contents highlight-clojure))
+
+(defn markdown-file [file]
+  (-> file resource-file-contents md/md-to-html-string))
+
 (defn parse-markdown-page [page]
   (when-let [raw (some-> page (str ".md") io/resource slurp)]
     [(or (parse-markdown-page-header raw) {})
@@ -161,26 +180,82 @@
              page)
        (response/not-found "Not found, sorry.")))))
 
+(defn prepare-path [path]
+  (-> path
+      (string/replace #"resources/" "")
+      (string/split #"/")))
+
+(defn paths [& elements]
+  (let [dir (apply io/file "resources" elements)]
+    (when (.exists dir)
+      (->> (.listFiles dir)
+           (map str)
+           (map prepare-path)))))
+
+(defn symbol-examples [path]
+  (let [dir (io/file path)]
+    (when (.exists dir)
+      (->> (.listFiles dir)
+           (map str)))))
+
 (defn version-page [version]
   (layout
    site-config
-   version))
+   (markdown-file (str "resources/" version "/index.md"))
+   [:h3 [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]]
+   [:h2 "Namespaces"]
+   [:ul
+    (for [path (paths version)]
+      [:li [:a {:href (str (:baseurl site-config) (string/join "/" path) "/")}
+            (last path)]])]))
 
 (defn namespace-page [version namespace]
   (layout
    site-config
-   version " - " namespace))
+   (markdown-file (str "resources/" version "/" namespace "/index.md"))
+   [:h3
+    [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]
+    " &raquo; "
+    [:a {:href (str (:baseurl site-config) version "/" namespace "/")} namespace]]
+   [:h2 "Vars"]
+   [:ul
+    (for [path (paths version namespace)]
+      [:li [:a {:href (str (:baseurl site-config) (string/join "/" path) "/")}
+            (last path)]])]))
+
+(defn example [index path]
+  (let []
+    (list
+     [:h4 "Example " (inc index)]
+     [:div (clojure-file path)])))
 
 (defn symbol-page [version namespace symbol type]
-  (case type
-    :html
-    (layout
-     site-config
-     version " - " namespace " - " symbol)
-    :text
-    (-> (str version " - " namespace " - " symbol)
-        response/response
-        (response/content-type "text/plain"))))
+  (let [symbol-file-path (partial str "resources/" version "/" namespace "/" symbol "/")]
+    (case type
+      :html
+      (layout
+       site-config
+       [:h3
+        [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]
+        " &raquo; "
+        [:a {:href (str (:baseurl site-config) version "/" namespace "/")} namespace]]
+       [:h2 symbol]
+       [:h3 "Arities"]
+       [:p (-> "arities.txt" symbol-file-path resource-file-contents)]
+       [:h3 "Documentation"]
+       [:pre (-> "docstring.txt" symbol-file-path resource-file-contents)]
+       (when-let [examples (-> "examples" symbol-file-path symbol-examples seq)]
+         (list
+          [:h3 "Examples"]
+          (map-indexed example examples)))
+       (when-let [source (-> "source.clj" symbol-file-path clojure-file)]
+         (list
+          [:h3 "Source"]
+          [:div source])))
+      :text
+      (-> (str version " - " namespace " - " symbol)
+          response/response
+          (response/content-type "text/plain")))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Routes

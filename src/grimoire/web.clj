@@ -6,19 +6,21 @@
             [compojure.route :as route]
             [hiccup.page :as page]
             [ring.adapter.jetty :as jetty]
-            [ring.util.response :as response]))
+            [ring.util.response :as response]
+            [markdown.core :as md]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Site config
 
 (def site-config
-  {:title               "Grimoire"
+  {:base-title          "Grimoire"
    :description         "Community documentation of Clojure"
    :url                 "http://grimoire.arrdem.com"
    :baseurl             "/"
    :version             "0.3.0"
    :clojure-version     "1.6.0"
    :google-analytics-id "UA-44001831-2"
+   :year                "2014"
    :author              {:me     "http://arrdem.com/"
                          :email  "me@arrdem.com"
                          :github "https://github.com/arrdem/grimoire"}})
@@ -26,64 +28,72 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Layout
 
-(defn header [{:keys [baseurl title]}]
+(defn header [{:keys [baseurl title base-title]}]
   [:head
    [:link {:rel "profile" :href "http://gmpg.org/xfn/11"}]
    [:meta {:content "IE=edge" :http-equiv "X-UA-Compatible"}]
-   [:meta
-    {:content "text/html; charset=utf-8" :http-equiv "content-type"}]
+   [:meta {:content "text/html; charset=utf-8" :http-equiv "content-type"}]
    [:meta {:content "width=device-width initial-scale=1.0 maximum-scale=1":name "viewport"}]
-   [:title title]
-   [:link
-    {:href (str baseurl "public/css/poole.css")
-     :rel "stylesheet"}]
-   [:link
-    {:href (str baseurl "public/css/syntax.css")
-     :rel "stylesheet"}]
-   [:link
-    {:href (str baseurl "public/css/lanyon.css")
-     :rel "stylesheet"}]
-   [:link
-    {:href "http://fonts.googleapis.com/css?family=PT+Serif:400400italic700|PT+Sans:400"
-     :rel "stylesheet"}]
-   [:link
-    {:href (str baseurl "public/apple-touch-icon-precomposed.png")
-     :sizes "144x144"
-     :rel "apple-touch-icon-precomposed"}]
-   [:link
-    {:href (str baseurl "public/favicon.ico")
-     :rel "shortcut icon"}]
-   [:link
-    {:href "/atom.xml":title "RSS":type "application/rss+xml":rel "alternate"}]])
+   [:title (when title (str title " &middot; ")) base-title]
+   (page/include-css
+    (str baseurl "public/css/poole.css")
+    (str baseurl "public/css/syntax.css")
+    (str baseurl "public/css/lanyon.css"))
+   [:link {:href "http://fonts.googleapis.com/css?family=PT+Serif:400400italic700|PT+Sans:400"
+           :rel "stylesheet"}]
+   [:link {:href (str baseurl "public/apple-touch-icon-precomposed.png") :sizes "144x144" :rel "apple-touch-icon-precomposed"}]
+   [:link {:href (str baseurl "public/favicon.ico") :rel "shortcut icon"}]])
 
-(defn masthead [{:keys [baseurl title]}]
-  [:header.site-header
-   [:div.wrap
-    [:a.site-title {:href baseurl} title]]])
+(defn masthead [{:keys [baseurl base-title]}]
+  [:div.masthead
+   [:div.container
+    [:h3.masthead-title
+     [:a {:title "Home" :href baseurl} base-title]
+     [:small]]]])
 
 (defn sidebar [{:keys [description author version year]}]
-  [:div#sidebar.sidebar
-   [:div.sidebar-item [:p description]]
-   [:nav.sidebar-nav
-    [:a.sidebar-nav-item {:href "/"} "Home"]
-    [:a.sidebar-nav-item {:href "/1.6.0/"} "Clojure 1.6"]
-    [:a.sidebar-nav-item {:href "/1.5.0/"} "Clojure 1.5"]
-    [:a.sidebar-nav-item {:href "/1.4.0/"} "Clojure 1.4"]
-    [:a.sidebar-nav-item {:href "/about/"} "About"]
-    [:a.sidebar-nav-item {:href "/contributing/"} "Contributing"]
-    [:br] "More" [:br]
-    (let [{:keys [github me]} author]
-      (list
-       [:a.sidebar-nav-item {:href github} "Github Repo"]
-       [:a.sidebar-nav-item {:href me} "About Me"]))]
-   [:div.sidebar-item
-    [:p "Currently v" version]]
-   [:div.sidebar-item
-    [:p "© " year ". All rights reserved."]]])
+  (list
+   [:input#sidebar-checkbox.sidebar-checkbox {:type "checkbox"}]
+   [:div#sidebar.sidebar
+    [:div.sidebar-item [:p description]]
+    [:nav.sidebar-nav
+     [:a.sidebar-nav-item {:href "/"} "Home"]
+     [:a.sidebar-nav-item {:href "/1.6.0/"} "Clojure 1.6"]
+     [:a.sidebar-nav-item {:href "/1.5.0/"} "Clojure 1.5"]
+     [:a.sidebar-nav-item {:href "/1.4.0/"} "Clojure 1.4"]
+     [:a.sidebar-nav-item {:href "/about"} "About"]
+     [:a.sidebar-nav-item {:href "/contributing"} "Contributing"]
+     [:br] "More" [:br]
+     (let [{:keys [github me]} author]
+       (list
+        [:a.sidebar-nav-item {:href github} "Github Repo"]
+        [:a.sidebar-nav-item {:href me} "About Me"]))]
+    [:div.sidebar-item
+     [:p "Currently v" version]]
+    [:div.sidebar-item
+     [:p "© " year ". All rights reserved."]]]))
 
 (defn foot [{:keys [google-analytics-id]}]
-  [:script {:type "text/javascript"}
-   "var _gaq = _gaq || [];
+  (list
+   [:label.sidebar-toggle {:for "sidebar-checkbox"}]
+   [:script {:type "text/javascript"}
+    "(function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);"]
+   [:script {:type "text/javascript"}
+    "var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '" google-analytics-id "']);
   _gaq.push(['_trackPageview']);
 
@@ -91,7 +101,7 @@
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();"])
+  })();"]))
 
 (defn layout
   [page & content]
@@ -115,13 +125,43 @@
 
 (def cheatsheet-memo (memoize cheatsheet))
 
+(def quote
+  "Even the most powerful wizard must consult grimoires as an aid against forgetfulness.")
+
 (defn home-page []
   (layout
    site-config
-   [:blockquote
-    [:p
-     "Even the most powerful wizard must consult grimoires as an aid against forgetfulness"]]
+   [:blockquote [:p quote]]
    (cheatsheet-memo site-config)))
+
+(def header-regex #"^---\n((?:[a-z-]+: [^\n]+\n)*)---\n")
+
+(defn parse-markdown-page-header [page]
+  (when-let [header (some->> page
+                             (re-find header-regex)
+                             second)]
+    (->> (string/split header #"\n")
+         (map #(string/split % #": "))
+         (map (juxt (comp keyword first) second))
+         (into {}))))
+
+(defn parse-markdown-page [page]
+  (when-let [raw (some-> page (str ".md") io/resource slurp)]
+    [(or (parse-markdown-page-header raw) {})
+     (-> raw (string/replace header-regex "") md/md-to-html-string)]))
+
+(defn markdown-page [page]
+  (let [[header page] (parse-markdown-page page)
+        site-config (merge site-config header)]
+    (layout
+     site-config
+     (if page
+       (list (when-let [title (:title site-config)]
+               [:h1 title])
+             page)
+       (response/not-found "Not found, sorry.")))))
+
+(markdown-page "about")
 
 (defn version-page [version]
   (layout
@@ -148,8 +188,9 @@
 ;; Routes
 
 (c/defroutes app
-  (c/GET "/" []
-         (home-page))
+  (c/GET "/" [] (home-page))
+  (c/GET "/about" [] (markdown-page "about"))
+  (c/GET "/contributing" [] (markdown-page "contributing"))
 
   (route/resources "/public")
 

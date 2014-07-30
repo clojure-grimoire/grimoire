@@ -1,7 +1,7 @@
 (ns grimoire.web
   (:require [clojure.java.io :as io]
             [clojure.string :as string]
-            [compojure.core :as c]
+            [compojure.core :refer [defroutes context GET]]
             [compojure.handler :as handler]
             [compojure.route :as route]
             [hiccup.page :as page]
@@ -161,8 +161,6 @@
              page)
        (response/not-found "Not found, sorry.")))))
 
-(markdown-page "about")
-
 (defn version-page [version]
   (layout
    site-config
@@ -187,26 +185,26 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Routes
 
-(c/defroutes app
-  (c/GET "/" [] (home-page))
-  (c/GET "/about" [] (markdown-page "about"))
-  (c/GET "/contributing" [] (markdown-page "contributing"))
+(defroutes app
+  (GET "/" [] (home-page))
+  (GET "/about" [] (markdown-page "about"))
+  (GET "/contributing" [] (markdown-page "contributing"))
 
   (route/resources "/public")
 
-  (c/context "/:version" [version]
-    (c/GET "/" [version]
-           (version-page version))
+  (context "/:version" [version]
+    (GET "/" [version]
+         (version-page version))
 
-    (c/context "/:namespace" [namespace]
-      (c/GET "/" [version namespace]
-             (namespace-page version namespace))
+    (context "/:namespace" [namespace]
+      (GET "/" [version namespace]
+           (namespace-page version namespace))
 
-      (c/context "/:symbol" [symbol]
-        (c/GET "/" {{header-type :type} :headers
-                    {param-type :type} :params}
-               (symbol-page version namespace symbol
-                            (keyword (or header-type param-type "html")))))))
+      (context "/:symbol" [symbol]
+        (GET "/" {{header-type :type} :headers
+                  {param-type :type} :params}
+             (symbol-page version namespace symbol
+                          (keyword (or header-type param-type "html")))))))
 
   (route/not-found "<h1>Page not found</h1>"))
 

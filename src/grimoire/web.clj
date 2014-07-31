@@ -75,7 +75,7 @@
      [:p "© " year ". All rights reserved."]]]))
 
 (defn foot [{:keys [google-analytics-id]}]
-  (list
+  [:footer
    [:label.sidebar-toggle {:for "sidebar-checkbox"}]
    [:script {:type "text/javascript"}
     "(function(document) {
@@ -102,7 +102,7 @@
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();"]))
+  })();"]])
 
 (defn layout
   [page & content]
@@ -234,12 +234,12 @@
                        (group-by :type))]
      (for [k keys]
        (list
-        [:h2 (get mapping k)
+        [:h2 (get mapping k) " "
              [:a {:id (get link-ids k)} "+"]]
         [:div {:id (get ids k)}
          [:p
           (for [r (get grouping k)]
-            [:li [:a {:href (:url r)} (:name r)]])]])))
+            [:a {:href (:url r)} (:name r)])]])))
    [:script {:src "/public/jquery.js" :type "text/javascript"}]
    [:script {:src "/public/namespace.js" :type "text/javascript"}]))
 

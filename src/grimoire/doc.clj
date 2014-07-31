@@ -60,9 +60,9 @@
         (spit doc-file doc)))
 
     ;; touch extended docstring
-    (let [extended-doc-file (io/file sym-dir "extended-docstring.md")]
-      (when-not (.exists extended-doc-file)
-        (spit extended-doc-file "")))
+    ;; (let [extended-doc-file (io/file sym-dir "extended-docstring.md")]
+    ;;   (when-not (.exists extended-doc-file)
+    ;;     (spit extended-doc-file "")))
 
     ;; write source file
     (when src

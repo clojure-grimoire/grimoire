@@ -22,9 +22,10 @@
    :clojure-version     "1.6.0"
    :google-analytics-id "UA-44001831-2"
    :year                "2014"
-   :author              {:me     "http://arrdem.com/"
-                         :email  "me@arrdem.com"
-                         :github "https://github.com/arrdem/grimoire"}})
+   :author              {:me         "http://arrdem.com/"
+                         :email      "me@arrdem.com"
+                         :github     "https://github.com/arrdem/grimoire"}
+   :style               {:header-sep " &raquo; "}})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Layout
@@ -220,8 +221,8 @@
    (markdown-file (str "resources/" version "/" namespace "/index.md"))
    [:h1 {:class "page-title"}
     [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]
-    " &raquo; "
-    [:a {:href (str (:baseurl site-config) version "/" namespace "/")} namespace]]
+    (-> site-config :style :header-sep)
+    namespace]
    (let [keys                  ["special"        "macro"   "fn"         "var"]
          mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
          ids      (zipmap keys ["sforms",        "macros", "fns",       "vars"])
@@ -253,35 +254,36 @@
      [:div (clojure-file path)])))
 
 (defn symbol-page [version namespace symbol type]
-  (let [symbol-file-path (partial str "resources/" version "/" namespace "/" symbol "/")]
+  (let [symbol-file-path (partial str "resources/" version "/" namespace "/" symbol "/")
+        name             (slurp (symbol-file-path "name.txt"))]
     (case type
       :html
       (layout
        site-config
-       [:h3
+       [:h1 {:class "page-title"}
         [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]
-        " &raquo; "
-        [:a {:href (str (:baseurl site-config) version "/" namespace "/")} namespace]]
-       [:h2 symbol]
-       [:h3 "Arities"]
+        (-> site-config :style :header-sep)
+        [:a {:href (str (:baseurl site-config) version "/" namespace "/")} namespace]
+        (-> site-config :style :header-sep)
+        name]
+       [:h2 "Arities"]
        [:p (-> "arities.txt" symbol-file-path resource-file-contents)]
-       [:h3 "Official Documentation"]
+       [:h2 "Official Documentation"]
        [:pre (-> "docstring.md" symbol-file-path markdown-file)]
-       (let [comdoc-file (symbol-file-path "extended-docstring.md")]
-         (when (.exists comdoc-file)
-           (list
-            [:h3 "Community Documentation"]
-            [:pre (-> comdoc-file markdown-file)])))
+       (when-let [comdoc  (-> "extended-docstring.md" symbol-file-path markdown-file)]
+         (list
+          [:h2 "Community Documentation"]
+          [:pre comdoc]))
        (when-let [examples (-> "examples" symbol-file-path symbol-examples seq)]
          (list
-          [:h3 "Examples"]
+          [:h2 "Examples"]
           (map-indexed example examples)))
        (when-let [source (-> "source.clj" symbol-file-path clojure-file)]
          (list
-          [:h3 "Source"]
+          [:h2 "Source"]
           [:div source])))
       :text
-      (-> (str version " - " namespace " - " symbol)
+      (-> (str version " - " namespace " - " name)
           response/response
           (response/content-type "text/plain")))))
 

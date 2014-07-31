@@ -269,7 +269,7 @@
        [:h2 "Arities"]
        [:p (-> "arities.txt" symbol-file-path resource-file-contents)]
        [:h2 "Official Documentation"]
-       [:pre (-> "docstring.md" symbol-file-path markdown-file)]
+       (-> "docstring.md" symbol-file-path markdown-file)
        (when-let [comdoc  (-> "extended-docstring.md" symbol-file-path markdown-file)]
          (list
           [:h2 "Community Documentation"]

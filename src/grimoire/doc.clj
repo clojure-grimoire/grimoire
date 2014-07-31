@@ -104,7 +104,7 @@
     (cond (:macro m)   "macro"
           (:dynamic m) "var"
           (fn? @v)     "fn"
-          :else        "special")))
+          :else        "var")))
 
 (defn write-docs-for-var
   [root var]

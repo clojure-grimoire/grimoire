@@ -3,7 +3,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.thnetos/cd-client "0.3.6"]]
-
+  :aliases {"serve" ["with-profile" "server" "run"]}
   :profiles {:1.4    {:dependencies [[org.clojure/clojure "1.4.0"]]
                       :main         grimoire.doc}
              :1.5    {:dependencies [[org.clojure/clojure "1.5.0"]]

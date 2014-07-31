@@ -240,7 +240,8 @@
         [:div {:id (get ids k)}
          [:p
           (for [r (get grouping k)]
-            [:a {:href (:url r)} (:name r)])]])))
+            ;; FIXME put style into stylesheet
+            [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]])))
    [:script {:src "/public/jquery.js" :type "text/javascript"}]
    [:script {:src "/public/namespace.js" :type "text/javascript"}]))
 

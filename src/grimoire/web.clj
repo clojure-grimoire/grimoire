@@ -211,7 +211,7 @@
    (markdown-file (str "resources/" version "/release-notes.md"))
    [:h2 "Namespaces"]
    [:ul
-    (for [path (paths version)]
+    (for [path (sort-by last (paths version))]
       [:li [:a {:href (str (:baseurl site-config) (string/join "/" path) "/")}
             (last path)]])]))
 

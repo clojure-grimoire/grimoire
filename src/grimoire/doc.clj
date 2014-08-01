@@ -77,7 +77,7 @@
         (doseq [{:keys [file name] :as el} @related]
           (let [file (or file "clojure/core.clj")]
             (spit related-file
-                  (str (file->ns file) "/" name)
+                  (str (file->ns file) "/" name "\n")
                   :append true)))
         (spit related-file "")))
 

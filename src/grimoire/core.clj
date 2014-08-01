@@ -1,6 +1,6 @@
 (ns grimoire.core
   (:require [grimoire.doc :as doc]
-            [grimoire.site :as site]))
+            [grimoire.web.service :as web]))
 
 (def usage
 "Usage: lein run [help|doc ns-file|serve]
@@ -24,4 +24,4 @@ help:
     ("help")  (do (print usage)
                   (System/exit 0))
     ("doc")   (apply doc/-main args)
-    ("serve") (apply site/-main args)))
+    ("serve") (apply web/-main args)))

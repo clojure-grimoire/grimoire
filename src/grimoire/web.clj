@@ -227,11 +227,17 @@
 (defn namespace-page [version namespace]
   (layout
    site-config
-   (markdown-file (str "resources/" version "/" namespace "/index.md"))
    [:h1 {:class "page-title"}
     [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]
     (-> site-config :style :header-sep)
     namespace]
+   [:h2 "Namespace Notes"
+    " - "
+    [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/resources/"
+                    version "/" namespace "/ns-notes.md")}
+     "edit"]]
+   (markdown-file (str "resources/" version "/" namespace "/ns-notes.md"))
+   [:h2 "Symbols"]
    (let [keys                  ["special"        "macro"   "fn"         "var"]
          mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
          ids      (zipmap keys ["sforms",        "macros", "fns",       "vars"])

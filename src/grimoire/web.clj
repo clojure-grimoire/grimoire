@@ -125,7 +125,7 @@
   (-> "cheatsheet.html"
       io/resource
       slurp
-      (string/replace #"\{\{ site.baseurl \}\}" baseurl)
+      (string/replace #"\{\{ site.baseurl \}\}" "./")
       (string/replace #"\{\{ site.clojure_version \}\}" clojure-version)))
 
 (def cheatsheet-memo (memoize cheatsheet))
@@ -229,7 +229,7 @@
   (layout
    site-config
    [:h1 {:class "page-title"}
-    [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]
+    [:a {:href "../"} "Clojure " version]
     (-> site-config :style :header-sep)
     namespace]
    [:h2 "Namespace Notes"
@@ -306,9 +306,9 @@
       (layout
        site-config
        [:h1 {:class "page-title"}
-        [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]
+        [:a {:href "../"} "Clojure " version]
         (-> site-config :style :header-sep)
-        [:a {:href (str (:baseurl site-config) version "/" namespace "/")} namespace]
+        [:a {:href "."} namespace]
         (-> site-config :style :header-sep)
         name]
        [:h2 "Arities"]

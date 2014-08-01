@@ -1,1 +1,2 @@
-clojure.walk/prewalk-replaceclojure.core/replace
+clojure.walk/prewalk-replace
+clojure.core/replace

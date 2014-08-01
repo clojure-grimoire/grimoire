@@ -1,1 +1,3 @@
-clojure.core/seq?clojure.core/empty?clojure.core/iterator-seq
+clojure.core/seq?
+clojure.core/empty?
+clojure.core/iterator-seq

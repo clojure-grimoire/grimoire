@@ -1,1 +1,2 @@
-clojure.core/pmapclojure.core/future
+clojure.core/pmap
+clojure.core/future

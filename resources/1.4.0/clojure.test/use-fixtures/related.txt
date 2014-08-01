@@ -1,1 +1,2 @@
-clojure.test/join-fixturesclojure.test/compose-fixtures
+clojure.test/join-fixtures
+clojure.test/compose-fixtures

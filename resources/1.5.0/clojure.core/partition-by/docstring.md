@@ -1,1 +1,2 @@
-Applies f to each value in coll, splitting it each time f returnsa new value.  Returns a lazy seq of partitions.
+Applies f to each value in coll, splitting it each time f returns
+   a new value.  Returns a lazy seq of partitions.

@@ -1,1 +1,3 @@
-clojure.core/readclojure.core/read-stringclojure.core/load
+clojure.core/read
+clojure.core/read-string
+clojure.core/load

@@ -1,1 +1,3 @@
-clojure.core/requireclojure.core/useclojure.core/ns
+clojure.core/require
+clojure.core/use
+clojure.core/ns

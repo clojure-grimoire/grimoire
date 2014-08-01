@@ -1,1 +1,3 @@
-clojure.core/prefer-methodclojure.core/methodsclojure.core/get-method
+clojure.core/prefer-method
+clojure.core/methods
+clojure.core/get-method

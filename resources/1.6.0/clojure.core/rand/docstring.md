@@ -1,1 +1,2 @@
-Returns a random floating point number between 0 (inclusive) andn (default 1) (exclusive).
+Returns a random floating point number between 0 (inclusive) and
+  n (default 1) (exclusive).

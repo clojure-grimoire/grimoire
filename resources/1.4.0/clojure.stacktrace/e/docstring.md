@@ -1,1 +1,2 @@
-REPL utility.  Prints a brief stack trace for the root cause of themost recent exception.
+REPL utility.  Prints a brief stack trace for the root cause of the
+  most recent exception.

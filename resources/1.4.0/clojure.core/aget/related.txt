@@ -1,1 +1,3 @@
-clojure.core/acloneclojure.core/getclojure.core/nth
+clojure.core/aclone
+clojure.core/get
+clojure.core/nth

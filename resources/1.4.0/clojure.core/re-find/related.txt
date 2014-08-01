@@ -1,1 +1,6 @@
-clojure.core/re-groupsclojure.core/re-matcherclojure.core/re-patternclojure.core/re-seqclojure.core/re-matchesclojure.core/subs
+clojure.core/re-groups
+clojure.core/re-matcher
+clojure.core/re-pattern
+clojure.core/re-seq
+clojure.core/re-matches
+clojure.core/subs

@@ -1,1 +1,5 @@
-clojure.core/firstclojure.core/nextclojure.core/restclojure.core/butlastclojure.core/take-last
+clojure.core/first
+clojure.core/next
+clojure.core/rest
+clojure.core/butlast
+clojure.core/take-last

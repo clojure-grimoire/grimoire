@@ -1,1 +1,4 @@
-clojure.core/repeatedlyclojure.core/cycleclojure.core/constantlyclojure.core/dotimes
+clojure.core/repeatedly
+clojure.core/cycle
+clojure.core/constantly
+clojure.core/dotimes

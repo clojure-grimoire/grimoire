@@ -1,1 +1,2 @@
-Atomically alters the root binding of var v by applying f to itscurrent value plus any args
+Atomically alters the root binding of var v by applying f to its
+  current value plus any args

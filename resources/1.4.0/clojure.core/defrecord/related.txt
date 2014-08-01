@@ -1,1 +1,3 @@
-clojure.core-deftype/deftypeclojure.core/defstructclojure.core-deftype/defprotocol
+clojure.core-deftype/deftype
+clojure.core/defstruct
+clojure.core-deftype/defprotocol

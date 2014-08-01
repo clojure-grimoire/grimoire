@@ -1,1 +1,3 @@
-clojure.core/futureclojure.core/deliverclojure.core/realized?
+clojure.core/future
+clojure.core/deliver
+clojure.core/realized?

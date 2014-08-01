@@ -1,1 +1,2 @@
-Converts first character of the string to upper-case, all othercharacters to lower-case.
+Converts first character of the string to upper-case, all other
+  characters to lower-case.

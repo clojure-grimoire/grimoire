@@ -1,1 +1,2 @@
-clojure.core/aliasclojure.core/ns-aliases
+clojure.core/alias
+clojure.core/ns-aliases

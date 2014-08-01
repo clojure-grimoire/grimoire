@@ -1,1 +1,3 @@
-clojure.core/intclojure.core/longsclojure.core/long-array
+clojure.core/int
+clojure.core/longs
+clojure.core/long-array

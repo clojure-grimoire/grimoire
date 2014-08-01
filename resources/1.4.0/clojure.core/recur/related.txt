@@ -1,1 +1,2 @@
-clojure.core/loopclojure.core/trampolineclojure.core/loopclojure.core/trampolineclojure.core/loopclojure.core/trampolineclojure.core/loopclojure.core/trampolineclojure.core/loopclojure.core/trampoline
+clojure.core/loop
+clojure.core/trampoline

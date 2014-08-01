@@ -1,1 +1,4 @@
-DEPRECATED Adds the url (String or URL object) to the classpath perURLClassLoader.addURL
+DEPRECATED 
+
+  Adds the url (String or URL object) to the classpath per
+  URLClassLoader.addURL

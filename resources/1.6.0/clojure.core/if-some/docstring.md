@@ -1,1 +1,4 @@
-bindings => binding-form testIf test is not nil, evaluates then with binding-form bound to thevalue of test, if not, yields else
+bindings => binding-form test
+
+   If test is not nil, evaluates then with binding-form bound to the
+   value of test, if not, yields else

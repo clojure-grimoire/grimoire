@@ -1,1 +1,3 @@
-clojure.core/ns-mapclojure.core/ns-internsclojure.core/resolve
+clojure.core/ns-map
+clojure.core/ns-interns
+clojure.core/resolve

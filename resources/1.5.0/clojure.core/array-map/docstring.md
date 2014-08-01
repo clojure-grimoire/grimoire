@@ -1,1 +1,2 @@
-Constructs an array-map. If any keys are equal, they are handled asif by repeated uses of assoc.
+Constructs an array-map. If any keys are equal, they are handled as
+  if by repeated uses of assoc.

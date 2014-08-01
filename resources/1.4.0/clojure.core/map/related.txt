@@ -1,1 +1,5 @@
-clojure.core/map-indexedclojure.core/pmapclojure.core/amapclojure.core/mapcatclojure.core/keep
+clojure.core/map-indexed
+clojure.core/pmap
+clojure.core/amap
+clojure.core/mapcat
+clojure.core/keep

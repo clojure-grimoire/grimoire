@@ -1,1 +1,3 @@
-clojure.core/bit-setclojure.core/bit-shift-leftclojure.core/bit-xor
+clojure.core/bit-set
+clojure.core/bit-shift-left
+clojure.core/bit-xor

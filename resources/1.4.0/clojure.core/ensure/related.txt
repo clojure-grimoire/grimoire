@@ -1,1 +1,4 @@
-clojure.core/commuteclojure.core/ref-setclojure.core/refclojure.core/alter
+clojure.core/commute
+clojure.core/ref-set
+clojure.core/ref
+clojure.core/alter

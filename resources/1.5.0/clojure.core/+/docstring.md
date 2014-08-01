@@ -1,1 +1,2 @@
-Returns the sum of nums. (+) returns 0. Does not auto-promotelongs, will throw on overflow. See also: +'
+Returns the sum of nums. (+) returns 0. Does not auto-promote
+  longs, will throw on overflow. See also: +'

@@ -1,1 +1,2 @@
-keyval => key valReturns a new sorted map with supplied mappings.
+keyval => key val
+  Returns a new sorted map with supplied mappings.

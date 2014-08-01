@@ -1,1 +1,2 @@
-clojure.core/someclojure.core/every?
+clojure.core/some
+clojure.core/every?

@@ -1,1 +1,4 @@
-clojure.core/with-redefsclojure.core/with-redefs-fnclojure.core/internclojure.core/var
+clojure.core/with-redefs
+clojure.core/with-redefs-fn
+clojure.core/intern
+clojure.core/var

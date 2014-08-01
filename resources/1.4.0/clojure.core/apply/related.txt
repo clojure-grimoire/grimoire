@@ -1,1 +1,4 @@
-clojure.core/mapclojure.core/evalclojure.contrib.apply-macro/apply-macroclojure.template/apply-template
+clojure.core/map
+clojure.core/eval
+clojure.contrib.apply-macro/apply-macro
+clojure.template/apply-template

@@ -1,1 +1,2 @@
-clojure.test/isclojure.test/deftest
+clojure.test/is
+clojure.test/deftest

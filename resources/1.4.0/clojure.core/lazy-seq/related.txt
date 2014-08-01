@@ -1,1 +1,4 @@
-clojure.core/lazy-catclojure.core/realized?clojure.core/doallclojure.core/iterate
+clojure.core/lazy-cat
+clojure.core/realized?
+clojure.core/doall
+clojure.core/iterate

@@ -1,1 +1,2 @@
-keyval => key valReturns a new hash map with supplied mappings.
+keyval => key val
+  Returns a new hash map with supplied mappings.

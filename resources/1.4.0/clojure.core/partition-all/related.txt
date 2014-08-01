@@ -1,1 +1,2 @@
-clojure.core/partitionclojure.core/partition-by
+clojure.core/partition
+clojure.core/partition-by

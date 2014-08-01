@@ -1,1 +1,3 @@
-sc must be a sorted collection, test(s) one of <, <=, > or>=. Returns a seq of those entries with keys ek forwhich (test (.. sc comparator (compare ek key)) 0) is true
+sc must be a sorted collection, test(s) one of <, <=, > or
+  >=. Returns a seq of those entries with keys ek for
+  which (test (.. sc comparator (compare ek key)) 0) is true

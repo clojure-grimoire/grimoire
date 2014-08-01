@@ -1,1 +1,4 @@
-clojure.java.io/readerclojure.java.io/writerclojure.java.io/input-streamclojure.java.io/output-stream
+clojure.java.io/reader
+clojure.java.io/writer
+clojure.java.io/input-stream
+clojure.java.io/output-stream

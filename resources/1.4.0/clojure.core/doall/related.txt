@@ -1,1 +1,2 @@
-clojure.core/dorunclojure.core/doseq
+clojure.core/dorun
+clojure.core/doseq

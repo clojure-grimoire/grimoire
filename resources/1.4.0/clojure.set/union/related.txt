@@ -1,1 +1,3 @@
-clojure.set/intersectionclojure.set/differenceclojure.set/superset?
+clojure.set/intersection
+clojure.set/difference
+clojure.set/superset?

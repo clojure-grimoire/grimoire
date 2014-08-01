@@ -1,1 +1,2 @@
-Returns the product of nums. (*) returns 1. Supports arbitrary precision.See also: *
+Returns the product of nums. (*) returns 1. Supports arbitrary precision.
+  See also: *

@@ -1,1 +1,2 @@
-clojure.core/andclojure.core/if
+clojure.core/and
+clojure.core/if

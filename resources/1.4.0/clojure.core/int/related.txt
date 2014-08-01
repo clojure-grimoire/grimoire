@@ -1,1 +1,6 @@
-clojure.core/charclojure.core/longclojure.core/integer?clojure.core/intsclojure.core/int-arrayclojure.core/short
+clojure.core/char
+clojure.core/long
+clojure.core/integer?
+clojure.core/ints
+clojure.core/int-array
+clojure.core/short

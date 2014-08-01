@@ -1,1 +1,2 @@
-clojure.core/=clojure.core/identical?
+clojure.core/=
+clojure.core/identical?

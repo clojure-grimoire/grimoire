@@ -1,1 +1,3 @@
-clojure.core/=clojure.core/not=clojure.core/<
+clojure.core/=
+clojure.core/not=
+clojure.core/<

@@ -1,1 +1,2 @@
-clojure.core/mapclojure.core/concat
+clojure.core/map
+clojure.core/concat

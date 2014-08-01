@@ -1,1 +1,3 @@
-clojure.core/dissocclojure.core/disj!clojure.set/difference
+clojure.core/dissoc
+clojure.core/disj!
+clojure.set/difference

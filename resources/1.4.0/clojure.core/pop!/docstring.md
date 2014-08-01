@@ -1,1 +1,3 @@
-Alpha - subject to change.Removes the last item from a transient vector. Ifthe collection is empty, throws an exception. Returns coll
+Alpha - subject to change.
+  Removes the last item from a transient vector. If
+  the collection is empty, throws an exception. Returns coll

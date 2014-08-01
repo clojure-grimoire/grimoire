@@ -1,1 +1,3 @@
-clojure.core/every?clojure.core/not-any?clojure.core/some
+clojure.core/every?
+clojure.core/not-any?
+clojure.core/some

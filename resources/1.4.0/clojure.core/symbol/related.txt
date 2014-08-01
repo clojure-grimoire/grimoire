@@ -1,1 +1,6 @@
-clojure.core/varclojure.core/var?clojure.core/symbol?clojure.core/nameclojure.core/namespaceclojure.core/keyword
+clojure.core/var
+clojure.core/var?
+clojure.core/symbol?
+clojure.core/name
+clojure.core/namespace
+clojure.core/keyword

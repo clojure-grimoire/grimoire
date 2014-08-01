@@ -1,1 +1,3 @@
-clojure.walk/prewalkclojure.walk/postwalk-democlojure.walk/postwalk-replace
+clojure.walk/prewalk
+clojure.walk/postwalk-demo
+clojure.walk/postwalk-replace

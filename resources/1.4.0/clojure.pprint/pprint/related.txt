@@ -1,1 +1,2 @@
-clojure.pprint.pprint-base/ppclojure.pprint.print-table/print-table
+clojure.pprint.pprint-base/pp
+clojure.pprint.print-table/print-table

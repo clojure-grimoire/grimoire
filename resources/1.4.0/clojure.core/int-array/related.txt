@@ -1,1 +1,4 @@
-clojure.core/intsclojure.core/agetclojure.core/asetclojure.core/aset-int
+clojure.core/ints
+clojure.core/aget
+clojure.core/aset
+clojure.core/aset-int

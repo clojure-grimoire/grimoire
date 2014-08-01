@@ -1,1 +1,3 @@
-clojure.core/doseqclojure.core/doallclojure.core/recur
+clojure.core/doseq
+clojure.core/doall
+clojure.core/recur

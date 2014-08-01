@@ -1,1 +1,4 @@
-clojure.core/doublesclojure.core/agetclojure.core/asetclojure.core/aset-double
+clojure.core/doubles
+clojure.core/aget
+clojure.core/aset
+clojure.core/aset-double

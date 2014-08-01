@@ -1,1 +1,3 @@
-clojure.core/testclojure.core/metaclojure.test/deftest
+clojure.core/test
+clojure.core/meta
+clojure.test/deftest

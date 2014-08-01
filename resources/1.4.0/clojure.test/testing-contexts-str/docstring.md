@@ -1,1 +1,2 @@
-Returns a string representation of the current test context. Joinsstrings in *testing-contexts* with spaces.
+Returns a string representation of the current test context. Joins
+  strings in *testing-contexts* with spaces.

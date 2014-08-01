@@ -1,1 +1,7 @@
-clojure.core/deriveclojure.core/instance?clojure.core/underiveclojure.core/ancestorsclojure.core/parentsclojure.core/descendantsclojure.core/make-hierarchy
+clojure.core/derive
+clojure.core/instance?
+clojure.core/underive
+clojure.core/ancestors
+clojure.core/parents
+clojure.core/descendants
+clojure.core/make-hierarchy

@@ -1,1 +1,2 @@
-clojure.core/partialclojure.core/juxt
+clojure.core/partial
+clojure.core/juxt

@@ -1,1 +1,3 @@
-clojure.core/seq?clojure.core/sequential?clojure.core/coll?
+clojure.core/seq?
+clojure.core/sequential?
+clojure.core/coll?

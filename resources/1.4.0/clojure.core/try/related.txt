@@ -1,1 +1,3 @@
-clojure.core/catchclojure.core/finallyclojure.core/throwclojure.core/catchclojure.core/finallyclojure.core/throwclojure.core/catchclojure.core/finallyclojure.core/throwclojure.core/catchclojure.core/finallyclojure.core/throwclojure.core/catchclojure.core/finallyclojure.core/throw
+clojure.core/catch
+clojure.core/finally
+clojure.core/throw

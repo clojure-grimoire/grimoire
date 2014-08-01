@@ -1,1 +1,3 @@
-clojure.core/when-notclojure.core/when-letclojure.core/if
+clojure.core/when-not
+clojure.core/when-let
+clojure.core/if

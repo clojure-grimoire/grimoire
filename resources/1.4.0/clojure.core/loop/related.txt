@@ -1,1 +1,4 @@
-clojure.core/recurclojure.core/trampolineclojure.core/whenclojure.core/while
+clojure.core/recur
+clojure.core/trampoline
+clojure.core/when
+clojure.core/while

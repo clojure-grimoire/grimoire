@@ -1,1 +1,2 @@
-clojure.core/refer-clojureclojure.core/ns
+clojure.core/refer-clojure
+clojure.core/ns

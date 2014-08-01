@@ -1,1 +1,5 @@
-clojure.core/rsubseqclojure.core/sorted-mapclojure.core/sorted-setclojure.core/sorted-map-byclojure.core/sorted-set-by
+clojure.core/rsubseq
+clojure.core/sorted-map
+clojure.core/sorted-set
+clojure.core/sorted-map-by
+clojure.core/sorted-set-by

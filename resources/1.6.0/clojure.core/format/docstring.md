@@ -1,1 +1,2 @@
-Formats a string using java.lang.String.format, see java.util.Formatter for formatstring syntax
+Formats a string using java.lang.String.format, see java.util.Formatter for format
+  string syntax

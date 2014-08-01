@@ -1,1 +1,2 @@
-clojure.core/mapclojure.core/keep-indexed
+clojure.core/map
+clojure.core/keep-indexed

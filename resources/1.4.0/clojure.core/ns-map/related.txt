@@ -1,1 +1,4 @@
-clojure.core/ns-internsclojure.core/ns-publicsclojure.core/ns-refersclojure.core/ns-imports
+clojure.core/ns-interns
+clojure.core/ns-publics
+clojure.core/ns-refers
+clojure.core/ns-imports

@@ -1,1 +1,3 @@
-bindings => x xsSame as (when (seq xs) (let [x (first xs)] body))
+bindings => x xs
+
+  Same as (when (seq xs) (let [x (first xs)] body))

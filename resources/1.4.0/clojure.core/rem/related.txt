@@ -1,1 +1,2 @@
-clojure.core/quotclojure.core/mod
+clojure.core/quot
+clojure.core/mod

@@ -1,1 +1,5 @@
-clojure.core/every?clojure.core/not-any?clojure.core/keepclojure.core/keep-indexedclojure.core/some-fn
+clojure.core/every?
+clojure.core/not-any?
+clojure.core/keep
+clojure.core/keep-indexed
+clojure.core/some-fn

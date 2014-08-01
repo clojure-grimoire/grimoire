@@ -1,1 +1,2 @@
-clojure.java.io/fileclojure.java.io/copy
+clojure.java.io/file
+clojure.java.io/copy

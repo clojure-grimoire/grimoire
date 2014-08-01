@@ -1,1 +1,3 @@
-clojure.core/into-arrayclojure.core/to-arrayclojure.core/chars
+clojure.core/into-array
+clojure.core/to-array
+clojure.core/chars

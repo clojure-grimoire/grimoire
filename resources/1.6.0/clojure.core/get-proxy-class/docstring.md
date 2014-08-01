@@ -1,1 +1,5 @@
-Takes an optional single class followed by zero or moreinterfaces. If not supplied class defaults to Object.  Creates anreturns an instance of a proxy class derived from the suppliedclasses. The resulting value is cached and used for any subsequentrequests for the same class set. Returns a Class object.
+Takes an optional single class followed by zero or more
+  interfaces. If not supplied class defaults to Object.  Creates an
+  returns an instance of a proxy class derived from the supplied
+  classes. The resulting value is cached and used for any subsequent
+  requests for the same class set. Returns a Class object.

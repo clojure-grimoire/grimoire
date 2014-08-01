@@ -1,1 +1,4 @@
-clojure.core/assocclojure.contrib.core/dissoc-inclojure.core/disjclojure.core/select-keys
+clojure.core/assoc
+clojure.contrib.core/dissoc-in
+clojure.core/disj
+clojure.core/select-keys

@@ -1,1 +1,3 @@
-clojure.core/slurpclojure.java.io/writerclojure.core/load-file
+clojure.core/slurp
+clojure.java.io/writer
+clojure.core/load-file

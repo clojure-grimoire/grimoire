@@ -1,1 +1,3 @@
-clojure.genclass/gen-classclojure.genclass/gen-interfaceclojure.core-deftype/reify
+clojure.genclass/gen-class
+clojure.genclass/gen-interface
+clojure.core-deftype/reify

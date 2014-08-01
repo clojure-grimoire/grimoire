@@ -1,1 +1,9 @@
-clojure.core/useclojure.core/requireclojure.core/referclojure.core/importclojure.core/ns-publicsclojure.core/in-nsclojure.core/remove-nsclojure.core/ns-mapclojure.core/*ns*
+clojure.core/use
+clojure.core/require
+clojure.core/refer
+clojure.core/import
+clojure.core/ns-publics
+clojure.core/in-ns
+clojure.core/remove-ns
+clojure.core/ns-map
+clojure.core/*ns*

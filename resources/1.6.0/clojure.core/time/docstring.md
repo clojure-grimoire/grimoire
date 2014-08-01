@@ -1,1 +1,2 @@
-Evaluates expr and prints the time it took.  Returns the value ofexpr.
+Evaluates expr and prints the time it took.  Returns the value of
+ expr.

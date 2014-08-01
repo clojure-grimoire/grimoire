@@ -1,1 +1,3 @@
-clojure.core/pop-thread-bindingsclojure.core/bindingclojure.core/with-bindings
+clojure.core/pop-thread-bindings
+clojure.core/binding
+clojure.core/with-bindings

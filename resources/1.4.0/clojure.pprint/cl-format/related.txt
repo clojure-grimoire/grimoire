@@ -1,1 +1,2 @@
-clojure.core/printfclojure.core/format
+clojure.core/printf
+clojure.core/format

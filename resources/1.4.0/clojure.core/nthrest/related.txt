@@ -1,1 +1,3 @@
-clojure.core/dropclojure.core/nthnextclojure.core/nth
+clojure.core/drop
+clojure.core/nthnext
+clojure.core/nth

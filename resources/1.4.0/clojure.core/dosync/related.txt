@@ -1,1 +1,3 @@
-clojure.core/syncclojure.core/refclojure.core/locking
+clojure.core/sync
+clojure.core/ref
+clojure.core/locking

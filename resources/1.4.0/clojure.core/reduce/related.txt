@@ -1,1 +1,3 @@
-clojure.core/reductionsclojure.core/applyclojure.core/frequencies
+clojure.core/reductions
+clojure.core/apply
+clojure.core/frequencies

@@ -1,1 +1,3 @@
-clojure.core/lastclojure.core/butlastclojure.core/drop-last
+clojure.core/last
+clojure.core/butlast
+clojure.core/drop-last

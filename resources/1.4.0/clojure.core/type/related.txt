@@ -1,1 +1,3 @@
-clojure.core/classclojure.core/supersclojure.core/instance?
+clojure.core/class
+clojure.core/supers
+clojure.core/instance?

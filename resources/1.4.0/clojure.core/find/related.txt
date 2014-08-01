@@ -1,1 +1,2 @@
-clojure.core/getclojure.core/get-in
+clojure.core/get
+clojure.core/get-in

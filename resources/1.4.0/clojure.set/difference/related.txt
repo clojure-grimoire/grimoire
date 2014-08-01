@@ -1,1 +1,4 @@
-clojure.set/unionclojure.set/intersectionclojure.set/superset?clojure.set/project
+clojure.set/union
+clojure.set/intersection
+clojure.set/superset?
+clojure.set/project

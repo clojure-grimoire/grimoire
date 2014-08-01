@@ -1,1 +1,3 @@
-clojure.core/re-findclojure.string/replaceclojure.string/replace-first
+clojure.core/re-find
+clojure.string/replace
+clojure.string/replace-first

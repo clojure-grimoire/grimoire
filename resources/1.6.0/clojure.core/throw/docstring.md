@@ -1,1 +1,2 @@
-The expr is evaluated and thrown, therefore it shouldyield an instance of some derivee of Throwable.
+The expr is evaluated and thrown, therefore it should
+  yield an instance of some derivee of Throwable.

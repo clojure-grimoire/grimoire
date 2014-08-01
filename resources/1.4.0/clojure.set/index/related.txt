@@ -1,1 +1,2 @@
-clojure.core/hash-mapclojure.core/get
+clojure.core/hash-map
+clojure.core/get

@@ -1,1 +1,2 @@
-Returns a number one less than num. Supports arbitrary precision.See also: dec
+Returns a number one less than num. Supports arbitrary precision.
+  See also: dec

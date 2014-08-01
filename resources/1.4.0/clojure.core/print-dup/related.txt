@@ -1,1 +1,2 @@
-clojure.core-print/print-ctorclojure.core/print-method
+clojure.core-print/print-ctor
+clojure.core/print-method

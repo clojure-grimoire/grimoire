@@ -1,1 +1,3 @@
-clojure.core/reset!clojure.core/bindingclojure.core/alter-var-rootclojure.core/reset!clojure.core/bindingclojure.core/alter-var-rootclojure.core/reset!clojure.core/bindingclojure.core/alter-var-rootclojure.core/reset!clojure.core/bindingclojure.core/alter-var-rootclojure.core/reset!clojure.core/bindingclojure.core/alter-var-root
+clojure.core/reset!
+clojure.core/binding
+clojure.core/alter-var-root

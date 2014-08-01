@@ -1,1 +1,3 @@
-clojure.core/removeclojure.contrib.seq/separateclojure.core/keep
+clojure.core/remove
+clojure.contrib.seq/separate
+clojure.core/keep

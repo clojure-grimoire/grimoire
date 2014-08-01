@@ -1,1 +1,2 @@
-clojure.core/read-stringclojure.core/*read-eval*
+clojure.core/read-string
+clojure.core/*read-eval*

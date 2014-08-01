@@ -1,1 +1,4 @@
-Blocks the current thread (indefinitely!) until all actionsdispatched thus far, from this thread or agent, to the agent(s) haveoccurred.  Will block on failed agents.  Will never return ifa failed agent is restarted with :clear-actions true.
+Blocks the current thread (indefinitely!) until all actions
+  dispatched thus far, from this thread or agent, to the agent(s) have
+  occurred.  Will block on failed agents.  Will never return if
+  a failed agent is restarted with :clear-actions true.

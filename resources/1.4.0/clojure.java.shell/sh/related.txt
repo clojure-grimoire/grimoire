@@ -1,1 +1,3 @@
-clojure.java.shell/with-sh-dirclojure.java.shell/with-sh-envclojure.core/future
+clojure.java.shell/with-sh-dir
+clojure.java.shell/with-sh-env
+clojure.core/future

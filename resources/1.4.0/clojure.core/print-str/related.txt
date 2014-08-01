@@ -1,1 +1,2 @@
-clojure.core/println-strclojure.core/print
+clojure.core/println-str
+clojure.core/print

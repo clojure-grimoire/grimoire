@@ -1,1 +1,4 @@
-clojure.core/assoc-inclojure.core/update-inclojure.core/findclojure.core/get
+clojure.core/assoc-in
+clojure.core/update-in
+clojure.core/find
+clojure.core/get

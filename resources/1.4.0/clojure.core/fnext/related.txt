@@ -1,1 +1,2 @@
-clojure.core/ffirstclojure.core/second
+clojure.core/ffirst
+clojure.core/second

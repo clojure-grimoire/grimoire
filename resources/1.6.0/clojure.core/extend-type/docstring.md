@@ -1,1 +1,20 @@
-A macro that expands into an extend call. Useful when you aresupplying the definitions explicitly inline, extend-typeautomatically creates the maps required by extend.  Propagates theclass as a type hint on the first argument of all fns.(extend-type MyType Countable(cnt [c] ...)Foo(bar [x y] ...)(baz ([x] ...) ([x y & zs] ...)))expands into:(extend MyTypeCountable{:cnt (fn [c] ...)}Foo{:baz (fn ([x] ...) ([x y & zs] ...)):bar (fn [x y] ...)})
+A macro that expands into an extend call. Useful when you are
+  supplying the definitions explicitly inline, extend-type
+  automatically creates the maps required by extend.  Propagates the
+  class as a type hint on the first argument of all fns.
+
+  (extend-type MyType 
+    Countable
+      (cnt [c] ...)
+    Foo
+      (bar [x y] ...)
+      (baz ([x] ...) ([x y & zs] ...)))
+
+  expands into:
+
+  (extend MyType
+   Countable
+     {:cnt (fn [c] ...)}
+   Foo
+     {:baz (fn ([x] ...) ([x y & zs] ...))
+      :bar (fn [x y] ...)})

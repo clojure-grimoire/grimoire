@@ -1,1 +1,2 @@
-clojure.core/create-nsclojure.core/find-ns
+clojure.core/create-ns
+clojure.core/find-ns

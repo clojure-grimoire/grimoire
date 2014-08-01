@@ -1,1 +1,6 @@
-clojure.core/get-methodclojure.core/methodsclojure.core/remove-all-methodsclojure.core/prefersclojure.core/defmulticlojure.core/defmethod
+clojure.core/get-method
+clojure.core/methods
+clojure.core/remove-all-methods
+clojure.core/prefers
+clojure.core/defmulti
+clojure.core/defmethod

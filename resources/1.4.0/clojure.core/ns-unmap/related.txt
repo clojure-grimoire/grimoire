@@ -1,1 +1,2 @@
-clojure.core/remove-nsclojure.core/ns-map
+clojure.core/remove-ns
+clojure.core/ns-map

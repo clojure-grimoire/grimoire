@@ -1,1 +1,12 @@
-clojure.core/metaclojure.core/symbolclojure.core/symbol?clojure.core/var?clojure.contrib.ns-utils/varsclojure.core/bindingclojure.core/with-redefsclojure.core/with-redefs-fnclojure.core/set!clojure.core/var-setclojure.core/var-getclojure.core/with-local-varsclojure.core/metaclojure.core/symbolclojure.core/symbol?clojure.core/var?clojure.contrib.ns-utils/varsclojure.core/bindingclojure.core/with-redefsclojure.core/with-redefs-fnclojure.core/set!clojure.core/var-setclojure.core/var-getclojure.core/with-local-varsclojure.core/metaclojure.core/symbolclojure.core/symbol?clojure.core/var?clojure.contrib.ns-utils/varsclojure.core/bindingclojure.core/with-redefsclojure.core/with-redefs-fnclojure.core/set!clojure.core/var-setclojure.core/var-getclojure.core/with-local-varsclojure.core/metaclojure.core/symbolclojure.core/symbol?clojure.core/var?clojure.contrib.ns-utils/varsclojure.core/bindingclojure.core/with-redefsclojure.core/with-redefs-fnclojure.core/set!clojure.core/var-setclojure.core/var-getclojure.core/with-local-varsclojure.core/metaclojure.core/symbolclojure.core/symbol?clojure.core/var?clojure.contrib.ns-utils/varsclojure.core/bindingclojure.core/with-redefsclojure.core/with-redefs-fnclojure.core/set!clojure.core/var-setclojure.core/var-getclojure.core/with-local-vars
+clojure.core/meta
+clojure.core/symbol
+clojure.core/symbol?
+clojure.core/var?
+clojure.contrib.ns-utils/vars
+clojure.core/binding
+clojure.core/with-redefs
+clojure.core/with-redefs-fn
+clojure.core/set!
+clojure.core/var-set
+clojure.core/var-get
+clojure.core/with-local-vars

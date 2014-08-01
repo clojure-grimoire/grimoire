@@ -1,1 +1,2 @@
-Takes a proxy class and any arguments for its superclass ctor andcreates and returns an instance of the proxy.
+Takes a proxy class and any arguments for its superclass ctor and
+  creates and returns an instance of the proxy.

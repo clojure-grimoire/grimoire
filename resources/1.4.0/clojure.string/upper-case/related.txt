@@ -1,1 +1,2 @@
-clojure.string/lower-caseclojure.string/capitalize
+clojure.string/lower-case
+clojure.string/capitalize

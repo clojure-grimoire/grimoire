@@ -1,1 +1,4 @@
-keyval => key valReturns a new sorted map with supplied mappings, using the suppliedcomparator.  If any keys are equal, they are handled as if byrepeated uses of assoc.
+keyval => key val
+  Returns a new sorted map with supplied mappings, using the supplied
+  comparator.  If any keys are equal, they are handled as if by
+  repeated uses of assoc.

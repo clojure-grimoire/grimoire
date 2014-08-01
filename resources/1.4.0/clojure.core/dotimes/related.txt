@@ -1,1 +1,3 @@
-clojure.core/repeatclojure.core/forclojure.core/doseq
+clojure.core/repeat
+clojure.core/for
+clojure.core/doseq

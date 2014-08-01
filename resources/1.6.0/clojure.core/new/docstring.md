@@ -1,1 +1,3 @@
-The args, if any, are evaluated from left to right, andpassed to the constructor of the class named by Classname. Theconstructed object is returned.
+The args, if any, are evaluated from left to right, and
+  passed to the constructor of the class named by Classname. The
+  constructed object is returned.

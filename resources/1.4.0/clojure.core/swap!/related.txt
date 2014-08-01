@@ -1,1 +1,2 @@
-clojure.core/atomclojure.core/reset!
+clojure.core/atom
+clojure.core/reset!

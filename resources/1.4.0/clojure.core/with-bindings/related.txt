@@ -1,1 +1,4 @@
-clojure.core/with-bindings*clojure.core/with-local-varsclojure.core/bindingclojure.core/with-redefs
+clojure.core/with-bindings*
+clojure.core/with-local-vars
+clojure.core/binding
+clojure.core/with-redefs

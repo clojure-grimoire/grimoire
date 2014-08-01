@@ -1,1 +1,3 @@
-clojure.core/promiseclojure.core/delayclojure.core/future
+clojure.core/promise
+clojure.core/delay
+clojure.core/future

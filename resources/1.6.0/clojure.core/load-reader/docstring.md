@@ -1,1 +1,2 @@
-Sequentially read and evaluate the set of forms contained in thestream/file
+Sequentially read and evaluate the set of forms contained in the
+  stream/file

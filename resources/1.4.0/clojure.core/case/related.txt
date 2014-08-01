@@ -1,1 +1,2 @@
-clojure.core/condclojure.core/condp
+clojure.core/cond
+clojure.core/condp

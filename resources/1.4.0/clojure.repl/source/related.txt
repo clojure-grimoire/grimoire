@@ -1,1 +1,3 @@
-clojure.repl/docclojure.repl/dirclojure.repl/apropos
+clojure.repl/doc
+clojure.repl/dir
+clojure.repl/apropos

@@ -1,1 +1,3 @@
-clojure.core/vecclojure.core/vectorclojure.core/vector?
+clojure.core/vec
+clojure.core/vector
+clojure.core/vector?

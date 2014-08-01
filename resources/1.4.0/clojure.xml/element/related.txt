@@ -1,1 +1,5 @@
-clojure.xml/emit-elementclojure.core/structclojure.core/struct-mapclojure.xml/parseclojure.core/with-out-str
+clojure.xml/emit-element
+clojure.core/struct
+clojure.core/struct-map
+clojure.xml/parse
+clojure.core/with-out-str

@@ -1,1 +1,3 @@
-clojure.core/typeclojure.core/class?clojure.core/instance?
+clojure.core/type
+clojure.core/class?
+clojure.core/instance?

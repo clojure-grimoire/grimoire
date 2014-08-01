@@ -1,1 +1,4 @@
-clojure.core/firstclojure.core/secondclojure.core/nthnextclojure.core/get
+clojure.core/first
+clojure.core/second
+clojure.core/nthnext
+clojure.core/get

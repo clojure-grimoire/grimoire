@@ -1,1 +1,4 @@
-clojure.core/assocclojure.core/update-inclojure.contrib.core/dissoc-inclojure.core/get-in
+clojure.core/assoc
+clojure.core/update-in
+clojure.contrib.core/dissoc-in
+clojure.core/get-in

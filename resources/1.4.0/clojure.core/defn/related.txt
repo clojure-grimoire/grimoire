@@ -1,1 +1,4 @@
-clojure.core/defclojure.core/defn-clojure.core/defmacroclojure.core/fn
+clojure.core/def
+clojure.core/defn-
+clojure.core/defmacro
+clojure.core/fn

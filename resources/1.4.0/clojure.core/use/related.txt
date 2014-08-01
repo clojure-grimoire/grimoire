@@ -1,1 +1,4 @@
-clojure.core/referclojure.core/requireclojure.core/nsclojure.core/import
+clojure.core/refer
+clojure.core/require
+clojure.core/ns
+clojure.core/import

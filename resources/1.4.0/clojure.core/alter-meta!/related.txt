@@ -1,1 +1,2 @@
-clojure.core/vary-metaclojure.core/with-meta
+clojure.core/vary-meta
+clojure.core/with-meta

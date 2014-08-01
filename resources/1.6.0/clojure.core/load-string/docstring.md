@@ -1,1 +1,2 @@
-Sequentially read and evaluate the set of forms contained in thestring
+Sequentially read and evaluate the set of forms contained in the
+  string

@@ -1,1 +1,2 @@
-clojure.core/pos?clojure.core/zero?
+clojure.core/pos?
+clojure.core/zero?

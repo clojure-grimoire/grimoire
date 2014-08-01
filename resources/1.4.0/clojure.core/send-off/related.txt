@@ -1,1 +1,3 @@
-clojure.core/sendclojure.core/agentclojure.core/shutdown-agents
+clojure.core/send
+clojure.core/agent
+clojure.core/shutdown-agents

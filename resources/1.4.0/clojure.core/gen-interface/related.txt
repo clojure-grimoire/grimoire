@@ -1,1 +1,2 @@
-clojure.core-proxy/proxyclojure.genclass/gen-class
+clojure.core-proxy/proxy
+clojure.genclass/gen-class

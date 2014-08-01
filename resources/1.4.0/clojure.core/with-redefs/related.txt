@@ -1,1 +1,3 @@
-clojure.core/with-redefs-fnclojure.core/alter-var-rootclojure.core/with-bindings
+clojure.core/with-redefs-fn
+clojure.core/alter-var-root
+clojure.core/with-bindings

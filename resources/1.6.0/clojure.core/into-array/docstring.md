@@ -1,1 +1,5 @@
-Returns an array with components set to the values in aseq. The array'scomponent type is type if provided, or the type of the first value inaseq if present, or Object. All values in aseq must be compatible withthe component type. Class objects for the primitive types can be obtainedusing, e.g., Integer/TYPE.
+Returns an array with components set to the values in aseq. The array's
+  component type is type if provided, or the type of the first value in
+  aseq if present, or Object. All values in aseq must be compatible with
+  the component type. Class objects for the primitive types can be obtained
+  using, e.g., Integer/TYPE.

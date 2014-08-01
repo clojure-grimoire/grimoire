@@ -1,1 +1,2 @@
-clojure.core-deftype/extendclojure.core-deftype/defprotocol
+clojure.core-deftype/extend
+clojure.core-deftype/defprotocol

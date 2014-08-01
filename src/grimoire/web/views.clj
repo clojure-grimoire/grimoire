@@ -196,7 +196,7 @@
        [:h2 "Official Documentation"
         " - "
         [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/"
-                        (-> "docstring.txt" symbol-file-path))}
+                        (-> "docstring.md" symbol-file-path))}
          "edit"]]
        [:pre "  " (-> "docstring.md" symbol-file-path util/resource-file-contents)]
        (when-let [comdoc  (-> "extended-docstring.md" symbol-file-path util/markdown-file)]

@@ -215,6 +215,15 @@
       [:li [:a {:href (str (:baseurl site-config) (string/join "/" path) "/")}
             (last path)]])]))
 
+(defn emit-alphabetized-links
+  [records]
+  (let [segments (group-by (comp str first :name) records)]
+    (for [k (sort (keys segments))]
+      (list [:h3 (string/capitalize k)]
+            [:p
+             (for [r (sort-by :name (get segments k))]
+               [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]))))
+
 (defn namespace-page [version namespace]
   (layout
    site-config
@@ -234,14 +243,13 @@
                             :type (slurp (io/resource (str fp "/type.txt")))}))
                        (group-by :type))]
      (for [k keys]
-       (list
-        [:h2 (get mapping k) " "
-             [:a {:id (get link-ids k)} "+"]]
-        [:div {:id (get ids k)}
-         [:p
-          (for [r (get grouping k)]
-            ;; FIXME put style into stylesheet
-            [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]])))
+       (when-let [records (get grouping k)]
+         (list
+          [:h2 (get mapping k) " "
+           [:a {:id (get link-ids k)} "+"]]
+          [:div {:id (get ids k)}
+           (emit-alphabetized-links records)]))))
+
    [:script {:src "/public/jquery.js" :type "text/javascript"}]
    [:script {:src "/public/namespace.js" :type "text/javascript"}]))
 

@@ -363,8 +363,11 @@
       (context "/:symbol" [symbol]
         (GET "/" {{header-type :type} :headers
                   {param-type :type} :params}
-             (symbol-page version namespace symbol
-                          (keyword (or header-type param-type "html"))))
+
+             (if (#{"catch" "finally"} symbol)
+               (response/redirect (str "/" version "/clojure.core/try"))
+               (symbol-page version namespace symbol
+                            (keyword (or header-type param-type "html")))))
 
         (GET "/docstring" []
              (resource-file-contents

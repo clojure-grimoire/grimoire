@@ -77,7 +77,6 @@
 
 (defn foot [{:keys [google-analytics-id]}]
   [:footer
-   [:label.sidebar-toggle {:for "sidebar-checkbox"}]
    [:script {:type "text/javascript"}
     "(function(document) {
         var toggle = document.querySelector('.sidebar-toggle');
@@ -114,7 +113,8 @@
     [:div.wrap (masthead page)
      [:div {:class "container content"}
       [:div {:class "page"}
-       content]]]]
+       content]]]
+    [:label.sidebar-toggle {:for "sidebar-checkbox"}]]
    (foot page)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -242,7 +242,8 @@
          mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
          ids      (zipmap keys ["sforms",        "macros", "fns",       "vars"])
          link-ids (zipmap keys ["sff",           "mf",     "ff",        "vf"])
-         grouping (->> (for [path (paths version namespace)]
+         grouping (->> (for [path (paths version namespace)
+                             :when (not (= "ns-notes.md" (last path)))]
                          (let [fp (string/join "/" path)]
                            {:url  (str (:baseurl site-config) fp "/")
                             :name (slurp (io/resource (str fp "/name.txt")))

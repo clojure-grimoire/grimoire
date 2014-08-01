@@ -246,7 +246,6 @@ a.sidebar-nav-item:focus {
   }
   .sidebar-toggle:before {
     padding-bottom: .15rem;
-    border-top-width: .45rem;
     border-bottom-width: .15rem;
   }
 }

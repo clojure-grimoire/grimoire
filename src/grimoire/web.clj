@@ -219,7 +219,7 @@
   [records]
   (let [segments (group-by (comp str first :name) records)]
     (for [k (sort (keys segments))]
-      (list [:h3 (string/capitalize k)]
+      (list [:h4 (string/capitalize k)]
             [:p
              (for [r (sort-by :name (get segments k))]
                [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]))))
@@ -252,7 +252,7 @@
      (for [k keys]
        (when-let [records (get grouping k)]
          (list
-          [:h2 (get mapping k) " "
+          [:h3 (get mapping k) " "
            [:a {:id (get link-ids k)} "+"]]
           [:div {:id (get ids k)}
            (emit-alphabetized-links records)]))))

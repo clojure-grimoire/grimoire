@@ -41,7 +41,7 @@
     (str baseurl "public/css/poole.css")
     (str baseurl "public/css/syntax.css")
     (str baseurl "public/css/lanyon.css"))
-   [:link {:href "http://fonts.googleapis.com/css?family=PT+Serif:400400italic700|PT+Sans:400"
+   [:link {:href "http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400"
            :rel "stylesheet"}]
    [:link {:href (str baseurl "public/apple-touch-icon-precomposed.png") :sizes "144x144" :rel "apple-touch-icon-precomposed"}]
    [:link {:href (str baseurl "public/favicon.ico") :rel "shortcut icon"}]])

@@ -3,8 +3,31 @@ layout: page
 title: API Documentation
 ---
 
-As of 0.3.0, Grimoire features a filesystem "API" consisting of the
-following resource paths
+## Notation
+
+`$SYMBOL` as used in this document is a string representing the name
+of an intered and documented var munged as follows:
+
+```Clojure
+(defn munge [s]
+  (-> s
+      (replace "?" "_QMARK_")
+      (replace "." "_DOT_")
+      (replace "/" "_SLASH_")
+      (replace #"^_*" "")
+      (replace #"_*$" "")))
+```
+
+`$VERSION` is a Clojure version, one of `#{"1.6.0", "1.5.0", "1.4.0"}`
+unless otherwise specified.
+
+`$NAMESPACE` is the cannonical name of a Clojure namespace with no
+munging applied.
+
+## Filesystem
+
+As of 0.3.0, Grimoire is built atop a filesystem "database" consisting
+of the following resource paths
 
 ```
 /resources/$VERSION/release-notes.md
@@ -20,53 +43,29 @@ following resource paths
 /resources/$VERSION/$NAMESPACE/$SYMBOL/examples/$EXAMPLE_ID.clj
 ```
 
-`$SYMBOL` is a string representing the name of an intered and
-documented var munged as follows:
+This list of paths is provided as a reference for developers hacking
+on Grimoire and should not be considered stable or user-accessible.
 
-```Clojure
-(defn munge [s]
-  (-> s
-      (replace "?" "_QMARK_")
-      (replace "." "_DOT_")
-      (replace "/" "_SLASH_")
-      (replace #"^_*" "")
-      (replace #"_*$" "")))
-```
+## HTTP API
 
-Note that namespaces are not munged at all.
-
-## File descriptions
-
-`/name.txt` is the un-munged name of the symbol.
-
-`/type.txt` is one of `#{"macro" "var" "fn" "special"}`
-
-`/arities.txt` is an unformatted list of the function's arities.
-
-`/docstring.md` is the official docstring of the function markdown formatted.
-
-`/extended-docstring.md` is community documentation of the function markdown formatted.
-
-`/source.clj` is the Clojure source for the given function or symbol.
-
-`/related.txt` is a newline deliminated list of symbols in Clojure considered related.
-
-# HTTP API
+For user access to much of this data, Grimoire 0.3.0 introduces a HTTP
+based API for requesting some data.
 
 `/$VERSION/$NAMESPACE/$SYMBOL/index.html` shall be the result of
-formatting all other API resources save `/index.txt` into a single
-syntax highlighted HTML document.
+formatting all other API resources related to a single symbol save
+`/index.txt` into a single syntax highlighted HTML document.
 
 `/$VERSION/$NAMESPACE/$SYMBOL/index.txt` shall be the result of
 formatting all other API resources save `/index.html` into a single
 file with no highlighting or markup. There may be plain text
 formatting, and the result may be wrapped at 80 characters of width.
 
-The paths `/$VERSION/$NAMESPACE/$SYMBOL/docstring/`,
-`/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring/`,
-`/$VERSION/$NAMESPACE/$SYMBOL/related/` and
-`/$VERSION/$NAMESPACE/$SYMBOL/examples/` are also defined for all
-symbols and special forms.
+The paths `/$VERSION/$NAMESPACE/$SYMBOL/docstring`,
+`/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring`,
+`/$VERSION/$NAMESPACE/$SYMBOL/related` and
+`/$VERSION/$NAMESPACE/$SYMBOL/examples` are also defined for all
+symbols and special forms. These resources will only ever yield plain
+text results.
 
 ## HTTP Examples
 

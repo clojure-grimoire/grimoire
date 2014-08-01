@@ -25,7 +25,7 @@
    :author              {:me         "http://arrdem.com/"
                          :email      "me@arrdem.com"
                          :github     "https://github.com/arrdem/grimoire"}
-   :style               {:header-sep " &raquo; "}})
+   :style               {:header-sep " / "}})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Layout
@@ -281,6 +281,12 @@
      [:h4 "Example " (inc index) " - " [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/" path)} "edit"]]
      [:div (clojure-file path)])))
 
+(defn raw-example [index path]
+  (str "Example " (inc index) "\n"
+       "----------------------------------------\n"
+       (resource-file-contents path)
+       "\n"))
+
 (defn all-examples
   [top-version namespace symbol]
   (let [path (str namespace "/" symbol "/examples/")]
@@ -358,7 +364,31 @@
         (GET "/" {{header-type :type} :headers
                   {param-type :type} :params}
              (symbol-page version namespace symbol
-                          (keyword (or header-type param-type "html")))))))
+                          (keyword (or header-type param-type "html"))))
+
+        (GET "/docstring" []
+             (resource-file-contents
+              (str "resources/" version "/" namespace "/" symbol "/docstring.md")))
+
+        (GET "/extended-docstring" []
+             (resource-file-contents
+              (str "resources/" version "/" namespace "/" symbol "/extended-docstring.md")))
+
+        (GET "/related" []
+             (resource-file-contents
+              (str "resources/" version "/" namespace "/" symbol "/related.txt")))
+
+        (GET "/examples" []
+             (->> (let [path (str namespace "/" symbol "/examples/")]
+                    (for [v (clojure-example-versions version)]
+                      (let [examples (symbol-examples (str "resources/" v "/" path))]
+                        (str "Examples from Clojure " v "\n"
+                             "--------------------------------------------------------------------------------\n"
+                             (->> examples
+                                  (map-indexed raw-example)
+                                  (interpose "\n\n")
+                                  (apply str))))))
+                  (apply str))))))
 
   (route/not-found
    (layout

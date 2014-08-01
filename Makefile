@@ -6,7 +6,10 @@ versions:
 	lein with-profile 1.5 run namespaces
 	lein with-profile 1.6 run namespaces
 
-build: versions cheatsheet
+snapshot: versions cheatsheet
+	bash snapshot.sh
+
+build: versions cheatsheet snapshot
 
 test: build
 	lein serve

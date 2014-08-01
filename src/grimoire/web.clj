@@ -264,17 +264,19 @@
 (defn example [index path]
   (let []
     (list
-     [:h4 "Example " (inc index)]
+     [:h4 "Example " (inc index) " - " [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/" path)} "edit"]]
      [:div (clojure-file path)])))
 
 (defn all-examples
   [top-version namespace symbol]
   (let [path (str namespace "/" symbol "/examples/")]
     (for [v (clojure-example-versions top-version)]
-      (when-let [examples (symbol-examples (str "resources/" v "/" path))]
+      (let [examples (symbol-examples (str "resources/" v "/" path))]
         (list
          [:h2 "Examples from Clojure " v]
-         (map-indexed example examples))))))
+         (map-indexed example examples)
+         [:a {:href (str "https://github.com/arrdem/grimoire/new/develop/" v "/" path)}
+          "Contribute an example!"])))))
 
 (defn symbol-page [version namespace symbol type]
   (let [symbol-file-path (partial str "resources/" version "/" namespace "/" symbol "/")
@@ -291,12 +293,20 @@
         name]
        [:h2 "Arities"]
        [:p (-> "arities.txt" symbol-file-path resource-file-contents)]
-       [:h2 "Official Documentation"]
-       [:pre (-> "docstring.md" symbol-file-path markdown-file)]
-       (when-let [comdoc  (-> "extended-docstring.md" symbol-file-path markdown-file)]
+       [:h2 "Official Documentation"
+        " - "
+        [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/" 
+                        (-> "docstring.txt" symbol-file-path))}
+         "edit"]]
+       (-> "docstring.md" symbol-file-path markdown-file)
+       (when-let [comdoc (-> "extended-docstring.md" symbol-file-path markdown-file)]
          (list
-          [:h2 "Community Documentation"]
-          [:pre comdoc]))
+          [:h2 "Community Documentation"
+           " - "
+           [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/" 
+                           (-> "extended-docstring.md" symbol-file-path))}
+            "edit"]]
+          comdoc))
        (when-let [examples (all-examples version namespace symbol)]
          (list
           [:h2 "Examples"]

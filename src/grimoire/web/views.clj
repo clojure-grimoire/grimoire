@@ -21,7 +21,7 @@
    :author              {:me         "http://arrdem.com/"
                          :email      "me@arrdem.com"
                          :github     "https://github.com/arrdem/grimoire"}
-   :style               {:header-sep " &raquo; "}})
+   :style               {:header-sep " / "}})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 404 Error page
@@ -63,11 +63,17 @@
 (defn version-page [version]
   (layout
    site-config
-   (util/markdown-file (str "resources/" version "/index.md"))
-   [:h3 [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]]
+   [:h1 {:class "page-title"}
+    [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]]
+   [:h2 "Release Notes"
+    " - "
+    [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/resources/"
+                    version "/release-notes.md")}
+     "edit"]]
+   (util/markdown-file (str "resources/" version "/release-notes.md"))
    [:h2 "Namespaces"]
    [:ul
-    (for [path (util/paths version)]
+    (for [path (->> version util/paths (sort-by last))]
       [:li [:a {:href (str (:baseurl site-config) (string/join "/" path) "/")}
             (last path)]])]))
 
@@ -78,7 +84,7 @@
   [records]
   (let [segments (group-by (comp str first :name) records)]
     (for [k (sort (keys segments))]
-      (list [:h3 (string/capitalize k)]
+      (list [:h4 (string/capitalize k)]
             [:p
              (for [r (sort-by :name (get segments k))]
                [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]))))
@@ -86,16 +92,23 @@
 (defn namespace-page [version namespace]
   (layout
    site-config
-   (util/markdown-file (str "resources/" version "/" namespace "/index.md"))
    [:h1 {:class "page-title"}
-    [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]
+    [:a {:href "../"} "Clojure " version]
     (-> site-config :style :header-sep)
     namespace]
+   [:h2 "Namespace Notes"
+    " - "
+    [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/resources/"
+                    version "/" namespace "/ns-notes.md")}
+     "edit"]]
+   (util/markdown-file (str "resources/" version "/" namespace "/ns-notes.md"))
+   [:h2 "Symbols"]
    (let [keys                  ["special"        "macro"   "fn"         "var"]
          mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
          ids      (zipmap keys ["sforms",        "macros", "fns",       "vars"])
          link-ids (zipmap keys ["sff",           "mf",     "ff",        "vf"])
-         grouping (->> (for [path (util/paths version namespace)]
+         grouping (->> (for [path (util/paths version namespace)
+                             :when (not (= "ns-notes.md" (last path)))]
                          (let [fp (string/join "/" path)]
                            {:url  (str (:baseurl site-config) fp "/")
                             :name (slurp (io/resource (str fp "/name.txt")))
@@ -104,7 +117,7 @@
      (for [k keys]
        (when-let [records (get grouping k)]
          (list
-          [:h2 (get mapping k) " "
+          [:h3 (get mapping k) " "
            [:a {:id (get link-ids k)} "+"]]
           [:div {:id (get ids k)}
            (emit-alphabetized-links records)]))))
@@ -118,11 +131,36 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Symbol page
 
+(def clojure-example-versions
+  {"1.6.0" ["1.6.0" "1.5.0" "1.4.0"]
+   "1.5.0" ["1.5.0" "1.4.0"]
+   "1.4.0" ["1.4.0"]})
+
 (defn example [index path]
   (let []
     (list
-     [:h4 "Example " (inc index)]
-     [:div (util/clojure-file path)])))
+     [:h4
+      "Example " (inc index)
+      " - "
+      [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/" path)} "edit"]
+     [:div (util/clojure-file path)]])))
+
+(defn raw-example [index path]
+  (str "Example " (inc index) "\n"
+       "----------------------------------------\n"
+       (util/resource-file-contents path)
+       "\n"))
+
+(defn all-examples
+  [top-version namespace symbol]
+  (let [path (str namespace "/" symbol "/examples/")]
+    (for [v (clojure-example-versions top-version)]
+      (let [examples (util/dir-list-as-strings (str "resources/" v "/" path))]
+        (list
+         [:h2 "Examples from Clojure " v]
+         (map-indexed example examples)
+         [:a {:href (str "https://github.com/arrdem/grimoire/new/develop/" v "/" path)}
+           "Contribute an example!"])))))
 
 (defn symbol-page [version namespace symbol type]
   (let [symbol-file-path (partial str "resources/" version "/" namespace "/" symbol "/")
@@ -132,23 +170,31 @@
       (layout
        site-config
        [:h1 {:class "page-title"}
-        [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]
+        [:a {:href "../"} "Clojure " version]
         (-> site-config :style :header-sep)
-        [:a {:href (str (:baseurl site-config) version "/" namespace "/")} namespace]
+        [:a {:href "."} namespace]
         (-> site-config :style :header-sep)
         name]
        [:h2 "Arities"]
        [:p (-> "arities.txt" symbol-file-path util/resource-file-contents)]
-       [:h2 "Official Documentation"]
-       [:pre (-> "docstring.md" symbol-file-path util/markdown-file)]
+       [:h2 "Official Documentation"
+        " - "
+        [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/"
+                        (-> "docstring.txt" symbol-file-path))}
+         "edit"]]
+       (-> "docstring.md" symbol-file-path util/markdown-file)
        (when-let [comdoc  (-> "extended-docstring.md" symbol-file-path util/markdown-file)]
          (list
-          [:h2 "Community Documentation"]
-          [:pre comdoc]))
-       (when-let [examples (-> "examples" symbol-file-path util/dir-list-as-strings seq)]
+          [:h2 "Community Documentation"
+           " - "
+           [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/"
+                           (-> "extended-docstring.md" symbol-file-path))}
+            "edit"]]
+          comdoc))
+       (when-let [examples (all-examples version namespace symbol)]
          (list
           [:h2 "Examples"]
-          (map-indexed example examples)))
+          examples))
        (when-let [source (-> "source.clj" symbol-file-path util/clojure-file)]
          (list
           [:h2 "Source"]

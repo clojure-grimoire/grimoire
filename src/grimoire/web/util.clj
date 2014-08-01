@@ -11,7 +11,7 @@
   (-> "cheatsheet.html"
       io/resource
       slurp
-      (string/replace #"\{\{ site.baseurl \}\}" baseurl)
+      (string/replace #"\{\{ site.baseurl \}\}" "./")
       (string/replace #"\{\{ site.clojure_version \}\}" clojure-version)))
 
 (def cheatsheet-memo (memoize cheatsheet))
@@ -76,5 +76,5 @@
 (defn paths [& path-elements]
   (->> path-elements
        (concat ["resources"])
-       dir-list-as-strings
+       (apply dir-list-as-strings)
        (map prepare-path)))

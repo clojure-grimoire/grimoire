@@ -1,0 +1,1 @@
+Applies f to every value in the reduction of coll. Foldable.

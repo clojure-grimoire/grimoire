@@ -63,6 +63,7 @@
      [:a.sidebar-nav-item {:href "/1.6.0/"} "Clojure 1.6"]
      [:a.sidebar-nav-item {:href "/1.5.0/"} "Clojure 1.5"]
      [:a.sidebar-nav-item {:href "/1.4.0/"} "Clojure 1.4"]
+     [:a.sidebar-nav-item {:href "/api"} "API"]
      [:a.sidebar-nav-item {:href "/about"} "About"]
      [:a.sidebar-nav-item {:href "/contributing"} "Contributing"]
      [:br] "More" [:br]
@@ -340,6 +341,7 @@
   (GET "/" [] (home-page))
   (GET "/about" [] (markdown-page "about"))
   (GET "/contributing" [] (markdown-page "contributing"))
+  (GET "/api" [] (markdown-page "API"))
 
   (route/resources "/public")
 

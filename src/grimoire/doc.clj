@@ -14,7 +14,7 @@
 
 ;; Intended file structure output
 ;;--------------------------------------------------------------------
-;; /$version/$NAMESPACE/$SYMBOL/
+;; /$VERSION/release-notes.md
 ;; /$VERSION/$NAMESPACE/$SYMBOL/name.txt
 ;; /$VERSION/$NAMESPACE/$SYMBOL/type.txt
 ;; /$VERSION/$NAMESPACE/$SYMBOL/arities.txt
@@ -183,6 +183,15 @@
         (when-not (.exists root)
           (.mkdir root))
 
+        (let [release-notes (io/file root "release-notes.md")]
+          (when-not (.exists release-notes)
+            (spit release-notes 
+                  (str 
+                   (format "[Release notes](https://github.com/clojure/clojure/blob/clojure-%s/changes.md)\n"
+                           *version-str*)
+                   "\n"
+                   "Please add release notes commentary!\n"))))
+                  
         (let [namespaces (line-seq (io/reader input-file))]
           (doseq [n namespaces]
             (let [n (symbol n)]

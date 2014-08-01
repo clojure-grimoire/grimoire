@@ -7,6 +7,7 @@ As of 0.3.0, Grimoire features a filesystem "API" consisting of the
 following resource paths
 
 ```
+/resources/$VERSION/release-notes.md
 /resources/$VERSION/$NAMESPACE/$SYMBOL/
 /resources/$VERSION/$NAMESPACE/$SYMBOL/name.txt
 /resources/$VERSION/$NAMESPACE/$SYMBOL/type.txt

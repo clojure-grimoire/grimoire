@@ -194,7 +194,7 @@
           (when-not (.exists release-notes)
             (spit release-notes 
                   (str 
-                   (format "[Release notes](https://github.com/clojure/clojure/blob/clojure-%s/changes.md)\n"
+                   (format "[Official release notes](https://github.com/clojure/clojure/blob/clojure-%s/changes.md)\n"
                            *version-str*)
                    "\n"
                    "Please add release notes commentary!\n"))))

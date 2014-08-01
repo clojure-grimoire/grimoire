@@ -3,8 +3,7 @@
             [compojure.route :as route]
             [grimoire.web.util :as util]
             [grimoire.web.views :as views]
-            [ring.util.response :as response]
-            [clojure.pprint :as pp]))
+            [ring.util.response :as response]))
 
 (defroutes app
   (GET "/" []
@@ -34,8 +33,6 @@
         (GET "/" {header-type :content-type
                   {param-type :type} :params
                   :as req}
-             (println header-type param-type)
-             (pp/pprint req)
              (if (#{"catch" "finally"} symbol)
                (response/redirect (str "/" version "/clojure.core/try"))
                (views/symbol-page version namespace symbol

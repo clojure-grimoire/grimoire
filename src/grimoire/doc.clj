@@ -163,7 +163,7 @@
     (let [ns-notes (io/file ns-dir "ns-notes.md")]
       (when-not (.exists ns-notes)
         (spit ns-notes
-              (format "No notes on %s! Please edit and add some.\n"
+              (format "Please add namespace commentary!\n"
                       (name ns)))))
 
     ;; write per symbol docs

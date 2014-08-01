@@ -198,12 +198,6 @@
            (map str)
            (map prepare-path)))))
 
-(defn symbol-examples [path]
-  (let [dir (io/file path)]
-    (when (.exists dir)
-      (->> (.listFiles dir)
-           (map str)))))
-
 (defn version-page [version]
   (layout
    site-config
@@ -256,11 +250,31 @@
 (def namespace-page-memo
   (memoize namespace-page))
 
+(defn symbol-examples [path]
+  (let [dir (io/file path)]
+    (when (.exists dir)
+      (->> (.listFiles dir)
+           (map str)))))
+
+(def clojure-example-versions
+  {"1.6.0" ["1.6.0" "1.5.0" "1.4.0"]
+   "1.5.0" ["1.5.0" "1.4.0"]
+   "1.4.0" ["1.4.0"]})
+
 (defn example [index path]
   (let []
     (list
      [:h4 "Example " (inc index)]
      [:div (clojure-file path)])))
+
+(defn all-examples
+  [top-version namespace symbol]
+  (let [path (str namespace "/" symbol "/examples/")]
+    (for [v (clojure-example-versions top-version)]
+      (when-let [examples (symbol-examples (str "resources/" v "/" path))]
+        (list
+         [:h2 "Examples from Clojure " v]
+         (map-indexed example examples))))))
 
 (defn symbol-page [version namespace symbol type]
   (let [symbol-file-path (partial str "resources/" version "/" namespace "/" symbol "/")
@@ -283,10 +297,10 @@
          (list
           [:h2 "Community Documentation"]
           [:pre comdoc]))
-       (when-let [examples (-> "examples" symbol-file-path symbol-examples seq)]
+       (when-let [examples (all-examples version namespace symbol)]
          (list
           [:h2 "Examples"]
-          (map-indexed example examples)))
+          examples))
        (when-let [source (-> "source.clj" symbol-file-path clojure-file)]
          (list
           [:h2 "Source"]

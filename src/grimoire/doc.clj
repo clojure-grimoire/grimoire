@@ -15,6 +15,7 @@
 ;; Intended file structure output
 ;;--------------------------------------------------------------------
 ;; /$VERSION/release-notes.md
+;; /$VERSION/$NAMESPACE/ns-notes.md
 ;; /$VERSION/$NAMESPACE/$SYMBOL/name.txt
 ;; /$VERSION/$NAMESPACE/$SYMBOL/type.txt
 ;; /$VERSION/$NAMESPACE/$SYMBOL/arities.txt
@@ -158,6 +159,12 @@
         vars    (filter #(not (fn? @%1)) ns-vars)
         ns-dir  (io/file root (name ns))]
     (.mkdir ns-dir)
+
+    (let [ns-notes (io/file ns-dir "ns-notes.md")]
+      (when-not (.exists ns-notes)
+        (spit ns-notes
+              (format "No notes on %s! Please edit and add some.\n"
+                      (name ns)))))
 
     ;; write per symbol docs
     (doseq [var ns-vars]

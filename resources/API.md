@@ -8,6 +8,7 @@ following resource paths
 
 ```
 /resources/$VERSION/release-notes.md
+/resources/$VERSION/$NAMESPACE/ns-notes.md
 /resources/$VERSION/$NAMESPACE/$SYMBOL/
 /resources/$VERSION/$NAMESPACE/$SYMBOL/name.txt
 /resources/$VERSION/$NAMESPACE/$SYMBOL/type.txt

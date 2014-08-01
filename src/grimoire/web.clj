@@ -201,8 +201,14 @@
 (defn version-page [version]
   (layout
    site-config
-   (markdown-file (str "resources/" version "/index.md"))
-   [:h3 [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]]
+   [:h1 {:class "page-title"}
+    [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]]
+   [:h2 "Release Notes"
+    " - "
+    [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/resources/"
+                    version "/release-notes.md")}
+     "edit"]]
+   (markdown-file (str "resources/" version "/release-notes.md"))
    [:h2 "Namespaces"]
    [:ul
     (for [path (paths version)]

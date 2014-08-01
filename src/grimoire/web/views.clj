@@ -103,7 +103,7 @@
      "edit"]]
    (util/markdown-file (str "resources/" version "/" namespace "/ns-notes.md"))
    [:h2 "Symbols"]
-   (let [keys                  ["special"        "macro"   "fn"         "var"]
+   (let [keys                  ["special",       "macro",  "fn",        "var"]
          mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
          ids      (zipmap keys ["sforms",        "macros", "fns",       "vars"])
          link-ids (zipmap keys ["sff",           "mf",     "ff",        "vf"])
@@ -152,21 +152,37 @@
        "\n"))
 
 (defn all-examples
-  [top-version namespace symbol]
-  (let [path (str namespace "/" symbol "/examples/")]
-    (for [v (clojure-example-versions top-version)]
-      (let [examples (util/dir-list-as-strings (str "resources/" v "/" path))]
-        (list
-         [:h2 "Examples from Clojure " v]
-         (map-indexed example examples)
-         [:a {:href (str "https://github.com/arrdem/grimoire/new/develop/" v "/" path)}
-           "Contribute an example!"])))))
+  [top-version namespace symbol type]
+  (case type
+    :html
+    (let [path (str namespace "/" symbol "/examples/")]
+      (for [v (clojure-example-versions top-version)]
+        (let [examples (util/dir-list-as-strings (str "resources/" v "/" path))]
+          (list
+           [:h2 "Examples from Clojure " v]
+           (map-indexed example examples)
+           [:a {:href (str "https://github.com/arrdem/grimoire/new/develop/" v "/" path)}
+            "Contribute an example!"]))))
 
-(defn symbol-page [version namespace symbol type]
+    :text
+    (let [path (str namespace "/" symbol "/examples/")]
+      (->> (for [v (clojure-example-versions top-version)]
+             (let [examples (util/dir-list-as-strings (str "resources/" v "/" path))]
+               (str "### Examples from Clojure " v "\n"
+                    "----------------------------------------\n"
+                    (->> examples
+                         (map-indexed raw-example)
+                         (interpose "\n")
+                         (apply str)))))
+           (interpose "\n")
+           (apply str)))))
+
+(defn symbol-page
+  [version namespace symbol type]
   (let [symbol-file-path (partial str "resources/" version "/" namespace "/" symbol "/")
         name             (slurp (symbol-file-path "name.txt"))]
     (case type
-      :html
+      (:html :text/html)
       (layout
        site-config
        [:h1 {:class "page-title"}
@@ -191,7 +207,7 @@
                            (-> "extended-docstring.md" symbol-file-path))}
             "edit"]]
           comdoc))
-       (when-let [examples (all-examples version namespace symbol)]
+       (when-let [examples (all-examples version namespace symbol :html)]
          (list
           [:h2 "Examples"]
           examples))
@@ -199,7 +215,37 @@
          (list
           [:h2 "Source"]
           [:div source])))
-      :text
-      (-> (str version " - " namespace " - " name)
-          response/response
-          (response/content-type "text/plain")))))
+
+      (:text :text/plain)
+      (let [symbol-file-path (partial str "resources/" version "/" namespace "/" symbol "/")
+            line80           "--------------------------------------------------------------------------------\n"
+            line40           "----------------------------------------\n"]
+        (-> (str "# "version " - " namespace " - " name "\n"
+                 line80
+                 "\n"
+
+                 "## Arities\n"
+                 line40
+                 (-> "arities.txt" symbol-file-path util/resource-file-contents)
+                 "\n"
+                 
+                 "## Documentation\n"
+                 line40
+                 (-> "docstring.md" symbol-file-path util/resource-file-contents)
+                 "\n"
+
+                 "## User Documentation\n"
+                 line40
+                 (-> "extended-docstring.md" symbol-file-path util/resource-file-contents)
+                 "\n"
+                 
+                 "## Examples\n"
+                 line40
+                 "\n"
+                 (all-examples version namespace symbol :text)
+
+                 "## See Also\n"
+                 line40
+                 (-> "related.txt" symbol-file-path util/resource-file-contents))
+            response/response
+            (response/content-type "text/plain"))))))

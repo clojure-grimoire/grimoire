@@ -3,13 +3,21 @@
             [compojure.route :as route]
             [grimoire.web.util :as util]
             [grimoire.web.views :as views]
-            [ring.util.response :as response]))
+            [ring.util.response :as response]
+            [clojure.pprint :as pp]))
 
 (defroutes app
-  (GET "/" [] (views/home-page))
-  (GET "/about" [] (views/markdown-page "about"))
-  (GET "/contributing" [] (views/markdown-page "contributing"))
-  (GET "/api" [] (views/markdown-page "API"))
+  (GET "/" []
+       (views/home-page))
+
+  (GET "/about" []
+       (views/markdown-page "about"))
+
+  (GET "/contributing" []
+       (views/markdown-page "contributing"))
+
+  (GET "/api" []
+       (views/markdown-page "API"))
 
   (route/resources "/public")
 
@@ -23,12 +31,15 @@
            (views/namespace-page-memo version namespace))
 
       (context "/:symbol" [symbol]
-        (GET "/" {{header-type :type} :headers
-                  {param-type :type} :params}
+        (GET "/" {header-type :content-type
+                  {param-type :type} :params
+                  :as req}
+             (println header-type param-type)
+             (pp/pprint req)
              (if (#{"catch" "finally"} symbol)
                (response/redirect (str "/" version "/clojure.core/try"))
                (views/symbol-page version namespace symbol
-                                  (keyword (or header-type param-type "html")))))
+                                  (keyword (or header-type param-type "text/html")))))
 
       (GET "/docstring" []
            (util/resource-file-contents
@@ -43,16 +54,7 @@
             (str "resources/" version "/" namespace "/" symbol "/related.txt")))
 
       (GET "/examples" []
-           (->> (let [path (str namespace "/" symbol "/examples/")]
-                  (for [v (views/clojure-example-versions version)]
-                    (let [examples (util/dir-list-as-strings (str "resources/" v "/" path))]
-                      (str "Examples from Clojure " v "\n"
-                           "--------------------------------------------------------------------------------\n"
-                           (->> examples
-                                (map-indexed views/raw-example)
-                                (interpose "\n\n")
-                                (apply str))))))
-                (apply str))))))
+           (views/all-examples version namespace symbol :text)))))
 
   (route/not-found (views/error-404)))
 

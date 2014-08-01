@@ -47,14 +47,10 @@
   (-> file resource-file-contents md/md-to-html-string))
 
 (defn highlight-clojure [text]
-  (let-programs [pygmentize
-                 (if (.exists (io/file "resources" "pygments" "./pygmentize"))
-                   "./pygmentize"
-                   "pygmentize")]
+  (let-programs [pygmentize "pygmentize"]
     (pygmentize "-fhtml" (str "-l" "clojure")
                 (str "-Ostripnl=False,encoding=utf-8")
-                {:dir "resources/pygments"
-                 :in text})))
+                {:in text})))
 
 (defn clojure-file [file]
   (some-> file resource-file-contents highlight-clojure))

@@ -1,0 +1,1 @@
+clojure.core/classclojure.core/supersclojure.core/instance?

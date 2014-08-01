@@ -1,0 +1,1 @@
+Evaluates exprs in a context in which *out* is bound to a freshStringWriter.  Returns the string created by any nested printingcalls.

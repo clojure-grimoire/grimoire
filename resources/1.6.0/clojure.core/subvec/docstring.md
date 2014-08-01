@@ -1,0 +1,1 @@
+Returns a persistent vector of the items in vector fromstart (inclusive) to end (exclusive).  If end is not supplied,defaults to (count vector). This operation is O(1) and very fast, asthe resulting vector shares structure with the original and notrimming is done.

@@ -1,0 +1,1 @@
+Expands into code that creates a fn that expects to be passed anobject and any args and calls the named instance method on theobject passing the args. Use when you want to treat a Java method asa first-class fn. name may be type-hinted with the method receiver'stype in order to avoid reflective calls.

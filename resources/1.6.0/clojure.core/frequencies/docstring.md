@@ -1,0 +1,1 @@
+Returns a map from distinct items in coll to the number of timesthey appear.

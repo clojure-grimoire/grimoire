@@ -1,0 +1,1 @@
+clojure.core/nextclojure.core/firstclojure.core/dropclojure.core/pop

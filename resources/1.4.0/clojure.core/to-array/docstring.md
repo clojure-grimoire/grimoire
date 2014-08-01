@@ -1,0 +1,1 @@
+Returns an array of Objects containing the contents of coll, whichcan be any Collection.  Maps to java.util.Collection.toArray().

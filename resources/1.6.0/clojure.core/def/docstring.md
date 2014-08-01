@@ -1,0 +1,1 @@
+Creates and interns a global var with the nameof symbol in the current namespace (*ns*) or locates such a var ifit already exists.  If init is supplied, it is evaluated, and theroot binding of the var is set to the resulting value.  If init isnot supplied, the root binding of the var is unaffected.

@@ -1,0 +1,1 @@
+clojure.core/requireclojure.core/useclojure.core/ns

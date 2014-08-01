@@ -1,0 +1,1 @@
+Given a map of replacement pairs and a vector/collection, returns avector/seq with any elements = a key in smap replaced with thecorresponding val in smap

@@ -1,0 +1,1 @@
+Returns the global var named by the namespace-qualified symbol, ornil if no var with that name.

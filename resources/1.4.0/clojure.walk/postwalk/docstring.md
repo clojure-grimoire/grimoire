@@ -1,0 +1,1 @@
+Performs a depth-first, post-order traversal of form.  Calls f oneach sub-form, uses f's return value in place of the original.Recognizes all Clojure data structures. Consumes seqs as with doall.

@@ -1,0 +1,1 @@
+(def ^:dynamic *sh-env* nil)

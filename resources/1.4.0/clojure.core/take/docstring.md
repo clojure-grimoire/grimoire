@@ -1,0 +1,1 @@
+Returns a lazy sequence of the first n items in coll, or all items ifthere are fewer than n.

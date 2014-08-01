@@ -1,0 +1,1 @@
+Sets the error-handler of agent a to handler-fn.  If an actionbeing run by the agent throws an exception or doesn't pass thevalidator fn, handler-fn will be called with two arguments: theagent and the exception.

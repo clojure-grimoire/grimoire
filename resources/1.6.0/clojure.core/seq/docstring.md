@@ -1,0 +1,1 @@
+Returns a seq on the collection. If the collection isempty, returns nil.  (seq nil) returns nil. seq also works onStrings, native Java arrays (of reference types) and any objectsthat implement Iterable.

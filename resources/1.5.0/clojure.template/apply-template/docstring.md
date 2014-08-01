@@ -1,0 +1,1 @@
+For use in macros.  argv is an argument list, as in defn.  expr isa quoted expression using the symbols in argv.  values is a sequenceof values to be used for the arguments.apply-template will recursively replace argument symbols in exprwith their corresponding values, returning a modified expr.Example: (apply-template '[x] '(+ x x) '[2]);=> (+ 2 2)

@@ -1,0 +1,1 @@
+varbinding=> symbol init-exprExecutes the exprs in a context in which the symbols are bound tovars with per-thread bindings to the init-exprs.  The symbols referto the var objects themselves, and must be accessed with var-get andvar-set

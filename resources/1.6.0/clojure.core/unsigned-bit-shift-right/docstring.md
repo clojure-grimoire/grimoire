@@ -1,0 +1,1 @@
+Bitwise shift right, without sign-extension.

@@ -1,0 +1,1 @@
+Evaluates the expressions in order and returns the value ofthe last. If no expressions are supplied, returns nil.

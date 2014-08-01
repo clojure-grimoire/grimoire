@@ -1,0 +1,1 @@
+Replaces all instance of match with replacement in s.match/replacement can be:string / stringchar / charpattern / (string or function of match).See also replace-first.

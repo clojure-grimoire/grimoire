@@ -1,0 +1,1 @@
+Establishes a parent/child relationship between parent andtag. Parent must be a namespace-qualified symbol or keyword andchild can be either a namespace-qualified symbol or keyword or aclass. h must be a hierarchy obtained from make-hierarchy, if notsupplied defaults to, and modifies, the global hierarchy.

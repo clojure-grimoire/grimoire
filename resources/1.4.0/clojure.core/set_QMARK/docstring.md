@@ -1,0 +1,1 @@
+Returns true if x implements IPersistentSet

@@ -1,0 +1,2 @@
+[f coll]
+[f coll & colls]

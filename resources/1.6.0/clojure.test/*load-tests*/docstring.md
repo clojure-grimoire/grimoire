@@ -1,0 +1,1 @@
+True by default.  If set to false, no test functions willbe created by deftest, set-test, or with-test.  Use this to omittests when compiling or loading production code.

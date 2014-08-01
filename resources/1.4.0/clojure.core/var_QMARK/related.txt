@@ -1,0 +1,1 @@
+clojure.core/defclojure.core/varclojure.contrib.ns-utils/varsclojure.core/var-getclojure.core/var-setclojure.core/with-local-vars

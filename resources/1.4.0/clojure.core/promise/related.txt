@@ -1,0 +1,1 @@
+clojure.core/futureclojure.core/deliverclojure.core/realized?

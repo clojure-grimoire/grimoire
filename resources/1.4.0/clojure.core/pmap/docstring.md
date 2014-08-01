@@ -1,0 +1,1 @@
+Like map, except f is applied in parallel. Semi-lazy in that theparallel computation stays ahead of the consumption, but doesn'trealize the entire result unless required. Only useful forcomputationally intensive functions where the time of f dominatesthe coordination overhead.

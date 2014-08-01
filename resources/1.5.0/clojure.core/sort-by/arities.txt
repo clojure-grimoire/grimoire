@@ -1,0 +1,2 @@
+[keyfn coll]
+[keyfn comp coll]

@@ -1,0 +1,1 @@
+Returns an object of the same type and value as obj, withmap m as its metadata.

@@ -1,0 +1,1 @@
+Coerce to byte

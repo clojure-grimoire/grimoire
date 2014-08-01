@@ -1,0 +1,1 @@
+Recursively transforms form by replacing keys in smap with theirvalues.  Like clojure/replace but works on any data structure.  Doesreplacement at the leaves of the tree first.

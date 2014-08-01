@@ -1,0 +1,1 @@
+Given a replacement string that you wish to be a literalreplacement for a pattern match in replace or replace-first, do thenecessary escaping of special characters in the replacement.

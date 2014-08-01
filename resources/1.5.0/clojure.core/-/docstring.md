@@ -1,0 +1,1 @@
+If no ys are supplied, returns the negation of x, else subtractsthe ys from x and returns the result. Does not auto-promotelongs, will throw on overflow. See also: -'

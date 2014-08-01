@@ -1,0 +1,1 @@
+Repeatedly executes body (presumably for side-effects) withbindings and filtering as provided by "for".  Does not retainthe head of the sequence. Returns nil.

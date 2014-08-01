@@ -1,0 +1,1 @@
+Returns a new branch node, given an existing node and newchildren. The loc is only used to supply the constructor.

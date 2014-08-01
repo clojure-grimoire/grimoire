@@ -1,0 +1,1 @@
+Atomically sets the value of atom to newval if and only if thecurrent value of the atom is identical to oldval. Returns true ifset happened, else false

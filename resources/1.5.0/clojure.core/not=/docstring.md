@@ -1,0 +1,1 @@
+Same as (not (= obj1 obj2))

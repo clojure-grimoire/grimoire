@@ -1,0 +1,1 @@
+;; although not reference-able in Clojuredocs, org.clojure/java.data provides a useful, alternative 'from-java' function that works similarly to bean, but more customizable.  See https://github.com/clojure/java.data for more info.

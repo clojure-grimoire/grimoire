@@ -1,0 +1,1 @@
+Returns a lazy sequence of the items in coll starting from the firstitem for which (pred item) returns logical false.

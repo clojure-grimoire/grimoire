@@ -1,0 +1,1 @@
+For a list or queue, returns a new list/queue without the firstitem, for a vector, returns a new vector without the last item. Ifthe collection is empty, throws an exception.  Note - not the sameas next/butlast.

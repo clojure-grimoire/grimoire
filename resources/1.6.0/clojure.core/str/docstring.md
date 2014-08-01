@@ -1,0 +1,1 @@
+With no args, returns the empty string. With one arg x, returnsx.toString().  (str nil) returns the empty string. With more thanone arg, returns the concatenation of the str values of the args.

@@ -1,0 +1,3 @@
+(set! var-symbol expr)
+(set! (. instance-expr instanceFieldName-symbol) expr)
+(set! (. Classname-symbol staticFieldName-symbol) expr)

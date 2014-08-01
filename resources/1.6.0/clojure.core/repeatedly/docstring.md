@@ -1,0 +1,1 @@
+Takes a function of no args, presumably with side effects, andreturns an infinite (or length n if supplied) lazy sequence of callsto it

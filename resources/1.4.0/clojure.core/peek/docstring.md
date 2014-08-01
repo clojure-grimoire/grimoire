@@ -1,0 +1,1 @@
+For a list or queue, same as first, for a vector, same as, but muchmore efficient than, last. If the collection is empty, returns nil.

@@ -1,0 +1,1 @@
+Sets the value in the var object to val. The var must bethread-locally bound.

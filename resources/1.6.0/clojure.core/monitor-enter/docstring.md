@@ -1,0 +1,1 @@
+Synchronization primitive that should be avoidedin user code. Use the 'locking' macro.

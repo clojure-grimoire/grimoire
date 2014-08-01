@@ -1,0 +1,2 @@
+user=> *ns*
+#<Namespace user>

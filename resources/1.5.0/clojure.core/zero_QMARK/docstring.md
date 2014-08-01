@@ -1,0 +1,1 @@
+Returns true if num is zero, else false

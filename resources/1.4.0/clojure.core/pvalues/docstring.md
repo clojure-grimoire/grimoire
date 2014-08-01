@@ -1,0 +1,1 @@
+Returns a lazy sequence of the values of the exprs, which areevaluated in parallel

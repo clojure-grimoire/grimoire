@@ -1,0 +1,1 @@
+clojure.java.io/readerclojure.java.io/IOFactoryclojure.java.io/output-streamclojure.core/spit

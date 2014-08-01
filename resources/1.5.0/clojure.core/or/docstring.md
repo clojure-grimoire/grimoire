@@ -1,0 +1,1 @@
+Evaluates exprs one at a time, from left to right. If a formreturns a logical true value, or returns that value and doesn'tevaluate any of the other expressions, otherwise it returns thevalue of the last expression. (or) returns nil.

@@ -1,0 +1,1 @@
+Adds to the list of remote Javadoc URLs.  package-prefix is thebeginning of the package name that has docs at this URL.

@@ -1,0 +1,1 @@
+Returns the hash code, consistent with =, for an external orderedcollection implementing Iterable.See http://clojure.org/data_structures#hash for full algorithms.

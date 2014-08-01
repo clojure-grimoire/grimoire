@@ -1,0 +1,1 @@
+Returns the hash code, consistent with =, for an external unorderedcollection implementing Iterable. For maps, the iterator shouldreturn map entries whose hash is computed as(hash-ordered-coll [k v]).See http://clojure.org/data_structures#hash for full algorithms.

@@ -1,0 +1,1 @@
+Returns true if no two of the arguments are =

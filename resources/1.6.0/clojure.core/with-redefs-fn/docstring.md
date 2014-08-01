@@ -1,0 +1,1 @@
+Temporarily redefines Vars during a call to func.  Each val ofbinding-map will replace the root value of its key which must bea Var.  After func is called with no args, the root values of allthe Vars will be set back to their old values.  These temporarychanges will be visible in all threads.  Useful for mocking outfunctions during testing.

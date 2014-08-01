@@ -1,0 +1,1 @@
+Ignores body, yields nil

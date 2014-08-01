@@ -1,0 +1,1 @@
+Prints documentation for any var whose documentation or namecontains a match for re-string-or-pattern

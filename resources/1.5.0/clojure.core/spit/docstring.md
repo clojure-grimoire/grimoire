@@ -1,0 +1,1 @@
+Opposite of slurp.  Opens f with writer, writes content, thencloses f. Options passed to clojure.java.io/writer.

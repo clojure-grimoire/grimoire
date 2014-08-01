@@ -1,0 +1,1 @@
+;; See also http://clojure.org/namespaces for information on namespaces in Clojure and how to inspect and manipulate them

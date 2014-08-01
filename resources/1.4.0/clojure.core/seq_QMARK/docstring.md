@@ -1,0 +1,1 @@
+Return true if x implements ISeq

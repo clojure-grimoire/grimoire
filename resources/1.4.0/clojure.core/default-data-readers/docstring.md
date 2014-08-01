@@ -1,0 +1,1 @@
+Default map of data reader functions provided by Clojure. May beoverridden by binding *data-readers*.

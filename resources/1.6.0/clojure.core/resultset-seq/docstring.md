@@ -1,0 +1,1 @@
+Creates and returns a lazy sequence of structmaps corresponding tothe rows in the java.sql.ResultSet rs

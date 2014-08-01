@@ -1,0 +1,1 @@
+When applied to a transient map, adds mapping of key(s) toval(s). When applied to a transient vector, sets the val at index.Note - index must be <= (count vector). Returns coll.

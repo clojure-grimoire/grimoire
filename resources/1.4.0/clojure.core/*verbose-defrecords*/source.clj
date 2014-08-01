@@ -1,0 +1,1 @@
+(def ^:dynamic *verbose-defrecords* false)

@@ -1,0 +1,1 @@
+DEPRECATED: Use 'agent-error' instead.Returns a sequence of the exceptions thrown during asynchronousactions of the agent.

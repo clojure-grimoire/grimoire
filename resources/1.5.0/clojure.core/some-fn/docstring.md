@@ -1,0 +1,1 @@
+Takes a set of predicates and returns a function f that returns the first logical true valuereturned by one of its composing predicates against any of its arguments, else it returnslogical false. Note that f is short-circuiting in that it will stop execution on the firstargument that triggers a logical true result against the original predicates.

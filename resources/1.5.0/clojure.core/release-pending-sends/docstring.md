@@ -1,0 +1,1 @@
+Normally, actions sent directly or indirectly during another actionare held until the action completes (changes the agent'sstate). This function can be used to dispatch any pending sentactions immediately. This has no impact on actions sent during atransaction, which are still held until commit. If no action isoccurring, does nothing. Returns the number of actions dispatched.

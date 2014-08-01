@@ -1,0 +1,1 @@
+Returns a lazy sequence of lists like partition, but may includepartitions with fewer than n items at the end.

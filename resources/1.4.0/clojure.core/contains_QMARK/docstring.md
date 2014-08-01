@@ -1,0 +1,1 @@
+Returns true if key is present in the given collection, otherwisereturns false.  Note that for numerically indexed collections likevectors and Java arrays, this tests if the numeric key is within therange of indexes. 'contains?' operates constant or logarithmic time;it will not perform a linear search for a value.  See also 'some'.

@@ -1,0 +1,1 @@
+Compiles the namespace named by the symbol lib into a set ofclassfiles. The source for the lib must be in a properclasspath-relative directory. The output files will go into thedirectory specified by *compile-path*, and that directory too mustbe in the classpath.

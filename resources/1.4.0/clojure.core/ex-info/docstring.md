@@ -1,0 +1,1 @@
+Alpha - subject to change.Create an instance of ExceptionInfo, a RuntimeException subclassthat carries a map of additional data.

@@ -1,0 +1,1 @@
+Returns s with its characters reversed.

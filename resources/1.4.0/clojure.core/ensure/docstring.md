@@ -1,0 +1,1 @@
+Must be called in a transaction. Protects the ref from modificationby other transactions.  Returns the in-transaction-value ofref. Allows for more concurrency than (ref-set ref @ref)

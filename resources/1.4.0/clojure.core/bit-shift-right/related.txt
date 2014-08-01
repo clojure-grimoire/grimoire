@@ -1,0 +1,1 @@
+clojure.core/bit-shift-leftclojure.core/bit-xorclojure.core/bit-orclojure.core/bit-andclojure.core/bit-setclojure.core/bit-testclojure.core/bit-flipclojure.core/bit-and-notclojure.core/bit-clear

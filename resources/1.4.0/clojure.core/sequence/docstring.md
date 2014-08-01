@@ -1,0 +1,1 @@
+Coerces coll to a (possibly empty) sequence, if it is not alreadyone. Will not force a lazy seq. (sequence nil) yields ()

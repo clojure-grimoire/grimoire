@@ -1,0 +1,1 @@
+binding => var-symbol init-exprCreates new bindings for the (already-existing) vars, with thesupplied initial values, executes the exprs in an implicit do, thenre-establishes the bindings that existed before.  The new bindingsare made in parallel (unlike let); all init-exprs are evaluatedbefore the vars are bound to their new values.

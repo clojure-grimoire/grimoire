@@ -1,0 +1,1 @@
+clojure.core/seq?clojure.core/list?clojure.core/sequential?

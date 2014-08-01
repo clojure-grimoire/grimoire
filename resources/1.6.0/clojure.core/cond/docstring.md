@@ -1,0 +1,1 @@
+Takes a set of test/expr pairs. It evaluates each test one at atime.  If a test returns logical true, cond evaluates and returnsthe value of the corresponding expr and doesn't evaluate any of theother tests or exprs. (cond) returns nil.

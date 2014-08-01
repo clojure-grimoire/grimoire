@@ -1,0 +1,1 @@
+Removes a parent/child relationship between parent andtag. h must be a hierarchy obtained from make-hierarchy, if notsupplied defaults to, and modifies, the global hierarchy.

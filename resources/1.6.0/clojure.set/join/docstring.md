@@ -1,0 +1,1 @@
+When passed 2 rels, returns the rel corresponding to the naturaljoin. When passed an additional keymap, joins on the correspondingkeys.

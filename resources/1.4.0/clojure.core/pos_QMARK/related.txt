@@ -1,0 +1,1 @@
+clojure.core/neg?clojure.core/zero?

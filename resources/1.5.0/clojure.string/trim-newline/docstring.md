@@ -1,0 +1,1 @@
+Removes all trailing newline \n or return \r characters fromstring.  Similar to Perl's chomp.

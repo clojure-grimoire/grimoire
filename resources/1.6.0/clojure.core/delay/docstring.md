@@ -1,0 +1,1 @@
+Takes a body of expressions and yields a Delay object that willinvoke the body only the first time it is forced (with force or deref/@), andwill cache the result and return it on all subsequent forcecalls. See also - realized?

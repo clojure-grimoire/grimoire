@@ -1,0 +1,1 @@
+Returns non-nil if nums all have the equivalentvalue (type-independent), otherwise false

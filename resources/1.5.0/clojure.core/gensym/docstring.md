@@ -1,0 +1,1 @@
+Returns a new symbol with a unique name. If a prefix string issupplied, the name is prefix# where # is some unique number. Ifprefix is not supplied, the prefix is 'G__'.

@@ -1,0 +1,1 @@
+clojure.core/doublesclojure.core/agetclojure.core/asetclojure.core/aset-double

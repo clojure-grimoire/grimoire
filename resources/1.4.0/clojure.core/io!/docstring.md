@@ -1,0 +1,1 @@
+If an io! block occurs in a transaction, throws anIllegalStateException, else runs body in an implicit do. If thefirst expression in body is a literal string, will use that as theexception message.

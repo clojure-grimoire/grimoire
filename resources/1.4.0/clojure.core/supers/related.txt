@@ -1,0 +1,1 @@
+clojure.core/typeclojure.core/instance?clojure.core/basesclojure.core/ancestors

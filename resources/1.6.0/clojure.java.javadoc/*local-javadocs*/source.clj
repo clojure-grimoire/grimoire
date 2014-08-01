@@ -1,0 +1,1 @@
+(def ^:dynamic *local-javadocs* (ref (list)))

@@ -1,0 +1,1 @@
+Takes an expression and a set of test/form pairs. Threads expr (via ->)through each form for which the corresponding testexpression is true. Note that, unlike cond branching, cond-> threading doesnot short circuit after the first true test expression.

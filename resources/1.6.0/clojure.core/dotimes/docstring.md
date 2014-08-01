@@ -1,0 +1,1 @@
+bindings => name nRepeatedly executes body (presumably for side-effects) with namebound to integers from 0 through n-1.

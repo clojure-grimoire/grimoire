@@ -1,0 +1,1 @@
+clojure.core/structclojure.core/create-structclojure.core-deftype/defrecord

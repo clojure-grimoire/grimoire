@@ -1,0 +1,1 @@
+clojure.contrib.str-utils2/partialclojure.core/compclojure.core/juxt

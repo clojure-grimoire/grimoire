@@ -1,0 +1,1 @@
+Returns a string representation of the current test.  Renders namesin *testing-vars* as a list, then the source file and line ofcurrent assertion.

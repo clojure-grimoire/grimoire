@@ -1,0 +1,2 @@
+[bindings then]
+[bindings then else & oldform]

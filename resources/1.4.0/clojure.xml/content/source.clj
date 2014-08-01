@@ -1,0 +1,1 @@
+(def content (accessor element :content))

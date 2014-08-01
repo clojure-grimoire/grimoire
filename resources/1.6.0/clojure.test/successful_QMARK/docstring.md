@@ -1,0 +1,1 @@
+Returns true if the given test summary indicates all testswere successful, false otherwise.

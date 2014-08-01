@@ -1,0 +1,1 @@
+Returns true if future f is done

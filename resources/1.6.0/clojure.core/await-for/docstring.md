@@ -1,0 +1,1 @@
+Blocks the current thread until all actions dispatched thusfar (from this thread or agent) to the agents have occurred, or thetimeout (in milliseconds) has elapsed. Returns logical false ifreturning due to timeout, logical true otherwise.

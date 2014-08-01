@@ -1,0 +1,1 @@
+clojure.core/delayclojure.core/future?clojure.core/future-callclojure.core/future-cancelclojure.core/shutdown-agentsclojure.core/promiseclojure.core/realized?

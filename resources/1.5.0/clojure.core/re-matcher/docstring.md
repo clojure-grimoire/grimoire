@@ -1,0 +1,1 @@
+Returns an instance of java.util.regex.Matcher, for use, e.g. inre-find.

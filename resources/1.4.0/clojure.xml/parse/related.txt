@@ -1,0 +1,1 @@
+clojure.xml/emit-elementclojure.core/with-out-strclojure.xml/element

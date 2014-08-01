@@ -1,0 +1,1 @@
+Returns a seq on a java.util.Enumeration

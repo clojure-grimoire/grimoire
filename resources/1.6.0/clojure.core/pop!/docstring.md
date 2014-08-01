@@ -1,0 +1,1 @@
+Removes the last item from a transient vector. Ifthe collection is empty, throws an exception. Returns coll

@@ -1,0 +1,1 @@
+(defmulti ^:dynamic junit-report :type)

@@ -1,0 +1,1 @@
+Prints the object(s) to the output stream that is the current valueof *out*.  Prints the object(s), separated by spaces if there ismore than one.  By default, pr and prn print in a way that objectscan be read by the reader

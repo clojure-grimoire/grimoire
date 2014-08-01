@@ -1,0 +1,1 @@
+keyval => key valReturns a new hash map with supplied mappings.  If any keys areequal, they are handled as if by repeated uses of assoc.

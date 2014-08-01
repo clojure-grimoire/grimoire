@@ -1,0 +1,1 @@
+Returns a memoized version of a referentially transparent function. Thememoized version of the function keeps a cache of the mapping from argumentsto results and, when calls with the same arguments are repeated often, hashigher performance at the expense of higher memory use.

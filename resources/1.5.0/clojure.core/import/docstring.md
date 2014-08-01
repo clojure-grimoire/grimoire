@@ -1,0 +1,1 @@
+import-list => (package-symbol class-name-symbols*)For each name in class-name-symbols, adds a mapping from name to theclass named by package.name to the current namespace. Use :import in the nsmacro in preference to calling this directly.

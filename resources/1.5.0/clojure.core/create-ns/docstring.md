@@ -1,0 +1,1 @@
+Create a new namespace named by the symbol if one doesn't alreadyexist, returns it or the already-existing namespace of the samename.

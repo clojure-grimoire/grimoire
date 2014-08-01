@@ -1,0 +1,1 @@
+clojure.genclass/gen-classclojure.genclass/gen-interfaceclojure.core-deftype/reify

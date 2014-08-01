@@ -1,0 +1,1 @@
+Creates a new vector containing the args.

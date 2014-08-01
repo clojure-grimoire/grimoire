@@ -1,0 +1,1 @@
+Returns a java.io.File, passing each arg to as-file.  Multiple-argversions treat the first argument as parent and subsequent args aschildren relative to the parent.

@@ -1,0 +1,1 @@
+clojure.core-deftype/defprotocol

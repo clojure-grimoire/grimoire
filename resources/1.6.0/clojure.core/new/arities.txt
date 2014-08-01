@@ -1,0 +1,2 @@
+(Classname. args*)
+(new Classname args*)

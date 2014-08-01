@@ -1,0 +1,1 @@
+Returns a sorted sequence of the items in coll. If no comparator issupplied, uses compare.  comparator must implementjava.util.Comparator.  If coll is a Java array, it will be modified.To avoid this, sort a copy of the array.

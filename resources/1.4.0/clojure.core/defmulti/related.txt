@@ -1,0 +1,1 @@
+clojure.core/defmethodclojure.core/remove-methodclojure.core/remove-all-methodsclojure.core/prefersclojure.core/methodsclojure.core/get-methodclojure.core-deftype/defprotocol

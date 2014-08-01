@@ -1,0 +1,1 @@
+Creates a queued seq on another (presumably lazy) seq s. The queuedseq will produce a concrete seq in the background, and can get up ton items ahead of the consumer. n-or-q can be an integer n buffersize, or an instance of java.util.concurrent BlockingQueue. Notethat reading from a seque can block if the reader gets ahead of theproducer.

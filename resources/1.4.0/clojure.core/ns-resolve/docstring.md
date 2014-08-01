@@ -1,0 +1,1 @@
+Returns the var or Class to which a symbol will be resolved in thenamespace (unless found in the environement), else nil.  Note thatif the symbol is fully qualified, the var/Class to which it resolvesneed not be present in the namespace.

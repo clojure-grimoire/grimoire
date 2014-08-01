@@ -1,0 +1,1 @@
+Experimental - like defmacro, except defines a named function whosebody is the expansion, calls to which may be expanded inline as ifit were a macro. Cannot be used with variadic (&) args.

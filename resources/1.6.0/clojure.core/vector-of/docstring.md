@@ -1,0 +1,1 @@
+Creates a new vector of a single primitive type t, where t is oneof :int :long :float :double :byte :short :char or :boolean. Theresulting vector complies with the interface of vectors in general,but stores the values unboxed internally.Optionally takes one or more elements to populate the vector.

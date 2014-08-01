@@ -1,0 +1,1 @@
+Takes a set of functions and returns a fn that is the juxtapositionof those fns.  The returned fn takes a variable number of args, andreturns a vector containing the result of applying each fn to theargs (left-to-right).((juxt a b c) x) => [(a x) (b x) (c x)]

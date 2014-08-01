@@ -1,0 +1,1 @@
+bindings => x xsSame as (when (seq xs) (let [x (first xs)] body))

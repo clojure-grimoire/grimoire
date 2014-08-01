@@ -1,0 +1,1 @@
+Threads the expr through the forms. Inserts x as thelast item in the first form, making a list of it if it is not alist already. If there are more forms, inserts the first form as thelast item in second form, etc.

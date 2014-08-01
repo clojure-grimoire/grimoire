@@ -1,0 +1,1 @@
+Like 'require, but also refers to each lib's namespace usingclojure.core/refer. Use :use in the ns macro in preference to callingthis directly.'use accepts additional options in libspecs: :exclude, :only, :rename.The arguments and semantics for :exclude, :only, and :rename are the sameas those documented for clojure.core/refer.

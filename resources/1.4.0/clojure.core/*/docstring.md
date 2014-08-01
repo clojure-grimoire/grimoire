@@ -1,0 +1,1 @@
+Returns the product of nums. (*) returns 1. Does not auto-promotelongs, will throw on overflow. See also: *'

@@ -1,0 +1,1 @@
+clojure.java.io/readerclojure.java.io/output-streamclojure.java.io/IOFactoryclojure.core/with-openclojure.core/make-input-stream

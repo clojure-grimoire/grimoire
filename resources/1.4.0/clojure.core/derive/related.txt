@@ -1,0 +1,1 @@
+clojure.core/parentsclojure.core/ancestorsclojure.core/descendantsclojure.core/isa?clojure.core/make-hierarchyclojure.core/underive

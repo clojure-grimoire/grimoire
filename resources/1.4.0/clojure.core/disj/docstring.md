@@ -1,0 +1,1 @@
+disj[oin]. Returns a new set of the same (hashed/sorted) type, thatdoes not contain key(s).

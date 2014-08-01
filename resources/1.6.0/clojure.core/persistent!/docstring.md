@@ -1,0 +1,1 @@
+Returns a new, persistent version of the transient collection, inconstant time. The transient collection cannot be used after thiscall, any such use will throw an exception.

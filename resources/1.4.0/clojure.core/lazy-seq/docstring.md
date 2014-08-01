@@ -1,0 +1,1 @@
+Takes a body of expressions that returns an ISeq or nil, and yieldsa Seqable object that will invoke the body only the first time seqis called, and will cache the result and return it on all subsequentseq calls. See also - realized?

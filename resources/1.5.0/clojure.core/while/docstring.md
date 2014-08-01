@@ -1,0 +1,1 @@
+Repeatedly executes body while test expression is true. Presumessome side-effect will cause test to become false/nil. Returns nil

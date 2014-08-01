@@ -1,0 +1,1 @@
+Returns a lazy sequence of lists of n items each, at offsets stepapart. If step is not supplied, defaults to n, i.e. the partitionsdo not overlap. If a pad collection is supplied, use its elements asnecessary to complete last partition upto n items. In case there arenot enough padding elements, return a partition with less than n items.

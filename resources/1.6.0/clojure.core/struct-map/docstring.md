@@ -1,0 +1,1 @@
+Returns a new structmap instance with the keys of thestructure-basis. keyvals may contain all, some or none of the basiskeys - where values are not supplied they will default to nil.keyvals can also contain keys not in the basis.

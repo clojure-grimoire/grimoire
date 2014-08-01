@@ -1,0 +1,1 @@
+Sets the value of atom to newval without regard for thecurrent value. Returns newval.

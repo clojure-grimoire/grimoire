@@ -1,0 +1,1 @@
+Moves to the next loc in the hierarchy, depth-first. When reachingthe end, returns a distinguished loc detectable via end?. If alreadyat the end, stays there.

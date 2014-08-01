@@ -1,0 +1,2 @@
+user=> (empty? nil)
+true

@@ -1,0 +1,1 @@
+Returns the key of the map entry.

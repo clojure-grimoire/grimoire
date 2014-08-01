@@ -1,0 +1,1 @@
+Composes two fixture functions, creating a new fixture functionthat combines their behavior.

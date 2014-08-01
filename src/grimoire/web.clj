@@ -308,7 +308,8 @@
 
   (context "/:version" [version]
     (GET "/" [version]
-         (version-page version))
+         (when (#{"1.4.0" "1.5.0" "1.6.0"} version)
+           (version-page version)))
 
     (context "/:namespace" [namespace]
       (GET "/" [version namespace]
@@ -320,7 +321,10 @@
              (symbol-page version namespace symbol
                           (keyword (or header-type param-type "html")))))))
 
-  (route/not-found "<h1>Page not found</h1>"))
+  (route/not-found
+   (layout
+    site-config
+    (slurp (io/resource "404.html")))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Web server

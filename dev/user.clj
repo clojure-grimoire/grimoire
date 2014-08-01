@@ -1,5 +1,5 @@
 (ns user
-  (:require [grimoire.web :as web]))
+  (:require [grimoire.web.service :as web]))
 
 (defn start! []
   (web/start-web-server!)

@@ -1,0 +1,6 @@
+clojure.core/rest
+clojure.core/next
+clojure.core/nth
+clojure.core/second
+clojure.core/take
+clojure.core/ffirst

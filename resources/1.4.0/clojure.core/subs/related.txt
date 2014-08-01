@@ -1,0 +1,6 @@
+clojure.string/replace
+clojure.string/split
+clojure.string/replace-first
+clojure.core/re-find
+clojure.core/re-seq
+clojure.core/re-matches

@@ -1,0 +1,3 @@
+clojure.core/transient
+clojure.core/assoc!
+clojure.core/dissoc!

@@ -1,0 +1,4 @@
+clojure.core/first
+clojure.core/nth
+clojure.core/fnext
+clojure.core/next

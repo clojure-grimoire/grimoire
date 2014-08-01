@@ -1,0 +1,5 @@
+clojure.core-deftype/reify
+clojure.core-deftype/extend-type
+clojure.core-deftype/extend-protocol
+clojure.core-deftype/extends?
+clojure.core-deftype/satisfies?

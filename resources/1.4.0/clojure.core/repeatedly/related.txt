@@ -1,0 +1,7 @@
+clojure.core/repeat
+clojure.core/iterate
+clojure.core/lazy-seq
+clojure.core/dotimes
+clojure.core/doall
+clojure.core/rand-int
+clojure.core/constantly

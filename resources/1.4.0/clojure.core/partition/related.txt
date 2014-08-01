@@ -1,0 +1,3 @@
+clojure.core/partition-all
+clojure.core/split-at
+clojure.core/partition-by

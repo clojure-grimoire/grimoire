@@ -1,0 +1,4 @@
+clojure.core/remove-ns
+clojure.core/import
+clojure.core/use
+clojure.core/ns

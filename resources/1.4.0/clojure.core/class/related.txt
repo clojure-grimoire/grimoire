@@ -1,0 +1,3 @@
+clojure.core/type
+clojure.core/class?
+clojure.core/instance?

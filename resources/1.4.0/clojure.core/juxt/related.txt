@@ -1,0 +1,2 @@
+clojure.core/partial
+clojure.core/comp

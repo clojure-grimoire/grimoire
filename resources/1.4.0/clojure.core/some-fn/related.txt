@@ -1,0 +1,2 @@
+clojure.core/every-pred
+clojure.core/some

@@ -1,0 +1,4 @@
+clojure.core/ints
+clojure.core/aget
+clojure.core/aset
+clojure.core/aset-int

@@ -1,0 +1,1 @@
+Coerce to int. Subject to rounding or truncation.

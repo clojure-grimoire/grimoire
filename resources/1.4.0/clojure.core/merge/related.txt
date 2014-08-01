@@ -1,0 +1,2 @@
+clojure.core/merge-with
+clojure.core/hash-map

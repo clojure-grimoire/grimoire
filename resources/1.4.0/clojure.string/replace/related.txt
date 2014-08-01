@@ -1,0 +1,3 @@
+clojure.core/subs
+clojure.string/split
+clojure.string/replace-first

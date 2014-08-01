@@ -1,0 +1,1 @@
+(def ^:dynamic *var-context*)

@@ -1,0 +1,1 @@
+Converts string to all lower-case.

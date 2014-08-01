@@ -1,0 +1,5 @@
+clojure.core/merge
+clojure.core/assoc
+clojure.core/dissoc
+clojure.core/array-map
+clojure.core/sorted-map

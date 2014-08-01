@@ -1,0 +1,3 @@
+clojure.core/nth
+clojure.core/drop
+clojure.core/nthrest

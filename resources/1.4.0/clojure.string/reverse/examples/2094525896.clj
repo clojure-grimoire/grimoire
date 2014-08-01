@@ -1,0 +1,2 @@
+user> (reverse "foo")
+"oof"

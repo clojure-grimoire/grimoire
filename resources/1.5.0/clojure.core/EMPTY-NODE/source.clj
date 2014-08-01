@@ -1,0 +1,1 @@
+(def EMPTY-NODE (VecNode. nil (object-array 32)))

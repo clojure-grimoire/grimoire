@@ -1,0 +1,2 @@
+[ns sym]
+[ns env sym]

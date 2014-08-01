@@ -1,0 +1,6 @@
+clojure.core/reset!
+clojure.core/swap!
+clojure.core/compare-and-set!
+clojure.core/add-watch
+clojure.core/remove-watch
+clojure.core/set-validator!

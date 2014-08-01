@@ -1,0 +1,3 @@
+clojure.core/peek
+clojure.core/rest
+clojure.core/conj

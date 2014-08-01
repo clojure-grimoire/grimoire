@@ -1,0 +1,1 @@
+Gets the value in the var object

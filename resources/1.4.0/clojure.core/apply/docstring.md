@@ -1,0 +1,1 @@
+Applies fn f to the argument list formed by prepending intervening arguments to args.

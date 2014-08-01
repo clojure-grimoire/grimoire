@@ -1,0 +1,2 @@
+clojure.core/remove-ns
+clojure.core/find-ns

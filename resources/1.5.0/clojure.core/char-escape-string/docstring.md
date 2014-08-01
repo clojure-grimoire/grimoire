@@ -1,0 +1,1 @@
+Returns escape string for char or nil if none

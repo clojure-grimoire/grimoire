@@ -1,0 +1,7 @@
+clojure.core/unchecked-dec
+clojure.core/unchecked-inc
+clojure.core/unchecked-negate
+clojure.core/unchecked-divide
+clojure.core/unchecked-subtract
+clojure.core/unchecked-multiply
+clojure.core/unchecked-remainder

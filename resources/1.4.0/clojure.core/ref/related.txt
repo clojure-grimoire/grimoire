@@ -1,0 +1,10 @@
+clojure.core/alter
+clojure.core/ref-set
+clojure.core/add-watch
+clojure.core/dosync
+clojure.core/commute
+clojure.core/ensure
+clojure.core/ref-history-count
+clojure.core/ref-min-history
+clojure.core/ref-max-history
+clojure.core/set-validator!

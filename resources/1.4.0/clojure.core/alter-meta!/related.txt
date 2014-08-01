@@ -1,0 +1,2 @@
+clojure.core/vary-meta
+clojure.core/with-meta

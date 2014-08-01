@@ -1,0 +1,3 @@
+clojure.core/keep-indexed
+clojure.core/map
+clojure.core/filter

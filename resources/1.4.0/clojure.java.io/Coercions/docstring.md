@@ -1,0 +1,1 @@
+Coerce between various 'resource-namish' things.

@@ -1,0 +1,2 @@
+clojure.core/vector
+clojure.core/vector?

@@ -1,0 +1,6 @@
+clojure.core/isa?
+clojure.core/derive
+clojure.core/underive
+clojure.core/parents
+clojure.core/descendants
+clojure.core/ancestors

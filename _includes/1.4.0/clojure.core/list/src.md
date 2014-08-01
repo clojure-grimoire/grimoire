@@ -1,7 +1,0 @@
-{% highlight clojure %}
-(def
- ^{:arglists '([& items])
-   :doc "Creates a new list containing the items."
-   :added "1.0"}
-  list (. clojure.lang.PersistentList creator))
-{% endhighlight %}

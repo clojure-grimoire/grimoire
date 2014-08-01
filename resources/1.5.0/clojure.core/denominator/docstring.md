@@ -1,0 +1,1 @@
+Returns the denominator part of a Ratio.

@@ -1,0 +1,2 @@
+clojure.core/load-file
+clojure.core/*read-eval*

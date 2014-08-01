@@ -1,0 +1,5 @@
+clojure.core/take
+clojure.core/drop-last
+clojure.core/drop-while
+clojure.core/nthnext
+clojure.core/nthrest

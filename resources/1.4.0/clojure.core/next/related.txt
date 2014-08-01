@@ -1,0 +1,3 @@
+clojure.core/rest
+clojure.core/first
+clojure.core/fnext

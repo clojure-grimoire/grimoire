@@ -1,0 +1,3 @@
+clojure.string/trim
+clojure.string/triml
+clojure.string/trimr

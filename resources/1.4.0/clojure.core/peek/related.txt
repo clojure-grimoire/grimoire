@@ -1,0 +1,3 @@
+clojure.core/first
+clojure.core/pop
+clojure.core/conj

@@ -1,0 +1,7 @@
+clojure.core/seq
+clojure.core/sequential?
+clojure.core/vector?
+clojure.core/coll?
+clojure.core/list?
+clojure.core/map?
+clojure.core/set?

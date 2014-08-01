@@ -1,0 +1,1 @@
+Reads one object from the string s

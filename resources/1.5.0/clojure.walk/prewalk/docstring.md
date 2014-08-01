@@ -1,0 +1,1 @@
+Like postwalk, but does pre-order traversal.

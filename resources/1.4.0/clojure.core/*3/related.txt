@@ -1,0 +1,2 @@
+clojure.core/*1
+clojure.core/*2

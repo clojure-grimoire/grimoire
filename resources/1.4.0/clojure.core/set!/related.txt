@@ -1,0 +1,3 @@
+clojure.core/reset!
+clojure.core/binding
+clojure.core/alter-var-root

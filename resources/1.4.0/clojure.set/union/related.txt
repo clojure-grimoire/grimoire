@@ -1,0 +1,3 @@
+clojure.set/intersection
+clojure.set/difference
+clojure.set/superset?

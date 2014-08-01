@@ -1,0 +1,1 @@
+Returns true if s names a special form

@@ -1,0 +1,4 @@
+clojure.zip/seq-zip
+clojure.zip/xml-zip
+clojure.zip/next
+clojure.zip/end?

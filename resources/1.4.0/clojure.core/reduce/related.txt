@@ -1,0 +1,3 @@
+clojure.core/reductions
+clojure.core/apply
+clojure.core/frequencies

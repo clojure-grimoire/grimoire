@@ -1,0 +1,3 @@
+clojure.core/assoc-in
+clojure.core/get-in
+clojure.core/fnil

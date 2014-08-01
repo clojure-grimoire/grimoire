@@ -1,0 +1,2 @@
+clojure.core/seq?
+clojure.core/coll?

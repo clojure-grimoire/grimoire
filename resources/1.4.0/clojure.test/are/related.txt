@@ -1,0 +1,2 @@
+clojure.test/is
+clojure.test/deftest

@@ -1,7 +1,0 @@
-## Arities
-[x]
-
-## Documentation
-{%raw%}
-If x is a Delay, returns the (possibly cached) value of its expression, else returns x
-{%endraw%}

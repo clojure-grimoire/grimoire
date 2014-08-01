@@ -1,0 +1,3 @@
+clojure.core/map-indexed
+clojure.core/get-in
+clojure.core/find

@@ -1,0 +1,3 @@
+clojure.core/dissoc
+clojure.core/disj!
+clojure.set/difference

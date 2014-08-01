@@ -1,3 +1,5 @@
 target/*
 _site/*
 clojure-cheatsheets/*
+.nrepl-port
+resources/pygments

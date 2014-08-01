@@ -1,0 +1,4 @@
+clojure.contrib.cond/cond-let
+clojure.core/condp
+clojure.core/case
+clojure.core/if

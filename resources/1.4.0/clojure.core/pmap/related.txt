@@ -1,0 +1,2 @@
+clojure.core/map
+clojure.core/future

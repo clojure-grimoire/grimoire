@@ -1,0 +1,3 @@
+clojure.core/with-redefs
+clojure.core/with-bindings
+clojure.core/with-local-vars

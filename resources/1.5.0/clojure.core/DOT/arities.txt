@@ -1,0 +1,4 @@
+(.instanceMember instance args*)
+(.instanceMember Classname args*)
+(Classname/staticMethod args*)
+Classname/staticField

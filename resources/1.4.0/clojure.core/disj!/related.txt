@@ -1,0 +1,2 @@
+clojure.core/assoc!
+clojure.core/dissoc!

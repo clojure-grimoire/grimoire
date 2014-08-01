@@ -1,0 +1,1 @@
+Coerce argument to a file.

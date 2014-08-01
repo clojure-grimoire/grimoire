@@ -1,0 +1,7 @@
+clojure.core/re-find
+clojure.core/re-groups
+clojure.core/re-pattern
+clojure.core/re-matcher
+clojure.core/re-matches
+clojure.string/split
+clojure.core/subs

@@ -1,0 +1,3 @@
+clojure.core/catch
+clojure.core/finally
+clojure.core/throw

@@ -1,0 +1,15 @@
+clojure.core/hash-set
+clojure.core/sorted-set
+clojure.core/conj
+clojure.set/join
+clojure.set/select
+clojure.set/difference
+clojure.set/intersection
+clojure.set/union
+clojure.set/index
+clojure.set/project
+clojure.set/rename
+clojure.set/rename-keys
+clojure.set/map-invert
+clojure.core/disj
+clojure.core/distinct

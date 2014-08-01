@@ -1,0 +1,3 @@
+clojure.core/test
+clojure.core/meta
+clojure.test/deftest

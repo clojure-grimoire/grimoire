@@ -1,0 +1,3 @@
+clojure.core/promise
+clojure.core/delay
+clojure.core/future

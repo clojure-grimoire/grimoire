@@ -1,0 +1,1 @@
+Returns true if x implements Fn, i.e. is an object created via fn.

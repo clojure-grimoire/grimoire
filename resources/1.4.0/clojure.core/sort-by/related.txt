@@ -1,0 +1,2 @@
+clojure.core/sort
+clojure.core/compare

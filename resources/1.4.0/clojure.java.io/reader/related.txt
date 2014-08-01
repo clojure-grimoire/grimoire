@@ -1,0 +1,4 @@
+clojure.java.io/writer
+clojure.java.io/input-stream
+clojure.java.io/IOFactory
+clojure.core/slurp

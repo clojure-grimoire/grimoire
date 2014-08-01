@@ -1,0 +1,4 @@
+clojure.core/drop
+clojure.core/take-while
+clojure.core/take-last
+clojure.core/take-nth

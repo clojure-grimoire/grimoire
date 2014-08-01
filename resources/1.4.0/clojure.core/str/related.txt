@@ -1,0 +1,2 @@
+clojure.core/pr
+clojure.core/prn

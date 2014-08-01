@@ -1,0 +1,4 @@
+clojure.core/type
+clojure.core/instance?
+clojure.core/bases
+clojure.core/ancestors

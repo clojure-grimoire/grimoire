@@ -1,0 +1,2 @@
+clojure.core/some
+clojure.core/not-any?

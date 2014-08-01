@@ -1,0 +1,6 @@
+clojure.test/run-all-tests
+clojure.test/run-tests
+clojure.test/is
+clojure.test/are
+clojure.test/testing
+clojure.test/test-var

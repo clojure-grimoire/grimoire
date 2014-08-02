@@ -164,7 +164,7 @@
           (list
            [:h2 "Examples from Clojure " v]
            (map-indexed example examples)
-           [:a {:href (str "https://github.com/arrdem/grimoire/new/develop/" v "/" path)}
+           [:a {:href (str "https://github.com/arrdem/grimoire/new/develop/resources/" v "/" path)}
             "Contribute an example!"]))))
 
     :text
@@ -200,7 +200,7 @@
        [:p (-> "arities.txt" symbol-file-path util/resource-file-contents)]
        [:h2 "Official Documentation"
         " - "
-        [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/"
+        [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/resources/"
                         (-> "docstring.md" symbol-file-path))}
          "edit"]]
        [:pre "  " (-> "docstring.md" symbol-file-path util/resource-file-contents)]
@@ -208,7 +208,7 @@
          (list
           [:h2 "Community Documentation"
            " - "
-           [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/"
+           [:a {:href (str "https://github.com/arrdem/grimoire/edit/develop/resources/"
                            (-> "extended-docstring.md" symbol-file-path))}
             "edit"]]
           comdoc))

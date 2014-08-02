@@ -38,6 +38,7 @@
      [:a.sidebar-nav-item {:href "/api"} "API"]
      [:a.sidebar-nav-item {:href "/about"} "About"]
      [:a.sidebar-nav-item {:href "/contributing"} "Contributing"]
+     [:a.sidebar-nav-item {:href "https://www.gittip.com/arrdem/"} "Support this project"]
      [:br] "More" [:br]
      (let [{:keys [github me]} author]
        (list

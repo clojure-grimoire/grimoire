@@ -21,6 +21,13 @@ Check out the github repository linked in the sidebar for more
 information as well as the state of the project and work in progress
 changes.
 
+Grimoire, while free to you, isn't free to operate. At present,
+running Grimoire costs about $10 a month to keep online and gets much
+more than that in ongoing development time. As I'm still in school, if
+you find yourself using Grimoire routinely I'd ask that you
+[support the project](https://www.gittip.com/arrdem) by helping me
+cover the hosting and coffee costs of keeping it online and useful.
+
 ## Legal
 
 Grimoire is &copy; to Reid Mckenzie 2014. All rights reserved.

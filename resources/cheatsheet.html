@@ -94,6 +94,17 @@ tr.even {
   };
   $(function(){
     var $links = $('a');
+    $(window).on('keyup', function(e) {
+      if (e.keyCode == 27) {
+        $('#search').focus();
+      }
+    });
+    $('#search').keydown(function(e) {
+      var val = $(this).val();
+      if (!val && e.key && (e.key == "'" || e.key == "/")) {
+        this.blur();
+      }
+    });
     $('#search').keyup(function() {
        var val = $(this).val(),
        strs = $.trim(val).split(/\s+/);
@@ -147,7 +158,7 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>clojure.repl/</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/doc">doc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/find_DASH_doc">find-doc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/apropos">apropos</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/source">source</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/pst">pst</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.javadoc/javadoc">javadoc</a> (foo.bar/ is namespace for later syms)</code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/doc">doc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/find-doc">find-doc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/apropos">apropos</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/source">source</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/pst">pst</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.javadoc/javadoc">javadoc</a> (foo.bar/ is namespace for later syms)</code></td>
               </tr>
             </tbody>
           </table>
@@ -163,15 +174,15 @@ tr.even {
               </tr>
               <tr class="even">
                 <td>Arithmetic</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/PLUS">+</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/DASH">-</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR">*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/SLASH">/</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/quot">quot</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/rem">rem</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/mod">mod</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/inc">inc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/dec">dec</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/max">max</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/min">min</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/+">+</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/-">-</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*">*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/SLASH">/</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/quot">quot</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/rem">rem</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/mod">mod</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/inc">inc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/dec">dec</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/max">max</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/min">min</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/+'">+'</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/-'">-'</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*'">*'</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/inc'">inc'</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/dec'">dec'</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Compare</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/EQ">=</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/EQ__EQ">==</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/not_EQ">not=</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/LT">&lt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/GT">&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/LT__EQ">&lt;=</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/GT__EQ">&gt;=</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/compare">compare</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/=">=</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/==">==</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/not=">not=</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/<">&lt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/>">&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/<=">&lt;=</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/>=">&gt;=</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/compare">compare</a></code></td>
               </tr>
               <tr class="even">
                 <td>Bitwise</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit_DASH_and">bit-and</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit_DASH_or">bit-or</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit_DASH_xor">bit-xor</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit_DASH_not">bit-not</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit_DASH_flip">bit-flip</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit_DASH_set">bit-set</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit_DASH_shift_DASH_right">bit-shift-right</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit_DASH_shift_DASH_left">bit-shift-left</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit_DASH_and_DASH_not">bit-and-not</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit_DASH_clear">bit-clear</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit_DASH_test">bit-test</a> (1.6) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/unsigned_DASH_bit_DASH_shift_DASH_right">unsigned-bit-shift-right</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit-and">bit-and</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit-or">bit-or</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit-xor">bit-xor</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit-not">bit-not</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit-flip">bit-flip</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit-set">bit-set</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit-shift-right">bit-shift-right</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit-shift-left">bit-shift-left</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit-and-not">bit-and-not</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit-clear">bit-clear</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bit-test">bit-test</a> (1.6) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/unsigned-bit-shift-right">unsigned-bit-shift-right</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Cast</td>
@@ -183,15 +194,15 @@ tr.even {
               </tr>
               <tr class="odd">
                 <td>Random</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/rand">rand</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/rand_DASH_int">rand-int</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/rand">rand</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/rand-int">rand-int</a></code></td>
               </tr>
               <tr class="even">
                 <td>BigDecimal</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with_DASH_precision">with-precision</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with-precision">with-precision</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Unchecked</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_unchecked_DASH_math_STAR">*unchecked-math*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/unchecked_DASH_add">unchecked-add</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/unchecked_DASH_dec">unchecked-dec</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/unchecked_DASH_inc">unchecked-inc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/unchecked_DASH_multiply">unchecked-multiply</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/unchecked_DASH_negate">unchecked-negate</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/unchecked_DASH_subtract">unchecked-subtract</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*unchecked-math*">*unchecked-math*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/unchecked-add">unchecked-add</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/unchecked-dec">unchecked-dec</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/unchecked-inc">unchecked-inc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/unchecked-multiply">unchecked-multiply</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/unchecked-negate">unchecked-negate</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/unchecked-subtract">unchecked-subtract</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -204,19 +215,19 @@ tr.even {
               </tr>
               <tr class="even">
                 <td>Use</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/count">count</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get">get</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/subs">subs</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/compare">compare</a> (clojure.string/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/join">join</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/escape">escape</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/split">split</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/split_DASH_lines">split-lines</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/replace">replace</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/replace_DASH_first">replace-first</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/reverse">reverse</a> (1.5) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/re_DASH_quote_DASH_replacement">re-quote-replacement</a> (<a href="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html">java.lang.String</a>) <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html#indexOf%28java.lang.String%29">.indexOf</a> <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html#lastIndexOf%28java.lang.String%29">.lastIndexOf</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/count">count</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get">get</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/subs">subs</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/compare">compare</a> (clojure.string/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/join">join</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/escape">escape</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/split">split</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/split-lines">split-lines</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/replace">replace</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/replace-first">replace-first</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/reverse">reverse</a> (1.5) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/re-quote-replacement">re-quote-replacement</a> (<a href="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html">java.lang.String</a>) <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html#indexOf%28java.lang.String%29">.indexOf</a> <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html#lastIndexOf%28java.lang.String%29">.lastIndexOf</a></code></td>
               </tr>
               <tr class="odd">
                 <td><a href="http://www.regular-expressions.info">Regex</a></td>
-                <td><code><a href="http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html">#"<var>pattern</var>"</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/re_DASH_find">re-find</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/re_DASH_seq">re-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/re_DASH_matches">re-matches</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/re_DASH_pattern">re-pattern</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/re_DASH_matcher">re-matcher</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/re_DASH_groups">re-groups</a> (clojure.string/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/replace">replace</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/replace_DASH_first">replace-first</a> (1.5) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/re_DASH_quote_DASH_replacement">re-quote-replacement</a></code></td>
+                <td><code><a href="http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html">#"<var>pattern</var>"</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/re-find">re-find</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/re-seq">re-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/re-matches">re-matches</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/re-pattern">re-pattern</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/re-matcher">re-matcher</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/re-groups">re-groups</a> (clojure.string/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/replace">replace</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/replace-first">replace-first</a> (1.5) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/re-quote-replacement">re-quote-replacement</a></code></td>
               </tr>
               <tr class="even">
                 <td>Letters</td>
-                <td><code>(clojure.string/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/capitalize">capitalize</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/lower_DASH_case">lower-case</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/upper_DASH_case">upper-case</a></code></td>
+                <td><code>(clojure.string/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/capitalize">capitalize</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/lower-case">lower-case</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/upper-case">upper-case</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Trim</td>
-                <td><code>(clojure.string/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/trim">trim</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/trim_DASH_newline">trim-newline</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/triml">triml</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/trimr">trimr</a></code></td>
+                <td><code>(clojure.string/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/trim">trim</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/trim-newline">trim-newline</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/triml">triml</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.string/trimr">trimr</a></code></td>
               </tr>
               <tr class="even">
                 <td>Test</td>
@@ -229,11 +240,11 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Characters</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/char">char</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/char_DASH_name_DASH_string">char-name-string</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/char_DASH_escape_DASH_string">char-escape-string</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/char">char</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/char-name-string">char-name-string</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/char-escape-string">char-escape-string</a></code></td>
               </tr>
               <tr class="even">
                 <td>Keywords</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/keyword">keyword</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/keyword_QMARK">keyword?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/find_DASH_keyword">find-keyword</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/keyword">keyword</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/keyword_QMARK">keyword?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/find-keyword">find-keyword</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Symbols</td>
@@ -249,11 +260,11 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Generic ops</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/count">count</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/empty">empty</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/not_DASH_empty">not-empty</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/into">into</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/conj">conj</a> (clojure.walk/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/walk">walk</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/prewalk">prewalk</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/prewalk_DASH_demo">prewalk-demo</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/prewalk_DASH_replace">prewalk-replace</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/postwalk">postwalk</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/postwalk_DASH_demo">postwalk-demo</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/postwalk_DASH_replace">postwalk-replace</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/count">count</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/empty">empty</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/not-empty">not-empty</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/into">into</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/conj">conj</a> (clojure.walk/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/walk">walk</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/prewalk">prewalk</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/prewalk-demo">prewalk-demo</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/prewalk-replace">prewalk-replace</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/postwalk">postwalk</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/postwalk-demo">postwalk-demo</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/postwalk-replace">postwalk-replace</a></code></td>
               </tr>
               <tr class="even">
                 <td>Content tests</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/distinct_QMARK">distinct?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/empty_QMARK">empty?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/every_QMARK">every?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/not_DASH_every_QMARK">not-every?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/some">some</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/not_DASH_any_QMARK">not-any?</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/distinct_QMARK">distinct?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/empty_QMARK">empty?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/every_QMARK">every?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/not-every_QMARK">not-every?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/some">some</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/not-any_QMARK">not-any?</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Capabilities</td>
@@ -270,7 +281,7 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Create</td>
-                <td><code>'() <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/list">list</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/list_STAR">list*</a></code></td>
+                <td><code>'() <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/list">list</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/list*">list*</a></code></td>
               </tr>
               <tr class="even">
                 <td>Examine</td>
@@ -287,7 +298,7 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Create</td>
-                <td><code>[] <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/vector">vector</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/vec">vec</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/vector_DASH_of">vector-of</a></code></td>
+                <td><code>[] <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/vector">vector</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/vec">vec</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/vector-of">vector-of</a></code></td>
               </tr>
               <tr class="even">
                 <td>Examine</td>
@@ -299,7 +310,7 @@ tr.even {
               </tr>
               <tr class="even">
                 <td>Ops</td>
-                <td><code>(1.4) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/mapv">mapv</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/filterv">filterv</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/reduce_DASH_kv">reduce-kv</a></code></td>
+                <td><code>(1.4) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/mapv">mapv</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/filterv">filterv</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/reduce-kv">reduce-kv</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -308,7 +319,7 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Create</td>
-                <td><code>#{} <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set">set</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/hash_DASH_set">hash-set</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/sorted_DASH_set">sorted-set</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/sorted_DASH_set_DASH_by">sorted-set-by</a></code></td>
+                <td><code>#{} <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set">set</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/hash-set">hash-set</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/sorted-set">sorted-set</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/sorted-set-by">sorted-set-by</a></code></td>
               </tr>
               <tr class="even">
                 <td>Examine</td>
@@ -324,7 +335,7 @@ tr.even {
               </tr>
               <tr class="odd">
                 <td>Get map</td>
-                <td><code>(clojure.set/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.set/index">index</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.set/rename_DASH_keys">rename-keys</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.set/rename">rename</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.set/map_DASH_invert">map-invert</a></code></td>
+                <td><code>(clojure.set/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.set/index">index</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.set/rename-keys">rename-keys</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.set/rename">rename</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.set/map-invert">map-invert</a></code></td>
               </tr>
               <tr class="even">
                 <td>Test</td>
@@ -337,15 +348,15 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Create</td>
-                <td><code>{} <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/hash_DASH_map">hash-map</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/array_DASH_map">array-map</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/zipmap">zipmap</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/sorted_DASH_map">sorted-map</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/sorted_DASH_map_DASH_by">sorted-map-by</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bean">bean</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/frequencies">frequencies</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/group_DASH_by">group-by</a></code></td>
+                <td><code>{} <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/hash-map">hash-map</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/array-map">array-map</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/zipmap">zipmap</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/sorted-map">sorted-map</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/sorted-map-by">sorted-map-by</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bean">bean</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/frequencies">frequencies</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/group-by">group-by</a></code></td>
               </tr>
               <tr class="even">
                 <td>Examine</td>
-                <td><code><code>(:key my-map)</code> &rarr; <code>( <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get">get</a>  my-map :key)</code> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get_DASH_in">get-in</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/contains_QMARK">contains?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/find">find</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/keys">keys</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/vals">vals</a></code></td>
+                <td><code><code>(:key my-map)</code> &rarr; <code>( <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get">get</a>  my-map :key)</code> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get-in">get-in</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/contains_QMARK">contains?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/find">find</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/keys">keys</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/vals">vals</a></code></td>
               </tr>
               <tr class="odd">
                 <td>'Change'</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/assoc">assoc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/assoc_DASH_in">assoc-in</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/dissoc">dissoc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/merge">merge</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/merge_DASH_with">merge-with</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/select_DASH_keys">select-keys</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/update_DASH_in">update-in</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/assoc">assoc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/assoc-in">assoc-in</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/dissoc">dissoc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/merge">merge</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/merge-with">merge-with</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/select-keys">select-keys</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/update-in">update-in</a></code></td>
               </tr>
               <tr class="even">
                 <td>Entry</td>
@@ -366,11 +377,11 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Create</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/transient">transient</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/persistent_BANG">persistent!</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/transient">transient</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/persistent!">persistent!</a></code></td>
               </tr>
               <tr class="even">
                 <td>Change</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/conj_BANG">conj!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/pop_BANG">pop!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/assoc_BANG">assoc!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/dissoc_BANG">dissoc!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/disj_BANG">disj!</a> Note: always use return value for later changes, never original!</code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/conj!">conj!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/pop!">pop!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/assoc!">assoc!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/dissoc!">dissoc!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/disj!">disj!</a> Note: always use return value for later changes, never original!</code></td>
               </tr>
             </tbody>
           </table>
@@ -379,7 +390,7 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Compare</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/EQ">=</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/EQ__EQ">==</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/identical_QMARK">identical?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/not_EQ">not=</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/not">not</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/compare">compare</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.data/diff">clojure.data/diff</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/=">=</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/==">==</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/identical_QMARK">identical?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/not=">not=</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/not">not</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/compare">compare</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.data/diff">clojure.data/diff</a></code></td>
               </tr>
               <tr class="even">
                 <td>Test</td>
@@ -399,7 +410,7 @@ tr.even {
               </tr>
               <tr class="even">
                 <td>From producer fn</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/lazy_DASH_seq">lazy-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/repeatedly">repeatedly</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/iterate">iterate</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/lazy-seq">lazy-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/repeatedly">repeatedly</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/iterate">iterate</a></code></td>
               </tr>
               <tr class="odd">
                 <td>From constant</td>
@@ -407,11 +418,11 @@ tr.even {
               </tr>
               <tr class="even">
                 <td>From other</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/file_DASH_seq">file-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/line_DASH_seq">line-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/resultset_DASH_seq">resultset-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/re_DASH_seq">re-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/tree_DASH_seq">tree-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/xml_DASH_seq">xml-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/iterator_DASH_seq">iterator-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/enumeration_DASH_seq">enumeration-seq</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/file-seq">file-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/line-seq">line-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/resultset-seq">resultset-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/re-seq">re-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/tree-seq">tree-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/xml-seq">xml-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/iterator-seq">iterator-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/enumeration-seq">enumeration-seq</a></code></td>
               </tr>
               <tr class="odd">
                 <td>From seq</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/keep">keep</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/keep_DASH_indexed">keep-indexed</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/keep">keep</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/keep-indexed">keep-indexed</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -420,31 +431,31 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Get shorter</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/distinct">distinct</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/filter">filter</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/remove">remove</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/take_DASH_nth">take-nth</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/for">for</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/distinct">distinct</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/filter">filter</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/remove">remove</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/take-nth">take-nth</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/for">for</a></code></td>
               </tr>
               <tr class="even">
                 <td>Get longer</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/cons">cons</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/conj">conj</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/concat">concat</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/lazy_DASH_cat">lazy-cat</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/mapcat">mapcat</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/cycle">cycle</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/interleave">interleave</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/interpose">interpose</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/cons">cons</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/conj">conj</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/concat">concat</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/lazy-cat">lazy-cat</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/mapcat">mapcat</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/cycle">cycle</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/interleave">interleave</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/interpose">interpose</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Tail-items</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/rest">rest</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/nthrest">nthrest</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/next">next</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/fnext">fnext</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/nnext">nnext</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/drop">drop</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/drop_DASH_while">drop-while</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/take_DASH_last">take-last</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/for">for</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/rest">rest</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/nthrest">nthrest</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/next">next</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/fnext">fnext</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/nnext">nnext</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/drop">drop</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/drop-while">drop-while</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/take-last">take-last</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/for">for</a></code></td>
               </tr>
               <tr class="even">
                 <td>Head-items</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/take">take</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/take_DASH_while">take-while</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/butlast">butlast</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/drop_DASH_last">drop-last</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/for">for</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/take">take</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/take-while">take-while</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/butlast">butlast</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/drop-last">drop-last</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/for">for</a></code></td>
               </tr>
               <tr class="odd">
                 <td>'Change'</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/conj">conj</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/concat">concat</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/distinct">distinct</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/flatten">flatten</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/group_DASH_by">group-by</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/partition">partition</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/partition_DASH_all">partition-all</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/partition_DASH_by">partition-by</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/split_DASH_at">split-at</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/split_DASH_with">split-with</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/filter">filter</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/remove">remove</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/replace">replace</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/shuffle">shuffle</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/conj">conj</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/concat">concat</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/distinct">distinct</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/flatten">flatten</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/group-by">group-by</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/partition">partition</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/partition-all">partition-all</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/partition-by">partition-by</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/split-at">split-at</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/split-with">split-with</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/filter">filter</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/remove">remove</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/replace">replace</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/shuffle">shuffle</a></code></td>
               </tr>
               <tr class="even">
                 <td>Rearrange</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/reverse">reverse</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/sort">sort</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/sort_DASH_by">sort-by</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/compare">compare</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/reverse">reverse</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/sort">sort</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/sort-by">sort-by</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/compare">compare</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Process items</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/map">map</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/pmap">pmap</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/map_DASH_indexed">map-indexed</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/mapcat">mapcat</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/for">for</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/replace">replace</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/seque">seque</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/map">map</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/pmap">pmap</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/map-indexed">map-indexed</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/mapcat">mapcat</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/for">for</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/replace">replace</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/seque">seque</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -453,11 +464,11 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Extract item</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/first">first</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/second">second</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/last">last</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/rest">rest</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/next">next</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ffirst">ffirst</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/nfirst">nfirst</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/fnext">fnext</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/nnext">nnext</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/nth">nth</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/nthnext">nthnext</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/rand_DASH_nth">rand-nth</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when_DASH_first">when-first</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/max_DASH_key">max-key</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/min_DASH_key">min-key</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/first">first</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/second">second</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/last">last</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/rest">rest</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/next">next</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ffirst">ffirst</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/nfirst">nfirst</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/fnext">fnext</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/nnext">nnext</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/nth">nth</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/nthnext">nthnext</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/rand-nth">rand-nth</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when-first">when-first</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/max-key">max-key</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/min-key">min-key</a></code></td>
               </tr>
               <tr class="even">
                 <td>Construct coll</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/zipmap">zipmap</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/into">into</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/reduce">reduce</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/reductions">reductions</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set">set</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/vec">vec</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/into_DASH_array">into-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/to_DASH_array_DASH_2d">to-array-2d</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/zipmap">zipmap</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/into">into</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/reduce">reduce</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/reductions">reductions</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set">set</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/vec">vec</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/into-array">into-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/to-array-2d">to-array-2d</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Pass to fn</td>
@@ -484,7 +495,7 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Create</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/zipper">zipper</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/seq_DASH_zip">seq-zip</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/vector_DASH_zip">vector-zip</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/xml_DASH_zip">xml-zip</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/zipper">zipper</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/seq-zip">seq-zip</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/vector-zip">vector-zip</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/xml-zip">xml-zip</a></code></td>
               </tr>
               <tr class="even">
                 <td>Get loc</td>
@@ -496,7 +507,7 @@ tr.even {
               </tr>
               <tr class="even">
                 <td>'Change'</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/make_DASH_node">make-node</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/replace">replace</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/edit">edit</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/insert_DASH_child">insert-child</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/insert_DASH_left">insert-left</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/insert_DASH_right">insert-right</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/append_DASH_child">append-child</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/remove">remove</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/make-node">make-node</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/replace">replace</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/edit">edit</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/insert-child">insert-child</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/insert-left">insert-left</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/insert-right">insert-right</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/append-child">append-child</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.zip/remove">remove</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Move</td>
@@ -519,31 +530,31 @@ tr.even {
               </tr>
               <tr class="even">
                 <td>to *out*</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/pr">pr</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/prn">prn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/print">print</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/printf">printf</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/println">println</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/newline">newline</a> (clojure.pprint/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.pprint/print_DASH_table">print-table</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/pr">pr</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/prn">prn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/print">print</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/printf">printf</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/println">println</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/newline">newline</a> (clojure.pprint/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.pprint/print-table">print-table</a></code></td>
               </tr>
               <tr class="odd">
                 <td>to writer</td>
-                <td><code>(clojure.pprint/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.pprint/pprint">pprint</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.pprint/cl_DASH_format">cl-format</a> also: (binding [*out* writer] ...)</code></td>
+                <td><code>(clojure.pprint/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.pprint/pprint">pprint</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.pprint/cl-format">cl-format</a> also: (binding [*out* writer] ...)</code></td>
               </tr>
               <tr class="even">
                 <td>to string</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/format">format</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with_DASH_out_DASH_str">with-out-str</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/pr_DASH_str">pr-str</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/prn_DASH_str">prn-str</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/print_DASH_str">print-str</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/println_DASH_str">println-str</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/format">format</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with-out-str">with-out-str</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/pr-str">pr-str</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/prn-str">prn-str</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/print-str">print-str</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/println-str">println-str</a></code></td>
               </tr>
               <tr class="odd">
                 <td>from *in*</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/read_DASH_line">read-line</a> (clojure.tools.reader.edn/) <a href="http://github.com/clojure/tools.reader">read</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/read-line">read-line</a> (clojure.tools.reader.edn/) <a href="http://github.com/clojure/tools.reader">read</a></code></td>
               </tr>
               <tr class="even">
                 <td>from reader</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/line_DASH_seq">line-seq</a> (clojure.tools.reader.edn/) <a href="http://github.com/clojure/tools.reader">read</a> also: (binding [*in* reader] ...) <a href="http://docs.oracle.com/javase/6/docs/api/java/io/Reader.html">java.io.Reader</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/line-seq">line-seq</a> (clojure.tools.reader.edn/) <a href="http://github.com/clojure/tools.reader">read</a> also: (binding [*in* reader] ...) <a href="http://docs.oracle.com/javase/6/docs/api/java/io/Reader.html">java.io.Reader</a></code></td>
               </tr>
               <tr class="odd">
                 <td>from string</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with_DASH_in_DASH_str">with-in-str</a> (clojure.tools.reader.edn/) <a href="http://github.com/clojure/tools.reader">read-string</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with-in-str">with-in-str</a> (clojure.tools.reader.edn/) <a href="http://github.com/clojure/tools.reader">read-string</a></code></td>
               </tr>
               <tr class="even">
                 <td>Open</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with_DASH_open">with-open</a> (clojure.java.io/) text: <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/reader">reader</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/writer">writer</a> binary: <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/input_DASH_stream">input-stream</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/output_DASH_stream">output-stream</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with-open">with-open</a> (clojure.java.io/) text: <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/reader">reader</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/writer">writer</a> binary: <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/input-stream">input-stream</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/output-stream">output-stream</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Binary</td>
@@ -551,11 +562,11 @@ tr.even {
               </tr>
               <tr class="even">
                 <td>Misc</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/flush">flush</a> (.close s) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/file_DASH_seq">file-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_in_STAR">*in*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_out_STAR">*out*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_err_STAR">*err*</a> (clojure.java.io/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/file">file</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/copy">copy</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/delete_DASH_file">delete-file</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/resource">resource</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/as_DASH_file">as-file</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/as_DASH_url">as-url</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/as_DASH_relative_DASH_path">as-relative-path</a> GitHub: <a href="http://github.com/Raynes/fs">fs</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/flush">flush</a> (.close s) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/file-seq">file-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*in*">*in*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*out*">*out*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*err*">*err*</a> (clojure.java.io/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/file">file</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/copy">copy</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/delete-file">delete-file</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/resource">resource</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/as-file">as-file</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/as-url">as-url</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.io/as-relative-path">as-relative-path</a> GitHub: <a href="http://github.com/Raynes/fs">fs</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Data readers</td>
-                <td><code>(1.4) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_data_DASH_readers_STAR">*data-readers*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/default_DASH_data_DASH_readers">default-data-readers</a> (1.5) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_default_DASH_data_DASH_reader_DASH_fn_STAR">*default-data-reader-fn*</a></code></td>
+                <td><code>(1.4) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*data-readers*">*data-readers*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/default-data-readers">default-data-readers</a> (1.5) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*default-data-reader-fn*">*default-data-reader-fn*</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -570,11 +581,11 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Create</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/fn">fn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defn">defn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defn_DASH">defn-</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/definline">definline</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/identity">identity</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/constantly">constantly</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/memfn">memfn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/comp">comp</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/complement">complement</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/partial">partial</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/juxt">juxt</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/memoize">memoize</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/fnil">fnil</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/every_DASH_pred">every-pred</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/some_DASH_fn">some-fn</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/fn">fn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defn">defn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defn-">defn-</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/definline">definline</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/identity">identity</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/constantly">constantly</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/memfn">memfn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/comp">comp</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/complement">complement</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/partial">partial</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/juxt">juxt</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/memoize">memoize</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/fnil">fnil</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/every-pred">every-pred</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/some-fn">some-fn</a></code></td>
               </tr>
               <tr class="even">
                 <td>Call</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/apply">apply</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/DASH__GT">-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/DASH__GT__GT">-&gt;&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/trampoline">trampoline</a> (1.5) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/as_DASH__GT">as-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/cond_DASH__GT">cond-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/cond_DASH__GT__GT">cond-&gt;&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/some_DASH__GT">some-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/some_DASH__GT__GT">some-&gt;&gt;</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/apply">apply</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/->">-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/->>">-&gt;&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/trampoline">trampoline</a> (1.5) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/as->">as-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/cond->">cond-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/cond->>">cond-&gt;&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/some->">some-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/some->>">some-&gt;&gt;</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Test</td>
@@ -594,11 +605,11 @@ tr.even {
               </tr>
               <tr class="even">
                 <td>Extend</td>
-                <td><code><code>(</code> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/extend_DASH_type">extend-type</a> <code>String Slicey (slice [at] ...))</code></code></td>
+                <td><code><code>(</code> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/extend-type">extend-type</a> <code>String Slicey (slice [at] ...))</code></code></td>
               </tr>
               <tr class="odd">
                 <td>Extend null</td>
-                <td><code><code>(</code> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/extend_DASH_type">extend-type</a> <code>nil Slicey (slice [_] nil))</code></code></td>
+                <td><code><code>(</code> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/extend-type">extend-type</a> <code>nil Slicey (slice [_] nil))</code></code></td>
               </tr>
               <tr class="even">
                 <td>Reify</td>
@@ -665,19 +676,19 @@ tr.even {
               </tr>
               <tr class="odd">
                 <td>Dispatch</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get_DASH_method">get-method</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/methods">methods</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get-method">get-method</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/methods">methods</a></code></td>
               </tr>
               <tr class="even">
                 <td>Remove</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/remove_DASH_method">remove-method</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/remove_DASH_all_DASH_methods">remove-all-methods</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/remove-method">remove-method</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/remove-all-methods">remove-all-methods</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Prefer</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/prefer_DASH_method">prefer-method</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/prefers">prefers</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/prefer-method">prefer-method</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/prefers">prefers</a></code></td>
               </tr>
               <tr class="even">
                 <td>Relation</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/derive">derive</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/isa_QMARK">isa?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/parents">parents</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ancestors">ancestors</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/descendants">descendants</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/make_DASH_hierarchy">make-hierarchy</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/derive">derive</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/isa_QMARK">isa?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/parents">parents</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ancestors">ancestors</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/descendants">descendants</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/make-hierarchy">make-hierarchy</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -692,11 +703,11 @@ tr.even {
               </tr>
               <tr class="even">
                 <td>Debug</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/macroexpand_DASH_1">macroexpand-1</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/macroexpand">macroexpand</a> (clojure.walk/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/macroexpand_DASH_all">macroexpand-all</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/macroexpand-1">macroexpand-1</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/macroexpand">macroexpand</a> (clojure.walk/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.walk/macroexpand-all">macroexpand-all</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Branch</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/and">and</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/or">or</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when">when</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when_DASH_not">when-not</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when_DASH_let">when-let</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when_DASH_first">when-first</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/if_DASH_not">if-not</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/if_DASH_let">if-let</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/cond">cond</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/condp">condp</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/case">case</a> (1.6) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when_DASH_some">when-some</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/if_DASH_some">if-some</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/and">and</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/or">or</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when">when</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when-not">when-not</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when-let">when-let</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when-first">when-first</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/if-not">if-not</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/if-let">if-let</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/cond">cond</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/condp">condp</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/case">case</a> (1.6) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when-some">when-some</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/if-some">if-some</a></code></td>
               </tr>
               <tr class="even">
                 <td>Loop</td>
@@ -704,15 +715,15 @@ tr.even {
               </tr>
               <tr class="odd">
                 <td>Arrange</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/DOT__DOT">..</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/doto">doto</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/DASH__GT">-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/DASH__GT__GT">-&gt;&gt;</a> (1.5) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/as_DASH__GT">as-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/cond_DASH__GT">cond-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/cond_DASH__GT__GT">cond-&gt;&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/some_DASH__GT">some-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/some_DASH__GT__GT">some-&gt;&gt;</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/DOT__DOT">..</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/doto">doto</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/->">-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/->>">-&gt;&gt;</a> (1.5) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/as->">as-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/cond->">cond-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/cond->>">cond-&gt;&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/some->">some-&gt;</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/some->>">some-&gt;&gt;</a></code></td>
               </tr>
               <tr class="even">
                 <td>Scope</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/binding">binding</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/locking">locking</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/time">time</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with_DASH_in_DASH_str">with-in-str</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with_DASH_local_DASH_vars">with-local-vars</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with_DASH_open">with-open</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with_DASH_out_DASH_str">with-out-str</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with_DASH_precision">with-precision</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with_DASH_redefs">with-redefs</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with_DASH_redefs_DASH_fn">with-redefs-fn</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/binding">binding</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/locking">locking</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/time">time</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with-in-str">with-in-str</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with-local-vars">with-local-vars</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with-open">with-open</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with-out-str">with-out-str</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with-precision">with-precision</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with-redefs">with-redefs</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with-redefs-fn">with-redefs-fn</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Lazy</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/lazy_DASH_cat">lazy-cat</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/lazy_DASH_seq">lazy-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/delay">delay</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/lazy-cat">lazy-cat</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/lazy-seq">lazy-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/delay">delay</a></code></td>
               </tr>
               <tr class="even">
                 <td>Doc.</td>
@@ -799,7 +810,7 @@ tr.even {
               </tr>
               <tr class="odd">
                 <td>On Vars</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/meta">meta</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with_DASH_meta">with-meta</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/vary_DASH_meta">vary-meta</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/alter_DASH_meta_BANG">alter-meta!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/reset_DASH_meta_BANG">reset-meta!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/doc">doc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/find_DASH_doc">find-doc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/test">test</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/meta">meta</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with-meta">with-meta</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/vary-meta">vary-meta</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/alter-meta!">alter-meta!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/reset-meta!">reset-meta!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/doc">doc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/find-doc">find-doc</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/test">test</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -809,13 +820,13 @@ tr.even {
         <div class="section red">
           <h2>Special Forms (<a href="http://clojure.org/special_forms">clojure.org/special_forms</a>)</h2>
           <div class="single_row">
-            <code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/def">def</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/if">if</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/do">do</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/let">let</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/letfn">letfn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/quote">quote</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/var">var</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/fn">fn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/loop">loop</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/recur">recur</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/throw">throw</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/try">try</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/monitor_DASH_enter">monitor-enter</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/monitor_DASH_exit">monitor-exit</a></code>
+            <code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/def">def</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/if">if</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/do">do</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/let">let</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/letfn">letfn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/quote">quote</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/var">var</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/fn">fn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/loop">loop</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/recur">recur</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/throw">throw</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/try">try</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/monitor-enter">monitor-enter</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/monitor-exit">monitor-exit</a></code>
           </div>
           <table>
             <tbody>
               <tr class="odd">
                 <td>Binding Forms / Destructuring</td>
-                <td><code>(<a href="http://clojure.org/special_forms#binding-forms">examples</a>) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/let">let</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/fn">fn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defn">defn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defmacro">defmacro</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/loop">loop</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/for">for</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/doseq">doseq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/if_DASH_let">if-let</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when_DASH_let">when-let</a> (1.6) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/if_DASH_some">if-some</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when_DASH_some">when-some</a></code></td>
+                <td><code>(<a href="http://clojure.org/special_forms#binding-forms">examples</a>) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/let">let</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/fn">fn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defn">defn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defmacro">defmacro</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/loop">loop</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/for">for</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/doseq">doseq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/if-let">if-let</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when-let">when-let</a> (1.6) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/if-some">if-some</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/when-some">when-some</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -826,19 +837,19 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Def variants</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/def">def</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defn">defn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defn_DASH">defn-</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/definline">definline</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defmacro">defmacro</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defmethod">defmethod</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defmulti">defmulti</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defonce">defonce</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defrecord">defrecord</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/def">def</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defn">defn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defn-">defn-</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/definline">definline</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defmacro">defmacro</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defmethod">defmethod</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defmulti">defmulti</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defonce">defonce</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/defrecord">defrecord</a></code></td>
               </tr>
               <tr class="even">
                 <td>Interned vars</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/declare">declare</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/intern">intern</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/binding">binding</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/find_DASH_var">find-var</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/var">var</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/declare">declare</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/intern">intern</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/binding">binding</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/find-var">find-var</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/var">var</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Var objects</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with_DASH_local_DASH_vars">with-local-vars</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/var_DASH_get">var-get</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/var_DASH_set">var-set</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/alter_DASH_var_DASH_root">alter-var-root</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/var_QMARK">var?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bound_QMARK">bound?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/thread_DASH_bound_QMARK">thread-bound?</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/with-local-vars">with-local-vars</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/var-get">var-get</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/var-set">var-set</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/alter-var-root">alter-var-root</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/var_QMARK">var?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bound_QMARK">bound?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/thread-bound_QMARK">thread-bound?</a></code></td>
               </tr>
               <tr class="even">
                 <td>Var validators</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set_DASH_validator_BANG">set-validator!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get_DASH_validator">get-validator</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set-validator!">set-validator!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get-validator">get-validator</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -849,11 +860,11 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Current</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_ns_STAR">*ns*</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*ns*">*ns*</a></code></td>
               </tr>
               <tr class="even">
                 <td>Create/Switch</td>
-                <td><code>(<a href="http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html">tutorial</a>) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns">ns</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/in_DASH_ns">in-ns</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/create_DASH_ns">create-ns</a></code></td>
+                <td><code>(<a href="http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html">tutorial</a>) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns">ns</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/in-ns">in-ns</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/create-ns">create-ns</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Add</td>
@@ -861,19 +872,19 @@ tr.even {
               </tr>
               <tr class="even">
                 <td>Find</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/all_DASH_ns">all-ns</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/find_DASH_ns">find-ns</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/all-ns">all-ns</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/find-ns">find-ns</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Examine</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns_DASH_name">ns-name</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns_DASH_aliases">ns-aliases</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns_DASH_map">ns-map</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns_DASH_interns">ns-interns</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns_DASH_publics">ns-publics</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns_DASH_refers">ns-refers</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns_DASH_imports">ns-imports</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns-name">ns-name</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns-aliases">ns-aliases</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns-map">ns-map</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns-interns">ns-interns</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns-publics">ns-publics</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns-refers">ns-refers</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns-imports">ns-imports</a></code></td>
               </tr>
               <tr class="even">
                 <td>From symbol</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/resolve">resolve</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns_DASH_resolve">ns-resolve</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/namespace">namespace</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/the_DASH_ns">the-ns</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/resolve">resolve</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns-resolve">ns-resolve</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/namespace">namespace</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/the-ns">the-ns</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Remove</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns_DASH_unalias">ns-unalias</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns_DASH_unmap">ns-unmap</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/remove_DASH_ns">remove-ns</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns-unalias">ns-unalias</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ns-unmap">ns-unmap</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/remove-ns">remove-ns</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -888,11 +899,11 @@ tr.even {
               </tr>
               <tr class="even">
                 <td>List loaded</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/loaded_DASH_libs">loaded-libs</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/loaded-libs">loaded-libs</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Load misc</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/load">load</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/load_DASH_file">load-file</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/load_DASH_reader">load-reader</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/load_DASH_string">load-string</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/load">load</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/load-file">load-file</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/load-reader">load-reader</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/load-string">load-string</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -903,15 +914,15 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Atoms</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/atom">atom</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/swap_BANG">swap!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/reset_BANG">reset!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/compare_DASH_and_DASH_set_BANG">compare-and-set!</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/atom">atom</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/swap!">swap!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/reset!">reset!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/compare-and-set!">compare-and-set!</a></code></td>
               </tr>
               <tr class="even">
                 <td>Futures</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/future">future</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/future_DASH_call">future-call</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/future_DASH_done_QMARK">future-done?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/future_DASH_cancel">future-cancel</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/future_DASH_cancelled_QMARK">future-cancelled?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/future_QMARK">future?</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/future">future</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/future-call">future-call</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/future-done_QMARK">future-done?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/future-cancel">future-cancel</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/future-cancelled_QMARK">future-cancelled?</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/future_QMARK">future?</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Threads</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bound_DASH_fn">bound-fn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bound_DASH_fn_STAR">bound-fn*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get_DASH_thread_DASH_bindings">get-thread-bindings</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/push_DASH_thread_DASH_bindings">push-thread-bindings</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/pop_DASH_thread_DASH_bindings">pop-thread-bindings</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/thread_DASH_bound_QMARK">thread-bound?</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bound-fn">bound-fn</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bound-fn*">bound-fn*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get-thread-bindings">get-thread-bindings</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/push-thread-bindings">push-thread-bindings</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/pop-thread-bindings">pop-thread-bindings</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/thread-bound_QMARK">thread-bound?</a></code></td>
               </tr>
               <tr class="even">
                 <td>Misc</td>
@@ -932,19 +943,19 @@ tr.even {
               </tr>
               <tr class="odd">
                 <td>Transaction</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/sync">sync</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/dosync">dosync</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/io_BANG">io!</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/sync">sync</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/dosync">dosync</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/io!">io!</a></code></td>
               </tr>
               <tr class="even">
                 <td>In transaction</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ensure">ensure</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ref_DASH_set">ref-set</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/alter">alter</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/commute">commute</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ensure">ensure</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ref-set">ref-set</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/alter">alter</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/commute">commute</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Validators</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set_DASH_validator_BANG">set-validator!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get_DASH_validator">get-validator</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set-validator!">set-validator!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get-validator">get-validator</a></code></td>
               </tr>
               <tr class="even">
                 <td>History</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ref_DASH_history_DASH_count">ref-history-count</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ref_DASH_min_DASH_history">ref-min-history</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ref_DASH_max_DASH_history">ref-max-history</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ref-history-count">ref-history-count</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ref-min-history">ref-min-history</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ref-max-history">ref-max-history</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -957,35 +968,35 @@ tr.even {
               </tr>
               <tr class="even">
                 <td>Examine</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/agent_DASH_error">agent-error</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/agent-error">agent-error</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Change state</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/send">send</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/send_DASH_off">send-off</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/restart_DASH_agent">restart-agent</a> (1.5) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/send_DASH_via">send-via</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set_DASH_agent_DASH_send_DASH_executor_BANG">set-agent-send-executor!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set_DASH_agent_DASH_send_DASH_off_DASH_executor_BANG">set-agent-send-off-executor!</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/send">send</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/send-off">send-off</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/restart-agent">restart-agent</a> (1.5) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/send-via">send-via</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set-agent-send-executor!">set-agent-send-executor!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set-agent-send-off-executor!">set-agent-send-off-executor!</a></code></td>
               </tr>
               <tr class="even">
                 <td>Block waiting</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/await">await</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/await_DASH_for">await-for</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/await">await</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/await-for">await-for</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Ref validators</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set_DASH_validator_BANG">set-validator!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get_DASH_validator">get-validator</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set-validator!">set-validator!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get-validator">get-validator</a></code></td>
               </tr>
               <tr class="even">
                 <td>Watchers</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/add_DASH_watch">add-watch</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/remove_DASH_watch">remove-watch</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/add-watch">add-watch</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/remove-watch">remove-watch</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Thread handling</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/shutdown_DASH_agents">shutdown-agents</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/shutdown-agents">shutdown-agents</a></code></td>
               </tr>
               <tr class="even">
                 <td>Error</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/error_DASH_handler">error-handler</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set_DASH_error_DASH_handler_BANG">set-error-handler!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/error_DASH_mode">error-mode</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set_DASH_error_DASH_mode_BANG">set-error-mode!</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/error-handler">error-handler</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set-error-handler!">set-error-handler!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/error-mode">error-mode</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/set-error-mode!">set-error-mode!</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Misc</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_agent_STAR">*agent*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/release_DASH_pending_DASH_sends">release-pending-sends</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*agent*">*agent*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/release-pending-sends">release-pending-sends</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -996,7 +1007,7 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>General</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/DOT__DOT">..</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/doto">doto</a> Classname/ Classname. <a href="http://clojure.org/java_interop#new">new</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bean">bean</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/comparator">comparator</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/enumeration_DASH_seq">enumeration-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/import">import</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/iterator_DASH_seq">iterator-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/memfn">memfn</a> <a href="http://clojure.org/java_interop#Java%20Interop-The%20Dot%20special%20form-%28set!%20%28.%20Classname-symbol%20staticFieldName-symbol%29%20expr%29">set!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/class">class</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/DOT__DOT">..</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/doto">doto</a> Classname/ Classname. <a href="http://clojure.org/java_interop#new">new</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/bean">bean</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/comparator">comparator</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/enumeration-seq">enumeration-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/import">import</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/iterator-seq">iterator-seq</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/memfn">memfn</a> <a href="http://clojure.org/java_interop#Java%20Interop-The%20Dot%20special%20form-%28set!%20%28.%20Classname-symbol%20staticFieldName-symbol%29%20expr%29">set!</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/class">class</a></code></td>
               </tr>
               <tr class="even">
                 <td>Cast</td>
@@ -1004,7 +1015,7 @@ tr.even {
               </tr>
               <tr class="odd">
                 <td>Exceptions</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/throw">throw</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/try">try</a> <a href="http://clojure.org/special_forms#try">catch</a> <a href="http://clojure.org/special_forms#try">finally</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/pst">pst</a> (1.4) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ex_DASH_info">ex-info</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ex_DASH_data">ex-data</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/throw">throw</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/try">try</a> <a href="http://clojure.org/special_forms#try">catch</a> <a href="http://clojure.org/special_forms#try">finally</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.repl/pst">pst</a> (1.4) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ex-info">ex-info</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/ex-data">ex-data</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -1013,11 +1024,11 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Create</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/make_DASH_array">make-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/object_DASH_array">object-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/boolean_DASH_array">boolean-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/byte_DASH_array">byte-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/short_DASH_array">short-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/char_DASH_array">char-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/int_DASH_array">int-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/long_DASH_array">long-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/float_DASH_array">float-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/double_DASH_array">double-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aclone">aclone</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/to_DASH_array">to-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/to_DASH_array_DASH_2d">to-array-2d</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/into_DASH_array">into-array</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/make-array">make-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/object-array">object-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/boolean-array">boolean-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/byte-array">byte-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/short-array">short-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/char-array">char-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/int-array">int-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/long-array">long-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/float-array">float-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/double-array">double-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aclone">aclone</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/to-array">to-array</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/to-array-2d">to-array-2d</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/into-array">into-array</a></code></td>
               </tr>
               <tr class="even">
                 <td>Use</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aget">aget</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset">aset</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset_DASH_boolean">aset-boolean</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset_DASH_byte">aset-byte</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset_DASH_short">aset-short</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset_DASH_char">aset-char</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset_DASH_int">aset-int</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset_DASH_long">aset-long</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset_DASH_float">aset-float</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset_DASH_double">aset-double</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/alength">alength</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/amap">amap</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/areduce">areduce</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aget">aget</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset">aset</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset-boolean">aset-boolean</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset-byte">aset-byte</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset-short">aset-short</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset-char">aset-char</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset-int">aset-int</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset-long">aset-long</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset-float">aset-float</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/aset-double">aset-double</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/alength">alength</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/amap">amap</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/areduce">areduce</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Cast</td>
@@ -1030,11 +1041,11 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>Create</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/proxy">proxy</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get_DASH_proxy_DASH_class">get-proxy-class</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/construct_DASH_proxy">construct-proxy</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/init_DASH_proxy">init-proxy</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/proxy">proxy</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/get-proxy-class">get-proxy-class</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/construct-proxy">construct-proxy</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/init-proxy">init-proxy</a></code></td>
               </tr>
               <tr class="even">
                 <td>Misc</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/proxy_DASH_mappings">proxy-mappings</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/proxy_DASH_super">proxy-super</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/update_DASH_proxy">update-proxy</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/proxy-mappings">proxy-mappings</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/proxy-super">proxy-super</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/update-proxy">update-proxy</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -1045,23 +1056,23 @@ tr.even {
             <tbody>
               <tr class="odd">
                 <td>XML</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.xml/parse">clojure.xml/parse</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/xml_DASH_seq">xml-seq</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.xml/parse">clojure.xml/parse</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/xml-seq">xml-seq</a></code></td>
               </tr>
               <tr class="even">
                 <td>REPL</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_1">*1</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_2">*2</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_3">*3</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_e">*e</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_print_DASH_dup_STAR">*print-dup*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_print_DASH_length_STAR">*print-length*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_print_DASH_level_STAR">*print-level*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_print_DASH_meta_STAR">*print-meta*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_print_DASH_readably_STAR">*print-readably*</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*1">*1</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*2">*2</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*3">*3</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*e">*e</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*print-dup*">*print-dup*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*print-length*">*print-length*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*print-level*">*print-level*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*print-meta*">*print-meta*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*print-readably*">*print-readably*</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Code</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_compile_DASH_files_STAR">*compile-files*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_compile_DASH_path_STAR">*compile-path*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_file_STAR">*file*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_warn_DASH_on_DASH_reflection_STAR">*warn-on-reflection*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/compile">compile</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/gen_DASH_class">gen-class</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/gen_DASH_interface">gen-interface</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/loaded_DASH_libs">loaded-libs</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/test">test</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*compile-files*">*compile-files*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*compile-path*">*compile-path*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*file*">*file*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*warn-on-reflection*">*warn-on-reflection*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/compile">compile</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/gen-class">gen-class</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/gen-interface">gen-interface</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/loaded-libs">loaded-libs</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/test">test</a></code></td>
               </tr>
               <tr class="even">
                 <td>Misc</td>
-                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/eval">eval</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/force">force</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/hash">hash</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/name">name</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_clojure_DASH_version_STAR">*clojure-version*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/clojure_DASH_version">clojure-version</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/STAR_command_DASH_line_DASH_args_STAR">*command-line-args*</a></code></td>
+                <td><code><a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/eval">eval</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/force">force</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/hash">hash</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/name">name</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*clojure-version*">*clojure-version*</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/clojure-version">clojure-version</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.core/*command-line-args*">*command-line-args*</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Browser / Shell</td>
-                <td><code>(clojure.java.browse/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.browse/browse_DASH_url">browse-url</a> (clojure.java.shell/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.shell/sh">sh</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.shell/with_DASH_sh_DASH_dir">with-sh-dir</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.shell/with_DASH_sh_DASH_env">with-sh-env</a></code></td>
+                <td><code>(clojure.java.browse/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.browse/browse-url">browse-url</a> (clojure.java.shell/) <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.shell/sh">sh</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.shell/with-sh-dir">with-sh-dir</a> <a href="{{ site.baseurl }}{{ site.clojure_version }}/clojure.java.shell/with-sh-env">with-sh-env</a></code></td>
               </tr>
             </tbody>
           </table>

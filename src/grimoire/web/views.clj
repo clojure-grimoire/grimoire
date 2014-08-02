@@ -14,7 +14,7 @@
    :description         "Community documentation of Clojure"
    :url                 "http://grimoire.arrdem.com"
    :baseurl             "/"
-   :version             "0.3.1"
+   :version             "0.3.2"
    :clojure-version     "1.6.0"
    :google-analytics-id "UA-44001831-2"
    :year                "2014"
@@ -73,7 +73,8 @@
    (util/markdown-file (str "resources/" version "/release-notes.md"))
    [:h2 "Namespaces"]
    [:ul
-    (for [path (->> version util/paths (sort-by last))]
+    (for [path (->> version util/paths (sort-by last))
+          :when (not (= "release-notes.md" (last path)))]
       [:li [:a {:href (str (:baseurl site-config) (string/join "/" path) "/")}
             (last path)]])]))
 

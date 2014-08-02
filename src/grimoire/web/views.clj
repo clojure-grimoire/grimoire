@@ -20,7 +20,8 @@
    :year                "2014"
    :author              {:me         "http://arrdem.com/"
                          :email      "me@arrdem.com"
-                         :github     "https://github.com/arrdem/grimoire"}
+                         :github     "https://github.com/arrdem/grimoire"
+                         :gittip     "https://gittip.com/arrdem/"}
    :style               {:header-sep " / "}})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

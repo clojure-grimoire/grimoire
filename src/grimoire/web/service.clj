@@ -5,19 +5,23 @@
 
 (defonce service (atom nil))
 
-(defn start-web-server! []
+(defn start-web-server! [& [port?]]
   (reset! service
           (jetty/run-jetty (handler/site app)
-                           {:port 3000 :join? false})))
+                           {:port (or port? 3000)
+                            :join? false})))
 
 (defn stop-web-server! []
   (when-let [service* @service]
     (.stop service*)
     (reset! service nil)))
 
-(defn restart-web-server! []
+(defn restart-web-server! [& [port?]]
   (stop-web-server!)
-  (start-web-server!))
+  (start-web-server! port?))
 
-(defn -main [& args]
-  (start-web-server!))
+(defn -main [& [port?]]
+  (start-web-server!
+   (if (string? port?)
+     (Long. port?)
+     3000)))

@@ -34,9 +34,11 @@
      [:a.sidebar-nav-item {:href "/1.6.0/"} "Clojure 1.6"]
      [:a.sidebar-nav-item {:href "/1.5.0/"} "Clojure 1.5"]
      [:a.sidebar-nav-item {:href "/1.4.0/"} "Clojure 1.4"]
+     [:a.sidebar-nav-item {:href "/static.zip"} "Offline"]
      [:a.sidebar-nav-item {:href "/api"} "API"]
      [:a.sidebar-nav-item {:href "/about"} "About"]
      [:a.sidebar-nav-item {:href "/contributing"} "Contributing"]
+     [:a.sidebar-nav-item {:href "https://www.gittip.com/arrdem/"} "Support this project"]
      [:br] "More" [:br]
      (let [{:keys [github me]} author]
        (list

@@ -1,0 +1,1 @@
+Equivalent to (fold cat append! coll)

@@ -32,6 +32,10 @@ simple UTF-8 plain text files with no markup. To add an example,
 simply create a REPL dump file and add it to the appropriate examples
 directory. Nothing else is involved.
 
+**Protip**, if you visit the documentation page of the symbol for
+which you wish to add an example, there are big friendly "add example"
+links which will help you to create a file in the right place.
+
 REPL sessions are expected to fit the pattern `("user=>" sexpr) +`.
 Results of evaluation should be commented out, as should output to any
 file stream such as stdout or stderr. This is required in the

@@ -93,8 +93,9 @@
   (layout
    site-config
    [:h1 {:class "page-title"}
-    [:a {:href "../"} "Clojure " version]
-    (-> site-config :style :header-sep)
+    [:span {:style "display:inline-block;"}
+           [:a {:href "../"} "Clojure " version]
+           (-> site-config :style :header-sep)]
     namespace]
    [:h2 "Namespace Notes"
     " - "
@@ -186,10 +187,12 @@
       (layout
        site-config
        [:h1 {:class "page-title"}
-        [:a {:href "../"} "Clojure " version]
-        (-> site-config :style :header-sep)
-        [:a {:href "."} namespace]
-        (-> site-config :style :header-sep)
+        [:span {:style "display:inline-block;"}
+               [:a {:href "../"} "Clojure " version]
+               (-> site-config :style :header-sep)]
+        [:span {:style "display:inline-block;"}
+               [:a {:href "."} namespace]
+               (-> site-config :style :header-sep)]
         name]
        [:h2 "Arities"]
        [:p (-> "arities.txt" symbol-file-path util/resource-file-contents)]

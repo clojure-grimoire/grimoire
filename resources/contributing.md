@@ -48,9 +48,10 @@ Grimoire is built as a matching pair of programs: a "database"
 generator which users should not re-run and a webserver which uses the
 filesystem database described above to generate and serve a website.
 
-`lein with-profile server run` will run the server, against existing
-datafiles.
-
+`lein serve [portnum]` will run the server, against the datafiles in
+`resources/`. Note that Grimoire cannot currently be built to an
+uberjar due limitations of `clojure.java.io/resource` which have not
+yet been worked around.
 
 ## Legal
 

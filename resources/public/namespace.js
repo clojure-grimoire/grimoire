@@ -1,5 +1,5 @@
 (function () {
-    $(".section .autofold").hide();
+    $(".section .autofold.prefold").hide();
     $(".section .heading").click(
 	function(){
 	    $(this).parent().find(".autofold").toggle("slow");

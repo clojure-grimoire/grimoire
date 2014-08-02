@@ -120,11 +120,14 @@
      (for [k keys]
        (when-let [records (get grouping k)]
          (list
-          [:div.section
-           [:h3.heading (get mapping k) " " [:span.unhide "+"]]
-           (let [links (emit-alphabetized-links records)]
-             [:div {:class "autofold"}
-              links])]))))
+          (let [links (emit-alphabetized-links records)]
+            [:div.section
+             [:h3.heading (get mapping k) 
+              " " [:span.unhide (if (< 6 (count links)) "+" "-")]]
+             [:div {:class (str "autofold"
+                                (when (< 6 (count links))
+                                  " prefold"))}
+              links]])))))
 
    [:script {:src "/public/jquery.js" :type "text/javascript"}]
    [:script {:src "/public/namespace.js" :type "text/javascript"}]))

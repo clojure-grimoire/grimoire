@@ -11,8 +11,8 @@ language intended to provide an up to date replacement for ClojureDocs
 by documenting current versions of Clojure and to augment Clojure's
 documentation by hosting examples and extended docstrings.
 
-See [grimoire in action](http://grimoire.arrdem.com/).
-Learn more [about grimoire](http://grimoire.arrdem.com/about/).
+See [grimoire in action](http://grimoire.arrdem.com).
+Learn more [about grimoire](http://grimoire.arrdem.com/about).
 Read the [road map](http://www.arrdem.com/2014/07/12/of_mages_and_grimoires/).
 Grab the [offline version](http://grimoire.arrdem.com/static.zip).
-And [contribute to grimoire](http://grimoire.arrdem.com/contributing/).
+And [contribute to grimoire](http://grimoire.arrdem.com/contributing).

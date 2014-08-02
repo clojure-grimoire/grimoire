@@ -34,16 +34,16 @@
      [:a.sidebar-nav-item {:href "/1.6.0/"} "Clojure 1.6"]
      [:a.sidebar-nav-item {:href "/1.5.0/"} "Clojure 1.5"]
      [:a.sidebar-nav-item {:href "/1.4.0/"} "Clojure 1.4"]
-     [:a.sidebar-nav-item {:href "/static.zip"} "Offline"]
-     [:a.sidebar-nav-item {:href "/api"} "API"]
      [:a.sidebar-nav-item {:href "/about"} "About"]
+     [:a.sidebar-nav-item {:href "/api"} "API"]
      [:a.sidebar-nav-item {:href "/contributing"} "Contributing"]
-     [:a.sidebar-nav-item {:href "https://www.gittip.com/arrdem/"} "Support this project"]
+     [:a.sidebar-nav-item {:href "/public/static.zip"} "Offline Version"]
      [:br] "More" [:br]
-     (let [{:keys [github me]} author]
+     (let [{:keys [github gittip me]} author]
        (list
         [:a.sidebar-nav-item {:href github} "Github Repo"]
-        [:a.sidebar-nav-item {:href me} "About Me"]))]
+        [:a.sidebar-nav-item {:href me} "About Me"]
+        [:a.sidebar-nav-item {:href gittip} "Support This Project"]))]
     [:div.sidebar-item
      [:p "Currently v" version]]
     [:div.sidebar-item

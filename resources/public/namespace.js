@@ -1,32 +1,25 @@
 (function () {
-    function switcher(btn,id) {
-        return (function() {
-            $(id).toggle("slow",
-                         function() {
-                             if($(btn).html() == "+") {
-                                 $(btn).html("-");
-                             } else {
-                                 $(btn).html("+");
-                             }
-                         });
-        });
-    }
+    $(".section .autofold").hide();
+    $(".section .heading").click(
+	function(){
+	    $(this).parent().find(".autofold").toggle("slow");
+	    
+ 	    v=$(this).find("span.unhide");
+	    u=$(this).find("span.hide");
 
-    $("#sforms").hide();
-    $("#macros").hide();
-    $("#vars").hide();
-    $("#fns").hide();
+	    v.removeClass("unhide")
+		.addClass("hide")
+		.html("-");
 
-    $("#sff").click(switcher("#sff", "#sforms"));
-    $("#mf").click(switcher("#mf", "#macros"));
-    $("#vf").click(switcher("#vf", "#vars"));
-    $("#ff").click(switcher("#ff", "#fns"));
+	    u.removeClass("hide")
+		.addClass("unhide")
+		.html("+");
+	});
 
     $(document).on("keydown",
 		   function (e) {
                        if (e.keyCode == 70 && e.ctrlKey) {
-                           $('.page div').show(); // show all flaps
-			   $('.page h3 a').html("-");
+                           $('.section .heading').click(); // show all flaps
                        }
                    });
 })();

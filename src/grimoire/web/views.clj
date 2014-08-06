@@ -32,6 +32,13 @@
    site-config
    (slurp (io/resource "404.html"))))
 
+(defn error-unknown-version [version]
+  (layout
+   site-config
+   [:h1 {:class "page-title"}
+    [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]]
+   [:p "Unknown Clojure version" version]))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Generic markdown page
 
@@ -165,22 +172,25 @@
     (let [path (str namespace "/" symbol "/examples/")]
       (for [v (clojure-example-versions top-version)]
         (let [examples (util/dir-list-as-strings (str "resources/" v "/" path))]
-          (list
-           [:h2 "Examples from Clojure " v]
-           (map-indexed example examples)
-           [:a {:href (str "https://github.com/arrdem/grimoire/new/develop/resources/" v "/" path)}
-            "Contribute an example!"]))))
+          (when (or (not (empty? examples))
+                    (= v "1.6.0"))
+            (list
+             [:h2 "Examples from Clojure " v]
+             (map-indexed example examples)
+             [:a {:href (str "https://github.com/arrdem/grimoire/new/develop/resources/" v "/" path)}
+              "Contribute an example!"])))))
 
     :text
     (let [path (str namespace "/" symbol "/examples/")]
       (->> (for [v (clojure-example-versions top-version)]
              (let [examples (util/dir-list-as-strings (str "resources/" v "/" path))]
-               (str "### Examples from Clojure " v "\n"
-                    "----------------------------------------\n"
-                    (->> examples
-                         (map-indexed raw-example)
-                         (interpose "\n")
-                         (apply str)))))
+               (when-not (empty? examples)
+                 (str "### Examples from Clojure " v "\n"
+                      "----------------------------------------\n"
+                      (->> examples
+                           (map-indexed raw-example)
+                           (interpose "\n")
+                           (apply str))))))
            (interpose "\n")
            (apply str)))))
 
@@ -194,10 +204,10 @@
        site-config
        [:h1 {:class "page-title"}
         [:span {:style "display:inline-block;"}
-               [:a {:href "../"} "Clojure " version]
+               [:a {:href "../../"} "Clojure " version]
                (-> site-config :style :header-sep)]
         [:span {:style "display:inline-block;"}
-               [:a {:href "."} namespace]
+               [:a {:href "../"} namespace]
                (-> site-config :style :header-sep)]
         name]
        [:h2 "Arities"]

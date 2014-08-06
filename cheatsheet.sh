@@ -3,7 +3,7 @@
 set -e
 
 if [ ! -d "clojure-cheatsheets" ]; then
-  git clone https://github.com/jafingerhut/clojure-cheatsheets
+  git clone https://github.com/arrdem/clojure-cheatsheets
 fi
 
 pushd .

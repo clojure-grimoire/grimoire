@@ -1,1 +1,1 @@
-Returns a map of the refer mappings for the namespace.
+  Returns a map of the refer mappings for the namespace.

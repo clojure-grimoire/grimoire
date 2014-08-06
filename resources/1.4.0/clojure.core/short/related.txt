@@ -1,4 +1,0 @@
-clojure.core/int
-clojure.core/byte
-clojure.core/shorts
-clojure.core/short-array

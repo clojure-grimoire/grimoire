@@ -1,3 +1,0 @@
-clojure.repl/source
-clojure.repl/doc
-clojure.repl/dir

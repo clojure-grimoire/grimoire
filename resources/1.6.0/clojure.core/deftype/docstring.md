@@ -1,4 +1,4 @@
-(deftype name [fields*]  options* specs*)
+  (deftype name [fields*]  options* specs*)
   
   Currently there are no options.
 

@@ -1,4 +1,4 @@
-(defrecord name [fields*]  options* specs*)
+  (defrecord name [fields*]  options* specs*)
   
   Currently there are no options.
 

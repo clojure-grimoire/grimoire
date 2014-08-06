@@ -1,6 +1,0 @@
-clojure.core/char
-clojure.core/long
-clojure.core/integer?
-clojure.core/ints
-clojure.core/int-array
-clojure.core/short

@@ -1,2 +1,0 @@
-clojure.pprint.pprint-base/pprint
-clojure.inspector/inspect-table

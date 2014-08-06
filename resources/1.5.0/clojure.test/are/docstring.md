@@ -1,4 +1,4 @@
-Checks multiple assertions with a template expression.
+  Checks multiple assertions with a template expression.
   See clojure.template/do-template for an explanation of
   templates.
 

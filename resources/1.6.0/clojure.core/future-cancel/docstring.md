@@ -1,1 +1,1 @@
-Cancels the future, if possible.
+  Cancels the future, if possible.

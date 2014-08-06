@@ -1,1 +1,1 @@
-Creates an array of shorts
+  Creates an array of shorts

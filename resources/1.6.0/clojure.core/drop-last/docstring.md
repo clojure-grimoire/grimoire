@@ -1,1 +1,1 @@
-Return a lazy sequence of all but the last n (default 1) items in coll
+  Return a lazy sequence of all but the last n (default 1) items in coll

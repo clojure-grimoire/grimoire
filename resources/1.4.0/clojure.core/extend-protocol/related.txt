@@ -1,3 +1,0 @@
-clojure.core-deftype/extend
-clojure.core-deftype/extend-type
-clojure.core-deftype/defprotocol

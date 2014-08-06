@@ -1,2 +1,0 @@
-clojure.set/subset?
-clojure.core/set

@@ -1,4 +1,4 @@
-Tab at this point in the pretty printing stream. kind specifies whether the tab
+  Tab at this point in the pretty printing stream. kind specifies whether the tab
 is :line, :section, :line-relative, or :section-relative. 
 
 Colnum and colinc specify the target column and the increment to move the target

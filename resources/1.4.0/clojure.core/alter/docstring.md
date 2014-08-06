@@ -1,4 +1,4 @@
-Must be called in a transaction. Sets the in-transaction-value of
+  Must be called in a transaction. Sets the in-transaction-value of
   ref to:
 
   (apply fun in-transaction-value-of-ref args)

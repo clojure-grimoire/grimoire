@@ -1,1 +1,1 @@
-Returns true if coll implements Associative
+  Returns true if coll implements Associative

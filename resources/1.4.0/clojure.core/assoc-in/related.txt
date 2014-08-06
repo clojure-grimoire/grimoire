@@ -1,4 +1,0 @@
-clojure.core/assoc
-clojure.core/update-in
-clojure.contrib.core/dissoc-in
-clojure.core/get-in

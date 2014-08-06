@@ -1,2 +1,0 @@
-clojure.core/partial
-clojure.core/juxt

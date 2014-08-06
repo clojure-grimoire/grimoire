@@ -1,1 +1,1 @@
-Returns true if coll implements Sorted
+  Returns true if coll implements Sorted

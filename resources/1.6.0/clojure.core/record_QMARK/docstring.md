@@ -1,1 +1,1 @@
-Returns true if x is a record
+  Returns true if x is a record

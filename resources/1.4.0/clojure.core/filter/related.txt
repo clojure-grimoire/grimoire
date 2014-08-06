@@ -1,3 +1,0 @@
-clojure.core/remove
-clojure.contrib.seq/separate
-clojure.core/keep

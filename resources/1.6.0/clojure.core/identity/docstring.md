@@ -1,1 +1,1 @@
-Returns its argument.
+  Returns its argument.

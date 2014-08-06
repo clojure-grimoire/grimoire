@@ -1,2 +1,0 @@
-clojure.core/push-thread-bindings
-clojure.core/binding

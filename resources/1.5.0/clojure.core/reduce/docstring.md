@@ -1,4 +1,4 @@
-f should be a function of 2 arguments. If val is not supplied,
+  f should be a function of 2 arguments. If val is not supplied,
   returns the result of applying f to the first 2 items in coll, then
   applying f to that result and the 3rd item, etc. If coll contains no
   items, f must accept no arguments as well, and reduce returns the

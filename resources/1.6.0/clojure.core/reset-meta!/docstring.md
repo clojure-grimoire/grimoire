@@ -1,1 +1,1 @@
-Atomically resets the metadata for a namespace/var/ref/agent/atom
+  Atomically resets the metadata for a namespace/var/ref/agent/atom

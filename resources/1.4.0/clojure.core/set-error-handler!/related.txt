@@ -1,3 +1,0 @@
-clojure.core/agent
-clojure.core/agent-error
-clojure.core/restart-agent

@@ -1,1 +1,1 @@
-Returns an empty collection of the same category as coll, or nil
+  Returns an empty collection of the same category as coll, or nil

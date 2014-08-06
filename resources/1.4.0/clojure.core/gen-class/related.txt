@@ -1,2 +1,0 @@
-clojure.core-proxy/proxy
-clojure.genclass/gen-interface

@@ -1,1 +1,1 @@
-Same as (def name (create-struct keys...))
+  Same as (def name (create-struct keys...))

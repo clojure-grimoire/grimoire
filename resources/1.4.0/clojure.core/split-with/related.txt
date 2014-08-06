@@ -1,4 +1,0 @@
-clojure.core/split-at
-clojure.string/split
-clojure.core/take-while
-clojure.core/drop-while

@@ -1,4 +1,4 @@
-List comprehension. Takes a vector of one or more
+  List comprehension. Takes a vector of one or more
    binding-form/collection-expr pairs, each followed by zero or more
    modifiers, and yields a lazy sequence of evaluations of expr.
    Collections are iterated in a nested fashion, rightmost fastest,

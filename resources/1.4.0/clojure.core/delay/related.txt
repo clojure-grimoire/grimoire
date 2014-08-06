@@ -1,5 +1,0 @@
-clojure.core/future
-clojure.core/delay?
-clojure.core/force
-clojure.core/realized?
-clojure.core/memoize

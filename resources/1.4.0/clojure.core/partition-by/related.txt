@@ -1,3 +1,0 @@
-clojure.core/partition
-clojure.core/partition-all
-clojure.core/group-by

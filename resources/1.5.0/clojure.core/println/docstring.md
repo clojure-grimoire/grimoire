@@ -1,1 +1,1 @@
-Same as print followed by (newline)
+  Same as print followed by (newline)

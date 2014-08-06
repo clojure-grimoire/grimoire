@@ -1,1 +1,1 @@
-Returns the last 'cause' Throwable in a chain of Throwables.
+  Returns the last 'cause' Throwable in a chain of Throwables.

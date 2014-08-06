@@ -1,2 +1,0 @@
-clojure.core/with-meta
-clojure.core/alter-meta!

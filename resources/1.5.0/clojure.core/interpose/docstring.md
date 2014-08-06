@@ -1,1 +1,1 @@
-Returns a lazy seq of the elements of coll separated by sep
+  Returns a lazy seq of the elements of coll separated by sep

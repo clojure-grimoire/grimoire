@@ -1,1 +1,1 @@
-Returns true if x is an instance of Class
+  Returns true if x is an instance of Class

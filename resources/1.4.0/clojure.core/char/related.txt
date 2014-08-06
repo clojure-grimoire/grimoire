@@ -1,4 +1,0 @@
-clojure.core/char?
-clojure.core/int
-clojure.core/chars
-clojure.core/char-array

@@ -1,4 +1,0 @@
-clojure.core/type
-clojure.core/supers
-clojure.core/doto
-clojure.core/class

@@ -1,1 +1,1 @@
-Return true if x is a Symbol
+  Return true if x is a Symbol

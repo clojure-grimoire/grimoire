@@ -1,1 +1,1 @@
-Returns name string for char or nil if none
+  Returns name string for char or nil if none

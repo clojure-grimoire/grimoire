@@ -1,4 +1,4 @@
-WARNING: This is a low-level function. Prefer high-level macros like
+  WARNING: This is a low-level function. Prefer high-level macros like
   binding where ever possible.
 
   Takes a map of Var/value pairs. Binds each Var to the associated value for

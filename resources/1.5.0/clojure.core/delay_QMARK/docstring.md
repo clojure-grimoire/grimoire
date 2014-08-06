@@ -1,1 +1,1 @@
-returns true if x is a Delay created with delay
+  returns true if x is a Delay created with delay

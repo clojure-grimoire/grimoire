@@ -1,3 +1,0 @@
-clojure.core/set?
-clojure.core/set
-clojure.set/superset?

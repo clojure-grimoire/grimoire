@@ -1,1 +1,1 @@
-Coerce to double. Subject to rounding.
+  Coerce to double. Subject to rounding.

@@ -1,1 +1,1 @@
-Splits s on \n or \r\n.
+  Splits s on \n or \r\n.

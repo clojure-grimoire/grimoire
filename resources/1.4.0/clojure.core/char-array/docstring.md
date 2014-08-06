@@ -1,1 +1,1 @@
-Creates an array of chars
+  Creates an array of chars

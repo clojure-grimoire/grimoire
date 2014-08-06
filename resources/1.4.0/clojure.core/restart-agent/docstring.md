@@ -1,4 +1,4 @@
-When an agent is failed, changes the agent state to new-state and
+  When an agent is failed, changes the agent state to new-state and
   then un-fails the agent so that sends are allowed again.  If
   a :clear-actions true option is given, any actions queued on the
   agent that were being held while it was failed will be discarded,

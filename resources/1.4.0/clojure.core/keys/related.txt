@@ -1,4 +1,0 @@
-clojure.core/vals
-clojure.core/hash-map
-clojure.core/key
-clojure.core/defn

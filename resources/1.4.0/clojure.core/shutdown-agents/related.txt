@@ -1,4 +1,0 @@
-clojure.core/send
-clojure.core/send-off
-clojure.core/agent
-clojure.core/agent-error

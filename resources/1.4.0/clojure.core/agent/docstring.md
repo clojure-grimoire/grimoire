@@ -1,4 +1,4 @@
-Creates and returns an agent with an initial value of state and
+  Creates and returns an agent with an initial value of state and
   zero or more options (in any order):
 
   :meta metadata-map

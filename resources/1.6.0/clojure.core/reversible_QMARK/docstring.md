@@ -1,1 +1,1 @@
-Returns true if coll implements Reversible
+  Returns true if coll implements Reversible

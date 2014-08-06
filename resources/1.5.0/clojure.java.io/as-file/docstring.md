@@ -1,1 +1,1 @@
-Coerce argument to a file.
+  Coerce argument to a file.

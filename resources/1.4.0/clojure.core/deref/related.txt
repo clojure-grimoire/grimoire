@@ -1,3 +1,0 @@
-clojure.core/atom
-clojure.core/agent
-clojure.core/ref

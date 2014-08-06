@@ -1,1 +1,1 @@
-Open url in a browser
+  Open url in a browser

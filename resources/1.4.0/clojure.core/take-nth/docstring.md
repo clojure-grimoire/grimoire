@@ -1,1 +1,1 @@
-Returns a lazy seq of every nth item in coll.
+  Returns a lazy seq of every nth item in coll.

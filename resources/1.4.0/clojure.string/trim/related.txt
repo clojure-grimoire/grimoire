@@ -1,3 +1,0 @@
-clojure.string/triml
-clojure.string/trimr
-clojure.string/trim-newline

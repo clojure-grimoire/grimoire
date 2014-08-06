@@ -1,4 +1,0 @@
-clojure.core/first
-clojure.core/second
-clojure.core/nthnext
-clojure.core/get

@@ -1,2 +1,0 @@
-clojure.core/bound-fn
-clojure.core/bound-fn*

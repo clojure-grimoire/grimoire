@@ -1,1 +1,1 @@
-Returns a new, transient version of the collection, in constant time.
+  Returns a new, transient version of the collection, in constant time.

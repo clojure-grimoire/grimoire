@@ -1,4 +1,0 @@
-clojure.core/future
-clojure.core/future?
-clojure.core/future-cancelled?
-clojure.core/future-done?

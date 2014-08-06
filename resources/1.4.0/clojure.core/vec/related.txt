@@ -1,3 +1,0 @@
-clojure.core/vector
-clojure.core/vector?
-clojure.gvec/vector-of

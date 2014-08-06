@@ -1,1 +1,1 @@
-Returns clojure version as a printable string.
+  Returns clojure version as a printable string.

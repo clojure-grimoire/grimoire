@@ -1,4 +1,4 @@
-Alpha - subject to change.
+  Alpha - subject to change.
   Adds a watch function to an agent/atom/var/ref reference. The watch
   fn must be a fn of 4 args: a key, the reference, its old-state, its
   new-state. Whenever the reference's state might have been changed,

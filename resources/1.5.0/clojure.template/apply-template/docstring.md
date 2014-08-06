@@ -1,4 +1,4 @@
-For use in macros.  argv is an argument list, as in defn.  expr is
+  For use in macros.  argv is an argument list, as in defn.  expr is
   a quoted expression using the symbols in argv.  values is a sequence
   of values to be used for the arguments.
 

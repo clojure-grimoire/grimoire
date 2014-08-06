@@ -1,3 +1,0 @@
-clojure.walk/postwalk
-clojure.walk/prewalk-demo
-clojure.walk/prewalk-replace

@@ -1,4 +1,4 @@
-*print-level* controls how many levels deep the printer will
+  *print-level* controls how many levels deep the printer will
   print nested objects. If it is bound to logical false, there is no
   limit. Otherwise, it must be bound to an integer indicating the maximum
   level to print. Each argument to print is at level 0; if an argument is a

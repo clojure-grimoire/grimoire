@@ -1,6 +1,0 @@
-clojure.core/sorted-map-by
-clojure.core/subseq
-clojure.core/rsubseq
-clojure.core/sorted-set
-clojure.core/array-map
-clojure.core/hash-map

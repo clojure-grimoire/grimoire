@@ -1,3 +1,0 @@
-clojure.core/cycle
-clojure.core/repeatedly
-clojure.core/repeat

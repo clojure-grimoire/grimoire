@@ -1,4 +1,4 @@
-Sets the precision and rounding mode to be used for BigDecimal operations.
+  Sets the precision and rounding mode to be used for BigDecimal operations.
 
   Usage: (with-precision 10 (/ 1M 3))
   or:    (with-precision 10 :rounding HALF_DOWN (/ 1M 3))

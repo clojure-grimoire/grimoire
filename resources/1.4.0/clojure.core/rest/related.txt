@@ -1,4 +1,0 @@
-clojure.core/next
-clojure.core/first
-clojure.core/drop
-clojure.core/pop

@@ -1,6 +1,0 @@
-clojure.core/persistent!
-clojure.core/conj!
-clojure.core/assoc!
-clojure.core/pop!
-clojure.core/dissoc!
-clojure.core/disj!

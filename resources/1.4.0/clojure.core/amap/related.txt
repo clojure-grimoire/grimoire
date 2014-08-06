@@ -1,2 +1,0 @@
-clojure.core/areduce
-clojure.core/map

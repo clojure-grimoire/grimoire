@@ -1,4 +1,4 @@
-Execute the body as a pretty printing logical block with output to *out* which 
+  Execute the body as a pretty printing logical block with output to *out* which 
 must be a pretty printing writer. When used from pprint or cl-format, this can be 
 assumed. 
 

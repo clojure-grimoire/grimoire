@@ -1,1 +1,1 @@
-Creates a new vector containing the contents of coll.
+  Creates a new vector containing the contents of coll.

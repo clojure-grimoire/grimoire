@@ -1,1 +1,1 @@
-Returns true if n is a Ratio
+  Returns true if n is a Ratio

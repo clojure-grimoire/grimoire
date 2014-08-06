@@ -1,1 +1,1 @@
-Coerce to char
+  Coerce to char

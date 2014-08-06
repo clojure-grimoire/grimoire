@@ -1,4 +1,4 @@
-Adds a watch function to an agent/atom/var/ref reference. The watch
+  Adds a watch function to an agent/atom/var/ref reference. The watch
   fn must be a fn of 4 args: a key, the reference, its old-state, its
   new-state. Whenever the reference's state might have been changed,
   any registered watches will have their functions called. The watch fn

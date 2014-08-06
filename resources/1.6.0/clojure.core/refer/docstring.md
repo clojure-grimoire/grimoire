@@ -1,4 +1,4 @@
-refers to all public vars of ns, subject to filters.
+  refers to all public vars of ns, subject to filters.
   filters can include at most one each of:
 
   :exclude list-of-symbols

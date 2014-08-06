@@ -1,4 +1,4 @@
-A macro that expands into an extend call. Useful when you are
+  A macro that expands into an extend call. Useful when you are
   supplying the definitions explicitly inline, extend-type
   automatically creates the maps required by extend.  Propagates the
   class as a type hint on the first argument of all fns.

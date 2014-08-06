@@ -1,4 +1,0 @@
-clojure.core/sorted-set-by
-clojure.core/subseq
-clojure.core/rsubseq
-clojure.core/sorted-map

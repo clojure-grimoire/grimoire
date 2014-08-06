@@ -1,1 +1,1 @@
-Returns a Symbol with the given namespace and name.
+  Returns a Symbol with the given namespace and name.

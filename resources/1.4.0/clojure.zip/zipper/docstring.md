@@ -1,4 +1,4 @@
-Creates a new zipper structure. 
+  Creates a new zipper structure. 
 
   branch? is a fn that, given a node, returns true if can have
   children, even if it currently doesn't.

@@ -1,2 +1,0 @@
-clojure.core/printf
-clojure.core/format

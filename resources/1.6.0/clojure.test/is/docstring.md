@@ -1,4 +1,4 @@
-Generic assertion macro.  'form' is any predicate test.
+  Generic assertion macro.  'form' is any predicate test.
   'msg' is an optional message to attach to the assertion.
   
   Example: (is (= 4 (+ 2 2)) "Two plus two should be 4")

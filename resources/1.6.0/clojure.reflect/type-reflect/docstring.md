@@ -1,4 +1,4 @@
-Alpha - subject to change.
+  Alpha - subject to change.
    Reflect on a typeref, returning a map with :bases, :flags, and
   :members. In the discussion below, names are always Clojure symbols.
 

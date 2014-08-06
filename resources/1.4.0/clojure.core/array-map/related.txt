@@ -1,3 +1,0 @@
-clojure.core/assoc
-clojure.core/hash-map
-clojure.core/sorted-map

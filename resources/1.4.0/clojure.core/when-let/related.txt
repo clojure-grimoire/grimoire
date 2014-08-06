@@ -1,5 +1,0 @@
-clojure.core/if-let
-clojure.core/when
-clojure.core/when-not
-clojure.core/if
-clojure.core/when-first

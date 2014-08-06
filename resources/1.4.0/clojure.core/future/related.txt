@@ -1,7 +1,0 @@
-clojure.core/delay
-clojure.core/future?
-clojure.core/future-call
-clojure.core/future-cancel
-clojure.core/shutdown-agents
-clojure.core/promise
-clojure.core/realized?

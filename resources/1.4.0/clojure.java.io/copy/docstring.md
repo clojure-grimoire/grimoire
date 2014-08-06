@@ -1,4 +1,4 @@
-Copies input to output.  Returns nil or throws IOException.
+  Copies input to output.  Returns nil or throws IOException.
   Input may be an InputStream, Reader, File, byte[], or String.
   Output may be an OutputStream, Writer, or File.
 

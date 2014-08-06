@@ -1,2 +1,0 @@
-clojure.core/ns-aliases
-clojure.core/ns-unalias

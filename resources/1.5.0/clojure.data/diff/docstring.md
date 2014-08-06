@@ -1,4 +1,4 @@
-Recursively compares a and b, returning a tuple of
+  Recursively compares a and b, returning a tuple of
   [things-only-in-a things-only-in-b things-in-both].
   Comparison rules:
 

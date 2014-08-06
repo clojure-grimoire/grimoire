@@ -1,4 +1,4 @@
-Attempts to coerce its argument into an open java.io.OutputStream.
+  Attempts to coerce its argument into an open java.io.OutputStream.
    Default implementations always return a java.io.BufferedOutputStream.
 
    Default implementations are defined for OutputStream, File, URI, URL,

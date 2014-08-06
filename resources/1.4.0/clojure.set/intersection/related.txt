@@ -1,4 +1,0 @@
-clojure.set/union
-clojure.set/difference
-clojure.set/superset?
-clojure.set/project

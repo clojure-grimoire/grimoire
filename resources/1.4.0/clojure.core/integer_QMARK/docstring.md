@@ -1,1 +1,1 @@
-Returns true if n is an integer
+  Returns true if n is an integer

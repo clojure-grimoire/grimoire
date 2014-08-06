@@ -1,3 +1,0 @@
-clojure.core/pr
-clojure.core/read-string
-clojure.core/prn-str

@@ -1,4 +1,4 @@
-fnspec ==> (fname [params*] exprs) or (fname ([params*] exprs)+)
+  fnspec ==> (fname [params*] exprs) or (fname ([params*] exprs)+)
 
   Takes a vector of function specs and a body, and generates a set of
   bindings of functions to their names. All of the names are available

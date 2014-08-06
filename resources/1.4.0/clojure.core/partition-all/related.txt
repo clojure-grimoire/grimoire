@@ -1,2 +1,0 @@
-clojure.core/partition
-clojure.core/partition-by

@@ -1,2 +1,0 @@
-clojure.core/rand
-clojure.core/int

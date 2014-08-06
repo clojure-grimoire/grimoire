@@ -1,4 +1,4 @@
-Map from reader tag symbols to data reader Vars.
+  Map from reader tag symbols to data reader Vars.
 
   When Clojure starts, it searches for files named 'data_readers.clj'
   at the root of the classpath. Each such file must contain a literal

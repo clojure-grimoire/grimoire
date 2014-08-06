@@ -1,2 +1,0 @@
-clojure.core/remove-method
-clojure.core/methods

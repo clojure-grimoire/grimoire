@@ -1,4 +1,4 @@
-trampoline can be used to convert algorithms requiring mutual
+  trampoline can be used to convert algorithms requiring mutual
   recursion without stack consumption. Calls f with supplied args, if
   any. If f returns a fn, calls that fn with no arguments, and
   continues to repeat, until the return value is not a fn, then

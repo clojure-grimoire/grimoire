@@ -1,3 +1,0 @@
-clojure.core/class
-clojure.core/supers
-clojure.core/instance?

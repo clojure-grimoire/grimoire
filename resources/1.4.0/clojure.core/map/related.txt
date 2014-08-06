@@ -1,5 +1,0 @@
-clojure.core/map-indexed
-clojure.core/pmap
-clojure.core/amap
-clojure.core/mapcat
-clojure.core/keep

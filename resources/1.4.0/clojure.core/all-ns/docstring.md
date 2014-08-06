@@ -1,1 +1,1 @@
-Returns a sequence of all namespaces.
+  Returns a sequence of all namespaces.

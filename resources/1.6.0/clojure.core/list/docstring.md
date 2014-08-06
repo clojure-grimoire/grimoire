@@ -1,1 +1,1 @@
-Creates a new list containing the items.
+  Creates a new list containing the items.

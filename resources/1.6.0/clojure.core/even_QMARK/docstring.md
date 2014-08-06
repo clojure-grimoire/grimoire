@@ -1,1 +1,1 @@
-Returns true if n is even, throws an exception if n is not an integer
+  Returns true if n is even, throws an exception if n is not an integer

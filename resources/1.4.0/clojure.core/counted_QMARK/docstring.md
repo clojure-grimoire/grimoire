@@ -1,1 +1,1 @@
-Returns true if coll implements count in constant time
+  Returns true if coll implements count in constant time

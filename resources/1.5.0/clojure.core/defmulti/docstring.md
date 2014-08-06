@@ -1,4 +1,4 @@
-Creates a new multimethod with the associated dispatch function.
+  Creates a new multimethod with the associated dispatch function.
   The docstring and attribute-map are optional.
 
   Options are key-value pairs and may be one of:

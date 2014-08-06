@@ -1,1 +1,1 @@
-Returns true if the node at loc is a branch
+  Returns true if the node at loc is a branch

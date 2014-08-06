@@ -1,4 +1,0 @@
-clojure.core/file-seq
-clojure.java.io/reader
-clojure.java.io/writer
-clojure.java.io/delete-file

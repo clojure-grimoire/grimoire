@@ -1,1 +1,1 @@
-Given a multimethod, returns a map of dispatch values -> dispatch fns
+  Given a multimethod, returns a map of dispatch values -> dispatch fns

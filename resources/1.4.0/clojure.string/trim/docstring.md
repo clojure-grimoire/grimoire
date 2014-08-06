@@ -1,1 +1,1 @@
-Removes whitespace from both ends of string.
+  Removes whitespace from both ends of string.

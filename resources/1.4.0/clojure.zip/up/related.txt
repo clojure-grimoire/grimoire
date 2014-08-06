@@ -1,5 +1,0 @@
-clojure.zip/down
-clojure.zip/left
-clojure.zip/right
-clojure.zip/next
-clojure.zip/seq-zip

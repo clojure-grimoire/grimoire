@@ -1,4 +1,0 @@
-clojure.core/assoc-in
-clojure.core/update-in
-clojure.core/find
-clojure.core/get

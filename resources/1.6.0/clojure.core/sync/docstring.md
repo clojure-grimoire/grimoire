@@ -1,4 +1,4 @@
-transaction-flags => TBD, pass nil for now
+  transaction-flags => TBD, pass nil for now
 
   Runs the exprs (in an implicit do) in a transaction that encompasses
   exprs and any nested calls.  Starts a transaction if none is already

@@ -1,4 +1,0 @@
-clojure.core/with-redefs
-clojure.core/with-redefs-fn
-clojure.core/intern
-clojure.core/var

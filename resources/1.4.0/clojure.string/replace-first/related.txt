@@ -1,3 +1,0 @@
-clojure.string/replace
-clojure.core/re-pattern
-clojure.core/subs

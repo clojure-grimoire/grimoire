@@ -3,53 +3,70 @@
             [compojure.route :as route]
             [grimoire.web.util :as util]
             [grimoire.web.views :as views]
-            [ring.util.response :as response]))
+            [ring.util.response :as response]
+            [taoensso.timbre :as timbre :refer [info warn]]))
 
 (defroutes app
-  (GET "/" []
+  (GET "/" {uri :uri}
+       (info (pr-str {:uri uri :type :html}))
        (views/home-page))
 
-  (GET "/about" []
+  (GET "/about" {uri :uri}
+       (info (pr-str {:uri uri :type :html}))
        (views/markdown-page "about"))
 
-  (GET "/contributing" []
+  (GET "/contributing" {uri :uri}
+       (info (pr-str {:uri uri :type :html}))
        (views/markdown-page "contributing"))
 
-  (GET "/api" []
+  (GET "/api" {uri :uri}
+       (info (pr-str {:uri uri :type :html}))
        (views/markdown-page "API"))
 
   (route/resources "/public")
 
-  (GET "/:version/" [version]
-       (if (#{"1.4.0" "1.5.0" "1.6.0"} version)
-         (views/version-page version)
-         (views/error-unknown-version version)))
+  (context "/:version" [version]
+           (GET "/" {uri :uri}
+                (if (#{"1.4.0" "1.5.0" "1.6.0"} version)
+                  (do (info (pr-str {:uri uri :type :html}))
+                      (views/version-page version))
 
-  (GET "/:version/:namespace/" [version namespace]
-       (views/namespace-page-memo version namespace))
+                  (do (warn (pr-str {:uri uri}))
+                      (views/error-unknown-version version))))
 
-  (context "/:version/:namespace/:symbol/" [version namespace symbol]
+           (context "/:namespace" [namespace]
+                    (GET "/" {uri :uri}
+                         (do (info (pr-str {:uri uri :type :html}))
+                             (views/namespace-page-memo version namespace)))
 
-           (GET "/" {header-type :content-type
-                     {param-type :type} :params
-                     :as req}
-                (if (#{"catch" "finally"} symbol)
-                  (response/redirect (str "/" version "/clojure.core/try/"))
-                  (views/symbol-page version namespace symbol :html)))
+                    (context "/:symbol" [symbol]
+                             (GET "/" {header-type :content-type
+                                       {param-type :type} :params
+                                       :as req
+                                       uri :uri}
+                                  (let [type (or header-type param-type :html)]
+                                    (if (#{"catch" "finally"} symbol)
+                                      (response/redirect (str "/" version "/clojure.core/try/"))
+                                      (do (info (pr-str {:uri uri :type :html}))
+                                          (views/symbol-page version namespace symbol type)))))
 
-           (GET "/docstring" []
-                (util/resource-file-contents
-                 (str "resources/" version "/" namespace "/" symbol "/docstring.md")))
+                             (GET "/docstring" {uri :uri}
+                                  (do (info (pr-str {:uri uri :type :text}))
+                                      (slurp (str "resources/" version "/" namespace "/" symbol "/docstring.md"))))
+                             
+                             (GET "/extended-docstring" {uri :uri}
+                                  (do (info (pr-str {:uri uri :type :text}))
+                                      (slurp (str "resources/" version "/" namespace "/" symbol "/extended-docstring.md"))))
+                             
+                             (GET "/related" {uri :uri}
+                                  (do (info (pr-str {:uri uri :type :text}))
+                                      (slurp (str "resources/" version "/" namespace "/" symbol "/related.txt"))))
+                             
+                             (GET "/examples" {uri :uri}
+                                  (do (info (pr-str {:uri uri :type :text}))
+                                      (views/all-examples version namespace symbol :text))))))
 
-           (GET "/extended-docstring" []
-                (util/resource-file-contents
-                 (str "resources/" version "/" namespace "/" symbol "/extended-docstring.md")))
-
-           (GET "/related" []
-                (util/resource-file-contents
-                 (str "resources/" version "/" namespace "/" symbol "/related.txt")))
-
-           (GET "/examples" []
-                (views/all-examples version namespace symbol :text)))
-
-  (route/not-found (views/error-404)))
+  (route/not-found
+   (fn [{uri :uri}]
+     (warn (pr-str {:uri uri}))
+     (views/error-404))))

@@ -1,2 +1,0 @@
-clojure.string/upper-case
-clojure.string/lower-case

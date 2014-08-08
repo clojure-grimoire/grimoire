@@ -1,4 +1,4 @@
-Defaults to true (or value specified by system property, see below)
+  Defaults to true (or value specified by system property, see below)
   ***This setting implies that the full power of the reader is in play,
   including syntax that can cause code to execute. It should never be
   used with untrusted sources. See also: clojure.edn/read.***

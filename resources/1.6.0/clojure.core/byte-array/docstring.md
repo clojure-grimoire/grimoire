@@ -1,1 +1,1 @@
-Creates an array of bytes
+  Creates an array of bytes

@@ -1,1 +1,1 @@
-Creates an array of booleans
+  Creates an array of booleans

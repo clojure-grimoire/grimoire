@@ -1,2 +1,0 @@
-clojure.core/pmap
-clojure.core/future

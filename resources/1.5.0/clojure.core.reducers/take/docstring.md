@@ -1,1 +1,1 @@
-Ends the reduction of coll after consuming n values.
+  Ends the reduction of coll after consuming n values.

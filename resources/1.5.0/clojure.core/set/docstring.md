@@ -1,1 +1,1 @@
-Returns a set of the distinct elements of coll.
+  Returns a set of the distinct elements of coll.

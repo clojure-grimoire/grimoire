@@ -1,1 +1,1 @@
-Writes a platform-specific newline to *out*
+  Writes a platform-specific newline to *out*

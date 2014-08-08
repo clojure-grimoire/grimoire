@@ -1,4 +1,4 @@
-Also reader macro: @ref/@agent/@var/@atom/@delay/@future/@promise. Within a transaction,
+  Also reader macro: @ref/@agent/@var/@atom/@delay/@future/@promise. Within a transaction,
   returns the in-transaction-value of ref, else returns the
   most-recently-committed value of ref. When applied to a var, agent
   or atom, returns its current state. When applied to a delay, forces

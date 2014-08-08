@@ -1,3 +1,0 @@
-clojure.core/pop-thread-bindings
-clojure.core/binding
-clojure.core/with-bindings

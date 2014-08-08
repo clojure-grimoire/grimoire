@@ -1,1 +1,1 @@
-same as (ns-resolve *ns* symbol) or (ns-resolve *ns* &env symbol)
+  same as (ns-resolve *ns* symbol) or (ns-resolve *ns* &env symbol)

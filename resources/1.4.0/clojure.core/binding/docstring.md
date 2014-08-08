@@ -1,4 +1,4 @@
-binding => var-symbol init-expr
+  binding => var-symbol init-expr
 
   Creates new bindings for the (already-existing) vars, with the
   supplied initial values, executes the exprs in an implicit do, then

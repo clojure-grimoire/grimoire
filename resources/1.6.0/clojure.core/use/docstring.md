@@ -1,4 +1,4 @@
-Like 'require, but also refers to each lib's namespace using
+  Like 'require, but also refers to each lib's namespace using
   clojure.core/refer. Use :use in the ns macro in preference to calling
   this directly.
 

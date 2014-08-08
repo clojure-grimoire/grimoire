@@ -1,1 +1,1 @@
-Convert a Clojure namespace name to a legal Java package name.
+  Convert a Clojure namespace name to a legal Java package name.

@@ -1,1 +1,1 @@
-Coerce to byte
+  Coerce to byte

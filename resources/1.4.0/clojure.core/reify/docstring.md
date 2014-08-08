@@ -1,4 +1,4 @@
-reify is a macro with the following structure:
+  reify is a macro with the following structure:
 
  (reify options* specs*)
   

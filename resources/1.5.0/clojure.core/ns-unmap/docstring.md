@@ -1,1 +1,1 @@
-Removes the mappings for the symbol from the namespace.
+  Removes the mappings for the symbol from the namespace.

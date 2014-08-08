@@ -1,9 +1,0 @@
-clojure.core/set-error-handler!
-clojure.core/send
-clojure.core/send-off
-clojure.core/release-pending-sends
-clojure.core/agent-error
-clojure.core/restart-agent
-clojure.core/add-watch
-clojure.core/set-error-mode!
-clojure.core/set-validator!

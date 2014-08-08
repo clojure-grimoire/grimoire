@@ -1,4 +1,0 @@
-clojure.core/cons
-clojure.core/into
-clojure.core/peek
-clojure.core/pop

@@ -1,3 +1,0 @@
-clojure.core/ref
-clojure.core/ref-max-history
-clojure.core/ref-history-count

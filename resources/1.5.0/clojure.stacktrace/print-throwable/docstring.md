@@ -1,1 +1,1 @@
-Prints the class and message of a Throwable.
+  Prints the class and message of a Throwable.

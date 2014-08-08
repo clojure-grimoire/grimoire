@@ -1,1 +1,1 @@
-Returns true if x is a future
+  Returns true if x is a future

@@ -1,4 +1,4 @@
-Sets *ns* to the namespace named by name (unevaluated), creating it
+  Sets *ns* to the namespace named by name (unevaluated), creating it
   if needed.  references can be zero or more of: (:refer-clojure ...)
   (:require ...) (:use ...) (:import ...) (:load ...) (:gen-class)
   with the syntax of refer-clojure/require/use/import/load/gen-class

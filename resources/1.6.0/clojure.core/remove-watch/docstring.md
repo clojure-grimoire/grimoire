@@ -1,1 +1,1 @@
-Removes a watch (set by add-watch) from a reference
+  Removes a watch (set by add-watch) from a reference

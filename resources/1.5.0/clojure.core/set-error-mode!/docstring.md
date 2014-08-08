@@ -1,4 +1,4 @@
-Sets the error-mode of agent a to mode-keyword, which must be
+  Sets the error-mode of agent a to mode-keyword, which must be
   either :fail or :continue.  If an action being run by the agent
   throws an exception or doesn't pass the validator fn, an
   error-handler may be called (see set-error-handler!), after which,

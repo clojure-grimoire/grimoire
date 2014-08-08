@@ -1,2 +1,0 @@
-clojure.core/conj
-clojure.core/into

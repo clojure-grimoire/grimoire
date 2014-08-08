@@ -1,4 +1,0 @@
-clojure.core/ns-map
-clojure.core/ns-publics
-clojure.core/ns-aliases
-clojure.core/ns-refers

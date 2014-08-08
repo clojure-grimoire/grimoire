@@ -1,1 +1,1 @@
-Coerce argument to a URL.
+  Coerce argument to a URL.

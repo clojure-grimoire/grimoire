@@ -2,7 +2,8 @@
   (:require [clojure.java.io :as io]
             [clojure.string :as string]
             [markdown.core :as md]
-            [me.raynes.conch :refer [let-programs]]))
+            [me.raynes.conch :refer [let-programs]])
+  (:import (java.net URLEncoder)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Cheatsheet
@@ -74,3 +75,11 @@
        (concat ["resources"])
        (apply dir-list-as-strings)
        (map prepare-path)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; URL encoding
+
+(defn url-encode
+  "Returns an UTF-8 URL encoded version of the given string."
+  [unencoded]
+  (URLEncoder/encode unencoded "UTF-8"))

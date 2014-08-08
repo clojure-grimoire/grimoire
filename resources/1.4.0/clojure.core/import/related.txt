@@ -1,3 +1,0 @@
-clojure.core/require
-clojure.core/use
-clojure.core/ns

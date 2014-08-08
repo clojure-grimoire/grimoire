@@ -1,5 +1,0 @@
-clojure.zip/down
-clojure.zip/up
-clojure.zip/right
-clojure.zip/left
-clojure.zip/children

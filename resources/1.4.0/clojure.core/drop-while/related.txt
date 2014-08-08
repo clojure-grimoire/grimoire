@@ -1,2 +1,0 @@
-clojure.core/take-while
-clojure.core/split-with

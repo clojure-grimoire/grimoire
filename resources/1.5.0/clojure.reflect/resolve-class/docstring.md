@@ -1,1 +1,1 @@
-Given a class name, return that typeref's class bytes as an InputStream.
+  Given a class name, return that typeref's class bytes as an InputStream.

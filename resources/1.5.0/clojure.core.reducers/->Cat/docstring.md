@@ -1,1 +1,1 @@
-Positional factory function for class clojure.core.reducers.Cat.
+  Positional factory function for class clojure.core.reducers.Cat.

@@ -1,1 +1,1 @@
-Return true if x is a String
+  Return true if x is a String

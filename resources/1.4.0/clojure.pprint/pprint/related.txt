@@ -1,2 +1,0 @@
-clojure.pprint.pprint-base/pp
-clojure.pprint.print-table/print-table

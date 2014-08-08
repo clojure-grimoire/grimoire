@@ -1,2 +1,0 @@
-clojure.core/create-ns
-clojure.core/find-ns

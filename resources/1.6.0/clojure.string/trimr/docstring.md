@@ -1,1 +1,1 @@
-Removes whitespace from the right side of string.
+  Removes whitespace from the right side of string.

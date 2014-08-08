@@ -1,3 +1,0 @@
-clojure.core/repeat
-clojure.core/for
-clojure.core/doseq

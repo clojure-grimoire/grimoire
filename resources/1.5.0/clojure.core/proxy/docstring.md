@@ -1,4 +1,4 @@
-class-and-interfaces - a vector of class names
+  class-and-interfaces - a vector of class names
 
   args - a (possibly empty) vector of arguments to the superclass
   constructor.

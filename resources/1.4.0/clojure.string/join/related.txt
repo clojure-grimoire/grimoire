@@ -1,3 +1,0 @@
-clojure.core/split-at
-clojure.core/split-with
-clojure.core/interpose

@@ -1,2 +1,0 @@
-clojure.core/lazy-seq
-clojure.core/concat

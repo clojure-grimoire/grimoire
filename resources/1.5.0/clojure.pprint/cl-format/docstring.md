@@ -1,4 +1,4 @@
-An implementation of a Common Lisp compatible format function. cl-format formats its
+  An implementation of a Common Lisp compatible format function. cl-format formats its
 arguments to an output stream or string based on the format control string given. It 
 supports sophisticated formatting of structured data.
 

@@ -1,1 +1,1 @@
-Returns the error-mode of agent a.  See set-error-mode!
+  Returns the error-mode of agent a.  See set-error-mode!

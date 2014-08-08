@@ -1,4 +1,0 @@
-clojure.core/subs
-clojure.string/replace
-clojure.core/re-seq
-clojure.string/split-lines

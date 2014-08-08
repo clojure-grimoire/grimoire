@@ -1,4 +1,0 @@
-clojure.core/recur
-clojure.core/trampoline
-clojure.core/when
-clojure.core/while

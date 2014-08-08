@@ -1,4 +1,0 @@
-clojure.core/doall
-clojure.core/dorun
-clojure.core/for
-clojure.core/dotimes

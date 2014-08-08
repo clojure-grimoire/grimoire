@@ -1,3 +1,0 @@
-clojure.core/aclone
-clojure.core/get
-clojure.core/nth

@@ -1,7 +1,0 @@
-clojure.core/alength
-clojure.core/char-array
-clojure.core/int-array
-clojure.core/long-array
-clojure.core/into-array
-clojure.core/make-array
-clojure.core/to-array-2d

@@ -1,1 +1,1 @@
-Returns true if n is a floating point number
+  Returns true if n is a floating point number

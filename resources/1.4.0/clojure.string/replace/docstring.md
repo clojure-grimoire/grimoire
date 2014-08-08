@@ -1,4 +1,4 @@
-Replaces all instance of match with replacement in s.
+  Replaces all instance of match with replacement in s.
 
    match/replacement can be:
 

@@ -1,1 +1,1 @@
-Coerce to BigDecimal
+  Coerce to BigDecimal

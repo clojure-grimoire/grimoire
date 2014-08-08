@@ -1,5 +1,0 @@
-clojure.xml/emit-element
-clojure.core/struct
-clojure.core/struct-map
-clojure.xml/parse
-clojure.core/with-out-str

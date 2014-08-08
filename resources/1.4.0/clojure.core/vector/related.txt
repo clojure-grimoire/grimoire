@@ -1,5 +1,0 @@
-clojure.core/vec
-clojure.core/vector?
-clojure.gvec/vector-of
-clojure.core/pop
-clojure.core/into

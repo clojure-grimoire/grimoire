@@ -1,3 +1,0 @@
-clojure.core/printf
-clojure.pprint.cl-format/cl-format
-clojure.pprint.print-table/print-table

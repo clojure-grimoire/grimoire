@@ -1,1 +1,1 @@
-Returns a map of the public intern mappings for the namespace.
+  Returns a map of the public intern mappings for the namespace.

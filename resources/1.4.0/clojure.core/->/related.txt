@@ -1,3 +1,0 @@
-clojure.contrib.core/-?>
-clojure.core/->>
-clojure.contrib.core/-?>>

@@ -1,2 +1,0 @@
-clojure.core/macroexpand
-clojure.walk/macroexpand-all

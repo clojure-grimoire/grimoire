@@ -1,1 +1,1 @@
-Returns true if x satisfies the protocol
+  Returns true if x satisfies the protocol

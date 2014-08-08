@@ -1,4 +1,4 @@
-Implementations of protocol methods can be provided using the extend construct:
+  Implementations of protocol methods can be provided using the extend construct:
 
   (extend AType
     AProtocol

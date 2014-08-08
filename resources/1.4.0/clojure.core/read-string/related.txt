@@ -1,5 +1,0 @@
-clojure.core/pr-str
-clojure.core/str
-clojure.core/read
-clojure.core/load-string
-clojure.core/*read-eval*

@@ -1,3 +1,0 @@
-clojure.repl/doc
-clojure.repl/source
-clojure.repl/apropos

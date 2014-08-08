@@ -1,4 +1,4 @@
-Takes a binary predicate, an expression, and a set of clauses.
+  Takes a binary predicate, an expression, and a set of clauses.
   Each clause can take the form of either:
 
   test-expr result-expr

@@ -1,2 +1,2 @@
-DEPRECATED: Use 'repeat' instead.
+  DEPRECATED: Use 'repeat' instead.
    Returns a lazy seq of n xs.

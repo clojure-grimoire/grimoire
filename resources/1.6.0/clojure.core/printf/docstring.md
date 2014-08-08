@@ -1,1 +1,1 @@
-Prints formatted output, as per format
+  Prints formatted output, as per format

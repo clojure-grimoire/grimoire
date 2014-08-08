@@ -1,4 +1,4 @@
-A protocol is a named set of named methods and their signatures:
+  A protocol is a named set of named methods and their signatures:
   (defprotocol AProtocolName
 
     ;optional doc string

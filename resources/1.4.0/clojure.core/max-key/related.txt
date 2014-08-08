@@ -1,2 +1,0 @@
-clojure.core/max
-clojure.core/min-key

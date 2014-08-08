@@ -1,3 +1,0 @@
-clojure.core/int
-clojure.core/longs
-clojure.core/long-array

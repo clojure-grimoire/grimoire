@@ -1,3 +1,0 @@
-clojure.core/assoc-in
-clojure.core/dissoc
-clojure.core/merge

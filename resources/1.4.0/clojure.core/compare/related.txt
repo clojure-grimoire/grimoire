@@ -1,3 +1,0 @@
-clojure.core/sort-by
-clojure.core/sorted-set-by
-clojure.core/sorted-map-by

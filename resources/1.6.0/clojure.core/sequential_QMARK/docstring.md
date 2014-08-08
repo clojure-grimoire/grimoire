@@ -1,1 +1,1 @@
-Returns true if coll implements Sequential
+  Returns true if coll implements Sequential

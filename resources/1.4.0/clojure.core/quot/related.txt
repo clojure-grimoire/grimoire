@@ -1,2 +1,0 @@
-clojure.core/rem
-clojure.core/mod

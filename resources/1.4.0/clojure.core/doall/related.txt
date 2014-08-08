@@ -1,2 +1,0 @@
-clojure.core/dorun
-clojure.core/doseq

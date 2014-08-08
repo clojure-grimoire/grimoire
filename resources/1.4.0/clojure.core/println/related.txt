@@ -1,3 +1,0 @@
-clojure.core/prn
-clojure.core/print
-clojure.core/println-str

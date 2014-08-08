@@ -1,2 +1,0 @@
-clojure.core/letfn
-clojure.core/if-let

@@ -1,4 +1,4 @@
-binding => var-symbol temp-value-expr
+  binding => var-symbol temp-value-expr
 
   Temporarily redefines Vars while executing the body.  The
   temp-value-exprs will be evaluated and each resulting value will

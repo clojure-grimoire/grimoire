@@ -1,2 +1,0 @@
-clojure.core/pvalues
-clojure.core/future

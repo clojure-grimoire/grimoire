@@ -1,1 +1,1 @@
-Removes the alias for the symbol from the namespace.
+  Removes the alias for the symbol from the namespace.

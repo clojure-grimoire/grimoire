@@ -1,4 +1,4 @@
-Print a conditional newline to a pretty printing stream. kind specifies if the 
+  Print a conditional newline to a pretty printing stream. kind specifies if the 
 newline is :linear, :miser, :fill, or :mandatory. 
 
 This function is intended for use when writing custom dispatch functions.

@@ -1,1 +1,1 @@
-Return a random permutation of coll
+  Return a random permutation of coll

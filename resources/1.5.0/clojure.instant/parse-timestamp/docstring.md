@@ -1,4 +1,4 @@
-Parse a string containing an RFC3339-like like timestamp.
+  Parse a string containing an RFC3339-like like timestamp.
 
 The function new-instant is called with the following arguments.
 

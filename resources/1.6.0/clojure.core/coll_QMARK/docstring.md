@@ -1,1 +1,1 @@
-Returns true if x implements IPersistentCollection
+  Returns true if x implements IPersistentCollection

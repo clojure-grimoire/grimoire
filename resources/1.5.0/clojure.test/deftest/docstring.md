@@ -1,4 +1,4 @@
-Defines a test function with no arguments.  Test functions may call
+  Defines a test function with no arguments.  Test functions may call
   other tests, so tests may be composed.  If you compose tests, you
   should also define a function named test-ns-hook; run-tests will
   call test-ns-hook instead of testing all vars.

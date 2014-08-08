@@ -1,4 +1,4 @@
-When compiling, generates compiled bytecode for an interface with
+  When compiling, generates compiled bytecode for an interface with
   the given package-qualified :name (which, as all names in these
   parameters, can be a string or symbol), and writes the .class file
   to the *compile-path* directory.  When not compiling, does nothing.

@@ -1,4 +1,4 @@
-Factory functions that create ready-to-use, buffered versions of
+  Factory functions that create ready-to-use, buffered versions of
    the various Java I/O stream types, on top of anything that can
    be unequivocally converted to the requested kind of stream.
 

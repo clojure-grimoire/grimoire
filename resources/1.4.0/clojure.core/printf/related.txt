@@ -1,2 +1,0 @@
-clojure.core/format
-clojure.pprint.cl-format/cl-format

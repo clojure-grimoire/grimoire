@@ -1,1 +1,1 @@
-Coerce between various 'resource-namish' things.
+  Coerce between various 'resource-namish' things.

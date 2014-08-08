@@ -1,4 +1,0 @@
-clojure.core/def
-clojure.core/defn-
-clojure.core/defmacro
-clojure.core/fn

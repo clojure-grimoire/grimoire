@@ -1,2 +1,0 @@
-clojure.test/join-fixtures
-clojure.test/compose-fixtures

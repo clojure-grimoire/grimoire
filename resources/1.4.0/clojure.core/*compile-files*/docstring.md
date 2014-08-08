@@ -1,1 +1,1 @@
-Set to true when compiling files, false otherwise.
+  Set to true when compiling files, false otherwise.

@@ -1,2 +1,0 @@
-clojure.core/ns
-clojure.core/name

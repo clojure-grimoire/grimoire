@@ -1,3 +1,0 @@
-clojure.core/doseq
-clojure.core/doall
-clojure.core/recur

@@ -1,3 +1,0 @@
-clojure.core/when
-clojure.core/when-let
-clojure.core/if

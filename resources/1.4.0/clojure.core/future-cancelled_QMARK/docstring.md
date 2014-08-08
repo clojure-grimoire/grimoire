@@ -1,1 +1,1 @@
-Returns true if future f is cancelled
+  Returns true if future f is cancelled

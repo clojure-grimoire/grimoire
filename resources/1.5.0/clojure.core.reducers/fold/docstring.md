@@ -1,4 +1,4 @@
-Reduces a collection using a (potentially parallel) reduce-combine
+  Reduces a collection using a (potentially parallel) reduce-combine
   strategy. The collection is partitioned into groups of approximately
   n (default 512), each of which is reduced with reducef (with a seed
   value obtained by calling (combinef) with no arguments). The results

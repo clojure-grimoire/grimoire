@@ -1,3 +1,0 @@
-clojure.core/byte-array
-clojure.core/bytes
-clojure.core/short

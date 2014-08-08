@@ -1,1 +1,1 @@
-Returns a lazy sequence of x, (f x), (f (f x)) etc. f must be free of side-effects
+  Returns a lazy sequence of x, (f x), (f (f x)) etc. f must be free of side-effects

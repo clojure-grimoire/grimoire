@@ -1,2 +1,0 @@
-clojure.core/hash-map
-clojure.core/get

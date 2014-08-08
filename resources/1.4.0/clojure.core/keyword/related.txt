@@ -1,5 +1,0 @@
-clojure.core/name
-clojure.core/keyword?
-clojure.core/namespace
-clojure.core/find-keyword
-clojure.core/symbol

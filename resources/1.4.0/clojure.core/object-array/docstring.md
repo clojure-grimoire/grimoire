@@ -1,1 +1,1 @@
-Creates an array of objects
+  Creates an array of objects

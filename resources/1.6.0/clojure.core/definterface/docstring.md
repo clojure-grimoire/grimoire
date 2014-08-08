@@ -1,4 +1,4 @@
-Creates a new Java interface with the given name and method sigs.
+  Creates a new Java interface with the given name and method sigs.
   The method return types and parameter types may be specified with type hints,
   defaulting to Object if omitted.
 

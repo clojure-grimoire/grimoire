@@ -1,3 +1,0 @@
-clojure.core-deftype/deftype
-clojure.core/defstruct
-clojure.core-deftype/defprotocol

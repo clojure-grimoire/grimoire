@@ -1,1 +1,1 @@
-Return a set that is the intersection of the input sets
+  Return a set that is the intersection of the input sets

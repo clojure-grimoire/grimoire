@@ -1,4 +1,0 @@
-clojure.core/var
-clojure.core/meta
-clojure.core/assert
-clojure.test/with-test

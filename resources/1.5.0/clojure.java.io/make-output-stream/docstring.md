@@ -1,1 +1,1 @@
-Creates a BufferedOutputStream. See also IOFactory docs.
+  Creates a BufferedOutputStream. See also IOFactory docs.

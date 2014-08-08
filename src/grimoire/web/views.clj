@@ -248,7 +248,10 @@
          (when-let [source (util/clojure-file source-file)]
            (list
             [:h2 "Source"]
-            [:div source])))
+            [:div source]))
+
+         [:script {:src "/public/jquery.js" :type "text/javascript"}]
+         [:script {:src "/public/fold.js" :type "text/javascript"}])
 
       (:text :text/plain)
       ,,(let [symbol-file-path (partial str "resources/" version "/" namespace "/" symbol "/")

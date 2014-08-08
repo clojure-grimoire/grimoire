@@ -172,13 +172,15 @@
       ,,(for [v (clojure-example-versions top-version)]
           (let [examples-dir (str "resources/" v "/" path)
                 examples     (util/dir-list-as-strings examples-dir)]
-            (list
-             [:div.section
-              [:h3.heading "Examples from Clojure " v " " [:span.unhide "+"]]
-              [:div.autofold.prefold
-               (map-indexed example examples)
-               [:a {:href (gh/->new-url site-config "develop" examples-dir)}
-                "Contribute an example!"]]])))
+            (when (or (not (empty? examples))
+                      (= "1.6.0" v))
+              (list
+               [:div.section
+                [:h3.heading "Examples from Clojure " v " " [:span.unhide "+"]]
+                [:div.autofold.prefold
+                 (map-indexed example examples)
+                 [:a {:href (gh/->new-url site-config "develop" examples-dir)}
+                  "Contribute an example!"]]]))))
 
       :text
       ,,(->> (for [v (clojure-example-versions top-version)]

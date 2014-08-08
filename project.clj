@@ -1,4 +1,4 @@
-(defproject grimoire "0.1.0-SNAPSHOT"
+(defproject grimoire (slurp "VERSION")
   :description "THIS SHOULD NEVER BE DEPLOYED"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}

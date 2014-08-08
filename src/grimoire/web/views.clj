@@ -137,7 +137,7 @@
                 links]])))))
 
      [:script {:src "/public/jquery.js" :type "text/javascript"}]
-     [:script {:src "/public/namespace.js" :type "text/javascript"}])))
+     [:script {:src "/public/fold.js" :type "text/javascript"}])))
 
 (def namespace-page-memo
   (memoize namespace-page))

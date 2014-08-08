@@ -199,6 +199,7 @@
   [version namespace symbol type]
   (let [symbol-file-path (partial str "resources/" version "/" namespace "/" symbol "/")
         name-file        (-> "name.txt"              symbol-file-path)
+        type-file        (-> "type.txt"              symbol-file-path)
         arities-file     (-> "arities.txt"           symbol-file-path)
         docstring-file   (-> "docstring.md"          symbol-file-path)
         comdoc-file      (-> "extended-docstring.md" symbol-file-path)
@@ -233,11 +234,13 @@
             comdoc))
 
          (when-let [examples (all-examples version namespace symbol :html)]
-           (list
-            [:h2 "Examples"]
-            examples))
-
-         [:h2 "Uses"]
+           [:div.section
+            [:h2.heading "Examples " [:span.unhide "+"]]
+            [:div.autofold.prefold
+             examples
+             (when-not (= "special" (slurp type-file))
+               [:a {:href (str "http://crossclj.info/fun/" namespace "/" (util/url-encode name) ".html")}
+                [:h3 "Uses on crossclj"]])]])
 
          (when-let [related (line-seq (io/reader related-file))]
            (list [:h2 "Related"]

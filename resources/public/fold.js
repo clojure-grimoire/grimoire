@@ -2,10 +2,10 @@
     $(".section .autofold.prefold").hide();
     $(".section .heading").click(
 	function(){
-	    $(this).parent().find(".autofold").toggle("slow");
+	    $(this).parent().children(".autofold").toggle("slow");
 	    
- 	    v=$(this).find("span.unhide");
-	    u=$(this).find("span.hide");
+ 	    v=$(this).children("span.unhide");
+	    u=$(this).children("span.hide");
 
 	    v.removeClass("unhide")
 		.addClass("hide")

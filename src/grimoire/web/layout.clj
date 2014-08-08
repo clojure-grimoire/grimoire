@@ -1,13 +1,13 @@
 (ns grimoire.web.layout
   (:require [hiccup.page :as page]))
 
-(defn header [{:keys [baseurl title base-title]}]
+(defn header [{:keys [baseurl] :as c}]
   [:head
    [:link {:rel "profile" :href "http://gmpg.org/xfn/11"}]
    [:meta {:content "IE=edge" :http-equiv "X-UA-Compatible"}]
    [:meta {:content "text/html; charset=utf-8" :http-equiv "content-type"}]
    [:meta {:content "width=device-width initial-scale=1.0 maximum-scale=1":name "viewport"}]
-   [:title (when title (str title " &middot; ")) base-title]
+   [:title (-> c :style :title)]
    (page/include-css
     (str baseurl "public/css/poole.css")
     (str baseurl "public/css/syntax.css")
@@ -17,11 +17,11 @@
    [:link {:href (str baseurl "public/apple-touch-icon-precomposed.png") :sizes "144x144" :rel "apple-touch-icon-precomposed"}]
    [:link {:href (str baseurl "public/favicon.ico") :rel "shortcut icon"}]])
 
-(defn masthead [{:keys [baseurl base-title]}]
+(defn masthead [{:keys [baseurl] :as c}]
   [:div.masthead
    [:div.container
     [:h3.masthead-title
-     [:a {:title "Home" :href baseurl} base-title]
+     [:a {:title "Home" :href baseurl} (-> c :style :title)]
      [:small]]]])
 
 (defn sidebar [{:keys [description author version year]}]

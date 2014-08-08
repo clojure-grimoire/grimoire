@@ -7,6 +7,14 @@
    [:meta {:content "IE=edge" :http-equiv "X-UA-Compatible"}]
    [:meta {:content "text/html; charset=utf-8" :http-equiv "content-type"}]
    [:meta {:content "width=device-width initial-scale=1.0 maximum-scale=1":name "viewport"}]
+   (when-let [pg (:page c)]
+     (list
+      (when-let [description (:description pg)]
+        [:meta {:name "description"
+                :content description}])
+      (when-let [summary (:summary pg)]
+        [:meta {:name "summary"
+                :content summary}])))
    [:title (-> c :style :title)]
    (page/include-css
     (str baseurl "public/css/poole.css")

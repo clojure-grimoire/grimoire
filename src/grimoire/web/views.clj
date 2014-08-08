@@ -70,7 +70,8 @@
 (defn version-page [version]
   (let [rel-notes-file (str "resources/" version "/release-notes.md")]
     (layout
-     site-config
+     (assoc site-config
+       :page {:description (str "Clojure " version " release information")})
      [:h1 {:class "page-title"}
       [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]]
 
@@ -103,7 +104,8 @@
 (defn namespace-page [version namespace]
   (let [ns-notes-file (str "resources/" version "/" namespace "/ns-notes.md")]
     (layout
-     site-config
+     (assoc site-config
+       :page {:description (str "Clojure " version " " namespace " namespace symbols list")})
      [:h1 {:class "page-title"}
       [:span {:style "display:inline-block;"}
        [:a {:href "../"} "Clojure " version]
@@ -209,7 +211,10 @@
     (case type
       (:html :text/html)
       ,,(layout
-         site-config
+         (assoc site-config
+           :page {:description (str "Clojure " version " " namespace "/" symbol
+                                    " documentation and examples")
+                  :summary (slurp docstring-file)})
          [:h1 {:class "page-title"}
           [:span {:style "display:inline-block;"}
            [:a {:href "../../"} "Clojure " version]

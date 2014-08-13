@@ -3,6 +3,7 @@ clojure.core.protocols
 clojure.core.reducers
 clojure.data
 clojure.edn
+clojure.inspector
 clojure.instant
 clojure.pprint
 clojure.reflect

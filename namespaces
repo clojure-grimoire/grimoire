@@ -5,6 +5,7 @@ clojure.data
 clojure.edn
 clojure.inspector
 clojure.instant
+clojure.main
 clojure.pprint
 clojure.reflect
 clojure.repl

@@ -61,9 +61,9 @@
         (spit doc-file doc)))
 
     ;; touch extended docstring
-    ;; (let [extended-doc-file (io/file sym-dir "extended-docstring.md")]
-    ;;   (when-not (.exists extended-doc-file)
-    ;;     (spit extended-doc-file "")))
+    (let [extended-doc-file (io/file sym-dir "extended-docstring.md")]
+      (when-not (.exists extended-doc-file)
+        (spit extended-doc-file "No user documentation! Care to add some?\n")))
 
     ;; write source file
     (when src

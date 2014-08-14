@@ -14,16 +14,16 @@
 
 ;; Intended file structure output
 ;;--------------------------------------------------------------------
-;; /$VERSION/release-notes.md
-;; /$VERSION/$NAMESPACE/ns-notes.md
-;; /$VERSION/$NAMESPACE/$SYMBOL/name.txt
-;; /$VERSION/$NAMESPACE/$SYMBOL/type.txt
-;; /$VERSION/$NAMESPACE/$SYMBOL/arities.txt
-;; /$VERSION/$NAMESPACE/$SYMBOL/docstring.md
-;; /$VERSION/$NAMESPACE/$SYMBOL/extended-docstring.md
-;; /$VERSION/$NAMESPACE/$SYMBOL/source.clj
-;; /$VERSION/$NAMESPACE/$SYMBOL/related.txt
-;; /$VERSION/$NAMESPACE/$SYMBOL/examples/$EXAMPLE_ID.clj
+;; /$ARTIFACT/$VERSION/release-notes.md
+;; /$ARTIFACT/$VERSION/$NAMESPACE/ns-notes.md
+;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/name.txt
+;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/type.txt
+;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/arities.txt
+;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/docstring.md
+;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring.md
+;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/source.clj
+;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/related.txt
+;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/examples/$EXAMPLE_ID.clj
 
 (defn file->ns [fpath]
   (-> fpath
@@ -32,8 +32,7 @@
       (replace #"/" ".")))
 
 (defn write-docs
-  [root {:keys [raw-symbol symbol type arglists doc
-                src examples related]}]
+  [{:keys [raw-symbol symbol type arglists doc src examples related]}]
   (let [sym-dir (io/file root symbol)]
     (.mkdir sym-dir)
 
@@ -119,6 +118,7 @@
       (write-docs
        root
        {:*version-str* *version-str*
+        :namespace     namespace
         :raw-symbol    raw-symbol
         :symbol        s
         :type          (var-type var)
@@ -139,6 +139,7 @@
      (-> fake-meta
          (assoc
              :*version-str* *version-str*
+             :namespace     "clojure.core"
              :raw-symbol    (name sym)
              :symbol        (my-munge (name sym))
              :type          "special"
@@ -178,30 +179,28 @@
   nil)
 
 (defn -main
-  [input-file]
+  [groupid artifact version input-file]
   (cd/set-web-mode!)
-
-  (let [{:keys [major minor incremental]} *clojure-version*]
-    (binding [*version-str* (format "%s.%s.%s" major minor incremental)]
-      (let [resources (io/file "resources")
-            root      (io/file resources *version-str*)]
-        (when-not (.exists resources)
-          (.mkdir resources))
-
-        (when-not (.exists root)
-          (.mkdir root))
-
-        (let [release-notes (io/file root "release-notes.md")]
-          (when-not (.exists release-notes)
-            (spit release-notes 
-                  (str 
-                   (format "[Official release notes](https://github.com/clojure/clojure/blob/clojure-%s/changes.md)\n"
-                           *version-str*)
-                   "\n"
-                   "Please add release notes commentary!\n"))))
-                  
-        (let [namespaces (line-seq (io/reader input-file))]
-          (doseq [n namespaces]
-            (let [n (symbol n)]
-              (require n)
-              (write-docs-for-ns root n))))))))
+  (binding [*version-str* version]
+    (let [resources (io/file "resources")
+          root      (io/file (str "resources/datastore/" groupid "/" artifact "/" *version-str*))]
+      (when-not (.exists resources)
+        (.mkdir resources))
+      
+      (when-not (.exists root)
+        (.mkdir root))
+      
+      (let [release-notes (io/file root "release-notes.md")]
+        (when-not (.exists release-notes)
+          (spit release-notes 
+                (str 
+                 (format "[Official release notes](https://github.com/clojure/clojure/blob/clojure-%s/changes.md)\n"
+                         *version-str*)
+                 "\n"
+                 "Please add release notes commentary!\n"))))
+      
+      (let [namespaces (line-seq (io/reader input-file))]
+        (doseq [n namespaces]
+          (let [n (symbol n)]
+            (require n)
+            (write-docs-for-ns root n)))))))

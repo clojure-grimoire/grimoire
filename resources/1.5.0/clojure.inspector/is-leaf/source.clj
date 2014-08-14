@@ -1,0 +1,1 @@
+(defmulti is-leaf collection-tag)

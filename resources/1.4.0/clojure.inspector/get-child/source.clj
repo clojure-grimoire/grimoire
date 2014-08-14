@@ -1,0 +1,1 @@
+(defmulti get-child (fn [parent index] (collection-tag parent)))

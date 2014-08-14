@@ -74,7 +74,7 @@
 
     ;; write related file
     (let [related-file (io/file sym-dir "related.txt")]
-      (if-not (.exists related-file)
+      (when-not (.exists related-file)
         (doseq [{:keys [file name] :as el} @related]
           (let [file (or file "clojure/core.clj")]
             (spit related-file

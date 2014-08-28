@@ -10,7 +10,7 @@
                       :main         grimoire.doc}
              :1.6    {:dependencies [[org.clojure/clojure "1.6.0"]]
                       :main         grimoire.doc}
-             :repl   {:plugins [[cider/cider-nrepl "0.7.0-SNAPSHOT"]]}
+             :repl   {:plugins [[cider/cider-nrepl "0.8.0-SNAPSHOT"]]}
              :server {:dependencies [[org.clojure/clojure "1.6.0"]
                                      [com.taoensso/timbre "3.2.1"]
                                      [ring/ring-core "1.3.0"]

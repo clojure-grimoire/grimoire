@@ -30,11 +30,16 @@ cover the hosting and coffee costs of keeping it online and useful.
 
 ## Legal
 
-Grimoire is &copy; to Reid Mckenzie 2014. All rights reserved.
+Clojure, including source code, official documentation, related
+trademarks and iconography are &copy; Rich Hickey, used without
+modification under the Eclipse Public License 1.0
 
-Contributors release examples, commentary, documentation, code and
-other content submitted to this project to the sole ownership of Reid
-McKenzie as above.
+Grimoire itself is &copy; Reid Mckenzie 2014. All rights reserved.
 
-Clojure, related trademarks and iconography are &copy; Rich Hickey,
-used under the Eclipse Public License 1.0
+This claim covers all parts of the Grimoire project not reproduced
+from the Clojure source code or other copyrighted resources. This
+claim includes unofficial documentation, commentary and examples
+contributed to or authored for the Grimoire project by users and by
+myself. Contributors release examples, commentary, documentation, code
+and other content submitted to this project to the sole ownership of
+Reid McKenzie as above.

@@ -1,8 +1,9 @@
 (ns grimoire.doc
   (:refer-clojure :exclude [replace])
-  (:require [cd-client.core :as cd]
-            [clojure.java.io :as io]
+  (:require [clojure.java.io :as io]
             [clojure.string :refer [lower-case upper-case replace]]
+            [cd-client.core :as cd]
+            [me.raynes.fs :as fs]
             [grimoire.util :refer :all]
             [grimoire.datastore :refer [write-docs]])
 
@@ -10,6 +11,9 @@
   (:require [clojure.repl]
             [clojure.data]))
 
+
+;; FIXME
+;;   This should also not be hard coded
 (def ^:dynamic *version-str* nil)
 
 ;; FIXME
@@ -77,7 +81,15 @@
                         ns-vars)
         vars    (filter #(not (fn? @%1)) ns-vars)]
 
-    (let [ns-notes (io/file ns-dir "ns-notes.md")]
+    ;; FIXME
+    ;;   I feel like this needs to be lifted out somehow
+    (let [path     (->> ["resources" "datastore" groupid artifact version "ns" (name ns)]
+                      (interpose \/)
+                      (apply str))
+          ns-dir   (io/file path)
+          ns-notes (io/file ns-dir "ns-notes.md")]
+      (fs/mkdirs ns-dir)
+
       (when-not (.exists ns-notes)
         (spit ns-notes
               (format "Please add namespace commentary!\n"
@@ -85,7 +97,7 @@
 
     ;; write per symbol docs
     (doseq [var ns-vars]
-      (write-docs-for-var [groupid artifact version] ns-dir var))
+      (write-docs-for-var [groupid artifact version] var))
 
     (when (and (= ns 'clojure.core)
                (= "org.clojure" groupid)

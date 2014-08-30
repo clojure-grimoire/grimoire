@@ -2,8 +2,8 @@
   (:refer-clojure :exclude [replace])
   (:require [clojure.java.io :as io]
             [clojure.string :refer [lower-case upper-case replace]]
-            [grimoire.util :refer :all]
-            [me.raynes.fs :as fs]))
+            [me.raynes.fs :as fs]
+            [grimoire.util :refer :all]))
 
 ;; Intended file structure output
 ;;--------------------------------------------------------------------

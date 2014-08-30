@@ -24,8 +24,9 @@
       (replace #"/" ".")))
 
 (defn write-docs
-  [root {:keys [raw-symbol symbol type arglists doc src examples related]}]
-  (let [sym-dir (io/file root symbol)]
+  [groupid artifactid version
+   {:keys [namespace raw-symbol symbol type arglists doc src examples related]}]
+  (let [sym-dir (io/file groupid artifactid version "ns" namespace "sym" raw-symbol)]
     (.mkdir sym-dir)
 
     ;; write the name file

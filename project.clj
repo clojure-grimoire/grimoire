@@ -20,7 +20,8 @@
                                      [hiccup "1.0.5"]
                                      [markdown-clj "0.9.47"]
                                      [me.raynes/conch "0.8.0"]
-                                     [me.raynes/fs "1.4.4"]]
+                                     [me.raynes/fs "1.4.4"]
+                                     [me.arrdem/detritus "0.1.0"]]
                       :main         grimoire.web.service}
              :dev    {:source-paths ["dev"]
                       :main         user}

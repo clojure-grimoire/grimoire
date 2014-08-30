@@ -27,15 +27,14 @@
           :else        "var")))
 
 (defn write-docs-for-var
-  [root var]
+  [[groupid artifact version] var]
   {:pre [(var? var)]}
   (let [namespace                         (-> var .ns ns-name str)
         raw-symbol                        (-> var .sym str)
         s                                 (my-munge raw-symbol)
         {:keys [arglists doc] :as meta}   (meta var)]
     (when-not (var-blacklist var)
-      (write-docs
-       root
+      (write-docs groupid artifact version
        {:*version-str* *version-str*
         :namespace     namespace
         :raw-symbol    raw-symbol
@@ -51,10 +50,9 @@
       (println "Documented var" raw-symbol))))
 
 (defn write-docs-for-specials
-  [root]
+  [[groupid artifact version] ]
   (doseq [[sym fake-meta] @#'clojure.repl/special-doc-map]
-    (write-docs
-     root
+    (write-docs groupid artifact version
      (-> fake-meta
          (assoc
              :*version-str* *version-str*
@@ -71,15 +69,13 @@
     (println "Documented special form" sym)))
 
 (defn write-docs-for-ns
-  [root ns]
+  [[groupid artifact version] ns]
   (let [ns-vars (->> (ns-publics ns) vals (remove var-blacklist))
         macros  (filter macro? ns-vars)
         fns     (filter #(and (fn? @%1)
                               (not (macro? %1)))
                         ns-vars)
-        vars    (filter #(not (fn? @%1)) ns-vars)
-        ns-dir  (io/file root (name ns))]
-    (.mkdir ns-dir)
+        vars    (filter #(not (fn? @%1)) ns-vars)]
 
     (let [ns-notes (io/file ns-dir "ns-notes.md")]
       (when-not (.exists ns-notes)
@@ -89,10 +85,12 @@
 
     ;; write per symbol docs
     (doseq [var ns-vars]
-      (write-docs-for-var ns-dir var))
+      (write-docs-for-var [groupid artifact version] ns-dir var))
 
-    (when (= ns 'clojure.core)
-      (write-docs-for-specials ns-dir)))
+    (when (and (= ns 'clojure.core)
+               (= "org.clojure" groupid)
+               (= "clojure" artifact)
+      (write-docs-for-specials [groupid artifact version]))))
 
   (println "Finished" ns)
   nil)
@@ -100,26 +98,8 @@
 (defn -main
   [groupid artifact version input-file]
   (cd/set-web-mode!)
-  (binding [*version-str* version]
-    (let [resources (io/file "resources")
-          root      (io/file (str "resources/datastore/" groupid "/" artifact "/" *version-str*))]
-      (when-not (.exists resources)
-        (.mkdir resources))
-      
-      (when-not (.exists root)
-        (.mkdir root))
-      
-      (let [release-notes (io/file root "release-notes.md")]
-        (when-not (.exists release-notes)
-          (spit release-notes 
-                (str 
-                 (format "[Official release notes](https://github.com/clojure/clojure/blob/clojure-%s/changes.md)\n"
-                         *version-str*)
-                 "\n"
-                 "Please add release notes commentary!\n"))))
-      
-      (let [namespaces (line-seq (io/reader input-file))]
-        (doseq [n namespaces]
-          (let [n (symbol n)]
-            (require n)
-            (write-docs-for-ns root n)))))))
+  (let [namespaces (line-seq (io/reader input-file))]
+    (doseq [n namespaces]
+      (let [n (symbol n)]
+        (require n)
+        (write-docs-for-ns [groupid artifact version] n)))))

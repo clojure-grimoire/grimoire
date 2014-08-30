@@ -6,16 +6,16 @@
 
 ;; Intended file structure output
 ;;--------------------------------------------------------------------
-;; /$ARTIFACT/$VERSION/release-notes.md
-;; /$ARTIFACT/$VERSION/$NAMESPACE/ns-notes.md
-;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/name.txt
-;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/type.txt
-;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/arities.txt
-;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/docstring.md
-;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring.md
-;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/source.clj
-;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/related.txt
-;; /$ARTIFACT/$VERSION/$NAMESPACE/$SYMBOL/examples/$EXAMPLE_ID.clj
+;; /$GROUPID/$ARTIFACT/$VERSION/release-notes.md
+;; /$GROUPID/$ARTIFACT/$VERSION/ns/$NAMESPACE/ns-notes.md
+;; /$GROUPID/$ARTIFACT/$VERSION/ns/$NAMESPACE/sym/$SYMBOL/name.txt
+;; /$GROUPID/$ARTIFACT/$VERSION/ns/$NAMESPACE/sym/$SYMBOL/type.txt
+;; /$GROUPID/$ARTIFACT/$VERSION/ns/$NAMESPACE/sym/$SYMBOL/arities.txt
+;; /$GROUPID/$ARTIFACT/$VERSION/ns/$NAMESPACE/sym/$SYMBOL/docstring.md
+;; /$GROUPID/$ARTIFACT/$VERSION/ns/$NAMESPACE/sym/$SYMBOL/extended-docstring.md
+;; /$GROUPID/$ARTIFACT/$VERSION/ns/$NAMESPACE/sym/$SYMBOL/source.clj
+;; /$GROUPID/$ARTIFACT/$VERSION/ns/$NAMESPACE/sym/$SYMBOL/related.txt
+;; /$GROUPID/$ARTIFACT/$VERSION/ns/$NAMESPACE/sym/$SYMBOL/ex/$EXAMPLE_ID.clj
 
 (defn file->ns [fpath]
   (-> fpath

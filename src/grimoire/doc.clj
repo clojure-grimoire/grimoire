@@ -35,14 +35,12 @@
   {:pre [(var? var)]}
   (let [namespace                         (-> var .ns ns-name str)
         raw-symbol                        (-> var .sym str)
-        s                                 (my-munge raw-symbol)
         {:keys [arglists doc] :as meta}   (meta var)]
     (when-not (var-blacklist var)
       (write-docs groupid artifact version
        {:*version-str* *version-str*
         :namespace     namespace
-        :raw-symbol    raw-symbol
-        :symbol        s
+        :symbol        raw-symbol
         :type          (var-type var)
         :doc           doc
         :arglists      arglists
@@ -61,8 +59,7 @@
          (assoc
              :*version-str* *version-str*
              :namespace     "clojure.core"
-             :raw-symbol    (name sym)
-             :symbol        (my-munge (name sym))
+             :symbol        (name sym)
              :type          "special"
              :arglists      (:forms fake-meta)
              :src           ";; Special forms have no source\n;; Implemented in the compiler."

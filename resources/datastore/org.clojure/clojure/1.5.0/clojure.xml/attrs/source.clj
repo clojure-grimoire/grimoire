@@ -1,1 +1,0 @@
-(def attrs (accessor element :attrs))

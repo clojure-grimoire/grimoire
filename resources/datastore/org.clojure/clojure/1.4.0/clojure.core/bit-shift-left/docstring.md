@@ -1,1 +1,0 @@
-  Bitwise shift left

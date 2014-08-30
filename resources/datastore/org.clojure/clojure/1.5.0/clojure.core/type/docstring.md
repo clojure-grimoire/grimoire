@@ -1,1 +1,0 @@
-  Returns the :type metadata of x, or its Class if none

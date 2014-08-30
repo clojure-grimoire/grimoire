@@ -1,1 +1,0 @@
-  Returns the greatest of the nums.

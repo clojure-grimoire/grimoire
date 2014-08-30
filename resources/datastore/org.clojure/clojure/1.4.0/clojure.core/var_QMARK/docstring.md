@@ -1,1 +1,0 @@
-  Returns true if v is of type clojure.lang.Var

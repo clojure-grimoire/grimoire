@@ -1,4 +1,0 @@
-[atom f]
-[atom f x]
-[atom f x y]
-[atom f x y & args]

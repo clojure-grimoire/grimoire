@@ -1,2 +1,0 @@
-[n coll]
-[n step coll]

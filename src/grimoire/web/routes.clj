@@ -4,7 +4,7 @@
             [grimoire.web.util :as util]
             [grimoire.web.views :as views]
             [ring.util.response :as response]
-            [taoensso.timbre :as timbre :refer [info warn]]))
+            [detritus.logging :refer [info warn]]))
 
 (defroutes app
   (GET "/" {uri :uri}

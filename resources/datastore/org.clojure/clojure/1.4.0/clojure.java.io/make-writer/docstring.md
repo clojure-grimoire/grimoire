@@ -1,1 +1,0 @@
-  Creates a BufferedWriter. See also IOFactory docs.

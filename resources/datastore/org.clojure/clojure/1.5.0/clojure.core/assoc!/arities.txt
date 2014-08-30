@@ -1,2 +1,0 @@
-[coll key val]
-[coll key val & kvs]

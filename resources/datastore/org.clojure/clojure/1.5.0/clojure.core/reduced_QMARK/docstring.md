@@ -1,1 +1,0 @@
-  Returns true if x is the result of a call to reduced

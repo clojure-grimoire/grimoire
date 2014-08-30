@@ -1,2 +1,0 @@
-user> (bit-and 0x08 0xFF)
-8

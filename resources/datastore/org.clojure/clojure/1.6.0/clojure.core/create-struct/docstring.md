@@ -1,1 +1,0 @@
-  Returns a structure basis object.

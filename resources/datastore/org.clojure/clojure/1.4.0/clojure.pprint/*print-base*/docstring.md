@@ -1,1 +1,0 @@
-  The base to use for printing integers and rationals.

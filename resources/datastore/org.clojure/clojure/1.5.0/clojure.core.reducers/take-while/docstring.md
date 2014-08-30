@@ -1,1 +1,0 @@
-  Ends the reduction of coll when (pred val) returns logical false.

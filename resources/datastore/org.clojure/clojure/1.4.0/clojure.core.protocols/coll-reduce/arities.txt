@@ -1,2 +1,0 @@
-[coll f]
-[coll f val]

@@ -1,1 +1,0 @@
-  Elides the first n values from the reduction of coll.

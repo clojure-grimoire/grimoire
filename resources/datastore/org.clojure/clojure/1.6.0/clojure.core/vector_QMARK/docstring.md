@@ -1,1 +1,0 @@
-  Return true if x implements IPersistentVector

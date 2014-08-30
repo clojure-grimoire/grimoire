@@ -1,1 +1,0 @@
-(defstruct element :tag :attrs :content)

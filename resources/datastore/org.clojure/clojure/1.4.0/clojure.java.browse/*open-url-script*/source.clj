@@ -1,1 +1,0 @@
-(def ^:dynamic *open-url-script* (when (macosx?) "/usr/bin/open"))

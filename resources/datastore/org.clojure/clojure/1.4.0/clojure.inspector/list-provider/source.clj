@@ -1,1 +1,0 @@
-(defmulti list-provider class)

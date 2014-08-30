@@ -1,3 +1,0 @@
-[k x]
-[k x y]
-[k x y & more]

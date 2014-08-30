@@ -1,4 +1,0 @@
-[]
-[end]
-[start end]
-[start end step]

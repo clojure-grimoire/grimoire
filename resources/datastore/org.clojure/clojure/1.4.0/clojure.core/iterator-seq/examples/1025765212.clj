@@ -1,6 +1,0 @@
-;; Note this is not strictly necessary since keySet is a collection
-;; implementing Iterable but it does show the usage.
-
-user=> (iterator-seq (.iterator (.keySet (java.lang.System/getProperties))))
-
-("java.runtime.name" "sun.boot.library.path" "java.vm.version" "java.vm.vendor" "java.vendor.url" "path.separator" "java.vm.name" "file.encoding.pkg" "sun.java.launcher" "user.country" "sun.os.patch.level" "java.vm.specification.name" "user.dir" "java.runtime.version" "java.awt.graphicsenv" "java.endorsed.dirs" "os.arch" "javax.accessibility.assistive_technologies" "java.io.tmpdir" "line.separator" "java.vm.specification.vendor" "os.name" "cljr.home" "sun.jnu.encoding" "java.library.path" "java.specification.name" "java.class.version" "sun.management.compiler" "os.version" "user.home" "user.timezone" "java.awt.printerjob" "file.encoding" "java.specification.version" "include.cljr.repo.jars" "java.class.path" "user.name" "java.vm.specification.version" "java.home" "sun.arch.data.model" "user.language" "java.specification.vendor" "java.vm.info" "java.version" "java.ext.dirs" "sun.boot.class.path" "java.vendor" "file.separator" "java.vendor.url.bug" "clojure.home" "sun.io.unicode.encoding" "sun.cpu.endian" "sun.desktop" "sun.cpu.isalist")

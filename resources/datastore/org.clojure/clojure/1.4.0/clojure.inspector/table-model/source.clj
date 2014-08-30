@@ -1,1 +1,0 @@
-(defmulti table-model class)

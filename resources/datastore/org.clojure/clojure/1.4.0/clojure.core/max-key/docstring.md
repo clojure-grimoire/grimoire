@@ -1,1 +1,0 @@
-  Returns the x for which (k x), a number, is greatest.

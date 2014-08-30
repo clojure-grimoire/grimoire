@@ -1,1 +1,0 @@
-  Casts to double[]

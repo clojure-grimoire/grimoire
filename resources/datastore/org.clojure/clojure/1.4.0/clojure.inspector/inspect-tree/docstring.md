@@ -1,1 +1,0 @@
-creates a graphical (Swing) inspector on the supplied hierarchical data

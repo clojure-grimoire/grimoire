@@ -232,60 +232,62 @@
     (case type
       (:html :text/html)
       ,,(if (.isDirectory (io/file root))
-          (layout
-           (assoc site-config
-             :page {:description (str "Clojure " version " " namespace "/" symbol
-                                      " documentation and examples")
-                    :summary (slurp docstring-file)})
-           [:h1 {:class "page-title"}
-            [:span {:style "display:inline-block;"}
-             [:a {:href "../../"} "Clojure " version]
-             (-> site-config :style :header-sep)]
-            [:span {:style "display:inline-block;"}
-             [:a {:href "../"} namespace]
-             (-> site-config :style :header-sep)]
-            name]
+          (let [name (slurp name-file)]
+            (layout
+             (assoc site-config
+               :page {:description (str "Clojure " version " " namespace "/" symbol
+                                        " documentation and examples")
+                      :summary (slurp docstring-file)})
+             [:h1 {:class "page-title"}
+              [:span {:style "display:inline-block;"}
+               [:a {:href "../../"} "Clojure " version]
+               (-> site-config :style :header-sep)]
+              [:span {:style "display:inline-block;"}
+               [:a {:href "../"} namespace]
+               (-> site-config :style :header-sep)]
+              name]
 
-           [:h2 "Arities"]
-           [:p (util/resource-file-contents arities-file)]
-           [:h2 "Official Documentation - "
-            [:a {:href (gh/->edit-url site-config "develop" docstring-file)}
-             "edit"]]
-           [:pre (util/resource-file-contents docstring-file)]
+             [:h2 "Arities"]
+             [:p (util/resource-file-contents arities-file)]
+             [:h2 "Official Documentation - "
+              [:a {:href (gh/->edit-url site-config "develop" docstring-file)}
+               "edit"]]
+             [:pre (util/resource-file-contents docstring-file)]
 
-           (when-let [comdoc (util/markdown-file comdoc-file)]
-             (list
-              [:h2 "Community Documentation - "
-               [:a {:href (gh/->edit-url site-config "develop" comdoc-file)}
-                "edit"]]
-              comdoc))
+             (when-let [comdoc (util/markdown-file comdoc-file)]
+               (list
+                [:h2 "Community Documentation - "
+                 [:a {:href (gh/->edit-url site-config "develop" comdoc-file)}
+                  "edit"]]
+                comdoc))
 
-           (when-let [examples (all-examples version namespace symbol :html)]
-             [:div.section
-              [:h2.heading "Examples " [:span.unhide "+"]]
-              [:div.autofold.prefold
-               examples
-               (when-not (= "special" (slurp type-file))
-                 [:a {:href (str "http://crossclj.info/fun/" namespace "/" (util/url-encode name) ".html")}
-                  [:h3 "Uses on crossclj"]])]])
+             (when-let [examples (all-examples version namespace symbol :html)]
+               [:div.section
+                [:h2.heading "Examples " [:span.unhide "+"]]
+                [:div.autofold.prefold
+                 examples
+                 (when-not (= "special" (slurp type-file))
+                   [:a {:href (str "http://crossclj.info/fun/" namespace "/" (util/url-encode name) ".html")}
+                    [:h3 "Uses on crossclj"]])]])
 
-           (when-let [file (io/resource related-file)]
-             (let [related (line-seq (io/reader file))]
-               (list [:h2 "Related"]
-                     [:ul (for [r related]
-                            (let [[ns sym] (string/split r #"/")]
-                              [:li [:a {:href (str (:baseurl site-config)
-                                                   "/" version "/" ns "/"
-                                                   (gutil/my-munge sym) "/")}
-                                    r]]))])))
+             (when-let [file (io/resource related-file)]
+               (let [related (line-seq (io/reader file))]
+                 (list [:h2 "Related"]
+                       [:ul (for [r related]
+                              (let [[ns sym] (string/split r #"/")]
+                                [:li [:a {:href (str (:baseurl site-config)
+                                                     "/" version "/" ns "/"
+                                                     (gutil/my-munge sym) "/")}
+                                      r]]))])))
 
-           (when-let [source (util/clojure-file source-file)]
-             (list
-              [:h2 "Source"]
-              [:div source]))
+             (when-let [source (util/clojure-file source-file)]
+               (list
+                [:h2 "Source"]
+                [:div source]))
 
-           [:script {:src "/public/jquery.js" :type "text/javascript"}]
-           [:script {:src "/public/fold.js" :type "text/javascript"}])
+             [:script {:src "/public/jquery.js" :type "text/javascript"}]
+             [:script {:src "/public/fold.js" :type "text/javascript"}]))
+
           (error-unknown-symbol version namespace symbol))
 
       (:text :text/plain)

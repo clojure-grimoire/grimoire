@@ -23,6 +23,9 @@
        (info (pr-str {:uri uri :type :html}))
        (views/markdown-page "API"))
 
+  (GET "/favicon.ico" []
+       (response/redirect "/public/favicon.ico"))
+
   (route/resources "/public")
 
   (context "/:version" [version]

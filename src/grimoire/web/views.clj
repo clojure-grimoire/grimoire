@@ -13,7 +13,7 @@
 
 (def site-config
   {:url                 "http://grimoire.arrdem.com"
-   :repo                "https://github.com/arrdem/grimoire"
+   :repo                "https://github.com/clojure-grimoire/grimoire"
    :baseurl             "/"
    :version             (slurp "VERSION")
    :clojure-version     "1.6.0"

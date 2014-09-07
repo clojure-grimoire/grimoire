@@ -32,7 +32,7 @@
      [:a {:title "Home" :href baseurl} (-> c :style :title)]
      [:small]]]])
 
-(defn sidebar [{:keys [description author version year]}]
+(defn sidebar [{:keys [repo description author version year]}]
   (list
    [:input#sidebar-checkbox.sidebar-checkbox {:type "checkbox"}]
    [:div#sidebar.sidebar
@@ -47,9 +47,9 @@
      [:a.sidebar-nav-item {:href "/contributing"} "Contributing"]
      [:a.sidebar-nav-item {:href "/public/static.zip"} "Offline Version"]
      [:br] "More" [:br]
-     (let [{:keys [github gittip me]} author]
+     (let [{:keys [gittip me]} author]
        (list
-        [:a.sidebar-nav-item {:href github} "Github Repo"]
+        [:a.sidebar-nav-item {:href repo} "Github Repo"]
         [:a.sidebar-nav-item {:href me} "About Me"]
         [:a.sidebar-nav-item {:href gittip} "Support This Project"]))]
     [:div.sidebar-item

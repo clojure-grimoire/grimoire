@@ -1,1 +1,1 @@
-No user commentary. Care to add some?
+Returns the new value of the var.

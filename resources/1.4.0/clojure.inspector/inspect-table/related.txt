@@ -1,0 +1,2 @@
+clojure.pprint.print-table/print-table
+clojure.inspector/inspect-tree

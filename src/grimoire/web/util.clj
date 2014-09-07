@@ -72,7 +72,7 @@
 
 (defn paths [& path-elements]
   (->> path-elements
-       (concat ["resources"])
+       (concat ["resources" "org.clojure" "clojure"])
        (apply dir-list-as-strings)
        (map prepare-path)))
 

@@ -68,7 +68,7 @@
 ;; Version page
 
 (defn version-page [version]
-  (let [rel-notes-file (str "resources/" version "/release-notes.md")]
+  (let [rel-notes-file (str "resources/org.clojure/clojure/" version "/release-notes.md")]
     (layout
      (assoc site-config
        :page {:description (str "Clojure " version " release information")})
@@ -102,7 +102,7 @@
                [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]))))
 
 (defn namespace-page [version namespace]
-  (let [ns-notes-file (str "resources/" version "/" namespace "/ns-notes.md")]
+  (let [ns-notes-file (str "resources/org.clojure/clojure/" version "/" namespace "/ns-notes.md")]
     (layout
      (assoc site-config
        :page {:description (str "Clojure " version " " namespace " namespace symbols list")})
@@ -121,8 +121,9 @@
            link-ids (zipmap keys ["sff",           "mf",     "ff",        "vf"])
            grouping (->> (for [path (util/paths version namespace)
                                :when (not (= "ns-notes.md" (last path)))]
-                           (let [fp (string/join "/" path)]
-                             {:url  (str (:baseurl site-config) fp "/")
+                           (let [fp (string/join "/" path)
+                                 legacy-path (string/join "/" (drop 2 path))]
+                             {:url  (str (:baseurl site-config) legacy-path "/")
                               :name (slurp (io/resource (str fp "/name.txt")))
                               :type (slurp (io/resource (str fp "/type.txt")))}))
                          (group-by :type))]
@@ -172,7 +173,7 @@
     (case type
       :html
       ,,(for [v (clojure-example-versions top-version)]
-          (let [examples-dir (str "resources/" v "/" path)
+          (let [examples-dir (str "resources/org.clojure/clojure/" v "/" path)
                 examples     (util/dir-list-as-strings examples-dir)]
             (when (or (not (empty? examples))
                       (= "1.6.0" v))
@@ -186,7 +187,7 @@
 
       :text
       ,,(->> (for [v (clojure-example-versions top-version)]
-               (let [examples (util/dir-list-as-strings (str "resources/" v "/" path))]
+               (let [examples (util/dir-list-as-strings (str "resources/org.clojure/clojure/" v "/" path))]
                  (when-not (empty? examples)
                    (str "### Examples from Clojure " v "\n"
                         "----------------------------------------\n"
@@ -199,7 +200,7 @@
 
 (defn symbol-page
   [version namespace symbol type]
-  (let [symbol-file-path (partial str "resources/" version "/" namespace "/" symbol "/")
+  (let [symbol-file-path (partial str "resources/org.clojure/clojure/" version "/" namespace "/" symbol "/")
         name-file        (-> "name.txt"              symbol-file-path)
         type-file        (-> "type.txt"              symbol-file-path)
         arities-file     (-> "arities.txt"           symbol-file-path)
@@ -266,7 +267,7 @@
          [:script {:src "/public/fold.js" :type "text/javascript"}])
 
       (:text :text/plain)
-      ,,(let [symbol-file-path (partial str "resources/" version "/" namespace "/" symbol "/")
+      ,,(let [symbol-file-path (partial str "resources/org.clojure/clojure/" version "/" namespace "/" symbol "/")
               line80           (apply str (repeat 80 "-"))
               line40           (apply str (repeat 40 "-"))]
           (-> (str "# "version " - " namespace " - " name "\n"

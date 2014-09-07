@@ -1,5 +1,5 @@
 #!/bin/bash
-lein serve 4000 &
+lein serve 4000 &> log &
 PID=$!
 sleep 10
 

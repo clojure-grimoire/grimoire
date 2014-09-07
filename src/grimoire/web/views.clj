@@ -101,7 +101,7 @@
             :when (not (= "release-notes.md" (last path)))]
         [:li
          [:a {:href (str (:baseurl site-config)
-                         (string/join "/" path)
+                         (string/join "/" (drop 2 path))
                          "/")}
           (last path)]])])))
 

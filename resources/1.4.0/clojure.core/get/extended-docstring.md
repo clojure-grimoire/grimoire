@@ -58,6 +58,7 @@ syntax for vectors and maps.  Differences:
 * It does not work for records, strings, or Java Maps or arrays.
 
 Examples:
+
     user=> (def vec1 [:a :b :c])
     #'user/vec1
     user=> (vec1 2)

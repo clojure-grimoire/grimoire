@@ -12,17 +12,29 @@ the form of pull requests, and is hosted
 Each function, variable and macro and special form has the following files:
 
 ```
+/resources/$VERSION/$NAMESPACE/$SYMBOL/name.txt
+/resources/$VERSION/$NAMESPACE/$SYMBOL/type.txt
 /resources/$VERSION/$NAMESPACE/$SYMBOL/arities.txt
-/resources/$VERSION/$NAMESPACE/$SYMBOL/docstring.txt
-/resources/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring.txt
+/resources/$VERSION/$NAMESPACE/$SYMBOL/docstring.md
+/resources/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring.md
 /resources/$VERSION/$NAMESPACE/$SYMBOL/source.clj
 /resources/$VERSION/$NAMESPACE/$SYMBOL/related.txt
 /resources/$VERSION/$NAMESPACE/$SYMBOL/examples/$EXAMPLE_ID.clj
 ```
 
-These files have no markup, HTML or formatting beyond that possible in
-plain text and serve double duty as the sources from which the main
-pages are generated and the plain text "API" provided by Grimoire 0.3.X.
+ - **name.txt** is the unmunged name of the symbol.
+ - **type.txt** notes the type (macro, function, special form, var) of the symbol.
+ - **arities.txt** lists the official arities of the form.
+ - **docstring.md** is the official documentation of the form if
+   any. note that while it's in a markdown file it isn't rendered for
+   markdown formatting. No changes will be taken to these files.
+ - **source.clj** is the Clojure source for the function or symbol in
+   question if any. No changes will be taken to these files.
+ - **extended-docstring.md** is for user contributed "extended"
+   documentation. This is where additonal commentary and gotchas
+   belong.
+ - **related.txt** is a newline delimited list of fully qualified
+   symbols related to the documented symbol.
 
 ## Writing Examples
 

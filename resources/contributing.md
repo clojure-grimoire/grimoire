@@ -55,8 +55,5 @@ yet been worked around.
 
 ## Legal
 
-Grimoire is &copy; to Reid Mckenzie 2014. All rights reserved.
-
-Contributors release examples, commentary, documentation, code and
-other content submitted to this project to the sole ownership of Reid
-McKenzie as above.
+Please note the license under which Grimoire is developed as noted in
+the [about page](/about).

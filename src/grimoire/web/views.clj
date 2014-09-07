@@ -247,14 +247,15 @@
                [:a {:href (str "http://crossclj.info/fun/" namespace "/" (util/url-encode name) ".html")}
                 [:h3 "Uses on crossclj"]])]])
 
-         (when-let [related (line-seq (io/reader related-file))]
-           (list [:h2 "Related"]
-                 [:ul (for [r related]
-                        (let [[ns sym] (string/split r #"/")]
-                          [:li [:a {:href (str (:baseurl site-config)
-                                               "/" version "/" ns "/"
-                                               (gutil/my-munge sym) "/")}
-                                r]]))]))
+         (when-let [file (io/resource related-file)]
+           (let [related (line-seq (io/reader file))]
+             (list [:h2 "Related"]
+                   [:ul (for [r related]
+                          (let [[ns sym] (string/split r #"/")]
+                            [:li [:a {:href (str (:baseurl site-config)
+                                                 "/" version "/" ns "/"
+                                                 (gutil/my-munge sym) "/")}
+                                  r]]))])))
 
          (when-let [source (util/clojure-file source-file)]
            (list

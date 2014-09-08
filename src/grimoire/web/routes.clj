@@ -26,6 +26,9 @@
   (GET "/favicon.ico" []
        (response/redirect "/public/favicon.ico"))
 
+  (GET "/robots.txt" []
+       (response/redirect "/public/robots.txt"))
+
   (route/resources "/public")
 
   (context "/:version" [version]
@@ -46,7 +49,7 @@
                                     (if (#{"catch" "finally"} symbol)
                                       (response/redirect (str "/" version "/clojure.core/try/"))
                                       (when-let [res (views/symbol-page version namespace symbol type)]
-                                        (info (pr-str {:uri uri :type :html}))
+                                        (info (pr-str {:uri uri :type type}))
                                         res))))
 
                              (GET "/docstring" {uri :uri}

@@ -49,7 +49,7 @@
                                     (if (#{"catch" "finally"} symbol)
                                       (response/redirect (str "/" version "/clojure.core/try/"))
                                       (when-let [res (views/symbol-page version namespace symbol type)]
-                                        (info (pr-str {:uri uri :type :html}))
+                                        (info (pr-str {:uri uri :type type}))
                                         res))))
 
                              (GET "/docstring" {uri :uri}

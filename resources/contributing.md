@@ -65,6 +65,14 @@ filesystem database described above to generate and serve a website.
 uberjar due limitations of `clojure.java.io/resource` which have not
 yet been worked around.
 
+## Submitting changes
+
+Grimoire strictly follows the
+[git-flow](http://nvie.com/posts/a-successful-git-branching-model/)
+branching model. PRs against `master` will not be accepted. All prs
+should target the `develop` branch. Note that the generated editing
+and example addition links provide this behavior already.
+
 ## Legal
 
 Please note the license under which Grimoire is developed as noted in

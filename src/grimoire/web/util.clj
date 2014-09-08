@@ -39,6 +39,23 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Documentation data file contents
 
+(defn resource-file
+  "This helper is a disgusting hack but it's a start."
+  ([version f]
+     (io/file 
+      (str "resources/org.clojure/clojure/"
+           version "/" f)))
+
+  ([version namespace f]
+     (io/file 
+      (str "resources/org.clojure/clojure/"
+           version "/" namespace "/" f)))
+
+  ([version namespace symbol f]
+     (io/file 
+      (str "resources/org.clojure/clojure/"
+           version "/" namespace "/" symbol "/" f))))
+
 (defn resource-file-contents [file]
   (let [file (io/file file)]
     (when (.exists file)
@@ -72,7 +89,7 @@
 
 (defn paths [& path-elements]
   (->> path-elements
-       (concat ["resources"])
+       (concat ["resources" "org.clojure" "clojure"])
        (apply dir-list-as-strings)
        (map prepare-path)))
 

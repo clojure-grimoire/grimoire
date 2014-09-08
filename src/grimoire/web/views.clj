@@ -84,7 +84,7 @@
 ;; Version page
 
 (defn version-page [version]
-  (let [rel-notes-file (str "resources/org.clojure/clojure/" version "/release-notes.md")]
+  (let [rel-notes-file (util/resource-file version "release-notes.md")]
     (layout
      (assoc site-config
        :page {:description (str "Clojure " version " release information")})
@@ -118,8 +118,9 @@
                [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]))))
 
 (defn namespace-page [version namespace]
-  (let [ns-dir        (str "resources/org.clojure/clojure/" version "/" namespace)
-        ns-notes-file (str "resources/org.clojure/clojure/" version "/" namespace "/ns-notes.md")]
+  (let [resource      (partial util/resource-file version namespace)
+        ns-dir        (resource "")
+        ns-notes-file (resource "ns-notes.md")]
     (when (.isDirectory (io/file ns-dir))
       (layout
        (assoc site-config
@@ -137,9 +138,9 @@
              mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
              ids      (zipmap keys ["sforms",        "macros", "fns",       "vars"])
              link-ids (zipmap keys ["sff",           "mf",     "ff",        "vf"])
-             grouping (->> (for [path (util/paths version namespace)
+             grouping (->> (for [path  (util/paths version namespace)
                                :when (not (= "ns-notes.md" (last path)))]
-                           (let [fp (string/join "/" path)
+                           (let [fp          (string/join "/" path)
                                  legacy-path (string/join "/" (drop 2 path))]
                              {:url  (str (:baseurl site-config) legacy-path "/")
                               :name (slurp (io/resource (str fp "/name.txt")))
@@ -218,8 +219,8 @@
 
 (defn symbol-page
   [version namespace symbol type]
-  (let [root             (str "resources/org.clojure/clojure/" version "/" namespace "/" symbol "/")
-        symbol-file-path (partial str root)
+  (let [symbol-file-path (partial util/resource-file version namespace symbol)
+        root             (-> "/"                     symbol-file-path)
         name-file        (-> "name.txt"              symbol-file-path)
         type-file        (-> "type.txt"              symbol-file-path)
         arities-file     (-> "arities.txt"           symbol-file-path)
@@ -268,8 +269,8 @@
                    [:a {:href (str "http://crossclj.info/fun/" namespace "/" (util/url-encode name) ".html")}
                     [:h3 "Uses on crossclj"]])]])
 
-             (when-let [file (io/resource related-file)]
-               (let [related (line-seq (io/reader file))]
+             (when (.isFile related-file)
+               (let [related (line-seq (io/reader related-file))]
                  (list [:h2 "Related"]
                        [:ul (for [r related]
                               (let [[ns sym] (string/split r #"/")]
@@ -291,30 +292,30 @@
               line40           (apply str (repeat 40 "-"))]
           (when (.isDirectory (io/file root))
             (-> (str "# "version " - " namespace " - " (slurp name-file) "\n"
-                                        ;line80
+                    ;; line80
                     "\n"
 
                     "## Arities\n"
-                                        ;line40 "\n"
+                    ;; line40 "\n"
                     (util/resource-file-contents arities-file)
                     "\n"
 
                     "## Documentation\n"
-                                        ;line40 "\n"
+                    ;; line40 "\n"
                     (util/resource-file-contents docstring-file)
                     "\n"
 
                     "## User Documentation\n"
-                                        ;line40 "\n"
+                    ;; line40 "\n"
                     (util/resource-file-contents comdoc-file)
                     "\n"
 
                     "## Examples\n"
-                                        ;line40 "\n"
+                    ;; line40 "\n"
                     (all-examples version namespace symbol :text)
 
                     "## See Also\n"
-                                        ;line40 "\n"
+                    ;; line40 "\n"
                     (util/resource-file-contents related-file))
                response/response
                (response/content-type "text/plain")))))))

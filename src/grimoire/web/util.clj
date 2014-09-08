@@ -39,6 +39,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Documentation data file contents
 
+(defn resource-file [version namespace symbol f]
+  (io/file (str "resources/org.clojure/clojure/"
+                version "/" namespace "/" symbol "/" f)))
+
 (defn resource-file-contents [file]
   (let [file (io/file file)]
     (when (.exists file)

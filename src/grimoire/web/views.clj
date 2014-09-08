@@ -120,7 +120,7 @@
 (defn namespace-page [version namespace]
   (let [ns-dir        (str "resources/org.clojure/clojure/" version "/" namespace)
         ns-notes-file (str "resources/org.clojure/clojure/" version "/" namespace "/ns-notes.md")]
-    (if (.isDirectory (io/file ns-dir))
+    (when (.isDirectory (io/file ns-dir))
       (layout
        (assoc site-config
          :page {:description (str "Clojure " version " " namespace " namespace symbols list")})
@@ -158,9 +158,7 @@
                   links]])))))
 
        [:script {:src "/public/jquery.js" :type "text/javascript"}]
-       [:script {:src "/public/fold.js" :type "text/javascript"}])
-
-      (error-unknown-namespace version namespace))))
+       [:script {:src "/public/fold.js" :type "text/javascript"}]))))
 
 (def namespace-page-memo
   (memoize namespace-page))
@@ -231,7 +229,7 @@
         related-file     (-> "related.txt"           symbol-file-path)]
     (case type
       (:html :text/html)
-      ,,(if (.isDirectory (io/file root))
+      ,,(when (.isDirectory (io/file root))
           (let [name (slurp name-file)]
             (layout
              (assoc site-config
@@ -286,14 +284,12 @@
                 [:div source]))
 
              [:script {:src "/public/jquery.js" :type "text/javascript"}]
-             [:script {:src "/public/fold.js" :type "text/javascript"}]))
-
-          (error-unknown-symbol version namespace symbol))
+             [:script {:src "/public/fold.js" :type "text/javascript"}])))
 
       (:text :text/plain)
       ,,(let [line80           (apply str (repeat 80 "-"))
               line40           (apply str (repeat 40 "-"))]
-          (if (.isDirectory (io/file root))
+          (when (.isDirectory (io/file root))
             (-> (str "# "version " - " namespace " - " (slurp name-file) "\n"
                                         ;line80
                     "\n"
@@ -320,9 +316,5 @@
                     "## See Also\n"
                                         ;line40 "\n"
                     (util/resource-file-contents related-file))
-               response/response
-               (response/content-type "text/plain"))
-
-            (-> (str "Unknown symbol identifier " [version namespace symbol])
                response/response
                (response/content-type "text/plain")))))))

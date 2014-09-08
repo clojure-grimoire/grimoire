@@ -30,17 +30,12 @@
 
   (context "/:version" [version]
            (GET "/" {uri :uri}
-                (if (#{"1.4.0" "1.5.0" "1.6.0"} version)
-                  (do (info (pr-str {:uri uri :type :html}))
-                      (views/version-page version))
-
-                  (do (warn (pr-str {:uri uri}))
-                      (views/error-unknown-version version))))
+                (when (#{"1.4.0" "1.5.0" "1.6.0"} version)
+                  (views/version-page version)))
 
            (context "/:namespace" [namespace]
                     (GET "/" {uri :uri}
-                         (do (info (pr-str {:uri uri :type :html}))
-                             (views/namespace-page-memo version namespace)))
+                         (views/namespace-page-memo version namespace))
 
                     (context "/:symbol" [symbol]
                              (GET "/" {header-type :content-type
@@ -50,24 +45,46 @@
                                   (let [type (or header-type param-type :html)]
                                     (if (#{"catch" "finally"} symbol)
                                       (response/redirect (str "/" version "/clojure.core/try/"))
-                                      (do (info (pr-str {:uri uri :type :html}))
-                                          (views/symbol-page version namespace symbol type)))))
+                                      (when-let [res (views/symbol-page version namespace symbol type)]
+                                        (info (pr-str {:uri uri :type :html}))
+                                        res))))
 
                              (GET "/docstring" {uri :uri}
                                   (do (info (pr-str {:uri uri :type :text}))
-                                      (slurp (str "resources/" version "/" namespace "/" symbol "/docstring.md"))))
+                                      (slurp (str "resources/org.clojure/clojure/"
+                                                  version "/" namespace "/"
+                                                  symbol "/docstring.md"))))
                              
                              (GET "/extended-docstring" {uri :uri}
                                   (do (info (pr-str {:uri uri :type :text}))
-                                      (slurp (str "resources/" version "/" namespace "/" symbol "/extended-docstring.md"))))
+                                      (slurp (str "resources/org.clojure/clojure/"
+                                                  version "/" namespace "/"
+                                                  symbol "/extended-docstring.md"))))
                              
                              (GET "/related" {uri :uri}
                                   (do (info (pr-str {:uri uri :type :text}))
-                                      (slurp (str "resources/" version "/" namespace "/" symbol "/related.txt"))))
+                                      (slurp (str "resources/org.clojure/clojure/"
+                                                  version "/" namespace "/"
+                                                  symbol "/related.txt"))))
                              
                              (GET "/examples" {uri :uri}
                                   (do (info (pr-str {:uri uri :type :text}))
-                                      (views/all-examples version namespace symbol :text))))))
+                                      (views/all-examples version namespace symbol :text)))
+
+                             (route/not-found
+                              (fn [{uri :uri}]
+                                (warn (pr-str {:uri uri}))
+                                (views/error-unknown-symbol version namespace symbol))))
+
+                    (route/not-found
+                     (fn [{uri :uri}]
+                       (warn (pr-str {:uri uri}))
+                       (views/error-unknown-namespace version namespace))))
+
+           (route/not-found
+            (fn [{uri :uri}]
+              (warn (pr-str {:uri uri}))
+              (views/error-unknown-version version))))
 
   (route/not-found
    (fn [{uri :uri}]

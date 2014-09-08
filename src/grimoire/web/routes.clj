@@ -26,6 +26,9 @@
   (GET "/favicon.ico" []
        (response/redirect "/public/favicon.ico"))
 
+  (GET "/robots.txt" []
+       (response/redirect "/public/robots.txt"))
+
   (route/resources "/public")
 
   (context "/:version" [version]

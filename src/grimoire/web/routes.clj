@@ -50,26 +50,27 @@
                                         res))))
 
                              (GET "/docstring" {uri :uri}
-                                  (do (info (pr-str {:uri uri :type :text}))
-                                      (slurp (str "resources/org.clojure/clojure/"
-                                                  version "/" namespace "/"
-                                                  symbol "/docstring.md"))))
-                             
+                                  (let [f  (util/resource-file version namespace symbol "docstring.md")]
+                                    (when (and f (.isFile f))
+                                      (info (pr-str {:uri uri :type :text}))
+                                      (slurp f))))
+
                              (GET "/extended-docstring" {uri :uri}
-                                  (do (info (pr-str {:uri uri :type :text}))
-                                      (slurp (str "resources/org.clojure/clojure/"
-                                                  version "/" namespace "/"
-                                                  symbol "/extended-docstring.md"))))
-                             
+                                  (let [f (util/resource-file version namespace symbol "extended-docstring.md")]
+                                    (when (and f (.isFile f))
+                                      (info (pr-str {:uri uri :type :text}))
+                                      (slurp f))))
+
                              (GET "/related" {uri :uri}
-                                  (do (info (pr-str {:uri uri :type :text}))
-                                      (slurp (str "resources/org.clojure/clojure/"
-                                                  version "/" namespace "/"
-                                                  symbol "/related.txt"))))
-                             
+                                  (let [f (util/resource-file version namespace symbol "related.txt")]
+                                    (when (and f (.isFile f))
+                                      (info (pr-str {:uri uri :type :text}))
+                                      (slurp f))))
+
                              (GET "/examples" {uri :uri}
-                                  (do (info (pr-str {:uri uri :type :text}))
-                                      (views/all-examples version namespace symbol :text)))
+                                  (when-let [examples (views/all-examples version namespace symbol :text)]
+                                    (info (pr-str {:uri uri :type :text}))
+                                    examples))
 
                              (route/not-found
                               (fn [{uri :uri}]

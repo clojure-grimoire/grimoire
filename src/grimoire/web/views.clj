@@ -229,7 +229,7 @@
         source-file      (-> "source.clj"            symbol-file-path)
         related-file     (-> "related.txt"           symbol-file-path)]
     (case type
-      (:html :text/html)
+      (:html :text/html "text/html")
       ,,(when (.isDirectory (io/file root))
           (let [name (slurp name-file)]
             (layout
@@ -287,7 +287,7 @@
              [:script {:src "/public/jquery.js" :type "text/javascript"}]
              [:script {:src "/public/fold.js" :type "text/javascript"}])))
 
-      (:text :text/plain)
+      (:text :text/plain "text/plain")
       ,,(let [line80           (apply str (repeat 80 "-"))
               line40           (apply str (repeat 40 "-"))]
           (when (.isDirectory (io/file root))

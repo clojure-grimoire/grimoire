@@ -28,7 +28,7 @@ syntax for vectors and maps.  Differences:
   or out of the bounds for the vector.
 * It does not work for records, strings, or Java Maps or arrays.
 
-imilar to contains?, 'get' has some unusual cases where non-integer
+Similar to contains?, 'get' has some unusual cases where non-integer
 numbers will be rounded off to integers without any errors.
 
     user=> (get [:a :b :c] 1.7)

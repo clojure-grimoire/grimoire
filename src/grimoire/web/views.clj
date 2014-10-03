@@ -241,12 +241,15 @@
                (-> site-config :style :header-sep)]
               name]
 
-             [:h2 "Arities"]
-             [:p (util/resource-file-contents arities-file)]
-             [:h2 "Official Documentation - "
-              [:a {:href (gh/->edit-url site-config "develop" docstring-file)}
-               "edit"]]
-             [:pre (util/resource-file-contents docstring-file)]
+             (when (.isFile arities-file)
+               (list [:h2 "Arities"]
+                     [:p (util/resource-file-contents arities-file)]))
+
+             (when (.isFile docstring-file)
+               (list [:h2 "Official Documentation - "
+                      [:a {:href (gh/->edit-url site-config "develop" docstring-file)}
+                       "edit"]]
+                     [:pre (util/resource-file-contents docstring-file)]))
 
              (when-let [comdoc (util/markdown-file comdoc-file)]
                (list

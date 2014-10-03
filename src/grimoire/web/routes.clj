@@ -48,9 +48,9 @@
                                   (let [type (or header-type param-type :html)]
                                     (if (#{"catch" "finally"} symbol)
                                       (response/redirect (str "/" version "/clojure.core/try/"))
-                                      (when-let [res (views/symbol-page version namespace symbol type)]
-                                        (info (pr-str {:uri uri :type type}))
-                                        res))))
+                                      (if-let [res (views/symbol-page version namespace symbol type)]
+                                        (do (info (pr-str {:uri uri :type type})) res)
+                                        (response/redirect (str "/" version "/" namespace "/" (util/unmunge symbol)))))))
 
                              (GET "/docstring" {uri :uri}
                                   (let [f  (util/resource-file version namespace symbol "docstring.md")]

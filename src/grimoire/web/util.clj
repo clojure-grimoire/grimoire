@@ -100,3 +100,15 @@
   "Returns an UTF-8 URL encoded version of the given string."
   [unencoded]
   (URLEncoder/encode unencoded "UTF-8"))
+
+(def clojure-versions
+  ["1.6.0" "1.5.0" "1.4.0"])
+
+(defn unmunge [s]
+  (-> s
+      (string/replace #"_?DASH_?"  "-")
+      (string/replace #"_?BANG_?"  "!")
+      (string/replace #"_?STAR_?"  "*")
+      (string/replace #"_?EQ_?"    "=")
+      (string/replace #"_?LT_?"    "<")
+      (string/replace #"_?GT_?"    ">")))

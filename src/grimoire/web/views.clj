@@ -262,7 +262,11 @@
                [:div.section
                 [:h2.heading "Examples " [:span.hide "-"]]
                 [:div.autofold
-                 (map-indexed example examples)]])
+                 (list (map-indexed example examples)
+                       [:h3 [:a {:href (gh/->new-url site-config "develop"
+                                                (format "/resources/org.clojure/clojure/%s/%s/%s/examples/"
+                                                        version namespace symbol))}
+                        "Contribute an example!"]])]])
 
 
              (when-not (= "special" (slurp type-file))

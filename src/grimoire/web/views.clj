@@ -272,7 +272,7 @@
                 [:div.autofold
                  (list (map-indexed example examples)
                        [:h3 [:a {:href (gh/->new-url site-config "develop"
-                                                (format "/resources/org.clojure/clojure/%s/%s/%s/examples/"
+                                                (format "resources/org.clojure/clojure/%s/%s/%s/examples/"
                                                         version namespace symbol))}
                         "Contribute an example!"]])]])
 

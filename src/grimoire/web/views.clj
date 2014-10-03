@@ -167,18 +167,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Symbol page
 
-(def clojure-example-versions
-  {"1.6.0" ["1.6.0" "1.5.0" "1.4.0"]
-   "1.5.0" ["1.5.0" "1.4.0"]
-   "1.4.0" ["1.4.0"]})
-
-(defn example [index path]
-  (let []
-    (list
-     [:h4
-      "Example " (inc index) " - "
-      [:a {:href (gh/->edit-url site-config "develop" path)} "edit"]
-      [:div (util/clojure-file path)]])))
+(defn example [index [clojure path]]
+  [:div.example
+   [:h3
+    [:span.title "Example " (inc index)]
+    [:span.edit  {"style" "float: right;"}
+     [:a {:href (gh/->edit-url site-config "develop" path)} "edit"]]
+    [:span.version {"style" "float: right; padding-right: 1.0em;"}
+     "Clojure " clojure]]
+   [:div.source (util/clojure-file path)]])
 
 (defn raw-example [index path]
   (str "Example " (inc index) "\n"
@@ -188,34 +185,31 @@
 
 (defn all-examples
   [top-version namespace symbol type]
-  (let [path (str namespace "/" symbol "/examples/")]
+  (let [path     (str namespace "/" symbol "/examples/")
+        versions (->> clojure-versions
+                      (filter (fn [v]
+                                (or (= v top-version)
+                                    (semver/older? v top-version))))
+                      sort)]
     (case type
       :html
-      ,,(for [v (clojure-example-versions top-version)]
-          (let [examples-dir (str "resources/org.clojure/clojure/" v "/" path)
-                examples     (util/dir-list-as-strings examples-dir)]
-            (when (or (not (empty? examples))
-                     (= "1.6.0" v))
-              (list
-               [:div.section
-                [:h3.heading "Examples from Clojure " v " " [:span.unhide "+"]]
-                [:div.autofold.prefold
-                 (map-indexed example examples)
-                 [:a {:href (gh/->new-url site-config "develop" examples-dir)}
-                  "Contribute an example!"]]]))))
+      ,,(for [v     versions
+              :let  [examples-dir (str "resources/org.clojure/clojure/" v "/" path)]
+              e     (util/dir-list-as-strings examples-dir)]
+            [v e])
 
       :text
-      ,,(->> (for [v (clojure-example-versions top-version)]
-             (let [examples (util/dir-list-as-strings (str "resources/org.clojure/clojure/" v "/" path))]
-               (when-not (empty? examples)
-                 (str "### Examples from Clojure " v "\n"
-                      "----------------------------------------\n"
-                      (->> examples
-                         (map-indexed raw-example)
-                         (interpose "\n")
-                         (apply str))))))
-           (interpose "\n")
-           (apply str)))))
+      ,,(->> (for [v versions]
+               (let [examples (util/dir-list-as-strings (str "resources/org.clojure/clojure/" v "/" path))]
+                 (when-not (empty? examples)
+                   (str "### Examples from Clojure " v "\n"
+                        "----------------------------------------\n"
+                        (->> examples
+                             (map-indexed raw-example)
+                             (interpose "\n")
+                             (apply str))))))
+             (interpose "\n")
+             (apply str)))))
 
 (defn symbol-page
   [version namespace symbol type]
@@ -262,16 +256,18 @@
 
              (when-let [examples (all-examples version namespace symbol :html)]
                [:div.section
-                [:h2.heading "Examples " [:span.unhide "+"]]
-                [:div.autofold.prefold
-                 examples
-                 (when-not (= "special" (slurp type-file))
-                   [:a {:href (str "http://crossclj.info/fun/" namespace "/" (util/url-encode name) ".html")}
-                    [:h3 "Uses on crossclj"]])]])
+                [:h2.heading "Examples " [:span.hide "-"]]
+                [:div.autofold
+                 (map-indexed example examples)]])
+
+
+             (when-not (= "special" (slurp type-file))
+               [:a {:href (str "http://crossclj.info/fun/" namespace "/" (util/url-encode name) ".html")}
+                [:h2 "Uses on crossclj"]])
 
              (when (.isFile related-file)
-               (let [related (line-seq (io/reader related-file))]
-                 (list [:h2 "Related"]
+               (when-let [related (line-seq (io/reader related-file))]
+                 (list [:h2 "Related Symbols"]
                        [:ul (for [r related]
                               (let [[ns sym] (string/split r #"/")]
                                 [:li [:a {:href (str (:baseurl site-config)
@@ -281,8 +277,10 @@
 
              (when-let [source (util/clojure-file source-file)]
                (list
-                [:h2 "Source"]
-                [:div source]))
+                [:div.section
+                 [:h2.heading "Source " [:span.unhide "+"]]
+                 [:div.autofold.prefold
+                  source]]))
 
              [:script {:src "/public/jquery.js" :type "text/javascript"}]
              [:script {:src "/public/fold.js" :type "text/javascript"}])))

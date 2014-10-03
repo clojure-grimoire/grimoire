@@ -243,7 +243,7 @@
 
              (when (.isFile arities-file)
                (list [:h2 "Arities"]
-                     [:p (util/resource-file-contents arities-file)]))
+                     [:pre (util/resource-file-contents arities-file)]))
 
              (when (.isFile docstring-file)
                (list [:h2 "Official Documentation - "

@@ -4,8 +4,9 @@
             [compojure.core :refer [GET]]
             [grimoire.github :as gh]
             [grimoire.web.layout :refer [layout]]
-            [grimoire.web.util :as util]
+            [grimoire.web.util :as util :refer [clojure-versions]]
             [grimoire.util :as gutil]
+            [clj-semver.core :as semver]
             [ring.util.response :as response]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -139,13 +140,13 @@
              ids      (zipmap keys ["sforms",        "macros", "fns",       "vars"])
              link-ids (zipmap keys ["sff",           "mf",     "ff",        "vf"])
              grouping (->> (for [path  (util/paths version namespace)
-                               :when (not (= "ns-notes.md" (last path)))]
-                           (let [fp          (string/join "/" path)
-                                 legacy-path (string/join "/" (drop 2 path))]
-                             {:url  (str (:baseurl site-config) legacy-path "/")
-                              :name (slurp (io/resource (str fp "/name.txt")))
-                              :type (slurp (io/resource (str fp "/type.txt")))}))
-                         (group-by :type))]
+                                 :when (not (= "ns-notes.md" (last path)))]
+                             (let [fp          (string/join "/" path)
+                                   legacy-path (string/join "/" (drop 2 path))]
+                               {:url  (str (:baseurl site-config) legacy-path "/")
+                                :name (slurp (io/resource (str fp "/name.txt")))
+                                :type (slurp (io/resource (str fp "/type.txt")))}))
+                           (group-by :type))]
          (for [k keys]
            (when-let [records (get grouping k)]
              (list
@@ -286,34 +287,34 @@
              [:script {:src "/public/fold.js" :type "text/javascript"}])))
 
       (:text :text/plain "text/plain")
-      ,,(let [line80           (apply str (repeat 80 "-"))
-              line40           (apply str (repeat 40 "-"))]
+      ,,(let [line80 (apply str (repeat 80 "-"))
+              line40 (apply str (repeat 40 "-"))]
           (when (.isDirectory (io/file root))
             (-> (str "# "version " - " namespace " - " (slurp name-file) "\n"
-                    ;; line80
-                    "\n"
+                     ;; line80
+                     "\n"
 
-                    "## Arities\n"
-                    ;; line40 "\n"
-                    (util/resource-file-contents arities-file)
-                    "\n"
+                     "## Arities\n"
+                     ;; line40 "\n"
+                     (util/resource-file-contents arities-file)
+                     "\n"
 
-                    "## Documentation\n"
-                    ;; line40 "\n"
-                    (util/resource-file-contents docstring-file)
-                    "\n"
+                     "## Documentation\n"
+                     ;; line40 "\n"
+                     (util/resource-file-contents docstring-file)
+                     "\n"
 
-                    "## User Documentation\n"
-                    ;; line40 "\n"
-                    (util/resource-file-contents comdoc-file)
-                    "\n"
+                     "## User Documentation\n"
+                     ;; line40 "\n"
+                     (util/resource-file-contents comdoc-file)
+                     "\n"
 
-                    "## Examples\n"
-                    ;; line40 "\n"
-                    (all-examples version namespace symbol :text)
+                     "## Examples\n"
+                     ;; line40 "\n"
+                     (all-examples version namespace symbol :text)
 
-                    "## See Also\n"
-                    ;; line40 "\n"
-                    (util/resource-file-contents related-file))
-               response/response
-               (response/content-type "text/plain")))))))
+                     "## See Also\n"
+                     ;; line40 "\n"
+                     (util/resource-file-contents related-file))
+                response/response
+                (response/content-type "text/plain")))))))

@@ -6,14 +6,12 @@
 
 (defonce service (atom nil))
 
-(def handler
-  (-> app
-      handler/site
-      session/wrap-session))
-
 (defn start-web-server! [& [port?]]
+  (println "starting!")
   (reset! service
-          (jetty/run-jetty handler
+          (jetty/run-jetty (-> app
+                               handler/site
+                               session/wrap-session)
                            {:port (or port? 3000)
                             :join? false})))
 

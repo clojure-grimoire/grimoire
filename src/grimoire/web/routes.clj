@@ -41,17 +41,6 @@
                          (views/namespace-page-memo version namespace))
 
                     (context "/:symbol" [symbol]
-                             (GET "/" {header-type :content-type
-                                       {param-type :type} :params
-                                       :as req
-                                       uri :uri}
-                                  (let [type (or header-type param-type :html)]
-                                    (if (#{"catch" "finally"} symbol)
-                                      (response/redirect (str "/" version "/clojure.core/try/"))
-                                      (if-let [res (views/symbol-page version namespace symbol type)]
-                                        (do (info (pr-str {:uri uri :type type})) res)
-                                        (response/redirect (str "/" version "/" namespace "/" (util/unmunge symbol)))))))
-
                              (GET "/docstring" {uri :uri}
                                   (let [f  (util/resource-file version namespace symbol "docstring.md")]
                                     (when (and f (.isFile f))
@@ -74,6 +63,26 @@
                                   (when-let [examples (views/all-examples version namespace symbol :text)]
                                     (info (pr-str {:uri uri :type :text}))
                                     examples))
+
+                             (GET "/" {header-type :content-type
+                                       {param-type :type} :params
+                                       :as req
+                                       uri :uri}
+                                  (let [type    (or header-type param-type :html)
+                                        symbol' (util/unmunge symbol)]
+                                    (cond
+                                     ;; FIXME this is a bit of a hack to handle catch/finally
+                                     (#{"catch" "finally"} symbol)
+                                     ,,(response/redirect (str "/" version "/clojure.core/try/"))
+
+                                     ;; handle the case of redirecting due to munging
+                                     (not (= symbol symbol'))
+                                     ,,(response/redirect (str "/" version "/" namespace "/" symbol' "/"))
+
+                                     :else
+                                     ,,(let [res (views/symbol-page version namespace symbol type)]
+                                         (info (pr-str {:uri uri :type type}))
+                                         res))))
 
                              (route/not-found
                               (fn [{uri :uri}]

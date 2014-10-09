@@ -1,8 +1,8 @@
 (ns grimoire.web.util
   (:require [clojure.java.io :as io]
-            [clojure.string :as string]
-            [markdown.core :as md]
-            [me.raynes.conch :refer [let-programs]])
+	    [clojure.string :as string]
+	    [markdown.core :as md]
+	    [me.raynes.conch :refer [let-programs]])
   (:import (java.net URLEncoder)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -24,12 +24,12 @@
 
 (defn parse-markdown-page-header [page]
   (when-let [header (some->> page
-                             (re-find header-regex)
-                             second)]
+			     (re-find header-regex)
+			     second)]
     (->> (string/split header #"\n")
-         (map #(string/split % #": "))
-         (map (juxt (comp keyword first) second))
-         (into {}))))
+	 (map #(string/split % #": "))
+	 (map (juxt (comp keyword first) second))
+	 (into {}))))
 
 (defn parse-markdown-page [page]
   (when-let [raw (some-> page (str ".md") io/resource slurp)]
@@ -42,19 +42,24 @@
 (defn resource-file
   "This helper is a disgusting hack but it's a start."
   ([version f]
-     (io/file 
+     (io/file
       (str "resources/org.clojure/clojure/"
-           version "/" f)))
+	   version "/" f)))
 
   ([version namespace f]
-     (io/file 
+     (io/file
       (str "resources/org.clojure/clojure/"
-           version "/" namespace "/" f)))
+	   version "/" namespace "/" f)))
 
   ([version namespace symbol f]
-     (io/file 
+     (io/file
       (str "resources/org.clojure/clojure/"
-           version "/" namespace "/" symbol "/" f))))
+	   version "/" namespace "/" symbol "/" f)))
+
+  ([groupid artifactid version namespace symbol f]
+     (io/file
+      (format "resources/%s/%s/%s/%s/%s/%s"
+              groupid artifactid version namespace symbol f))))
 
 (defn resource-file-contents [file]
   (let [file (io/file file)]
@@ -67,8 +72,8 @@
 (defn highlight-clojure [text]
   (let-programs [pygmentize "pygmentize"]
     (pygmentize "-fhtml" (str "-l" "clojure")
-                (str "-Ostripnl=False,encoding=utf-8")
-                {:in text})))
+		(str "-Ostripnl=False,encoding=utf-8")
+		{:in text})))
 
 (defn clojure-file [file]
   (some-> file resource-file-contents highlight-clojure))
@@ -80,7 +85,7 @@
   (let [dir (apply io/file path-elements)]
     (when (.exists dir)
       (->> (.listFiles dir)
-           (map str)))))
+	   (map str)))))
 
 (defn prepare-path [path]
   (-> path
@@ -89,7 +94,7 @@
 
 (defn paths [& path-elements]
   (->> path-elements
-       (concat ["resources" "org.clojure" "clojure"])
+       (concat ["resources"])
        (apply dir-list-as-strings)
        (map prepare-path)))
 

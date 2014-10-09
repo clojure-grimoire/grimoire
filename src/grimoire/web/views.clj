@@ -1,13 +1,13 @@
 (ns grimoire.web.views
   (:require [clojure.java.io :as io]
-            [clojure.string :as string]
-            [compojure.core :refer [GET]]
-            [grimoire.github :as gh]
-            [grimoire.web.layout :refer [layout]]
-            [grimoire.web.util :as util :refer [clojure-versions]]
-            [grimoire.util :as gutil]
-            [clj-semver.core :as semver]
-            [ring.util.response :as response]))
+	    [clojure.string :as string]
+	    [compojure.core :refer [GET]]
+	    [grimoire.github :as gh]
+	    [grimoire.web.layout :refer [layout]]
+	    [grimoire.web.util :as util :refer [clojure-versions]]
+	    [grimoire.util :as gutil]
+	    [clj-semver.core :as semver]
+	    [ring.util.response :as response]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Site config
@@ -21,12 +21,12 @@
    :google-analytics-id "UA-44001831-2"
    :year                "2014"
    :author              {:me          "http://arrdem.com/"
-                         :email       "me@arrdem.com"
-                         :gittip      "https://gittip.com/arrdem/"}
-   :style               {:header-sep  " / "
-                         :title       "Grimoire - Clojure Documentation"
-                         :description "Community documentation of Clojure"
-                         :quote       "Even the most powerful wizard must consult grimoires as an aid against forgetfulness."}})
+			 :email       "me@arrdem.com"
+			 :gittip      "https://gittip.com/arrdem/"}
+   :style               {:header-sep  "/"
+			 :title       "Grimoire - Clojure Documentation"
+			 :description "Community documentation of Clojure"
+			 :quote       "Even the most powerful wizard must consult grimoires as an aid against forgetfulness."}})
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 404 Error page
 
@@ -35,37 +35,69 @@
    site-config
    (slurp (io/resource "404.html"))))
 
-(defn error-unknown-version [version]
+(defn error-unknown-group [groupid]
   (layout
    site-config
    [:h1 {:class "page-title"}
-    [:a "Clojure " version]]
-   [:p "Unknown Clojure version " (pr-str [version])]
+    [:a groupid]]
+   [:p "Unknown group " (pr-str groupid)]
    [:p "If you found a broken link, please report the issue encountered on the github bugtracker."]))
 
-(defn error-unknown-namespace [version namespace]
-  (layout
-   site-config
-   [:h1 {:class "page-title"}
-    [:a "Clojure " version]]
-   [:p "Unknown namespace identifier " (pr-str [version namespace])]
-   [:p "If you found a broken link, please report the issue encountered on the github bugtracker."]))
+(defn error-unknown-artifact [groupid artifactid]
+  (let [s (format "%s/%s" groupid artifactid)]
+    (layout
+     site-config
+     [:h1 {:class "page-title"}
+      [:a s]]
+     [:p "Unknown artifact " s]
+     [:p "If you found a broken link, please report the issue encountered on the github bugtracker."])))
 
-(defn error-unknown-symbol [type version namespace symbol]
-  (case type
-    (:html :text/html "text/html")
-    ,,(layout
-       site-config
-       [:h1 {:class "page-title"}
-        [:a "Clojure " version]]
-       [:p "Unknown symbol identifier " (pr-str [version namespace symbol])]
-       [:p "If you found a broken link, please report the issue encountered on the github bugtracker."])
+(defn error-unknown-version
+  ([version]
+     (error-unknown-version "org.clojure" "clojure" version))
 
-    (:text :text/plain "text/plain")
-    ,,(-> (str "# Unknown symbol: Clojure " version ", " namespace "/" (util/unmunge symbol) \newline
-               "Sorry! Only clojure.core is documented right now.")
-          response/response
-          (response/content-type "text/plain"))))
+  ([groupid artifactid version]
+     (layout
+      site-config
+      [:h1 {:class "page-title"}
+       [:a (format "[%s/%s \"%s\"]" groupid artifactid version)]]
+      [:p "Unknown artifact version " (pr-str version)]
+      [:p "If you found a broken link, please report the issue encountered on the github bugtracker."])))
+
+(defn error-unknown-namespace
+  ([version namespace]
+     (error-unknown-namespace "org.clojure" "clojure" version namespace))
+
+  ([groupid artifactid version namespace]
+     (layout
+      site-config
+      [:h1 {:class "page-title"}
+       [:a (format "[%s/%s \"%s\"]" groupid artifactid version)]]
+      [:p "Unknown namespace identifier " (pr-str [version namespace])]
+      [:p "If you found a broken link, please report the issue encountered on the github bugtracker."])))
+
+(defn error-unknown-symbol
+  ([version namespace symbol]
+     (error-unknown-symbol "org.clojure" "clojure" version namespace symbol))
+
+  ([type version namespace symbol]
+     (let [version-string (format "[%s/%s \"%s\"]" groupid artifactid version)
+           symbol-string  (format "%s/%s" namespace (util/unmunge symbol))]
+       (case type
+         (:html :text/html "text/html")
+         ,,(layout
+            site-config
+            [:h1 {:class "page-title"}
+             [:a version-string]
+             [:p "Unknown symbol identifier " symbol-string]
+             [:p "If you found a broken link, please report the issue encountered on the github bugtracker."]])
+
+         (:text :text/plain "text/plain")
+         ,,(-> (str "In artifact: " version-string \newline
+                    "Unknown symbol: " symbol-string  \newline
+                    "Sorry! Only clojure.core is documented right now.")
+               response/response
+               (response/content-type "text/plain"))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Generic markdown page
@@ -76,8 +108,8 @@
      site-config
      (if page
        (list (when-let [title (:title header)]
-               [:h1 title])
-             page)
+	       [:h1 title])
+	     page)
        (response/not-found "Resource not found, sorry. Please file an issue on the github bugtracker.")))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -90,29 +122,82 @@
    (util/cheatsheet-memo site-config)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Shared header generator
+
+(defn header
+  ([groupid]
+     [:a {:href (str (:baseurl site-config) groupid "/")}
+      groupid])
+
+  ([groupid artifactid]
+     (list (header groupid) 
+           "/" [:a {:href (str (:baseurl site-config) groupid "/" artifactid "/")}
+                artifactid]))
+
+  ([groupid artifactid version]
+     (list "[" (header groupid artifactid)
+           " " [:a {:href (str (:baseurl site-config) groupid "/" artifactid "/" version "/")}
+                (pr-str version)] "]"))
+
+  ([groupid artifactid version namespace]
+     (list (header groupid artifactid version) " "
+           [:a {:href (str (:baseurl site-config) groupid "/" artifactid "/" version "/" namespace "/")}
+            namespace]))
+
+  ([groupid artifactid version namespace symbol]
+     (list (header groupid artifactid version namespace) "/"
+           [:a {:href (str (:baseurl site-config) groupid "/" artifactid "/" version "/" namespace "/" symbol "/")}
+            symbol])))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Groupid page
+
+(defn groupid-page [groupid]
+  (layout site-config
+   [:h1 {:class "page-title"} "Group " (header groupid)]
+   [:h2 "Known artifacts"]
+   [:ul
+    (for [p     (->> (util/paths groupid) sort)
+          :let  [[groupid artifactid] p]]
+      [:li [:a {:href (str "./" artifactid)}
+            (pr-str (symbol groupid artifactid))]])]))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Artifactid page
+
+(defn artifactid-page [groupid artifactid]
+  (layout site-config
+   [:h1 {:class "page-title"} "Artifact " (header groupid artifactid)]
+   [:h2 "Known release versions"]
+   [:ul
+    (for [p     (->> (util/paths groupid artifactid) sort)
+          :let  [[groupid artifactid version] p]]
+      [:li [:a {:href (str "./" version)}
+            (pr-str [(symbol groupid artifactid) version])]])]))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Version page
 
-(defn version-page [version]
+(defn version-page [groupid artifactid version]
   (let [rel-notes-file (util/resource-file version "release-notes.md")]
     (layout
      (assoc site-config
        :page {:description (str "Clojure " version " release information")})
-     [:h1 {:class "page-title"}
-      [:a {:href (str (:baseurl site-config) version "/")} "Clojure " version]]
-
+     [:h1 {:class "page-title"} (header groupid artifactid version)]
      [:h2 "Release Notes - "
       [:a {:href (gh/->edit-url site-config "develop" rel-notes-file)} "edit"]]
      (util/markdown-file rel-notes-file)
 
      [:h2 "Namespaces"]
      [:ul
-      (for [path (->> version util/paths (sort-by last))
-            :when (not (= "release-notes.md" (last path)))]
-        [:li
-         [:a {:href (str (:baseurl site-config)
-                         (string/join "/" (drop 2 path))
-                         "/")}
-          (last path)]])])))
+      (for [path (->> (util/paths groupid artifactid version)
+		      (sort-by last))
+	    :when (not (= "release-notes.md" (last path)))]
+	[:li
+	 [:a {:href (str (:baseurl site-config)
+			 (string/join "/" (drop 2 path))
+			 "/")}
+	  (last path)]])])))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Namespace page
@@ -122,50 +207,47 @@
   (let [segments (group-by (comp str first :name) records)]
     (for [k (sort (keys segments))]
       (list [:h4 (string/capitalize k)]
-            [:p
-             (for [r (sort-by :name (get segments k))]
-               [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]))))
+	    [:p
+	     (for [r (sort-by :name (get segments k))]
+	       [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]))))
 
-(defn namespace-page [version namespace]
+(defn namespace-page [groupid artifactid version namespace]
   (let [resource      (partial util/resource-file version namespace)
-        ns-dir        (resource "")
-        ns-notes-file (resource "ns-notes.md")]
+	ns-dir        (resource "")
+	ns-notes-file (resource "ns-notes.md")]
     (when (.isDirectory (io/file ns-dir))
       (layout
        (assoc site-config
-         :page {:description (str "Clojure " version " " namespace " namespace symbols list")})
+	 :page {:description (str "Clojure " version " " namespace " namespace symbols list")})
        [:h1 {:class "page-title"}
-        [:span {:style "display:inline-block;"}
-         [:a {:href "../"} "Clojure " version]
-         (-> site-config :style :header-sep)]
-        namespace]
+	(header groupid artifactid version namespace)]
        [:h2 "Namespace Notes - "
-        [:a {:href (gh/->edit-url site-config "develop" ns-notes-file)} "edit"]]
+	[:a {:href (gh/->edit-url site-config "develop" ns-notes-file)} "edit"]]
        (util/markdown-file ns-notes-file)
        [:h2 "Symbols"]
        (let [keys                  ["special",       "macro",  "fn",        "var"]
-             mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
-             ids      (zipmap keys ["sforms",        "macros", "fns",       "vars"])
-             link-ids (zipmap keys ["sff",           "mf",     "ff",        "vf"])
-             grouping (->> (for [path  (util/paths version namespace)
-                                 :when (not (= "ns-notes.md" (last path)))]
-                             (let [fp          (string/join "/" path)
-                                   legacy-path (string/join "/" (drop 2 path))]
-                               {:url  (str (:baseurl site-config) legacy-path "/")
-                                :name (slurp (io/resource (str fp "/name.txt")))
-                                :type (slurp (io/resource (str fp "/type.txt")))}))
-                           (group-by :type))]
-         (for [k keys]
-           (when-let [records (get grouping k)]
-             (list
-              (let [links (emit-alphabetized-links records)]
-                [:div.section
-                 [:h3.heading (get mapping k)
-                  " " [:span.unhide (if (< 6 (count links)) "+" "-")]]
-                 [:div {:class (str "autofold"
-                                    (when (< 6 (count links))
-                                      " prefold"))}
-                  links]])))))
+	     mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
+	     ids      (zipmap keys ["sforms",        "macros", "fns",       "vars"])
+	     link-ids (zipmap keys ["sff",           "mf",     "ff",        "vf"])
+	     grouping (->> (for [path  (util/paths groupid artifactid version namespace)
+				 :when (not (= "ns-notes.md" (last path)))]
+			     (let [fp          (string/join "/" path)
+				   legacy-path (string/join "/" (drop 2 path))]
+			       {:url  (str (:baseurl site-config) fp "/")
+				:name (slurp (io/resource (str fp "/name.txt")))
+				:type (slurp (io/resource (str fp "/type.txt")))}))
+			   (group-by :type))]
+	 (for [k keys]
+	   (when-let [records (get grouping k)]
+	     (list
+	      (let [links (emit-alphabetized-links records)]
+		[:div.section
+		 [:h3.heading (get mapping k)
+		  " " [:span.unhide (if (< 6 (count links)) "+" "-")]]
+		 [:div {:class (str "autofold"
+				    (when (< 6 (count links))
+				      " prefold"))}
+		  links]])))))
 
        [:script {:src "/public/jquery.js" :type "text/javascript"}]
        [:script {:src "/public/fold.js" :type "text/javascript"}]))))
@@ -193,143 +275,142 @@
        "\n"))
 
 (defn all-examples
-  [top-version namespace symbol type]
-  (let [path     (str namespace "/" symbol "/examples/")
-        versions (->> clojure-versions
-                      (filter (fn [v]
-                                (or (= v top-version)
-                                    (semver/older? v top-version))))
-                      sort)]
+  [groupid artifactid top-version namespace symbol type]
+  (let [path     (str "resources/" groupid "/" artifactid "/%s/"
+		      namespace "/" symbol "/examples/")
+	versions (->> clojure-versions
+		      (filter (fn [v]
+				(or (= v top-version)
+				    (semver/older? v top-version))))
+		      sort)]
+    (println path)
     (case type
       :html
       ,,(for [v     versions
-              :let  [examples-dir (str "resources/org.clojure/clojure/" v "/" path)]
-              e     (util/dir-list-as-strings examples-dir)]
-            [v e])
+	      :let  [examples-dir (format path v)]
+	      e     (util/dir-list-as-strings examples-dir)]
+          [v e])
 
       :text
       ,,(->> (for [v versions]
-               (let [examples (util/dir-list-as-strings (str "resources/org.clojure/clojure/" v "/" path))]
-                 (when-not (empty? examples)
-                   (str "### Examples from Clojure " v "\n"
-                        "----------------------------------------\n"
-                        (->> examples
-                             (map-indexed raw-example)
-                             (interpose "\n")
-                             (apply str))))))
-             (interpose "\n")
-             (apply str)))))
+	       (let [d        (format path v)
+		     examples (util/dir-list-as-strings d)]
+		 (when-not (empty? examples)
+		   (str "### Examples from Clojure " v "\n"
+			"----------------------------------------\n"
+			(->> examples
+			     (map-indexed raw-example)
+			     (interpose "\n")
+			     (apply str))))))
+	     (interpose "\n")
+	     (apply str)))))
 
 (defn symbol-page
-  [version namespace symbol type]
-  (let [symbol-file-path (partial util/resource-file version namespace symbol)
-        root             (-> "/"                     symbol-file-path)
-        name-file        (-> "name.txt"              symbol-file-path)
-        type-file        (-> "type.txt"              symbol-file-path)
-        arities-file     (-> "arities.txt"           symbol-file-path)
-        docstring-file   (-> "docstring.md"          symbol-file-path)
-        comdoc-file      (-> "extended-docstring.md" symbol-file-path)
-        source-file      (-> "source.clj"            symbol-file-path)
-        related-file     (-> "related.txt"           symbol-file-path)]
+  [groupid artifactid version namespace symbol type]
+  (let [symbol-file-path (partial util/resource-file groupid artifactid version namespace symbol)
+	root             (-> "/"                     symbol-file-path)
+	name-file        (-> "name.txt"              symbol-file-path)
+	type-file        (-> "type.txt"              symbol-file-path)
+	arities-file     (-> "arities.txt"           symbol-file-path)
+	docstring-file   (-> "docstring.md"          symbol-file-path)
+	comdoc-file      (-> "extended-docstring.md" symbol-file-path)
+	source-file      (-> "source.clj"            symbol-file-path)
+	related-file     (-> "related.txt"           symbol-file-path)]
     (case type
       (:html :text/html "text/html")
       ,,(when (.isDirectory (io/file root))
-          (let [name (slurp name-file)]
-            (layout
-             (assoc site-config
-               :page {:description (str "Clojure " version " " namespace "/" symbol
-                                        " documentation and examples")
-                      :summary (slurp docstring-file)})
-             [:h1 {:class "page-title"}
-              [:span {:style "display:inline-block;"}
-               [:a {:href "../../"} "Clojure " version]
-               (-> site-config :style :header-sep)]
-              [:span {:style "display:inline-block;"}
-               [:a {:href "../"} namespace]
-               (-> site-config :style :header-sep)]
-              name]
+	  (let [name (slurp name-file)]
+	    (layout
+	     (assoc site-config
+	       :page {:description (str "Clojure " version " " namespace "/" symbol
+					" documentation and examples")
+		      :summary (slurp docstring-file)})
+	     [:h1 {:class "page-title"}
+              (header groupid artifactid version namespace symbol)]
 
-             (when (.isFile arities-file)
-               (list [:h2 "Arities"]
-                     [:pre (util/resource-file-contents arities-file)]))
+	     (when (.isFile arities-file)
+	       (list [:h2 "Arities"]
+		     [:pre (util/resource-file-contents arities-file)]))
 
-             (when (.isFile docstring-file)
-               (list [:h2 "Official Documentation - "
-                      [:a {:href (gh/->edit-url site-config "develop" docstring-file)}
-                       "edit"]]
-                     [:pre (util/resource-file-contents docstring-file)]))
+	     (when (.isFile docstring-file)
+	       (list [:h2 "Official Documentation - "
+		      [:a {:href (gh/->edit-url site-config "develop" docstring-file)}
+		       "edit"]]
+		     [:pre (util/resource-file-contents docstring-file)]))
 
-             (when-let [comdoc (util/markdown-file comdoc-file)]
-               (list
-                [:h2 "Community Documentation - "
-                 [:a {:href (gh/->edit-url site-config "develop" comdoc-file)}
-                  "edit"]]
-                comdoc))
+	     (when-let [comdoc (util/markdown-file comdoc-file)]
+	       (list
+		[:h2 "Community Documentation - "
+		 [:a {:href (gh/->edit-url site-config "develop" comdoc-file)}
+		  "edit"]]
+		comdoc))
 
-             (when-let [examples (all-examples version namespace symbol :html)]
-               [:div.section
-                [:h2.heading "Examples " [:span.hide "-"]]
-                [:div.autofold
-                 (list (map-indexed example examples)
-                       [:h3 [:a {:href (gh/->new-url site-config "develop"
-                                                (format "resources/org.clojure/clojure/%s/%s/%s/examples/"
-                                                        version namespace symbol))}
-                        "Contribute an example!"]])]])
+	     (when-let [examples (all-examples groupid artifactid version
+					       namespace symbol :html)]
+	       [:div.section
+		[:h2.heading "Examples " [:span.hide "-"]]
+		[:div.autofold
+		 (list (map-indexed example examples)
+		       [:h3 [:a {:href (gh/->new-url site-config "develop"
+						(format "resources/%s/%s/%s/%s/%s/examples/"
+							groupid artifactid version
+							namespace symbol))}
+			"Contribute an example!"]])]])
 
 
-             (when-not (= "special" (slurp type-file))
-               [:a {:href (str "http://crossclj.info/fun/" namespace "/" (util/url-encode name) ".html")}
-                [:h2 "Uses on crossclj"]])
+	     (when-not (= "special" (slurp type-file))
+	       [:a {:href (str "http://crossclj.info/fun/" namespace "/" (util/url-encode name) ".html")}
+		[:h2 "Uses on crossclj"]])
 
-             (when (.isFile related-file)
-               (when-let [related (line-seq (io/reader related-file))]
-                 (list [:h2 "Related Symbols"]
-                       [:ul (for [r related]
-                              (let [[ns sym] (string/split r #"/")]
-                                [:li [:a {:href (str (:baseurl site-config)
-                                                     "/" version "/" ns "/"
-                                                     (gutil/my-munge sym) "/")}
-                                      r]]))])))
+	     (when (.isFile related-file)
+	       (when-let [related (line-seq (io/reader related-file))]
+		 (list [:h2 "Related Symbols"]
+		       [:ul (for [r related]
+			      (let [[ns sym] (string/split r #"/")]
+				[:li [:a {:href (str (:baseurl site-config)
+						     "/" version "/" ns "/"
+						     (gutil/my-munge sym) "/")}
+				      r]]))])))
 
-             (when-let [source (util/clojure-file source-file)]
-               (list
-                [:div.section
-                 [:h2.heading "Source " [:span.unhide "+"]]
-                 [:div.autofold.prefold
-                  source]]))
+	     (when-let [source (util/clojure-file source-file)]
+	       (list
+		[:div.section
+		 [:h2.heading "Source " [:span.unhide "+"]]
+		 [:div.autofold.prefold
+		  source]]))
 
-             [:script {:src "/public/jquery.js" :type "text/javascript"}]
-             [:script {:src "/public/fold.js" :type "text/javascript"}])))
+	     [:script {:src "/public/jquery.js" :type "text/javascript"}]
+	     [:script {:src "/public/fold.js" :type "text/javascript"}])))
 
-      (:text :text/plain "text/plain")
+      (:text :text/plain "text/plain" "text")
       ,,(let [line80 (apply str (repeat 80 "-"))
-              line40 (apply str (repeat 40 "-"))]
-          (when (.isDirectory (io/file root))
-            (-> (str "# "version " - " namespace " - " (slurp name-file) "\n"
-                     ;; line80
-                     "\n"
+	      line40 (apply str (repeat 40 "-"))]
+	  (when (.isDirectory (io/file root))
+	    (-> (str "# " (pr-str [(clojure.core/symbol groupid artifactid) version]) " " namespace "/" (slurp name-file) "\n"
+		     ;; line80
+		     "\n"
 
-                     "## Arities\n"
-                     ;; line40 "\n"
-                     (util/resource-file-contents arities-file)
-                     "\n"
+		     "## Arities\n"
+		     ;; line40 "\n"
+		     (util/resource-file-contents arities-file)
+		     "\n"
 
-                     "## Documentation\n"
-                     ;; line40 "\n"
-                     (util/resource-file-contents docstring-file)
-                     "\n"
+		     "## Documentation\n"
+		     ;; line40 "\n"
+		     (util/resource-file-contents docstring-file)
+		     "\n"
 
-                     "## User Documentation\n"
-                     ;; line40 "\n"
-                     (util/resource-file-contents comdoc-file)
-                     "\n"
+		     "## User Documentation\n"
+		     ;; line40 "\n"
+		     (util/resource-file-contents comdoc-file)
+		     "\n"
 
-                     "## Examples\n"
-                     ;; line40 "\n"
-                     (all-examples version namespace symbol :text)
+		     "## Examples\n"
+		     ;; line40 "\n"
+		     (all-examples groupid artifactid version namespace symbol :text)
 
-                     "## See Also\n"
-                     ;; line40 "\n"
-                     (util/resource-file-contents related-file))
-                response/response
-                (response/content-type "text/plain")))))))
+		     "## See Also\n"
+		     ;; line40 "\n"
+		     (util/resource-file-contents related-file))
+		response/response
+		(response/content-type "text/plain")))))))

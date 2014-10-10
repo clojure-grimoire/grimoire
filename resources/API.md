@@ -26,11 +26,17 @@ munging applied.
 
 ## Filesystem
 
-As of 0.3.0, Grimoire is built atop a filesystem "database" consisting
+As of 0.3.10, Grimoire is built atop a filesystem "database" consisting
 of the following resource paths
 
 ```
+/resources/store/$GROUPID/
+/resources/store/$GROUPID/group-notes.md
+/resources/store/$GROUPID/$ARTIFACTID/
+/resources/store/$GROUPID/$ARTIFACTID/artifact-notes.md
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/
 /resources/store/$GROUPID/$ARTIFACTID/$VERSION/release-notes.md
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/
 /resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/ns-notes.md
 /resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/
 /resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/name.txt
@@ -40,11 +46,17 @@ of the following resource paths
 /resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring.md
 /resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/source.clj
 /resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/related.txt
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/examples/
 /resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/examples/$EXAMPLE_ID.clj
 ```
 
 This list of paths is provided as a reference for developers hacking
-on Grimoire and should not be considered stable or user-accessible.
+on Grimoire and should not be considered stable or user-accessible
+yet.
+
+The goal of this structure is to keep the documentation for different
+artifacts isolated, hopefully enabling documentation to be split out
+of the core Grimoire repo at some time in the future.
 
 ## HTTP API
 
@@ -69,12 +81,23 @@ text results.
 
 ## HTTP Examples
 
-`GET /store/org.clojure/clojure/1.6.0/clojure.core/conj/ TYPE: text/html` shall return
-HTML formatted documentation of `clojure.core/conj` as per convention.
+`GET /store/org.clojure/clojure/1.6.0/clojure.core/conj/ TYPE:
+text/html` shall return HTML formatted documentation of
+`clojure.core/conj` as of the release of
+`[org.clojure/clojure "1.6.0"]` as per convention.
 
-`GET /store/org.clojure/clojure/1.6.0/clojure.core/conj/ TYPE: text/plain` shall return plain
-text or un-rendered markdown documentation of `clojure.core/conj`
-formatted for an 80-character display.
+`GET /store/org.clojure/clojure/1.6.0/clojure.core/conj/ TYPE:
+text/plain` shall return plain text or un-rendered markdown
+documentation of `clojure.core/conj` as of
+`[org.clojure/clojure "1.6.0"]` formatted for an 80-character display.
 
 `GET /store/org.clojure/clojure/1.6.0/clojure.core/conj/?type=text/plain` shall give the same
 result as if the type header were set to `text/plain`.
+
+## Compatibility
+
+Note that prior to Grimoire 0.3.10, the prefix
+`/store/$ARTIFACTID/$GROUPID` was not required. Consequently until the
+0.4.0 release of Grimoire URLs with a valid `$VERSION` as the first
+element will be redirected to add the prefix
+`store/org.clojure/clojure/`.

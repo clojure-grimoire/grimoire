@@ -130,7 +130,7 @@
               (cons (:baseurl site-config))
               (apply str))})
 
-(def link-to' (partial link-to "/store"))
+(def link-to' (partial link-to "store"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Articles list page
@@ -275,7 +275,9 @@
 	      (let [links (emit-alphabetized-links records)]
 		[:div.section
 		 [:h3.heading (get mapping k)
-		  " " [:span.unhide (if (< 6 (count links)) "+" "-")]]
+		  " " (if (< 6 (count links))
+                        [:span.unhide "+"]
+                        [:span.hide "-"])]
 		 [:div {:class (str "autofold"
 				    (when (< 6 (count links))
 				      " prefold"))}

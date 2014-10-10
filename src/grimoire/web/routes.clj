@@ -53,11 +53,12 @@
 
         (context ["/:version", :version #"[0-9]+.[0-9]+.[0-9]+"] [version]
           (GET "/" {uri :uri}
-            (when (#{"1.4.0" "1.5.0" "1.6.0"} version)
-              (views/version-page groupid artifactid version)))
+            (info (pr-str {:uri uri :type :text}))
+            (views/version-page groupid artifactid version))
 
           (context "/:namespace" [namespace]
             (GET "/" {uri :uri}
+              (info (pr-str {:uri uri :type :text}))
               (views/namespace-page-memo groupid artifactid version
                                          namespace))
 

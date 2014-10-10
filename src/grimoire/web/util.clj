@@ -99,7 +99,7 @@
 
 (defn paths [& path-elements]
   (->> path-elements
-       (concat ["resources" "store"])
+       (concat ["resources"])
        (apply dir-list-as-strings)
        (map prepare-path)))
 

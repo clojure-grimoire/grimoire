@@ -117,33 +117,49 @@
   {:href (->> args
               (interpose \/ )
               (cons (:baseurl site-config))
-              (cons "/store")
               (apply str))})
+
+(def link-to' (partial link-to "/store"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Articles list page
+
+(defn articles-list []
+  (layout site-config
+   [:h1 {:class "page-title"} "Articles"]
+   [:ul
+    (for [p     (->> (util/paths "articles") sort)
+          :let  [[_articles a] p
+                 a             (string/replace a ".md" "")]]
+      [:li [:a (link-to "articles" a) a]])]))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Header helper
 
 (defn header
   ([groupid]
-     [:a (link-to groupid) groupid])
+     [:a (link-to' groupid) groupid])
 
   ([groupid artifactid]
      (let [params [groupid artifactid]]
        (list (apply header (butlast params))
-             "/" [:a (apply link-to params) artifactid])))
+             "/" [:a (apply link-to' params) artifactid])))
 
   ([groupid artifactid version]
      (let [params [groupid artifactid version]]
        (list "[" (apply header (butlast params))
-             " " [:a (apply link-to params) (pr-str version)] "]")))
+             " " [:a (apply link-to' params) (pr-str version)] "]")))
 
   ([groupid artifactid version namespace]
      (let [params [groupid artifactid version namespace]]
        (list (apply header (butlast params)) " "
-             [:a (apply link-to params) namespace])))
+             [:a (apply link-to' params) namespace])))
      
   ([groupid artifactid version namespace symbol]
      (let [sym'   (gutil/my-munge symbol)
            params [groupid artifactid version namespace sym']]
        (list (apply header (butlast params)) "/"
-             [:a (apply link-to params) symbol]))))
+             [:a (apply link-to' params) symbol]))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; API page
@@ -154,8 +170,8 @@
      [:h1 {:class "page-title"} "Documentation store"]
      [:h2 "Known Maven groups"]
      [:ul
-      (for [[_ groupid] (->> (util/paths) sort)]
-        [:li [:a (link-to groupid) groupid]])]))
+      (for [[_ groupid] (->> (util/paths "store") sort)]
+        [:li [:a (link-to' groupid) groupid]])]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Groupid page
@@ -165,9 +181,9 @@
    [:h1 {:class "page-title"} "Group " (header groupid)]
    [:h2 "Known artifacts"]
    [:ul
-    (for [p     (->> (util/paths groupid) sort)
+    (for [p     (->> (util/paths "store" groupid) sort)
           :let  [[_ groupid artifactid] p]]
-      [:li [:a (link-to groupid artifactid)
+      [:li [:a (link-to' groupid artifactid)
             (pr-str (symbol groupid artifactid))]])]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -178,9 +194,9 @@
    [:h1 {:class "page-title"} "Artifact " (header groupid artifactid)]
    [:h2 "Known release versions"]
    [:ul
-    (for [p     (->> (util/paths groupid artifactid) sort)
+    (for [p     (->> (util/paths "store" groupid artifactid) sort)
           :let  [[_ groupid artifactid version] p]]
-      [:li [:a (link-to groupid artifactid version)
+      [:li [:a (link-to' groupid artifactid version)
             (pr-str [(symbol groupid artifactid) version])]])]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -198,11 +214,11 @@
 
      [:h2 "Namespaces"]
      [:ul
-      (for [path (->> (util/paths groupid artifactid version)
+      (for [path (->> (util/paths "store" groupid artifactid version)
 		      (sort-by last))
 	    :when (not (= "release-notes.md" (last path)))]
 	[:li
-	 [:a (apply link-to (rest path))
+	 [:a (apply link-to' (rest path))
 	  (last path)]])])))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -234,7 +250,7 @@
 	     mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
 	     ids      (zipmap keys ["sforms",        "macros", "fns",       "vars"])
 	     link-ids (zipmap keys ["sff",           "mf",     "ff",        "vf"])
-	     grouping (->> (for [path  (util/paths groupid artifactid version namespace)
+	     grouping (->> (for [path  (util/paths "store" groupid artifactid version namespace)
 				 :when (not (= "ns-notes.md" (last path)))]
 			     (let [fp          (string/join "/" path)
 				   legacy-path (string/join "/" (drop 2 path))]

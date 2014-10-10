@@ -12,7 +12,7 @@
   (-> "cheatsheet.html"
       io/resource
       slurp
-      (string/replace #"\{\{ site.baseurl \}\}" "./")
+      (string/replace #"\{\{ site.baseurl \}\}" "")
       (string/replace #"\{\{ site.clojure_version \}\}" clojure-version)))
 
 (def cheatsheet-memo (memoize cheatsheet))

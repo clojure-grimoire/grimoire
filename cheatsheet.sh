@@ -19,6 +19,6 @@ sed  -i -e 1,3d cheatsheet-full.html
 head -n -2 cheatsheet-full.html > _cheatsheet
 mv _cheatsheet cheatsheet-full.html
 perl -i -p -e 's%http://grimoire.arrdem.com%{{ site.baseurl }}%g' cheatsheet-full.html
-perl -i -p -e 's%/1.6.0%{{ site.clojure_version }}%g' cheatsheet-full.html
+perl -i -p -e 's%/1.6.0%\/{{ site.clojure_version }}%g' cheatsheet-full.html
 perl -i -p -e 's%cheatsheet_files%{{ site.baseurl }}public%g' cheatsheet-full.html
 mv -f cheatsheet-full.html resources/cheatsheet.html

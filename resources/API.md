@@ -30,17 +30,17 @@ As of 0.3.0, Grimoire is built atop a filesystem "database" consisting
 of the following resource paths
 
 ```
-/resources/$VERSION/release-notes.md
-/resources/$VERSION/$NAMESPACE/ns-notes.md
-/resources/$VERSION/$NAMESPACE/$SYMBOL/
-/resources/$VERSION/$NAMESPACE/$SYMBOL/name.txt
-/resources/$VERSION/$NAMESPACE/$SYMBOL/type.txt
-/resources/$VERSION/$NAMESPACE/$SYMBOL/arities.txt
-/resources/$VERSION/$NAMESPACE/$SYMBOL/docstring.md
-/resources/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring.md
-/resources/$VERSION/$NAMESPACE/$SYMBOL/source.clj
-/resources/$VERSION/$NAMESPACE/$SYMBOL/related.txt
-/resources/$VERSION/$NAMESPACE/$SYMBOL/examples/$EXAMPLE_ID.clj
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/release-notes.md
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/ns-notes.md
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/name.txt
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/type.txt
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/arities.txt
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/docstring.md
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring.md
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/source.clj
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/related.txt
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/examples/$EXAMPLE_ID.clj
 ```
 
 This list of paths is provided as a reference for developers hacking
@@ -51,30 +51,30 @@ on Grimoire and should not be considered stable or user-accessible.
 For user access to much of this data, Grimoire 0.3.0 introduces a HTTP
 based API for requesting some data.
 
-`/$VERSION/$NAMESPACE/$SYMBOL/index.html` shall be the result of
+`/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/index.html` shall be the result of
 formatting all other API resources related to a single symbol save
 `/index.txt` into a single syntax highlighted HTML document.
 
-`/$VERSION/$NAMESPACE/$SYMBOL/index.txt` shall be the result of
+`/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/index.txt` shall be the result of
 formatting all other API resources save `/index.html` into a single
 file with no highlighting or markup. There may be plain text
 formatting, and the result may be wrapped at 80 characters of width.
 
-The paths `/$VERSION/$NAMESPACE/$SYMBOL/docstring`,
-`/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring`,
-`/$VERSION/$NAMESPACE/$SYMBOL/related` and
-`/$VERSION/$NAMESPACE/$SYMBOL/examples` are also defined for all
+The paths `/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/docstring`,
+`/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring`,
+`/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/related` and
+`/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/examples` are also defined for all
 symbols and special forms. These resources will only ever yield plain
 text results.
 
 ## HTTP Examples
 
-`GET /1.6.0/clojure.core/conj/ TYPE: text/html` shall return
+`GET /store/org.clojure/clojure/1.6.0/clojure.core/conj/ TYPE: text/html` shall return
 HTML formatted documentation of `clojure.core/conj` as per convention.
 
-`GET /1.6.0/clojure.core/conj/ TYPE: text/plain` shall return plain
+`GET /store/org.clojure/clojure/1.6.0/clojure.core/conj/ TYPE: text/plain` shall return plain
 text or un-rendered markdown documentation of `clojure.core/conj`
 formatted for an 80-character display.
 
-`GET /1.6.0/clojure.core/conj/?type=text/plain` shall give the same
+`GET /store/org.clojure/clojure/1.6.0/clojure.core/conj/?type=text/plain` shall give the same
 result as if the type header were set to `text/plain`.

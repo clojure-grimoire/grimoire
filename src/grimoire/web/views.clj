@@ -124,30 +124,49 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Shared header generator
 
+(defn link-to [& args]
+  {:href (->> args
+              (interpose \/ )
+              (cons (:baseurl site-config))
+              (cons "/store")
+              (apply str))})
+
 (defn header
   ([groupid]
-     [:a {:href (str (:baseurl site-config) groupid "/")}
-      groupid])
+     [:a (link-to groupid) groupid])
 
   ([groupid artifactid]
-     (list (header groupid) 
-           "/" [:a {:href (str (:baseurl site-config) groupid "/" artifactid "/")}
-                artifactid]))
+     (let [params [groupid artifactid]]
+       (list (apply header (butlast params))
+             "/" [:a (apply link-to params) artifactid])))
 
   ([groupid artifactid version]
-     (list "[" (header groupid artifactid)
-           " " [:a {:href (str (:baseurl site-config) groupid "/" artifactid "/" version "/")}
-                (pr-str version)] "]"))
+     (let [params [groupid artifactid version]]
+       (list "[" (apply header (butlast params))
+             " " [:a (apply link-to params) (pr-str version)] "]")))
 
   ([groupid artifactid version namespace]
-     (list (header groupid artifactid version) " "
-           [:a {:href (str (:baseurl site-config) groupid "/" artifactid "/" version "/" namespace "/")}
-            namespace]))
-
+     (let [params [groupid artifactid version namespace]]
+       (list (apply header (butlast params)) " "
+             [:a (apply link-to params) namespace])))
+     
   ([groupid artifactid version namespace symbol]
-     (list (header groupid artifactid version namespace) "/"
-           [:a {:href (str (:baseurl site-config) groupid "/" artifactid "/" version "/" namespace "/" symbol "/")}
-            symbol])))
+     (let [sym'   (gutil/my-munge symbol)
+           params [groupid artifactid version namespace sym']]
+       (list (apply header (butlast params)) "/"
+             [:a (apply link-to params) symbol]))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; API page
+
+(defn api-page []
+    (layout
+     site-config
+     [:h1 {:class "page-title"} "Documentation store"]
+     [:h2 "Known Maven groups"]
+     [:ul
+      (for [[_ groupid] (->> (util/paths) sort)]
+        [:li [:a (link-to groupid) groupid]])]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Groupid page
@@ -158,8 +177,8 @@
    [:h2 "Known artifacts"]
    [:ul
     (for [p     (->> (util/paths groupid) sort)
-          :let  [[groupid artifactid] p]]
-      [:li [:a {:href (str "./" artifactid)}
+          :let  [[_ groupid artifactid] p]]
+      [:li [:a (link-to groupid artifactid)
             (pr-str (symbol groupid artifactid))]])]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -171,8 +190,8 @@
    [:h2 "Known release versions"]
    [:ul
     (for [p     (->> (util/paths groupid artifactid) sort)
-          :let  [[groupid artifactid version] p]]
-      [:li [:a {:href (str "./" version)}
+          :let  [[_ groupid artifactid version] p]]
+      [:li [:a (link-to groupid artifactid version)
             (pr-str [(symbol groupid artifactid) version])]])]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -194,16 +213,13 @@
 		      (sort-by last))
 	    :when (not (= "release-notes.md" (last path)))]
 	[:li
-	 [:a {:href (str (:baseurl site-config)
-			 (string/join "/" (drop 2 path))
-			 "/")}
+	 [:a (apply link-to (rest path))
 	  (last path)]])])))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Namespace page
 
-(defn emit-alphabetized-links
-  [records]
+(defn emit-alphabetized-links [records]
   (let [segments (group-by (comp str first :name) records)]
     (for [k (sort (keys segments))]
       (list [:h4 (string/capitalize k)]
@@ -212,7 +228,7 @@
 	       [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]))))
 
 (defn namespace-page [groupid artifactid version namespace]
-  (let [resource      (partial util/resource-file version namespace)
+  (let [resource      (partial util/resource-file groupid artifactid version namespace)
 	ns-dir        (resource "")
 	ns-notes-file (resource "ns-notes.md")]
     (when (.isDirectory (io/file ns-dir))
@@ -276,7 +292,7 @@
 
 (defn all-examples
   [groupid artifactid top-version namespace symbol type]
-  (let [path     (str "resources/" groupid "/" artifactid "/%s/"
+  (let [path     (str "resources/store/" groupid "/" artifactid "/%s/"
 		      namespace "/" symbol "/examples/")
 	versions (->> clojure-versions
 		      (filter (fn [v]
@@ -326,7 +342,7 @@
 					" documentation and examples")
 		      :summary (slurp docstring-file)})
 	     [:h1 {:class "page-title"}
-              (header groupid artifactid version namespace symbol)]
+              (header groupid artifactid version namespace name)]
 
 	     (when (.isFile arities-file)
 	       (list [:h2 "Arities"]
@@ -352,7 +368,7 @@
 		[:div.autofold
 		 (list (map-indexed example examples)
 		       [:h3 [:a {:href (gh/->new-url site-config "develop"
-						(format "resources/%s/%s/%s/%s/%s/examples/"
+						(format "resources/store/%s/%s/%s/%s/%s/examples/"
 							groupid artifactid version
 							namespace symbol))}
 			"Contribute an example!"]])]])

@@ -43,22 +43,27 @@
   "This helper is a disgusting hack but it's a start."
   ([version f]
      (io/file
-      (str "resources/org.clojure/clojure/"
+      (str "resources/store/org.clojure/clojure/"
 	   version "/" f)))
 
   ([version namespace f]
      (io/file
-      (str "resources/org.clojure/clojure/"
+      (str "resources/store/org.clojure/clojure/"
 	   version "/" namespace "/" f)))
 
   ([version namespace symbol f]
      (io/file
-      (str "resources/org.clojure/clojure/"
+      (str "resources/store/org.clojure/clojure/"
 	   version "/" namespace "/" symbol "/" f)))
+
+  ([groupid artifactid version namespace f]
+     (io/file
+      (format "resources/store/%s/%s/%s/%s/%s"
+              groupid artifactid version namespace f)))
 
   ([groupid artifactid version namespace symbol f]
      (io/file
-      (format "resources/%s/%s/%s/%s/%s/%s"
+      (format "resources/store/%s/%s/%s/%s/%s/%s"
               groupid artifactid version namespace symbol f))))
 
 (defn resource-file-contents [file]
@@ -94,7 +99,7 @@
 
 (defn paths [& path-elements]
   (->> path-elements
-       (concat ["resources"])
+       (concat ["resources" "store"])
        (apply dir-list-as-strings)
        (map prepare-path)))
 

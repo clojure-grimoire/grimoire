@@ -12,14 +12,14 @@ the form of pull requests, and is hosted
 Each function, variable and macro and special form has the following files:
 
 ```
-/resources/$VERSION/$NAMESPACE/$SYMBOL/name.txt
-/resources/$VERSION/$NAMESPACE/$SYMBOL/type.txt
-/resources/$VERSION/$NAMESPACE/$SYMBOL/arities.txt
-/resources/$VERSION/$NAMESPACE/$SYMBOL/docstring.md
-/resources/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring.md
-/resources/$VERSION/$NAMESPACE/$SYMBOL/source.clj
-/resources/$VERSION/$NAMESPACE/$SYMBOL/related.txt
-/resources/$VERSION/$NAMESPACE/$SYMBOL/examples/$EXAMPLE_ID.clj
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/name.txt
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/type.txt
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/arities.txt
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/docstring.md
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring.md
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/source.clj
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/related.txt
+/resources/store/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/examples/$EXAMPLE_ID.clj
 ```
 
  - **name.txt** is the unmunged name of the symbol.
@@ -76,4 +76,4 @@ and example addition links provide this behavior already.
 ## Legal
 
 Please note the license under which Grimoire is developed as noted in
-the [about page](/about).
+the [about page](/articles/about).

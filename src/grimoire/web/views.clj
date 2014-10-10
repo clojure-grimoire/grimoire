@@ -288,7 +288,7 @@
 				(or (= v top-version)
 				    (semver/older? v top-version))))
 		      sort)]
-    (println path)
+
     (case type
       :html
       ,,(for [v     versions

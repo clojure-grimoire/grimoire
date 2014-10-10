@@ -34,109 +34,114 @@
   (context ["/:version", :version #"[0-9]+.[0-9]+.[0-9]+"] [version]
     (fn [request]
       (warn "Redirecting!")
-      (response/redirect (str "/org.clojure/clojure" (:uri request)))))
+      (response/redirect (str "/store/org.clojure/clojure" (:uri request)))))
 
-  (context ["/:groupid"] [groupid]
+  (context ["/store"] []
     (GET "/" {uri :uri}
       (info (pr-str {:uri uri :type :text}))
-      (views/groupid-page groupid))
+      (views/api-page))
 
-    (context ["/:artifactid"] [artifactid]
+    (context ["/:groupid"] [groupid]
       (GET "/" {uri :uri}
         (info (pr-str {:uri uri :type :text}))
-        (views/artifactid-page groupid artifactid))
+        (views/groupid-page groupid))
 
-      (context ["/:version", :version #"[0-9]+.[0-9]+.[0-9]+"] [version]
+      (context ["/:artifactid"] [artifactid]
         (GET "/" {uri :uri}
-          (when (#{"1.4.0" "1.5.0" "1.6.0"} version)
-            (views/version-page groupid artifactid version)))
+          (info (pr-str {:uri uri :type :text}))
+          (views/artifactid-page groupid artifactid))
 
-        (context "/:namespace" [namespace]
+        (context ["/:version", :version #"[0-9]+.[0-9]+.[0-9]+"] [version]
           (GET "/" {uri :uri}
-            (views/namespace-page-memo groupid artifactid version
-                                       namespace))
+            (when (#{"1.4.0" "1.5.0" "1.6.0"} version)
+              (views/version-page groupid artifactid version)))
 
-          (context "/:symbol" [symbol]
-            (GET "/docstring" {uri :uri}
-              (let [f  (util/resource-file groupid artifactid version
-                                           namespace symbol "docstring.md")]
-                (when (and f (.isFile f))
+          (context "/:namespace" [namespace]
+            (GET "/" {uri :uri}
+              (views/namespace-page-memo groupid artifactid version
+                                         namespace))
+
+            (context "/:symbol" [symbol]
+              (GET "/docstring" {uri :uri}
+                (let [f  (util/resource-file groupid artifactid version
+                                             namespace symbol "docstring.md")]
+                  (when (and f (.isFile f))
+                    (info (pr-str {:uri uri :type :text}))
+                    (slurp f))))
+
+              (GET "/extended-docstring" {uri :uri}
+                (let [f (util/resource-file groupid artifactid version
+                                            namespace symbol "extended-docstring.md")]
+                  (when (and f (.isFile f))
+                    (info (pr-str {:uri uri :type :text}))
+                    (slurp f))))
+
+              (GET "/related" {uri :uri}
+                (let [f (util/resource-file groupid artifactid version
+                                            namespace symbol "related.txt")]
+                  (when (and f (.isFile f))
+                    (info (pr-str {:uri uri :type :text}))
+                    (slurp f))))
+
+              (GET "/examples" {uri :uri}
+                (when-let [examples (views/all-examples groupid artifactid version
+                                                        namespace symbol :text)]
                   (info (pr-str {:uri uri :type :text}))
-                  (slurp f))))
+                  examples))
 
-            (GET "/extended-docstring" {uri :uri}
-              (let [f (util/resource-file groupid artifactid version
-                                          namespace symbol "extended-docstring.md")]
-                (when (and f (.isFile f))
-                  (info (pr-str {:uri uri :type :text}))
-                  (slurp f))))
+              (GET "/" {header-type :content-type
+                        {param-type :type} :params
+                        :as req
+                        uri :uri}
+                (let [type    (or header-type param-type :html)
+                      symbol' (util/unmunge symbol)]
+                  (cond
+                   ;; FIXME this is a bit of a hack to handle catch/finally
+                   (#{"catch" "finally"} symbol)
+                   ,,(response/redirect
+                      (format "/%s/%s/%s/%s/%s/"
+                              groupid artifactid version
+                              namespace"try"))
 
-            (GET "/related" {uri :uri}
-              (let [f (util/resource-file groupid artifactid version
-                                          namespace symbol "related.txt")]
-                (when (and f (.isFile f))
-                  (info (pr-str {:uri uri :type :text}))
-                  (slurp f))))
+                   ;; handle the case of redirecting due to munging
+                   (not (= symbol symbol'))
+                   ,,(response/redirect
+                      (format "/%s/%s/%s/%s/%s/"
+                              groupid artifactid version
+                              namespace symbol'))
 
-            (GET "/examples" {uri :uri}
-              (when-let [examples (views/all-examples groupid artifactid version
-                                                      namespace symbol :text)]
-                (info (pr-str {:uri uri :type :text}))
-                examples))
+                   :else
+                   ,,(let [res (views/symbol-page groupid artifactid version
+                                                  namespace symbol type)]
+                       (info (pr-str {:uri uri :type type}))
+                       res))))
 
-            (GET "/" {header-type :content-type
-                      {param-type :type} :params
-                      :as req
-                      uri :uri}
-              (let [type    (or header-type param-type :html)
-                    symbol' (util/unmunge symbol)]
-                (cond
-                 ;; FIXME this is a bit of a hack to handle catch/finally
-                 (#{"catch" "finally"} symbol)
-                 ,,(response/redirect
-                    (format "/%s/%s/%s/%s/%s/"
-                            groupid artifactid version
-                            namespace"try"))
-
-                 ;; handle the case of redirecting due to munging
-                 (not (= symbol symbol'))
-                 ,,(response/redirect
-                    (format "/%s/%s/%s/%s/%s/"
-                            groupid artifactid version
-                            namespace symbol'))
-
-                 :else
-                 ,,(let [res (views/symbol-page groupid artifactid version
-                                                namespace symbol type)]
-                     (info (pr-str {:uri uri :type type}))
-                     res))))
+              (route/not-found
+               (fn [{uri :uri}]
+                 (warn (pr-str {:uri uri}))
+                 (views/error-unknown-symbol groupid artifactid version
+                                             namespace symbol))))
 
             (route/not-found
              (fn [{uri :uri}]
                (warn (pr-str {:uri uri}))
-               (views/error-unknown-symbol groupid artifactid version
-                                           namespace symbol))))
+               (views/error-unknown-namespace groupid artifactid version
+                                              namespace))))
 
           (route/not-found
            (fn [{uri :uri}]
              (warn (pr-str {:uri uri}))
-             (views/error-unknown-namespace groupid artifactid version
-                                            namespace))))
+             (views/error-unknown-version groupid artifactid version))))
 
         (route/not-found
          (fn [{uri :uri}]
            (warn (pr-str {:uri uri}))
-           (views/error-unknown-version groupid artifactid version))))
+           (views/error-unknown-artifact groupid artifactid))))
 
       (route/not-found
        (fn [{uri :uri}]
          (warn (pr-str {:uri uri}))
-         (views/error-unknown-artifact groupid artifactid))))
-
-    (route/not-found
-     (fn [{uri :uri}]
-       (warn (pr-str {:uri uri}))
-       (views/error-unknown-group groupid))))
+         (views/error-unknown-group groupid)))))
 
   (route/not-found
    (fn [{uri :uri}]

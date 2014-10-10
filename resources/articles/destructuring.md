@@ -1,7 +1,7 @@
 Clojure Destructuring Tutorial and Cheat Sheet
 ==============================================
 
-([Related blog post](http://john2x.com/blog/clojure-destructuring))
+([Source blog post](http://john2x.com/blog/clojure-destructuring) with thanks to John2x for contributing this piece to Grimoire)
 
 Simply put, destructuring in Clojure is a way extract values from a datastructure and bind them to symbols, without having to explicitly traverse the datstructure. It allows for elegant and concise Clojure code.
 
@@ -211,4 +211,3 @@ More examples
 Here be dragons.
 
 **TODO**
-

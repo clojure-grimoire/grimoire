@@ -31,11 +31,16 @@
 
   (route/resources "/public")
 
-  (context ["/article"] []
+  (context ["/articles"] []
+
     (GET "/:id" {{id :id} :params uri :uri}
-      (when-let [res (views/markdown-page id)]
+      (when-let [res (views/markdown-page (str "articles/" id))]
         (info (pr-str {:uri uri :type :html}))
         res))
+
+    (GET "/" {uri :uri}
+      (info (pr-str {:uri uri :type :html}))
+      (views/articles-list))
 
       (route/not-found
        (fn [{uri :uri}]

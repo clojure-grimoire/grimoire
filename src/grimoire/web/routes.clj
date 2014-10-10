@@ -31,6 +31,17 @@
 
   (route/resources "/public")
 
+  (context ["/article"] []
+    (GET "/:id" {{id :id} :params uri :uri}
+      (when-let [res (views/markdown-page id)]
+        (info (pr-str {:uri uri :type :html}))
+        res))
+
+      (route/not-found
+       (fn [{uri :uri}]
+         (warn (pr-str {:uri uri}))
+         (views/error-404))))
+
   (context ["/:version", :version #"[0-9]+.[0-9]+.[0-9]+"] [version]
     (fn [request]
       (warn "Redirecting!")

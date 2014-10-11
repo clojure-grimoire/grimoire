@@ -24,9 +24,10 @@
 			 :email       "me@arrdem.com"
 			 :gittip      "https://gittip.com/arrdem/"}
    :style               {:header-sep  "/"
-			 :title       "Grimoire - Clojure Documentation"
+			 :title       "Clojure Grimoire - Better Documentation"
 			 :description "Community documentation of Clojure"
 			 :quote       "Even the most powerful wizard must consult grimoires as an aid against forgetfulness."}})
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 404 Error page
 

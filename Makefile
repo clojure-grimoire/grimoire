@@ -1,7 +1,7 @@
 cheatsheet:
 	bash cheatsheet.sh
 
-build: cheatsheet snapshot
+build: cheatsheet
 
 test: build
 	lein serve

@@ -76,8 +76,9 @@
 
 (defn highlight-clojure [text]
   (let-programs [pygmentize "pygmentize"]
-    (pygmentize "-fhtml" (str "-l" "clojure")
-		(str "-Ostripnl=False,encoding=utf-8")
+    (pygmentize "-fhtml"
+                "-lclojure"
+		"-Ostripnl=False,encoding=utf-8"
 		{:in text})))
 
 (defn clojure-file [file]

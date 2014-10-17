@@ -9,7 +9,7 @@
 ;;--------------------------------------------------------------------
 (defrecord Group [name])
 
-(defn list-groups []
+(defn list-groups [config]
   {:pre []}
   )
 
@@ -17,7 +17,7 @@
 ;;--------------------------------------------------------------------
 (defrecord Artifact [group artifact])
 
-(defn list-artifacts [group]
+(defn list-artifacts [config group]
   {:pre []}
   )
 
@@ -25,7 +25,7 @@
 ;;--------------------------------------------------------------------
 (defrecord Version [group artifact version])
 
-(defn list-versions [artifact]
+(defn list-versions [config artifact]
   {:pre []}
   )
 
@@ -33,7 +33,7 @@
 ;;--------------------------------------------------------------------
 (defrecord Namespace [group artifact version namespace])
 
-(defn list-namespaces [version]
+(defn list-namespaces [config version]
   {:pre []}
   )
 
@@ -41,7 +41,7 @@
 ;;--------------------------------------------------------------------
 (defrecord Class [group artifact version class])
 
-(defn list-classes [version]
+(defn list-classes [config version]
   {:pre []}
   )
 
@@ -51,31 +51,31 @@
 
 (defrecord Def [group artifact version namespace class type])
 
-(defn list-symbols [namespace]
+(defn list-symbols [config namespace]
   {:pre []}
   )
 
-(defn list-vars [namespace]
+(defn list-vars [config namespace]
   {:pre []}
   )
 
-(defn list-fns [namespace]
+(defn list-fns [config namespace]
   {:pre []}
   )
 
-(defn list-macros [namespace]
+(defn list-macros [config namespace]
   {:pre []}
   )
 
 ;; Examples
 ;;--------------------------------------------------------------------
-(defn list-examples [thing]
+(defn list-examples [config thing]
   ;; group | artifact | version | namespace | symbol | macro | class | var
   {:pre []}
   )
 
 ;; Notes
 ;;--------------------------------------------------------------------
-(defn notes [thing]
+(defn notes [config thing]
   {:pre []}
   )

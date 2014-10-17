@@ -41,6 +41,7 @@
 
 (defn resource-file
   "This helper is a disgusting hack but it's a start."
+
   ([version f]
      (io/file
       (str "resources/store/org.clojure/clojure/"

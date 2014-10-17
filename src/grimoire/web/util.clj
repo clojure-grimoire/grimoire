@@ -119,11 +119,11 @@
 
 (defn my-munge [s]
   (-> s
-      (replace "?" "_QMARK_")
-      (replace "." "_DOT_")
-      (replace "/" "_SLASH_")
-      (replace #"^_*" "")
-      (replace #"_*$" "")))
+      (string/replace "?" "_QMARK_")
+      (string/replace "." "_DOT_")
+      (string/replace "/" "_SLASH_")
+      (string/replace #"^_*" "")
+      (string/replace #"_*$" "")))
 
 (defn unmunge [s]
   (-> s

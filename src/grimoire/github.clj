@@ -42,6 +42,7 @@
 (defn ->new-url
   "Helper function for translating a Repo, an optional branch and a directory
   into a GitHub link for creating a new file at the targeted location."
+
   ([repo path]
      (->new-url repo "master" path))
 

@@ -114,6 +114,17 @@
 (def clojure-versions
   ["1.6.0" "1.5.0" "1.4.0"])
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Munging
+
+(defn my-munge [s]
+  (-> s
+      (replace "?" "_QMARK_")
+      (replace "." "_DOT_")
+      (replace "/" "_SLASH_")
+      (replace #"^_*" "")
+      (replace #"_*$" "")))
+
 (defn unmunge [s]
   (-> s
       (string/replace #"_?DASH_?"  "-")

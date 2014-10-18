@@ -6,6 +6,9 @@
   (:require [grimoire.web.util :as util]
             [clojure.java.io :as io]))
 
+(ns-unmap *ns* 'Package)
+(ns-unmap *ns* 'Class)
+
 (defmacro maybe-file [& forms]
   `(let [f (apply io/file forms)]
      (when (.exists f) f)))

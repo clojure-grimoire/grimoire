@@ -16,6 +16,8 @@
   {:url                 "http://grimoire.arrdem.com"
    :repo                "https://github.com/clojure-grimoire/grimoire"
    :baseurl             "/"
+   :datastore           {:docs  "notes"
+                         :notes "store"}
    :version             (slurp "VERSION")
    :clojure-version     "1.6.0"
    :google-analytics-id "UA-44001831-2"

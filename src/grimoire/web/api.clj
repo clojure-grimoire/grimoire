@@ -122,7 +122,7 @@
        (iterate :parent)
        (take-while identity)
        (reverse)
-       (map (comp util/my-munge :name))
+       (map :name)
        (interpose "/")
        (apply str)))
 

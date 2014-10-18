@@ -5,7 +5,6 @@
 	    [grimoire.github :as gh]
 	    [grimoire.web.layout :refer [layout]]
 	    [grimoire.web.util :as util :refer [clojure-versions]]
-	    [grimoire.util :as gutil]
 	    [clj-semver.core :as semver]
 	    [ring.util.response :as response]))
 

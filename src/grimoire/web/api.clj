@@ -6,101 +6,116 @@
   (:require [grimoire.web.util :as util]
             [clojure.java.io :as io]))
 
-(ns-unmap *ns* 'Package)
-(ns-unmap *ns* 'Class)
-
 (defmacro maybe-file [& forms]
   `(let [f (apply io/file forms)]
      (when (.exists f) f)))
 
 ;; Group stuff
 ;;--------------------------------------------------------------------
-(defrecord Group [handle name])
+(defrecord GroupHandle [handle name])
 
 (defn list-groups [{{docs :docs} :datastore}]
+  {:pre [(or (instance? java.io.File docs)
+             (instance? java.lang.String docs))]}
+
   (let [f (io/file docs)]
     (when (and (.exists f)
                (.isDirectory f))
       (for [f' (.listFiles f)
-            :when (.isDirectory f')]
-        (->Group f (.name f'))))))
+            :when (.isDirectory f')
+            :when (= "group" (slurp (io/file f' ":type")))]
+        (->GroupHandle f' (. f' (getName)))))))
 
 ;; Artifact stuff
 ;;--------------------------------------------------------------------
-(defrecord Artifact [handle parent name])
+(defrecord ArtifactHandle [handle parent name])
 
 (defn list-artifacts [config group]
+  {:pre [(instance? GroupHandle group)]}
+
   (when-let [f (:handle group)]
     (for [f'    (.listFiles f)
-          :when (.isDirectory f')]
-      (->Artifact f' group (.name f)))))
+          :when (.isDirectory f')
+          :when (= "artifact" (slurp (io/file f' ":type")))]
+      (->ArtifactHandle f' group (. f' (getName))))))
 
 ;; Version stuff
 ;;--------------------------------------------------------------------
-(defrecord Version [handle parent name])
+(defrecord VersionHandle [handle parent name])
 
 (defn list-versions [config artifact]
+  {:pre [(instance? ArtifactHandle artifact)]}
+
   (when-let [f (:handle artifact)]
     (for [f'    (.listFiles f)
           :when (.isDirectory f')]
-      (->Version f' artifact (.name f)))))
+      (->VersionHandle f' artifact (. f' (getName))))))
 
 
-(defn list-type-filtered [type ctor config version]
-  (when-let [f (:handle version)]
+(defn- list-type-filtered [type ctor config parent]
+  (when-let [f (:handle parent)]
     (for [f'    (.listFiles f)
           :when (.isDirectory f')
-          :let  [typef (io/file f' "type")]
+          :let  [typef (io/file f' ":type")]
           :when (.exists typef)
           :when (= type (slurp typef))]
-      (ctor f' version (.name f)))))
+      (ctor f' parent (. f' (getName))))))
 
 ;; Namespace stuff
 ;;--------------------------------------------------------------------
-(defrecord Namespace [handle parent name])
+(defrecord NamespaceHandle [handle parent name])
 
-(def list-namespaces
-  (partial list-type-filtered "ns" ->Namespace))
+(defn list-namespaces [config version]
+  {:pre [(instance? VersionHandle version)]}
+
+  (list-type-filtered "ns" ->NamespaceHandle config version))
 
 ;; Package stuff
 ;;--------------------------------------------------------------------
-(defrecord Package [handle parent name])
+(defrecord PackageHandle [handle parent name])
 
-(def list-packages
-  (partial list-type-filtered "package" ->Package))
+(defn list-packages [config version]
+  {:pre [(instance? VersionHandle version)]}
+
+  (list-type-filtered "package" ->PackageHandle config version))
 
 ;; Def stuff
 ;;--------------------------------------------------------------------
 ;; Type one of #{:symbol :var :fn :macro :class}
-(defrecord Def [handle parent name type])
+(defrecord DefHandle [handle parent name type])
 
 (defn- list-ns-contents [ctor type config parent]
   (when-let [f (:handle parent)]
     (for [f'    (.listFiles f)
           :when (.isDirectory f')
-          :let  [typef (io/file f' "type")]
+          :let  [typef (io/file f' ":type")]
           :when (.exists typef)
           :when (= type (slurp typef))]
-      (ctor f' parent (.name f) type))))
+      (ctor f' parent (. f' (getName)) type))))
 
-(def list-vars
-  (partial list-ns-contents ->Def "var"))
+(defn list-vars [config namespace]
+  {:pre [(instance? NamespaceHandle namespace)]}
+  (list-ns-contents ->DefHandle "var" config namespace))
 
-(def list-fns
-  (partial list-ns-contents ->Def "fn"))
+(defn list-fns [config namespace]
+  {:pre [(instance? NamespaceHandle namespace)]}
+  (list-ns-contents ->DefHandle "fn" config namespace))
 
-(def list-macros
-  (partial list-ns-contents ->Def "macro"))
+(defn list-macros [config namespace]
+  {:pre [(instance? NamespaceHandle namespace)]}
+  (list-ns-contents ->DefHandle "macro" config namespace))
 
-(def list-special
-  (partial list-ns-contents ->Def "special"))
+(defn list-symbols [config namespace]
+  {:pre [(instance? NamespaceHandle namespace)]}
+  (list-ns-contents ->DefHandle "symbol" config namespace))
 
 ;; Class stuff
 ;;--------------------------------------------------------------------
-(defrecord Class [handle parent name])
+(defrecord ClassHandle [handle parent name])
 
-(def list-classes
-  (partial list-type-filtered "class" ->Class))
+(defn list-symbols [config namespace]
+  {:pre [(instance? NamespaceHandle namespace)]}
+  (list-type-filtered ->ClassHandle "symbol" config namespace))
 
 (defn thing->path [thing]
   (->> thing

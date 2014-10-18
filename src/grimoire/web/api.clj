@@ -78,7 +78,7 @@
           :let  [typef (io/file f' "type")]
           :when (.exists typef)
           :when (= type (slurp typef))]
-      (ctor f' version (.name f) type))))
+      (ctor f' parent (.name f) type))))
 
 (def list-vars
   (partial list-ns-contents ->Def "var"))

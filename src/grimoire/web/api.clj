@@ -112,9 +112,9 @@
 ;;--------------------------------------------------------------------
 (defrecord ClassHandle [handle parent name])
 
-(defn list-symbols [config namespace]
+(defn list-classes [config namespace]
   {:pre [(instance? NamespaceHandle namespace)]}
-  (list-type-filtered ->ClassHandle "symbol" config namespace))
+  (list-type-filtered ->ClassHandle "class" config namespace))
 
 (defn thing->path [thing]
   (->> thing

@@ -8,7 +8,6 @@
             [ring.util.response :as response]
             [taoensso.timbre :as timbre :refer [info warn]]))
 
-
 (defroutes store
     (context ["/store"] []
     (GET "/" {uri :uri}
@@ -154,7 +153,6 @@
        (fn [{uri :uri}]
          (warn (pr-str {:uri uri}))
          (views/error-404)))))
-
 
 (defroutes app
   (GET "/" {uri :uri}

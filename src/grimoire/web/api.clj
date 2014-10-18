@@ -51,7 +51,6 @@
           :when (.isDirectory f')]
       (->VersionHandle f' artifact (. f' (getName))))))
 
-
 (defn- list-type-filtered [type ctor config parent]
   (when-let [f (:handle parent)]
     (for [f'    (.listFiles f)

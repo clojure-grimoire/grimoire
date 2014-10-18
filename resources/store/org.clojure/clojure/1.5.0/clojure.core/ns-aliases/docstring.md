@@ -1,1 +1,0 @@
-  Returns a map of the aliases for the namespace.

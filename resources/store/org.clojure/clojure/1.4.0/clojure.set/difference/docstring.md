@@ -1,1 +1,0 @@
-  Return a set that is the first set without elements of the remaining sets

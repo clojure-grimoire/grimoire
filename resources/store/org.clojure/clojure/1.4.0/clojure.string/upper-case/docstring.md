@@ -1,1 +1,0 @@
-  Converts string to all upper-case.

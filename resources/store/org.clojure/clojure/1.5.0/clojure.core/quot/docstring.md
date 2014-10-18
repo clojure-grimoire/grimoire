@@ -1,1 +1,0 @@
-  quot[ient] of dividing numerator by denominator.

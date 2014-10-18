@@ -1,2 +1,0 @@
-user> (ns-imports 'clojure.core)
-{ClassVisitor clojure.asm.ClassVisitor, ProcessBuilder java.lang.ProcessBuilder, Enum java.lang.Enum, SuppressWarnings java.lang.SuppressWarnings, Throwable java.lang.Throwable, InterruptedException ...chop...}

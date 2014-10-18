@@ -1,1 +1,0 @@
-Please add namespace commentary!

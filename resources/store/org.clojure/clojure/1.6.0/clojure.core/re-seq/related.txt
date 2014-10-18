@@ -1,7 +1,0 @@
-clojure.core/re-find
-clojure.core/re-matches
-clojure.core/re-pattern
-clojure.string/replace,
-clojure.string/replace-first
-clojure.core/re-matcher
-clojure.core/re-groups

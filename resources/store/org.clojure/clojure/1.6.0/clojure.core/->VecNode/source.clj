@@ -1,1 +1,0 @@
-(deftype VecNode [edit arr])

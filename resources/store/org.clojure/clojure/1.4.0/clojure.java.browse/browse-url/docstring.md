@@ -1,1 +1,0 @@
-  Open url in a browser

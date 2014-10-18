@@ -1,1 +1,0 @@
-  Creates a BufferedReader. See also IOFactory docs.

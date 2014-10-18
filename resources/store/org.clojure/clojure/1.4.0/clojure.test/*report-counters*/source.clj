@@ -1,1 +1,0 @@
-(def ^:dynamic *report-counters* nil)

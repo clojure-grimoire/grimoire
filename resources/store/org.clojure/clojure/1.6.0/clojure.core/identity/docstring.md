@@ -1,1 +1,0 @@
-  Returns its argument.

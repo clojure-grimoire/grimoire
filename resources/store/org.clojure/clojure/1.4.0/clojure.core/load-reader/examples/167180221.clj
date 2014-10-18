@@ -1,1 +1,0 @@
-(load-reader (java.io.FileReader. "filename.clj"))

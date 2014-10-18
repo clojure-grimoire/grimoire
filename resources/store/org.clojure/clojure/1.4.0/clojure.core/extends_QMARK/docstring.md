@@ -1,1 +1,0 @@
-  Returns true if atype extends protocol

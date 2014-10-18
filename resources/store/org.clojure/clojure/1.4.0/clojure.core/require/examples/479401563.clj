@@ -1,1 +1,0 @@
-(require '(clojure.contrib [sql :as sql]))

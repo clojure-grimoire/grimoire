@@ -1,2 +1,0 @@
-[name doc-string? attr-map? [params*] body]
-[name doc-string? attr-map? ([params*] body) + attr-map?]

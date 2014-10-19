@@ -1,8 +1,8 @@
 (ns grimoire.web.routes
   (:require [compojure.core :refer [defroutes context GET let-routes]]
             [compojure.route :as route]
+            [grimoire.util :as util]
             [grimoire.web
-             [util :as util]
              [views :as views]
              [api   :as api]]
             [ring.util.response :as response]

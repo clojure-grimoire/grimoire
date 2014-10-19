@@ -4,7 +4,7 @@
 	    [compojure.core :refer [GET]]
 	    [grimoire.github :as gh]
 	    [grimoire.web.layout :refer [layout]]
-	    [grimoire.web.util :as util :refer [clojure-versions]]
+	    [grimoire.web.util :as wutil :refer [clojure-versions]]
 	    [clj-semver.core :as semver]
 	    [ring.util.response :as response]))
 
@@ -15,8 +15,8 @@
   {:url                 "http://grimoire.arrdem.com"
    :repo                "https://github.com/clojure-grimoire/grimoire"
    :baseurl             "/"
-   :datastore           {:docs  "notes"
-                         :notes "store"}
+   :datastore           {:docs  "doc-store"
+                         :notes "notes-store"}
    :version             (slurp "VERSION")
    :clojure-version     "1.6.0"
    :google-analytics-id "UA-44001831-2"
@@ -30,82 +30,10 @@
 			 :quote       "Even the most powerful wizard must consult grimoires as an aid against forgetfulness."}})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 404 Error page
-
-(defn error-404 []
-  (layout
-   site-config
-   (slurp (io/resource "404.html"))))
-
-(defn error-unknown-group [groupid]
-  (layout
-   site-config
-   [:h1 {:class "page-title"}
-    [:a groupid]]
-   [:p "Unknown group " (pr-str groupid)]
-   [:p "If you found a broken link, please report the issue encountered on the github bugtracker."]))
-
-(defn error-unknown-artifact [groupid artifactid]
-  (let [s (format "%s/%s" groupid artifactid)]
-    (layout
-     site-config
-     [:h1 {:class "page-title"}
-      [:a s]]
-     [:p "Unknown artifact " s]
-     [:p "If you found a broken link, please report the issue encountered on the github bugtracker."])))
-
-(defn error-unknown-version
-  ([version]
-     (error-unknown-version "org.clojure" "clojure" version))
-
-  ([groupid artifactid version]
-     (layout
-      site-config
-      [:h1 {:class "page-title"}
-       [:a (format "[%s/%s \"%s\"]" groupid artifactid version)]]
-      [:p "Unknown artifact version " (pr-str version)]
-      [:p "If you found a broken link, please report the issue encountered on the github bugtracker."])))
-
-(defn error-unknown-namespace
-  ([version namespace]
-     (error-unknown-namespace "org.clojure" "clojure" version namespace))
-
-  ([groupid artifactid version namespace]
-     (layout
-      site-config
-      [:h1 {:class "page-title"}
-       [:a (format "[%s/%s \"%s\"]" groupid artifactid version)]]
-      [:p "Unknown namespace identifier " (pr-str [version namespace])]
-      [:p "If you found a broken link, please report the issue encountered on the github bugtracker."])))
-
-(defn error-unknown-symbol
-  ([version namespace symbol]
-     (error-unknown-symbol "org.clojure" "clojure" version namespace symbol))
-
-  ([type version namespace symbol]
-     (let [version-string (format "[%s/%s \"%s\"]" groupid artifactid version)
-           symbol-string  (format "%s/%s" namespace (util/unmunge symbol))]
-       (case type
-         (:html :text/html "text/html")
-         ,,(layout
-            site-config
-            [:h1 {:class "page-title"}
-             [:a version-string]
-             [:p "Unknown symbol identifier " symbol-string]
-             [:p "If you found a broken link, please report the issue encountered on the github bugtracker."]])
-
-         (:text :text/plain "text/plain")
-         ,,(-> (str "In artifact: " version-string \newline
-                    "Unknown symbol: " symbol-string  \newline
-                    "Sorry! Only clojure.core is documented right now.")
-               response/response
-               (response/content-type "text/plain"))))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Generic markdown page
 
 (defn markdown-page [page]
-  (let [[header page] (util/parse-markdown-page page)]
+  (let [[header page] (wutil/parse-markdown-page page)]
     (layout
      site-config
      (if page
@@ -121,7 +49,7 @@
   (layout
    site-config
    [:blockquote [:p (-> site-config :style :quote)]]
-   (util/cheatsheet-memo site-config)))
+   (wutil/cheatsheet-memo site-config)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Shared header generator
@@ -141,7 +69,7 @@
   (layout site-config
    [:h1 {:class "page-title"} "Articles"]
    [:ul
-    (for [p     (->> (util/paths "articles") sort)
+    (for [p     (->> (wutil/paths "articles") sort)
           :let  [[_articles a] p
                  a             (string/replace a ".md" "")]]
       [:li [:a (link-to "articles" a) a]])]))
@@ -169,7 +97,7 @@
              [:a (apply link-to' params) namespace])))
      
   ([groupid artifactid version namespace symbol]
-     (let [sym'   (util/my-munge symbol)
+     (let [sym'   (util/munge symbol)
            params [groupid artifactid version namespace sym']]
        (list (apply header (butlast params)) "/"
              [:a (apply link-to' params) symbol]))))
@@ -183,7 +111,7 @@
      [:h1 {:class "page-title"} "Documentation store"]
      [:h2 "Known Maven groups"]
      [:ul
-      (for [[_ groupid] (->> (util/paths "store") sort)]
+      (for [[_ groupid] (->> (wutil/paths "store") sort)]
         [:li [:a (link-to' groupid) groupid]])]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -194,7 +122,7 @@
    [:h1 {:class "page-title"} "Group " (header groupid)]
    [:h2 "Known artifacts"]
    [:ul
-    (for [p     (->> (util/paths "store" groupid) sort)
+    (for [p     (->> (wutil/paths "store" groupid) sort)
           :let  [[_ groupid artifactid] p]]
       [:li [:a (link-to' groupid artifactid)
             (pr-str (symbol groupid artifactid))]])]))
@@ -207,7 +135,7 @@
    [:h1 {:class "page-title"} "Artifact " (header groupid artifactid)]
    [:h2 "Known release versions"]
    [:ul
-    (for [p     (->> (util/paths "store" groupid artifactid) sort)
+    (for [p     (->> (wutil/paths "store" groupid artifactid) sort)
           :let  [[_ groupid artifactid version] p]]
       [:li [:a (link-to' groupid artifactid version)
             (pr-str [(symbol groupid artifactid) version])]])]))
@@ -216,18 +144,18 @@
 ;; Version page
 
 (defn version-page [groupid artifactid version]
-  (let [rel-notes-file (util/resource-file version "release-notes.md")]
+  (let [rel-notes-file (wutil/resource-file version "release-notes.md")]
     (layout
      (assoc site-config
        :page {:description (str "Clojure " version " release information")})
      [:h1 {:class "page-title"} (header groupid artifactid version)]
      [:h2 "Release Notes - "
       [:a {:href (gh/->edit-url site-config "develop" rel-notes-file)} "edit"]]
-     (util/markdown-file rel-notes-file)
+     (wutil/markdown-file rel-notes-file)
 
      [:h2 "Namespaces"]
      [:ul
-      (for [path (->> (util/paths "store" groupid artifactid version)
+      (for [path (->> (wutil/paths "store" groupid artifactid version)
 		      (sort-by last))
 	    :when (not (= "release-notes.md" (last path)))]
 	[:li
@@ -246,7 +174,7 @@
 	       [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]))))
 
 (defn namespace-page [groupid artifactid version namespace]
-  (let [resource      (partial util/resource-file groupid artifactid version namespace)
+  (let [resource      (partial wutil/resource-file groupid artifactid version namespace)
 	ns-dir        (resource "")
 	ns-notes-file (resource "ns-notes.md")]
     (when (.isDirectory (io/file ns-dir))
@@ -257,13 +185,13 @@
 	(header groupid artifactid version namespace)]
        [:h2 "Namespace Notes - "
 	[:a {:href (gh/->edit-url site-config "develop" ns-notes-file)} "edit"]]
-       (util/markdown-file ns-notes-file)
+       (wutil/markdown-file ns-notes-file)
        [:h2 "Symbols"]
        (let [keys                  ["special",       "macro",  "fn",        "var"]
 	     mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
 	     ids      (zipmap keys ["sforms",        "macros", "fns",       "vars"])
 	     link-ids (zipmap keys ["sff",           "mf",     "ff",        "vf"])
-	     grouping (->> (for [path  (util/paths "store" groupid artifactid version namespace)
+	     grouping (->> (for [path  (wutil/paths "store" groupid artifactid version namespace)
 				 :when (not (= "ns-notes.md" (last path)))]
 			     (let [fp          (string/join "/" path)
 				   legacy-path (string/join "/" (drop 2 path))]
@@ -302,12 +230,12 @@
      [:a {:href (gh/->edit-url site-config "develop" path)} "edit"]]
     [:span.version {"style" "float: right; padding-right: 1.0em;"}
      "Clojure " clojure]]
-   [:div.source (util/clojure-file path)]])
+   [:div.source (wutil/clojure-file path)]])
 
 (defn raw-example [index path]
   (str "Example " (inc index) "\n"
        "----------------------------------------\n"
-       (util/resource-file-contents path)
+       (wutil/resource-file-contents path)
        "\n"))
 
 (defn all-examples
@@ -324,13 +252,13 @@
       :html
       ,,(for [v     versions
 	      :let  [examples-dir (format path v)]
-	      e     (util/dir-list-as-strings examples-dir)]
+	      e     (wutil/dir-list-as-strings examples-dir)]
           [v e])
 
       :text
       ,,(->> (for [v versions]
 	       (let [d        (format path v)
-		     examples (util/dir-list-as-strings d)]
+		     examples (wutil/dir-list-as-strings d)]
 		 (when-not (empty? examples)
 		   (str "### Examples from Clojure " v "\n"
 			"----------------------------------------\n"
@@ -343,7 +271,7 @@
 
 (defn symbol-page
   [groupid artifactid version namespace symbol type]
-  (let [symbol-file-path (partial util/resource-file groupid artifactid version namespace symbol)
+  (let [symbol-file-path (partial wutil/resource-file groupid artifactid version namespace symbol)
 	root             (-> "/"                     symbol-file-path)
 	name-file        (-> "name.txt"              symbol-file-path)
 	type-file        (-> "type.txt"              symbol-file-path)
@@ -366,15 +294,15 @@
 
 	     (when (.isFile arities-file)
 	       (list [:h2 "Arities"]
-		     [:pre (util/resource-file-contents arities-file)]))
+		     [:pre (wutil/resource-file-contents arities-file)]))
 
 	     (when (.isFile docstring-file)
 	       (list [:h2 "Official Documentation - "
 		      [:a {:href (gh/->edit-url site-config "develop" docstring-file)}
 		       "edit"]]
-		     [:pre (util/resource-file-contents docstring-file)]))
+		     [:pre (wutil/resource-file-contents docstring-file)]))
 
-	     (when-let [comdoc (util/markdown-file comdoc-file)]
+	     (when-let [comdoc (wutil/markdown-file comdoc-file)]
 	       (list
 		[:h2 "Community Documentation - "
 		 [:a {:href (gh/->edit-url site-config "develop" comdoc-file)}
@@ -395,7 +323,7 @@
 
 
 	     (when-not (= "special" (slurp type-file))
-	       [:a {:href (str "http://crossclj.info/fun/" namespace "/" (util/url-encode name) ".html")}
+	       [:a {:href (str "http://crossclj.info/fun/" namespace "/" (wutil/url-encode name) ".html")}
 		[:h2 "Uses on crossclj"]])
 
 	     (when (.isFile related-file)
@@ -405,10 +333,10 @@
 			      (let [[ns sym] (string/split r #"/")]
 				[:li [:a {:href (str (:baseurl site-config)
 						     "/" version "/" ns "/"
-						     (util/my-munge sym) "/")}
+						     (util/munge sym) "/")}
 				      r]]))])))
 
-	     (when-let [source (util/clojure-file source-file)]
+	     (when-let [source (wutil/clojure-file source-file)]
 	       (list
 		[:div.section
 		 [:h2.heading "Source " [:span.unhide "+"]]
@@ -428,25 +356,24 @@
 
 		     "## Arities\n"
 		     ;; line40 "\n"
-		     (util/resource-file-contents arities-file)
+		     (wutil/resource-file-contents arities-file)
 		     "\n"
 
 		     "## Documentation\n"
 		     ;; line40 "\n"
-		     (util/resource-file-contents docstring-file)
+		     (wutil/resource-file-contents docstring-file)
 		     "\n"
 
 		     "## User Documentation\n"
 		     ;; line40 "\n"
-		     (util/resource-file-contents comdoc-file)
+		     (wutil/resource-file-contents comdoc-file)
 		     "\n"
 
 		     "## Examples\n"
 		     ;; line40 "\n"
 		     (all-examples groupid artifactid version namespace symbol :text)
-
 		     "## See Also\n"
 		     ;; line40 "\n"
-		     (util/resource-file-contents related-file))
+		     (wutil/resource-file-contents related-file))
 		response/response
 		(response/content-type "text/plain")))))))

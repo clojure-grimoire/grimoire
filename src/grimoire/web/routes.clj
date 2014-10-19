@@ -2,8 +2,8 @@
   (:require [compojure.core :refer [defroutes context GET let-routes]]
             [compojure.route :as route]
             [grimoire.util :as util]
-            [grimoire.web
-             [views :as views]]
+            [grimoire.web.views :as v ]
+            [grimoire.web.views.errors :as v.e]
             [ring.util.response :as response]
             [taoensso.timbre :as timbre :refer [info warn]]))
 
@@ -11,27 +11,27 @@
     (context ["/store"] []
     (GET "/" {uri :uri}
       (info (pr-str {:uri uri :type :text}))
-      (views/api-page))
+      (v/api-page))
 
     (context ["/:groupid"] [groupid]
       (GET "/" {uri :uri}
         (info (pr-str {:uri uri :type :text}))
-        (views/groupid-page groupid))
+        (v/groupid-page groupid))
 
       (context ["/:artifactid"] [artifactid]
         (GET "/" {uri :uri}
           (info (pr-str {:uri uri :type :text}))
-          (views/artifactid-page groupid artifactid))
+          (v/artifactid-page groupid artifactid))
 
         (context ["/:version", :version #"[0-9]+.[0-9]+.[0-9]+"] [version]
           (GET "/" {uri :uri}
             (info (pr-str {:uri uri :type :text}))
-            (views/version-page groupid artifactid version))
+            (v/version-page groupid artifactid version))
 
           (context "/:namespace" [namespace]
             (GET "/" {uri :uri}
               (info (pr-str {:uri uri :type :text}))
-              (views/namespace-page-memo groupid artifactid version
+              (v/namespace-page-memo groupid artifactid version
                                          namespace))
 
             (context "/:symbol" [symbol]
@@ -57,7 +57,7 @@
                               namespace symbol'))
 
                    :else
-                   ,,(let [res (views/symbol-page groupid artifactid version
+                   ,,(let [res (v/symbol-page groupid artifactid version
                                                   namespace symbol type)]
                        (info (pr-str {:uri uri :type type}))
                        res))))
@@ -65,7 +65,7 @@
               (route/not-found
                (fn [{uri :uri}]
                  (warn (pr-str {:uri uri}))
-                 (views/error-unknown-symbol groupid artifactid version
+                 (v.e/error-unknown-symbol groupid artifactid version
                                              namespace symbol))))
 
             (route/not-found
@@ -74,24 +74,24 @@
                   {param-type :type} :params}]
                (let [type (or header-type param-type :text/html)]
                  (warn (pr-str {:uri uri}))
-                 (views/error-unknown-symbol type
-                                             groupid artifactid version
-                                             namespace symbol)))))
+                 (v.e/error-unknown-symbol type
+                                           groupid artifactid version
+                                           namespace symbol)))))
 
           (route/not-found
            (fn [{uri :uri}]
              (warn (pr-str {:uri uri}))
-             (views/error-unknown-version groupid artifactid version))))
+             (v.e/error-unknown-version groupid artifactid version))))
 
         (route/not-found
          (fn [{uri :uri}]
            (warn (pr-str {:uri uri}))
-           (views/error-unknown-artifact groupid artifactid))))
+           (v.e/error-unknown-artifact groupid artifactid))))
 
       (route/not-found
        (fn [{uri :uri}]
          (warn (pr-str {:uri uri}))
-         (views/error-unknown-group groupid))))))
+         (v.e/error-unknown-group groupid))))))
 
 (defroutes api-v0
   (context ["/api/v0"] []
@@ -140,23 +140,23 @@
 (defroutes articles
   (context ["/articles"] []
     (GET "/:id" {{id :id} :params uri :uri}
-      (when-let [res (views/markdown-page (str "articles/" id))]
+      (when-let [res (v/markdown-page (str "articles/" id))]
         (info (pr-str {:uri uri :type :html}))
         res))
 
     (GET "/" {uri :uri}
       (info (pr-str {:uri uri :type :html}))
-      (views/articles-list))
+      (v/articles-list))
 
       (route/not-found
        (fn [{uri :uri}]
          (warn (pr-str {:uri uri}))
-         (views/error-404)))))
+         (v.e/error-404)))))
 
 (defroutes app
   (GET "/" {uri :uri}
     (info (pr-str {:uri uri :type :html}))
-    (views/home-page))
+    (v/home-page))
 
   (GET "/favicon.ico" []
     (response/redirect "/public/favicon.ico"))
@@ -185,4 +185,4 @@
   (route/not-found
    (fn [{uri :uri}]
      (warn (pr-str {:uri uri}))
-     (views/error-404))))
+     (v.e/error-404))))

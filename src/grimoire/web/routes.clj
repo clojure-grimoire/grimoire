@@ -3,8 +3,7 @@
             [compojure.route :as route]
             [grimoire.util :as util]
             [grimoire.web
-             [views :as views]
-             [api   :as api]]
+             [views :as views]]
             [ring.util.response :as response]
             [taoensso.timbre :as timbre :refer [info warn]]))
 

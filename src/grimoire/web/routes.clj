@@ -40,7 +40,7 @@
                         :as req
                         uri :uri}
                 (let [type    (or header-type param-type :html)
-                      symbol' (util/unmunge symbol)]
+                      symbol' (util/update-munge symbol)]
                   (cond
                    ;; FIXME this is a bit of a hack to handle catch/finally
                    (#{"catch" "finally"} symbol)

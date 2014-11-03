@@ -20,4 +20,4 @@
                       :main         grimoire.web.service}
              :dev    {:source-paths ["dev"]
                       :main         user}
-             :user   [:repl :server :dev]})
+             :user   [:repl :server :dev :arrdem]})

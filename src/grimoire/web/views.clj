@@ -1,7 +1,6 @@
 (ns grimoire.web.views
   (:require [clojure.java.io :as io]
             [clojure.string :as string]
-            [compojure.core :refer [GET]]
             [grimoire.github :as gh]
             [grimoire.util :as util]
             [grimoire.api :as api]

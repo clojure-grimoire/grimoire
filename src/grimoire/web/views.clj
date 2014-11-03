@@ -305,20 +305,20 @@
              (list [:h2 "Arities"]
                    [:pre (map pr-str arglists)]))
 
-           (when docs
+           (when doc
              (list [:h2 "Official Documentation - "
                     ;; FIXME: where does this URL go?
-                    [:a {:href (gh/->edit-url site-config "develop" docstring-file)}
+                    [:a {:href nil}
                      "edit"]]
-                   [:pre docs]))
+                   [:pre doc]))
 
            (when notes
              (list
               [:h2 "Community Documentation - "
                ;; FIXME: where does this URL go?
-               [:a {:href (gh/->edit-url site-config "develop" comdoc-file)}
+               [:a {:href nil}
                 "edit"]]
-              (util/markdown-string notes)))
+              (wutil/markdown-string notes)))
 
            (when-let [examples (all-examples groupid artifactid version
                                              namespace symbol :html)]
@@ -353,7 +353,7 @@
               [:div.section
                [:h2.heading "Source " [:span.unhide "+"]]
                [:div.autofold.prefold
-                (util/highlight-clojure src)]]))
+                (wutil/highlight-clojure src)]]))
 
            [:script {:src "/public/jquery.js" :type "text/javascript"}]
            [:script {:src "/public/fold.js" :type "text/javascript"}]))

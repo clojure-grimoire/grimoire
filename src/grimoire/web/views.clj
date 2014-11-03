@@ -6,8 +6,8 @@
             [grimoire.api :as api]
             [grimoire.things :as t]
             [grimoire.web.layout :refer [layout]]
-            [grimoire.web.util :as wutil :refer [clojure-versions]]
-            [clj-semver.core :as semver]
+            [grimoire.web.util :as wutil :refer [clojure-versions]] ; FIXME: remove
+            [clj-semver.core :as semver]                            ; FIXME: remove
             [ring.util.response :as response]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

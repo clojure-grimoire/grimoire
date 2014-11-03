@@ -72,8 +72,10 @@
     (when (.exists file)
       (some-> file slurp))))
 
+(def markdown-string md/md-to-html-string)
+
 (defn markdown-file [file]
-  (-> file resource-file-contents md/md-to-html-string))
+  (-> file resource-file-contents markdown-string))
 
 (defn highlight-clojure [text]
   (let-programs [pygmentize "pygmentize"]

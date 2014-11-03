@@ -195,6 +195,8 @@
         [:a {:href (gh/->edit-url site-config "develop" ns-notes-file)} "edit"]]
        (wutil/markdown-file ns-notes-file)
        [:h2 "Symbols"]
+
+       ;; FIXME: the fuck am I doing here srsly
        (let [keys                  ["special",       "macro",  "fn",        "var"]
              mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
              ids      (zipmap keys ["sforms",        "macros", "fns",       "vars"])
@@ -283,10 +285,10 @@
         artifactid   (t/thing->artifact symbol-thing)
         version      (t/thing->version symbol-thing)
         namespace    (t/thing->namespace symbol-thing)
-        
+
         {:keys [doc name arglists type src]
          :as   meta} (api/read-meta site-config symbol-thing)
-        
+
         notes        (api/read-notes site-config symbol-thing)
         related      (api/read-related site-config symbol-thing)]
     (case type
@@ -384,7 +386,7 @@
                      "## Examples\n"
                      ;; line40 "\n"
                      (all-examples groupid artifactid version namespace symbol :text)
-                     
+
                      "## See Also\n"
                      ;; line40 "\n"
                      related)

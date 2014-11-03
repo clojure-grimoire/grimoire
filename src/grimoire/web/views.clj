@@ -108,6 +108,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; API page
 
+;; FIXME: refactor to use lib-grimoire
+;; FIXME: refactor to display preview from notes
 (defn api-page []
   (layout
    site-config
@@ -120,6 +122,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Groupid page
 
+;; FIXME: refactor to use lib-grimoire
 (defn groupid-page [groupid]
   (layout site-config
           [:h1 {:class "page-title"} "Group " (header groupid)]
@@ -146,6 +149,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Version page
 
+;; FIXME: refactor to use lib-grimoire
 (defn version-page [groupid artifactid version]
   (let [rel-notes-file (wutil/resource-file version "release-notes.md")]
     (layout
@@ -176,6 +180,7 @@
              (for [r (sort-by :name (get segments k))]
                [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]))))
 
+;; FIXME: refactor to use lib-grimoire
 (defn namespace-page [groupid artifactid version namespace]
   (let [resource      (partial wutil/resource-file groupid artifactid version namespace)
         ns-dir        (resource "")
@@ -304,7 +309,7 @@
                     ;; FIXME: where does this URL go?
                     [:a {:href (gh/->edit-url site-config "develop" docstring-file)}
                      "edit"]]
-                   [:pre (wutil/resource-file-contents docstring-file)]))
+                   [:pre docs]))
 
            (when notes
              (list

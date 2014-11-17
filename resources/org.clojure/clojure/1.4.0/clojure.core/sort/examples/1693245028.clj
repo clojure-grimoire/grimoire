@@ -1,5 +1,5 @@
-;; make a struct 'goods'. it assumes that every goods has
-;; its id number and price.
+;; make a struct 'goods'. every goods has
+;; an id and a price.
 (defstruct goods :id :price)
 
 ;; generate data.
@@ -9,14 +9,11 @@
 					     (range 100 500 100)))))
 
 (defn comp-goods-price
-  "a compare function by :price of the struct 'goods.' the sort order 
-   is superior to the lower price and if the price is same, it is 
-   superior to the lower id."
+  "a compare function by :price for struct 'goods'; 
+  if the :price is same, compare by :id."
   [el1 el2]
-  (if (or  (< (:price el1) (:price el2))
-	  (and (= (:price el1) (:price el2))(< (:id el1) (:id el2))))
-    true
-    false))
+  (or (< (:price el1) (:price el2))
+      (and (= (:price el1) (:price el2)) (< (:id el1) (:id el2)))))
 
 user> data
 ({:id 1, :price 300} {:id 6, :price 100} {:id 3, :price 100} {:id 4, :price 400} {:id 0, :price 300} {:id 2, :price 200} {:id 5, :price 200} {:id 8, :price 400})

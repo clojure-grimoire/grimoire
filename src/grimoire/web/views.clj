@@ -51,13 +51,21 @@
    [:p "Unknown namespace identifier " (pr-str [version namespace])]
    [:p "If you found a broken link, please report the issue encountered on the github bugtracker."]))
 
-(defn error-unknown-symbol [version namespace symbol]
-  (layout
-   site-config
-   [:h1 {:class "page-title"}
-    [:a "Clojure " version]]
-   [:p "Unknown symbol identifier " (pr-str [version namespace symbol])]
-   [:p "If you found a broken link, please report the issue encountered on the github bugtracker."]))
+(defn error-unknown-symbol [type version namespace symbol]
+  (case type
+    (:html :text/html "text/html")
+    ,,(layout
+       site-config
+       [:h1 {:class "page-title"}
+        [:a "Clojure " version]]
+       [:p "Unknown symbol identifier " (pr-str [version namespace symbol])]
+       [:p "If you found a broken link, please report the issue encountered on the github bugtracker."])
+
+    (:text :text/plain "text/plain")
+    ,,(-> (str "# Unknown symbol: Clojure " version ", " namespace "/" (util/unmunge symbol) \newline
+               "Sorry! Only clojure.core is documented right now.")
+          response/response
+          (response/content-type "text/plain"))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Generic markdown page
@@ -243,7 +251,7 @@
 
              (when (.isFile arities-file)
                (list [:h2 "Arities"]
-                     [:p (util/resource-file-contents arities-file)]))
+                     [:pre (util/resource-file-contents arities-file)]))
 
              (when (.isFile docstring-file)
                (list [:h2 "Official Documentation - "

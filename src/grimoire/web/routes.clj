@@ -50,7 +50,9 @@
                                       (response/redirect (str "/" version "/clojure.core/try/"))
                                       (if-let [res (views/symbol-page version namespace symbol type)]
                                         (do (info (pr-str {:uri uri :type type})) res)
-                                        (response/redirect (str "/" version "/" namespace "/" (util/unmunge symbol)))))))
+                                        (let [new-uri (str "/" version "/" namespace "/" (util/unmunge symbol))]
+                                          (when-not (= new-uri uri)
+                                            (response/redirect new-uri)))))))
 
                              (GET "/docstring" {uri :uri}
                                   (let [f  (util/resource-file version namespace symbol "docstring.md")]

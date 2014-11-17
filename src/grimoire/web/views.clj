@@ -362,6 +362,8 @@
       ,,(let [line80 (apply str (repeat 80 "-"))
               line40 (apply str (repeat 40 "-"))]
           (when doc
+            ;; FIXME: else what? doesn't make sense w/o doc...
+            ;; FIXME: conditionalize _all_ headers
             (-> (str (format "# [%s/%s \"%s\"] %s/%s\n" groupid artifactid version namespace name)
                      ;; line80
                      "\n"

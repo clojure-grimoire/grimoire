@@ -78,9 +78,12 @@
                                     examples))
 
                              (route/not-found
-                              (fn [{uri :uri}]
-                                (warn (pr-str {:uri uri}))
-                                (views/error-unknown-symbol version namespace symbol))))
+                              (fn [{uri :uri
+                                   header-type :content-type
+                                   {param-type :type} :params}]
+                                (let [type (or header-type param-type :text/html)]
+                                  (warn (pr-str {:uri uri}))
+                                  (views/error-unknown-symbol type version namespace symbol)))))
 
                     (route/not-found
                      (fn [{uri :uri}]

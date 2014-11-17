@@ -45,7 +45,6 @@
      [:a.sidebar-nav-item {:href "/about"} "About"]
      [:a.sidebar-nav-item {:href "/api"} "API"]
      [:a.sidebar-nav-item {:href "/contributing"} "Contributing"]
-     [:a.sidebar-nav-item {:href "/public/static.zip"} "Offline Version"]
      [:br] "More" [:br]
      (let [{:keys [gittip me]} author]
        (list

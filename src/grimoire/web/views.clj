@@ -247,6 +247,7 @@
        (wutil/resource-file-contents path)
        "\n"))
 
+;; FIXME: refactor to use lib-grimoire
 (defn all-examples
   [groupid artifactid top-version namespace symbol type]
   (let [path     (str "resources/store/" groupid "/" artifactid "/%s/"
@@ -278,6 +279,7 @@
              (interpose "\n")
              (apply str)))))
 
+;; FIXME: finish refactoring to use lib-grimoire
 (defn symbol-page
   [resp-type symbol-thing]
   (let [groupid      (t/thing->group symbol-thing)
@@ -318,7 +320,8 @@
                ;; FIXME: where does this URL go?
                [:a {:href nil}
                 "edit"]]
-              (wutil/markdown-string notes)))
+              (for [[v text] notes]
+                (wutil/markdown-string text))))
 
            (when-let [examples (all-examples groupid artifactid version
                                              namespace symbol :html)]

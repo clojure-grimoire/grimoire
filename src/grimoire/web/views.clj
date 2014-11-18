@@ -14,7 +14,7 @@
 ;; Site config
 
 (def site-config
-  {:url                 "http://grimoire.arrdem.com"
+  {:url                 "http://conj.io"
    :repo                "https://github.com/clojure-grimoire/grimoire"
    :baseurl             "/"
    :datastore           {:docs  "doc-store"

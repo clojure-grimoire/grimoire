@@ -279,18 +279,18 @@
              (apply str)))))
 
 (defn symbol-page
-  [symbol-thing]
+  [resp-type symbol-thing]
   (let [groupid      (t/thing->group symbol-thing)
         artifactid   (t/thing->artifact symbol-thing)
         version      (t/thing->version symbol-thing)
         namespace    (t/thing->namespace symbol-thing)
 
-        {:keys [doc name arglists type src]
+        {:keys [doc name type arglists src]
          :as   meta} (api/read-meta site-config symbol-thing)
 
         notes        (api/read-notes site-config symbol-thing)
         related      (api/read-related site-config symbol-thing)]
-    (case type
+    (case resp-type
       (:html :text/html "text/html")
       ,,(when doc
           (layout

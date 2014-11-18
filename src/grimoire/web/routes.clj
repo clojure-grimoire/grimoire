@@ -2,6 +2,7 @@
   (:require [compojure.core :refer [defroutes context GET let-routes]]
             [compojure.route :as route]
             [grimoire.util :as util]
+            [grimoire.things :as thing]
             [grimoire.web.views :as v ]
             [grimoire.web.views.errors :as v.e]
             [ring.util.response :as response]
@@ -12,90 +13,90 @@
 ;; representation? Probably should..
 
 (defroutes store
-    (context ["/store"] []
+  (context ["/store"] []
     (GET "/" {uri :uri}
       (info (pr-str {:uri uri :type :text}))
       (v/api-page))
 
     (context ["/:groupid"] [groupid]
-      (GET "/" {uri :uri}
-        (info (pr-str {:uri uri :type :text}))
-        (v/groupid-page groupid))
-
-      (context ["/:artifactid"] [artifactid]
-        (GET "/" {uri :uri}
-          (info (pr-str {:uri uri :type :text}))
-          (v/artifactid-page groupid artifactid))
-
-        (context ["/:version", :version #"[0-9]+.[0-9]+.[0-9]+"] [version]
+      (let-routes [t (thing/->Group groupid)]
           (GET "/" {uri :uri}
             (info (pr-str {:uri uri :type :text}))
-            (v/version-page groupid artifactid version))
+            (v/groupid-page t))
 
-          (context "/:namespace" [namespace]
-            (GET "/" {uri :uri}
-              (info (pr-str {:uri uri :type :text}))
-              (v/namespace-page-memo groupid artifactid version
-                                         namespace))
+        (context ["/:artifactid"] [artifactid]
+          (let-routes [t (thing/->T :artifact t artifactid)]
+              (GET "/" {uri :uri}
+                (info (pr-str {:uri uri :type :text}))
+                (v/artifactid-page t))
 
-            (context "/:symbol" [symbol]
-              (GET "/" {header-type :content-type
-                        {param-type :type} :params
-                        :as req
-                        uri :uri}
-                (let [type    (or header-type param-type :html)
-                      symbol' (util/update-munge symbol)]
-                  (cond
-                   ;; FIXME this is a bit of a hack to handle catch/finally
-                   (#{"catch" "finally"} symbol)
-                   ,,(response/redirect
-                      (format "/%s/%s/%s/%s/%s/"
-                              groupid artifactid version
-                              namespace"try"))
+            (context ["/:version", :version #"[0-9]+.[0-9]+.[0-9]+"] [version]
+              (let-routes [t (thing/->T :version t version)]
+                  (GET "/" {uri :uri}
+                    (info (pr-str {:uri uri :type :text}))
+                    (v/version-page t))
 
-                   ;; handle the case of redirecting due to munging
-                   (not (= symbol symbol'))
-                   ,,(response/redirect
-                      (format "/%s/%s/%s/%s/%s/"
-                              groupid artifactid version
-                              namespace symbol'))
+                (context "/:namespace" [namespace]
+                  (let-routes [t (thing/->T :namespace t namespace)]
+                      (GET "/" {uri :uri}
+                        (info (pr-str {:uri uri :type :text}))
+                        (v/namespace-page-memo t))
 
-                   :else
-                   ,,(let [res (v/symbol-page groupid artifactid version
-                                                  namespace symbol type)]
-                       (info (pr-str {:uri uri :type type}))
-                       res))))
+                    (context "/:symbol" [symbol]
+                      (let-routes [t (thing/->T :def t symbol)]
+                          (GET "/" {header-type :content-type
+                                    {param-type :type} :params
+                                    :as req
+                                    uri :uri}
+                            (let [type    (or header-type param-type :html)
+                                  symbol' (util/update-munge symbol)]
+                              (cond
+                               ;; FIXME this is a bit of a hack to handle catch/finally
+                               (#{"catch" "finally"} symbol)
+                               ,,(response/redirect
+                                  (format "/%s/%s/%s/%s/%s/"
+                                          groupid artifactid version
+                                          namespace"try"))
 
-              (route/not-found
-               (fn [{uri :uri}]
-                 (warn (pr-str {:uri uri}))
-                 (v.e/error-unknown-symbol groupid artifactid version
-                                             namespace symbol))))
+                               ;; handle the case of redirecting due to munging
+                               (not (= symbol symbol'))
+                               ,,(response/redirect
+                                  (format "/%s/%s/%s/%s/%s/"
+                                          groupid artifactid version
+                                          namespace symbol'))
+
+                               :else
+                               ,,(let [res (v/symbol-page type t)]
+                                   (info (pr-str {:uri uri :type type}))
+                                   res))))
+
+                        (route/not-found
+                         (fn [{uri :uri
+                              header-type :content-type
+                              {param-type :type} :params}]
+                           (let [type (or header-type param-type :text/html)]
+                             (warn (pr-str {:uri uri}))
+                             (v.e/error-unknown-symbol type t))))))
+
+                    (route/not-found
+                     (fn [{uri :uri}]
+                       (warn (pr-str {:uri uri}))
+                       (v.e/error-unknown-namespace type t)))))
+
+                (route/not-found
+                 (fn [{uri :uri}]
+                   (warn (pr-str {:uri uri}))
+                   (v.e/error-unknown-version t)))))
 
             (route/not-found
-             (fn [{uri :uri
-                  header-type :content-type
-                  {param-type :type} :params}]
-               (let [type (or header-type param-type :text/html)]
-                 (warn (pr-str {:uri uri}))
-                 (v.e/error-unknown-symbol type
-                                           groupid artifactid version
-                                           namespace symbol)))))
-
-          (route/not-found
-           (fn [{uri :uri}]
-             (warn (pr-str {:uri uri}))
-             (v.e/error-unknown-version groupid artifactid version))))
+             (fn [{uri :uri}]
+               (warn (pr-str {:uri uri}))
+               (v.e/error-unknown-artifact t)))))
 
         (route/not-found
          (fn [{uri :uri}]
            (warn (pr-str {:uri uri}))
-           (v.e/error-unknown-artifact groupid artifactid))))
-
-      (route/not-found
-       (fn [{uri :uri}]
-         (warn (pr-str {:uri uri}))
-         (v.e/error-unknown-group groupid))))))
+           (v.e/error-unknown-group t)))))))
 
 ;; FIXME: Implement rather than stub
 
@@ -122,13 +123,13 @@
 
           (context ["/:namespace"] [namespace]
             (GET "/" {{op :op} :params}
-                ;; op ∈ #{"notes"
-                ;;        "docs"
-                ;;        "symbols"
-                ;;        "vars"
-                ;;        "fns"
-                ;;        "types"
-                ;;        "added"}
+              ;; op ∈ #{"notes"
+              ;;        "docs"
+              ;;        "symbols"
+              ;;        "vars"
+              ;;        "fns"
+              ;;        "types"
+              ;;        "added"}
               )
 
             (context ["/:symbol"] [symbol]
@@ -153,10 +154,10 @@
       (info (pr-str {:uri uri :type :html}))
       (v/articles-list))
 
-      (route/not-found
-       (fn [{uri :uri}]
-         (warn (pr-str {:uri uri}))
-         (v.e/error-404)))))
+    (route/not-found
+     (fn [{uri :uri}]
+       (warn (pr-str {:uri uri}))
+       (v.e/error-404)))))
 
 (defroutes app
   (GET "/" {uri :uri}

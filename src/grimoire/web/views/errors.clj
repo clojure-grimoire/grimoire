@@ -2,6 +2,7 @@
   (:require [clojure.java.io :as io]
             [grimoire.web.views :refer [site-config]]
 	    [grimoire.web.layout :refer [layout]]
+            [grimoire.util :as util]
 	    [ring.util.response :as response]))
 
 ;; 404 Error page
@@ -56,9 +57,9 @@
   ([version namespace symbol]
      (error-unknown-symbol "org.clojure" "clojure" version namespace symbol))
 
-  ([type version namespace symbol]
+  ([type groupid artifactid version namespace symbol]
      (let [version-string (format "[%s/%s \"%s\"]" groupid artifactid version)
-           symbol-string  (format "%s/%s" namespace (util/unmunge symbol))]
+           symbol-string  (format "%s/%s" namespace (util/update-munge symbol))]
        (case type
          (:html :text/html "text/html")
          ,,(layout

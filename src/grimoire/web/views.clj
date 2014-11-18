@@ -282,16 +282,17 @@
 ;; FIXME: finish refactoring to use lib-grimoire
 (defn symbol-page
   [resp-type symbol-thing]
-  (let [groupid      (t/thing->group symbol-thing)
-        artifactid   (t/thing->artifact symbol-thing)
-        version      (t/thing->version symbol-thing)
+  (let [groupid      (t/thing->group     symbol-thing)
+        artifactid   (t/thing->artifact  symbol-thing)
+        version      (t/thing->version   symbol-thing)
         namespace    (t/thing->namespace symbol-thing)
 
         {:keys [doc name type arglists src]
          :as   meta} (api/read-meta site-config symbol-thing)
 
-        notes        (api/read-notes site-config symbol-thing)
-        related      (api/read-related site-config symbol-thing)]
+        notes        (api/read-notes site-config symbol-thing) ;; Seq [version, notes]
+        related      (api/read-related site-config symbol-thing) ;; Seq [version, related]
+        ]
     (case resp-type
       (:html :text/html "text/html")
       ,,(when doc

@@ -342,7 +342,7 @@
 
                      "## Examples\n"
                      ;; line40 "\n"
-                     (all-examples groupid artifactid version namespace symbol :text)
+                     "FIXME: This version of Grimoire can't read examples for text format!\n"
 
                      "## See Also\n"
                      ;; line40 "\n"

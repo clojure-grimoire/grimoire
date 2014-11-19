@@ -263,10 +263,7 @@
                    [:pre (interpose \newline (map pr-str arglists))]))
 
            (when doc
-             (list [:h2 "Official Documentation - "
-                    ;; FIXME: where does this URL go?
-                    [:a {:href nil}
-                     "edit"]]
+             (list [:h2 "Official Documentation"]
                    [:pre doc]))
 
            (when notes

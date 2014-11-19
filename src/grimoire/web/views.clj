@@ -59,7 +59,7 @@
 (defn link-to [prefix x]
   {:href (str prefix (:uri x))})
 
-(def link-to' (partial link-to "store/"))
+(def link-to' (partial link-to "/store/"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Articles list page
@@ -190,7 +190,7 @@
                link-ids (zipmap keys ["sff", "mf", "ff", "vf"])
                grouping (->> (for [def-thing (api/list-defs site-config namespace-thing)
                                    :let      [meta (api/read-meta site-config def-thing)]]
-                               {:url  (str "/" (:href (link-to' def-thing)))
+                               {:url  (:href (link-to' def-thing))
                                 :name (:name meta)
                                 :type (:type meta)})
                              (group-by :type))]

@@ -51,17 +51,20 @@
                             (let [type    (or header-type param-type :html)
                                   symbol' (util/update-munge symbol)]
                               (cond
-                               ;; FIXME this is a bit of a hack to handle catch/finally
+                               ;; FIXME this is a bit of a hack to
+                               ;; handle catch/finally. Should be
+                               ;; generalized to other symbols but how
+                               ;; to represent it?
                                (#{"catch" "finally"} symbol)
                                ,,(response/redirect
                                   (format "/%s/%s/%s/%s/%s/"
                                           groupid artifactid version
-                                          namespace"try"))
+                                          namespace "try"))
 
                                ;; handle the case of redirecting due to munging
                                (not (= symbol symbol'))
                                ,,(response/redirect
-                                  (format "/%s/%s/%s/%s/%s/"
+                                  (format "/store/%s/%s/%s/%s/%s/"
                                           groupid artifactid version
                                           namespace symbol'))
 
@@ -81,7 +84,7 @@
                     (route/not-found
                      (fn [{uri :uri}]
                        (warn (pr-str {:uri uri}))
-                       (v.e/error-unknown-namespace type t)))))
+                       (v.e/error-unknown-namespace t)))))
 
                 (route/not-found
                  (fn [{uri :uri}]

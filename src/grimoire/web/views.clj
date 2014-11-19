@@ -79,30 +79,32 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Header helper
 
-(defn header
-  ([groupid]
-     [:a (link-to' groupid) groupid])
+(defmulti header :type)
 
-  ([groupid artifactid]
-     (let [params [groupid artifactid]]
-       (list (apply header (butlast params))
-             "/" [:a (apply link-to' params) artifactid])))
+(defmethod header :group [group]
+  [:a (link-to' group)
+   ,,(:name group)])
 
-  ([groupid artifactid version]
-     (let [params [groupid artifactid version]]
-       (list "[" (apply header (butlast params))
-             " " [:a (apply link-to' params) (pr-str version)] "]")))
+(defmethod header :artifact [artifact]
+  (list (header (:parent artifact))
+        "/" [:a (link-to' artifact)
+             ,,,(:name artifact)]))
 
-  ([groupid artifactid version namespace]
-     (let [params [groupid artifactid version namespace]]
-       (list (apply header (butlast params)) " "
-             [:a (apply link-to' params) namespace])))
+(defmethod header :version [version]
+  (list "[" (header (:parent version))
+        " " [:a (link-to' version)
+             ,,,(pr-str (:name version))] "]"))
 
-  ([groupid artifactid version namespace symbol]
-     (let [sym'   (util/munge symbol)
-           params [groupid artifactid version namespace sym']]
-       (list (apply header (butlast params)) "/"
-             [:a (apply link-to' params) symbol]))))
+(defmethod header :namespace [namespace]
+  (list (header (:parent namespace)) " "
+        [:a (link-to' namespace)
+         ,,,(:name namespace)]))
+
+(defmethod header :def [symbol]
+  (let [sym'   (util/munge (:name symbol))]
+    (list (header (:parent symbol)) "/"
+          [:a (link-to' symbol)
+           ,,,(:name symbol)])))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; API page

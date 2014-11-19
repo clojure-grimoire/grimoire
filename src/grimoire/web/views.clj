@@ -106,16 +106,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; API page
 
-;; FIXME: refactor to use lib-grimoire
 ;; FIXME: refactor to display preview from notes
 (defn api-page []
-  (layout
-   site-config
-   [:h1 {:class "page-title"} "Documentation store"]
-   [:h2 "Known Maven groups"]
-   [:ul
-    (for [[_ groupid] (->> (wutil/paths "store") sort)]
-      [:li [:a (link-to' groupid) groupid]])]))
+  (layout site-config
+          [:h1 {:class "page-title"} "Documentation store"]
+          [:h2 "Known Maven groups"]
+          [:ul
+           (for [group (->> (api/list-groups site-config)
+                            (sort-by :name))]
+             [:li [:a (link-to' group) (:name group)]])]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Groupid page

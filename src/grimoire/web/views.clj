@@ -324,19 +324,20 @@
               (for [[v text] notes]
                 (wutil/markdown-string text))))
 
-           (when-let [examples (all-examples groupid artifactid version
-                                             namespace symbol :html)]
-             [:div.section
-              [:h2.heading "Examples " [:span.hide "-"]]
-              [:div.autofold
-               (list (map-indexed example examples)
+           ;; FIXME: examples needs a _lot_ of work
+           #_(when-let [examples (all-examples groupid artifactid version
+                                               namespace symbol :html)]
+               [:div.section
+                [:h2.heading "Examples " [:span.hide "-"]]
+                [:div.autofold
+                 (list (map-indexed example examples)
 
-                     ;; FIXME: this needs to be dynamic not static to my store
-                     [:h3 [:a {:href (gh/->new-url site-config "develop"
-                                                   (format "resources/store/%s/%s/%s/%s/%s/examples/"
-                                                           groupid artifactid version
-                                                           namespace symbol))}
-                           "Contribute an example!"]])]])
+                       ;; FIXME: this needs to be dynamic not static to my store
+                       [:h3 [:a {:href (gh/->new-url site-config "develop"
+                                                     (format "resources/store/%s/%s/%s/%s/%s/examples/"
+                                                             groupid artifactid version
+                                                             namespace symbol))}
+                             "Contribute an example!"]])]])
 
 
            (when-not (= :special type)

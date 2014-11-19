@@ -304,7 +304,7 @@
                                       " documentation and examples")
                     :summary doc})
            [:h1 {:class "page-title"}
-            (header groupid artifactid version namespace name)]
+            (header symbol-thing)]
 
            (when arglists
              (list [:h2 "Arities"]

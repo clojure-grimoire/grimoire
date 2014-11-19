@@ -134,15 +134,19 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Artifactid page
 
-(defn artifactid-page [groupid artifactid]
+(defn artifactid-page [artifact-thing]
   (layout site-config
-          [:h1 {:class "page-title"} "Artifact " (header groupid artifactid)]
+          [:h1 {:class "page-title"} (header artifact-thing)]
           [:h2 "Known release versions"]
           [:ul
-           (for [p     (->> (wutil/paths "store" groupid artifactid) sort)
-                 :let  [[_ groupid artifactid version] p]]
-             [:li [:a (link-to' groupid artifactid version)
-                   (pr-str [(symbol groupid artifactid) version])]])]))
+           (for [version (->> (api/list-versions site-config artifact-thing)
+                              (sort-by :name))
+                 :let  [artifact (:parent version)
+                        group    (:parent artifact)]]
+             [:li [:a (link-to' version) (format "[%s/%s \"%s\"]"
+                                                 (:name group)
+                                                 (:name artifact)
+                                                 (:name version))]])]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Version page

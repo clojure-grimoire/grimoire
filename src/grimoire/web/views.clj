@@ -147,7 +147,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Version page
 
-;; FIXME: refactor to use lib-grimoire
 (defn version-page [version-thing]
   (let [[[v notes]] (api/read-notes site-config version-thing)]
     (layout

@@ -56,13 +56,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Shared header generator
 
-(defn link-to [& args]
-  {:href (->> args
-              (interpose \/ )
-              (cons (:baseurl site-config))
-              (apply str))})
+(defn link-to [prefix x]
+  {:href (str prefix (:uri x))})
 
-(def link-to' (partial link-to "store"))
+(def link-to' (partial link-to "store/"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Articles list page
@@ -268,10 +265,8 @@
 
            (when notes
              (list
-              [:h2 "Community Documentation - "
-               ;; FIXME: where does this URL go?
-               [:a {:href nil}
-                "edit"]]
+              [:h2 "Community Documentation"]
+              ;; FIXME: Add edit URL!
               (for [[v text] notes]
                 (wutil/markdown-string text))))
 
@@ -289,7 +284,7 @@
 
 
            (when-not (= :special type)
-             [:a {:href (str "http://crossclj.info/fun/" namespace "/" (wutil/url-encode name) ".html")}
+             [:a {:href (str "http://crossclj.info/fun/" (:name namespace) "/" (wutil/url-encode name) ".html")}
               [:h2 "Uses on crossclj"]])
 
            (when related

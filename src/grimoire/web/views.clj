@@ -148,24 +148,21 @@
 ;; Version page
 
 ;; FIXME: refactor to use lib-grimoire
-(defn version-page [groupid artifactid version]
-  (let [rel-notes-file (wutil/resource-file version "release-notes.md")]
+(defn version-page [version-thing]
+  (let [[[v notes]] (api/read-notes site-config version-thing)]
     (layout
-     (assoc site-config
-       :page {:description (str "Clojure " version " release information")})
-     [:h1 {:class "page-title"} (header groupid artifactid version)]
-     [:h2 "Release Notes - "
-      [:a {:href (gh/->edit-url site-config "develop" rel-notes-file)} "edit"]]
-     (wutil/markdown-file rel-notes-file)
+     site-config ;; FIXME: add artifact & group name to title somehow?
+     [:h1 {:class "page-title"} (header version-thing)]
+     (when notes
+       (list [:h2 "Release Notes"]
+             (wutil/markdown-string notes)))
 
      [:h2 "Namespaces"]
      [:ul
-      (for [path (->> (wutil/paths "store" groupid artifactid version)
-                      (sort-by last))
-            :when (not (= "release-notes.md" (last path)))]
+      (for [ns-thing (->> (api/list-namespaces site-config version-thing)
+                          (sort-by :name))]
         [:li
-         [:a (apply link-to' (rest path))
-          (last path)]])])))
+         [:a (link-to' ns-thing) (:name ns-thing)]])])))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Namespace page

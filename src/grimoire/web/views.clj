@@ -264,7 +264,7 @@
               [:h2 "Community Documentation"]
               ;; FIXME: Add edit URL!
               (for [[v text] notes]
-                (wutil/markdown-string text))))
+                [:p (wutil/markdown-string text)])))
 
            ;; FIXME: examples needs a _lot_ of work
            (when-let [examples (api/read-examples site-config def-thing)]

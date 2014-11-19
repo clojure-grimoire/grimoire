@@ -120,16 +120,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Groupid page
 
-;; FIXME: refactor to use lib-grimoire
-(defn groupid-page [groupid]
+(defn groupid-page [group-thing]
   (layout site-config
-          [:h1 {:class "page-title"} "Group " (header groupid)]
+          [:h1 {:class "page-title"} (header group-thing)]
           [:h2 "Known artifacts"]
           [:ul
-           (for [p     (->> (wutil/paths "store" groupid) sort)
-                 :let  [[_ groupid artifactid] p]]
-             [:li [:a (link-to' groupid artifactid)
-                   (pr-str (symbol groupid artifactid))]])]))
+           (for [artifact (->> (api/list-artifacts site-config group-thing)
+                               (sort-by :name))
+                 :let  [group (:parent artifact)]]
+             [:li [:a (link-to' artifact)
+                   (format "%s/%s" (:name group) (:name artifact))]])]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Artifactid page

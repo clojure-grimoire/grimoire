@@ -233,67 +233,19 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Symbol page
 
-(defn example [index [clojure path]]
-  [:div.example
-   [:h3
-    [:span.title "Example " (inc index)]
-    [:span.edit  {"style" "float: right;"}
-     [:a {:href (gh/->edit-url site-config "develop" path)} "edit"]]
-    [:span.version {"style" "float: right; padding-right: 1.0em;"}
-     "Clojure " clojure]]
-   [:div.source (wutil/clojure-file path)]])
-
-(defn raw-example [index path]
-  (str "Example " (inc index) "\n"
-       "----------------------------------------\n"
-       (wutil/resource-file-contents path)
-       "\n"))
-
-;; FIXME: refactor to use lib-grimoire
-(defn all-examples
-  [groupid artifactid top-version namespace symbol type]
-  (let [path     (str "resources/store/" groupid "/" artifactid "/%s/"
-                      namespace "/" symbol "/examples/")
-        versions (->> clojure-versions
-                      (filter (fn [v]
-                                (or (= v top-version)
-                                    (semver/older? v top-version))))
-                      sort)]
-
-    (case type
-      :html
-      ,,(for [v     versions
-              :let  [examples-dir (format path v)]
-              e     (wutil/dir-list-as-strings examples-dir)]
-          [v e])
-
-      :text
-      ,,(->> (for [v versions]
-               (let [d        (format path v)
-                     examples (wutil/dir-list-as-strings d)]
-                 (when-not (empty? examples)
-                   (str "### Examples from Clojure " v "\n"
-                        "----------------------------------------\n"
-                        (->> examples
-                             (map-indexed raw-example)
-                             (interpose "\n")
-                             (apply str))))))
-             (interpose "\n")
-             (apply str)))))
-
 ;; FIXME: finish refactoring to use lib-grimoire
 (defn symbol-page
-  [resp-type symbol-thing]
-  (let [groupid      (t/thing->group     symbol-thing)
-        artifactid   (t/thing->artifact  symbol-thing)
-        version      (t/thing->version   symbol-thing)
-        namespace    (t/thing->namespace symbol-thing)
+  [resp-type def-thing]
+  (let [groupid      (t/thing->group     def-thing)
+        artifactid   (t/thing->artifact  def-thing)
+        version      (t/thing->version   def-thing)
+        namespace    (t/thing->namespace def-thing)
 
         {:keys [doc name type arglists src]
-         :as   meta} (api/read-meta site-config symbol-thing)
+         :as   meta} (api/read-meta site-config def-thing)
 
-        notes        (api/read-notes site-config symbol-thing) ;; Seq [version, notes]
-        related      (api/read-related site-config symbol-thing) ;; Seq [version, related]
+        notes        (api/read-notes site-config def-thing) ;; Seq [version, notes]
+        related      (api/read-related site-config def-thing) ;; Seq [version, related]
         ]
     (case resp-type
       (:html :text/html "text/html")
@@ -304,7 +256,7 @@
                                       " documentation and examples")
                     :summary doc})
            [:h1 {:class "page-title"}
-            (header symbol-thing)]
+            (header def-thing)]
 
            (when arglists
              (list [:h2 "Arities"]
@@ -327,19 +279,16 @@
                 (wutil/markdown-string text))))
 
            ;; FIXME: examples needs a _lot_ of work
-           #_(when-let [examples (all-examples groupid artifactid version
-                                               namespace symbol :html)]
-               [:div.section
-                [:h2.heading "Examples " [:span.hide "-"]]
-                [:div.autofold
-                 (list (map-indexed example examples)
-
-                       ;; FIXME: this needs to be dynamic not static to my store
-                       [:h3 [:a {:href (gh/->new-url site-config "develop"
-                                                     (format "resources/store/%s/%s/%s/%s/%s/examples/"
-                                                             groupid artifactid version
-                                                             namespace symbol))}
-                             "Contribute an example!"]])]])
+           (when-let [examples (api/read-examples site-config def-thing)]
+             [:div.section
+              [:h2.heading "Examples " [:span.hide "-"]]
+              [:div.autofold
+               (for [[v e] examples]
+                 [:div.example
+                  [:div.source
+                   (wutil/highlight-clojure e)]])
+               ;; FIXME: Add example link!
+               ]])
 
 
            (when-not (= :special type)

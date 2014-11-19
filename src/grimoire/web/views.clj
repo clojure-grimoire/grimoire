@@ -140,7 +140,8 @@
           [:h2 "Known release versions"]
           [:ul
            (for [version (->> (api/list-versions site-config artifact-thing)
-                              (sort-by :name))
+                              (sort-by :name)
+                              reverse)
                  :let  [artifact (:parent version)
                         group    (:parent artifact)]]
              [:li [:a (link-to' version) (format "[%s/%s \"%s\"]"

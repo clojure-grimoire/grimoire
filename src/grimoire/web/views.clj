@@ -167,59 +167,52 @@
 ;; Namespace page
 
 (defn emit-alphabetized-links [records]
-  (let [segments (group-by (comp str first :name) records)]
+  (let [segments (group-by (comp first str :name) records)]
     (for [k (sort (keys segments))]
       (list [:h4 (string/capitalize k)]
-            [:p
-             (for [r (sort-by :name (get segments k))]
-               [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]))))
+            [:p (for [r (sort-by :name (get segments k))]
+                  [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]))))
 
-;; FIXME: refactor to use lib-grimoire
-(defn namespace-page [groupid artifactid version namespace]
-  (let [resource      (partial wutil/resource-file groupid artifactid version namespace)
-        ns-dir        (resource "")
-        ns-notes-file (resource "ns-notes.md")]
-    (when (.isDirectory (io/file ns-dir))
-      (layout
-       (assoc site-config
-         :page {:description (str "Clojure " version " " namespace " namespace symbols list")})
-       [:h1 {:class "page-title"}
-        (header groupid artifactid version namespace)]
-       [:h2 "Namespace Notes - "
-        [:a {:href (gh/->edit-url site-config "develop" ns-notes-file)} "edit"]]
-       (wutil/markdown-file ns-notes-file)
-       [:h2 "Symbols"]
+(defn namespace-page [namespace-thing]
+  (layout
+   site-config ;; FIXME: add artifact, namespace?
+   [:h1 {:class "page-title"}
+    (header namespace-thing)]
+   (let [[[v notes]] (api/read-notes site-config namespace-thing)]
+     (list [:h2 "Namespace Notes"]
+           (wutil/markdown-string notes)))
 
-       ;; FIXME: the fuck am I doing here srsly
-       (let [keys                  ["special",       "macro",  "fn",        "var"]
-             mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
-             ids      (zipmap keys ["sforms",        "macros", "fns",       "vars"])
-             link-ids (zipmap keys ["sff",           "mf",     "ff",        "vf"])
-             grouping (->> (for [path  (wutil/paths "store" groupid artifactid version namespace)
-                                 :when (not (= "ns-notes.md" (last path)))]
-                             (let [fp          (string/join "/" path)
-                                   legacy-path (string/join "/" (drop 2 path))]
-                               {:url  (str (:baseurl site-config) fp "/")
-                                :name (slurp (io/resource (str fp "/name.txt")))
-                                :type (slurp (io/resource (str fp "/type.txt")))}))
-                           (group-by :type))]
-         (for [k keys]
-           (when-let [records (get grouping k)]
-             (list
-              (let [links (emit-alphabetized-links records)]
-                [:div.section
-                 [:h3.heading (get mapping k)
-                  " " (if (< 6 (count links))
-                        [:span.unhide "+"]
-                        [:span.hide "-"])]
-                 [:div {:class (str "autofold"
-                                    (when (< 6 (count links))
-                                      " prefold"))}
-                  links]])))))
+   (list [:h2 "Symbols"]
+         ;; FIXME: the fuck am I doing here srsly
+         (let [keys     [:special :macro :fn :var]
+               mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
+               ids      (zipmap keys ["sforms", "macros", "fns", "vars"])
+               link-ids (zipmap keys ["sff", "mf", "ff", "vf"])
+               grouping (->> (for [def-thing (api/list-defs site-config namespace-thing)
+                                   :let      [meta (api/read-meta site-config def-thing)]]
+                               {:url  (str "/" (:href (link-to' def-thing)))
+                                :name (:name meta)
+                                :type (:type meta)})
+                             (group-by :type))]
+           (for [k keys]
+             (when-let [records (get grouping k)]
+               (list
+                (let [links (emit-alphabetized-links records)]
+                  [:div.section
+                   [:h3.heading (get mapping k)
+                    " " (if (< 6 (count links))
+                          [:span.unhide "+"]
+                          [:span.hide "-"])]
+                   [:div {:class (str "autofold"
+                                      (when (< 6 (count links))
+                                        " prefold"))}
+                    links]]))))))
 
-       [:script {:src "/public/jquery.js" :type "text/javascript"}]
-       [:script {:src "/public/fold.js" :type "text/javascript"}]))))
+   [:script {:src "/public/jquery.js" :type "text/javascript"}]
+   [:script {:src "/public/fold.js" :type "text/javascript"}]))
 
+
+;; FIXME: this should be a smarter cache
 (def namespace-page-memo
   (memoize namespace-page))
 

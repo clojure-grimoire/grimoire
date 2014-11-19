@@ -306,7 +306,7 @@
 
            (when arglists
              (list [:h2 "Arities"]
-                   [:pre (map pr-str arglists)]))
+                   [:pre (interpose \newline (map pr-str arglists))]))
 
            (when doc
              (list [:h2 "Official Documentation - "

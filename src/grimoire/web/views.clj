@@ -8,7 +8,8 @@
             [grimoire.web.layout :refer [layout]]
             [grimoire.web.util :as wutil :refer [clojure-versions]] ; FIXME: remove
             [clj-semver.core :as semver]                            ; FIXME: remove
-            [ring.util.response :as response]))
+            [ring.util.response :as response]
+            [detritus.text :as text]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Site config
@@ -109,7 +110,8 @@
 ;; FIXME: refactor to display preview from notes
 (defn api-page []
   (layout site-config
-          [:h1 {:class "page-title"} "Artifact store"]
+          [:h1 {:class "page-title"}
+           ,,"Artifact store"]
           [:h2 "Known Maven groups"]
           [:ul
            (for [group (->> (api/list-groups site-config)
@@ -234,8 +236,10 @@
         {:keys [doc name type arglists src]
          :as   meta} (api/read-meta site-config def-thing)
 
-        notes        (api/read-notes site-config def-thing) ;; Seq [version, notes]
-        related      (api/read-related site-config def-thing) ;; Seq [version, related]
+        notes        (-> site-config (api/read-notes def-thing)) ;; Seq [version, notes]
+
+        related      (-> site-config
+                         (api/read-related def-thing))  ;; Seq [version, related]
         ]
     (case resp-type
       (:html :text/html "text/html")
@@ -254,14 +258,18 @@
 
            (when doc
              (list [:h2 "Official Documentation"]
-                   [:pre doc]))
+                   [:pre (-> doc
+                             text/text->paragraphs
+                             text/render)]))
 
            (when notes
              (list
               [:h2 "Community Documentation"]
               ;; FIXME: Add edit URL!
               (for [[v text] notes]
-                [:p (wutil/markdown-string text)])))
+                [:p (-> text
+                        text/text->paragraphs
+                        text/render)])))
 
            ;; FIXME: examples needs a _lot_ of work
            (when-let [examples (api/read-examples site-config def-thing)]

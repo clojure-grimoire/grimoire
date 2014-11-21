@@ -109,7 +109,7 @@
 ;; FIXME: refactor to display preview from notes
 (defn api-page []
   (layout site-config
-          [:h1 {:class "page-title"} "Documentation store"]
+          [:h1 {:class "page-title"} "Artifact store"]
           [:h2 "Known Maven groups"]
           [:ul
            (for [group (->> (api/list-groups site-config)

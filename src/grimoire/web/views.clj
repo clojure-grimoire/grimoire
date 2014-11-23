@@ -198,13 +198,12 @@
    [:h1 {:class "page-title"}
     (header namespace-thing)]
 
-   (let [{:keys [doc name] :as meta} (api/read-meta site-config namespace-thing)
-         doc                         (-> doc
-                                         text/text->paragraphs
-                                         text/render)]
+   (let [{:keys [doc name] :as meta} (api/read-meta site-config namespace-thing)]
      (when doc
        (list [:h2 "Namespace Docs"]
-             [:p doc])))
+             [:p (-> doc
+                     text/text->paragraphs
+                     text/render)])))
 
    (when-let [notes (first
                      (for [[v notes] (api/read-notes site-config namespace-thing)

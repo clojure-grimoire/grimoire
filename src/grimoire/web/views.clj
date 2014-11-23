@@ -270,72 +270,72 @@
 
         related      (-> site-config
                          (api/read-related def-thing))]  ;; Seq [version, related]
-    (when doc
-      (layout
-       (assoc site-config
-         :page {:description (str "Clojure " version " " namespace "/" symbol
-                                  " documentation and examples")
-                :summary doc})
-       [:h1 {:class "page-title"}
-        (header def-thing)]
+    (layout
+     (assoc site-config
+       :page {:description (str "Clojure " version " " namespace "/" symbol
+                                " documentation and examples")
+              :summary doc})
+     [:h1 {:class "page-title"}
+      (header def-thing)]
 
-       (when arglists
-         (list [:h2 "Arities"]
-               [:pre (->> arglists
-                          (map pr-str)
-                          (map #(str "   " %))
-                          (interpose \newline))]))
+     (when arglists
+       (list [:h2 "Arities"]
+             [:pre (->> arglists
+                        (map pr-str)
+                        (map #(str "   " %))
+                        (interpose \newline))]))
 
-       (when doc
-         (list [:h2 "Official Documentation"]
-               [:pre (-> doc
-                         text/text->paragraphs
-                         text/render)]))
+     (when doc
+       (list [:h2 "Official Documentation"]
+             [:pre (-> doc
+                       text/text->paragraphs
+                       text/render)]))
 
-       (when notes
-         (list
-          [:h2 "Community Documentation"]
-          ;; FIXME: Add edit URL!
-          (for [[v text] notes]
-            [:p (-> text
-                    text/text->paragraphs
-                    text/render)])))
+     (let [notes (for [[v text] notes
+                       :when text]
+                   [:p (-> text
+                           text/text->paragraphs
+                           text/render)])]
+       (when-not (empty? notes)
+         (list [:h2 "Community Documentation"]
+               ;; FIXME: Add edit URL!
+               notes)))
 
-       ;; FIXME: examples needs a _lot_ of work
-       (when-let [examples (api/read-examples site-config def-thing)]
-         [:div.section
-          [:h2.heading "Examples " [:span.hide "-"]]
-          [:div.autofold
-           (for [[v e] examples]
-             [:div.example
-              [:div.source
-               (wutil/highlight-clojure e)]])
-           ;; FIXME: Add example link!
-           ]])
+     ;; FIXME: examples needs a _lot_ of work
+     (when-let [examples (api/read-examples site-config def-thing)]
+       [:div.section
+        [:h2.heading "Examples " [:span.hide "-"]]
+        [:div.autofold
+         (for [[v e] examples]
+           [:div.example
+            [:div.source
+             (wutil/highlight-clojure e)]])
+         ;; FIXME: Add example link!
+         ]])
 
 
-       (when-not (= :special type)
-         [:a {:href (str "http://crossclj.info/fun/" (:name namespace) "/" (wutil/url-encode name) ".html")}
-          [:h2 "Uses on crossclj"]])
+     (when-not (= :special type)
+       [:a {:href (str "http://crossclj.info/fun/" (:name namespace) "/" (wutil/url-encode name) ".html")}
+        [:h2 "Uses on crossclj"]])
 
-       (when related
-         (list [:h2 "Related Symbols"]
-               [:ul (for [r related]
-                      (let [[ns sym] (string/split r #"/")]
-                        [:li [:a {:href (str (:baseurl site-config)
-                                             "/" version "/" ns "/"
-                                             (util/munge sym) "/")}
-                              r]]))]))
+     (when related
+       (list [:h2 "Related Symbols"]
+             [:ul (for [r related]
+                    (let [[ns sym] (string/split r #"/")]
+                      [:li [:a {:href (str (:baseurl site-config)
+                                           "/" version "/" ns "/"
+                                           (util/munge sym) "/")}
+                            r]]))]))
 
-       (when src
-         (list
-          [:div.section
-           [:h2.heading "Source " [:span.unhide "+"]]
-           [:div.autofold.prefold
-            (wutil/highlight-clojure src)]]))
+     (when src
+       (list
+        [:div.section
+         [:h2.heading "Source " [:span.unhide "+"]]
+         [:div.autofold.prefold
+          (wutil/highlight-clojure src)]]))
 
-       [:script {:src "/public/jquery.js" :type "text/javascript"}]
-       [:script {:src "/public/fold.js" :type "text/javascript"}]))))
+     [:script {:src "/public/jquery.js" :type "text/javascript"}]
+     [:script {:src "/public/fold.js" :type "text/javascript"}])))
 
 
 (defmethod symbol-page :text/plain [_ def-thing]

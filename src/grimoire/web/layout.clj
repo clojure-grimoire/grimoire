@@ -1,5 +1,6 @@
 (ns grimoire.web.layout
-  (:require [hiccup.page :as page]))
+  (:require [hiccup.page :as page]
+            [clojure.java.io :as io]))
 
 (defn header [{:keys [baseurl] :as c}]
   [:head
@@ -66,22 +67,8 @@
 
 (defn foot [{:keys [google-analytics-id]}]
   [:footer
-   [:script {:type "text/javascript"}
-    "(function(document) {
-        var toggle = document.querySelector('.sidebar-toggle');
-        var sidebar = document.querySelector('#sidebar');
-        var checkbox = document.querySelector('#sidebar-checkbox');
-
-        document.addEventListener('click', function(e) {
-          var target = e.target;
-
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
-
-          checkbox.checked = false;
-        }, false);
-      })(document);"]
+   [:script {:type "text/javascript"
+             :src "/public/sidebar.js"}]
    [:script {:type "text/javascript"}
     "var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '" google-analytics-id "']);

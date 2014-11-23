@@ -34,7 +34,7 @@
              (context ["/store"] []
                (GET "/" {uri :uri}
                  (info (pr-str {:uri uri :type :text}))
-                 (v/store-page))
+                 (v/store-page type))
         
                (context ["/:groupid"] [groupid]
                  (let-routes [t (thing/->Group groupid)]

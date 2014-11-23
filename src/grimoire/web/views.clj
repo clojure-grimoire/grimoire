@@ -88,7 +88,7 @@
           [:a (link-to' symbol)
            ,,,(:name symbol)])))
 
-(defmulti store-page identity)
+(defmulti store-page first)
 
 ;; FIXME: text/zalgo
 ;; FIXME: text/plain

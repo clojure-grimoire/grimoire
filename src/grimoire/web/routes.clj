@@ -12,94 +12,106 @@
 ;; rather than parsing back and forth using the string path
 ;; representation? Probably should..
 
-(defroutes store
-  (context ["/store"] []
-    (GET "/" {uri :uri}
-      (info (pr-str {:uri uri :type :text}))
-      (v/api-page))
+(def normalize-type
+  {:html        :text/html
+   :text/html   :text/html
+   "html"       :text/html
+   "text/html"  :text/html
 
-    (context ["/:groupid"] [groupid]
-      (let-routes [t (thing/->Group groupid)]
-          (GET "/" {uri :uri}
-            (info (pr-str {:uri uri :type :text}))
-            (v/groupid-page t))
+   :text        :text/plain
+   :text/plain  :text/plain
+   "text"       :text/plain
+   "text/plain" :text/plain
+   })
 
-        (context ["/:artifactid"] [artifactid]
-          (let-routes [t (thing/->T :artifact t artifactid)]
-              (GET "/" {uri :uri}
-                (info (pr-str {:uri uri :type :text}))
-                (v/artifactid-page t))
+(def store
+  (fn [{header-type :content-type
+       {param-type :type} :params
+       :as req
+       uri :uri}]
+    (->> (let-routes [type    (normalize-type (or header-type param-type :html))
+                      log-msg (pr-str {:uri uri :type type})]
+             (context ["/store"] []
+               (GET "/" {uri :uri}
+                 (info (pr-str {:uri uri :type :text}))
+                 (v/store-page))
+        
+               (context ["/:groupid"] [groupid]
+                 (let-routes [t (thing/->Group groupid)]
+                     (GET "/" []
+                       (info log-msg)
+                       (v/group-page type t))
 
-            (context ["/:version", :version #"[0-9]+.[0-9]+.[0-9]+"] [version]
-              (let-routes [t (thing/->T :version t version)]
-                  (GET "/" {uri :uri}
-                    (info (pr-str {:uri uri :type :text}))
-                    (v/version-page t))
+                   (context ["/:artifactid"] [artifactid]
+                     (let-routes [t (thing/->T :artifact t artifactid)]
+                         (GET "/" []
+                           (info log-msg)
+                           (v/artifact-page type t))
 
-                (context "/:namespace" [namespace]
-                  (let-routes [t (thing/->T :namespace t namespace)]
-                      (GET "/" {uri :uri}
-                        (info (pr-str {:uri uri :type :text}))
-                        (v/namespace-page-memo t))
+                       (context ["/:version", :version #"[0-9]+.[0-9]+.[0-9]+"] [version]
+                         (let-routes [t (thing/->T :version t version)]
+                             (GET "/" []
+                               (info log-msg)
+                               (v/version-page type t))
 
-                    (context "/:symbol" [symbol]
-                      (let-routes [t (thing/->T :def t symbol)]
-                          (GET "/" {header-type :content-type
-                                    {param-type :type} :params
-                                    :as req
-                                    uri :uri}
-                            (let [type    (or header-type param-type :html)
-                                  symbol' (util/update-munge symbol)]
-                              (cond
-                               ;; FIXME this is a bit of a hack to
-                               ;; handle catch/finally. Should be
-                               ;; generalized to other symbols but how
-                               ;; to represent it?
-                               (#{"catch" "finally"} symbol)
-                               ,,(response/redirect
-                                  (format "/%s/%s/%s/%s/%s/"
-                                          groupid artifactid version
-                                          namespace "try"))
+                           (context "/:namespace" [namespace]
+                             (let-routes [t (thing/->T :namespace t namespace)]
+                                 (GET "/" []
+                                   (info log-msg)
+                                   (v/namespace-page-memo type t))
 
-                               ;; handle the case of redirecting due to munging
-                               (not (= symbol symbol'))
-                               ,,(response/redirect
-                                  (format "/store/%s/%s/%s/%s/%s/"
-                                          groupid artifactid version
-                                          namespace symbol'))
+                               (context "/:symbol" [symbol]
+                                 (let-routes [t (thing/->T :def t symbol)]
+                                     (GET "/" []
+                                       (let [symbol' (util/update-munge symbol)]
+                                         (cond
+                                          ;; FIXME this is a bit of a hack to
+                                          ;; handle catch/finally. Should be
+                                          ;; generalized to other symbols but how
+                                          ;; to represent it?
+                                          (#{"catch" "finally"} symbol)
+                                          ,,(response/redirect
+                                             (format "/%s/%s/%s/%s/%s/"
+                                                     groupid artifactid version
+                                                     namespace "try"))
 
-                               :else
-                               ,,(let [res (v/symbol-page type t)]
-                                   (info (pr-str {:uri uri :type type}))
-                                   res))))
+                                          ;; handle the case of redirecting due to munging
+                                          (not (= symbol symbol'))
+                                          ,,(response/redirect
+                                             (format "/store/%s/%s/%s/%s/%s/"
+                                                     groupid artifactid version
+                                                     namespace symbol'))
 
-                        (route/not-found
-                         (fn [{uri :uri
-                              header-type :content-type
-                              {param-type :type} :params}]
-                           (let [type (or header-type param-type :text/html)]
-                             (warn (pr-str {:uri uri}))
-                             (v.e/error-unknown-symbol type t))))))
+                                          :else
+                                          ,,(let [res (v/symbol-page type t)]
+                                              (info log-msg)
+                                              res))))
 
-                    (route/not-found
-                     (fn [{uri :uri}]
-                       (warn (pr-str {:uri uri}))
-                       (v.e/error-unknown-namespace t)))))
+                                   (route/not-found
+                                    (fn [req]
+                                      (warn log-msg)
+                                      (v.e/error-unknown-symbol type t))))))
 
-                (route/not-found
-                 (fn [{uri :uri}]
-                   (warn (pr-str {:uri uri}))
-                   (v.e/error-unknown-version t)))))
+                             (route/not-found
+                              (fn [req]
+                                (warn log-msg)
+                                (v.e/error-unknown-namespace t)))))
 
-            (route/not-found
-             (fn [{uri :uri}]
-               (warn (pr-str {:uri uri}))
-               (v.e/error-unknown-artifact t)))))
+                         (route/not-found
+                          (fn [req]
+                            (warn log-msg)
+                            (v.e/error-unknown-version t)))))
 
-        (route/not-found
-         (fn [{uri :uri}]
-           (warn (pr-str {:uri uri}))
-           (v.e/error-unknown-group t)))))))
+                     (route/not-found
+                      (fn [req]
+                        (warn log-msg)
+                        (v.e/error-unknown-artifact t))))
+
+                   (route/not-found
+                    (fn [req]
+                      (warn log-msg)
+                      (v.e/error-unknown-group t)))))))
+         (routing req))))
 
 ;; FIXME: Implement rather than stub
 

@@ -6,6 +6,7 @@
 	    [ring.util.response :as response]))
 
 ;; 404 Error page
+;; FIXME: these are all fucked
 
 (defn error-404 []
   (layout

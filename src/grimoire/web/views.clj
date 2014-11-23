@@ -288,7 +288,9 @@
 
        (when doc
          (list [:h2 "Official Documentation"]
-               [:pre doc]))
+               [:pre (-> doc
+                         text/text->paragraphs
+                         text/render)]))
 
        (when notes
          (list

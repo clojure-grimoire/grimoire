@@ -91,6 +91,7 @@
            ,,,(:name symbol)])))
 
 (defmulti store-page identity)
+;;--------------------------------------------------------------------
 
 (defmethod store-page :text/html [_]
   (layout site-config
@@ -110,6 +111,7 @@
     x))
 
 (defmulti group-page dispatch-fn)
+;;--------------------------------------------------------------------
 
 ;; FIXME: text/zalgo
 ;; FIXME: application/edn
@@ -129,6 +131,7 @@
 
 
 (defmulti artifact-page dispatch-fn)
+;;--------------------------------------------------------------------
 
 ;; FIXME: text/zalgo
 ;; FIXME: text/plain
@@ -152,6 +155,7 @@
 
 
 (defmulti version-page dispatch-fn)
+;;--------------------------------------------------------------------
 
 ;; FIXME: text/zalgo
 ;; FIXME: text/plain
@@ -183,6 +187,7 @@
                   [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]))))
 
 (defmulti namespace-page dispatch-fn)
+;;--------------------------------------------------------------------
 
 ;; FIXME: text/zalgo
 ;; FIXME: text/plain
@@ -245,6 +250,7 @@
 
 
 (defmulti symbol-page dispatch-fn)
+;;--------------------------------------------------------------------
 
 ;; FIXME: text/zalgo
 ;; FIXME: application/edn

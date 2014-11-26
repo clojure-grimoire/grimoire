@@ -4,6 +4,7 @@
             [grimoire.github :as gh]
             [grimoire.util :as util]
             [grimoire.api :as api]
+            [grimoire.api.fs] ;; needed to load it
             [grimoire.things :as t]
             [grimoire.web.layout :refer [layout]]
             [grimoire.web.util :as wutil :refer [clojure-versions]] ; FIXME: remove
@@ -16,7 +17,8 @@
    :repo                "https://github.com/clojure-grimoire/grimoire"
    :baseurl             "/"
    :datastore           {:docs  "doc-store"
-                         :notes "notes-store"}
+                         :notes "notes-store"
+                         :mode  :filesystem}
    :version             (slurp "VERSION")
    :clojure-version     "1.6.0"
    :google-analytics-id "UA-44001831-2"

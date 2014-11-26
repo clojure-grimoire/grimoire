@@ -264,10 +264,6 @@
         {:keys [doc name type arglists src]
          :as   meta} (api/read-meta site-config def-thing)
 
-        doc          (-> doc
-                         text/text->paragraphs
-                         text/render)
-
         notes        (-> site-config (api/read-notes def-thing)) ;; Seq [version, notes]
 
         related      (-> site-config

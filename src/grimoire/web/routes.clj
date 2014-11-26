@@ -1,5 +1,5 @@
 (ns grimoire.web.routes
-  (:require [compojure.core :refer [defroutes context GET let-routes]]
+  (:require [compojure.core :refer [defroutes context GET let-routes routing]]
             [compojure.route :as route]
             [grimoire.util :as util]
             [grimoire.things :as thing]

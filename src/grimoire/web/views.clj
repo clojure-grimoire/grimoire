@@ -90,12 +90,7 @@
           [:a (link-to' symbol)
            ,,,(:name symbol)])))
 
-(defmulti store-page first)
-
-;; FIXME: text/zalgo
-;; FIXME: text/plain
-;; FIXME: application/json
-;; FIXME: application/edn
+(defmulti store-page identity)
 
 (defmethod store-page :text/html [_]
   (layout site-config

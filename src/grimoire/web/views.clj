@@ -266,8 +266,8 @@
 
         notes        (-> site-config (api/read-notes def-thing)) ;; Seq [version, notes]
 
-        related      (-> site-config
-                         (api/read-related def-thing))]  ;; Seq [version, related]
+        related      (api/read-related site-config def-thing)    ;; Seq [ Thing [:def] ]
+        examples     (api/read-examples site-config def-thing)]  ;; Seq [version, related]
     (layout
      (assoc site-config
        :page {:description (str "Clojure " version " " namespace "/" symbol
@@ -300,7 +300,7 @@
                notes)))
 
      ;; FIXME: examples needs a _lot_ of work
-     (when-let [examples (api/read-examples site-config def-thing)]
+     (when-not (empty? examples)
        [:div.section
         [:h2.heading "Examples " [:span.hide "-"]]
         [:div.autofold
@@ -316,14 +316,12 @@
        [:a {:href (str "http://crossclj.info/fun/" (:name namespace) "/" (wutil/url-encode name) ".html")}
         [:h2 "Uses on crossclj"]])
 
-     (when related
+     (when-not (empty? related)
        (list [:h2 "Related Symbols"]
-             [:ul (for [r related]
-                    (let [[ns sym] (string/split r #"/")]
-                      [:li [:a {:href (str (:baseurl site-config)
-                                           "/" version "/" ns "/"
-                                           (util/munge sym) "/")}
-                            r]]))]))
+             [:ul (for [r    related
+                        :let [sym r
+                              ns (:parent sym)]]
+                    [:a (link-to sym) (:name r)])]))
 
      (when src
        (list

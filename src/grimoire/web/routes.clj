@@ -123,12 +123,12 @@
 
     (context ["/:group"] [group]
       (GET "/" {{op :op} :params}
-        ;; op ∈ #{"artifacts" "notes"}
+        ;; op ∈ #{"artifacts" "notes" "meta"}
         )
 
       (context ["/:artifact"] [artifact]
         (GET "/" {{op :op} :params}
-          ;; op ∈ #{"versions" "notes" "url"}
+          ;; op ∈ #{"versions" "notes" "meta"}
           )
 
         (context ["/:version"] [version]
@@ -138,24 +138,21 @@
 
           (context ["/:namespace"] [namespace]
             (GET "/" {{op :op} :params}
-              ;; op ∈ #{"notes"
-              ;;        "docs"
-              ;;        "symbols"
+              ;; op ∈ #{"meta"
+              ;;        "notes"
+              ;;        "all"
+              ;;        "macros"
               ;;        "vars"
               ;;        "fns"
-              ;;        "types"
-              ;;        "added"}
+              ;;        "specials"
+              ;;        "sentinels"}
               )
 
             (context ["/:symbol"] [symbol]
               (GET "/" {{op :op} :params}
-                ;; op ∈ #{"notes"
-                ;;        "type"
-                ;;        "added"
+                ;; op ∈ #{"meta"
                 ;;        "doc"
-                ;;        "file"
-                ;;        "line"
-                ;;        "column"}
+                ;;        "examples"}
                 ))))))))
 
 (defroutes app

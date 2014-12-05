@@ -48,13 +48,10 @@
      [:a.sidebar-nav-item {:href "/store/org.clojure/clojure/1.5.0/"} "Clojure 1.5"]
      [:a.sidebar-nav-item {:href "/store/org.clojure/clojure/1.4.0/"} "Clojure 1.4"]
 
-     [:br] "Articles" [:br]
-     [:a.sidebar-nav-item {:href "/articles"} "Article store"]
-     [:a.sidebar-nav-item {:href "/articles/api"} "API"]
-     [:a.sidebar-nav-item {:href "/articles/contributing"} "Contributing"]
-     [:a.sidebar-nav-item {:href "/articles/about"} "About"]
-
      [:br] "More" [:br]
+     [:a.sidebar-nav-item {:href "/api"} "API"]
+     [:a.sidebar-nav-item {:href "/contributing"} "Contributing"]
+     [:a.sidebar-nav-item {:href "/about"} "About"]
      (let [{:keys [gittip me]} author]
        (list
         [:a.sidebar-nav-item {:href repo} "Github Repo"]

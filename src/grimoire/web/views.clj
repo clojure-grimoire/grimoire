@@ -54,15 +54,6 @@
 
 (def link-to' (partial link-to "/store/"))
 
-(defn articles-list []
-  (layout site-config
-          [:h1 {:class "page-title"} "Articles"]
-          [:ul
-           (for [p     (->> (wutil/paths "articles") sort)
-                 :let  [[_articles a] p
-                        a             (string/replace a ".md" "")]]
-             [:li [:a (link-to "articles" a) a]])]))
-
 (defmulti header :type)
 
 (defmethod header :group [group]

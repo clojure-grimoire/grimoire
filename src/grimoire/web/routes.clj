@@ -158,22 +158,6 @@
                 ;;        "column"}
                 ))))))))
 
-(defroutes articles
-  (context ["/articles"] []
-    (GET "/:id" {{id :id} :params uri :uri}
-      (when-let [res (v/markdown-page (str "articles/" id))]
-        (info (pr-str {:uri uri :type :html}))
-        res))
-
-    (GET "/" {uri :uri}
-      (info (pr-str {:uri uri :type :html}))
-      (v/articles-list))
-
-    (route/not-found
-     (fn [{uri :uri}]
-       (warn (pr-str {:uri uri}))
-       (v.e/error-404)))))
-
 (defroutes app
   (GET "/" {uri :uri}
     (info (pr-str {:uri uri :type :html}))
@@ -190,9 +174,15 @@
   ;; The main browsing interface
   store
 
-  ;; The article store
-  articles
+  (GET "/api" []
+    (v/markdown-page "articles/API"))
 
+  (GET "/contributing" []
+    (v/markdown-page "articles/contributing"))
+
+  (GET "/about" []
+    (v/markdown-page "articles/about"))
+  
   ;; The v0 API
   api-v0
 

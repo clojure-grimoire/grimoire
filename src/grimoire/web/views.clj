@@ -5,6 +5,7 @@
             [grimoire.util :as util]
             [grimoire.api :as api]
             [grimoire.api.fs] ;; needed to load it
+            [grimoire.api.fs.read]
             [grimoire.things :as t]
             [grimoire.web.layout :refer [layout]]
             [grimoire.web.util :as wutil :refer [clojure-versions]] ; FIXME: remove

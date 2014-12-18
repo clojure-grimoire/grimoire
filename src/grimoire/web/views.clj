@@ -270,11 +270,13 @@
       (header def-thing)]
 
      (when arglists
-       (list [:h2 "Arities"]
+       (list [:h2 (if (= type :special)
+                    "Usage"
+                    "Arities")]
              [:pre (->> arglists
-                        (map pr-str)
-                        (map #(str "   " %))
-                        (interpose \newline))]))
+                     (map pr-str)
+                     (map #(str "   " %))
+                     (interpose \newline))]))
 
      (when doc
        (list [:h2 "Official Documentation"]

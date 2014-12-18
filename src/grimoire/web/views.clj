@@ -134,16 +134,16 @@
   (layout site-config
           [:h1 {:class "page-title"} (header artifact-thing)]
           [:h2 "Known release versions"]
-          [:ul
-           (for [version (->> (api/list-versions site-config artifact-thing)
-                              (sort-by :name)
-                              reverse)
-                 :let  [artifact (:parent version)
-                        group    (:parent artifact)]]
-             [:li [:a (link-to' version) (format "[%s/%s \"%s\"]"
-                                                 (:name group)
-                                                 (:name artifact)
-                                                 (:name version))]])]))
+          [:ul (for [version (->> (api/list-versions site-config artifact-thing)
+                               (sort-by :name)
+                               reverse)
+                     :let  [artifact (:parent version)
+                            group    (:parent artifact)]]
+                 [:li [:a (link-to' version)
+                       (format "[%s/%s \"%s\"]"
+                               (:name group)
+                               (:name artifact)
+                               (:name version))]])]))
 
 
 (defmulti version-page dispatch-fn)

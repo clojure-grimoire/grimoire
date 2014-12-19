@@ -9,6 +9,7 @@
 (defn start-web-server! [& [port?]]
   (println "starting!")
   (let [cfg {:port (or port? 3000)
+             :host "127.0.0.1"
              :join? false}]
     (reset! service
             (-> app

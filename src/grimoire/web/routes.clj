@@ -9,10 +9,6 @@
             [ring.util.response :as response]
             [taoensso.timbre :as timbre :refer [info warn]]))
 
-;; FIXME: Do I want to try and build "things" here in the routing
-;; rather than parsing back and forth using the string path
-;; representation? Probably should..
-
 (def normalize-type
   {:html        :text/html
    :text/html   :text/html

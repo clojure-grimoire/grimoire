@@ -1,7 +1,10 @@
 (ns grimoire.web.views
   (:require [grimoire.util :as util]
             [grimoire.web.layout :refer [layout]]
-            [grimoire.web.util :as wutil] ; FIXME: remove
+            [grimoire.web.util :as wutil]
+            [grimoire.api :as api]
+            [grimoire.api.fs]
+            [grimoire.api.fs.read]
             [ring.util.response :as response]))
 
 (def site-config

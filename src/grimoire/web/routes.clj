@@ -102,7 +102,7 @@
                                                 artifactid
                                                 (v/ns-version-index namespace)
                                                 namespace
-                                                symbol'))
+                                                symbol))
 
                                      ;; handle the case of redirecting due to munging
                                      (not (= symbol symbol'))

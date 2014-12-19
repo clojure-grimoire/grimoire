@@ -84,9 +84,7 @@
    (let [{:keys [doc name] :as meta} (api/read-meta site-config namespace-thing)]
      (when doc
        (list [:h2 "Namespace Docs"]
-             [:p (-> doc
-                   text/text->paragraphs
-                   text/render)])))
+             [:p doc])))
 
    (when-let [notes (first
                      (for [[v notes] (api/read-notes site-config namespace-thing)
@@ -154,9 +152,7 @@
 
      (let [notes (for [[v text] notes
                        :when text]
-                   [:p (-> text
-                         text/text->paragraphs
-                         text/render)])]
+                   [:pre text])]
        (when-not (empty? notes)
          (list [:h2 "Community Documentation"]
                ;; FIXME: Add edit URL!

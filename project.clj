@@ -2,6 +2,7 @@
   :description "THIS SHOULD NEVER BE DEPLOYED"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :source-paths ["src/main"]
   :dependencies [[org.thnetos/cd-client "0.3.6"]]
   :aliases {"serve" ["with-profile" "server" "run"]}
   :profiles {:repl   {:plugins [[cider/cider-nrepl "0.8.0-SNAPSHOT"]]}
@@ -18,6 +19,6 @@
                                      [me.raynes/conch "0.8.0"]
                                      [me.arrdem/detritus "0.2.0"]]
                       :main         grimoire.web.service}
-             :dev    {:source-paths ["dev"]
+             :dev    {:source-paths ["src/dev"]
                       :main         user}
              :user   [:repl :server :dev :arrdem]})

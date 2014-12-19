@@ -158,8 +158,8 @@
   (-> (for [t     (api/list-defs site-config ns-thing)
            :let  [meta (api/read-meta site-config t)]
            :when (filter (get t :type :fn))]
-       {:name (:name t)
-        :html (str "/store/" (:uri t))
+       {:name     (:name t)
+        :html     (str "/store/" (:uri t))
         :children (->> (for [op (keys def-ops)]
                        [op (str "/api/v0/" (:uri t) "?op=" op)])
                     (into {}))})

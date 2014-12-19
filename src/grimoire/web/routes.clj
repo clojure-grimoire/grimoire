@@ -55,7 +55,7 @@
                      (info log-msg)
                      (v/artifact-page type t))
 
-                   (context ["/:version", :version #"[0-9]+.[0-9]+.[0-9]+"] [version]
+                   (context ["/:version"] [version]
                      (let-routes [t (thing/->T :version t version)]
                        (GET "/" []
                          (info log-msg)
@@ -72,6 +72,15 @@
                                (GET "/" []
                                  (let [symbol' (util/update-munge symbol)]
                                    (cond
+                                     (= version "latest")
+                                     ,,(response/redirect
+                                        (format "/store/%s/%s/%s/%s/%s/"
+                                                groupid
+                                                artifactid
+                                                (v/ns-version-index namespace)
+                                                namespace
+                                                symbol'))
+
                                      ;; handle the case of redirecting due to munging
                                      (not (= symbol symbol'))
                                      ,,(response/redirect

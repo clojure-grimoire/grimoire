@@ -23,6 +23,7 @@
    :headers {"Content-Type" "application/json"}
    :body    (generate-string data)})
 
+;; FIXME: This isn't gonna handle unknown request types worth shit
 (def -tm
   {:application/json json-resp
    :application/edn  edn-resp})

@@ -124,7 +124,9 @@
 (def ns-version-index
   (->> (for [groupid   (api/list-groups     site-config)
            artifact  (api/list-artifacts  site-config groupid)
-           version   (api/list-versions   site-config artifact)
+           version   (->> artifact
+                       (api/list-versions site-config)
+                       (take 1))
            namespace (api/list-namespaces site-config version)]
        [(:name namespace)
         (:name version)])

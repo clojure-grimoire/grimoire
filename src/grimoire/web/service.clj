@@ -2,18 +2,21 @@
   (:require [compojure.handler :as handler]
             [ring.middleware.session :as session]
             [grimoire.web.routes :refer [app]]
-            [ring.adapter.jetty :as jetty]))
+            [ring.adapter.jetty :as jetty]
+            [ring.middleware.json :as json]))
 
 (defonce service (atom nil))
 
 (defn start-web-server! [& [port?]]
   (println "starting!")
-  (reset! service
-          (jetty/run-jetty (-> app
-                               handler/site
-                               session/wrap-session)
-                           {:port (or port? 3000)
-                            :join? false})))
+  (let [cfg {:port (or port? 3000)
+             :join? false}]
+    (reset! service
+            (-> app
+              handler/site
+              session/wrap-session
+              json/wrap-json-response
+              (jetty/run-jetty cfg)))))
 
 (defn stop-web-server! []
   (when-let [service* @service]

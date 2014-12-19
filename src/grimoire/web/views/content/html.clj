@@ -10,8 +10,7 @@
             [grimoire.web.layout :refer [layout]]
             [grimoire.web.views.errors
              :refer [error-unknown-symbol]]
-            [grimoire.web.util :as wutil]
-            [detritus.text :as text]))
+            [grimoire.web.util :as wutil]))
 
 (defmethod store-page :text/html [_]
   (layout site-config

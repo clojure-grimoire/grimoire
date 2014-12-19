@@ -110,7 +110,6 @@
                   (v.e/error-unknown-group t)))))))
       (routing req))))
 
-;; FIXME: Implement rather than stub
 (defmacro api-log []
   `(info (-> ~'t
            (select-keys [:uri])

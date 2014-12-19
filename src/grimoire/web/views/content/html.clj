@@ -8,6 +8,8 @@
             [grimoire.api.fs.read] ;; need to load it
             [grimoire.things :as t]
             [grimoire.web.layout :refer [layout]]
+            [grimoire.web.views.errors
+             :refer [error-unknown-symbol]]
             [grimoire.web.util :as wutil]
             [detritus.text :as text]))
 
@@ -16,21 +18,24 @@
           [:h1 {:class "page-title"}
            ,,"Artifact store"]
           [:h2 "Known Maven groups"]
-          [:ul
-           (for [group (->> (api/list-groups site-config)
-                         (sort-by :name))]
-             [:li [:a (link-to' group) (:name group)]])]))
+          [:ul (for [group (->> (api/list-groups site-config)
+                             (sort-by :name))]
+                 [:li
+                  [:a (link-to' group)
+                   (:name group)]])]))
 
 (defmethod group-page :text/html [_ group-thing]
   (layout site-config
           [:h1 {:class "page-title"} (header group-thing)]
           [:h2 "Known artifacts"]
-          [:ul
-           (for [artifact (->> (api/list-artifacts site-config group-thing)
-                            (sort-by :name))
-                 :let  [group (:parent artifact)]]
-             [:li [:a (link-to' artifact)
-                   (format "%s/%s" (:name group) (:name artifact))]])]))
+          [:ul (for [artifact (->> (api/list-artifacts site-config group-thing)
+                                (sort-by :name))
+                     :let  [group (:parent artifact)]]
+                 [:li
+                  [:a (link-to' artifact)
+                   (format "%s/%s"
+                           (:name group)
+                           (:name artifact))]])]))
 
 (defmethod artifact-page :text/html [_ artifact-thing]
   (layout site-config
@@ -41,11 +46,12 @@
                                reverse)
                      :let  [artifact (:parent version)
                             group    (:parent artifact)]]
-                 [:li [:a (link-to' version)
-                       (format "[%s/%s \"%s\"]"
-                               (:name group)
-                               (:name artifact)
-                               (:name version))]])]))
+                 [:li
+                  [:a (link-to' version)
+                   (format "[%s/%s \"%s\"]"
+                           (:name group)
+                           (:name artifact)
+                           (:name version))]])]))
 
 (defmethod version-page :text/html [_ version-thing]
   (let [[[v notes]] (api/read-notes site-config version-thing)]
@@ -167,10 +173,7 @@
          (for [[v e] examples]
            [:div.example
             [:div.source
-             (wutil/highlight-clojure e)]])
-         ;; FIXME: Add example link!
-         ]])
-
+             (wutil/highlight-clojure e)]])]])
 
      (when-not (= :special type)
        [:a {:href (str "http://crossclj.info/fun/"
@@ -207,5 +210,4 @@
                            "/" target)))
 
         ;; fail to find a redirect, error out
-        ;; FIXME
-        ))))
+        (error-unknown-symbol def-thing)))))

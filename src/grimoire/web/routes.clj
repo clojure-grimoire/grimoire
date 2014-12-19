@@ -36,8 +36,12 @@
        {param-type :type} :params
        :as req
        uri :uri}]
-    (->> (let-routes [type    (normalize-type (or header-type param-type :json))
-                    log-msg (pr-str {:uri uri :type type})]
+    (->> (let-routes [type    (-> (or header-type
+                                  param-type
+                                  :html)
+                              normalize-type)
+                    log-msg (pr-str {:uri uri
+                                     :type type})]
          (context ["/store"] []
            (GET "/" {uri :uri}
              (info (pr-str {:uri uri :type :text}))
@@ -58,14 +62,33 @@
                    (context ["/:version"] [version]
                      (let-routes [t (thing/->T :version t version)]
                        (GET "/" []
-                         (info log-msg)
-                         (v/version-page type t))
+                         (cond
+                           (= version "latest")
+                           ,,(response/redirect
+                              (format "/store/%s/%s/%s/"
+                                      groupid
+                                      artifactid
+                                      (v/ns-version-index namespace)))
+
+                           :else
+                           ,,(do (info log-msg)
+                                 (v/version-page type t))))
 
                        (context "/:namespace" [namespace]
                          (let-routes [t (thing/->T :namespace t namespace)]
                            (GET "/" []
-                             (info log-msg)
-                             (v/namespace-page-memo type t))
+                             (cond
+                               (= version "latest")
+                               ,,(response/redirect
+                                  (format "/store/%s/%s/%s/%s/"
+                                          groupid
+                                          artifactid
+                                          (v/ns-version-index namespace)
+                                          namespace))
+
+                               :else
+                               ,,(do (info log-msg)
+                                     (v/namespace-page-memo type t))))
 
                            (context "/:symbol" [symbol]
                              (let-routes [t (thing/->T :def t symbol)]

@@ -10,15 +10,25 @@
             [taoensso.timbre :as timbre :refer [info warn]]))
 
 (def normalize-type
-  {:html        :text/html
-   :text/html   :text/html
-   "html"       :text/html
-   "text/html"  :text/html
+  {:html              :text/html
+   :text/html         :text/html
+   "html"             :text/html
+   "text/html"        :text/html
 
-   :text        :text/plain
-   :text/plain  :text/plain
-   "text"       :text/plain
-   "text/plain" :text/plain
+   :text              :text/plain
+   :text/plain        :text/plain
+   "text"             :text/plain
+   "text/plain"       :text/plain
+
+   "json"             :application/json
+   :json              :application/json
+   "application/json" :application/json
+   :application/json  :application/json
+
+   "edn"              :application/edn
+   :edn               :application/edn
+   "application/edn"  :application/edn
+   :application/edn   :application/edn
    })
 
 (def store

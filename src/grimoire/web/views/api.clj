@@ -49,7 +49,7 @@
   {"groups" list-groups})
 
 (defn list-groups
-  "Returns a success result representing the "
+  "Returns a success result representing the known groups."
   [type _]
   (-> (for [g (api/list-groups site-config)]
        {:name     (:name g)

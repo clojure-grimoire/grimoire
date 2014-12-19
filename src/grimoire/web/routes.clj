@@ -36,7 +36,7 @@
        {param-type :type} :params
        :as req
        uri :uri}]
-    (->> (let-routes [type    (normalize-type (or header-type param-type :html))
+    (->> (let-routes [type    (normalize-type (or header-type param-type :json))
                     log-msg (pr-str {:uri uri :type type})]
          (context ["/store"] []
            (GET "/" {uri :uri}
@@ -115,46 +115,66 @@
            (select-keys [:uri])
            (assoc :op ~'op))))
 
-(defroutes api-v0
-  (context ["/api/v0"] []
-    (GET "/" {{op :op} :params}
-      ((get v.api/root-ops op
-            v.api/unknown-op) nil))
-    
-    (context ["/:group"] [group]
-      (let-routes [t (thing/->Group group)]
-        (GET "/" {{op :op} :params}
-          (api-log)
-          ((get v.api/group-ops op
-                v.api/unknown-op) t))
+(def api-v0
+  (fn [{header-type :content-type
+       {param-type :type
+        op         :op} :params
+       :as req
+       uri :uri}]
+    (->> (let-routes [type    (normalize-type
+                             (or header-type
+                                param-type
+                                :html))
+                    log-msg (pr-str {:uri uri
+                                     :type type
+                                     :op   op})]
+         (context ["/api/v0"] []
+           (GET "/" []
+             (info log-msg)
+             ((get v.api/root-ops op
+                   v.api/unknown-op)
+              type nil))
 
-        (context ["/:artifact"] [artifact]
-          (let-routes [t (thing/->Artifact t artifact)]
-            (GET "/" {{op :op} :params}
-              (api-log)
-              ((get v.api/artifact-ops op
-                    v.api/unknown-op) t))
+           (context ["/:group"] [group]
+             (let-routes [t (thing/->Group group)]
+               (GET "/" []
+                 (info log-msg)
+                 ((get v.api/group-ops op
+                       v.api/unknown-op)
+                  type t))
 
-            (context ["/:version"] [version]
-              (let-routes [t (thing/->Version t version)]
-                (GET "/" {{op :op} :params}
-                  (api-log)
-                  ((get v.api/version-ops op
-                        v.api/unknown-op) t))
+               (context ["/:artifact"] [artifact]
+                 (let-routes [t (thing/->Artifact t artifact)]
+                   (GET "/" []
+                     (info log-msg)
+                     ((get v.api/artifact-ops op
+                           v.api/unknown-op)
+                      type t))
 
-                (context ["/:namespace"] [namespace]
-                  (let-routes [t (thing/->Ns t namespace)]
-                    (GET "/" {{op :op} :params}
-                      (api-log)
-                      ((get v.api/namespace-ops op
-                            v.api/unknown-op) t))
-                    
-                    (context ["/:symbol"] [symbol]
-                      (let-routes [t (thing/->Def t symbol)]
-                        (GET "/" {{op :op} :params}
-                          (api-log)
-                          ((get v.api/def-ops op
-                                v.api/unknown-op) t))))))))))))))
+                   (context ["/:version"] [version]
+                     (let-routes [t (thing/->Version t version)]
+                       (GET "/" []
+                         (info log-msg)
+                         ((get v.api/version-ops op
+                               v.api/unknown-op)
+                          type t))
+
+                       (context ["/:namespace"] [namespace]
+                         (let-routes [t (thing/->Ns t namespace)]
+                           (GET "/" []
+                             (info log-msg)
+                             ((get v.api/namespace-ops op
+                                   v.api/unknown-op)
+                              type t))
+
+                           (context ["/:symbol"] [symbol]
+                             (let-routes [t (thing/->Def t symbol)]
+                               (GET "/" []
+                                 (info log-msg)
+                                 ((get v.api/def-ops op
+                                       v.api/unknown-op)
+                                  type t))))))))))))))
+      (routing req))))
 
 (defroutes app
   (GET "/" {uri :uri}

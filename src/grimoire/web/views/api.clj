@@ -52,8 +52,8 @@
   "Returns a success result representing the "
   [type _]
   (-> (for [g (api/list-groups site-config)]
-       {:name (:name g)
-        :html (str "/store/" (:uri g))
+       {:name     (:name g)
+        :html     (str "/store/" (:uri g))
         :children (->> (for [op (keys group-ops)]
                        [op (str "/api/v0/" (:uri g) "?op=" op)])
                     (into {}))})
@@ -90,8 +90,8 @@
   "Returns the artifacts for the target group."
   [type group-thing]
   (-> (for [t (api/list-artifacts site-config group-thing)]
-       {:name (:name t)
-        :html (str "/store/" (:uri t))
+       {:name     (:name t)
+        :html     (str "/store/" (:uri t))
         :children (->> (for [op (keys artifact-ops)]
                        [op (str "/api/v0/" (:uri t) "?op=" op)])
                     (into {}))})
@@ -110,8 +110,8 @@
   "Returns the versions for the target artifact."
   [type artifact-thing]
   (-> (for [t (api/list-versions site-config artifact-thing)]
-       {:name (:name t)
-        :html (str "/store/" (:uri t))
+       {:name     (:name t)
+        :html     (str "/store/" (:uri t))
         :children (->> (for [op (keys version-ops)]
                        [op (str "/api/v0/" (:uri t) "?op=" op)])
                     (into {}))})
@@ -129,8 +129,8 @@
   "Returns a Succeed of the namespaces in the target version."
   [type version-thing]
   (-> (for [t (api/list-namespaces site-config version-thing)]
-       {:name (:name t)
-        :html (str "/store/" (:uri t))
+       {:name     (:name t)
+        :html     (str "/store/" (:uri t))
         :children (->> (for [op (keys namespace-ops)]
                        [op (str "/api/v0/" (:uri t) "?op=" op)])
                     (into {}))})

@@ -125,9 +125,9 @@
    [:script {:src "/public/fold.js" :type "text/javascript"}]))
 
 (defn -render-html-symbol-page [def-thing meta]
-  (let [{:keys [src type arglists doc]} meta
+  (let [{:keys [src type arglists doc name]} meta
         namespace (:name (t/thing->namespace def-thing))
-        symbol    (:name def-thing)
+        symbol    name
         notes     (-> site-config (api/read-notes def-thing))  ;; Seq [version, notes]
         related   (api/read-related site-config def-thing)    ;; Seq [ Thing [:def] ]
         examples  (api/read-examples site-config def-thing)]  ;; Seq [version, related]
@@ -137,7 +137,7 @@
                                      " - documentation and examples")
                    :summary doc})
      [:h1 {:class "page-title"}
-      (header def-thing)]
+      (header (assoc def-thing :name name))]
 
      (when arglists
        (list [:h2 (if (= type :special)

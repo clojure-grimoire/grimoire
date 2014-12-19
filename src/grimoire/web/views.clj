@@ -1,7 +1,7 @@
 (ns grimoire.web.views
   (:require [grimoire.util :as util]
             [grimoire.web.layout :refer [layout]]
-            [grimoire.web.util :as wutil :refer [clojure-versions]] ; FIXME: remove
+            [grimoire.web.util :as wutil] ; FIXME: remove
             [ring.util.response :as response]))
 
 (def site-config

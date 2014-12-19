@@ -117,5 +117,15 @@
 ;; FIXME: application/json
 
 ;;; FIXME: code loading is evil
+
+(def ns-version-index
+  (->> (for [groupid   (api/list-groups     site-config)
+           artifact  (api/list-artifacts  site-config groupid)
+           version   (api/list-versions   site-config artifact)
+           namespace (api/list-namespaces site-config version)]
+       [(:name namespace)
+        (:name version)])
+    (into {})))
+
 (load "views/content/html")
 (load "views/content/txt")

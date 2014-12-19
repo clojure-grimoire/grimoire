@@ -133,7 +133,7 @@
     (->> (let-routes [type    (normalize-type
                              (or header-type
                                 param-type
-                                :html))
+                                :json))
                     log-msg (pr-str {:uri uri
                                      :type type
                                      :op   op})]

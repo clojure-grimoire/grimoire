@@ -62,16 +62,6 @@
                                (GET "/" []
                                  (let [symbol' (util/update-munge symbol)]
                                    (cond
-                                     ;; FIXME this is a bit of a hack to
-                                     ;; handle catch/finally. Should be
-                                     ;; generalized to other symbols but how
-                                     ;; to represent it?
-                                     (#{"catch" "finally"} symbol)
-                                     ,,(response/redirect
-                                        (format "/%s/%s/%s/%s/%s/"
-                                                groupid artifactid version
-                                                namespace "try"))
-
                                      ;; handle the case of redirecting due to munging
                                      (not (= symbol symbol'))
                                      ,,(response/redirect

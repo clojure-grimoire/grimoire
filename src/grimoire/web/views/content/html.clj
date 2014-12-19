@@ -206,7 +206,7 @@
       (if-let [target (:target meta)]
         (symbol-page :text/html
                      (t/path->thing
-                      (str (:uri (t/thing->artifact def-thing))
+                      (str (:uri (t/thing->version def-thing))
                            "/" target)))
 
         ;; fail to find a redirect, error out

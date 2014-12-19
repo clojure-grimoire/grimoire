@@ -11,7 +11,6 @@
                                      [com.taoensso/timbre "3.2.1"]
                                      [ring/ring-core "1.3.0"]
                                      [ring/ring-jetty-adapter "1.3.0"]
-                                     [ring/ring-json "0.3.1"]
                                      [selmer "0.6.9"]
                                      [compojure "1.1.8"]
                                      [hiccup "1.0.5"]

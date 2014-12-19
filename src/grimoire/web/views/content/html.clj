@@ -3,14 +3,12 @@
             [clojure.java.io :as io] ; FIXME: remove
             [clojure.string :as string]
             [grimoire.github :as gh] ; FIXME: remove
-            [grimoire.util :as util]
             [grimoire.api :as api]
             [grimoire.api.fs] ;; needed to load it
-            [grimoire.api.fs.read]
+            [grimoire.api.fs.read] ;; need to load it
             [grimoire.things :as t]
             [grimoire.web.layout :refer [layout]]
-            [grimoire.web.util :as wutil :refer [clojure-versions]] ; FIXME: remove
-            [ring.util.response :as response]
+            [grimoire.web.util :as wutil]
             [detritus.text :as text]))
 
 (defmethod store-page :text/html [_]
@@ -121,14 +119,13 @@
    [:script {:src "/public/jquery.js" :type "text/javascript"}]
    [:script {:src "/public/fold.js" :type "text/javascript"}]))
 
-
 (defn -render-html-symbol-page [def-thing meta]
-  (let [{:keys [src arglists doc]} meta
-        namespace                  (:name (t/thing->namespace def-thing))
-        symbol                     (:name def-thing)
-        notes                      (-> site-config (api/read-notes def-thing))  ;; Seq [version, notes]
-        related                    (api/read-related site-config def-thing)    ;; Seq [ Thing [:def] ]
-        examples                   (api/read-examples site-config def-thing)]  ;; Seq [version, related]
+  (let [{:keys [src type arglists doc]} meta
+        namespace (:name (t/thing->namespace def-thing))
+        symbol    (:name def-thing)
+        notes     (-> site-config (api/read-notes def-thing))  ;; Seq [version, notes]
+        related   (api/read-related site-config def-thing)    ;; Seq [ Thing [:def] ]
+        examples  (api/read-examples site-config def-thing)]  ;; Seq [version, related]
     (layout
      (assoc site-config
             :page {:description (str namespace "/" symbol
@@ -185,7 +182,7 @@
              [:ul (for [r    related
                         :let [sym r
                               ns (:parent sym)]]
-                    [:a (link-to sym) (:name r)])]))
+                    [:a (link-to' sym) (:name r)])]))
 
      (when src
        (list

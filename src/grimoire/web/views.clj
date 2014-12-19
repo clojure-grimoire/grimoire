@@ -1,16 +1,8 @@
 (ns grimoire.web.views
-  (:require [clojure.java.io :as io]
-            [clojure.string :as string]
-            [grimoire.github :as gh]
-            [grimoire.util :as util]
-            [grimoire.api :as api]
-            [grimoire.api.fs] ;; needed to load it
-            [grimoire.api.fs.read]
-            [grimoire.things :as t]
+  (:require [grimoire.util :as util]
             [grimoire.web.layout :refer [layout]]
             [grimoire.web.util :as wutil :refer [clojure-versions]] ; FIXME: remove
-            [ring.util.response :as response]
-            [detritus.text :as text]))
+            [ring.util.response :as response]))
 
 (def site-config
   {:url                 "http://conj.io/"

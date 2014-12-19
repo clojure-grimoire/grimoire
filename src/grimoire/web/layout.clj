@@ -1,6 +1,5 @@
 (ns grimoire.web.layout
-  (:require [hiccup.page :as page]
-            [clojure.java.io :as io]))
+  (:require [hiccup.page :as page]))
 
 (defn header [{:keys [baseurl] :as c}]
   [:head

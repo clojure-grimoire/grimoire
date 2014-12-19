@@ -151,9 +151,7 @@
 
      (when doc
        (list [:h2 "Official Documentation"]
-             [:pre (-> doc
-                     text/text->paragraphs
-                     text/render)]))
+             [:pre "  " doc]))
 
      (let [notes (for [[v text] notes
                        :when text]

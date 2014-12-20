@@ -192,15 +192,18 @@
 
 (defmethod symbol-page :text/html [_ def-thing]
   (let [{:keys [type] :as meta} (api/read-meta site-config def-thing)]
-    (if-not (= :sentinel type)
-      (-render-html-symbol-page def-thing meta)
+    (cond (and meta
+             (not (= :sentinel type)))
+          ,,(-render-html-symbol-page def-thing meta)
 
-      ;; chase a redirect
-      (if-let [target (:target meta)]
-        (symbol-page :text/html
-                     (t/path->thing
-                      (str (:uri (t/thing->version def-thing))
-                           "/" target)))
+          ;; chase a redirect
+          (= :sentinel type)
+          ,,(when-let [target (:target meta)]
+              (symbol-page :text/html
+                           (t/path->thing
+                            (str (:uri (t/thing->version def-thing))
+                                 "/" target))))
 
-        ;; fail to find a redirect, error out
-        (error-unknown-symbol def-thing)))))
+          :else
+          ;; fail to find a redirect, error out
+          ,,(error-unknown-symbol :text/html def-thing))))

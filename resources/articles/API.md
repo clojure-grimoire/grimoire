@@ -127,7 +127,7 @@ In JSON:
  "body"  : [{"name":     "/org.clojure",
              "html":     "/store/org.clojure",
              "children": {"notes":     "/api/v0/org.clojure?op=notes",
-			              "meta":      "/api/v0/org.clojure?op=meta",
+                          "meta":      "/api/v0/org.clojure?op=meta",
                           "artifacts": "/api/v0/org.clojure?op=artifacts"}},
              ...]}
 ```
@@ -175,7 +175,7 @@ In JSON:
  "body"  : [{"name":     "/org.clojure/clojure",
              "html":     "/store/org.clojure/clojure",
              "children": {"notes":    "/api/v0/org.clojure/clojure?op=notes",
- 						  "meta":     "/api/v0/org.clojure/clojure?op=meta",
+                           "meta":     "/api/v0/org.clojure/clojure?op=meta",
                           "versions": "/api/v0/org.clojure/clojure?op=versions"}},
              ...]}
 ```
@@ -193,7 +193,7 @@ In JSON:
  "body"  : [{"name":     "/org.clojure/clojure/1.6.0",
              "html":     "/store/org.clojure/clojure/1.6.0",
              "children": {"notes":      "/api/v0/org.clojure/clojure/1.6.0?op=notes",
- 						  "meta":       "/api/v0/org.clojure/clojure/1.6.0?op=meta",
+                           "meta":       "/api/v0/org.clojure/clojure/1.6.0?op=meta",
                           "namespaces": "/api/v0/org.clojure/clojure/1.6.0?op=namespaces"}},
              ...]}
 ```
@@ -211,12 +211,12 @@ In JSON:
  "body"  : [{"name":     "/org.clojure/clojure/1.6.0/clojure.core",
              "html":     "/store/org.clojure/clojure/1.6.0/clojure.core",
              "children": {"notes":    "/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=notes",
- 						  "meta":     "/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=meta",
+                           "meta":     "/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=meta",
                           "macros":   "/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=macros",
                           "vars":     "/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=vars",
                           "fns":      "/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=fns",
-						  "specials": "/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=specials",
-						  "sentinels":"/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=sentinels"}},
+                          "specials": "/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=specials",
+                          "sentinels":"/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=sentinels"}},
              ...]}
 ```
 
@@ -233,7 +233,7 @@ In JSON:
  "body"  : [{"name":     "/org.clojure/clojure/1.6.0/clojure.core/concat",
              "html":     "/store/org.clojure/clojure/1.6.0/clojure.core/concat",
              "children": {"notes":    "/api/v0/org.clojure/clojure/1.6.0/clojure.core/concat?op=notes",
- 						  "meta":     "/api/v0/org.clojure/clojure/1.6.0/clojure.core/concat?op=meta",
+                          "meta":     "/api/v0/org.clojure/clojure/1.6.0/clojure.core/concat?op=meta",
                           "examples": "/api/v0/org.clojure/clojure/1.6.0/clojure.core/concat?op=examples"}},
              ...]}
 ```

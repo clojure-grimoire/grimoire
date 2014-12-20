@@ -26,7 +26,8 @@
 
               "## Arities\n"
               ;; line40 "\n"
-              (->> (map #(format "  %s\n" (pr-str %1)))
+              (->> arglists
+                 (map #(format "  %s\n" (pr-str %1)))
                  (apply str))
               "\n"
 

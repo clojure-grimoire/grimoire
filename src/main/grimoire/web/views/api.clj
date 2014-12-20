@@ -1,7 +1,5 @@
 (ns grimoire.web.views.api
   (:require [grimoire.api :as api]
-            [grimoire.api.fs]
-            [grimoire.api.fs.read]
             [grimoire.web.views :refer [site-config]]
             [cheshire.core :refer [generate-string]]))
 

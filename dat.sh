@@ -14,7 +14,7 @@ _install_repo() {
     t="dat/$2/"
     if [ ! -d "$t" ];
     then
-	git clone git@github.com:$2.git "$t"
+	git clone http://github.com/$2.git "$t"
     else
 	pushd "$t"
 	git pull origin master

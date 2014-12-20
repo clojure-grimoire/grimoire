@@ -10,8 +10,8 @@
       :body   body}))
 
 (defn succeed [body]
-  (-> {:result :success
-      :body   body}))
+  {:result :success
+   :body   body})
 
 (defn edn-resp [data]
   {:status  200

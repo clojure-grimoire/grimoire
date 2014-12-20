@@ -3,9 +3,12 @@
             [grimoire.web.layout :refer [layout]]
             [grimoire.web.util :as wutil]
             [grimoire.api :as api]
-            [grimoire.api.fs]
-            [grimoire.api.fs.read]
             [ring.util.response :as response]))
+
+;; Boot the grimoire fs backend. Wish I could put this somewhere else,
+;; but this is kinda where it fell.
+(load "/grimoire/api/fs")
+(load "/grimoire/api/fs/read")
 
 (def site-config
   {:url                 "http://conj.io/"

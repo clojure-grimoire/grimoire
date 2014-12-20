@@ -2,8 +2,6 @@
   (:require [grimoire.web.views :refer :all]
             [clojure.string :as string]
             [grimoire.api :as api]
-            [grimoire.api.fs] ;; needed to load it
-            [grimoire.api.fs.read] ;; need to load it
             [grimoire.things :as t]
             [grimoire.web.layout :refer [layout]]
             [grimoire.web.util :as wutil]))

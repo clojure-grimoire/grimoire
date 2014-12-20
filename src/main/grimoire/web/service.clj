@@ -30,6 +30,7 @@
   (start-web-server! port?))
 
 (defn -main [& [port?]]
+  ;; Boot the webserver
   (start-web-server!
    (if (string? port?)
      (Long. port?)

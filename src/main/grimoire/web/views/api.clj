@@ -6,8 +6,8 @@
             [cheshire.core :refer [generate-string]]))
 
 (defn fail [body]
-  (-> {:result :failure
-      :body   body}))
+  {:result :failure
+   :body   body})
 
 (defn succeed [body]
   {:result :success

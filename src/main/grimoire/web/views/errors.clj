@@ -20,7 +20,9 @@
    [:h1 {:class "page-title"}
     [:a groupid]]
    [:p "Unknown group " (pr-str groupid)]
-   [:p "If you found a broken link, please report the issue encountered on the github bugtracker."]))
+   [:p "If you found a broken link, please report the issue encountered on the "
+    [:a {:href (:repo site-config)}
+     " github bugtracker."]]))
 
 (defn error-unknown-artifact
   ([artifact-thing]
@@ -35,7 +37,9 @@
       [:h1 {:class "page-title"}
        [:a s]]
       [:p "Unknown artifact " s]
-      [:p "If you found a broken link, please report the issue encountered on the github bugtracker."]))))
+      [:p "If you found a broken link, please report the issue encountered on the "
+       [:a {:href (:repo site-config)}
+        " github bugtracker."]]))))
 
 (defn error-unknown-version
   ([version]
@@ -47,7 +51,9 @@
     [:h1 {:class "page-title"}
      [:a (format "[%s/%s \"%s\"]" groupid artifactid version)]]
     [:p "Unknown artifact version " (pr-str version)]
-    [:p "If you found a broken link, please report the issue encountered on the github bugtracker."])))
+    [:p "If you found a broken link, please report the issue encountered on the "
+     [:a {:href (:repo site-config)}
+      " github bugtracker."]])))
 
 (defn error-unknown-namespace
   ([ns-thing]
@@ -64,7 +70,9 @@
     [:h1 {:class "page-title"}
      [:a (format "[%s/%s \"%s\"]" groupid artifactid version)]]
     [:p "Unknown namespace identifier " (pr-str [version namespace])]
-    [:p "If you found a broken link, please report the issue encountered on the github bugtracker."])))
+    [:p "If you found a broken link, please report the issue encountered on the "
+     [:a {:href (:repo site-config)}
+      " github bugtracker."]])))
 
 (defn error-unknown-symbol
   ([type def-thing]
@@ -87,13 +95,15 @@
        ,,(layout
           site-config
           [:h1 {:class "page-title"}
-           [:a version-string]
-           [:p "Unknown symbol identifier " symbol-string]
-           [:p "If you found a broken link, please report the issue encountered on the github bugtracker."]])
+           [:a version-string]]
+          [:p "Unknown symbol identifier " symbol-string]
+          [:p "If you found a broken link, please report the issue encountered on the "
+           [:a {:href (:repo site-config)}
+            " github bugtracker."]])
 
        (:text :text/plain "text/plain")
        ,,(-> (str "In artifact: " version-string \newline
                  "Unknown symbol: " symbol-string  \newline
                  "Sorry! Only clojure.core is documented right now.")
-           response/response
-           (response/content-type "text/plain"))))))
+            response/response
+            (response/content-type "text/plain"))))))

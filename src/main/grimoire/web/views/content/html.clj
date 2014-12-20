@@ -227,4 +227,4 @@
 
           :else
           ;; fail to find a redirect, error out
-          ,,(e/error-unknown-symbol :text/html def-thing))))
+          ,,nil)))

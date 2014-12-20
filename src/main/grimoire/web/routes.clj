@@ -124,27 +124,28 @@
                                (route/not-found
                                 (fn [req]
                                   (warn log-msg)
-                                  (v.e/error-unknown-symbol type t))))))
+                                  (v.e/error-unknown-symbol type t)))))
 
-                         (route/not-found
-                          (fn [req]
-                            (warn log-msg)
-                            (v.e/error-unknown-namespace t)))))
+                           (route/not-found
+                            (fn [req]
+                              (warn log-msg)
+                              (v.e/error-unknown-namespace t)))))
 
-                     (route/not-found
-                      (fn [req]
-                        (warn log-msg)
-                        (v.e/error-unknown-version t)))))
+                       (route/not-found
+                        (fn [req]
+                          (warn log-msg)
+                          (v.e/error-unknown-version t)))))
 
-                 (route/not-found
-                  (fn [req]
-                    (warn log-msg)
-                    (v.e/error-unknown-artifact t))))
+                   (route/not-found
+                    (fn [req]
+                      (warn log-msg)
+                      (v.e/error-unknown-artifact t)))))
 
                (route/not-found
                 (fn [req]
                   (warn log-msg)
                   (v.e/error-unknown-group t)))))))
+
        (routing req))))
 
 (defmacro api-log []

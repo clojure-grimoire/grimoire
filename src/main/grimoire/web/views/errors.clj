@@ -58,6 +58,8 @@
 (defn error-unknown-namespace
   ([ns-thing]
    (error-unknown-namespace
+    (:name (t/thing->group ns-thing))
+    (:name (t/thing->artifact ns-thing))
     (:name (t/thing->version ns-thing))
     (:name ns-thing)))
 

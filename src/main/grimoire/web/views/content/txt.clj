@@ -19,34 +19,37 @@
         line40 (apply str (repeat 40 "-"))]
     (when doc
       ;; FIXME: else what? doesn't make sense w/o doc...
-      ;; FIXME: conditionalize _all_ headers
       (-> (str (format "# [%s/%s \"%s\"] %s/%s\n" groupid artifactid version namespace name)
               ;; line80
               "\n"
 
-              "## Arities\n"
-              ;; line40 "\n"
-              (->> arglists
-                 (map #(format "  %s\n" (pr-str %1)))
-                 (apply str))
-              "\n"
+              (when arglists
+                (str "## Arities\n"
+                     ;; line40 "\n"
+                     (->> arglists
+                        (map #(format "  %s\n" (pr-str %1)))
+                        (apply str))
+                     "\n"))
 
-              "## Documentation\n"
-              ;; line40 "\n"
-              doc
-              "\n"
-
-              "## User Documentation\n"
-              ;; line40 "\n"
-              notes
-              "\n"
+              (when doc
+                (str "## Documentation\n"
+                     ;; line40 "\n"
+                     doc
+                     "\n"))
+              
+              (when notes
+                (str "## User Documentation\n"
+                     ;; line40 "\n"
+                     notes
+                     "\n"))
 
               "## Examples\n"
               ;; line40 "\n"
               "FIXME: This version of Grimoire can't read examples for text format!\n"
 
-              "## See Also\n"
-              ;; line40 "\n"
-              related)
+              (when related
+                (str "## See Also\n"
+                     ;; line40 "\n"
+                     related)))
          response/response
          (response/content-type "text/plain")))))

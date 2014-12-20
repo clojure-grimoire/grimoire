@@ -32,9 +32,9 @@ advised to take advantage of
 [lib-grimoire](https://github.com/clojure-grimoire/lib-grimoire)
 rather than duplicating this function.
 
-`$VERSION` is a string representing a [SemVer]() version, however the
-formatting is not enforced and qualfiers such as `-alpha4` are
-supported..
+`$VERSION` is a string representing a [SemVer](http://semver.org/)
+version, however the formatting is not enforced and qualfiers such as
+`-alpha4` are supported..
 
 `$NAMESPACE` is the cannonical name of a Clojure namespace with no
 munging applied.

@@ -1,8 +1,6 @@
 (ns grimoire.web.views.content.html
   (:require [grimoire.web.views :refer :all]
-            [clojure.java.io :as io] ; FIXME: remove
             [clojure.string :as string]
-            [grimoire.github :as gh] ; FIXME: remove
             [grimoire.api :as api]
             [grimoire.api.fs] ;; needed to load it
             [grimoire.api.fs.read] ;; need to load it

@@ -106,12 +106,10 @@
                   (list [:h2 "Namespace Docs"]
                         [:p doc])))
 
-              (when-let [notes (first
-                                (for [[v notes] (api/read-notes site-config namespace-thing)
-                                      :when     (= v (:name (:parent namespace-thing)))]
-                                  notes))]
-                (list [:h2 "Namespace Notes"]
-                      [:p (wutil/markdown-string notes)]))
+              (let [[[_ notes]] (api/read-notes site-config namespace-thing)]
+                (when notes
+                  (list [:h2 "Namespace Notes"]
+                        [:p (wutil/markdown-string notes)])))
 
               (list [:h2 "Symbols"]
                     ;; FIXME: the fuck am I doing here srsly

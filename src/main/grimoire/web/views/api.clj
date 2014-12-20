@@ -31,12 +31,13 @@
 (defn unknown-op
   "This function should yield a JSON error result indicating what the requested
   unsupported operation was and what the path on which it was invoked was."
-  [thing op]
+  [type op thing]
   (-> {:op      op
       :path    (:uri thing)
       :message (str "Unknown op " op
                     " on target " (:uri thing))}
-    fail))
+     fail
+     ((-tm type))))
 
 (declare list-groups
          group-ops
@@ -51,14 +52,20 @@
 (defn list-groups
   "Returns a success result representing the known groups."
   [type _]
-  (-> (for [g (api/list-groups site-config)]
-       {:name     (:name g)
-        :html     (str "/store/" (:uri g))
-        :children (->> (for [op (keys group-ops)]
-                       [op (str "/api/v0/" (:uri g) "?op=" op)])
-                    (into {}))})
-    succeed
-    ((-tm type))))
+  (try
+    (-> (for [g (api/list-groups site-config)]
+         {:name     (:name g)
+          :html     (str "/store/" (:uri g))
+          :children (->> (for [op (keys group-ops)]
+                         [op (str "/api/v0/" (:uri g) "?op=" op)])
+                       (into {}))})
+       succeed
+       ((-tm type)))
+
+    (catch Exception e
+      (-> (.getMessage e)
+         fail
+         ((-tm type))))))
 
 (declare group-notes
          group-meta
@@ -73,30 +80,49 @@
 (defn group-notes
   "Returns the notes, if any, for the target group."
   [type thing]
-  (->> thing
-    (api/read-notes site-config)
-    succeed
-    ((-tm type))))
+  (try
+    (->> thing
+       (api/read-notes site-config)
+       succeed
+       ((-tm type)))
+
+    (catch Exception e
+      (-> (.getMessage e)
+         fail
+         ((-tm type))))))
+
 
 (defn group-meta
   "Returns the metadata, if any, for the target group."
   [type thing]
-  (->> thing
-    (api/read-meta site-config)
-    succeed
-    ((-tm type))))
+  (try
+    (->> thing
+       (api/read-meta site-config)
+       succeed
+       ((-tm type)))
+    
+    (catch Exception e
+      (-> (.getMessage e)
+         fail
+         ((-tm type))))))
 
 (defn group-artifacts
   "Returns the artifacts for the target group."
   [type group-thing]
-  (-> (for [t (api/list-artifacts site-config group-thing)]
-       {:name     (:name t)
-        :html     (str "/store/" (:uri t))
-        :children (->> (for [op (keys artifact-ops)]
-                       [op (str "/api/v0/" (:uri t) "?op=" op)])
-                    (into {}))})
-    succeed
-    ((-tm type))))
+  (try
+    (-> (for [t (api/list-artifacts site-config group-thing)]
+         {:name     (:name t)
+          :html     (str "/store/" (:uri t))
+          :children (->> (for [op (keys artifact-ops)]
+                         [op (str "/api/v0/" (:uri t) "?op=" op)])
+                       (into {}))})
+       succeed
+       ((-tm type)))
+
+    (catch Exception e
+      (-> (.getMessage e)
+         fail
+         ((-tm type))))))
 
 (declare artifact-versions
          namespace-ops)
@@ -109,14 +135,20 @@
 (defn artifact-versions
   "Returns the versions for the target artifact."
   [type artifact-thing]
-  (-> (for [t (api/list-versions site-config artifact-thing)]
-       {:name     (:name t)
-        :html     (str "/store/" (:uri t))
-        :children (->> (for [op (keys version-ops)]
-                       [op (str "/api/v0/" (:uri t) "?op=" op)])
-                    (into {}))})
-    succeed
-    ((-tm type))))
+  (try
+    (-> (for [t (api/list-versions site-config artifact-thing)]
+         {:name     (:name t)
+          :html     (str "/store/" (:uri t))
+          :children (->> (for [op (keys version-ops)]
+                         [op (str "/api/v0/" (:uri t) "?op=" op)])
+                       (into {}))})
+       succeed
+       ((-tm type)))
+
+    (catch Exception e
+      (-> (.getMessage e)
+         fail
+         ((-tm type))))))
 
 (declare version-namespaces)
 
@@ -128,14 +160,20 @@
 (defn version-namespaces
   "Returns a Succeed of the namespaces in the target version."
   [type version-thing]
-  (-> (for [t (api/list-namespaces site-config version-thing)]
-       {:name     (:name t)
-        :html     (str "/store/" (:uri t))
-        :children (->> (for [op (keys namespace-ops)]
-                       [op (str "/api/v0/" (:uri t) "?op=" op)])
-                    (into {}))})
-    succeed
-    ((-tm type))))
+  (try
+    (-> (for [t (api/list-namespaces site-config version-thing)]
+         {:name     (:name t)
+          :html     (str "/store/" (:uri t))
+          :children (->> (for [op (keys namespace-ops)]
+                         [op (str "/api/v0/" (:uri t) "?op=" op)])
+                       (into {}))})
+       succeed
+       ((-tm type)))
+
+    (catch Exception e
+      (-> (.getMessage e)
+         fail
+         ((-tm type))))))
 
 (declare def-ops
          namespace-search)
@@ -155,16 +193,22 @@
   "Returns a Succeed listing the defs of the target namespace and the supported
   operations thereon."
   [filter type ns-thing]
-  (-> (for [t     (api/list-defs site-config ns-thing)
-           :let  [meta (api/read-meta site-config t)]
-           :when (filter (get t :type :fn))]
-       {:name     (:name t)
-        :html     (str "/store/" (:uri t))
-        :children (->> (for [op (keys def-ops)]
-                       [op (str "/api/v0/" (:uri t) "?op=" op)])
-                    (into {}))})
-    succeed
-    ((-tm type))))
+  (try
+    (-> (for [t     (api/list-defs site-config ns-thing)
+             :let  [meta (api/read-meta site-config t)]
+             :when (filter (get t :type :fn))]
+         {:name     (:name t)
+          :html     (str "/store/" (:uri t))
+          :children (->> (for [op (keys def-ops)]
+                         [op (str "/api/v0/" (:uri t) "?op=" op)])
+                       (into {}))})
+       succeed
+       ((-tm type)))
+
+    (catch Exception e
+      (-> (.getMessage e)
+         fail
+         ((-tm type))))))
 
 (declare def-examples)
 
@@ -177,8 +221,14 @@
   "Returns a Succeed of examples for the given def, if any exist in the
   datastore."
   [type def-thing]
-  (->> def-thing
-    (api/read-examples site-config)
-    (map second)
-    succeed
-    ((-tm type))))
+  (try
+    (->> def-thing
+       (api/read-examples site-config)
+       (map second)
+       succeed
+       ((-tm type)))
+
+    (catch Exception e
+      (-> (.getMessage e)
+         fail
+         ((-tm type))))))

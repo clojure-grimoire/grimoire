@@ -153,6 +153,14 @@
             (select-keys [:uri])
             (assoc :op ~'op))))
 
+(defmacro do-dispatch [dispatch type op t]
+  `(or (when-let [f# (~dispatch ~op)]
+        (when-let [r# (f# ~type ~t)]
+          (info ~'log-msg)
+          r#))
+      (do (warn ~'log-msg)
+          (v.api/unknown-op ~type ~op ~t))))
+
 (def api-v0
   (fn [{header-type :content-type
        {param-type :type
@@ -168,50 +176,38 @@
                                      :op   op})]
          (context ["/api/v0"] []
            (GET "/" []
-             (info log-msg)
-             ((get v.api/root-ops op
-                   v.api/unknown-op)
-              type nil))
+             (do-dispatch v.api/root-ops
+                          type op nil))
 
            (context ["/:group"] [group]
              (let-routes [t (thing/->Group group)]
                (GET "/" []
-                 (info log-msg)
-                 ((get v.api/group-ops op
-                       v.api/unknown-op)
-                  type t))
+                 (do-dispatch v.api/group-ops
+                              type op t))
 
                (context ["/:artifact"] [artifact]
                  (let-routes [t (thing/->Artifact t artifact)]
                    (GET "/" []
-                     (info log-msg)
-                     ((get v.api/artifact-ops op
-                           v.api/unknown-op)
-                      type t))
+                     (do-dispatch v.api/artifact-ops
+                                  type op t))
 
                    (context ["/:version"] [version]
                      (let-routes [t (thing/->Version t version)]
                        (GET "/" []
-                         (info log-msg)
-                         ((get v.api/version-ops op
-                               v.api/unknown-op)
-                          type t))
+                         (do-dispatch v.api/version-ops
+                                      type op t))
 
                        (context ["/:namespace"] [namespace]
                          (let-routes [t (thing/->Ns t namespace)]
                            (GET "/" []
-                             (info log-msg)
-                             ((get v.api/namespace-ops op
-                                   v.api/unknown-op)
-                              type t))
+                             (do-dispatch v.api/namespace-ops
+                                          type op t))
 
                            (context ["/:symbol"] [symbol]
                              (let-routes [t (thing/->Def t symbol)]
                                (GET "/" []
-                                 (info log-msg)
-                                 ((get v.api/def-ops op
-                                       v.api/unknown-op)
-                                  type t))))))))))))))
+                                 (do-dispatch v.api/def-ops
+                                              type op t))))))))))))))
        (routing req))))
 
 (defroutes app

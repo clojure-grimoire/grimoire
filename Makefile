@@ -11,3 +11,6 @@ test: build
 
 deploy:
 	git push deployment master
+
+clean:
+	rm -rf dat doc-store notes-store

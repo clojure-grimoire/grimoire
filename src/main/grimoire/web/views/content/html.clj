@@ -8,65 +8,77 @@
             [grimoire.api.fs.read] ;; need to load it
             [grimoire.things :as t]
             [grimoire.web.layout :refer [layout]]
-            [grimoire.web.views.errors
-             :refer [error-unknown-symbol]]
             [grimoire.web.util :as wutil]))
 
 (defmethod store-page :text/html [_]
-  (layout site-config
-          [:h1 {:class "page-title"}
-           ,,"Artifact store"]
-          [:h2 "Known Maven groups"]
-          [:ul (for [group (->> (api/list-groups site-config)
-                             (sort-by :name))]
-                 [:li
-                  [:a (link-to' group)
-                   (:name group)]])]))
+  (try
+    (layout site-config
+            [:h1 {:class "page-title"}
+             ,,"Artifact store"]
+            [:h2 "Known Maven groups"]
+            [:ul (for [group (->> (api/list-groups site-config)
+                                (sort-by :name))]
+                   [:li
+                    [:a (link-to' group)
+                     (:name group)]])])
+    
+    ;; FIXME: more specific error
+    (catch Exception e
+      nil)))
 
 (defmethod group-page :text/html [_ group-thing]
-  (layout site-config
-          [:h1 {:class "page-title"} (header group-thing)]
-          [:h2 "Known artifacts"]
-          [:ul (for [artifact (->> (api/list-artifacts site-config group-thing)
-                                (sort-by :name))
-                     :let  [group (:parent artifact)]]
-                 [:li
-                  [:a (link-to' artifact)
-                   (format "%s/%s"
-                           (:name group)
-                           (:name artifact))]])]))
+  (try
+    (layout site-config
+            [:h1 {:class "page-title"} (header group-thing)]
+            [:h2 "Known artifacts"]
+            [:ul (for [artifact (->> (api/list-artifacts site-config group-thing)
+                                   (sort-by :name))
+                       :let  [group (:parent artifact)]]
+                   [:li
+                    [:a (link-to' artifact)
+                     (format "%s/%s"
+                             (:name group)
+                             (:name artifact))]])])
+
+    ;; FIXME: more specific error
+    (catch Exception e)))
 
 (defmethod artifact-page :text/html [_ artifact-thing]
-  (layout site-config
-          [:h1 {:class "page-title"} (header artifact-thing)]
-          [:h2 "Known release versions"]
-          [:ul (for [version (->> (api/list-versions site-config artifact-thing)
-                               (sort-by :name)
-                               reverse)
-                     :let  [artifact (:parent version)
-                            group    (:parent artifact)]]
-                 [:li
-                  [:a (link-to' version)
-                   (format "[%s/%s \"%s\"]"
-                           (:name group)
-                           (:name artifact)
-                           (:name version))]])]))
+  (try
+    (layout site-config
+            [:h1 {:class "page-title"} (header artifact-thing)]
+            [:h2 "Known release versions"]
+            [:ul (for [version (->> (api/list-versions site-config artifact-thing)
+                                  (sort-by :name)
+                                  reverse)
+                       :let  [artifact (:parent version)
+                              group    (:parent artifact)]]
+                   [:li
+                    [:a (link-to' version)
+                     (format "[%s/%s \"%s\"]"
+                             (:name group)
+                             (:name artifact)
+                             (:name version))]])])
+
+    ;; FIXME: more specific error
+    (catch Exception e
+      nil)))
 
 (defmethod version-page :text/html [_ version-thing]
   (try
     (let [[[v notes]] (api/read-notes site-config version-thing)]
-          (layout site-config ;; FIXME: add artifact & group name to title somehow?
-                  [:h1 {:class "page-title"} (header version-thing)]
-                  (when notes
-                    (list [:h2 "Release Notes"]
-                          (wutil/markdown-string notes)))
+      (layout site-config ;; FIXME: add artifact & group name to title somehow?
+              [:h1 {:class "page-title"} (header version-thing)]
+              (when notes
+                (list [:h2 "Release Notes"]
+                      (wutil/markdown-string notes)))
 
-                  [:h2 "Namespaces"]
-                  [:ul
-                   (for [ns-thing (->> (api/list-namespaces site-config version-thing)
-                                     (sort-by :name))]
-                     [:li
-                      [:a (link-to' ns-thing) (:name ns-thing)]])]))
+              [:h2 "Namespaces"]
+              [:ul
+               (for [ns-thing (->> (api/list-namespaces site-config version-thing)
+                                 (sort-by :name))]
+                 [:li
+                  [:a (link-to' ns-thing) (:name ns-thing)]])]))
 
     ;; FIXME: more specific error type
     (catch Exception e
@@ -215,4 +227,4 @@
 
           :else
           ;; fail to find a redirect, error out
-          ,,(error-unknown-symbol :text/html def-thing))))
+          ,,(e/error-unknown-symbol :text/html def-thing))))

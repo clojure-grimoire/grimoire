@@ -34,7 +34,7 @@ rather than duplicating this function.
 
 `$VERSION` is a string representing a [SemVer](http://semver.org/)
 version, however the formatting is not enforced and qualfiers such as
-`-alpha4` are supported..
+`-alpha4` are supported.
 
 `$NAMESPACE` is the cannonical name of a Clojure namespace with no
 munging applied.

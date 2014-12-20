@@ -53,19 +53,24 @@
                            (:name version))]])]))
 
 (defmethod version-page :text/html [_ version-thing]
-  (let [[[v notes]] (api/read-notes site-config version-thing)]
-    (layout site-config ;; FIXME: add artifact & group name to title somehow?
-            [:h1 {:class "page-title"} (header version-thing)]
-            (when notes
-              (list [:h2 "Release Notes"]
-                    (wutil/markdown-string notes)))
+  (try
+    (let [[[v notes]] (api/read-notes site-config version-thing)]
+          (layout site-config ;; FIXME: add artifact & group name to title somehow?
+                  [:h1 {:class "page-title"} (header version-thing)]
+                  (when notes
+                    (list [:h2 "Release Notes"]
+                          (wutil/markdown-string notes)))
 
-            [:h2 "Namespaces"]
-            [:ul
-             (for [ns-thing (->> (api/list-namespaces site-config version-thing)
-                               (sort-by :name))]
-               [:li
-                [:a (link-to' ns-thing) (:name ns-thing)]])])))
+                  [:h2 "Namespaces"]
+                  [:ul
+                   (for [ns-thing (->> (api/list-namespaces site-config version-thing)
+                                     (sort-by :name))]
+                     [:li
+                      [:a (link-to' ns-thing) (:name ns-thing)]])]))
+
+    ;; FIXME: more specific error type
+    (catch Exception e
+      nil)))
 
 (defn emit-alphabetized-links [records]
   (let [segments (group-by (comp first str :name) records)]
@@ -122,6 +127,7 @@
               [:script {:src "/public/jquery.js" :type "text/javascript"}]
               [:script {:src "/public/fold.js" :type "text/javascript"}]))
 
+    ;; FIXME: more specific error type
     (catch Exception e
       nil)))
 

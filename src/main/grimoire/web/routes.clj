@@ -40,8 +40,9 @@
                                   param-type
                                   :html)
                               normalize-type)
-                    log-msg (pr-str {:uri uri
-                                     :type type})]
+                    log-msg (pr-str {:uri        uri
+                                     :type       type
+                                     :user-agent (get-in req [:headers "user-agent"])})]
          (context ["/store"] []
            (GET "/" {uri :uri}
              (when-let [r (v/store-page type)]
@@ -171,9 +172,10 @@
                              (or header-type
                                 param-type
                                 :json))
-                    log-msg (pr-str {:uri uri
-                                     :type type
-                                     :op   op})]
+                    log-msg (pr-str {:uri        uri
+                                     :type       type
+                                     :op         op
+                                     :user-agent (get-in req [:headers "user-agent"])})]
          (context ["/api/v0"] []
            (GET "/" []
              (do-dispatch v.api/root-ops

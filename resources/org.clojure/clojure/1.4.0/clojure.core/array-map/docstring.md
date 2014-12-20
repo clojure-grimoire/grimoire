@@ -1,1 +1,0 @@
-  Constructs an array-map.

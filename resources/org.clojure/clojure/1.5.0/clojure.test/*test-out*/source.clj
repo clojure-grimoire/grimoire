@@ -1,1 +1,0 @@
-(def ^:dynamic *test-out* *out*)

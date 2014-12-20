@@ -1,14 +1,16 @@
 cheatsheet:
 	bash cheatsheet.sh
 
-snapshot: cheatsheet
-	bash snapshot.sh
+dat:
+	bash dat.sh
 
-build: cheatsheet snapshot
+build: cheatsheet dat
 
 test: build
 	lein serve
 
-deploy: snapshot
+deploy:
 	git push deployment master
-	scp resources/public/static.zip git@arrdem.com:/srv/www/grimoire.arrdem.com/resources/public/
+
+clean:
+	rm -rf dat doc-store notes-store

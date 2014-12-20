@@ -1,2 +1,0 @@
-[ns name]
-[ns name val]

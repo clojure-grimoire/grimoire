@@ -1,1 +1,0 @@
-(defmulti ^:dynamic tap-report :type)

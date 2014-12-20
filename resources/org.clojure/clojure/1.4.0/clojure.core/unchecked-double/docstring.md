@@ -1,1 +1,0 @@
-  Coerce to double. Subject to rounding.

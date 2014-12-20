@@ -1,1 +1,0 @@
-Default :prompt hook for repl

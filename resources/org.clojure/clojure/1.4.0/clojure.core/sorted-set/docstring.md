@@ -1,1 +1,0 @@
-  Returns a new sorted set with supplied keys.

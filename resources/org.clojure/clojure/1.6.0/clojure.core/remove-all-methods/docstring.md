@@ -1,1 +1,0 @@
-  Removes all of the methods of multimethod.

@@ -1,2 +1,0 @@
-[array idx val]
-[array idx idx2 & idxv]

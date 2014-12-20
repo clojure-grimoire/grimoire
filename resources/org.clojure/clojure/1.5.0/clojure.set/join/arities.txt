@@ -1,2 +1,0 @@
-[xrel yrel]
-[xrel yrel km]

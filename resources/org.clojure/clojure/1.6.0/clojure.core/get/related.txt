@@ -1,2 +1,0 @@
-clojure.core/get-in
-clojure.core/find

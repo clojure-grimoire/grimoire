@@ -1,1 +1,0 @@
-  Returns the history count of a ref

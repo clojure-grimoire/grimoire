@@ -1,2 +1,0 @@
-[aseq]
-[type aseq]

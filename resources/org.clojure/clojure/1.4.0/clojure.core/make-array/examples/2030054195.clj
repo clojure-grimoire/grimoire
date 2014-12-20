@@ -1,1 +1,0 @@
-(make-array Integer/TYPE 3)

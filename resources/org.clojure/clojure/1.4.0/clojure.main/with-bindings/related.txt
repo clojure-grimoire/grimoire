@@ -1,3 +1,0 @@
-clojure.core/binding
-clojure.core/with-local-vars
-clojure.core/with-redefs-fn

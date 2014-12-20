@@ -1,1 +1,0 @@
-  Like deftest but creates a private var.

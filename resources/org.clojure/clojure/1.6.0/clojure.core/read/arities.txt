@@ -1,4 +1,0 @@
-[]
-[stream]
-[stream eof-error? eof-value]
-[stream eof-error? eof-value recursive?]

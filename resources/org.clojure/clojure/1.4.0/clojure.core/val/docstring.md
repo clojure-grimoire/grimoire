@@ -1,1 +1,0 @@
-  Returns the value in the map entry.

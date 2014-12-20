@@ -1,9 +1,0 @@
-clojure.core/sorted-map-by
-clojure.core/compare
-clojure.core/hash-map
-clojure.core/assoc
-clojure.core/dissoc
-clojure.core/keys
-clojure.core/vals
-clojure.core/subseq
-clojure.core/rsubseq

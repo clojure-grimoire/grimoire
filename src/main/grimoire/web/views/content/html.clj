@@ -75,50 +75,55 @@
                   [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]))))
 
 (defmethod namespace-page :text/html [_ namespace-thing]
-  (layout site-config ;; FIXME: add artifact, namespace?
-          [:h1 {:class "page-title"}
-           (header namespace-thing)]
+  (try
+    (let [meta (api/read-meta site-config namespace-thing)]
+      (layout site-config ;; FIXME: add artifact, namespace?
+              [:h1 {:class "page-title"}
+               (header namespace-thing)]
 
-          (let [{:keys [doc name] :as meta} (api/read-meta site-config namespace-thing)]
-            (when doc
-              (list [:h2 "Namespace Docs"]
-                    [:p doc])))
+              (let [{:keys [doc name]} meta]
+                (when doc
+                  (list [:h2 "Namespace Docs"]
+                        [:p doc])))
 
-          (when-let [notes (first
-                            (for [[v notes] (api/read-notes site-config namespace-thing)
-                                  :when     (= v (:name (:parent namespace-thing)))]
-                              notes))]
-            (list [:h2 "Namespace Notes"]
-                  [:p (wutil/markdown-string notes)]))
+              (when-let [notes (first
+                                (for [[v notes] (api/read-notes site-config namespace-thing)
+                                      :when     (= v (:name (:parent namespace-thing)))]
+                                  notes))]
+                (list [:h2 "Namespace Notes"]
+                      [:p (wutil/markdown-string notes)]))
 
-          (list [:h2 "Symbols"]
-                ;; FIXME: the fuck am I doing here srsly
-                (let [keys     [:special :macro :fn :var]
-                      mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
-                      ids      (zipmap keys ["sforms", "macros", "fns", "vars"])
-                      link-ids (zipmap keys ["sff", "mf", "ff", "vf"])
-                      grouping (->> (for [def-thing (api/list-defs site-config namespace-thing)
-                                          :let      [meta (api/read-meta site-config def-thing)]]
-                                      {:url  (:href (link-to' def-thing))
-                                       :name (:name meta)
-                                       :type (:type meta)})
-                                    (group-by :type))]
-                  (for [k keys]
-                    (when-let [records (get grouping k)]
-                      (list
-                       (let [links (emit-alphabetized-links records)]
-                         [:div.section
-                          [:h3.heading (get mapping k)
-                           " " (if (< 6 (count links))
-                                 [:span.unhide "+"]
-                                 [:span.hide "-"])]
-                          [:div {:class (str "autofold"
-                                             (when (< 6 (count links))
-                                               " prefold"))}
-                           links]]))))))
+              (list [:h2 "Symbols"]
+                    ;; FIXME: the fuck am I doing here srsly
+                    (let [keys     [:special :macro :fn :var]
+                          mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
+                          ids      (zipmap keys ["sforms", "macros", "fns", "vars"])
+                          link-ids (zipmap keys ["sff", "mf", "ff", "vf"])
+                          grouping (->> (for [def-thing (api/list-defs site-config namespace-thing)
+                                            :let      [meta (api/read-meta site-config def-thing)]]
+                                        {:url  (:href (link-to' def-thing))
+                                         :name (:name meta)
+                                         :type (:type meta)})
+                                      (group-by :type))]
+                      (for [k keys]
+                        (when-let [records (get grouping k)]
+                          (list
+                           (let [links (emit-alphabetized-links records)]
+                             [:div.section
+                              [:h3.heading (get mapping k)
+                               " " (if (< 6 (count links))
+                                     [:span.unhide "+"]
+                                     [:span.hide "-"])]
+                              [:div {:class (str "autofold"
+                                                 (when (< 6 (count links))
+                                                   " prefold"))}
+                               links]]))))))
 
-          [:script {:src "/public/jquery.js" :type "text/javascript"}]
-          [:script {:src "/public/fold.js" :type "text/javascript"}]))
+              [:script {:src "/public/jquery.js" :type "text/javascript"}]
+              [:script {:src "/public/fold.js" :type "text/javascript"}]))
+
+    (catch Exception e
+      nil)))
 
 (defn -render-html-symbol-page [def-thing meta]
   (let [{:keys [src type arglists doc name]} meta

@@ -47,7 +47,7 @@
             (let [notes-seq          (api/read-notes site-config artifact-thing)
                   [[_ latest-notes]] notes-seq]
               (when latest-notes
-                (list [:h2 "Arifact notes"]
+                (list [:h2 "Arifact Notes"]
                       (wutil/markdown-string notes))))
 
             [:h2 "Known release versions"]

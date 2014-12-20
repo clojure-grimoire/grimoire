@@ -46,7 +46,7 @@
          def-ops)
 
 (def root-ops
-  {"groups" list-groups})
+  {"groups" #'list-groups})
 
 (defn list-groups
   "Returns a success result representing the known groups."
@@ -66,9 +66,9 @@
          artifact-ops)
 
 (def group-ops
-  {"artifacts" group-artifacts
-   "notes"     group-notes
-   "meta"      group-meta})
+  {"artifacts" #'group-artifacts
+   "notes"     #'group-notes
+   "meta"      #'group-meta})
 
 (defn group-notes
   "Returns the notes, if any, for the target group."
@@ -102,9 +102,9 @@
          namespace-ops)
 
 (def artifact-ops
-  {"versions" artifact-versions
-   "notes"    group-notes
-   "meta"     group-meta})
+  {"versions" #'artifact-versions
+   "notes"    #'group-notes
+   "meta"     #'group-meta})
 
 (defn artifact-versions
   "Returns the versions for the target artifact."
@@ -121,9 +121,9 @@
 (declare version-namespaces)
 
 (def version-ops
-  {"namespaces" version-namespaces
-   "notes"      group-notes
-   "meta"       group-meta})
+  {"namespaces" #'version-namespaces
+   "notes"      #'group-notes
+   "meta"       #'group-meta})
 
 (defn version-namespaces
   "Returns a Succeed of the namespaces in the target version."
@@ -141,14 +141,14 @@
          namespace-search)
 
 (def namespace-ops
-  {"all"       (partial namespace-search identity)
-   "macros"    (partial namespace-search #{:macro})
-   "vars"      (partial namespace-search #{:var})
-   "fns"       (partial namespace-search #{:fn})
-   "specials"  (partial namespace-search #{:special})
-   "sentinels" (partial namespace-search #{:sentinel})
-   "notes"     group-notes
-   "meta"      group-meta})
+  {"all"       (partial #'namespace-search identity)
+   "macros"    (partial #'namespace-search #{:macro})
+   "vars"      (partial #'namespace-search #{:var})
+   "fns"       (partial #'namespace-search #{:fn})
+   "specials"  (partial #'namespace-search #{:special})
+   "sentinels" (partial #'namespace-search #{:sentinel})
+   "notes"     #'group-notes
+   "meta"      #'group-meta})
 
 ;; FIXME: memoize/cache this shit b/c slow as fuck
 (defn namespace-search
@@ -169,9 +169,9 @@
 (declare def-examples)
 
 (def def-ops
-  {"notes"    group-notes
-   "meta"     group-meta
-   "examples" def-examples})
+  {"notes"    #'group-notes
+   "meta"     #'group-meta
+   "examples" #'def-examples})
 
 (defn def-examples
   "Returns a Succeed of examples for the given def, if any exist in the

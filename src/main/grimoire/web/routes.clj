@@ -213,8 +213,10 @@
        (routing req))))
 
 (defroutes app
-  (GET "/" {uri :uri}
-    (info (pr-str {:uri uri :type :html}))
+  (GET "/" {uri :uri :as req}
+    (info (pr-str {:uri        uri
+                   :type       :html
+                   :user-agent (get-in req [:headers "user-agent"])}))
     (v/home-page))
 
   (GET "/favicon.ico" []
@@ -249,5 +251,7 @@
 
   (route/not-found
    (fn [{uri :uri}]
-     (warn (pr-str {:uri uri}))
+     (warn (pr-str {:uri        uri
+                    :type       :html
+                    :user-agent (get-in req [:headers "user-agent"])}))
      (v.e/error-404))))

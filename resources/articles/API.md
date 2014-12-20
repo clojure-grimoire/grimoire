@@ -34,7 +34,7 @@ rather than duplicating this function.
 
 `$VERSION` is a string representing a [SemVer](http://semver.org/)
 version, however the formatting is not enforced and qualfiers such as
-`-alpha4` are supported..
+`-alpha4` are supported.
 
 `$NAMESPACE` is the cannonical name of a Clojure namespace with no
 munging applied.
@@ -63,17 +63,17 @@ ever yield plain text results.
 
 ### Examples
 
-`GET /store/org.clojure/clojure/1.6.0/clojure.core/conj/ TYPE:
-text/html` shall return HTML formatted documentation of
+`GET http://conj.io/store/org.clojure/clojure/1.6.0/clojure.core/conj/ TYPE: text/html`
+shall return HTML formatted documentation of
 `clojure.core/conj` as of the release of
 `[org.clojure/clojure "1.6.0"]` as per convention.
 
-`GET /store/org.clojure/clojure/1.6.0/clojure.core/conj/ TYPE:
-text/plain` shall return plain text or un-rendered markdown
+`GET http://conj.io/store/org.clojure/clojure/1.6.0/clojure.core/conj/ TYPE: text/plain`
+shall return plain text or un-rendered markdown
 documentation of `clojure.core/conj` as of
 `[org.clojure/clojure "1.6.0"]` formatted for an 80-character display.
 
-`GET /store/org.clojure/clojure/1.6.0/clojure.core/conj/?type=text/plain`
+`GET http://conj.io/store/org.clojure/clojure/1.6.0/clojure.core/conj/?type=text/plain`
 shall give the same result as if the type header were set to `text/plain`.
 
 ### Compatibility
@@ -116,7 +116,7 @@ The exact content of each body is documented below. Note that a full
 client for this API is provided as part of
 [lib-grimoire](https://github.com/clojure-grimoire/lib-grimoire).
 
-## `/api/v0?op=groups`
+## `http://conj.io/api/v0?op=groups`
 
 Succeeds returning a list of records representing the various groups
 known to Grimoire.
@@ -132,7 +132,7 @@ In JSON:
              ...]}
 ```
 
-## `/api/v0/$GROUP?op=notes`
+## `http://conj.io/api/v0/$GROUP?op=notes`
 
 Succeeds returning a simple string, being markdown formatted but
 unrendered notes about the group in question.
@@ -149,7 +149,7 @@ In JSON:
 Note that `?op=notes` is defined over every path in this API except
 for the base path, so further mention of it is elided.
 
-## `/api/v0/$GROUP?op=meta`
+## `http://conj.io/api/v0/$GROUP?op=meta`
 
 Succeeds returning a map, being the metadata known about the group in
 question, or the empty map if nothing is known.
@@ -161,7 +161,7 @@ Note that `?op=meta` is defined over every path in this API except the
 base path, so further mentions of it are elided pending documentation
 of the metadata which may be expected from different resources.
 
-## `/api/v0/$GROUP?op=artifacts`
+## `http://conj.io/api/v0/$GROUP?op=artifacts`
 
 Succeeds returning a list of records representing the various
 artifacts in a known group.
@@ -180,7 +180,7 @@ In JSON:
              ...]}
 ```
 
-## `/api/v0/$GROUP/$ARTIFACT?op=versions`
+## `http://conj.io/api/v0/$GROUP/$ARTIFACT?op=versions`
 
 Succeeds returning a list of records representing the known versions
 of a the artifact in question.
@@ -194,11 +194,11 @@ In JSON:
              "html":     "/store/org.clojure/clojure/1.6.0",
              "children": {"notes":      "/api/v0/org.clojure/clojure/1.6.0?op=notes",
                            "meta":       "/api/v0/org.clojure/clojure/1.6.0?op=meta",
-                          "namespaces": "/api/v0/org.clojure/clojure/1.6.0?op=namespaces"}},
+                           "namespaces": "/api/v0/org.clojure/clojure/1.6.0?op=namespaces"}},
              ...]}
 ```
 
-## `/api/v0/$GROUP/$ARTIFACT/$VERSION?op=namespaces`
+## `http://conj.io/api/v0/$GROUP/$ARTIFACT/$VERSION?op=namespaces`
 
 Succeeds returning a list of records representing the namespaces in
 the given version.
@@ -211,7 +211,7 @@ In JSON:
  "body"  : [{"name":     "/org.clojure/clojure/1.6.0/clojure.core",
              "html":     "/store/org.clojure/clojure/1.6.0/clojure.core",
              "children": {"notes":    "/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=notes",
-                           "meta":     "/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=meta",
+                          "meta":     "/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=meta",
                           "macros":   "/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=macros",
                           "vars":     "/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=vars",
                           "fns":      "/api/v0/org.clojure/clojure/1.6.0/clojure.core?op=fns",
@@ -220,7 +220,7 @@ In JSON:
              ...]}
 ```
 
-## `/api/v0/$GROUP/$ARTIFACT/$VERSION/$NS?op=all`
+## `http://conj.io/api/v0/$GROUP/$ARTIFACT/$VERSION/$NS?op=all`
 
 Succeeds returning a list of records representing all the defs and
 sentinels in the given namespace.
@@ -242,7 +242,7 @@ The ops, `macros`, `vars`, `fns`, `specials` and `sentinels` are
 simply type selectors which return distinct subsets of thes `all`
 results.
 
-## `/api/v0/$GROUP/$ARTIFACT/$VERSION/$NS/$SYMBOL?op=examples`
+## `http://conj.io/api/v0/$GROUP/$ARTIFACT/$VERSION/$NS/$SYMBOL?op=examples`
 
 Succeeds returning a list of examples for this version of the symbol
 as strings of plain text. Note that this does not return all examples

@@ -250,7 +250,7 @@
                               (:uri request)))))
 
   (route/not-found
-   (fn [{uri :uri}]
+   (fn [{uri :uri :as req}]
      (warn (pr-str {:uri        uri
                     :type       :html
                     :user-agent (get-in req [:headers "user-agent"])}))

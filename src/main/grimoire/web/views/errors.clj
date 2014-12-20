@@ -42,8 +42,11 @@
         " github bugtracker."]]))))
 
 (defn error-unknown-version
-  ([version]
-   (error-unknown-version "org.clojure" "clojure" version))
+  ([version-thing]
+   (error-unknown-version
+    (:name (t/thing->group version-thing))
+    (:name (t/thing->artifact version-thing))
+    (:name version-thing)))
 
   ([groupid artifactid version]
    (layout

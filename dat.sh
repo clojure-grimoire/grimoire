@@ -20,13 +20,13 @@ _install_repo() {
 	git pull origin master
     fi
 
-    mkdir -p $PWD/$1/$3/
+    mkdir -p "$PWD/$1/$3"
+    src="$PWD/dat/$2/$3/$4"
+    tgt="$PWD/$1/$3/$4"
 
-    f="$PWD/$1/$3/$4"
-    if [ ! -f "$f" ]
-    then
-	ln -s "$PWD/dat/$2/$3/$4" "$f"
-    fi
+    echo "($src, $tgt)"
+    
+    ln -s $src $tgt
 }
 
 install_docs() {

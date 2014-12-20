@@ -46,3 +46,4 @@ install_notes() {
 #############################################################
 install_docs  clojure-grimoire/doc-clojure-core  org.clojure clojure
 install_notes clojure-grimoire/note-clojure-core org.clojure clojure
+install_docs  clojure-grimoire/doc-cljs-core     org.clojure clojurescript

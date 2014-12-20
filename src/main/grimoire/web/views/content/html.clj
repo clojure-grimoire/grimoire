@@ -17,7 +17,7 @@
                    [:li
                     [:a (link-to' group)
                      (:name group)]])])
-    
+
     ;; FIXME: more specific error
     (catch Exception e
       nil)))
@@ -179,7 +179,7 @@
               (when notes
                 (list [:h2 "Community Documentation"]
                       ;; FIXME: Add edit URL!
-                      notes)))
+                      (wutil/markdown-string notes))))
 
             ;; FIXME: examples needs a _lot_ of work
             (when-not (empty? examples)

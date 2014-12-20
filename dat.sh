@@ -14,10 +14,10 @@ _install_repo() {
     t="dat/$2/"
     if [ ! -d "$t" ];
     then
-	git clone http://github.com/$2.git "$t"
+        git clone http://github.com/$2.git "$t"
     else
-	pushd "$t"
-	git pull origin master
+        pushd "$t"
+        git pull origin master
     fi
 
     mkdir -p "$PWD/$1/$3"
@@ -25,8 +25,11 @@ _install_repo() {
     tgt="$PWD/$1/$3/$4"
 
     echo "($src, $tgt)"
-    
-    ln -s $src $tgt
+
+    if [ ! -f "$tgt" ];
+    then
+        ln -s "$src" "$tgt"
+    fi
 }
 
 install_docs() {
@@ -49,9 +52,14 @@ install_notes clojure-grimoire/note-clojure-core org.clojure clojure
 
 # CLJS
 install_docs  clojure-grimoire/doc-cljs-core     org.clojure clojurescript
+install_notes clojure-grimoire/note-cljs-core    org.clojure clojurescript
 
 # core.async
 install_docs  clojure-grimoire/doc-core-async    org.clojure core.async
+install_notes clojure-grimoire/note-core-async   org.clojure core.async
 
 # core.typed
 install_docs  clojure-grimoire/doc-core-typed    org.clojure core.typed
+install_notes clojure-grimoire/note-core-typed   org.clojure core.typed
+install_docs  clojure-grimoire/doc-core-typed    org.clojure core.typed.rt
+install_notes clojure-grimoire/note-core-typed   org.clojure core.typed.rt

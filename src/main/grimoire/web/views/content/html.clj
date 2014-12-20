@@ -42,7 +42,14 @@
 (defmethod artifact-page :text/html [_ artifact-thing]
   (try
     (layout site-config
-            [:h1 {:class "page-title"} (header artifact-thing)]
+            [:h1 {:class "page-title"}
+             (header artifact-thing)]
+            (let [notes-seq          (api/read-notes site-config artifact-thing)
+                  [[_ latest-notes]] notes-seq]
+              (when latest-notes
+                (list [:h2 "Arifact notes"]
+                      (wutil/markdown-string notes))))
+
             [:h2 "Known release versions"]
             [:ul (for [version (->> (api/list-versions site-config artifact-thing)
                                   (sort-by :name)

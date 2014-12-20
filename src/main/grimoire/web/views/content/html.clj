@@ -171,10 +171,11 @@
               (list [:h2 "Official Documentation"]
                     [:pre "  " doc]))
 
-            (let [notes (for [[v text] notes
-                              :when text]
-                          [:pre text])]
-              (when-not (empty? notes)
+            (let [notes (first
+                         (for [[v text] notes
+                               :when text]
+                           [:pre text]))]
+              (when notes
                 (list [:h2 "Community Documentation"]
                       ;; FIXME: Add edit URL!
                       notes)))

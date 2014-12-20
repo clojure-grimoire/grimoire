@@ -44,20 +44,23 @@
                                      :type type})]
          (context ["/store"] []
            (GET "/" {uri :uri}
-             (info (pr-str {:uri uri :type :text}))
-             (v/store-page type))
+             (when-let [r (v/store-page type)]
+               (info log-msg)
+               r))
 
            (context ["/:groupid"] [groupid]
              (let-routes [t (thing/->Group groupid)]
                (GET "/" []
-                 (info log-msg)
-                 (v/group-page type t))
+                 (when-let [r (v/group-page type t)]
+                   (info log-msg)
+                   r))
 
                (context ["/:artifactid"] [artifactid]
                  (let-routes [t (thing/->T :artifact t artifactid)]
                    (GET "/" []
-                     (info log-msg)
-                     (v/artifact-page type t))
+                     (when-let [r (v/artifact-page type t)]
+                       (info log-msg)
+                       r))
 
                    (context ["/:version"] [version]
                      (let-routes [t (thing/->T :version t version)]
@@ -71,8 +74,9 @@
                                       (v/ns-version-index namespace)))
 
                            :else
-                           ,,(do (info log-msg)
-                                 (v/version-page type t))))
+                           ,,(when-let [r (v/version-page type t)]
+                               (info log-msg)
+                               r)))
 
                        (context "/:namespace" [namespace]
                          (let-routes [t (thing/->T :namespace t namespace)]
@@ -87,8 +91,9 @@
                                           namespace))
 
                                :else
-                               ,,(do (info log-msg)
-                                     (v/namespace-page-memo type t))))
+                               ,,(when-let [r (v/namespace-page-memo type t)]
+                                   (info log-msg)
+                                   r)))
 
                            (context "/:symbol" [symbol]
                              (let-routes [t (thing/->T :def t symbol)]
@@ -112,9 +117,9 @@
                                                 namespace symbol'))
 
                                      :else
-                                     ,,(let [res (v/symbol-page type t)]
+                                     ,,(when-let [r (v/symbol-page type t)]
                                          (info log-msg)
-                                         res))))
+                                         r))))
 
                                (route/not-found
                                 (fn [req]
@@ -140,12 +145,12 @@
                 (fn [req]
                   (warn log-msg)
                   (v.e/error-unknown-group t)))))))
-      (routing req))))
+       (routing req))))
 
 (defmacro api-log []
   `(info (-> ~'t
-           (select-keys [:uri])
-           (assoc :op ~'op))))
+            (select-keys [:uri])
+            (assoc :op ~'op))))
 
 (def api-v0
   (fn [{header-type :content-type
@@ -206,7 +211,7 @@
                                  ((get v.api/def-ops op
                                        v.api/unknown-op)
                                   type t))))))))))))))
-      (routing req))))
+       (routing req))))
 
 (defroutes app
   (GET "/" {uri :uri}

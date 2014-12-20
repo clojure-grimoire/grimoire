@@ -7,29 +7,25 @@ DOCS=doc-store
 
 mkdir dat    # dir for git repos to live in
 mkdir $DOCS  # dir used by Grimoire as the doc tree
-mkdir $NOTES # dir used by Grimoire as the notes tree
 
 _install_repo() {
     # Should not be directly used
     t="dat/$2/"
     if [ ! -d "$t" ];
     then
-        git clone http://github.com/$2.git "$t"
+        git clone git@github.com:$2.git "$t"
+        #git clone https://github.com/$2.git "$t"
     else
         pushd "$t"
         git pull origin master
+        popd
     fi
 
     mkdir -p "$PWD/$1/$3"
     src="$PWD/dat/$2/$3/$4"
     tgt="$PWD/$1/$3/$4"
 
-    echo "($src, $tgt)"
-
-    if [ ! -f "$tgt" ];
-    then
-        ln -s "$src" "$tgt"
-    fi
+    ln -s "$src" "$tgt"
 }
 
 install_docs() {
@@ -39,27 +35,18 @@ install_docs() {
     _install_repo $DOCS $1 $2 $3
 }
 
-install_notes() {
-    # args are the same as install_docs, however this function
-    # installs to the notes dir not to the docs dir.
-    _install_repo $NOTES $1 $2 $3
-}
+# Install the notes
+############################################################
+# Note that the notes are a single monolithic project, whereas
+# individual libraries are documented seperately.
+git clone git@github.com:clojure-grimoire/datastore.git\
+          dat/clojure-grimoire/notes
+ln -s $PWD/dat/clojure-grimoire/notes $PWD/$NOTES
 
 # Import the clojure.core docs & notes
-#############################################################
-install_docs  clojure-grimoire/doc-clojure-core  org.clojure clojure
-install_notes clojure-grimoire/note-clojure-core org.clojure clojure
-
-# CLJS
-install_docs  clojure-grimoire/doc-cljs-core     org.clojure clojurescript
-install_notes clojure-grimoire/note-cljs-core    org.clojure clojurescript
-
-# core.async
-install_docs  clojure-grimoire/doc-core-async    org.clojure core.async
-install_notes clojure-grimoire/note-core-async   org.clojure core.async
-
-# core.typed
-install_docs  clojure-grimoire/doc-core-typed    org.clojure core.typed
-install_notes clojure-grimoire/note-core-typed   org.clojure core.typed
-install_docs  clojure-grimoire/doc-core-typed    org.clojure core.typed.rt
-install_notes clojure-grimoire/note-core-typed   org.clojure core.typed.rt
+############################################################
+install_docs  clojure-grimoire/doc-clojure-core org.clojure clojure
+install_docs  clojure-grimoire/doc-cljs-core    org.clojure clojurescript
+install_docs  clojure-grimoire/doc-core-async   org.clojure core.async
+install_docs  clojure-grimoire/doc-core-typed   org.clojure core.typed
+install_docs  clojure-grimoire/doc-core-typed   org.clojure core.typed.rt

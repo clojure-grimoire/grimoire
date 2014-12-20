@@ -15,14 +15,15 @@
    (slurp (io/resource "404.html"))))
 
 (defn error-unknown-group [groupid]
-  (layout
-   site-config
-   [:h1 {:class "page-title"}
-    [:a groupid]]
-   [:p "Unknown group " (pr-str groupid)]
-   [:p "If you found a broken link, please report the issue encountered on the "
-    [:a {:href (:repo site-config)}
-     " github bugtracker."]]))
+  (let [groupid (:name groupid)]
+    (layout
+     site-config
+     [:h1 {:class "page-title"}
+      [:a groupid]]
+     [:p "Unknown group " (pr-str groupid)]
+     [:p "If you found a broken link, please report the issue encountered on the "
+      [:a {:href (:repo site-config)}
+       " github bugtracker."]])))
 
 (defn error-unknown-artifact
   ([artifact-thing]

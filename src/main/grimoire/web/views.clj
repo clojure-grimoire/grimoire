@@ -18,7 +18,6 @@
                          :notes "notes-store"
                          :mode  :filesystem}
    :version             (slurp "VERSION")
-   :clojure-version     "1.6.0"
    :google-analytics-id "UA-44001831-2"
    :year                "2014"
    :author              {:me          "http://arrdem.com/"

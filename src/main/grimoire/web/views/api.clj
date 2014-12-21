@@ -1,7 +1,8 @@
 (ns grimoire.web.views.api
   (:require [grimoire.api :as api]
             [grimoire.util :refer [succeed? result]]
-            [grimoire.web.views :refer [site-config]]
+            [grimoire.web.views
+             :refer [site-config ns-version-index]]
             [cheshire.core :refer [generate-string]]))
 
 (defn fail [body]
@@ -39,6 +40,7 @@
      ((-tm type))))
 
 (declare list-groups
+         namespace-search
          group-ops
          artifact-ops
          version-ops
@@ -46,7 +48,8 @@
          def-ops)
 
 (def root-ops
-  {"groups" #'list-groups})
+  {"groups"           #'list-groups
+   "namespace-search" #'namespace-search})
 
 (defn list-groups
   "Returns a success result representing the known groups."

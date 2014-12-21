@@ -59,27 +59,30 @@
     (layout site-config
             [:h1 {:class "page-title"}
              (header artifact-thing)]
-            (let [notes-seq          (api/read-notes site-config artifact-thing)
-                  [[_ latest-notes]] notes-seq]
-              (when latest-notes
-                (list [:h2 "Arifact Notes"]
-                      (wutil/markdown-string latest-notes))))
 
-            [:h2 "Known release versions"]
-            [:ul (for [version (->> (api/list-versions site-config artifact-thing)
-                                  (sort-by :name)
-                                  reverse)
-                       :let  [artifact (:parent version)
-                              group    (:parent artifact)]]
-                   [:li
-                    [:a (link-to' version)
-                     (format "[%s/%s \"%s\"]"
-                             (:name group)
-                             (:name artifact)
-                             (:name version))]])])
+            (let [?notes-seq (api/read-notes site-config artifact-thing)]
+              (when (succeed? ?notes-seq)
+                (let [[[_ notes]] (result ?notes-seq)]
+                  (when notes
+                    (list
+                     [:h2 "Arifact Notes"]
+                     (wutil/markdown-string notes))))))
+
+            (list
+             [:h2 "Known release versions"]
+             [:ul (for [version (->> (api/list-versions site-config artifact-thing)
+                                   result (sort-by :name) reverse)
+                        :let  [artifact (:parent version)
+                               group    (:parent artifact)]]
+                    [:li
+                     [:a (link-to' version)
+                      (format "[%s/%s \"%s\"]"
+                              (:name group)
+                              (:name artifact)
+                              (:name version))]])]))
 
     ;; FIXME: more specific error
-    (catch Exception e
+    (catch AssertionError e
       nil)))
 
 (defmethod version-page :text/html [_ version-thing]

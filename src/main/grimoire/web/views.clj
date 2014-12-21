@@ -1,6 +1,8 @@
 (ns grimoire.web.views
-  (:require [grimoire.util :as util]
-            [grimoire.web.layout :refer [layout]]
+  (:require [grimoire.util :as util
+             :refer [succeed? result]]
+            [grimoire.web.layout
+             :refer [layout]]
             [grimoire.web.util :as wutil]
             [grimoire.api :as api]
             [ring.util.response :as response]))
@@ -122,15 +124,19 @@
 ;; FIXME: application/json
 
 (def ns-version-index
-  (->> (for [groupid   (api/list-groups     site-config)
-           artifact  (api/list-artifacts  site-config groupid)
-           version   (->> artifact
-                       (api/list-versions site-config)
-                       (take 1))
-           namespace (api/list-namespaces site-config version)]
-       [(:name namespace)
-        (:name version)])
-    (into {})))
+  (let [groups (-> site-config
+                  api/list-groups
+                  result)]
+    (->> (for [groupid   groups
+             artifact  (-> site-config
+                          (api/list-artifacts groupid)
+                          result)
+             :let [version (->> artifact
+                              (api/list-versions site-config)
+                              result first)]
+             namespace (api/list-namespaces site-config version)]
+         [(:name namespace) version])
+       (into {}))))
 
 ;; FIXME: code loading is evil
 

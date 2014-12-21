@@ -1,8 +1,10 @@
 (ns grimoire.web.views.api
+  (:refer-clojure :exclude [ns-resolve])
   (:require [grimoire.api :as api]
             [grimoire.util :refer [succeed? result]]
             [grimoire.web.views
              :refer [site-config ns-version-index]]
+            [grimoire.things :as t]
             [cheshire.core :refer [generate-string]]))
 
 (defn fail [body]
@@ -40,16 +42,16 @@
      ((-tm type))))
 
 (declare list-groups
-         namespace-search
+         ns-resolve
          group-ops
          artifact-ops
          version-ops
-         ns-ops
+         namespace-ops
          def-ops)
 
 (def root-ops
-  {"groups"           #'list-groups
-   "namespace-search" #'namespace-search})
+  {"groups"     #'list-groups
+   "ns-resolve" #'ns-resolve})
 
 (defn list-groups
   "Returns a success result representing the known groups."
@@ -70,6 +72,28 @@
       (-> (.getMessage e)
          fail
          ((-tm type))))))
+
+(defn ns-resolve
+  "Returns a success result representing the version and artifact in which a
+  namespace is defined."
+  [type params]
+  (-> (if-let [ns (get params :ns)]
+       (if-let [r (get ns-version-index ns)]
+         (let [version-t  r
+               artifact-t (:parent version-t)
+               group-t    (:parent artifact-t)
+               ns-t       (t/->Ns version-t ns)]
+           (succeed {:namespace      ns
+                     :version        (:name version-t)
+                     :artifact       (:name artifact-t)
+                     :group          (:name group-t)
+                     :html           (str "/store/" (:uri ns-t))
+                     :children       (->> (for [op (keys #'namespace-ops)]
+                                          [op (str "/api/v0/" (:uri ns-t) "?op=" op)])
+                                        (into {}))}))
+         (fail "Unknown namespace :c"))
+       (fail "ns paramenter not set!"))
+     ((-tm type))))
 
 (declare group-notes
          group-meta
@@ -208,11 +232,13 @@
                       result)
              :let  [meta (api/read-meta site-config t)]
              :when (filter (get t :type :fn))]
-         {:name     (:name t)
-          :html     (str "/store/" (:uri t))
-          :children (->> (for [op (keys def-ops)]
-                         [op (str "/api/v0/" (:uri t) "?op=" op)])
-                       (into {}))})
+         [(:name t)
+          {:name     (:name t)
+           :html     (str "/store/" (:uri t))
+           :children (->> (for [op (keys def-ops)]
+                          [op (str "/api/v0/" (:uri t) "?op=" op)])
+                        (into {}))}])
+       (into {})
        succeed
        ((-tm type)))
 

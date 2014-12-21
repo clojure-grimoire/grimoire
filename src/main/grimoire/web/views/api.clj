@@ -93,7 +93,6 @@
          fail
          ((-tm type))))))
 
-
 (defn group-meta
   "Returns the metadata, if any, for the target group."
   [type thing]

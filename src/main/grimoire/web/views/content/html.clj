@@ -24,20 +24,35 @@
 
 (defmethod group-page :text/html [_ group-thing]
   (try
-    (layout site-config
-            [:h1 {:class "page-title"} (header group-thing)]
-            [:h2 "Known artifacts"]
-            [:ul (for [artifact (->> (api/list-artifacts site-config group-thing)
-                                   (sort-by :name))
-                       :let  [group (:parent artifact)]]
-                   [:li
-                    [:a (link-to' artifact)
-                     (format "%s/%s"
-                             (:name group)
-                             (:name artifact))]])])
+    (let [artifacts (-> site-config
+                       (api/list-artifacts group-thing)
+                       result)]
+      (layout site-config
+              [:h1 {:class "page-title"}
+               (header group-thing)]
+
+              (let [?notes (api/read-notes site-config group-thing)]
+                (when (succeed? ?notes)
+                  (let [[[_ notes]] (result ?notes)]
+                    (when notes
+                      (list
+                       [:h2 "Group Notes"]
+                       (wutil/markdown-string notes))))))
+
+              (list
+               [:h2 "Known Artifacts"]
+               [:ul (for [artifact (sort-by :name artifacts)
+                          :let     [group (:parent artifact)]]
+                      [:li
+                       [:a (link-to' artifact)
+                        (format "%s/%s"
+                                (:name group)
+                                (:name artifact))]])])))
 
     ;; FIXME: more specific error
-    (catch Exception e)))
+    (catch AssertionError e
+      (println (.getMessage e))
+      nil)))
 
 (defmethod artifact-page :text/html [_ artifact-thing]
   (try

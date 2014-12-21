@@ -148,7 +148,6 @@
   (let [{:keys [src type arglists doc name]} meta
         namespace (:name (t/thing->namespace def-thing))
         symbol    name
-        notes     (-> site-config (api/read-notes def-thing))  ;; Seq [version, notes]
         related   (api/read-related site-config def-thing)    ;; Seq [ Thing [:def] ]
         examples  (api/read-examples site-config def-thing)]  ;; Seq [version, related]
     (layout (assoc site-config
@@ -172,10 +171,7 @@
               (list [:h2 "Official Documentation"]
                     [:pre "  " doc]))
 
-            (let [notes (first
-                         (for [[v text] notes
-                               :when text]
-                           [:pre text]))]
+            (let [[[_ notes]] (api/read-notes site-config def-thing)]
               (when notes
                 (list [:h2 "Community Documentation"]
                       ;; FIXME: Add edit URL!

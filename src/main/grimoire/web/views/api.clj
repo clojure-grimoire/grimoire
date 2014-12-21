@@ -232,6 +232,7 @@
   (try
     (->> def-thing
        (api/read-examples site-config)
+       result
        (map second)
        succeed
        ((-tm type)))

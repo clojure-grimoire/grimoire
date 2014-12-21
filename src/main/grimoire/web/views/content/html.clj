@@ -87,22 +87,21 @@
 
 (defmethod version-page :text/html [_ version-thing]
   (try
-    (let [[[v notes]] (api/read-notes site-config version-thing)]
+    (let [?notes (api/read-notes site-config version-thing)]
       (layout site-config ;; FIXME: add artifact & group name to title somehow?
               [:h1 {:class "page-title"} (header version-thing)]
-              (when notes
+              (when (succeed? ?notes)
                 (list [:h2 "Release Notes"]
-                      (wutil/markdown-string notes)))
+                      (wutil/markdown-string (-> ?notes result first second))))
 
               [:h2 "Namespaces"]
-              [:ul
-               (for [ns-thing (->> (api/list-namespaces site-config version-thing)
-                                 (sort-by :name))]
-                 [:li
-                  [:a (link-to' ns-thing) (:name ns-thing)]])]))
+              [:ul (for [ns-thing (->> (api/list-namespaces site-config version-thing)
+                                     result (sort-by :name))]
+                     [:li [:a (link-to' ns-thing)
+                           (:name ns-thing)]])]))
 
     ;; FIXME: more specific error type
-    (catch Exception e
+    (catch AssertionError e
       nil)))
 
 (defn emit-alphabetized-links [records]

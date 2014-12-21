@@ -126,21 +126,12 @@
 ;; FIXME: application/json
 
 (def ns-version-index
-  (let [groups (-> site-config
-                  api/list-groups
-                  result)]
-    (->> (for [groupid   groups
-             artifact  (-> site-config
-                          (api/list-artifacts groupid)
-                          result)
-             :let [version (->> artifact
-                              (api/list-versions site-config)
-                              result first)]
-             namespace (-> site-config
-                          (api/list-namespaces version)
-                          result)]
-         [(:name namespace) version])
-       (into {}))))
+  (->> (for [groupid                   (result (api/list-groups     site-config))
+           artifact                  (result (api/list-artifacts  site-config groupid))
+           :let      [version (first (result (api/list-versions   site-config artifact)))]
+           namespace                 (result (api/list-namespaces site-config version))]
+       [(:name namespace) version])
+     (into {})))
 
 ;; FIXME: code loading is evil
 

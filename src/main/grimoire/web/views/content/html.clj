@@ -14,7 +14,7 @@
                ,,"Artifact store"]
               (list
                [:h2 "Known Maven groups"]
-               [:ul (for [group (sort-by :name  groups)]
+               [:ul (for [group (sort-by :name groups)]
                       [:li [:a (link-to' group)
                             (:name group)]])])))
 

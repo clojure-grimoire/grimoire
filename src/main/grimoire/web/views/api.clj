@@ -200,7 +200,9 @@
   operations thereon."
   [filter type ns-thing]
   (try
-    (-> (for [t     (api/list-defs site-config ns-thing)
+    (-> (for [t     (-> site-config
+                      (api/list-defs ns-thing)
+                      result)
              :let  [meta (api/read-meta site-config t)]
              :when (filter (get t :type :fn))]
          {:name     (:name t)

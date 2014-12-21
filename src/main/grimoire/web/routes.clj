@@ -72,7 +72,7 @@
                               (format "/store/%s/%s/%s/"
                                       groupid
                                       artifactid
-                                      (v/ns-version-index namespace)))
+                                      (-> namespace v/ns-version-index :name)))
 
                            :else
                            ,,(when-let [r (v/version-page type t)]
@@ -88,7 +88,7 @@
                                   (format "/store/%s/%s/%s/%s/"
                                           groupid
                                           artifactid
-                                          (v/ns-version-index namespace)
+                                          (-> namespace v/ns-version-index :name)
                                           namespace))
 
                                :else
@@ -106,7 +106,7 @@
                                         (format "/store/%s/%s/%s/%s/%s/"
                                                 groupid
                                                 artifactid
-                                                (v/ns-version-index namespace)
+                                                (-> namespace v/ns-version-index :name)
                                                 namespace
                                                 symbol))
 

@@ -149,6 +149,34 @@ In JSON:
 Note that `?op=notes` is defined over every path in this API except
 for the base path, so further mention of it is elided.
 
+## `http://conj.io/api/v0?op=ns-resolve&ns=$NAMESPACE`
+
+Succeeds returning an augmented namespace result indicating the newest
+documented artifact with the namespace in question.
+
+```javascript
+{
+  "result": "success",
+  "body": {
+    "namespace": "clojure.core",
+    "version": "1.7.0-alpha4",
+    "artifact": "clojure",
+    "group": "org.clojure",
+    "html": "/store/org.clojure/clojure/1.7.0-alpha4/clojure.core",
+    "children": {
+      "all": "/api/v0/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=all",
+      "macros": "/api/v0/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=macros",
+      "vars": "/api/v0/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=vars",
+      "fns": "/api/v0/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=fns",
+      "specials": "/api/v0/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=specials",
+      "sentinels": "/api/v0/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=sentinels",
+      "notes": "/api/v0/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=notes",
+      "meta": "/api/v0/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=meta"
+    }
+  }
+}
+```
+
 ## `http://conj.io/api/v0/$GROUP?op=meta`
 
 Succeeds returning a map, being the metadata known about the group in

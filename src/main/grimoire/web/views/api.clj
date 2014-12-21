@@ -165,7 +165,9 @@
   "Returns a Succeed of the namespaces in the target version."
   [type version-thing]
   (try
-    (-> (for [t (api/list-namespaces site-config version-thing)]
+    (-> (for [t (-> site-config
+                  (api/list-namespaces version-thing)
+                  result)]
          {:name     (:name t)
           :html     (str "/store/" (:uri t))
           :children (->> (for [op (keys namespace-ops)]

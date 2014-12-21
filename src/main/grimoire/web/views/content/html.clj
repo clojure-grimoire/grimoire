@@ -8,18 +8,19 @@
 
 (defmethod store-page :text/html [_]
   (try
-    (layout site-config
-            [:h1 {:class "page-title"}
-             ,,"Artifact store"]
-            [:h2 "Known Maven groups"]
-            [:ul (for [group (->> (api/list-groups site-config)
-                                (sort-by :name))]
-                   [:li
-                    [:a (link-to' group)
-                     (:name group)]])])
+    (let [groups (-> site-config api/list-groups result)]
+      (println groups)
+      (layout site-config
+              [:h1 {:class "page-title"}
+               ,,"Artifact store"]
+              (list
+               [:h2 "Known Maven groups"]
+               [:ul (for [group (sort-by :name  groups)]
+                      [:li [:a (link-to' group)
+                            (:name group)]])])))
 
     ;; FIXME: more specific error
-    (catch Exception e
+    (catch AssertionError e
       nil)))
 
 (defmethod group-page :text/html [_ group-thing]

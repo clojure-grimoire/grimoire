@@ -138,7 +138,9 @@
   "Returns the versions for the target artifact."
   [type artifact-thing]
   (try
-    (-> (for [t (api/list-versions site-config artifact-thing)]
+    (-> (for [t (-> site-config
+                  (api/list-versions artifact-thing)
+                  result)]
          {:name     (:name t)
           :html     (str "/store/" (:uri t))
           :children (->> (for [op (keys version-ops)]

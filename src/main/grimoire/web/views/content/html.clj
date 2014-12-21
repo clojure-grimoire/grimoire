@@ -9,7 +9,6 @@
 (defmethod store-page :text/html [_]
   (try
     (let [groups (-> site-config api/list-groups result)]
-      (println groups)
       (layout site-config
               [:h1 {:class "page-title"}
                ,,"Artifact store"]

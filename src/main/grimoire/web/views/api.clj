@@ -88,7 +88,7 @@
                      :artifact       (:name artifact-t)
                      :group          (:name group-t)
                      :html           (str "/store/" (:uri ns-t))
-                     :children       (->> (for [op (keys #'namespace-ops)]
+                     :children       (->> (for [op (keys namespace-ops)]
                                           [op (str "/api/v0/" (:uri ns-t) "?op=" op)])
                                         (into {}))}))
          (fail "Unknown namespace :c"))
@@ -139,7 +139,9 @@
   "Returns the artifacts for the target group."
   [type group-thing]
   (try
-    (-> (for [t (api/list-artifacts site-config group-thing)]
+    (-> (for [t (-> site-config
+                  (api/list-artifacts group-thing)
+                  result)]
          {:name     (:name t)
           :html     (str "/store/" (:uri t))
           :children (->> (for [op (keys artifact-ops)]

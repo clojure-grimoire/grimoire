@@ -172,8 +172,9 @@
   (let [{:keys [src type arglists doc name]} meta
         namespace (:name (t/thing->namespace def-thing))
         symbol    name
-        related   (api/read-related site-config def-thing)    ;; Seq [ Thing [:def] ]
-        examples  (api/read-examples site-config def-thing)]  ;; Seq [version, related]
+        related   (api/read-related  site-config def-thing) ;; Seq [ Thing [:def] ]
+        ?examples (api/read-examples site-config def-thing) ;; Seq [version, related]
+        ?notes    (api/read-notes    site-config def-thing)]
     (layout (assoc site-config
                    :page {:description (str namespace "/" symbol
                                             " - documentation and examples")
@@ -195,22 +196,23 @@
               (list [:h2 "Official Documentation"]
                     [:pre "  " doc]))
 
-            (let [[[_ notes]] (api/read-notes site-config def-thing)]
-              (when notes
-                (list [:h2 "Community Documentation"]
-                      ;; FIXME: Add edit URL!
-                      (wutil/markdown-string notes))))
+            (when (succeed? ?notes)
+              (let [[[_ notes]] (result ?notes)]
+                (when notes
+                  (list [:h2 "Community Documentation"]
+                        ;; FIXME: Add edit URL!
+                        (wutil/markdown-string notes)))))
 
             ;; FIXME: examples needs a _lot_ of work
-            (when-not (empty? examples)
+            (when (succeed? ?examples)
               [:div.section
                [:h2.heading "Examples " [:span.hide "-"]]
                [:div.autofold
-                (for [[v e] examples]
+                (for [[v e] (result ?examples)]
                   [:div.example
                    [:div.source
                     (wutil/highlight-clojure e)]])]])
-
+            
             (when-not (= :special type)
               [:a {:href (str "http://crossclj.info/fun/"
                               namespace "/" (wutil/url-encode symbol) ".html")}
@@ -220,7 +222,7 @@
               (list [:h2 "Related Symbols"]
                     [:ul (for [r    related
                                :let [sym r
-                                     ns (:parent sym)]]
+                                     ns  (:parent sym)]]
                            [:a (link-to' sym) (:name r)])]))
 
             (when src
@@ -234,19 +236,22 @@
             [:script {:src "/public/fold.js" :type "text/javascript"}])))
 
 (defmethod symbol-page :text/html [_ def-thing]
-  (let [{:keys [type] :as meta} (api/read-meta site-config def-thing)]
-    (cond (and meta
-             (not (= :sentinel type)))
-          ,,(-render-html-symbol-page def-thing meta)
+  (let [?meta (api/read-meta site-config def-thing)]
+    (if (succeed? ?meta)
+      (let [{:keys [type] :as meta} (result ?meta)]
+        (cond (and meta (not (= :sentinel type)))
+              ;; non-sentinel case
+              ,,(-render-html-symbol-page def-thing meta)
 
-          ;; chase a redirect
-          (= :sentinel type)
-          ,,(when-let [target (:target meta)]
-              (symbol-page :text/html
-                           (t/path->thing
-                            (str (:uri (t/thing->version def-thing))
-                                 "/" target))))
+              (= :sentinel type)
+              ;; chase a redirect
+              ,,(when-let [target (:target meta)]
+                  (symbol-page :text/html
+                               (t/path->thing
+                                (str (:uri (t/thing->version def-thing))
+                                     "/" target))))
 
-          :else
-          ;; fail to find a redirect, error out
-          ,,nil)))
+              :else
+              ;; fail to find a redirect, error out
+              ,,nil))
+      nil)))

@@ -63,7 +63,7 @@
        succeed
        ((-tm type)))
 
-    (catch AssertionError e
+    (catch Exception e
       (-> (.getMessage e)
          fail
          ((-tm type))))))
@@ -88,7 +88,7 @@
        succeed
        ((-tm type)))
 
-    (catch AssertionError e
+    (catch Exception e
       (-> (.getMessage e)
          fail
          ((-tm type))))))
@@ -103,7 +103,7 @@
        succeed
        ((-tm type)))
     
-    (catch AssertionError e
+    (catch Exception e
       (-> (.getMessage e)
          fail
          ((-tm type))))))

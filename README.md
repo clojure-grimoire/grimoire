@@ -24,7 +24,7 @@ hosted version, the following should get you started:
 ```
 $ git clone git@github.com:clojure-grimoire/grimoire.git grimoire
 $ cd grimoire
-$ make build
+$ make setup
 $ lein serve
 ```
 

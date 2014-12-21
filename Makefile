@@ -1,12 +1,9 @@
-cheatsheet:
+setup: clean
 	bash cheatsheet.sh
-
-dat:
 	bash dat.sh
+	echo "Done!"
 
-build: cheatsheet dat
-
-test: build
+test: setup
 	lein serve
 
 deploy:

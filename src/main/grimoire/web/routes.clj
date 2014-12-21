@@ -165,7 +165,7 @@
 (def api-v0
   (fn [{header-type :content-type
        {param-type :type
-        op         :op} :params
+        op         :op :as params} :params
        :as req
        uri :uri}]
     (->> (let-routes [type    (normalize-type
@@ -179,7 +179,7 @@
          (context ["/api/v0"] []
            (GET "/" []
              (do-dispatch v.api/root-ops
-                          type op nil))
+                          type op params))
 
            (context ["/:group"] [group]
              (let-routes [t (thing/->Group group)]
@@ -250,7 +250,7 @@
                               (:uri request)))))
 
   (route/not-found
-   (fn [{uri :uri}]
+   (fn [{uri :uri :as req}]
      (warn (pr-str {:uri        uri
                     :type       :html
                     :user-agent (get-in req [:headers "user-agent"])}))

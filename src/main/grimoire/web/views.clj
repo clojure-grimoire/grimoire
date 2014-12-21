@@ -50,8 +50,10 @@
 (defmulti header :type)
 
 (defmethod header :group [group]
-  [:a (link-to' group)
-   ,,(:name group)])
+  (list [:a {:href "/store/"}
+         "store"] "/"
+         [:a (link-to' group)
+          ,,(:name group)]))
 
 (defmethod header :artifact [artifact]
   (list (header (:parent artifact))

@@ -99,10 +99,11 @@
   (try
     (->> thing
        (api/read-meta site-config)
+       result
        succeed
        ((-tm type)))
     
-    (catch Exception e
+    (catch AssertionError e
       (-> (.getMessage e)
          fail
          ((-tm type))))))

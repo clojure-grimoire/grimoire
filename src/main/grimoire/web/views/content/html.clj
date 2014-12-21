@@ -2,6 +2,7 @@
   (:require [grimoire.web.views :refer :all]
             [clojure.string :as string]
             [grimoire.api :as api]
+            [grimoire.util :refer [succeed? result]]
             [grimoire.things :as t]
             [grimoire.web.layout :refer [layout]]
             [grimoire.web.util :as wutil]))

@@ -1,5 +1,6 @@
 (ns grimoire.web.views.api
   (:require [grimoire.api :as api]
+            [grimoire.util :refer [succeed? result]]
             [grimoire.web.views :refer [site-config]]
             [cheshire.core :refer [generate-string]]))
 
@@ -51,7 +52,9 @@
   "Returns a success result representing the known groups."
   [type _]
   (try
-    (-> (for [g (api/list-groups site-config)]
+    (-> (for [g (-> site-config
+                  api/list-groups
+                  result)]
          {:name     (:name g)
           :html     (str "/store/" (:uri g))
           :children (->> (for [op (keys group-ops)]
@@ -60,7 +63,7 @@
        succeed
        ((-tm type)))
 
-    (catch Exception e
+    (catch AssertionError e
       (-> (.getMessage e)
          fail
          ((-tm type))))))

@@ -59,7 +59,7 @@
                       (str "## Examples\n"
                            ;; line40 "\n"
                            (->> (for [[v e] examples] e)
-                              (apply str))
+                              (apply str "\n"))
                            "\n\n")))
 
                   (when (succeed? ?related)

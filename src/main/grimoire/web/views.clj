@@ -134,7 +134,9 @@
              :let [version (->> artifact
                               (api/list-versions site-config)
                               result first)]
-             namespace (api/list-namespaces site-config version)]
+             namespace (-> site-config
+                          (api/list-namespaces version)
+                          result)]
          [(:name namespace) version])
        (into {}))))
 

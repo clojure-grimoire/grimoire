@@ -113,7 +113,9 @@
 
 (defmethod namespace-page :text/html [_ namespace-thing]
   (try
-    (let [meta (api/read-meta site-config namespace-thing)]
+    (let [meta   (-> (api/read-meta site-config namespace-thing)
+                    result)
+          ?notes (api/read-notes site-config namespace-thing)]
       (layout site-config ;; FIXME: add artifact, namespace?
               [:h1 {:class "page-title"}
                (header namespace-thing)]
@@ -123,10 +125,11 @@
                   (list [:h2 "Namespace Docs"]
                         [:p doc])))
 
-              (let [[[_ notes]] (api/read-notes site-config namespace-thing)]
-                (when notes
-                  (list [:h2 "Namespace Notes"]
-                        [:p (wutil/markdown-string notes)])))
+              (when (succeed? ?notes)
+                (let [[[_ notes]] (result ?notes)]
+                  (when notes
+                    (list [:h2 "Namespace Notes"]
+                          [:p (wutil/markdown-string notes)]))))
 
               (list [:h2 "Symbols"]
                     ;; FIXME: the fuck am I doing here srsly
@@ -134,8 +137,12 @@
                           mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
                           ids      (zipmap keys ["sforms", "macros", "fns", "vars"])
                           link-ids (zipmap keys ["sff", "mf", "ff", "vf"])
-                          grouping (->> (for [def-thing (api/list-defs site-config namespace-thing)
-                                            :let      [meta (api/read-meta site-config def-thing)]]
+                          grouping (->> (for [def-thing (-> site-config
+                                                         (api/list-defs namespace-thing)
+                                                         result)
+                                            :let      [meta (-> site-config
+                                                               (api/read-meta def-thing)
+                                                               result)]]
                                         {:url  (:href (link-to' def-thing))
                                          :name (:name meta)
                                          :type (:type meta)})
@@ -158,7 +165,7 @@
               [:script {:src "/public/fold.js" :type "text/javascript"}]))
 
     ;; FIXME: more specific error type
-    (catch Exception e
+    (catch AssertionError e
       nil)))
 
 (defn -render-html-symbol-page [def-thing meta]

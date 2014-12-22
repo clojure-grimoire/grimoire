@@ -61,9 +61,14 @@
              ,,,(:name artifact)]))
 
 (defmethod header :version [version]
-  (list "[" (header (:parent version))
-        " " [:a (link-to' version)
-             ,,,(pr-str (:name version))] "]"))
+  (list [:a {:href "/store/"}
+         "store"] "/"
+         "[" [:a (link-to' (-> version :parent :parent))
+              ,,(-> version :parent :parent :name)]
+         "/" [:a (link-to' (-> version :parent))
+              ,,(-> version :parent :name)]
+         " " [:a (link-to' version)
+              ,,,(pr-str (:name version))] "]"))
 
 (defmethod header :namespace [namespace]
   (list (header (:parent namespace)) " "

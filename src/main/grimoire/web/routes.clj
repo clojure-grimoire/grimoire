@@ -212,6 +212,8 @@
                                               type op t))))))))))))))
        (routing req))))
 
+(declare app)
+
 (defroutes app
   (GET "/" {uri :uri :as req}
     (info (pr-str {:uri        uri
@@ -245,9 +247,15 @@
   ;; Redirect legacy paths into the store
   (context ["/:version", :version #"[0-9]+.[0-9]+.[0-9]+"] [version]
     (fn [request]
-      (warn "Redirecting!")
-      (response/redirect (str "/store/org.clojure/clojure"
-                              (:uri request)))))
+      (let [user-agent (get-in request [:headers "user-agent"])
+            new-uri    (str "/store/org.clojure/clojure" (:uri request))
+            new-req    (-> request
+                          (assoc :uri new-uri)
+                          (dissoc :context :path-info))]
+        (println new-req)
+        (if (= user-agent "URL/Emacs")
+          (#'app new-req) ;; pass it forwards
+          (response/redirect new-uri))))) ;; everyone else
 
   (route/not-found
    (fn [{uri :uri :as req}]

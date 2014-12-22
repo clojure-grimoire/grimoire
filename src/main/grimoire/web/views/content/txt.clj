@@ -11,6 +11,14 @@
           "Feel free to file an issue on the bugtracker if you think this could be useful\n")
      response/response
      (response/content-type "text/plain")))
+
+(defmethod group-page :text/plain [_ group-thing]
+  (-> (str "# Group " (:name group-thing) "\n\n"
+          "Sorry, this page isn't supported in plaintext mode :c\n"
+          "Feel free to file an issue on the bugtracker if you think this could be useful\n")
+     response/response
+     (response/content-type "text/plain")))
+
 (defmethod symbol-page :text/plain [_ def-thing]
   (let [groupid    (t/thing->group     def-thing)
         artifactid (t/thing->artifact  def-thing)

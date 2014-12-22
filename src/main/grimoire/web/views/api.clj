@@ -247,12 +247,14 @@
          fail
          ((-tm type))))))
 
-(declare def-examples)
+(declare def-examples
+         def-related)
 
 (def def-ops
   {"notes"    #'group-notes
    "meta"     #'group-meta
-   "examples" #'def-examples})
+   "examples" #'def-examples
+   "related"  #'def-related})
 
 (defn def-examples
   "Returns a Succeed of examples for the given def, if any exist in the
@@ -263,6 +265,27 @@
        (api/read-examples site-config)
        result
        (map second)
+       succeed
+       ((-tm type)))
+
+    (catch Exception e
+      (-> (.getMessage e)
+         fail
+         ((-tm type))))))
+
+(defn def-related
+  "Returns a Succeed of related, namespace qualified symbols for the given def
+  encoded as strings if any exist in the datastore."
+  [type def-thing]
+  (try
+    (->> (for [t     (-> site-config
+                      (api/read-related def-thing)
+                      result)]
+         {:name     (:name t)
+          :html     (str "/store/" (:uri t))
+          :children (->> (for [op (keys def-ops)]
+                         [op (str "/api/v0/" (:uri t) "?op=" op)])
+                       (into {}))})
        succeed
        ((-tm type)))
 

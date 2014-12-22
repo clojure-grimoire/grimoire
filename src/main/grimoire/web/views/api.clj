@@ -234,13 +234,11 @@
                       result)
              :let  [meta (api/read-meta site-config t)]
              :when (filter (get t :type :fn))]
-         [(:name t)
-          {:name     (:name t)
-           :html     (str "/store/" (:uri t))
-           :children (->> (for [op (keys def-ops)]
-                          [op (str "/api/v0/" (:uri t) "?op=" op)])
-                        (into {}))}])
-       (into {})
+         {:name     (:name t)
+          :html     (str "/store/" (:uri t))
+          :children (->> (for [op (keys def-ops)]
+                         [op (str "/api/v0/" (:uri t) "?op=" op)])
+                       (into {}))})
        succeed
        ((-tm type)))
 

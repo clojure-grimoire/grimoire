@@ -26,14 +26,14 @@
      response/response
      (response/content-type "text/plain")))
 
-(defmethod version-page :text/html [_ version-thing]
+(defmethod version-page :text/plain [_ version-thing]
   (-> (str "# Version " (:uri version-thing) "\n\n"
           "Sorry, this page isn't supported in plaintext mode :c\n"
           "Feel free to file an issue on the bugtracker if you think this could be useful\n")
      response/response
      (response/content-type "text/plain")))
 
-(defmethod namespace-page :text/html [_ namespace-thing]
+(defmethod namespace-page :text/plain [_ namespace-thing]
   (-> (str "# Namespace " (:uri namespace-thing) "\n\n"
           "Sorry, this page isn't supported in plaintext mode :c\n"
           "Feel free to file an issue on the bugtracker if you think this could be useful\n")

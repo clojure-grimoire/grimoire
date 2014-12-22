@@ -7,7 +7,7 @@
   :aliases {"serve" ["with-profile" "server" "run"]}
   :profiles {:repl   {:plugins [[cider/cider-nrepl "0.8.0-SNAPSHOT"]]}
              :server {:dependencies [[org.clojure/clojure "1.6.0"]
-                                     [org.clojure-grimoire/lib-grimoire "0.6.2"]
+                                     [org.clojure-grimoire/lib-grimoire "0.6.3"]
                                      [cheshire "5.3.1"]
                                      [com.taoensso/timbre "3.2.1"]
                                      [ring/ring-core "1.3.0"]

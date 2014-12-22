@@ -143,6 +143,7 @@
                   (api/list-artifacts group-thing)
                   result)]
          {:name     (:name t)
+          :uri      (:uri t)
           :html     (str "/store/" (:uri t))
           :children (->> (for [op (keys artifact-ops)]
                          [op (str "/api/v0/" (:uri t) "?op=" op)])
@@ -171,6 +172,7 @@
                   (api/list-versions artifact-thing)
                   result)]
          {:name     (:name t)
+          :uri      (:uri t)
           :html     (str "/store/" (:uri t))
           :children (->> (for [op (keys version-ops)]
                          [op (str "/api/v0/" (:uri t) "?op=" op)])
@@ -198,6 +200,7 @@
                   (api/list-namespaces version-thing)
                   result)]
          {:name     (:name t)
+          :uri      (:uri t)
           :html     (str "/store/" (:uri t))
           :children (->> (for [op (keys namespace-ops)]
                          [op (str "/api/v0/" (:uri t) "?op=" op)])
@@ -235,6 +238,7 @@
              :let  [meta (api/read-meta site-config t)]
              :when (filter (get t :type :fn))]
          {:name     (:name t)
+          :uri      (:uri t)
           :html     (str "/store/" (:uri t))
           :children (->> (for [op (keys def-ops)]
                          [op (str "/api/v0/" (:uri t) "?op=" op)])
@@ -282,6 +286,7 @@
                       (api/read-related def-thing)
                       result)]
          {:name     (:name t)
+          :uri      (:uri t)
           :html     (str "/store/" (:uri t))
           :children (->> (for [op (keys def-ops)]
                          [op (str "/api/v0/" (:uri t) "?op=" op)])

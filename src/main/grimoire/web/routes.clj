@@ -252,7 +252,6 @@
             new-req    (-> request
                           (assoc :uri new-uri)
                           (dissoc :context :path-info))]
-        (println new-req)
         (if (= user-agent "URL/Emacs")
           (#'app new-req) ;; pass it forwards
           (response/redirect new-uri))))) ;; everyone else

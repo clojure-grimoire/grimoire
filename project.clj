@@ -3,7 +3,6 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :source-paths ["src/main"]
-  :dependencies [[org.thnetos/cd-client "0.3.6"]]
   :aliases {"serve" ["with-profile" "server" "run"]}
   :profiles {:repl   {:plugins [[cider/cider-nrepl "0.8.0-SNAPSHOT"]]}
              :server {:dependencies [[org.clojure/clojure "1.6.0"]

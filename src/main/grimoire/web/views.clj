@@ -94,19 +94,23 @@
            (keyword? x)]}
     x))
 
-(defmulti group-page dispatch-fn)
+(defmulti group-page dispatch-fn
+  :default :text/plain)
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
-(defmulti artifact-page dispatch-fn)
+(defmulti artifact-page dispatch-fn
+  :default :text/plain)
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
-(defmulti version-page dispatch-fn)
+(defmulti version-page dispatch-fn
+  :default :text/plain)
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
-(defmulti namespace-page dispatch-fn)
+(defmulti namespace-page dispatch-fn
+  :default :text/plain)
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
@@ -114,7 +118,8 @@
 (def namespace-page-memo
   (memoize namespace-page))
 
-(defmulti symbol-page dispatch-fn)
+(defmulti symbol-page dispatch-fn
+  :default :text/plain)
 ;; FIXME: application/edn
 ;; FIXME: application/json
 

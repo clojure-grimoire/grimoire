@@ -95,22 +95,18 @@
     x))
 
 (defmulti group-page dispatch-fn)
-;; FIXME: text/zalgo
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
 (defmulti artifact-page dispatch-fn)
-;; FIXME: text/zalgo
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
 (defmulti version-page dispatch-fn)
-;; FIXME: text/zalgo
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
 (defmulti namespace-page dispatch-fn)
-;; FIXME: text/zalgo
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
@@ -119,7 +115,6 @@
   (memoize namespace-page))
 
 (defmulti symbol-page dispatch-fn)
-;; FIXME: text/zalgo
 ;; FIXME: application/edn
 ;; FIXME: application/json
 

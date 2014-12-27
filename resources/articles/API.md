@@ -79,11 +79,11 @@ shall give the same result as if the type header were set to `text/plain`.
 ### Searching
 
 Some limited searching capabilities are privided by the path
-`/search/$NAMESPACE/$SYMBOL/`. Clients hitting this URL should expect
-to get a HTTP redirect to a page representing the newest known version
-of the artifact containing the designated namespace. Some clients
-including the Emacs URL client are specially handled and the redirect
-will be handled on the server side.
+`/search/v0/$NAMESPACE/$SYMBOL/`. Clients hitting this URL should
+expect to get a HTTP redirect to a page representing the newest known
+version of the artifact containing the designated namespace. Some
+clients including the Emacs URL client are specially handled and the
+redirect will be handled on the server side.
 
 ### Compatibility
 

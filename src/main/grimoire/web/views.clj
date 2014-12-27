@@ -89,9 +89,8 @@
 (defmulti store-page identity)
 
 (def dispatch-fn
-  (fn [x y]
-    {:pre [(and x y)
-           (keyword? x)]}
+  (fn [x & more]
+    {:pre [(keyword? x)]}
     x))
 
 (defmulti group-page dispatch-fn

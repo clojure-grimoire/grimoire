@@ -76,6 +76,15 @@ documentation of `clojure.core/conj` as of
 `GET http://conj.io/store/org.clojure/clojure/1.6.0/clojure.core/conj/?type=text/plain`
 shall give the same result as if the type header were set to `text/plain`.
 
+### Searching
+
+Some limited searching capabilities are privided by the path
+`/search/$NAMESPACE/$SYMBOL/`. Clients hitting this URL should expect
+to get a HTTP redirect to a page representing the newest known version
+of the artifact containing the designated namespace. Some clients
+including the Emacs URL client are specially handled and the redirect
+will be handled on the server side.
+
 ### Compatibility
 
 Note that prior to Grimoire 0.4.0, the path prefix

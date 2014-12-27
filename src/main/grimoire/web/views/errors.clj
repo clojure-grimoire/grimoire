@@ -1,6 +1,6 @@
 (ns grimoire.web.views.errors
   (:require [clojure.java.io :as io]
-            [grimoire.web.views :refer [site-config]]
+            [grimoire.web.views :refer [site-config dispatch-fn]]
             [grimoire.web.layout :refer [layout]]
             [grimoire.util :as util]
             [grimoire.things :as t]
@@ -8,6 +8,7 @@
 
 ;; 404 Error page
 ;; FIXME: these are all fucked
+;; FIXME: all of these need to be type parametric
 
 (defn error-404 []
   (layout
@@ -113,3 +114,12 @@
                  "Sorry! Only clojure.core is documented right now.")
             response/response
             (response/content-type "text/plain"))))))
+
+(defmulti search-no-symbol dispatch-fn
+  :default :text/plain)
+
+(defmulti search-no-version dispatch-fn
+  :default :text/plain)
+
+(load "errors/txt")
+(load "errors/html")

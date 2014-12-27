@@ -5,12 +5,8 @@
              :refer [layout]]
             [grimoire.web.util :as wutil]
             [grimoire.api :as api]
+            [grimoire.api.fs.read]
             [ring.util.response :as response]))
-
-;; Boot the grimoire fs backend. Wish I could put this somewhere else,
-;; but this is kinda where it fell.
-(load "/grimoire/api/fs")
-(load "/grimoire/api/fs/read")
 
 (def site-config
   {:url                 "http://conj.io/"
@@ -93,31 +89,27 @@
 (defmulti store-page identity)
 
 (def dispatch-fn
-  (fn [x y]
-    {:pre [(and x y)
-           (keyword? x)]}
+  (fn [x & more]
+    {:pre [(keyword? x)]}
     x))
 
-(defmulti group-page dispatch-fn)
-;; FIXME: text/zalgo
+(defmulti group-page dispatch-fn
+  :default :text/plain)
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
-(defmulti artifact-page dispatch-fn)
-;; FIXME: text/zalgo
-;; FIXME: text/plain
+(defmulti artifact-page dispatch-fn
+  :default :text/plain)
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
-(defmulti version-page dispatch-fn)
-;; FIXME: text/zalgo
-;; FIXME: text/plain
+(defmulti version-page dispatch-fn
+  :default :text/plain)
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
-(defmulti namespace-page dispatch-fn)
-;; FIXME: text/zalgo
-;; FIXME: text/plain
+(defmulti namespace-page dispatch-fn
+  :default :text/plain)
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
@@ -125,8 +117,8 @@
 (def namespace-page-memo
   (memoize namespace-page))
 
-(defmulti symbol-page dispatch-fn)
-;; FIXME: text/zalgo
+(defmulti symbol-page dispatch-fn
+  :default :text/plain)
 ;; FIXME: application/edn
 ;; FIXME: application/json
 

@@ -212,21 +212,27 @@
                                               type op t))))))))))))))
        (routing req))))
 
+(declare app)
+
 (defroutes search
   (context "/search" []
     (context "/:ns" [ns]
       (context "/:symbol" [symbol]
-        (GET "/" []
-          (if-let [v-thing (-> ns v/ns-version-index)]
-            (response/redirect
-             (format "/store/%s/%s/%s/%s/%s"
-                     (:name (thing/thing->group v-thing))
-                     (:name (thing/thing->artifact v-thing))
-                     (:name v-thing)
-                     ns
-                     symbol))))))))
-
-(declare app)
+        (fn [request]
+          (when-let [v-thing (-> ns v/ns-version-index)]
+            (let [user-agent (get-in request [:headers "user-agent"])
+                  new-uri    (format "/store/%s/%s/%s/%s/%s"
+                                     (:name (thing/thing->group v-thing))
+                                     (:name (thing/thing->artifact v-thing))
+                                     (:name v-thing)
+                                     ns
+                                     symbol)
+                  new-req    (-> request
+                                 (assoc :uri new-uri)
+                                 (dissoc :context :path-info))]
+              (if (= user-agent "URL/Emacs")
+                (#'app new-req) ;; pass it forwards
+                (response/redirect new-uri)))))))))
 
 (defroutes app
   (GET "/" {uri :uri :as req}

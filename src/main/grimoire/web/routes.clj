@@ -212,6 +212,20 @@
                                               type op t))))))))))))))
        (routing req))))
 
+(defroutes search
+  (context "/search" []
+    (context "/:ns" [ns]
+      (context "/:symbol" [symbol]
+        (GET "/" []
+          (if-let [v-thing (-> ns v/ns-version-index)]
+            (response/redirect
+             (format "/store/%s/%s/%s/%s/%s"
+                     (:name (thing/thing->group v-thing))
+                     (:name (thing/thing->artifact v-thing))
+                     (:name v-thing)
+                     ns
+                     symbol))))))))
+
 (declare app)
 
 (defroutes app
@@ -231,6 +245,9 @@
 
   ;; The main browsing interface
   store
+
+  ;; Symbol search interface
+  search
 
   (GET "/api" []
     (v/markdown-page "articles/API"))

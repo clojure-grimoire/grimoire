@@ -73,7 +73,7 @@ install_docs() {
     git_get "git@github.com:$1/$2.git"
     rm "./$2"
     dat="$GIT_DAT/$1/$2"
-    src="$DAT/$3/$4"
+    src="$dat/$3/$4"
     tgt="$DOCS/$3/$4"
 
     if [ -d "$dat" ]

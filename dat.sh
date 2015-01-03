@@ -10,6 +10,9 @@ mkdir -p "$DOCS" # dir used by Grimoire as the doc tree
 
 GIT_DAT="$PWD/dat"
 
+[ -f `which gawk` ] && AWK=`which gawk` || AWK=`which awk`
+echo "[debug] Using " $AWK " for awk imp'l"
+
 git_get() {
     # This is a quick little git extension designed to allow me to
     # manage all the git repos that I keep around better. The idea is
@@ -18,22 +21,22 @@ git_get() {
     # cloning and keeping multiple coppies of a single repo around.
 
     if ( [[ "--help" = $1 ]] ||
-	     [[ "help" = $1 ]] ||
-	     [[ -z $1 ]] )
+             [[ "help" = $1 ]] ||
+             [[ -z $1 ]] )
     then
-	echo "git-get"
-	echo "Usage: git get [help | --help | GIT_ADDR | GIT_ADDR USER/NAME]"
-	echo "  Clones a git repo to the $GIT_DAT dir, creating a symlink"
-	echo "  into the current directory."
-	exit 0
+        echo "git-get"
+        echo "Usage: git get [help | --help | GIT_ADDR | GIT_ADDR USER/NAME]"
+        echo "  Clones a git repo to the $GIT_DAT dir, creating a symlink"
+        echo "  into the current directory."
+        exit 0
     elif [ ! -z $2 ]
     then
-	USER=$(echo $2 | awk "{match(\$1,\"([^/]+)/.*\",a)}END{print(a[1])}")
-	REPO=$(echo $2 | awk "{match(\$1,\".*?/(.*?)(.git)?\",a)}END{print(a[1])}")
+        USER=$(echo $2 | $AWK "{match(\$1,\"([^/]+)/.*\",a)}END{print(a[1])}")
+        REPO=$(echo $2 | $AWK "{match(\$1,\".*?/(.*?)(.git)?\",a)}END{print(a[1])}")
     elif [ ! -z $1 ]
     then
-	USER=$(echo $1 | awk "{match(\$1,\".*?:([^/]+)/.*\",a)}END{print(a[1])}")
-	REPO=$(echo $1 | awk "{match(\$1,\".*?:[^/]+/(.*?).git\",a)}END{print(a[1])}")
+        USER=$(echo $1 | $AWK "{match(\$1,\".*?:([^/]+)/.*\",a)}END{print(a[1])}")
+        REPO=$(echo $1 | $AWK "{match(\$1,\".*?:[^/]+/(.*?).git\",a)}END{print(a[1])}")
     fi
 
     [ ! -z $USER ] && [ ! -z $REPO ] || exit 1

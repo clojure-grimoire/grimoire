@@ -19,7 +19,15 @@ And [contribute to grimoire](http://conj.io/contributing).
 ## Usage
 
 If you want to run a local instance of Grimoire rather than using the
-hosted version, the following should get you started:
+hosted version or if you just want to hack on Grimoire, the following
+should get you started:
+
+Requires:
+
+ - GNU Awk (MacOSX only)
+ - Perl
+ - Leiningen (-> Maven)
+ - Git
 
 ```
 $ git clone git@github.com:clojure-grimoire/grimoire.git grimoire

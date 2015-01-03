@@ -46,6 +46,7 @@ should get you started:
 Requires:
 
  - GNU Awk (MacOSX only)
+ - GNU Head (MacOSX only)
  - Perl
  - Leiningen (-> Maven)
  - Git

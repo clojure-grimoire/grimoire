@@ -44,12 +44,23 @@ git_get() {
     # Ensure the target dir exists
     ([ -d "$GIT_DAT/$USER" ] || mkdir -p "$GIT_DAT/$USER" ) &&
 
-	# Get the data
-	([ -d "$GIT_DAT/$USER/$REPO/.git/" ] || git clone $1 "$GIT_DAT/$USER/$REPO") &&
+        # Get the data
+        ([ -d "$GIT_DAT/$USER/$REPO/.git/" ] || git clone $1 "$GIT_DAT/$USER/$REPO") &&
 
-	# Create a link to it
-	ln -s "$GIT_DAT/$USER/$REPO" "./$REPO" &&
-	return 0
+        # Create a link to it
+        ln -s "$GIT_DAT/$USER/$REPO" "./$REPO" &&
+        return 0
+}
+
+git_update() {
+    # $1 is a repo dir
+    pushd $1 > /dev/null
+    if git diff-index --quiet HEAD --; then
+        git pull --quiet origin master
+    else
+        echo "[warning] Not updating repo $1 due to local changes"
+    fi
+    popd > /dev/null
 }
 
 install_docs() {
@@ -61,11 +72,20 @@ install_docs() {
 
     git_get "git@github.com:$1/$2.git"
     rm "./$2"
-    src="$GIT_DAT/$1/$2/$3/$4"
+    dat="$GIT_DAT/$1/$2"
+    src="$DAT/$3/$4"
     tgt="$DOCS/$3/$4"
-    
+
+    if [ -d "$dat" ]
+    then
+        git_update "$dat"
+    else
+        git_get "git@github.com:$1/$2.git"
+        rm "./$2"
+    fi
+
     ( [ -d "$src" ] || ( echo "No such dir $src" && exit 1 ))
-    
+
     mkdir -p "$DOCS/$3/"
     ([ -f "$tgt" ] && rm "$tgt" )
     ln -s "$src" "$tgt"

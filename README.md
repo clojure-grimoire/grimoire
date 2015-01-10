@@ -4,6 +4,8 @@
 Grimoire
 =================
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/clojure-grimoire/grimoire?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 > "Even the most powerful wizard must consult grimoires as an aid against forgetfulness."
 
 Grimoire is community web documentation of the Clojure programming

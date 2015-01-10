@@ -4,7 +4,10 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :source-paths ["src/main"]
   :aliases {"serve" ["with-profile" "server" "run"]}
-  :profiles {:repl   {:plugins [[cider/cider-nrepl "0.8.0-SNAPSHOT"]]}
+  :profiles {:repl   {:plugins      [[cider/cider-nrepl "0.8.0-SNAPSHOT"]
+                                     [lein-environ "1.0.0"]]
+                      :dependencies [[acyclic/squiggly-clojure "0.1.2-SNAPSHOT"]]
+                      :env          {:squiggly {:checkers [:eastwood :typed :kibit]}}}
              :server {:dependencies [[org.clojure/clojure "1.6.0"]
                                      [org.clojure-grimoire/lib-grimoire "0.6.4"
                                       :exclusions [org.clojure/clojure]]

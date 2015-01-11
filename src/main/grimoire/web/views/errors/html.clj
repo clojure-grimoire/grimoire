@@ -1,5 +1,5 @@
 (ns grimoire.web.views.errors.html
-  (:require [grimoire.web.views :refer [site-config]]
+  (:require [grimoire.web.views :refer [site-config header]]
             [grimoire.web.views.errors :refer :all]
             [clojure.string :as string]
             [grimoire.api :as api]
@@ -48,8 +48,8 @@
     (layout
      site-config
      [:h1 {:class "page-title"}
-      [:a version-string]]
-     [:p "Unknown symbol identifier " symbol-string]
+      (header (:parent def-thing))]
+     [:p "Unknown symbol identifier " (pr-str symbol-string)]
      [:p "If you found a broken link, please report the issue encountered on the "
       [:a {:href (:repo site-config)}
        " github bugtracker."]])))

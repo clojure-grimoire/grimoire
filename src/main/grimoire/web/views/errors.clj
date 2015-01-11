@@ -1,6 +1,6 @@
 (ns grimoire.web.views.errors
   (:require [clojure.java.io :as io]
-            [grimoire.web.views :refer [site-config dispatch-fn]]
+            [grimoire.web.views :refer [site-config dispatch-fn header]]
             [grimoire.web.layout :refer [layout]]
             [grimoire.util :as util]
             [grimoire.things :as t]
@@ -20,25 +20,24 @@
     (layout
      site-config
      [:h1 {:class "page-title"}
-      [:a groupid]]
-     [:p "Unknown group " (pr-str groupid)]
+      [:a {:href "/store/"} "Store"]]
+     [:p "Unknown group " (pr-str (str groupid))]
      [:p "If you found a broken link, please report the issue encountered on the "
       [:a {:href (:repo site-config)}
        " github bugtracker."]])))
 
 (defn error-unknown-artifact
   [artifact-thing]
-  (let [groupid    (:name (t/thing->group artifact-thing))
+  (let [group      (t/thing->group artifact-thing)
         artifactid (:name artifact-thing)]
-    (let [s (format "%s/%s" groupid artifactid)]
-      (layout
-       site-config
-       [:h1 {:class "page-title"}
-        [:a s]]
-       [:p "Unknown artifact " s]
-       [:p "If you found a broken link, please report the issue encountered on the "
-        [:a {:href (:repo site-config)}
-         " github bugtracker."]]))))
+    (layout
+     site-config
+     [:h1 {:class "page-title"}
+      (header group)]
+     [:p "Unknown artifact " (pr-str (str artifactid))]
+     [:p "If you found a broken link, please report the issue encountered on the "
+      [:a {:href (:repo site-config)}
+       " github bugtracker."]])))
 
 (defn error-unknown-version
   [version-thing]
@@ -48,23 +47,23 @@
     (layout
      site-config
      [:h1 {:class "page-title"}
-      [:a (format "[%s/%s \"%s\"]" groupid artifactid version)]]
+      (header (:parent version-thing))]
      [:p "Unknown artifact version " (pr-str version)]
      [:p "If you found a broken link, please report the issue encountered on the "
       [:a {:href (:repo site-config)}
        " github bugtracker."]])))
 
 (defn error-unknown-platform
-  [ns-thing]
-  (let [groupid    (:name (t/thing->group ns-thing))
-        artifactid (:name (t/thing->artifact ns-thing))
-        version    (:name (t/thing->version ns-thing))
-        platformid (:name ns-thing)]
+  [platform-thing]
+  (let [groupid    (:name (t/thing->group platform-thing))
+        artifactid (:name (t/thing->artifact platform-thing))
+        version    (:name (t/thing->version platform-thing))
+        platformid (:name platform-thing)]
     (layout
      site-config
      [:h1 {:class "page-title"}
-      [:a (format "[%s/%s \"%s\"] %s" groupid artifactid version platformid)]]
-     [:p "Unknown namespace identifier " platformid ":" (pr-str [version namespace])]
+      (header (:parent platform-thing))]
+     [:p "Unknown platform identifier " (pr-str (str platformid))]
      [:p "If you found a broken link, please report the issue encountered on the "
       [:a {:href (:repo site-config)}
        " github bugtracker."]])))
@@ -79,8 +78,8 @@
     (layout
      site-config
      [:h1 {:class "page-title"}
-      [:a (format "[%s/%s \"%s\"] %s" groupid artifactid version platform)]]
-     [:p "Unknown namespace identifier " (pr-str [version namespace])]
+      (header (:parent ns-thing))]
+     [:p "Unknown namespace identifier " (pr-str namespace)]
      [:p "If you found a broken link, please report the issue encountered on the "
       [:a {:href (:repo site-config)}
        " github bugtracker."]])))

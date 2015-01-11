@@ -27,93 +27,66 @@
        " github bugtracker."]])))
 
 (defn error-unknown-artifact
-  ([artifact-thing]
-   (error-unknown-artifact
-    (:name (t/thing->group artifact-thing))
-    (:name artifact-thing)))
-
-  ([groupid artifactid]
-   (let [s (format "%s/%s" groupid artifactid)]
-     (layout
-      site-config
-      [:h1 {:class "page-title"}
-       [:a s]]
-      [:p "Unknown artifact " s]
-      [:p "If you found a broken link, please report the issue encountered on the "
-       [:a {:href (:repo site-config)}
-        " github bugtracker."]]))))
+  [artifact-thing]
+  (let [groupid    (:name (t/thing->group artifact-thing))
+        artifactid (:name artifact-thing)]
+    (let [s (format "%s/%s" groupid artifactid)]
+      (layout
+       site-config
+       [:h1 {:class "page-title"}
+        [:a s]]
+       [:p "Unknown artifact " s]
+       [:p "If you found a broken link, please report the issue encountered on the "
+        [:a {:href (:repo site-config)}
+         " github bugtracker."]]))))
 
 (defn error-unknown-version
-  ([version-thing]
-   (error-unknown-version
-    (:name (t/thing->group version-thing))
-    (:name (t/thing->artifact version-thing))
-    (:name version-thing)))
+  [version-thing]
+  (let [groupid    (:name (t/thing->group version-thing))
+        artifactid (:name (t/thing->artifact version-thing))
+        version    (:name version-thing)]
+    (layout
+     site-config
+     [:h1 {:class "page-title"}
+      [:a (format "[%s/%s \"%s\"]" groupid artifactid version)]]
+     [:p "Unknown artifact version " (pr-str version)]
+     [:p "If you found a broken link, please report the issue encountered on the "
+      [:a {:href (:repo site-config)}
+       " github bugtracker."]])))
 
-  ([groupid artifactid version]
-   (layout
-    site-config
-    [:h1 {:class "page-title"}
-     [:a (format "[%s/%s \"%s\"]" groupid artifactid version)]]
-    [:p "Unknown artifact version " (pr-str version)]
-    [:p "If you found a broken link, please report the issue encountered on the "
-     [:a {:href (:repo site-config)}
-      " github bugtracker."]])))
+(defn error-unknown-platform
+  [ns-thing]
+  (let [groupid    (:name (t/thing->group ns-thing))
+        artifactid (:name (t/thing->artifact ns-thing))
+        version    (:name (t/thing->version ns-thing))
+        platformid (:name ns-thing)]
+    (layout
+     site-config
+     [:h1 {:class "page-title"}
+      [:a (format "[%s/%s \"%s\"] %s" groupid artifactid version platformid)]]
+     [:p "Unknown namespace identifier " platformid ":" (pr-str [version namespace])]
+     [:p "If you found a broken link, please report the issue encountered on the "
+      [:a {:href (:repo site-config)}
+       " github bugtracker."]])))
 
 (defn error-unknown-namespace
-  ([ns-thing]
-   (error-unknown-namespace
-    (:name (t/thing->group ns-thing))
-    (:name (t/thing->artifact ns-thing))
-    (:name (t/thing->version ns-thing))
-    (:name ns-thing)))
+  [ns-thing]
+  (let [groupid    (:name (t/thing->group ns-thing))
+        artifactid (:name (t/thing->artifact ns-thing))
+        version    (:name (t/thing->version ns-thing))
+        platform   (:name (t/thing->platform ns-thing))
+        namespace  (:name ns-thing)]
+    (layout
+     site-config
+     [:h1 {:class "page-title"}
+      [:a (format "[%s/%s \"%s\"] %s" groupid artifactid version platform)]]
+     [:p "Unknown namespace identifier " (pr-str [version namespace])]
+     [:p "If you found a broken link, please report the issue encountered on the "
+      [:a {:href (:repo site-config)}
+       " github bugtracker."]])))
 
-  ([version namespace]
-   (error-unknown-namespace "org.clojure" "clojure" version namespace))
-
-  ([groupid artifactid version namespace]
-   (layout
-    site-config
-    [:h1 {:class "page-title"}
-     [:a (format "[%s/%s \"%s\"]" groupid artifactid version)]]
-    [:p "Unknown namespace identifier " (pr-str [version namespace])]
-    [:p "If you found a broken link, please report the issue encountered on the "
-     [:a {:href (:repo site-config)}
-      " github bugtracker."]])))
-
-(defn error-unknown-symbol
-  ([type def-thing]
-   (error-unknown-symbol
-    type
-    (:name (t/thing->group def-thing))
-    (:name (t/thing->artifact def-thing))
-    (:name (t/thing->version def-thing))
-    (:name (t/thing->namespace def-thing))
-    (:name def-thing)))
-
-  ([version namespace symbol]
-   (error-unknown-symbol :text/html "org.clojure" "clojure" version namespace symbol))
-
-  ([type groupid artifactid version namespace symbol]
-   (let [version-string (format "[%s/%s \"%s\"]" groupid artifactid version)
-         symbol-string  (format "%s/%s" namespace (util/update-munge symbol))]
-     (case type
-       (:html :text/html "text/html")
-       ,,(layout
-          site-config
-          [:h1 {:class "page-title"}
-           [:a version-string]]
-          [:p "Unknown symbol identifier " symbol-string]
-          [:p "If you found a broken link, please report the issue encountered on the "
-           [:a {:href (:repo site-config)}
-            " github bugtracker."]])
-
-       (:text :text/plain "text/plain")
-       ,,(-> (str "In artifact: " version-string \newline
-                 "Unknown symbol: " symbol-string  \newline
-                 "Sorry! Only clojure.core is documented right now.")
-            response/response
-            (response/content-type "text/plain"))))))
+(defmulti error-unknown-symbol dispatch-fn
+  :default :text/plain)
 
 (defmulti search-no-symbol dispatch-fn
   :default :text/plain)

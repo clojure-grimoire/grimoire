@@ -9,7 +9,7 @@
                       :dependencies [[acyclic/squiggly-clojure "0.1.2-SNAPSHOT"]]
                       :env          {:squiggly {:checkers [:eastwood :typed :kibit]}}}
              :server {:dependencies [[org.clojure/clojure "1.6.0"]
-                                     [org.clojure-grimoire/lib-grimoire "0.6.4"
+                                     [org.clojure-grimoire/lib-grimoire "0.7.0-SNAPSHOT"
                                       :exclusions [org.clojure/clojure]]
                                      [cheshire "5.4.0"
                                       :exclusions [org.clojure/clojure]]

@@ -33,73 +33,72 @@
 
 (def store
   (fn [{header-type :content-type
-       {param-type :type} :params
-       :as req
-       uri :uri}]
+        {param-type :type} :params
+        :as req
+        uri :uri}]
     (->> (let-routes [type    (-> (or header-type
-                                  param-type
-                                  :html)
-                              normalize-type)
-                    log-msg (pr-str {:uri        uri
-                                     :type       type
-                                     :user-agent (get-in req [:headers "user-agent"])})]
-         (context ["/store"] []
-           (GET "/" {uri :uri}
-             (when-let [r (v/store-page type)]
-               (info log-msg)
-               r))
+                                      param-type
+                                      :html)
+                                  normalize-type)
+                      log-msg (pr-str {:uri        uri
+                                       :type       type
+                                       :user-agent (get-in req [:headers "user-agent"])})]
+           (context ["/store"] []
+             (GET "/" {uri :uri}
+               (when-let [r (v/store-page type)]
+                 (info log-msg)
+                 r))
 
-           (context ["/:groupid"] [groupid]
-             (let-routes [t (thing/->Group groupid)]
-               (GET "/" []
-                 (when-let [r (v/group-page type t)]
-                   (info log-msg)
-                   r))
+             (context ["/:groupid"] [groupid]
+               (let-routes [t (thing/->Group groupid)]
+                 (GET "/" []
+                   (when-let [r (v/group-page type t)]
+                     (info log-msg)
+                     r))
 
-               (context ["/:artifactid"] [artifactid]
-                 (let-routes [t (thing/->T :artifact t artifactid)]
-                   (GET "/" []
-                     (when-let [r (v/artifact-page type t)]
-                       (info log-msg)
-                       r))
+                 (context ["/:artifactid"] [artifactid]
+                   (let-routes [t (thing/->Artifact t artifactid)]
+                     (GET "/" []
+                       (when-let [r (v/artifact-page type t)]
+                         (info log-msg)
+                         r))
 
-                   (context ["/:version"] [version]
-                     (let-routes [t (thing/->T :version t version)]
-                       (GET "/" []
-                         (cond
-                           (= version "latest")
-                           ,,(response/redirect
-                              (format "/store/%s/%s/%s/"
-                                      groupid
-                                      artifactid
-                                      (-> namespace v/ns-version-index :name)))
+                     (context ["/:version"] [version]
+                       (let-routes [t (thing/->Version t version)]
+                         (GET "/" []
+                           (cond
+                             (= version "latest")
+                             ,,(response/redirect
+                                (format "/store/%s/%s/%s/"
+                                        groupid
+                                        artifactid
+                                        (-> namespace v/ns-version-index :name)))
 
-                           :else
-                           ,,(when-let [r (v/version-page type t)]
-                               (info log-msg)
-                               r)))
+                             :else
+                             ,,(when-let [r (v/version-page type t)]
+                                 (info log-msg)
+                                 r)))
 
-                       (context "/:namespace" [namespace]
-                         (let-routes [t (thing/->T :namespace t namespace)]
-                           (GET "/" []
-                             (cond
-                               (= version "latest")
-                               ,,(response/redirect
-                                  (format "/store/%s/%s/%s/%s/"
-                                          groupid
-                                          artifactid
-                                          (-> namespace v/ns-version-index :name)
-                                          namespace))
+                         (context "/:platform" [platform]
+                           (let-routes [t (thing/->Platform t platform)]
+                             (GET "/" []
+                               (cond
+                                 (= version "latest")
+                                 ,,(response/redirect
+                                    (format "/store/%s/%s/%s/%s/%s/"
+                                            groupid
+                                            artifactid
+                                            (-> namespace v/ns-version-index :name)
+                                            platform))
 
-                               :else
-                               ,,(when-let [r (v/namespace-page-memo type t)]
-                                   (info log-msg)
-                                   r)))
+                                 :else
+                                 ,,(when-let [r (v/platform-page type t)]
+                                     (info log-msg)
+                                     r)))
 
-                           (context "/:symbol" [symbol]
-                             (let-routes [t (thing/->T :def t symbol)]
-                               (GET "/" []
-                                 (let [symbol' (util/update-munge symbol)]
+                             (context "/:namespace" [namespace]
+                               (let-routes [t (thing/->Ns t namespace)]
+                                 (GET "/" []
                                    (cond
                                      (= version "latest")
                                      ,,(response/redirect
@@ -107,110 +106,194 @@
                                                 groupid
                                                 artifactid
                                                 (-> namespace v/ns-version-index :name)
-                                                namespace
-                                                symbol))
-
-                                     ;; handle the case of redirecting due to munging
-                                     (not (= symbol symbol'))
-                                     ,,(response/redirect
-                                        (format "/store/%s/%s/%s/%s/%s/"
-                                                groupid artifactid version
-                                                namespace symbol'))
+                                                platform
+                                                namespace))
 
                                      :else
-                                     ,,(when-let [r (v/symbol-page type t)]
+                                     ,,(when-let [r (v/namespace-page-memo type t)]
                                          (info log-msg)
-                                         r))))
+                                         r)))
 
-                               (route/not-found
-                                (fn [req]
-                                  (warn log-msg)
-                                  (v.e/error-unknown-symbol type t)))))
+                                 (context "/:symbol" [symbol]
+                                   (let-routes [t (thing/->Def t symbol)]
+                                     (GET "/" []
+                                       (let [symbol' (util/update-munge symbol)]
+                                         (cond
+                                           (= version "latest")
+                                           ,,(response/redirect
+                                              (format "/store/%s/%s/%s/%s/%s/%s/"
+                                                      groupid
+                                                      artifactid
+                                                      (-> namespace v/ns-version-index :name)
+                                                      platform
+                                                      namespace
+                                                      symbol))
 
-                           (route/not-found
-                            (fn [req]
-                              (warn log-msg)
-                              (v.e/error-unknown-namespace t)))))
+                                           ;; handle the case of redirecting due to munging
+                                           (not (= symbol symbol'))
+                                           ,,(response/redirect
+                                              (format "/store/%s/%s/%s/%s/%s/%s/"
+                                                      groupid artifactid version
+                                                      platform namespace symbol'))
 
-                       (route/not-found
-                        (fn [req]
-                          (warn log-msg)
-                          (v.e/error-unknown-version t)))))
+                                           :else
+                                           ,,(when-let [r (v/symbol-page type t)]
+                                               (info log-msg)
+                                               r))))
 
-                   (route/not-found
-                    (fn [req]
-                      (warn log-msg)
-                      (v.e/error-unknown-artifact t)))))
+                                     (route/not-found
+                                      (fn [req]
+                                        (warn log-msg)
+                                        (v.e/error-unknown-symbol type t)))))
 
-               (route/not-found
-                (fn [req]
-                  (warn log-msg)
-                  (v.e/error-unknown-group t)))))))
+                                 (route/not-found
+                                  (fn [req]
+                                    (warn log-msg)
+                                    (v.e/error-unknown-namespace t)))))
 
-       (routing req))))
+                             (route/not-found
+                              (fn [req]
+                                (warn log-msg)
+                                (v.e/error-unknown-platform t)))))
+
+                         (route/not-found
+                          (fn [req]
+                            (warn log-msg)
+                            (v.e/error-unknown-version t)))))
+
+                     (route/not-found
+                      (fn [req]
+                        (warn log-msg)
+                        (v.e/error-unknown-artifact t)))))
+
+                 (route/not-found
+                  (fn [req]
+                    (warn log-msg)
+                    (v.e/error-unknown-group t)))))))
+
+         (routing req))))
 
 (defmacro api-log []
   `(info (-> ~'t
-            (select-keys [:uri])
-            (assoc :op ~'op))))
+             (select-keys [:uri])
+             (assoc :op ~'op))))
 
 (defmacro do-dispatch [dispatch type op t]
   `(or (when-let [f# (~dispatch ~op)]
-        (when-let [r# (f# ~type ~t)]
-          (info ~'log-msg)
-          r#))
-      (do (warn ~'log-msg)
-          (v.api/unknown-op ~type ~op ~t))))
+         (when-let [r# (f# ~type ~t)]
+           (info ~'log-msg)
+           r#))
+       (do (warn ~'log-msg)
+           (v.api/unknown-op ~type ~op ~t))))
 
 (def api-v0
   (fn [{header-type :content-type
-       {param-type :type
-        op         :op :as params} :params
-       :as req
-       uri :uri}]
+        {param-type :type
+         op         :op :as params} :params
+        :as req
+        uri :uri}]
     (->> (let-routes [type    (normalize-type
-                             (or header-type
-                                param-type
-                                :json))
-                    log-msg (pr-str {:uri        uri
-                                     :type       type
-                                     :op         op
-                                     :user-agent (get-in req [:headers "user-agent"])})]
-         (context ["/api/v0"] []
-           (GET "/" []
-             (do-dispatch v.api/root-ops
-                          type op params))
+                               (or header-type
+                                   param-type
+                                   :json))
+                      log-msg (pr-str {:uri        uri
+                                       :type       type
+                                       :op         op
+                                       :user-agent (get-in req [:headers "user-agent"])})]
+           (context ["/api/v0"] []
+             (GET "/" []
+               (do-dispatch v.api/root-ops
+                            type op params))
 
-           (context ["/:group"] [group]
-             (let-routes [t (thing/->Group group)]
-               (GET "/" []
-                 (do-dispatch v.api/group-ops
-                              type op t))
+             (context ["/:group"] [group]
+               (let-routes [t (thing/->Group group)]
+                 (GET "/" []
+                   (do-dispatch v.api/group-ops
+                                type op t))
 
-               (context ["/:artifact"] [artifact]
-                 (let-routes [t (thing/->Artifact t artifact)]
-                   (GET "/" []
-                     (do-dispatch v.api/artifact-ops
-                                  type op t))
+                 (context ["/:artifact"] [artifact]
+                   (let-routes [t (thing/->Artifact t artifact)]
+                     (GET "/" []
+                       (do-dispatch v.api/artifact-ops
+                                    type op t))
 
-                   (context ["/:version"] [version]
-                     (let-routes [t (thing/->Version t version)]
-                       (GET "/" []
-                         (do-dispatch v.api/version-ops
-                                      type op t))
+                     (context ["/:version"] [version]
+                       (let-routes [t (thing/->Version t version)]
+                         (GET "/" []
+                           (do-dispatch v.api/version-ops
+                                        type op t))
 
-                       (context ["/:namespace"] [namespace]
-                         (let-routes [t (thing/->Ns t namespace)]
-                           (GET "/" []
-                             (do-dispatch v.api/namespace-ops
-                                          type op t))
+                         (context ["/:namespace"] [namespace]
+                           (let-routes [t (-> t
+                                              (thing/->Platform "clj")
+                                              (thing/->Ns namespace))]
+                             (GET "/" []
+                               (do-dispatch v.api/namespace-ops
+                                            type op t))
 
-                           (context ["/:symbol"] [symbol]
-                             (let-routes [t (thing/->Def t symbol)]
-                               (GET "/" []
-                                 (do-dispatch v.api/def-ops
-                                              type op t))))))))))))))
-       (routing req))))
+                             (context ["/:symbol"] [symbol]
+                               (let-routes [t (thing/->Def t symbol)]
+                                 (GET "/" []
+                                   (do-dispatch v.api/def-ops
+                                                type op t))))))))))))))
+         (routing req))))
+
+(def api-v1
+  (fn [{header-type :content-type
+        {param-type :type
+         op         :op :as params} :params
+        :as req
+        uri :uri}]
+    (->> (let-routes [type    (normalize-type
+                               (or header-type
+                                   param-type
+                                   :json))
+                      log-msg (pr-str {:uri        uri
+                                       :type       type
+                                       :op         op
+                                       :user-agent (get-in req [:headers "user-agent"])})]
+           (context ["/api/v1"] []
+             (GET "/" []
+               (do-dispatch v.api/root-ops
+                            type op params))
+
+             (context ["/:group"] [group]
+               (let-routes [t (thing/->Group group)]
+                 (GET "/" []
+                   (do-dispatch v.api/group-ops
+                                type op t))
+
+                 (context ["/:artifact"] [artifact]
+                   (let-routes [t (thing/->Artifact t artifact)]
+                     (GET "/" []
+                       (do-dispatch v.api/artifact-ops
+                                    type op t))
+
+                     (context ["/:version"] [version]
+                       (let-routes [t (thing/->Version t version)]
+                         (GET "/" []
+                           (do-dispatch v.api/version-ops
+                                        type op t))
+
+                         (context ["/:platform"] [platform]
+                           (let-routes [t (thing/->Platform t platform)]
+
+                             (GET "/" []
+                               (do-dispatch v.api/platform-ops
+                                            type op t))
+
+                             (context ["/:namespace"] [namespace]
+                               (let-routes [t (thing/->Ns t namespace)]
+                                 (GET "/" []
+                                   (do-dispatch v.api/namespace-ops
+                                                type op t))
+
+                                 (context ["/:symbol"] [symbol]
+                                   (let-routes [t (thing/->Def t symbol)]
+                                     (GET "/" []
+                                       (do-dispatch v.api/def-ops
+                                                    type op t))))))))))))))))
+         (routing req))))
 
 (declare app)
 
@@ -291,6 +374,7 @@
 
   ;; The v0 API
   api-v0
+  api-v1
 
   ;; Redirect legacy paths into the store
   (context ["/:version", :version #"[0-9]+.[0-9]+.[0-9]+"] [version]

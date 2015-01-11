@@ -1,5 +1,8 @@
 (ns grimoire.web.views
-  (:require [grimoire.util :as util
+  (:require [grimoire.util :as util]
+            [grimoire.things
+             :refer [thing->path]]
+            [grimoire.either
              :refer [succeed? result]]
             [grimoire.web.layout
              :refer [layout]]
@@ -39,7 +42,7 @@
        (response/not-found "Resource not found, sorry. Please file an issue on the github bugtracker.")))))
 
 (defn link-to [prefix x]
-  {:href (str prefix (:uri x))})
+  {:href (str prefix (thing->path x))})
 
 (def link-to' (partial link-to "/store/"))
 
@@ -66,13 +69,18 @@
          " " [:a (link-to' version)
               ,,,(pr-str (:name version))] "]"))
 
+(defmethod header :platform [platform]
+  (list (header (:parent platform)) " "
+        [:a (link-to' platform)
+         ,,,(:name platform)]))
+
 (defmethod header :namespace [namespace]
-  (list (header (:parent namespace)) " "
+  (list (header (:parent namespace)) "::"
         [:a (link-to' namespace)
          ,,,(:name namespace)]))
 
 (defmethod header :def [symbol]
-  (let [sym'   (util/munge (:name symbol))]
+  (let [sym' (util/munge (:name symbol))]
     (list (header (:parent symbol)) "/"
           [:a (link-to' symbol)
            ,,,(:name symbol)])))
@@ -108,6 +116,12 @@
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
+(defmulti platform-page dispatch-fn
+  :default :text/plain)
+;;FIXME: text/plain
+;;FIXME: application/json
+;;FIXME: application/edn
+
 (defmulti namespace-page dispatch-fn
   :default :text/plain)
 ;; FIXME: application/edn
@@ -123,12 +137,17 @@
 ;; FIXME: application/json
 
 (def ns-version-index
-  (->> (for [groupid                   (result (api/list-groups     site-config))
-           artifact                  (result (api/list-artifacts  site-config groupid))
-           :let      [version (first (result (api/list-versions   site-config artifact)))]
-           namespace                 (result (api/list-namespaces site-config version))]
-       [(:name namespace) version])
-     (into {})))
+  (->> (for [groupid   (result (api/list-groups     site-config))
+             artifact  (result (api/list-artifacts  site-config groupid))
+             :let      [version  (->> artifact
+                                      (api/list-versions site-config)
+                                      result first)
+                        platform (->> version
+                                      (api/list-platforms site-config)
+                                      result (sort-by :name) first)]
+             namespace (result (api/list-namespaces site-config platform))]
+         [(:name namespace) version])
+       (into {})))
 
 ;; FIXME: code loading is evil
 

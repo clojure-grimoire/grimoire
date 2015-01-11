@@ -1,4 +1,4 @@
-(ns main.grimoire.web.views.errors.txt
+(ns grimoire.web.views.errors.txt
   (:require [clojure.java.io :as io]
             [grimoire.web.views :refer [site-config]]
             [grimoire.web.views.errors :refer :all]
@@ -22,3 +22,18 @@
            "Please file an issue on the bugtracker if you think this is a bug.\n")
       response/response
       (response/content-type "text/plain")))
+
+(defmethod error-unknown-symbol :text/plain [_type def-thing]
+  (let [groupid        (:name (t/thing->group def-thing))
+        artifactid     (:name (t/thing->artifact def-thing))
+        version        (:name (t/thing->version def-thing))
+        platform       (:name (t/thing->platform def-thing))
+        namespace      (:name (t/thing->namespace def-thing))
+        symbol         (:name def-thing)
+        version-string (format "[%s/%s \"%s\"] %s" groupid artifactid version platform)
+        symbol-string  (format "%s/%s" namespace (util/update-munge symbol))]
+    (-> (str "In artifact: " version-string \newline
+             "Unknown symbol: " symbol-string  \newline
+             "Sorry! Only clojure.core is documented right now.")
+        response/response
+        (response/content-type "text/plain"))))

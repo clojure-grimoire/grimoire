@@ -14,95 +14,95 @@
             [ring.util.response :as response]
             [taoensso.timbre :as timbre :refer [info warn]]))
 
-(def store-v0
-  (fn [{header-type :content-type
-        {param-type :type} :params
-        :as req
-        uri :uri}]
-    (->> (let-routes [type    (-> (or header-type
-                                      param-type
-                                      :html)
-                                  wutil/normalize-type)
-                      log-msg (pr-str {:uri        uri
-                                       :type       type
-                                       :user-agent (get-in req [:headers "user-agent"])})]
-           (context "/store/v0" []
-             (GET "/" {uri :uri}
-               (when-let [r (v/store-page type)]
-                 (info log-msg)
-                 r))
+(defn store-v0
+  [{header-type :content-type
+    {param-type :type} :params
+    :as req
+    uri :uri}]
+  (let [type    (-> (or header-type
+                        param-type
+                        :html)
+                    wutil/normalize-type)
+        log-msg (pr-str {:uri        uri
+                         :type       type
+                         :user-agent (get-in req [:headers "user-agent"])})]
+    (->> (context "/store/v0" []
+           (GET "/" {uri :uri}
+             (when-let [r (v/store-page type)]
+               (info log-msg)
+               r))
 
-             (context "/:groupid" [groupid]
-               (let-routes [t (thing/->Group groupid)]
-                 (GET "/" []
-                   (when-let [r (v/group-page type t)]
-                     (info log-msg)
-                     r))
+           (context "/:groupid" [groupid]
+             (let-routes [t (thing/->Group groupid)]
+               (GET "/" []
+                 (when-let [r (v/group-page type t)]
+                   (info log-msg)
+                   r))
 
-                 (context "/:artifactid" [artifactid]
-                   (let-routes [t (thing/->Artifact t artifactid)]
-                     (GET "/" []
-                       (when-let [r (v/artifact-page type t)]
-                         (info log-msg)
-                         r))
+               (context "/:artifactid" [artifactid]
+                 (let-routes [t (thing/->Artifact t artifactid)]
+                   (GET "/" []
+                     (when-let [r (v/artifact-page type t)]
+                       (info log-msg)
+                       r))
 
-                     (context "/:version" [version]
-                       (let-routes [t (thing/->Version t version)]
-                         (GET "/" []
-                           (when-let [r (v/version-page type t)]
-                             (info log-msg)
-                             r))
+                   (context "/:version" [version]
+                     (let-routes [t (thing/->Version t version)]
+                       (GET "/" []
+                         (when-let [r (v/version-page type t)]
+                           (info log-msg)
+                           r))
 
-                         (context "/:platform" [platform]
-                           (let-routes [t (thing/->Platform t platform)]
-                             (GET "/" []
-                               (when-let [r (v/platform-page type t)]
-                                 (info log-msg)
-                                 r))
+                       (context "/:platform" [platform]
+                         (let-routes [t (thing/->Platform t platform)]
+                           (GET "/" []
+                             (when-let [r (v/platform-page type t)]
+                               (info log-msg)
+                               r))
 
-                             (context "/:namespace" [namespace]
-                               (let-routes [t (thing/->Ns t namespace)]
-                                 (GET "/" []
-                                   (when-let [r (v/namespace-page-memo type t)]
-                                     (info log-msg)
-                                     r))
+                           (context "/:namespace" [namespace]
+                             (let-routes [t (thing/->Ns t namespace)]
+                               (GET "/" []
+                                 (when-let [r (v/namespace-page-memo type t)]
+                                   (info log-msg)
+                                   r))
 
-                                 (context "/:symbol" [symbol]
-                                   (let-routes [t (thing/->Def t symbol)]
-                                     (GET "/" []
-                                       (when-let [r (v/symbol-page type t)]
-                                         (info log-msg)
-                                         r))
+                               (context "/:symbol" [symbol]
+                                 (let-routes [t (thing/->Def t symbol)]
+                                   (GET "/" []
+                                     (when-let [r (v/symbol-page type t)]
+                                       (info log-msg)
+                                       r))
 
-                                     (route/not-found
-                                      (fn [req]
-                                        (warn log-msg)
-                                        (v.e/error-unknown-symbol type t)))))
+                                   (route/not-found
+                                    (fn [req]
+                                      (warn log-msg)
+                                      (v.e/error-unknown-symbol type t)))))
 
-                                 (route/not-found
-                                  (fn [req]
-                                    (warn log-msg)
-                                    (v.e/error-unknown-namespace t)))))
+                               (route/not-found
+                                (fn [req]
+                                  (warn log-msg)
+                                  (v.e/error-unknown-namespace t)))))
 
-                             (route/not-found
-                              (fn [req]
-                                (warn log-msg)
-                                (v.e/error-unknown-platform t)))))
+                           (route/not-found
+                            (fn [req]
+                              (warn log-msg)
+                              (v.e/error-unknown-platform t)))))
 
-                         (route/not-found
-                          (fn [req]
-                            (warn log-msg)
-                            (v.e/error-unknown-version t)))))
+                       (route/not-found
+                        (fn [req]
+                          (warn log-msg)
+                          (v.e/error-unknown-version t)))))
 
-                     (route/not-found
-                      (fn [req]
-                        (warn log-msg)
-                        (v.e/error-unknown-artifact t)))))
+                   (route/not-found
+                    (fn [req]
+                      (warn log-msg)
+                      (v.e/error-unknown-artifact t)))))
 
-                 (route/not-found
-                  (fn [req]
-                    (warn log-msg)
-                    (v.e/error-unknown-group t)))))))
+               (route/not-found
+                (fn [req]
+                  (warn log-msg)
+                  (v.e/error-unknown-group t))))))
 
          (routing req))))
 

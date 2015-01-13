@@ -2,7 +2,8 @@
   (:require [compojure.handler :as handler]
             [ring.middleware.session :as session]
             [grimoire.web.routes :refer [app]]
-            [ring.adapter.jetty :as jetty]))
+            [ring.adapter.jetty :as jetty]
+            [simpledb.core :as sdb]))
 
 (defonce service (atom nil))
 
@@ -11,6 +12,12 @@
   (let [cfg {:port (or port? 3000)
              :host "127.0.0.1"
              :join? false}]
+
+    ;; boot the in memory analytics store (once)
+    (when-not (empty? @sdb/*db*)
+      (sdb/init))
+
+    ;; boot the webapp itself
     (reset! service
             (-> app
               handler/site

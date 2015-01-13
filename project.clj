@@ -27,7 +27,8 @@
                              [me.raynes/conch "0.8.0"
                               :exclusions [org.clojure/clojure]]
                              [me.arrdem/detritus "0.2.0"
-                              :exclusions [org.clojure/clojure]]]
+                              :exclusions [org.clojure/clojure]]
+                             [simpledb "0.1.4"]]
               :main         grimoire.web.service}
 
              :dev

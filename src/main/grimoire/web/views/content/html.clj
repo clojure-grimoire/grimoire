@@ -5,7 +5,8 @@
             [grimoire.either :refer [succeed? result]]
             [grimoire.things :as t]
             [grimoire.web.layout :refer [layout]]
-            [grimoire.web.util :as wutil]))
+            [grimoire.web.util :as wutil]
+            [simpledb.core :as sdb]))
 
 ;; FIXME: probably belongs somewhere else
 (defn home-page []
@@ -13,6 +14,30 @@
    site-config
    [:blockquote [:p (-> site-config :style :quote)]]
    (wutil/cheatsheet-memo site-config)))
+
+(defn heatmap-page []
+  (layout
+   site-config
+   [:h1 {:class "page-title"} "Analytics!"]
+   [:p "Or at least some of it >:D"]
+   (let [db @sdb/*db*]
+     (list [:div
+            [:h2 "Top 100 symbols"]
+            [:table
+             (for [[k v] (take 100 (reverse (sort-by second (:defs db))))]
+               [:tr [:td k] [:td v]])]]
+
+           [:div
+            [:h2 "Top 100 namespaces"]
+            [:table
+             (for [[k v] (take 100 (reverse (sort-by second  (:namespaces db))))]
+               [:tr [:td k] [:td v]])]]
+
+           [:div
+            [:h2 "Top 100 URLs"]
+            [:table
+             (for [[k v] (take 100 (reverse (sort-by second (:urls db))))]
+               [:tr [:td k] [:td v]])]]))))
 
 (defmethod store-page :text/html [_]
   (try
@@ -140,58 +165,58 @@
 (defmethod namespace-page :text/html [_ namespace-thing]
   (try
     (let [meta   (result (api/read-meta site-config namespace-thing))
-      ?notes (api/read-notes site-config namespace-thing)]
-    (layout site-config ;; FIXME: add artifact, namespace?
-            [:h1 {:class "page-title"}
-             (header namespace-thing)]
+          ?notes (api/read-notes site-config namespace-thing)]
+      (layout site-config ;; FIXME: add artifact, namespace?
+              [:h1 {:class "page-title"}
+               (header namespace-thing)]
 
-            (let [{:keys [doc name]} meta]
-              (when doc
-                (list [:h2 "Namespace Docs"]
-                      [:p doc])))
+              (let [{:keys [doc name]} meta]
+                (when doc
+                  (list [:h2 "Namespace Docs"]
+                        [:p doc])))
 
-            (when (succeed? ?notes)
-              (let [[[_ notes]] (result ?notes)]
-                (when notes
-                  (list [:h2 "Namespace Notes"]
-                        [:p (wutil/markdown-string notes)]))))
+              (when (succeed? ?notes)
+                (let [[[_ notes]] (result ?notes)]
+                  (when notes
+                    (list [:h2 "Namespace Notes"]
+                          [:p (wutil/markdown-string notes)]))))
 
-            (list [:h2 "Symbols"]
-                  ;; FIXME: the fuck am I doing here srsly
-                  (let [keys     [:special :macro :fn :var]
-                        mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
-                        ids      (zipmap keys ["sforms", "macros", "fns", "vars"])
-                        link-ids (zipmap keys ["sff", "mf", "ff", "vf"])
-                        grouping (->> (for [def-thing (-> site-config
-                                                          (api/list-defs namespace-thing)
-                                                          result)
-                                            :let      [meta (-> site-config
-                                                                (api/read-meta def-thing)
-                                                                result)]]
-                                        {:url  (:href (link-to' def-thing))
-                                         :name (:name meta)
-                                         :type (:type meta)})
-                                      (group-by :type))]
-                    (for [k keys]
-                      (when-let [records (get grouping k)]
-                        (list
-                         (let [links (emit-alphabetized-links records)]
-                           [:div.section
-                            [:h3.heading (get mapping k)
-                             " " (if (< 6 (count links))
-                                   [:span.unhide "+"]
-                                   [:span.hide "-"])]
-                            [:div {:class (str "autofold"
-                                               (when (< 6 (count links))
-                                                 " prefold"))}
-                             links]]))))))
+              (list [:h2 "Symbols"]
+                    ;; FIXME: the fuck am I doing here srsly
+                    (let [keys     [:special :macro :fn :var]
+                          mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
+                          ids      (zipmap keys ["sforms", "macros", "fns", "vars"])
+                          link-ids (zipmap keys ["sff", "mf", "ff", "vf"])
+                          grouping (->> (for [def-thing (-> site-config
+                                                            (api/list-defs namespace-thing)
+                                                            result)
+                                              :let      [meta (-> site-config
+                                                                  (api/read-meta def-thing)
+                                                                  result)]]
+                                          {:url  (:href (link-to' def-thing))
+                                           :name (:name meta)
+                                           :type (:type meta)})
+                                        (group-by :type))]
+                      (for [k keys]
+                        (when-let [records (get grouping k)]
+                          (list
+                           (let [links (emit-alphabetized-links records)]
+                             [:div.section
+                              [:h3.heading (get mapping k)
+                               " " (if (< 6 (count links))
+                                     [:span.unhide "+"]
+                                     [:span.hide "-"])]
+                              [:div {:class (str "autofold"
+                                                 (when (< 6 (count links))
+                                                   " prefold"))}
+                               links]]))))))
 
-            [:script {:src "/public/jquery.js" :type "text/javascript"}]
-            [:script {:src "/public/fold.js" :type "text/javascript"}]))
+              [:script {:src "/public/jquery.js" :type "text/javascript"}]
+              [:script {:src "/public/fold.js" :type "text/javascript"}]))
 
-  ;; FIXME: more specific error type
-  (catch AssertionError e
-    nil)))
+    ;; FIXME: more specific error type
+    (catch AssertionError e
+      nil)))
 
 (defn -render-html-symbol-page [def-thing meta]
   (let [{:keys [src type arglists doc name]} meta

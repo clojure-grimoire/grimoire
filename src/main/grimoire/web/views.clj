@@ -23,7 +23,7 @@
                          :mode  :filesystem}
    :version             (slurp "VERSION")
    :google-analytics-id "UA-44001831-2"
-   :year                "2014"
+   :year                "2015"
    :author              {:me          "http://arrdem.com/"
                          :email       "me@arrdem.com"
                          :gittip      "https://gittip.com/arrdem/"}

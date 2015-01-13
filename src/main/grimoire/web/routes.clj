@@ -343,6 +343,9 @@
           (#'app new-req) ;; pass it forwards
           (wutil/moved-permanently new-uri))))) ;; everyone else
 
+  (GET "/store" []
+    (wutil/moved-permanently "/store/v0"))
+  
   ;; Handle pre-versioned store (Grimoire 0.4) store links
   (context ["/store/:t", :t #"[^v][^0-9]*"] [t]
     (fn [request]

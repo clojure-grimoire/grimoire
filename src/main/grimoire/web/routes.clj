@@ -358,7 +358,6 @@
             ;; FIXME: URI forging is evil
             ;; FIXME: Forged URI doesn't have a platform part
             path       (string/split (:path-info request) #"/")
-            _          (println path)
             path       (if (>= (count path) 3)
                          (concat (take 2 path) '("clj") (drop 2 path))
                          path)

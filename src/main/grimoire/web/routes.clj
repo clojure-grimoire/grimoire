@@ -12,13 +12,41 @@
             [grimoire.web.views.errors :as v.e]
             [grimoire.web.views.api :as v.api]
             [ring.util.response :as response]
-            [taoensso.timbre :as timbre :refer [info warn]]))
+            [simpledb.core :as sdb]
+            [taoensso.timbre :as timbre :refer [warn]]))
 
 (def ^:private platform-regex
   #"clj|cljs|cljclr|pixi|kiss|ox|toc")
 
 (def ^:private privilaged-urls
   #{"URL/Emacs"})
+
+(def ^:private incf (fnil inc 0))
+
+(defn- log! [request thing]
+  ;; FIXME: could be one transaction
+  
+  ;; what do I want to know
+  ;; - inc the absolute URL in a "uri" store
+  (sdb/update! :urls clojure.core/update (:uri request) incf)
+
+  ;; - inc the thing URI in the "thing"
+  (when thing
+    (sdb/update! :things clojure.core/update (thing/thing->path thing) incf)
+    
+    ;; - if def, inc in the def store at ":artifact/:ns/:def"
+    (when (#{:def} (:type thing))
+      (sdb/update! :defs clojure.core/update
+                   (thing/thing->relative-path :platform thing) incf))
+
+    (when-let [ns (thing/thing->namespace thing)]
+      (sdb/update! :namespaces clojure.core/update (:name ns) incf))
+
+    (when-let [platform (thing/thing->platform thing)]
+      (sdb/update! :platforms clojure.core/update (:name platform) incf))
+
+    (when-let [artifact (thing/thing->artifact thing)]
+      (sdb/update! :artifacts clojure.core/update (:name artifact) incf))))
 
 (defn store-v0
   [{header-type :content-type
@@ -35,28 +63,28 @@
     (->> (context "/store/v0" []
            (GET "/" {uri :uri}
              (when-let [r (v/store-page type)]
-               (info log-msg)
+               (log! req nil)
                r))
 
            (context "/:groupid" [groupid]
              (let-routes [t (thing/->Group groupid)]
                (GET "/" []
                  (when-let [r (v/group-page type t)]
-                   (info log-msg)
+                   (log! req t)
                    r))
 
                (context "/:artifactid" [artifactid]
                  (let-routes [t (thing/->Artifact t artifactid)]
                    (GET "/" []
                      (when-let [r (v/artifact-page type t)]
-                       (info log-msg)
+                       (log! req t)
                        r))
 
                    (context "/:version" [version]
                      (let-routes [t (thing/->Version t version)]
                        (GET "/" []
                          (when-let [r (v/version-page type t)]
-                           (info log-msg)
+                           (log! req t)
                            r))
 
                        (context ["/:platform"
@@ -64,21 +92,21 @@
                          (let-routes [t (thing/->Platform t platform)]
                            (GET "/" []
                              (when-let [r (v/platform-page type t)]
-                               (info log-msg)
+                               (log! req t)
                                r))
 
                            (context "/:namespace" [namespace]
                              (let-routes [t (thing/->Ns t namespace)]
                                (GET "/" []
                                  (when-let [r (v/namespace-page-memo type t)]
-                                   (info log-msg)
+                                   (log! req t)
                                    r))
 
                                (context "/:symbol" [symbol]
                                  (let-routes [t (thing/->Def t symbol)]
                                    (GET "/" []
                                      (when-let [r (v/symbol-page type t)]
-                                       (info log-msg)
+                                       (log! req t)
                                        r))
 
                                    (route/not-found
@@ -114,14 +142,12 @@
          (routing req))))
 
 (defmacro api-log []
-  `(info (-> ~'t
-             (select-keys [:uri])
-             (assoc :op ~'op))))
+  `(log! ~'req ~'t))
 
 (defmacro do-dispatch [dispatch type op t]
   `(or (when-let [f# (~dispatch ~op)]
          (when-let [r# (f# ~type ~t)]
-           (info ~'log-msg)
+           (log! ~'req ~'t)
            r#))
        (do (warn ~'log-msg)
            (v.api/unknown-op ~type ~op ~t))))
@@ -132,7 +158,8 @@
          op         :op :as params} :params
         :as req
         uri :uri}]
-    (->> (let-routes [type    (wutil/normalize-type
+    (->> (let-routes [t       nil
+                      type    (wutil/normalize-type
                                (or header-type
                                    param-type
                                    :json))
@@ -184,7 +211,8 @@
          op         :op :as params} :params
         :as req
         uri :uri}]
-    (->> (let-routes [type    (wutil/normalize-type
+    (->> (let-routes [t       nil
+                      type    (wutil/normalize-type
                                (or header-type
                                    param-type
                                    :json))
@@ -263,7 +291,7 @@
                            new-req    (-> request
                                           (assoc :uri new-uri)
                                           (dissoc :context :path-info))]
-                       (info log-msg)
+                       (log! req nil)
                        (if (privilaged-urls user-agent)
                          (#'app new-req) ;; pass it forwards
                          (response/redirect new-uri))))))
@@ -295,7 +323,7 @@
                              new-req    (-> request
                                             (assoc :uri new-uri)
                                             (dissoc :context :path-info))]
-                         (info log-msg)
+                         (log! req nil)
                          (if (privilaged-urls user-agent)
                            (#'app new-req) ;; pass it forwards
                            (response/redirect new-uri))))))
@@ -314,10 +342,8 @@
 
 (defroutes app
   (GET "/" {uri :uri :as req}
-    (info (pr-str {:uri        uri
-                   :type       :html
-                   :user-agent (get-in req [:headers "user-agent"])}))
-    (v.c.h/home-page))
+    (do (log! req nil)
+        (v.c.h/home-page)))
 
   (GET "/favicon.ico" []
     (response/redirect "/public/favicon.ico"))
@@ -442,6 +468,9 @@
 
   (GET "/about" []
     (v/markdown-page "articles/about"))
+
+  (GET "/heatmap" []
+    (v.c.h/heatmap-page))
 
   (route/not-found
    (fn [{uri :uri :as req}]

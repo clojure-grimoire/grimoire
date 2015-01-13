@@ -59,26 +59,6 @@
   (some-> file resource-file-contents highlight-clojure))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Documentation data file lists
-
-(defn dir-list-as-strings [& path-elements]
-  (let [dir (apply io/file path-elements)]
-    (when (.exists dir)
-      (->> (.listFiles dir)
-	   (map str)))))
-
-(defn prepare-path [path]
-  (-> path
-      (string/replace #"resources/" "")
-      (string/split #"/")))
-
-(defn paths [& path-elements]
-  (->> path-elements
-       (concat ["resources"])
-       (apply dir-list-as-strings)
-       (map prepare-path)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; URL encoding
 
 (defn url-encode

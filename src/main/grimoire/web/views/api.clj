@@ -35,6 +35,9 @@
 (def -api-base-str
   "/api/v1/")
 
+(def -store-base-str
+  "/store/v0/")
+
 (defn unknown-op
   "This function should yield a JSON error result indicating what the requested
   unsupported operation was and what the path on which it was invoked was."
@@ -66,7 +69,7 @@
                     api/list-groups
                     result)]
           {:name     (:name g)
-           :html     (str "/store/" (t/thing->path g))
+           :html     (str -store-base-str (t/thing->path g))
            :children (->> (for [op (keys group-ops)]
                             [op (str -api-base-str (t/thing->path g) "?op=" op)])
                           (into {}))})
@@ -149,7 +152,7 @@
                     result)]
           {:name     (:name t)
            :url      (t/thing->path t)
-           :html     (str "/store/" (t/thing->path t))
+           :html     (str -store-base-str (t/thing->path t))
            :children (->> (for [op (keys artifact-ops)]
                             [op (str -api-base-str (t/thing->path t) "?op=" op)])
                           (into {}))})
@@ -178,7 +181,7 @@
                     result)]
           {:name     (:name t)
            :url      (t/thing->path t)
-           :html     (str "/store/" (t/thing->path t))
+           :html     (str -store-base-str (t/thing->path t))
            :children (->> (for [op (keys version-ops)]
                             [op (str -api-base-str (t/thing->path t) "?op=" op)])
                           (into {}))})
@@ -207,7 +210,7 @@
                     result)]
           {:name     (:name t)
            :url      (t/thing->path t)
-           :html     (str "/store/" (t/thing->path t))
+           :html     (str -store-base-str (t/thing->path t))
            :children (->> (for [op (keys platform-ops)]
                             [op (str "/api/v1/" (t/thing->path t) "?op=" op)])
                           (into {}))})
@@ -235,7 +238,7 @@
                     result)]
           {:name     (:name t)
            :url      (t/thing->path t)
-           :html     (str "/store/" (t/thing->path t))
+           :html     (str -store-base-str (t/thing->path t))
            :children (->> (for [op (keys namespace-ops)]
                             [op (str -api-base-str (t/thing->path t) "?op=" op)])
                           (into {}))})
@@ -273,7 +276,7 @@
               :when (filter-pred (get t :type :fn))]
           {:name     (:name t)
            :url      (t/thing->path t)
-           :html     (str "/store/" (t/thing->path t))
+           :html     (str -store-base-str (t/thing->path t))
            :children (->> (for [op (keys def-ops)]
                             [op (str -api-base-str (t/thing->path t) "?op=" op)])
                           (into {}))})
@@ -321,7 +324,7 @@
                      result)]
            {:name     (:name t)
             :url      (t/thing->path t)
-            :html     (str "/store/" (t/thing->path t))
+            :html     (str -store-base-str (t/thing->path t))
             :children (->> (for [op (keys def-ops)]
                              [op (str -api-base-str (t/thing->path t) "?op=" op)])
                        (into {}))})

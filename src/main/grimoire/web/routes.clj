@@ -264,7 +264,7 @@
                                           (assoc :uri new-uri)
                                           (dissoc :context :path-info))]
                        (info log-msg)
-                       (if (= user-agent "URL/Emacs")
+                       (if (privilaged-urls user-agent)
                          (#'app new-req) ;; pass it forwards
                          (response/redirect new-uri))))))
 
@@ -296,7 +296,7 @@
                                             (assoc :uri new-uri)
                                             (dissoc :context :path-info))]
                          (info log-msg)
-                         (if (= user-agent "URL/Emacs")
+                         (if (privilaged-urls user-agent)
                            (#'app new-req) ;; pass it forwards
                            (response/redirect new-uri))))))
 

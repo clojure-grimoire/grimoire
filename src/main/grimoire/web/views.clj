@@ -1,5 +1,8 @@
 (ns grimoire.web.views
-  (:require [grimoire.util :as util
+  (:require [grimoire.util :as util]
+            [grimoire.things :as t
+             :refer [thing->path]]
+            [grimoire.either
              :refer [succeed? result]]
             [grimoire.web.layout
              :refer [layout]]
@@ -7,6 +10,9 @@
             [grimoire.api :as api]
             [grimoire.api.fs.read]
             [ring.util.response :as response]))
+
+;; Site configuration
+;;--------------------------------------------------------------------
 
 (def site-config
   {:url                 "http://conj.io/"
@@ -17,7 +23,7 @@
                          :mode  :filesystem}
    :version             (slurp "VERSION")
    :google-analytics-id "UA-44001831-2"
-   :year                "2014"
+   :year                "2015"
    :author              {:me          "http://arrdem.com/"
                          :email       "me@arrdem.com"
                          :gittip      "https://gittip.com/arrdem/"}
@@ -26,6 +32,61 @@
                          :description "Community documentation of Clojure"
                          :quote       "Even the most powerful wizard must consult grimoires as an aid against forgetfulness."}})
 
+;; Common partial pages
+;;--------------------------------------------------------------------
+
+(defn link-to [prefix x]
+  {:href (str prefix (thing->path x))})
+
+(def store-baseurl "/store/v0/")
+
+(def link-to' (partial link-to store-baseurl))
+
+(defmulti header :type)
+
+(defmethod header :group [group]
+  (list [:a {:href store-baseurl}
+         "store"] "/"
+         [:a (link-to' group)
+          ,,(:name group)]))
+
+(defmethod header :artifact [artifact]
+  (list (header (t/thing->group artifact))
+        "/" [:a (link-to' artifact)
+             ,,,(:name artifact)]))
+
+(defmethod header :version [version]
+  (let [artifact (t/thing->artifact version)
+        group    (t/thing->group artifact)]
+    (list [:a {:href store-baseurl}
+           "store"] "/"
+           "[" [:a (link-to' group)
+                ,,(:name group)]
+           "/" [:a (link-to' artifact)
+                ,,(:name artifact)]
+           " " [:a (link-to' version)
+                ,,,(pr-str (:name version))] "]")))
+
+(defmethod header :platform [platform]
+  (list (header (t/thing->version platform)) " "
+        [:a (link-to' platform)
+         ,,,(:name platform)]))
+
+(defmethod header :namespace [namespace]
+  (list (header (t/thing->platform namespace)) "::"
+        [:a (link-to' namespace)
+         ,,,(:name namespace)]))
+
+(defmethod header :def [symbol]
+  (let [sym' (util/munge (:name symbol))]
+    (list (header (t/thing->namespace symbol)) "/"
+          [:a (link-to' symbol)
+           ,,,(:name symbol)])))
+
+;; Pages
+;;--------------------------------------------------------------------
+
+;; FIXME: probably belongs somewhere else
 (defn markdown-page
   "Helper for rendering a markdown page off of the resource path as HTML"
   [page]
@@ -37,54 +98,6 @@
                [:h1 title])
              page)
        (response/not-found "Resource not found, sorry. Please file an issue on the github bugtracker.")))))
-
-(defn link-to [prefix x]
-  {:href (str prefix (:uri x))})
-
-(def link-to' (partial link-to "/store/"))
-
-(defmulti header :type)
-
-(defmethod header :group [group]
-  (list [:a {:href "/store/"}
-         "store"] "/"
-         [:a (link-to' group)
-          ,,(:name group)]))
-
-(defmethod header :artifact [artifact]
-  (list (header (:parent artifact))
-        "/" [:a (link-to' artifact)
-             ,,,(:name artifact)]))
-
-(defmethod header :version [version]
-  (list [:a {:href "/store/"}
-         "store"] "/"
-         "[" [:a (link-to' (-> version :parent :parent))
-              ,,(-> version :parent :parent :name)]
-         "/" [:a (link-to' (-> version :parent))
-              ,,(-> version :parent :name)]
-         " " [:a (link-to' version)
-              ,,,(pr-str (:name version))] "]"))
-
-(defmethod header :namespace [namespace]
-  (list (header (:parent namespace)) " "
-        [:a (link-to' namespace)
-         ,,,(:name namespace)]))
-
-(defmethod header :def [symbol]
-  (let [sym'   (util/munge (:name symbol))]
-    (list (header (:parent symbol)) "/"
-          [:a (link-to' symbol)
-           ,,,(:name symbol)])))
-
-;; Pages
-;;--------------------------------------------------------------------
-
-(defn home-page []
-  (layout
-   site-config
-   [:blockquote [:p (-> site-config :style :quote)]]
-   (wutil/cheatsheet-memo site-config)))
 
 (defmulti store-page identity)
 
@@ -108,6 +121,12 @@
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
+(defmulti platform-page dispatch-fn
+  :default :text/plain)
+;;FIXME: text/plain
+;;FIXME: application/json
+;;FIXME: application/edn
+
 (defmulti namespace-page dispatch-fn
   :default :text/plain)
 ;; FIXME: application/edn
@@ -122,15 +141,22 @@
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
+;; FIXME: How to deal with namespaces in different platforms?
+;; FIXME: Probably belongs somewhere else
 (def ns-version-index
-  (->> (for [groupid                   (result (api/list-groups     site-config))
-           artifact                  (result (api/list-artifacts  site-config groupid))
-           :let      [version (first (result (api/list-versions   site-config artifact)))]
-           namespace                 (result (api/list-namespaces site-config version))]
-       [(:name namespace) version])
-     (into {})))
+  (->> (for [groupid   (result (api/list-groups     site-config))
+             artifact  (result (api/list-artifacts  site-config groupid))
+             :let      [version  (->> artifact
+                                      (api/list-versions site-config)
+                                      result first)
+                        platform (->> version
+                                      (api/list-platforms site-config)
+                                      result (sort-by :name) first)]
+             namespace (result (api/list-namespaces site-config platform))]
+         [(:name namespace) version])
+       (into {})))
 
-;; FIXME: code loading is evil
-
+;; Load view implementations
+;;--------------------------------------------------------------------
 (load "views/content/html")
 (load "views/content/txt")

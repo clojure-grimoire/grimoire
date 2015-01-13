@@ -2,10 +2,17 @@
   (:require [grimoire.web.views :refer :all]
             [clojure.string :as string]
             [grimoire.api :as api]
-            [grimoire.util :refer [succeed? result]]
+            [grimoire.either :refer [succeed? result]]
             [grimoire.things :as t]
             [grimoire.web.layout :refer [layout]]
             [grimoire.web.util :as wutil]))
+
+;; FIXME: probably belongs somewhere else
+(defn home-page []
+  (layout
+   site-config
+   [:blockquote [:p (-> site-config :style :quote)]]
+   (wutil/cheatsheet-memo site-config)))
 
 (defmethod store-page :text/html [_]
   (try
@@ -26,8 +33,8 @@
 (defmethod group-page :text/html [_ group-thing]
   (try
     (let [artifacts (-> site-config
-                       (api/list-artifacts group-thing)
-                       result)]
+                        (api/list-artifacts group-thing)
+                        result)]
       (layout site-config
               [:h1 {:class "page-title"}
                (header group-thing)]
@@ -72,7 +79,7 @@
             (list
              [:h2 "Known release versions"]
              [:ul (for [version (->> (api/list-versions site-config artifact-thing)
-                                   result (sort-by :name) reverse)
+                                     result (sort-by :name) reverse)
                         :let  [artifact (:parent version)
                                group    (:parent artifact)]]
                     [:li
@@ -95,12 +102,30 @@
                 (list [:h2 "Release Notes"]
                       (wutil/markdown-string (-> ?notes result first second))))
 
+              [:h2 "Platforms"]
+              [:ul (for [platform-thing (->> (api/list-platforms site-config version-thing)
+                                             result (sort-by :name))]
+                     [:li [:a (link-to' platform-thing)
+                           (:name platform-thing)]])]))
+
+    ;; FIXME: more specific error type
+    (catch AssertionError e
+      nil)))
+
+(defmethod platform-page :text/html [_ platform-thing]
+  (try
+    (let [?notes (api/read-notes site-config platform-thing)]
+      (layout site-config ;; FIXME: add artifact & group name to title somehow?
+              [:h1 {:class "page-title"} (header platform-thing)]
+              (when (succeed? ?notes)
+                (list [:h2 "Platform Notes"]
+                      (wutil/markdown-string (-> ?notes result first second))))
+
               [:h2 "Namespaces"]
-              [:ul (for [ns-thing (->> (api/list-namespaces site-config version-thing)
-                                     result (sort-by :name))]
+              [:ul (for [ns-thing (->> (api/list-namespaces site-config platform-thing)
+                                       result (sort-by :name))]
                      [:li [:a (link-to' ns-thing)
                            (:name ns-thing)]])]))
-
     ;; FIXME: more specific error type
     (catch AssertionError e
       nil)))
@@ -114,66 +139,65 @@
 
 (defmethod namespace-page :text/html [_ namespace-thing]
   (try
-    (let [meta   (-> (api/read-meta site-config namespace-thing)
-                    result)
-          ?notes (api/read-notes site-config namespace-thing)]
-      (layout site-config ;; FIXME: add artifact, namespace?
-              [:h1 {:class "page-title"}
-               (header namespace-thing)]
+    (let [meta   (result (api/read-meta site-config namespace-thing))
+      ?notes (api/read-notes site-config namespace-thing)]
+    (layout site-config ;; FIXME: add artifact, namespace?
+            [:h1 {:class "page-title"}
+             (header namespace-thing)]
 
-              (let [{:keys [doc name]} meta]
-                (when doc
-                  (list [:h2 "Namespace Docs"]
-                        [:p doc])))
+            (let [{:keys [doc name]} meta]
+              (when doc
+                (list [:h2 "Namespace Docs"]
+                      [:p doc])))
 
-              (when (succeed? ?notes)
-                (let [[[_ notes]] (result ?notes)]
-                  (when notes
-                    (list [:h2 "Namespace Notes"]
-                          [:p (wutil/markdown-string notes)]))))
+            (when (succeed? ?notes)
+              (let [[[_ notes]] (result ?notes)]
+                (when notes
+                  (list [:h2 "Namespace Notes"]
+                        [:p (wutil/markdown-string notes)]))))
 
-              (list [:h2 "Symbols"]
-                    ;; FIXME: the fuck am I doing here srsly
-                    (let [keys     [:special :macro :fn :var]
-                          mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
-                          ids      (zipmap keys ["sforms", "macros", "fns", "vars"])
-                          link-ids (zipmap keys ["sff", "mf", "ff", "vf"])
-                          grouping (->> (for [def-thing (-> site-config
-                                                         (api/list-defs namespace-thing)
-                                                         result)
+            (list [:h2 "Symbols"]
+                  ;; FIXME: the fuck am I doing here srsly
+                  (let [keys     [:special :macro :fn :var]
+                        mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
+                        ids      (zipmap keys ["sforms", "macros", "fns", "vars"])
+                        link-ids (zipmap keys ["sff", "mf", "ff", "vf"])
+                        grouping (->> (for [def-thing (-> site-config
+                                                          (api/list-defs namespace-thing)
+                                                          result)
                                             :let      [meta (-> site-config
-                                                               (api/read-meta def-thing)
-                                                               result)]]
+                                                                (api/read-meta def-thing)
+                                                                result)]]
                                         {:url  (:href (link-to' def-thing))
                                          :name (:name meta)
                                          :type (:type meta)})
                                       (group-by :type))]
-                      (for [k keys]
-                        (when-let [records (get grouping k)]
-                          (list
-                           (let [links (emit-alphabetized-links records)]
-                             [:div.section
-                              [:h3.heading (get mapping k)
-                               " " (if (< 6 (count links))
-                                     [:span.unhide "+"]
-                                     [:span.hide "-"])]
-                              [:div {:class (str "autofold"
-                                                 (when (< 6 (count links))
-                                                   " prefold"))}
-                               links]]))))))
+                    (for [k keys]
+                      (when-let [records (get grouping k)]
+                        (list
+                         (let [links (emit-alphabetized-links records)]
+                           [:div.section
+                            [:h3.heading (get mapping k)
+                             " " (if (< 6 (count links))
+                                   [:span.unhide "+"]
+                                   [:span.hide "-"])]
+                            [:div {:class (str "autofold"
+                                               (when (< 6 (count links))
+                                                 " prefold"))}
+                             links]]))))))
 
-              [:script {:src "/public/jquery.js" :type "text/javascript"}]
-              [:script {:src "/public/fold.js" :type "text/javascript"}]))
+            [:script {:src "/public/jquery.js" :type "text/javascript"}]
+            [:script {:src "/public/fold.js" :type "text/javascript"}]))
 
-    ;; FIXME: more specific error type
-    (catch AssertionError e
-      nil)))
+  ;; FIXME: more specific error type
+  (catch AssertionError e
+    nil)))
 
 (defn -render-html-symbol-page [def-thing meta]
   (let [{:keys [src type arglists doc name]} meta
         namespace (:name (t/thing->namespace def-thing))
         symbol    name
-        related   (api/read-related  site-config def-thing) ;; Seq [ Thing [:def] ]
+        ?related   (api/read-related site-config def-thing) ;; Seq [ Thing [:def] ]
         ?examples (api/read-examples site-config def-thing) ;; Seq [version, related]
         ?notes    (api/read-notes    site-config def-thing)]
     (layout (assoc site-config
@@ -189,9 +213,9 @@
                            "Usage"
                            "Arities")]
                     [:pre (->> arglists
-                             (map pr-str)
-                             (map #(str "   " %))
-                             (interpose \newline))]))
+                               (map pr-str)
+                               (map #(str "   " %))
+                               (interpose \newline))]))
 
             (when doc
               (list [:h2 "Official Documentation"]
@@ -213,18 +237,20 @@
                   [:div.example
                    [:div.source
                     (wutil/highlight-clojure e)]])]])
-            
+
             (when-not (= :special type)
               [:a {:href (str "http://crossclj.info/fun/"
                               namespace "/" (wutil/url-encode symbol) ".html")}
                [:h2 "Uses on crossclj"]])
 
-            (when-not (empty? related)
-              (list [:h2 "Related Symbols"]
-                    [:ul (for [r    related
-                               :let [sym r
-                                     ns  (:parent sym)]]
-                           [:a (link-to' sym) (:name r)])]))
+            (when (succeed? ?related)
+              (let [results (result ?related)]
+                (when-not (empty? results)
+                  (list [:h2 "Related Symbols"]
+                        [:ul (for [r    results
+                                   :let [sym r
+                                         ns  (:parent sym)]]
+                               [:a (link-to' sym) (:name r)])]))))
 
             (when src
               (list
@@ -238,9 +264,9 @@
 
 (defmethod symbol-page :text/html [_ def-thing]
   (let [?meta (api/read-meta site-config def-thing)]
-    (if (succeed? ?meta)
+    (when (succeed? ?meta)
       (let [{:keys [type] :as meta} (result ?meta)]
-        (cond (and meta (not (= :sentinel type)))
+        (cond (and meta (not= :sentinel type))
               ;; non-sentinel case
               ,,(-render-html-symbol-page def-thing meta)
 
@@ -254,5 +280,4 @@
 
               :else
               ;; fail to find a redirect, error out
-              ,,nil))
-      nil)))
+              ,,nil)))))

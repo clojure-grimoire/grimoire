@@ -2,7 +2,7 @@
   (:require [grimoire.web.views :refer :all]
             [grimoire.api :as api]
             [grimoire.things :as t]
-            [grimoire.util :refer [succeed? result]]
+            [grimoire.either :refer [succeed? result]]
             [ring.util.response :as response]))
 
 (defmethod store-page :text/plain [_]

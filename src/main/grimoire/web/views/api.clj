@@ -1,11 +1,13 @@
 (ns grimoire.web.views.api
   (:refer-clojure :exclude [ns-resolve])
   (:require [grimoire.api :as api]
-            [grimoire.util :refer [succeed? result]]
+            [grimoire.either
+             :refer [succeed? result]]
             [grimoire.web.views
              :refer [site-config ns-version-index]]
             [grimoire.things :as t]
-            [cheshire.core :refer [generate-string]]))
+            [cheshire.core
+             :refer [generate-string]]))
 
 (defn fail [body]
   {:result :failure
@@ -30,16 +32,22 @@
   {:application/json json-resp
    :application/edn  edn-resp})
 
+(def -api-base-str
+  "/api/v1/")
+
+(def -store-base-str
+  "/store/v0/")
+
 (defn unknown-op
   "This function should yield a JSON error result indicating what the requested
   unsupported operation was and what the path on which it was invoked was."
   [type op thing]
   (-> {:op      op
-      :path    (:uri thing)
-      :message (str "Unknown op " op
-                    " on target " (:uri thing))}
-     fail
-     ((-tm type))))
+       :path    (t/thing->path thing)
+       :message (str "Unknown op " op
+                     " on target " (t/thing->path thing))}
+      fail
+      ((-tm type))))
 
 (declare list-groups
          ns-resolve
@@ -58,42 +66,42 @@
   [type _]
   (try
     (-> (for [g (-> site-config
-                  api/list-groups
-                  result)]
-         {:name     (:name g)
-          :html     (str "/store/" (:uri g))
-          :children (->> (for [op (keys group-ops)]
-                         [op (str "/api/v0/" (:uri g) "?op=" op)])
-                       (into {}))})
-       succeed
-       ((-tm type)))
+                    api/list-groups
+                    result)]
+          {:name     (:name g)
+           :html     (str -store-base-str (t/thing->path g))
+           :children (->> (for [op (keys group-ops)]
+                            [op (str -api-base-str (t/thing->path g) "?op=" op)])
+                          (into {}))})
+        succeed
+        ((-tm type)))
 
     (catch Exception e
       (-> (.getMessage e)
-         fail
-         ((-tm type))))))
+          fail
+          ((-tm type))))))
 
 (defn ns-resolve
   "Returns a success result representing the version and artifact in which a
   namespace is defined."
   [type params]
   (-> (if-let [ns (get params :ns)]
-       (if-let [r (get ns-version-index ns)]
-         (let [version-t  r
-               artifact-t (:parent version-t)
-               group-t    (:parent artifact-t)
-               ns-t       (t/->Ns version-t ns)]
-           (succeed {:namespace      ns
-                     :version        (:name version-t)
-                     :artifact       (:name artifact-t)
-                     :group          (:name group-t)
-                     :html           (str "/store/" (:uri ns-t))
-                     :children       (->> (for [op (keys namespace-ops)]
-                                          [op (str "/api/v0/" (:uri ns-t) "?op=" op)])
-                                        (into {}))}))
-         (fail "Unknown namespace :c"))
-       (fail "ns paramenter not set!"))
-     ((-tm type))))
+        (if-let [r (get ns-version-index ns)]
+          (let [version-t  r
+                artifact-t (:parent version-t)
+                group-t    (:parent artifact-t)
+                ns-t       (t/->Ns version-t ns)]
+            (succeed {:namespace      ns
+                      :version        (:name version-t)
+                      :artifact       (:name artifact-t)
+                      :group          (:name group-t)
+                      :html           (str "/store/" (t/thing->path ns-t))
+                      :children       (->> (for [op (keys namespace-ops)]
+                                             [op (str -api-base-str (t/thing->path ns-t) "?op=" op)])
+                                           (into {}))}))
+          (fail "Unknown namespace :c"))
+        (fail "ns paramenter not set!"))
+      ((-tm type))))
 
 (declare group-notes
          group-meta
@@ -110,51 +118,51 @@
   [type thing]
   (try
     (->> thing
-       (api/read-notes site-config)
-       result
-       succeed
-       ((-tm type)))
+         (api/read-notes site-config)
+         result
+         succeed
+         ((-tm type)))
 
     (catch Exception e
       (-> (.getMessage e)
-         fail
-         ((-tm type))))))
+          fail
+          ((-tm type))))))
 
 (defn group-meta
   "Returns the metadata, if any, for the target group."
   [type thing]
   (try
     (->> thing
-       (api/read-meta site-config)
-       result
-       succeed
-       ((-tm type)))
+         (api/read-meta site-config)
+         result
+         succeed
+         ((-tm type)))
     
     (catch Exception e
       (-> (.getMessage e)
-         fail
-         ((-tm type))))))
+          fail
+          ((-tm type))))))
 
 (defn group-artifacts
   "Returns the artifacts for the target group."
   [type group-thing]
   (try
     (-> (for [t (-> site-config
-                  (api/list-artifacts group-thing)
-                  result)]
-         {:name     (:name t)
-          :uri      (:uri t)
-          :html     (str "/store/" (:uri t))
-          :children (->> (for [op (keys artifact-ops)]
-                         [op (str "/api/v0/" (:uri t) "?op=" op)])
-                       (into {}))})
-       succeed
-       ((-tm type)))
+                    (api/list-artifacts group-thing)
+                    result)]
+          {:name     (:name t)
+           :url      (t/thing->path t)
+           :html     (str -store-base-str (t/thing->path t))
+           :children (->> (for [op (keys artifact-ops)]
+                            [op (str -api-base-str (t/thing->path t) "?op=" op)])
+                          (into {}))})
+        succeed
+        ((-tm type)))
 
     (catch Exception e
       (-> (.getMessage e)
-         fail
-         ((-tm type))))))
+          fail
+          ((-tm type))))))
 
 (declare artifact-versions
          namespace-ops)
@@ -169,49 +177,78 @@
   [type artifact-thing]
   (try
     (-> (for [t (-> site-config
-                  (api/list-versions artifact-thing)
-                  result)]
-         {:name     (:name t)
-          :uri      (:uri t)
-          :html     (str "/store/" (:uri t))
-          :children (->> (for [op (keys version-ops)]
-                         [op (str "/api/v0/" (:uri t) "?op=" op)])
-                       (into {}))})
-       succeed
-       ((-tm type)))
+                    (api/list-versions artifact-thing)
+                    result)]
+          {:name     (:name t)
+           :url      (t/thing->path t)
+           :html     (str -store-base-str (t/thing->path t))
+           :children (->> (for [op (keys version-ops)]
+                            [op (str -api-base-str (t/thing->path t) "?op=" op)])
+                          (into {}))})
+        succeed
+        ((-tm type)))
 
     (catch Exception e
       (-> (.getMessage e)
-         fail
-         ((-tm type))))))
+          fail
+          ((-tm type))))))
 
-(declare version-namespaces)
+(declare version-platforms
+         platform-ops)
 
 (def version-ops
-  {"namespaces" #'version-namespaces
+  {"platforms" #'version-platforms
+   "notes"     #'group-notes
+   "meta"      #'group-meta})
+
+(defn version-platforms
+  "Returns a Succeed of the platforms in the target version."
+  [type group-thing]
+  (try
+    (-> (for [t (-> site-config
+                    (api/list-platforms group-thing)
+                    result)]
+          {:name     (:name t)
+           :url      (t/thing->path t)
+           :html     (str -store-base-str (t/thing->path t))
+           :children (->> (for [op (keys platform-ops)]
+                            [op (str "/api/v1/" (t/thing->path t) "?op=" op)])
+                          (into {}))})
+        succeed
+        ((-tm type)))
+
+    (catch Exception e
+      (-> (.getMessage e)
+          fail
+          ((-tm type))))))
+
+(declare platform-namespaces)
+
+(def platform-ops
+  {"namespaces" #'platform-namespaces
    "notes"      #'group-notes
    "meta"       #'group-meta})
 
-(defn version-namespaces
-  "Returns a Succeed of the namespaces in the target version."
-  [type version-thing]
+(defn platform-namespaces
+  "Returns a Succeed of the namespaces in the target platform."
+  [type platform-thing]
   (try
     (-> (for [t (-> site-config
-                  (api/list-namespaces version-thing)
-                  result)]
-         {:name     (:name t)
-          :uri      (:uri t)
-          :html     (str "/store/" (:uri t))
-          :children (->> (for [op (keys namespace-ops)]
-                         [op (str "/api/v0/" (:uri t) "?op=" op)])
-                       (into {}))})
-       succeed
-       ((-tm type)))
+                    (api/list-namespaces platform-thing)
+                    result)]
+          {:name     (:name t)
+           :url      (t/thing->path t)
+           :html     (str -store-base-str (t/thing->path t))
+           :children (->> (for [op (keys namespace-ops)]
+                            [op (str -api-base-str (t/thing->path t) "?op=" op)])
+                          (into {}))})
+        succeed
+        ((-tm type)))
 
     (catch Exception e
       (-> (.getMessage e)
-         fail
-         ((-tm type))))))
+          fail
+          ((-tm type))))))
 
 (declare def-ops
          namespace-search)
@@ -230,26 +267,26 @@
 (defn namespace-search
   "Returns a Succeed listing the defs of the target namespace and the supported
   operations thereon."
-  [filter type ns-thing]
+  [filter-pred type ns-thing]
   (try
     (-> (for [t     (-> site-config
-                      (api/list-defs ns-thing)
-                      result)
-             :let  [meta (api/read-meta site-config t)]
-             :when (filter (get t :type :fn))]
-         {:name     (:name t)
-          :uri      (:uri t)
-          :html     (str "/store/" (:uri t))
-          :children (->> (for [op (keys def-ops)]
-                         [op (str "/api/v0/" (:uri t) "?op=" op)])
-                       (into {}))})
-       succeed
-       ((-tm type)))
+                        (api/list-defs ns-thing)
+                        result)
+              :let  [meta (api/read-meta site-config t)]
+              :when (filter-pred (get t :type :fn))]
+          {:name     (:name t)
+           :url      (t/thing->path t)
+           :html     (str -store-base-str (t/thing->path t))
+           :children (->> (for [op (keys def-ops)]
+                            [op (str -api-base-str (t/thing->path t) "?op=" op)])
+                          (into {}))})
+        succeed
+        ((-tm type)))
 
     (catch Exception e
       (-> (.getMessage e)
-         fail
-         ((-tm type))))))
+          fail
+          ((-tm type))))))
 
 (declare def-examples
          def-related)
@@ -266,30 +303,30 @@
   [type def-thing]
   (try
     (->> def-thing
-       (api/read-examples site-config)
-       result
-       (map second)
-       succeed
-       ((-tm type)))
+         (api/read-examples site-config)
+         result
+         (map second)
+         succeed
+         ((-tm type)))
 
     (catch Exception e
       (-> (.getMessage e)
-         fail
-         ((-tm type))))))
+          fail
+          ((-tm type))))))
 
 (defn def-related
   "Returns a Succeed of related, namespace qualified symbols for the given def
   encoded as strings if any exist in the datastore."
   [type def-thing]
   (try
-    (->> (for [t     (-> site-config
-                      (api/read-related def-thing)
-                      result)]
-         {:name     (:name t)
-          :uri      (:uri t)
-          :html     (str "/store/" (:uri t))
-          :children (->> (for [op (keys def-ops)]
-                         [op (str "/api/v0/" (:uri t) "?op=" op)])
+    (->> (for [t (-> site-config
+                     (api/read-related def-thing)
+                     result)]
+           {:name     (:name t)
+            :url      (t/thing->path t)
+            :html     (str -store-base-str (t/thing->path t))
+            :children (->> (for [op (keys def-ops)]
+                             [op (str -api-base-str (t/thing->path t) "?op=" op)])
                        (into {}))})
        succeed
        ((-tm type)))

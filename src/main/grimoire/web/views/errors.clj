@@ -1,6 +1,6 @@
 (ns grimoire.web.views.errors
   (:require [clojure.java.io :as io]
-            [grimoire.web.views :refer [site-config dispatch-fn]]
+            [grimoire.web.views :refer [site-config dispatch-fn header]]
             [grimoire.web.layout :refer [layout]]
             [grimoire.util :as util]
             [grimoire.things :as t]
@@ -20,100 +20,72 @@
     (layout
      site-config
      [:h1 {:class "page-title"}
-      [:a groupid]]
-     [:p "Unknown group " (pr-str groupid)]
+      [:a {:href "/store/"} "Store"]]
+     [:p "Unknown group " (pr-str (str groupid))]
      [:p "If you found a broken link, please report the issue encountered on the "
       [:a {:href (:repo site-config)}
        " github bugtracker."]])))
 
 (defn error-unknown-artifact
-  ([artifact-thing]
-   (error-unknown-artifact
-    (:name (t/thing->group artifact-thing))
-    (:name artifact-thing)))
-
-  ([groupid artifactid]
-   (let [s (format "%s/%s" groupid artifactid)]
-     (layout
-      site-config
-      [:h1 {:class "page-title"}
-       [:a s]]
-      [:p "Unknown artifact " s]
-      [:p "If you found a broken link, please report the issue encountered on the "
-       [:a {:href (:repo site-config)}
-        " github bugtracker."]]))))
+  [artifact-thing]
+  (let [group      (t/thing->group artifact-thing)
+        artifactid (:name artifact-thing)]
+    (layout
+     site-config
+     [:h1 {:class "page-title"}
+      (header group)]
+     [:p "Unknown artifact " (pr-str (str artifactid))]
+     [:p "If you found a broken link, please report the issue encountered on the "
+      [:a {:href (:repo site-config)}
+       " github bugtracker."]])))
 
 (defn error-unknown-version
-  ([version-thing]
-   (error-unknown-version
-    (:name (t/thing->group version-thing))
-    (:name (t/thing->artifact version-thing))
-    (:name version-thing)))
+  [version-thing]
+  (let [groupid    (:name (t/thing->group version-thing))
+        artifactid (:name (t/thing->artifact version-thing))
+        version    (:name version-thing)]
+    (layout
+     site-config
+     [:h1 {:class "page-title"}
+      (header (:parent version-thing))]
+     [:p "Unknown artifact version " (pr-str version)]
+     [:p "If you found a broken link, please report the issue encountered on the "
+      [:a {:href (:repo site-config)}
+       " github bugtracker."]])))
 
-  ([groupid artifactid version]
-   (layout
-    site-config
-    [:h1 {:class "page-title"}
-     [:a (format "[%s/%s \"%s\"]" groupid artifactid version)]]
-    [:p "Unknown artifact version " (pr-str version)]
-    [:p "If you found a broken link, please report the issue encountered on the "
-     [:a {:href (:repo site-config)}
-      " github bugtracker."]])))
+(defn error-unknown-platform
+  [platform-thing]
+  (let [groupid    (:name (t/thing->group platform-thing))
+        artifactid (:name (t/thing->artifact platform-thing))
+        version    (:name (t/thing->version platform-thing))
+        platformid (:name platform-thing)]
+    (layout
+     site-config
+     [:h1 {:class "page-title"}
+      (header (:parent platform-thing))]
+     [:p "Unknown platform identifier " (pr-str (str platformid))]
+     [:p "If you found a broken link, please report the issue encountered on the "
+      [:a {:href (:repo site-config)}
+       " github bugtracker."]])))
 
 (defn error-unknown-namespace
-  ([ns-thing]
-   (error-unknown-namespace
-    (:name (t/thing->group ns-thing))
-    (:name (t/thing->artifact ns-thing))
-    (:name (t/thing->version ns-thing))
-    (:name ns-thing)))
+  [ns-thing]
+  (let [groupid    (:name (t/thing->group ns-thing))
+        artifactid (:name (t/thing->artifact ns-thing))
+        version    (:name (t/thing->version ns-thing))
+        platform   (:name (t/thing->platform ns-thing))
+        namespace  (:name ns-thing)]
+    (layout
+     site-config
+     [:h1 {:class "page-title"}
+      (header (:parent ns-thing))]
+     [:p "Unknown namespace identifier " (pr-str namespace)]
+     [:p "If you found a broken link, please report the issue encountered on the "
+      [:a {:href (:repo site-config)}
+       " github bugtracker."]])))
 
-  ([version namespace]
-   (error-unknown-namespace "org.clojure" "clojure" version namespace))
-
-  ([groupid artifactid version namespace]
-   (layout
-    site-config
-    [:h1 {:class "page-title"}
-     [:a (format "[%s/%s \"%s\"]" groupid artifactid version)]]
-    [:p "Unknown namespace identifier " (pr-str [version namespace])]
-    [:p "If you found a broken link, please report the issue encountered on the "
-     [:a {:href (:repo site-config)}
-      " github bugtracker."]])))
-
-(defn error-unknown-symbol
-  ([type def-thing]
-   (error-unknown-symbol
-    type
-    (:name (t/thing->group def-thing))
-    (:name (t/thing->artifact def-thing))
-    (:name (t/thing->version def-thing))
-    (:name (t/thing->namespace def-thing))
-    (:name def-thing)))
-
-  ([version namespace symbol]
-   (error-unknown-symbol :text/html "org.clojure" "clojure" version namespace symbol))
-
-  ([type groupid artifactid version namespace symbol]
-   (let [version-string (format "[%s/%s \"%s\"]" groupid artifactid version)
-         symbol-string  (format "%s/%s" namespace (util/update-munge symbol))]
-     (case type
-       (:html :text/html "text/html")
-       ,,(layout
-          site-config
-          [:h1 {:class "page-title"}
-           [:a version-string]]
-          [:p "Unknown symbol identifier " symbol-string]
-          [:p "If you found a broken link, please report the issue encountered on the "
-           [:a {:href (:repo site-config)}
-            " github bugtracker."]])
-
-       (:text :text/plain "text/plain")
-       ,,(-> (str "In artifact: " version-string \newline
-                 "Unknown symbol: " symbol-string  \newline
-                 "Sorry! Only clojure.core is documented right now.")
-            response/response
-            (response/content-type "text/plain"))))))
+(defmulti error-unknown-symbol dispatch-fn
+  :default :text/plain)
 
 (defmulti search-no-symbol dispatch-fn
   :default :text/plain)

@@ -10,6 +10,9 @@ mkdir -p "$DOCS" # dir used by Grimoire as the doc tree
 
 GIT_DAT="$PWD/dat"
 
+[ -f `which gawk` ] && AWK=`which gawk` || AWK=`which awk`
+echo "[debug] Using " $AWK " for awk imp'l"
+
 git_get() {
     # This is a quick little git extension designed to allow me to
     # manage all the git repos that I keep around better. The idea is
@@ -18,22 +21,22 @@ git_get() {
     # cloning and keeping multiple coppies of a single repo around.
 
     if ( [[ "--help" = $1 ]] ||
-	     [[ "help" = $1 ]] ||
-	     [[ -z $1 ]] )
+             [[ "help" = $1 ]] ||
+             [[ -z $1 ]] )
     then
-	echo "git-get"
-	echo "Usage: git get [help | --help | GIT_ADDR | GIT_ADDR USER/NAME]"
-	echo "  Clones a git repo to the $GIT_DAT dir, creating a symlink"
-	echo "  into the current directory."
-	exit 0
+        echo "git-get"
+        echo "Usage: git get [help | --help | GIT_ADDR | GIT_ADDR USER/NAME]"
+        echo "  Clones a git repo to the $GIT_DAT dir, creating a symlink"
+        echo "  into the current directory."
+        exit 0
     elif [ ! -z $2 ]
     then
-	USER=$(echo $2 | awk "{match(\$1,\"([^/]+)/.*\",a)}END{print(a[1])}")
-	REPO=$(echo $2 | awk "{match(\$1,\".*?/(.*?)(.git)?\",a)}END{print(a[1])}")
+        USER=$(echo $2 | $AWK "{match(\$1,\"([^/]+)/.*\",a)}END{print(a[1])}")
+        REPO=$(echo $2 | $AWK "{match(\$1,\".*?/(.*?)(.git)?\",a)}END{print(a[1])}")
     elif [ ! -z $1 ]
     then
-	USER=$(echo $1 | awk "{match(\$1,\".*?:([^/]+)/.*\",a)}END{print(a[1])}")
-	REPO=$(echo $1 | awk "{match(\$1,\".*?:[^/]+/(.*?).git\",a)}END{print(a[1])}")
+        USER=$(echo $1 | $AWK "{match(\$1,\".*?:([^/]+)/.*\",a)}END{print(a[1])}")
+        REPO=$(echo $1 | $AWK "{match(\$1,\".*?:[^/]+/(.*?).git\",a)}END{print(a[1])}")
     fi
 
     [ ! -z $USER ] && [ ! -z $REPO ] || exit 1
@@ -41,12 +44,23 @@ git_get() {
     # Ensure the target dir exists
     ([ -d "$GIT_DAT/$USER" ] || mkdir -p "$GIT_DAT/$USER" ) &&
 
-	# Get the data
-	([ -d "$GIT_DAT/$USER/$REPO/.git/" ] || git clone $1 "$GIT_DAT/$USER/$REPO") &&
+        # Get the data
+        ([ -d "$GIT_DAT/$USER/$REPO/.git/" ] || git clone $1 "$GIT_DAT/$USER/$REPO") &&
 
-	# Create a link to it
-	ln -s "$GIT_DAT/$USER/$REPO" "./$REPO" &&
-	return 0
+        # Create a link to it
+        ln -s "$GIT_DAT/$USER/$REPO" "./$REPO" &&
+        return 0
+}
+
+git_update() {
+    # $1 is a repo dir
+    pushd $1 > /dev/null
+    if git diff-index --quiet HEAD --; then
+        git pull --quiet origin master
+    else
+        echo "[warning] Not updating repo $1 due to local changes"
+    fi
+    popd > /dev/null
 }
 
 install_docs() {
@@ -58,11 +72,20 @@ install_docs() {
 
     git_get "git@github.com:$1/$2.git"
     rm "./$2"
-    src="$GIT_DAT/$1/$2/$3/$4"
+    dat="$GIT_DAT/$1/$2"
+    src="$dat/$3/$4"
     tgt="$DOCS/$3/$4"
-    
+
+    if [ -d "$dat" ]
+    then
+        git_update "$dat"
+    else
+        git_get "git@github.com:$1/$2.git"
+        rm "./$2"
+    fi
+
     ( [ -d "$src" ] || ( echo "No such dir $src" && exit 1 ))
-    
+
     mkdir -p "$DOCS/$3/"
     ([ -f "$tgt" ] && rm "$tgt" )
     ln -s "$src" "$tgt"

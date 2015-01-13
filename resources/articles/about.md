@@ -26,7 +26,7 @@ cover the hosting and coffee costs of keeping it online and useful.
 
 ## Legal
 
-Grimoire itself is &copy; Reid Mckenzie 2014. All rights reserved,
+Grimoire itself is &copy; Reid Mckenzie 2015. All rights reserved,
 published under the Eclipse Public License 1.0.
 
 Libraries for which docs are hosted on Grimoire are copyrighted to

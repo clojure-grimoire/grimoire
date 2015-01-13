@@ -14,6 +14,9 @@
             [ring.util.response :as response]
             [taoensso.timbre :as timbre :refer [info warn]]))
 
+(def ^:private platform-regex
+  #"clj|cljs|cljclr|pixi|kiss|ox|toc")
+
 (defn store-v0
   [{header-type :content-type
     {param-type :type} :params
@@ -53,7 +56,8 @@
                            (info log-msg)
                            r))
 
-                       (context "/:platform" [platform]
+                       (context ["/:platform"
+                                 :platform platform-regex] [platform]
                          (let-routes [t (thing/->Platform t platform)]
                            (GET "/" []
                              (when-let [r (v/platform-page type t)]
@@ -230,20 +234,49 @@
 
 (declare app)
 
-(def search
-  (fn [{header-type :content-type
-        {param-type :type} :params
-        :as req
-        uri :uri}]
-    (->> (let-routes [type    (-> (or header-type
-                                      param-type
-                                      :html)
-                                  wutil/normalize-type)
-                      log-msg (pr-str {:uri        uri
-                                       :type       type
-                                       :user-agent (get-in req [:headers "user-agent"])})]
-           (context "/search" []
-             (context "/v0" []
+(defn search
+  [{header-type :content-type
+    {param-type :type} :params
+    :as req uri :uri}]
+  (let [type    (-> (or header-type param-type :html)
+                    wutil/normalize-type)
+        log-msg (pr-str {:uri        uri
+                         :type       type
+                         :user-agent (get-in req [:headers "user-agent"])})]
+    (->> (context "/search" []
+           (context "/v0" []
+             (context "/:ns" [ns]
+               (context "/:symbol" [symbol]
+                 (fn [request]
+                   (when-let [v-thing (-> ns v/ns-version-index)]
+                     (let [user-agent (get-in request [:headers "user-agent"])
+                           new-uri    (format "/store/v0/%s/%s/%s/%s/%s/%s"
+                                              (:name (thing/thing->group v-thing))
+                                              (:name (thing/thing->artifact v-thing))
+                                              (:name v-thing)
+                                              "clj"
+                                              ns
+                                              symbol)
+                           new-req    (-> request
+                                          (assoc :uri new-uri)
+                                          (dissoc :context :path-info))]
+                       (info log-msg)
+                       (if (= user-agent "URL/Emacs")
+                         (#'app new-req) ;; pass it forwards
+                         (response/redirect new-uri))))))
+
+               (route/not-found
+                (fn [req]
+                  (warn log-msg)
+                  (v.e/search-no-symbol type "v0" ns))))
+
+             (route/not-found
+              (fn [req]
+                (warn log-msg)
+                (v.e/search-no-version type "v0"))))
+
+           (context "/v1" []
+             (context "/:platform" [platform]
                (context "/:ns" [ns]
                  (context "/:symbol" [symbol]
                    (fn [request]
@@ -253,6 +286,7 @@
                                                 (:name (thing/thing->group v-thing))
                                                 (:name (thing/thing->artifact v-thing))
                                                 (:name v-thing)
+                                                platform
                                                 ns
                                                 symbol)
                              new-req    (-> request
@@ -266,46 +300,14 @@
                  (route/not-found
                   (fn [req]
                     (warn log-msg)
-                    (v.e/search-no-symbol type "v0" ns))))
+                    (v.e/search-no-symbol type "v1" ns))))
 
                (route/not-found
                 (fn [req]
                   (warn log-msg)
-                  (v.e/search-no-version type "v0"))))
+                  (v.e/search-no-version type "v1"))))))
 
-             (context "/v1" []
-               (context "/:platform" [platform]
-                 (context "/:ns" [ns]
-                   (context "/:symbol" [symbol]
-                     (fn [request]
-                       (when-let [v-thing (-> ns v/ns-version-index)]
-                         (let [user-agent (get-in request [:headers "user-agent"])
-                               new-uri    (format "/store/v0/%s/%s/%s/clj/%s/%s"
-                                                  (:name (thing/thing->group v-thing))
-                                                  (:name (thing/thing->artifact v-thing))
-                                                  (:name v-thing)
-                                                  platform
-                                                  ns
-                                                  symbol)
-                               new-req    (-> request
-                                              (assoc :uri new-uri)
-                                              (dissoc :context :path-info))]
-                           (info log-msg)
-                           (if (= user-agent "URL/Emacs")
-                             (#'app new-req) ;; pass it forwards
-                             (response/redirect new-uri))))))
-
-                   (route/not-found
-                    (fn [req]
-                      (warn log-msg)
-                      (v.e/search-no-symbol type "v1" ns))))
-
-                 (route/not-found
-                  (fn [req]
-                    (warn log-msg)
-                    (v.e/search-no-version type "v1"))))))
-
-           (routing req)))))
+         (routing req))))
 
 (defroutes app
   (GET "/" {uri :uri :as req}
@@ -372,13 +374,18 @@
             artifact-v (first versions)
             uri        (:uri request)
             ;; FIXME: URI forging is evil
-            new-uri    (str "/store/" store-v "/" group "/" artifact "/" (:name artifact-v) (:path-info request))]
+            new-uri    (str "/store/"
+                            store-v "/"
+                            group "/"
+                            artifact "/"
+                            (:name artifact-v)
+                            (:path-info request))]
         (response/redirect new-uri))))
 
   ;; Upgrade munging
   (context ["/store/:store-v/:group/:artifact/:version/:platform/:ns/:symbol"
             :store-v  #"v[0-9]+"
-            :platform #"clj|cljs|cljclr|pixi|ox|toc"]
+            :platform platform-regex]
       [store-v group artifact version platform ns symbol]
     (fn [request]
       (let [symbol' (util/update-munge symbol)]
@@ -400,6 +407,13 @@
   ;;--------------------------------------------------------------------
   search
 
+  ;; The v0 API
+  ;;--------------------------------------------------------------------
+  api-v0
+  api-v1
+  
+  ;; Articles
+  ;;--------------------------------------------------------------------
   (GET "/api" []
     (v/markdown-page "articles/API"))
 
@@ -408,10 +422,6 @@
 
   (GET "/about" []
     (v/markdown-page "articles/about"))
-  
-  ;; The v0 API
-  api-v0
-  api-v1
 
   (route/not-found
    (fn [{uri :uri :as req}]

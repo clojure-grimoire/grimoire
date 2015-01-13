@@ -208,7 +208,7 @@
           {:name     (:name t)
            :url      (t/thing->path t)
            :html     (str "/store/" (t/thing->path t))
-           :children (->> (for [op (keys version-ops)]
+           :children (->> (for [op (keys platform-ops)]
                             [op (str "/api/v1/" (t/thing->path t) "?op=" op)])
                           (into {}))})
         succeed

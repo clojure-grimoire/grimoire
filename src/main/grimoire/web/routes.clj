@@ -17,6 +17,9 @@
 (def ^:private platform-regex
   #"clj|cljs|cljclr|pixi|kiss|ox|toc")
 
+(def ^:private privilaged-urls
+  #{"URL/Emacs"})
+
 (defn store-v0
   [{header-type :content-type
     {param-type :type} :params
@@ -341,7 +344,7 @@
             new-req    (-> request
                            (assoc :uri new-uri)
                            (dissoc :context :path-info))]
-        (if (= user-agent "URL/Emacs")
+        (if (privilaged-urls user-agent)
           (#'app new-req) ;; pass it forwards
           (wutil/moved-permanently new-uri))))) ;; everyone else
 
@@ -351,22 +354,29 @@
   ;; Handle pre-versioned store (Grimoire 0.4) store links
   (context ["/store/:t", :t #"[^v][^0-9]*"] [t]
     (fn [request]
-      (let [;; FIXME: URI forging is evil
+      (let [user-agent (get-in request [:headers "user-agent"])
+            ;; FIXME: URI forging is evil
             ;; FIXME: Forged URI doesn't have a platform part
-            path    (string/split (:path-info request) #"/")
-            _       (println path)
-            path    (if (>= (count path) 3)
-                      (concat (take 2 path) '("clj") (drop 2 path))
-                      path)
-            new-uri (str "/store/v0/" t (apply str (interpose "/" path)))]
-        (wutil/moved-permanently new-uri)))) ;; everyone else
+            path       (string/split (:path-info request) #"/")
+            _          (println path)
+            path       (if (>= (count path) 3)
+                         (concat (take 2 path) '("clj") (drop 2 path))
+                         path)
+            new-uri    (str "/store/v0/" t (apply str (interpose "/" path)))
+            new-req    (-> request
+                           (assoc :uri new-uri)
+                           (dissoc :context :path-info))]
+        (if (privilaged-urls user-agent)
+          (#'app new-req) ;; pass it forwards
+          (wutil/moved-permanently new-uri))))) ;; everyone else
 
   ;; Handle "latest" links
   (context ["/store/:store-v/:group/:artifact/latest",
             :store-v #"v[0-9]+"]
       [store-v group artifact]
     (fn [request]
-      (let [t          (-> (thing/->Group group)
+      (let [user-agent (get-in request [:headers "user-agent"])
+            t          (-> (thing/->Group group)
                            (thing/->Artifact artifact))
             versions   (-> v/site-config
                            (api/list-versions t)
@@ -379,8 +389,13 @@
                             group "/"
                             artifact "/"
                             (:name artifact-v)
-                            (:path-info request))]
-        (response/redirect new-uri))))
+                            (:path-info request))
+            new-req    (-> request
+                           (assoc :uri new-uri)
+                           (dissoc :context :path-info))]
+        (if (privilaged-urls user-agent)
+          (#'app new-req) ;; pass it forwards
+          (wutil/moved-permanently new-uri))))) ;; everyone else
 
   ;; Upgrade munging
   (context ["/store/:store-v/:group/:artifact/:version/:platform/:ns/:symbol"
@@ -388,17 +403,23 @@
             :platform platform-regex]
       [store-v group artifact version platform ns symbol]
     (fn [request]
-      (let [symbol' (util/update-munge symbol)]
+      (let [user-agent (get-in request [:headers "user-agent"])
+            symbol'    (util/update-munge symbol)
+            new-uri    (str \/ "store"
+                            \/ store-v
+                            \/ group
+                            \/ artifact
+                            \/ version
+                            \/ platform
+                            \/ ns
+                            \/ symbol')
+            new-req    (-> request
+                           (assoc :uri new-uri)
+                           (dissoc :context :path-info))]
         (when-not (= symbol symbol')
-          (wutil/moved-permanently
-           (str \/ "store"
-                \/ store-v
-                \/ group
-                \/ artifact
-                \/ version
-                \/ platform
-                \/ ns
-                \/ symbol'))))))
+          (if (privilaged-urls user-agent)
+            (#'app new-req) ;; pass it forwards
+            (wutil/moved-permanently new-uri)))))) ;; everyone else
 
   ;; The store itself
   store-v0

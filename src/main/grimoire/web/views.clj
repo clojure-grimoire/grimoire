@@ -38,12 +38,14 @@
 (defn link-to [prefix x]
   {:href (str prefix (thing->path x))})
 
-(def link-to' (partial link-to "/store/"))
+(def store-baseurl "/store/v0/")
+
+(def link-to' (partial link-to store-baseurl))
 
 (defmulti header :type)
 
 (defmethod header :group [group]
-  (list [:a {:href "/store/"}
+  (list [:a {:href store-baseurl}
          "store"] "/"
          [:a (link-to' group)
           ,,(:name group)]))
@@ -56,7 +58,7 @@
 (defmethod header :version [version]
   (let [artifact (t/thing->artifact version)
         group    (t/thing->group artifact)]
-    (list [:a {:href "/store/"}
+    (list [:a {:href store-baseurl}
            "store"] "/"
            "[" [:a (link-to' group)
                 ,,(:name group)]

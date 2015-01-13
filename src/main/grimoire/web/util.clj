@@ -70,3 +70,34 @@
   "Returns an UTF-8 URL encoded version of the given string."
   [unencoded]
   (URLEncoder/encode unencoded "UTF-8"))
+
+(defn moved-permanently
+  "Returns a Ring response for a HTTP 301 'moved permanently' redirect."
+  {:added "1.3"}
+  ;; FIXME: remove for ring-clojure/ring#181
+  [url]
+  {:status  301
+   :headers {"Location" url}
+   :body    ""})
+
+(def normalize-type
+  {:html              :text/html
+   :text/html         :text/html
+   "html"             :text/html
+   "text/html"        :text/html
+
+   :text              :text/plain
+   :text/plain        :text/plain
+   "text"             :text/plain
+   "text/plain"       :text/plain
+
+   "json"             :application/json
+   :json              :application/json
+   "application/json" :application/json
+   :application/json  :application/json
+
+   "edn"              :application/edn
+   :edn               :application/edn
+   "application/edn"  :application/edn
+   :application/edn   :application/edn
+   })

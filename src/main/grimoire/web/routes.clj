@@ -2,6 +2,7 @@
   (:require [compojure.core :refer [defroutes context GET let-routes routing]]
             [compojure.route :as route]
             [grimoire.util :as util]
+            [grimoire.web.util :as wutil]
             [grimoire.things :as thing]
             [grimoire.web.views :as v]
             [grimoire.web.views.content.html :as v.c.h]
@@ -9,37 +10,6 @@
             [grimoire.web.views.api :as v.api]
             [ring.util.response :as response]
             [taoensso.timbre :as timbre :refer [info warn]]))
-
-(defn moved-permanently
-  "Returns a Ring response for a HTTP 301 'moved permanently' redirect."
-  {:added "1.3"}
-  ;; FIXME: remove for ring-clojure/ring#181
-  [url]
-  {:status  301
-   :headers {"Location" url}
-   :body    ""})
-
-(def normalize-type
-  {:html              :text/html
-   :text/html         :text/html
-   "html"             :text/html
-   "text/html"        :text/html
-
-   :text              :text/plain
-   :text/plain        :text/plain
-   "text"             :text/plain
-   "text/plain"       :text/plain
-
-   "json"             :application/json
-   :json              :application/json
-   "application/json" :application/json
-   :application/json  :application/json
-
-   "edn"              :application/edn
-   :edn               :application/edn
-   "application/edn"  :application/edn
-   :application/edn   :application/edn
-   })
 
 (def store
   (fn [{header-type :content-type
@@ -49,7 +19,7 @@
     (->> (let-routes [type    (-> (or header-type
                                       param-type
                                       :html)
-                                  normalize-type)
+                                  wutil/normalize-type)
                       log-msg (pr-str {:uri        uri
                                        :type       type
                                        :user-agent (get-in req [:headers "user-agent"])})]
@@ -202,7 +172,7 @@
          op         :op :as params} :params
         :as req
         uri :uri}]
-    (->> (let-routes [type    (normalize-type
+    (->> (let-routes [type    (wutil/normalize-type
                                (or header-type
                                    param-type
                                    :json))
@@ -254,7 +224,7 @@
          op         :op :as params} :params
         :as req
         uri :uri}]
-    (->> (let-routes [type    (normalize-type
+    (->> (let-routes [type    (util/normalize-type
                                (or header-type
                                    param-type
                                    :json))
@@ -315,7 +285,7 @@
     (->> (let-routes [type    (-> (or header-type
                                       param-type
                                       :html)
-                                  normalize-type)
+                                  wutil/normalize-type)
                       log-msg (pr-str {:uri        uri
                                        :type       type
                                        :user-agent (get-in req [:headers "user-agent"])})]
@@ -428,7 +398,7 @@
                            (dissoc :context :path-info))]
         (if (= user-agent "URL/Emacs")
           (#'app new-req) ;; pass it forwards
-          (moved-permanently new-uri))))) ;; everyone else
+          (wutil/moved-permanently new-uri))))) ;; everyone else
 
   (route/not-found
    (fn [{uri :uri :as req}]

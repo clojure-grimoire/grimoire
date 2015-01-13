@@ -65,6 +65,3 @@
   "Returns an UTF-8 URL encoded version of the given string."
   [unencoded]
   (URLEncoder/encode unencoded "UTF-8"))
-
-(def clojure-versions
-  ["1.6.0" "1.5.0" "1.4.0"])

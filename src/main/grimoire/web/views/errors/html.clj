@@ -32,8 +32,9 @@
     [:p
      "Huh, looks like you tried to use an unknown search version or just forgot the namespace and symbol."
      "See " [:a {:href "/api"} "the API docs"] " for more info."
-     "Please file an issue on " [:a {:href (str (:repo site-config) "issues/")}
-                                 "the bugtracker"]
+     "Please file an issue on "
+     [:a {:href (str (:repo site-config) "issues/")}
+      "the bugtracker"]
      " if you think this is a bug."])))
 
 (defmethod error-unknown-symbol :text/html [_type def-thing]

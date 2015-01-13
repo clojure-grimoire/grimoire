@@ -7,6 +7,13 @@
             [grimoire.web.layout :refer [layout]]
             [grimoire.web.util :as wutil]))
 
+;; FIXME: probably belongs somewhere else
+(defn home-page []
+  (layout
+   site-config
+   [:blockquote [:p (-> site-config :style :quote)]]
+   (wutil/cheatsheet-memo site-config)))
+
 (defmethod store-page :text/html [_]
   (try
     (let [groups (-> site-config api/list-groups result)]

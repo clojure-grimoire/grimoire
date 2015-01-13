@@ -1,6 +1,6 @@
 (ns grimoire.web.views
   (:require [grimoire.util :as util]
-            [grimoire.things
+            [grimoire.things :as t
              :refer [thing->path]]
             [grimoire.either
              :refer [succeed? result]]
@@ -10,6 +10,9 @@
             [grimoire.api :as api]
             [grimoire.api.fs.read]
             [ring.util.response :as response]))
+
+;; Site configuration
+;;--------------------------------------------------------------------
 
 (def site-config
   {:url                 "http://conj.io/"
@@ -29,17 +32,8 @@
                          :description "Community documentation of Clojure"
                          :quote       "Even the most powerful wizard must consult grimoires as an aid against forgetfulness."}})
 
-(defn markdown-page
-  "Helper for rendering a markdown page off of the resource path as HTML"
-  [page]
-  (let [[header page] (wutil/parse-markdown-page page)]
-    (layout
-     site-config
-     (if page
-       (list (when-let [title (:title header)]
-               [:h1 title])
-             page)
-       (response/not-found "Resource not found, sorry. Please file an issue on the github bugtracker.")))))
+;; Common partial pages
+;;--------------------------------------------------------------------
 
 (defn link-to [prefix x]
   {:href (str prefix (thing->path x))})
@@ -90,11 +84,18 @@
 ;; Pages
 ;;--------------------------------------------------------------------
 
-(defn home-page []
-  (layout
-   site-config
-   [:blockquote [:p (-> site-config :style :quote)]]
-   (wutil/cheatsheet-memo site-config)))
+;; FIXME: probably belongs somewhere else
+(defn markdown-page
+  "Helper for rendering a markdown page off of the resource path as HTML"
+  [page]
+  (let [[header page] (wutil/parse-markdown-page page)]
+    (layout
+     site-config
+     (if page
+       (list (when-let [title (:title header)]
+               [:h1 title])
+             page)
+       (response/not-found "Resource not found, sorry. Please file an issue on the github bugtracker.")))))
 
 (defmulti store-page identity)
 
@@ -138,6 +139,8 @@
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
+;; FIXME: How to deal with namespaces in different platforms?
+;; FIXME: Probably belongs somewhere else
 (def ns-version-index
   (->> (for [groupid   (result (api/list-groups     site-config))
              artifact  (result (api/list-artifacts  site-config groupid))
@@ -151,7 +154,7 @@
          [(:name namespace) version])
        (into {})))
 
-;; FIXME: code loading is evil
-
+;; Load view implementations
+;;--------------------------------------------------------------------
 (load "views/content/html")
 (load "views/content/txt")

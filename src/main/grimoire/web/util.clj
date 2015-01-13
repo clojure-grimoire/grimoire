@@ -5,23 +5,34 @@
 	    [me.raynes.conch :refer [let-programs]])
   (:import (java.net URLEncoder)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Cheatsheet
-
-(defn cheatsheet [{:keys [baseurl clojure-version]}]
+(defn cheatsheet
+  "Slurps in the cheatsheet off of the resource path and does the final
+  rendering to HTML."
+  [{:keys [baseurl clojure-version]}]
   (-> "cheatsheet.html"
       io/resource
       slurp
       (string/replace #"\{\{ site.baseurl \}\}" "")))
 
-(def cheatsheet-memo (memoize cheatsheet))
+(def cheatsheet-memo
+  "Since the cheatsheet isn't expected to change and is the highest traffic page
+  on the site just memoize it."
+  (memoize cheatsheet))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Jekyll-based Markdown pages
+(defn resource-file-contents
+  "Slurps a file if it exists, otherwise returning nil."
+  [file]
+  (let [file (io/file file)]
+    (when (.exists file)
+      (some-> file slurp))))
 
-(def header-regex #"^---\n((?:[a-z-]+: [^\n]+\n)*)---\n")
+(def header-regex
+  #"^---\n((?:[a-z-]+: [^\n]+\n)*)---\n")
 
-(defn parse-markdown-page-header [page]
+(defn parse-markdown-page-header
+  "Attempts to locate a Jekyll style markdown header in a \"page\" given as a
+  string and parse it out into a Clojure map. Returns a (possibly empty) map."
+  [page]
   (when-let [header (some->> page
 			     (re-find header-regex)
 			     second)]
@@ -30,36 +41,30 @@
 	 (map (juxt (comp keyword first) second))
 	 (into {}))))
 
-(defn parse-markdown-page [page]
+(def markdown-string
+  md/md-to-html-string)
+
+(defn parse-markdown-page
+  "Attempts to slurp a markdown file from the resource path, returning a
+  pair [header-map, html-string]."
+  [page]
   (when-let [raw (some-> page (str ".md") io/resource slurp)]
     [(or (parse-markdown-page-header raw) {})
-     (-> raw (string/replace header-regex "") md/md-to-html-string)]))
+     (-> raw (string/replace header-regex "") markdown-string)]))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Documentation data file contents
+(def markdown-file
+  "Helper for rendering a file on the resource path to HTML via markdown."
+  (comp markdown-string resource-file-contents))
 
-(defn resource-file-contents [file]
-  (let [file (io/file file)]
-    (when (.exists file)
-      (some-> file slurp))))
-
-(def markdown-string md/md-to-html-string)
-
-(defn markdown-file [file]
-  (-> file resource-file-contents markdown-string))
-
-(defn highlight-clojure [text]
+(defn highlight-clojure
+  "Helper for rendering a string of Clojure to syntax highlighted HTML via
+  pygmentize."
+  [text]
   (let-programs [pygmentize "pygmentize"]
     (pygmentize "-fhtml"
                 "-lclojure"
 		"-Ostripnl=False,encoding=utf-8"
 		{:in text})))
-
-(defn clojure-file [file]
-  (some-> file resource-file-contents highlight-clojure))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; URL encoding
 
 (defn url-encode
   "Returns an UTF-8 URL encoded version of the given string."

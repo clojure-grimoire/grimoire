@@ -55,33 +55,35 @@
           ,,(:name group)]))
 
 (defmethod header :artifact [artifact]
-  (list (header (:parent artifact))
+  (list (header (t/thing->group artifact))
         "/" [:a (link-to' artifact)
              ,,,(:name artifact)]))
 
 (defmethod header :version [version]
-  (list [:a {:href "/store/"}
-         "store"] "/"
-         "[" [:a (link-to' (-> version :parent :parent))
-              ,,(-> version :parent :parent :name)]
-         "/" [:a (link-to' (-> version :parent))
-              ,,(-> version :parent :name)]
-         " " [:a (link-to' version)
-              ,,,(pr-str (:name version))] "]"))
+  (let [artifact (t/thing->artifact version)
+        group    (t/thing->group artifact)]
+    (list [:a {:href "/store/"}
+           "store"] "/"
+           "[" [:a (link-to' group)
+                ,,(:name group)]
+           "/" [:a (link-to' artifact)
+                ,,(:name artifact)]
+           " " [:a (link-to' version)
+                ,,,(pr-str (:name version))] "]")))
 
 (defmethod header :platform [platform]
-  (list (header (:parent platform)) " "
+  (list (header (t/thing->version platform)) " "
         [:a (link-to' platform)
          ,,,(:name platform)]))
 
 (defmethod header :namespace [namespace]
-  (list (header (:parent namespace)) "::"
+  (list (header (t/thing->platform namespace)) "::"
         [:a (link-to' namespace)
          ,,,(:name namespace)]))
 
 (defmethod header :def [symbol]
   (let [sym' (util/munge (:name symbol))]
-    (list (header (:parent symbol)) "/"
+    (list (header (t/thing->namespace symbol)) "/"
           [:a (link-to' symbol)
            ,,,(:name symbol)])))
 

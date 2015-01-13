@@ -38,34 +38,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Documentation data file contents
 
-(defn resource-file
-  "This helper is a disgusting hack but it's a start."
-
-  ([version f]
-     (io/file
-      (str "resources/store/org.clojure/clojure/"
-	   version "/" f)))
-
-  ([version namespace f]
-     (io/file
-      (str "resources/store/org.clojure/clojure/"
-	   version "/" namespace "/" f)))
-
-  ([version namespace symbol f]
-     (io/file
-      (str "resources/store/org.clojure/clojure/"
-	   version "/" namespace "/" symbol "/" f)))
-
-  ([groupid artifactid version namespace f]
-     (io/file
-      (format "resources/store/%s/%s/%s/%s/%s"
-              groupid artifactid version namespace f)))
-
-  ([groupid artifactid version namespace symbol f]
-     (io/file
-      (format "resources/store/%s/%s/%s/%s/%s/%s"
-              groupid artifactid version namespace symbol f))))
-
 (defn resource-file-contents [file]
   (let [file (io/file file)]
     (when (.exists file)

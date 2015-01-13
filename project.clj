@@ -6,7 +6,7 @@
   :aliases {"serve" ["with-profile" "server" "run"]}
   :profiles {:server
              {:dependencies [[org.clojure/clojure "[1.6.0,)"]
-                             [org.clojure-grimoire/lib-grimoire "0.7.0-SNAPSHOT"
+                             [org.clojure-grimoire/lib-grimoire "0.7.0"
                               :exclusions [org.clojure/clojure]]
                              [cheshire "5.4.0"
                               :exclusions [org.clojure/clojure]]

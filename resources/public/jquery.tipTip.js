@@ -1,4 +1,5 @@
- /*
+// @license magnet:?xt=urn:btih:5305d91886084f776adcf57509a648432709a7c7&dn=x11.txt
+/*
  * TipTip
  * Copyright 2010 Drew Wilson
  * www.drewwilson.com
@@ -158,3 +159,4 @@
 	});
     }
 })(jQuery);
+// @license-end

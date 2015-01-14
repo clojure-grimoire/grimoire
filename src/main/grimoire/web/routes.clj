@@ -37,7 +37,7 @@
     ;; - if def, inc in the def store at ":artifact/:ns/:def"
     (when (#{:def} (:type thing))
       (sdb/update! :defs clojure.core/update
-                   (thing/thing->relative-path :platform thing) incf))
+                   (thing/thing->relative-path :version thing) incf))
 
     (when-let [ns (thing/thing->namespace thing)]
       (sdb/update! :namespaces clojure.core/update (:name ns) incf))

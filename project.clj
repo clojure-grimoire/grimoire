@@ -28,7 +28,7 @@
                               :exclusions [org.clojure/clojure]]
                              [me.arrdem/detritus "0.2.0"
                               :exclusions [org.clojure/clojure]]
-                             [simpledb "0.1.4"]]
+                             [rethikdb "0.3.35"]]
               :main         grimoire.web.service}
 
              :dev

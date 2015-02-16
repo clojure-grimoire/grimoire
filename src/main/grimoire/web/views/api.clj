@@ -68,7 +68,7 @@
     (-> (for [g (-> site-config
                     api/list-groups
                     result)]
-          {:name     (:name g)
+          {:name     (t/thing->name g)
            :html     (str -store-base-str (t/thing->path g))
            :children (->> (for [op (keys group-ops)]
                             [op (str -api-base-str (t/thing->path g) "?op=" op)])
@@ -88,13 +88,13 @@
   (-> (if-let [ns (get params :ns)]
         (if-let [r (get ns-version-index ns)]
           (let [version-t  r
-                artifact-t (:parent version-t)
-                group-t    (:parent artifact-t)
+                artifact-t (t/thing->artifact version-t)
+                group-t    (t/thing->group artifact-t)
                 ns-t       (t/->Ns version-t ns)]
             (succeed {:namespace      ns
-                      :version        (:name version-t)
-                      :artifact       (:name artifact-t)
-                      :group          (:name group-t)
+                      :version        (t/thing->name version-t)
+                      :artifact       (t/thing->name artifact-t)
+                      :group          (t/thing->name group-t)
                       :html           (str "/store/" (t/thing->path ns-t))
                       :children       (->> (for [op (keys namespace-ops)]
                                              [op (str -api-base-str (t/thing->path ns-t) "?op=" op)])
@@ -150,7 +150,7 @@
     (-> (for [t (-> site-config
                     (api/list-artifacts group-thing)
                     result)]
-          {:name     (:name t)
+          {:name     (t/thing->name t)
            :url      (t/thing->path t)
            :html     (str -store-base-str (t/thing->path t))
            :children (->> (for [op (keys artifact-ops)]
@@ -179,7 +179,7 @@
     (-> (for [t (-> site-config
                     (api/list-versions artifact-thing)
                     result)]
-          {:name     (:name t)
+          {:name     (t/thing->name t)
            :url      (t/thing->path t)
            :html     (str -store-base-str (t/thing->path t))
            :children (->> (for [op (keys version-ops)]
@@ -208,7 +208,7 @@
     (-> (for [t (-> site-config
                     (api/list-platforms group-thing)
                     result)]
-          {:name     (:name t)
+          {:name     (t/thing->name t)
            :url      (t/thing->path t)
            :html     (str -store-base-str (t/thing->path t))
            :children (->> (for [op (keys platform-ops)]
@@ -236,7 +236,7 @@
     (-> (for [t (-> site-config
                     (api/list-namespaces platform-thing)
                     result)]
-          {:name     (:name t)
+          {:name     (t/thing->name t)
            :url      (t/thing->path t)
            :html     (str -store-base-str (t/thing->path t))
            :children (->> (for [op (keys namespace-ops)]
@@ -274,7 +274,7 @@
                         result)
               :let  [meta (api/read-meta site-config t)]
               :when (filter-pred (get t :type :fn))]
-          {:name     (:name t)
+          {:name     (t/thing->name t)
            :url      (t/thing->path t)
            :html     (str -store-base-str (t/thing->path t))
            :children (->> (for [op (keys def-ops)]
@@ -322,7 +322,7 @@
     (->> (for [t (-> site-config
                      (api/read-related def-thing)
                      result)]
-           {:name     (:name t)
+           {:name     (t/thing->name t)
             :url      (t/thing->path t)
             :html     (str -store-base-str (t/thing->path t))
             :children (->> (for [op (keys def-ops)]

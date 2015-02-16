@@ -35,18 +35,18 @@
     (sdb/update! :things clojure.core/update (thing/thing->path thing) incf)
     
     ;; - if def, inc in the def store at ":artifact/:ns/:def"
-    (when (#{:def} (:type thing))
+    (when (thing/def? thing)
       (sdb/update! :defs clojure.core/update
                    (thing/thing->relative-path :version thing) incf))
 
     (when-let [ns (thing/thing->namespace thing)]
-      (sdb/update! :namespaces clojure.core/update (:name ns) incf))
+      (sdb/update! :namespaces clojure.core/update (thing/thing->name ns) incf))
 
     (when-let [platform (thing/thing->platform thing)]
-      (sdb/update! :platforms clojure.core/update (:name platform) incf))
+      (sdb/update! :platforms clojure.core/update (thing/thing->name platform) incf))
 
     (when-let [artifact (thing/thing->artifact thing)]
-      (sdb/update! :artifacts clojure.core/update (:name artifact) incf))))
+      (sdb/update! :artifacts clojure.core/update (thing/thing->name artifact) incf))))
 
 (defn store-v0
   [{header-type :content-type
@@ -282,9 +282,9 @@
                    (when-let [v-thing (-> ns v/ns-version-index)]
                      (let [user-agent (get-in request [:headers "user-agent"])
                            new-uri    (format "/store/v0/%s/%s/%s/%s/%s/%s"
-                                              (:name (thing/thing->group v-thing))
-                                              (:name (thing/thing->artifact v-thing))
-                                              (:name v-thing)
+                                              (thing/thing->name (thing/thing->group v-thing))
+                                              (thing/thing->name (thing/thing->artifact v-thing))
+                                              (thing/thing->name v-thing)
                                               "clj"
                                               ns
                                               symbol)
@@ -314,9 +314,9 @@
                      (when-let [v-thing (-> ns v/ns-version-index)]
                        (let [user-agent (get-in request [:headers "user-agent"])
                              new-uri    (format "/store/v0/%s/%s/%s/%s/%s/%s"
-                                                (:name (thing/thing->group v-thing))
-                                                (:name (thing/thing->artifact v-thing))
-                                                (:name v-thing)
+                                                (thing/thing->name (thing/thing->group v-thing))
+                                                (thing/thing->name (thing/thing->artifact v-thing))
+                                                (thing/thing->name v-thing)
                                                 platform
                                                 ns
                                                 symbol)
@@ -413,7 +413,7 @@
                             store-v "/"
                             group "/"
                             artifact "/"
-                            (:name artifact-v)
+                            (thing/thing->name artifact-v)
                             (:path-info request))
             new-req    (-> request
                            (assoc :uri new-uri)

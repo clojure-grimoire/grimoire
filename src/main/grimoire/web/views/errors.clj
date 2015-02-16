@@ -16,7 +16,7 @@
    (slurp (io/resource "404.html"))))
 
 (defn error-unknown-group [groupid]
-  (let [groupid (:name groupid)]
+  (let [groupid (t/thing->name groupid)]
     (layout
      site-config
      [:h1 {:class "page-title"}
@@ -29,7 +29,7 @@
 (defn error-unknown-artifact
   [artifact-thing]
   (let [group      (t/thing->group artifact-thing)
-        artifactid (:name artifact-thing)]
+        artifactid (t/thing->name artifact-thing)]
     (layout
      site-config
      [:h1 {:class "page-title"}
@@ -41,9 +41,9 @@
 
 (defn error-unknown-version
   [version-thing]
-  (let [groupid    (:name (t/thing->group version-thing))
-        artifactid (:name (t/thing->artifact version-thing))
-        version    (:name version-thing)]
+  (let [groupid    (t/thing->name (t/thing->group version-thing))
+        artifactid (t/thing->name (t/thing->artifact version-thing))
+        version    (t/thing->name version-thing)]
     (layout
      site-config
      [:h1 {:class "page-title"}
@@ -55,10 +55,10 @@
 
 (defn error-unknown-platform
   [platform-thing]
-  (let [groupid    (:name (t/thing->group platform-thing))
-        artifactid (:name (t/thing->artifact platform-thing))
-        version    (:name (t/thing->version platform-thing))
-        platformid (:name platform-thing)]
+  (let [groupid    (t/thing->name (t/thing->group platform-thing))
+        artifactid (t/thing->name (t/thing->artifact platform-thing))
+        version    (t/thing->name (t/thing->version platform-thing))
+        platformid (t/thing->name platform-thing)]
     (layout
      site-config
      [:h1 {:class "page-title"}
@@ -70,11 +70,11 @@
 
 (defn error-unknown-namespace
   [ns-thing]
-  (let [groupid    (:name (t/thing->group ns-thing))
-        artifactid (:name (t/thing->artifact ns-thing))
-        version    (:name (t/thing->version ns-thing))
-        platform   (:name (t/thing->platform ns-thing))
-        namespace  (:name ns-thing)]
+  (let [groupid    (t/thing->name (t/thing->group ns-thing))
+        artifactid (t/thing->name (t/thing->artifact ns-thing))
+        version    (t/thing->name (t/thing->version ns-thing))
+        platform   (t/thing->name (t/thing->platform ns-thing))
+        namespace  (t/thing->name ns-thing)]
     (layout
      site-config
      [:h1 {:class "page-title"}

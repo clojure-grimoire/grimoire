@@ -24,12 +24,12 @@
       (response/content-type "text/plain")))
 
 (defmethod error-unknown-symbol :text/plain [_type def-thing]
-  (let [groupid        (:name (t/thing->group def-thing))
-        artifactid     (:name (t/thing->artifact def-thing))
-        version        (:name (t/thing->version def-thing))
-        platform       (:name (t/thing->platform def-thing))
-        namespace      (:name (t/thing->namespace def-thing))
-        symbol         (:name def-thing)
+  (let [groupid        (t/thing->name (t/thing->group def-thing))
+        artifactid     (t/thing->name (t/thing->artifact def-thing))
+        version        (t/thing->name (t/thing->version def-thing))
+        platform       (t/thing->name (t/thing->platform def-thing))
+        namespace      (t/thing->name (t/thing->namespace def-thing))
+        symbol         (t/thing->name def-thing)
         version-string (format "[%s/%s \"%s\"] %s" groupid artifactid version platform)
         symbol-string  (format "%s/%s" namespace (util/update-munge symbol))]
     (-> (str "In artifact: " version-string \newline

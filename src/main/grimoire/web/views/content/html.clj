@@ -30,7 +30,7 @@
            [:div
             [:h2 "Top 100 namespaces"]
             [:table
-             (for [[k v] (take 100 (reverse (sort-by second  (:namespaces db))))]
+             (for [[k v] (take 100 (reverse (sort-by second  (t/thing->namespace db))))]
                [:tr [:td k] [:td v]])]]
 
            [:div
@@ -47,9 +47,9 @@
                ,,"Artifact store"]
               (list
                [:h2 "Known Maven groups"]
-               [:ul (for [group (sort-by :name groups)]
+               [:ul (for [group (sort-by t/thing->name groups)]
                       [:li [:a (link-to' group)
-                            (:name group)]])])))
+                            (t/thing->name group)]])])))
 
     ;; FIXME: more specific error
     (catch AssertionError e
@@ -74,13 +74,13 @@
 
               (list
                [:h2 "Known Artifacts"]
-               [:ul (for [artifact (sort-by :name artifacts)
-                          :let     [group (:parent artifact)]]
+               [:ul (for [artifact (sort-by t/thing->name artifacts)
+                          :let     [group (t/thing->group artifact)]]
                       [:li
                        [:a (link-to' artifact)
                         (format "%s/%s"
-                                (:name group)
-                                (:name artifact))]])])))
+                                (t/thing->name group)
+                                (t/thing->name artifact))]])])))
 
     ;; FIXME: more specific error
     (catch AssertionError e
@@ -104,15 +104,17 @@
             (list
              [:h2 "Known release versions"]
              [:ul (for [version (->> (api/list-versions site-config artifact-thing)
-                                     result (sort-by :name) reverse)
-                        :let  [artifact (:parent version)
-                               group    (:parent artifact)]]
+                                     result
+                                     (sort-by t/thing->name)
+                                     reverse)
+                        :let  [artifact (t/thing->artifact version)
+                               group    (t/thing->group artifact)]]
                     [:li
                      [:a (link-to' version)
                       (format "[%s/%s \"%s\"]"
-                              (:name group)
-                              (:name artifact)
-                              (:name version))]])]))
+                              (t/thing->name group)
+                              (t/thing->name artifact)
+                              (t/thing->name version))]])]))
 
     ;; FIXME: more specific error
     (catch AssertionError e
@@ -129,9 +131,10 @@
 
               [:h2 "Platforms"]
               [:ul (for [platform-thing (->> (api/list-platforms site-config version-thing)
-                                             result (sort-by :name))]
+                                             result
+                                             (sort-by t/thing->name))]
                      [:li [:a (link-to' platform-thing)
-                           (:name platform-thing)]])]))
+                           (t/thing->name platform-thing)]])]))
 
     ;; FIXME: more specific error type
     (catch AssertionError e
@@ -150,7 +153,7 @@
               [:ul (for [ns-thing (->> (api/list-namespaces site-config platform-thing)
                                        result (sort-by :name))]
                      [:li [:a (link-to' ns-thing)
-                           (:name ns-thing)]])]))
+                           (t/thing->name ns-thing)]])]))
     ;; FIXME: more specific error type
     (catch AssertionError e
       nil)))
@@ -160,7 +163,7 @@
     (for [k (sort (keys segments))]
       (list [:h4 (string/capitalize k)]
             [:p (for [r (sort-by :name (get segments k))]
-                  [:a {:href (:url r) :style "padding: 0 0.2em;"} (:name r)])]))))
+                  [:a {:href (:url r) :style "padding: 0 0.2em;"} (t/thing->name r)])]))))
 
 (defmethod namespace-page :text/html [_ namespace-thing]
   (try
@@ -194,7 +197,7 @@
                                                                   (api/read-meta def-thing)
                                                                   result)]]
                                           {:url  (:href (link-to' def-thing))
-                                           :name (:name meta)
+                                           :name (t/thing->name meta)
                                            :type (:type meta)})
                                         (group-by :type))]
                       (for [k keys]
@@ -220,9 +223,9 @@
 
 (defn -render-html-symbol-page [def-thing meta]
   (let [{:keys [src type arglists doc name]} meta
-        namespace (:name (t/thing->namespace def-thing))
+        namespace (t/thing->name (t/thing->namespace def-thing))
         symbol    name
-        ?related   (api/read-related site-config def-thing) ;; Seq [ Thing [:def] ]
+        ?related  (api/read-related site-config def-thing) ;; Seq [ Thing [:def] ]
         ?examples (api/read-examples site-config def-thing) ;; Seq [version, related]
         ?notes    (api/read-notes    site-config def-thing)]
     (layout (assoc site-config
@@ -274,8 +277,8 @@
                   (list [:h2 "Related Symbols"]
                         [:ul (for [r    results
                                    :let [sym r
-                                         ns  (:parent sym)]]
-                               [:a (link-to' sym) (:name r)])]))))
+                                         ns  (t/thing->namespace sym)]]
+                               [:a (link-to' sym) (t/thing->name r)])]))))
 
             (when src
               (list
@@ -300,7 +303,7 @@
               ,,(when-let [target (:target meta)]
                   (symbol-page :text/html
                                (t/path->thing
-                                (str (:uri (t/thing->version def-thing))
+                                (str (t/thing->path (t/thing->version def-thing))
                                      "/" target))))
 
               :else

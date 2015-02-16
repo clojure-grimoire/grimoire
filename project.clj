@@ -6,8 +6,9 @@
   :aliases {"serve" ["with-profile" "server" "run"]}
   :profiles {:server
              {:dependencies [[org.clojure/clojure "[1.6.0,)"]
-                             [org.clojure-grimoire/lib-grimoire "0.7.0"
-                              :exclusions [org.clojure/clojure]]
+                             [org.clojure-grimoire/lib-grimoire "0.8.0-SNAPSHOT"
+                              :exclusions [org.clojure/clojure
+                                           me.arrdem/detritus]]
                              [cheshire "5.4.0"
                               :exclusions [org.clojure/clojure]]
                              [com.taoensso/timbre "3.3.1"
@@ -26,7 +27,7 @@
                               :exclusions [org.clojure/clojure]]
                              [me.raynes/conch "0.8.0"
                               :exclusions [org.clojure/clojure]]
-                             [me.arrdem/detritus "0.2.0"
+                             [me.arrdem/detritus "0.2.2-SNAPSHOT"
                               :exclusions [org.clojure/clojure]]
                              [simpledb "0.1.4"]]
               :main         grimoire.web.service}

@@ -15,6 +15,13 @@
    [:blockquote [:p (-> site-config :style :quote)]]
    (wutil/cheatsheet-memo site-config)))
 
+(defn kv-table [kv-seq]
+  [:table
+   (for [[k v] kv-seq]
+     [:tr
+      [:td {:style "width: 90%;"} k]
+      [:td {:style "width: 10%;"} v]])])
+
 (defn heatmap-page []
   (layout
    site-config
@@ -22,22 +29,24 @@
    [:p "Or at least some of it >:D"]
    (let [db @sdb/*db*]
      (list [:div
-            [:h2 "Top 100 symbols"]
-            [:table
-             (for [[k v] (take 100 (reverse (sort-by second (:defs db))))]
-               [:tr [:td k] [:td v]])]]
-
-           [:div
             [:h2 "Top 100 namespaces"]
-            [:table
-             (for [[k v] (take 100 (reverse (sort-by second  (:namespaces db))))]
-               [:tr [:td k] [:td v]])]]
+            (kv-table (take 100 (reverse (sort-by second (:namespaces db)))))]
 
            [:div
-            [:h2 "Top 100 URLs"]
-            [:table
-             (for [[k v] (take 100 (reverse (sort-by second (:urls db))))]
-               [:tr [:td k] [:td v]])]]))))
+            [:h2 "Top 100 defs"]
+            (kv-table (take 100 (reverse (sort-by second (:defs db)))))]
+
+           [:div
+            [:h2 "Top artifacts"]
+            (kv-table (take 100 (reverse (sort-by second (:artifacts db)))))]
+
+           [:div
+            [:h2 "Top platforms"]
+            (kv-table (reverse (sort-by second (:platforms db))))]
+
+           [:div
+            [:h2 "Top clients"]
+            (kv-table (reverse (sort-by second (:clients db))))]))))
 
 (defmethod store-page :text/html [_]
   (try

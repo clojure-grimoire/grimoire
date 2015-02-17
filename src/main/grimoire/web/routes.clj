@@ -5,7 +5,7 @@
             [grimoire.util :as util]
             [grimoire.api :as api]
             [grimoire.web.util :as wutil]
-            [grimoire.things :as thing]
+            [grimoire.things :as t]
             [grimoire.either :as either]
             [grimoire.web.views :as v]
             [grimoire.web.views.content.html :as v.c.h]
@@ -18,7 +18,7 @@
 (def ^:private platform-regex
   #"clj|cljs|cljclr|pixi|kiss|ox|toc")
 
-(def ^:private privilaged-urls
+(def ^:private privilaged-user-agents
   #{"URL/Emacs"})
 
 (def ^:private incf (fnil inc 0))
@@ -27,26 +27,28 @@
   ;; FIXME: could be one transaction
   
   ;; what do I want to know
-  ;; - inc the absolute URL in a "uri" store
-  (sdb/update! :urls clojure.core/update (:uri request) incf)
+  ;; - inc user-agent string tracking
+  (sdb/update! :clients update
+               (get-in request [:headers "user-agent"] "Unknown") incf)
 
   ;; - inc the thing URI in the "thing"
   (when thing
-    (sdb/update! :things clojure.core/update (thing/thing->path thing) incf)
-    
     ;; - if def, inc in the def store at ":artifact/:ns/:def"
-    (when (thing/def? thing)
-      (sdb/update! :defs clojure.core/update
-                   (thing/thing->relative-path :version thing) incf))
+    (when (t/def? thing)
+      (sdb/update! :defs update
+                   (t/thing->relative-path t/version thing) incf))
 
-    (when-let [ns (thing/thing->namespace thing)]
-      (sdb/update! :namespaces clojure.core/update (thing/thing->name ns) incf))
+    (when-let [ns (t/thing->namespace thing)]
+      (sdb/update! :namespaces update
+                   (t/thing->name ns) incf))
 
-    (when-let [platform (thing/thing->platform thing)]
-      (sdb/update! :platforms clojure.core/update (thing/thing->name platform) incf))
+    (when-let [platform (t/thing->platform thing)]
+      (sdb/update! :platforms update
+                   (t/thing->name platform) incf))
 
-    (when-let [artifact (thing/thing->artifact thing)]
-      (sdb/update! :artifacts clojure.core/update (thing/thing->name artifact) incf))))
+    (when-let [artifact (t/thing->artifact thing)]
+      (sdb/update! :artifacts update
+                   (t/thing->name artifact) incf))))
 
 (defn store-v0
   [{header-type :content-type
@@ -67,21 +69,21 @@
                r))
 
            (context "/:groupid" [groupid]
-             (let-routes [t (thing/->Group groupid)]
+             (let-routes [t (t/->Group groupid)]
                (GET "/" []
                  (when-let [r (v/group-page type t)]
                    (log! req t)
                    r))
 
                (context "/:artifactid" [artifactid]
-                 (let-routes [t (thing/->Artifact t artifactid)]
+                 (let-routes [t (t/->Artifact t artifactid)]
                    (GET "/" []
                      (when-let [r (v/artifact-page type t)]
                        (log! req t)
                        r))
 
                    (context "/:version" [version]
-                     (let-routes [t (thing/->Version t version)]
+                     (let-routes [t (t/->Version t version)]
                        (GET "/" []
                          (when-let [r (v/version-page type t)]
                            (log! req t)
@@ -89,21 +91,21 @@
 
                        (context ["/:platform"
                                  :platform platform-regex] [platform]
-                         (let-routes [t (thing/->Platform t platform)]
+                         (let-routes [t (t/->Platform t platform)]
                            (GET "/" []
                              (when-let [r (v/platform-page type t)]
                                (log! req t)
                                r))
 
                            (context "/:namespace" [namespace]
-                             (let-routes [t (thing/->Ns t namespace)]
+                             (let-routes [t (t/->Ns t namespace)]
                                (GET "/" []
                                  (when-let [r (v/namespace-page-memo type t)]
                                    (log! req t)
                                    r))
 
                                (context "/:symbol" [symbol]
-                                 (let-routes [t (thing/->Def t symbol)]
+                                 (let-routes [t (t/->Def t symbol)]
                                    (GET "/" []
                                      (when-let [r (v/symbol-page type t)]
                                        (log! req t)
@@ -173,33 +175,33 @@
                             type op params))
 
              (context ["/:group"] [group]
-               (let-routes [t (thing/->Group group)]
+               (let-routes [t (t/->Group group)]
                  (GET "/" []
                    (do-dispatch v.api/group-ops
                                 type op t))
 
                  (context ["/:artifact"] [artifact]
-                   (let-routes [t (thing/->Artifact t artifact)]
+                   (let-routes [t (t/->Artifact t artifact)]
                      (GET "/" []
                        (do-dispatch v.api/artifact-ops
                                     type op t))
 
                      (context ["/:version"] [version]
-                       (let-routes [t (thing/->Version t version)]
+                       (let-routes [t (t/->Version t version)]
                          (GET "/" []
                            (do-dispatch v.api/version-ops
                                         type op t))
 
                          (context ["/:namespace"] [namespace]
                            (let-routes [t (-> t
-                                              (thing/->Platform "clj")
-                                              (thing/->Ns namespace))]
+                                              (t/->Platform "clj")
+                                              (t/->Ns namespace))]
                              (GET "/" []
                                (do-dispatch v.api/namespace-ops
                                             type op t))
 
                              (context ["/:symbol"] [symbol]
-                               (let-routes [t (thing/->Def t symbol)]
+                               (let-routes [t (t/->Def t symbol)]
                                  (GET "/" []
                                    (do-dispatch v.api/def-ops
                                                 type op t))))))))))))))
@@ -226,38 +228,38 @@
                             type op params))
 
              (context ["/:group"] [group]
-               (let-routes [t (thing/->Group group)]
+               (let-routes [t (t/->Group group)]
                  (GET "/" []
                    (do-dispatch v.api/group-ops
                                 type op t))
 
                  (context ["/:artifact"] [artifact]
-                   (let-routes [t (thing/->Artifact t artifact)]
+                   (let-routes [t (t/->Artifact t artifact)]
                      (GET "/" []
                        (do-dispatch v.api/artifact-ops
                                     type op t))
 
                      (context ["/:version"] [version]
-                       (let-routes [t (thing/->Version t version)]
+                       (let-routes [t (t/->Version t version)]
                          (GET "/" []
                            (do-dispatch v.api/version-ops
                                         type op t))
 
                          (context ["/:platform"] [platform]
-                           (let-routes [t (thing/->Platform t platform)]
+                           (let-routes [t (t/->Platform t platform)]
 
                              (GET "/" []
                                (do-dispatch v.api/platform-ops
                                             type op t))
 
                              (context ["/:namespace"] [namespace]
-                               (let-routes [t (thing/->Ns t namespace)]
+                               (let-routes [t (t/->Ns t namespace)]
                                  (GET "/" []
                                    (do-dispatch v.api/namespace-ops
                                                 type op t))
 
                                  (context ["/:symbol"] [symbol]
-                                   (let-routes [t (thing/->Def t symbol)]
+                                   (let-routes [t (t/->Def t symbol)]
                                      (GET "/" []
                                        (do-dispatch v.api/def-ops
                                                     type op t))))))))))))))))
@@ -282,9 +284,9 @@
                    (when-let [v-thing (-> ns v/ns-version-index)]
                      (let [user-agent (get-in request [:headers "user-agent"])
                            new-uri    (format "/store/v0/%s/%s/%s/%s/%s/%s"
-                                              (thing/thing->name (thing/thing->group v-thing))
-                                              (thing/thing->name (thing/thing->artifact v-thing))
-                                              (thing/thing->name v-thing)
+                                              (t/thing->name (t/thing->group v-thing))
+                                              (t/thing->name (t/thing->artifact v-thing))
+                                              (t/thing->name v-thing)
                                               "clj"
                                               ns
                                               symbol)
@@ -292,7 +294,7 @@
                                           (assoc :uri new-uri)
                                           (dissoc :context :path-info))]
                        (log! req nil)
-                       (if (privilaged-urls user-agent)
+                       (if (privilaged-user-agents user-agent)
                          (#'app new-req) ;; pass it forwards
                          (response/redirect new-uri))))))
 
@@ -314,9 +316,9 @@
                      (when-let [v-thing (-> ns v/ns-version-index)]
                        (let [user-agent (get-in request [:headers "user-agent"])
                              new-uri    (format "/store/v0/%s/%s/%s/%s/%s/%s"
-                                                (thing/thing->name (thing/thing->group v-thing))
-                                                (thing/thing->name (thing/thing->artifact v-thing))
-                                                (thing/thing->name v-thing)
+                                                (t/thing->name (t/thing->group v-thing))
+                                                (t/thing->name (t/thing->artifact v-thing))
+                                                (t/thing->name v-thing)
                                                 platform
                                                 ns
                                                 symbol)
@@ -324,7 +326,7 @@
                                             (assoc :uri new-uri)
                                             (dissoc :context :path-info))]
                          (log! req nil)
-                         (if (privilaged-urls user-agent)
+                         (if (privilaged-user-agents user-agent)
                            (#'app new-req) ;; pass it forwards
                            (response/redirect new-uri))))))
 
@@ -370,7 +372,7 @@
             new-req    (-> request
                            (assoc :uri new-uri)
                            (dissoc :context :path-info))]
-        (if (privilaged-urls user-agent)
+        (if (privilaged-user-agents user-agent)
           (#'app new-req) ;; pass it forwards
           (wutil/moved-permanently new-uri))))) ;; everyone else
 
@@ -391,7 +393,7 @@
             new-req    (-> request
                            (assoc :uri new-uri)
                            (dissoc :context :path-info))]
-        (if (privilaged-urls user-agent)
+        (if (privilaged-user-agents user-agent)
           (#'app new-req) ;; pass it forwards
           (wutil/moved-permanently new-uri))))) ;; everyone else
 
@@ -401,8 +403,8 @@
       [store-v group artifact]
     (fn [request]
       (let [user-agent (get-in request [:headers "user-agent"])
-            t          (-> (thing/->Group group)
-                           (thing/->Artifact artifact))
+            t          (-> (t/->Group group)
+                           (t/->Artifact artifact))
             versions   (-> v/site-config
                            (api/list-versions t)
                            either/result)
@@ -413,12 +415,12 @@
                             store-v "/"
                             group "/"
                             artifact "/"
-                            (thing/thing->name artifact-v)
+                            (t/thing->name artifact-v)
                             (:path-info request))
             new-req    (-> request
                            (assoc :uri new-uri)
                            (dissoc :context :path-info))]
-        (if (privilaged-urls user-agent)
+        (if (privilaged-user-agents user-agent)
           (#'app new-req) ;; pass it forwards
           (wutil/moved-permanently new-uri))))) ;; everyone else
 
@@ -442,7 +444,7 @@
                            (assoc :uri new-uri)
                            (dissoc :context :path-info))]
         (when-not (= symbol symbol')
-          (if (privilaged-urls user-agent)
+          (if (privilaged-user-agents user-agent)
             (#'app new-req) ;; pass it forwards
             (wutil/moved-permanently new-uri)))))) ;; everyone else
 

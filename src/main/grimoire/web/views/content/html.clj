@@ -159,7 +159,6 @@
       nil)))
 
 (defn emit-alphabetized-links [records]
-  (println records)
   (let [segments (group-by (comp first str :name) records)]
     (for [k (sort (keys segments))]
       (list [:h4 (string/capitalize k)]

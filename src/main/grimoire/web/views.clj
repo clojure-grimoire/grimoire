@@ -73,9 +73,9 @@
                  ,,,(t/thing->name t)])
 
         (t/namespace? t)
-        ,,(list (header (t/thing->platform namespace)) "::"
-                [:a (link-to' namespace)
-                 ,,,(t/thing->name namespace)])
+        ,,(list (header (t/thing->platform t)) "::"
+                [:a (link-to' t)
+                 ,,,(t/thing->name t)])
 
         (t/def? t)
         ,,(let [sym' (util/munge (t/thing->name t))]

@@ -11,19 +11,19 @@
                                            me.arrdem/detritus]]
                              [cheshire "5.4.0"
                               :exclusions [org.clojure/clojure]]
-                             [com.taoensso/timbre "3.3.1"
+                             [com.taoensso/timbre "3.4.0"
                               :exclusions [org.clojure/clojure]]
                              [ring/ring-core "1.3.2"
                               :exclusions [org.clojure/clojure]]
                              [ring/ring-jetty-adapter "1.3.2"
                               :exclusions [org.clojure/clojure]]
-                             [selmer "0.7.7"
+                             [selmer "0.8.0"
                               :exclusions [org.clojure/clojure]]
                              [compojure "1.3.1"
                               :exclusions [org.clojure/clojure]]
                              [hiccup "1.0.5"
                               :exclusions [org.clojure/clojure]]
-                             [markdown-clj "0.9.58"
+                             [markdown-clj "0.9.62"
                               :exclusions [org.clojure/clojure]]
                              [me.raynes/conch "0.8.0"
                               :exclusions [org.clojure/clojure]]

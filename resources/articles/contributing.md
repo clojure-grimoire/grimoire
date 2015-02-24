@@ -20,7 +20,7 @@ reading and writing the various Grimoire supported datastores
 including the Grimoire REST API is also available.
 
 
-#### Requirements
+### Requirements
 
 - GNU Awk (MacOSX only)
 - GNU Head (MacOSX only)
@@ -29,7 +29,7 @@ including the Grimoire REST API is also available.
 - Leiningen (-> Maven) Git
 
 
-#### Usage
+### Usage
 
 ```
 $ git clone git@github.com:clojure-grimoire/grimoire.git grimoire

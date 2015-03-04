@@ -9,6 +9,8 @@
                              [org.clojure-grimoire/lib-grimoire "0.8.0-SNAPSHOT"
                               :exclusions [org.clojure/clojure
                                            me.arrdem/detritus]]
+                             [org.clojure-grimoire/simpledb "0.1.4"
+                              :exclusions [org.clojure/clojure]]
                              [cheshire "5.4.0"
                               :exclusions [org.clojure/clojure]]
                              [com.taoensso/timbre "3.4.0"
@@ -28,8 +30,6 @@
                              [me.raynes/conch "0.8.0"
                               :exclusions [org.clojure/clojure]]
                              [me.arrdem/detritus "0.2.2-SNAPSHOT"
-                              :exclusions [org.clojure/clojure]]
-                             [simpledb "0.1.4"
                               :exclusions [org.clojure/clojure]]
                              [sitemap "0.2.4"
                               :exclusions [org.clojure/clojure]]]

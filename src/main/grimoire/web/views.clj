@@ -10,7 +10,8 @@
             [grimoire.web.util :as wutil]
             [grimoire.api :as api]
             [grimoire.api.fs.read]
-            [ring.util.response :as response]))
+            [ring.util.response :as response]
+            [sitemap.core :refer [generate-sitemap]]))
 
 ;; Site configuration
 ;;--------------------------------------------------------------------
@@ -157,6 +158,36 @@
          [(t/thing->name namespace)
           version])
        (into {})))
+
+(def -const-pages
+  ["/"
+   "/about"
+   "/api"
+   "/contributing"
+   store-baseurl])
+
+(def maybe
+  (fn [x]
+    (when (succeed? x)
+      (result x))))
+
+(def -sitemap-fn
+  (memoize
+   (fn []
+     (->> (let [groups     ,,,,,,,,(maybe (api/list-groups site-config))
+                artifacts  (mapcat (comp maybe (partial api/list-artifacts site-config)) groups)
+                versions   (mapcat (comp maybe (partial api/list-versions site-config)) artifacts)
+                platforms  (mapcat (comp maybe (partial api/list-platforms site-config)) versions)
+                namespaces (mapcat (comp maybe (partial api/list-namespaces site-config)) platforms)
+                defs       (mapcat (comp maybe (partial api/list-defs site-config)) namespaces)]
+            (concat groups artifacts versions platforms namespaces defs))
+          (map link-to')
+          (concat -const-pages)
+          (map (fn [x] {:loc x}))
+          generate-sitemap))))
+
+(defn sitemap-page []
+  (-sitemap-fn))
 
 ;; Load view implementations
 ;;--------------------------------------------------------------------

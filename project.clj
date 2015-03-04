@@ -31,8 +31,8 @@
                               :exclusions [org.clojure/clojure]]
                              [simpledb "0.1.4"
                               :exclusions [org.clojure/clojure]]
-                             [sitemap "0.2.4"]
-                             :exclusions [org.clojure/clojure]]
+                             [sitemap "0.2.4"
+                              :exclusions [org.clojure/clojure]]]
               :main         grimoire.web.service}
 
              :dev

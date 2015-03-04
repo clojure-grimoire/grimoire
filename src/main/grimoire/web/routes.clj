@@ -474,6 +474,9 @@
   (GET "/heatmap" []
     (v.c.h/heatmap-page))
 
+  (GET "/sitemap.xml" []
+    (v/sitemap-page))
+
   (route/not-found
    (fn [{uri :uri :as req}]
      (warn (pr-str {:uri        uri

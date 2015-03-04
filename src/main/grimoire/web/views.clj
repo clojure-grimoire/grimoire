@@ -44,44 +44,45 @@
 (def link-to' (partial link-to store-baseurl))
 
 (defn header [t]
-  (cond (t/group? t)
-        ,,(list [:a {:href store-baseurl}
-                 "store"] "/"
-                 [:a (link-to' t)
-                  ,,(t/thing->name t)])
+  (cond
+    (t/group? t)
+    ,,(list [:a {:href store-baseurl}
+             "store"] "/"
+             [:a (link-to' t)
+              ,,(t/thing->name t)])
         
-        (t/artifact? t)
-        ,,(list (header (t/thing->group t))
-                "/" [:a (link-to' t)
-                     ,,,(t/thing->name t)])
-
-        (t/version? t)
-        ,,(let [artifact (t/thing->artifact t)
-                group    (t/thing->group artifact)]
-            (list [:a {:href store-baseurl}
-                   "store"] "/"
-                   "[" [:a (link-to' group)
-                        ,,(t/thing->name group)]
-                   "/" [:a (link-to' artifact)
-                        ,,(t/thing->name artifact)]
-                   " " [:a (link-to' t)
-                        ,,,(pr-str (t/thing->name t))] "]"))
-
-        (t/platform? t)
-        ,,(list (header (t/thing->version t)) " "
-                [:a (link-to' t)
+    (t/artifact? t)
+    ,,(list (header (t/thing->group t))
+            "/" [:a (link-to' t)
                  ,,,(t/thing->name t)])
 
-        (t/namespace? t)
-        ,,(list (header (t/thing->platform t)) "::"
-                [:a (link-to' t)
-                 ,,,(t/thing->name t)])
+    (t/version? t)
+    ,,(let [artifact (t/thing->artifact t)
+            group    (t/thing->group artifact)]
+        (list [:a {:href store-baseurl}
+               "store"] "/"
+               "[" [:a (link-to' group)
+                    ,,(t/thing->name group)]
+               "/" [:a (link-to' artifact)
+                    ,,(t/thing->name artifact)]
+               " " [:a (link-to' t)
+                    ,,,(pr-str (t/thing->name t))] "]"))
 
-        (t/def? t)
-        ,,(let [sym' (util/munge (t/thing->name t))]
-            (list (header (t/thing->namespace t)) "/"
-                  [:a (link-to' t)
-                   ,,,(t/thing->name t)]))))
+    (t/platform? t)
+    ,,(list (header (t/thing->version t)) " "
+            [:a (link-to' t)
+             ,,,(t/thing->name t)])
+
+    (t/namespace? t)
+    ,,(list (header (t/thing->platform t)) "::"
+            [:a (link-to' t)
+             ,,,(t/thing->name t)])
+
+    (t/def? t)
+    ,,(let [sym' (util/munge (t/thing->name t))]
+        (list (header (t/thing->namespace t)) "/"
+              [:a (link-to' t)
+               ,,,(t/thing->name t)]))))
 
 ;; Pages
 ;;--------------------------------------------------------------------

@@ -13,7 +13,8 @@
 (defn home-page []
   (layout
    (site-config)
-   [:blockquote [:p (-> (site-config) :style :quote)]]
+   ;;------------------------------------------------------------
+   [:blockquote [:p (-> (site-config) :style :quote)]]
    (wutil/cheatsheet-memo (site-config))))
 
 (defn kv-table [kv-seq]
@@ -26,7 +27,7 @@
 (defn heatmap-page []
   (layout
    (site-config)
-
+   ;;------------------------------------------------------------
    [:h1 {:class "page-title"} "Analytics!"]
    [:p "Or at least some of it >:D"]
    (let [service @cfg/service
@@ -52,96 +53,85 @@
             (kv-table (reverse (sort-by second (:clients db))))]))))
 
 (defmethod store-page :text/html [_]
-  (try
-    (let [groups (-> (lib-grim-config) api/list-groups result)]
-      (layout
-       (site-config)
-
-       [:h1 {:class "page-title"}
-        ,,"Artifact store"]
-       (list
-        [:h2 "Known Maven groups"]
-        [:ul (for [group (sort-by t/thing->name groups)]
-               [:li [:a (link-to' group)
-                     (t/thing->name group)]])])))
-
-    ;; FIXME: more specific error
-    (catch AssertionError e
-      nil)))
+  (let [groups (-> (lib-grim-config) api/list-groups result)]
+    (layout
+     (site-config)
+     ;;------------------------------------------------------------
+     [:h1 {:class "page-title"}
+      ,,"Artifact store"]
+     (list
+      [:h2 "Known Maven groups"]
+      [:ul (for [group (sort-by t/thing->name groups)]
+             [:li [:a (link-to' group)
+                   (t/thing->name group)]])]))))
 
 (defmethod group-page :text/html [_ group-thing]
-  (try
-    (let [artifacts (result (api/list-artifacts (lib-grim-config) group-thing))]
+  (let [?artifacts (api/list-artifacts (lib-grim-config) group-thing)]
+    (when (succeed? ?artifacts)
+      (let [artifacts (result ?artifacts)]
+        (layout
+         (site-config)
+         ;;------------------------------------------------------------
+         [:h1 {:class "page-title"}
+          (header group-thing)]
+
+         (let [?notes (api/read-notes (lib-grim-config) group-thing)]
+           (when (succeed? ?notes)
+             (let [[[_ notes]] (result ?notes)]
+               (when notes
+                 (list
+                  [:h2 "Group Notes"]
+                  (wutil/markdown-string notes))))))
+
+         (list
+          [:h2 "Known Artifacts"]
+          [:ul (for [artifact (sort-by t/thing->name artifacts)
+                     :let     [group (t/thing->group artifact)]]
+                 [:li
+                  [:a (link-to' artifact)
+                   (format "%s/%s"
+                           (t/thing->name group)
+                           (t/thing->name artifact))]])]))))))
+
+(defmethod artifact-page :text/html [_ artifact-thing]
+  (let [?meta (api/read-meta (lib-grim-config) artifact-thing)]
+    (when (succeed? ?meta)
       (layout
        (site-config)
-
+       ;;------------------------------------------------------------
        [:h1 {:class "page-title"}
-        (header group-thing)]
+        (header artifact-thing)]
 
-       (let [?notes (api/read-notes (lib-grim-config) group-thing)]
-         (when (succeed? ?notes)
-           (let [[[_ notes]] (result ?notes)]
+       (let [?notes-seq (api/read-notes (lib-grim-config) artifact-thing)]
+         (when (succeed? ?notes-seq)
+           (let [[[_ notes]] (result ?notes-seq)]
              (when notes
                (list
-                [:h2 "Group Notes"]
+                [:h2 "Arifact Notes"]
                 (wutil/markdown-string notes))))))
 
        (list
-        [:h2 "Known Artifacts"]
-        [:ul (for [artifact (sort-by t/thing->name artifacts)
-                   :let     [group (t/thing->group artifact)]]
+        [:h2 "Known release versions"]
+        [:ul (for [version (->> (api/list-versions (lib-grim-config) artifact-thing)
+                                result
+                                (sort-by t/thing->name)
+                                reverse)
+                   :let  [artifact (t/thing->artifact version)
+                          group    (t/thing->group artifact)]]
                [:li
-                [:a (link-to' artifact)
-                 (format "%s/%s"
+                [:a (link-to' version)
+                 (format "[%s/%s \"%s\"]"
                          (t/thing->name group)
-                         (t/thing->name artifact))]])])))
-
-    ;; FIXME: more specific error
-    (catch AssertionError e
-      (println (.getMessage e))
-      nil)))
-
-(defmethod artifact-page :text/html [_ artifact-thing]
-  (try
-    (layout
-     (site-config)
-
-     [:h1 {:class "page-title"}
-      (header artifact-thing)]
-
-     (let [?notes-seq (api/read-notes (lib-grim-config) artifact-thing)]
-       (when (succeed? ?notes-seq)
-         (let [[[_ notes]] (result ?notes-seq)]
-           (when notes
-             (list
-              [:h2 "Arifact Notes"]
-              (wutil/markdown-string notes))))))
-
-     (list
-      [:h2 "Known release versions"]
-      [:ul (for [version (->> (api/list-versions (lib-grim-config) artifact-thing)
-                              result
-                              (sort-by t/thing->name)
-                              reverse)
-                 :let  [artifact (t/thing->artifact version)
-                        group    (t/thing->group artifact)]]
-             [:li
-              [:a (link-to' version)
-               (format "[%s/%s \"%s\"]"
-                       (t/thing->name group)
-                       (t/thing->name artifact)
-                       (t/thing->name version))]])]))
-
-    ;; FIXME: more specific error
-    (catch AssertionError e
-      nil)))
+                         (t/thing->name artifact)
+                         (t/thing->name version))]])])))))
 
 (defmethod version-page :text/html [_ version-thing]
-  (try
-    (let [?notes (api/read-notes (lib-grim-config) version-thing)]
+  (let [?meta  (api/read-meta (lib-grim-config) version-thing)
+        ?notes (api/read-notes (lib-grim-config) version-thing)]
+    (when (succeed? ?meta)
       (layout
        (site-config) ;; FIXME: add artifact & group name to title somehow?
-
+       ;;------------------------------------------------------------
        [:h1 {:class "page-title"} (header version-thing)]
        (when (succeed? ?notes)
          (list [:h2 "Release Notes"]
@@ -152,18 +142,15 @@
                                       result
                                       (sort-by t/thing->name))]
               [:li [:a (link-to' platform-thing)
-                    (t/thing->name platform-thing)]])]))
-
-    ;; FIXME: more specific error type
-    (catch AssertionError e
-      nil)))
+                    (t/thing->name platform-thing)]])]))))
 
 (defmethod platform-page :text/html [_ platform-thing]
-  (try
-    (let [?notes (api/read-notes (lib-grim-config) platform-thing)]
+  (let [?meta  (api/read-meta (lib-grim-config) platform-thing)
+        ?notes (api/read-notes (lib-grim-config) platform-thing)]
+    (when (succeed? ?meta)
       (layout
        (site-config) ;; FIXME: add artifact & group name to title somehow?
-
+       ;;------------------------------------------------------------
        [:h1 {:class "page-title"} (header platform-thing)]
        (when (succeed? ?notes)
          (list [:h2 "Platform Notes"]
@@ -173,10 +160,7 @@
        [:ul (for [ns-thing (->> (api/list-namespaces (lib-grim-config) platform-thing)
                                 result (sort-by :name))]
               [:li [:a (link-to' ns-thing)
-                    (t/thing->name ns-thing)]])]))
-    ;; FIXME: more specific error type
-    (catch AssertionError e
-      nil)))
+                    (t/thing->name ns-thing)]])]))))
 
 (defn emit-alphabetized-links [records]
   (let [segments (group-by (comp first str :name) records)]
@@ -187,56 +171,57 @@
                    (:name r)])]))))
 
 (defmethod namespace-page :text/html [_ namespace-thing]
-  (let [meta   (result (api/read-meta (lib-grim-config) namespace-thing))
+  (let [?meta  (api/read-meta (lib-grim-config) namespace-thing)
         ?notes (api/read-notes (lib-grim-config) namespace-thing)]
-    (layout
-     (site-config) ;; FIXME: add artifact, namespace?
- 
-     [:h1 {:class "page-title"}
-      (header namespace-thing)]
+    (when (succeed? ?meta)
+      (layout
+       (site-config) ;; FIXME: add artifact, namespace?
+       ;;------------------------------------------------------------
+       [:h1 {:class "page-title"}
+        (header namespace-thing)]
 
-     (let [{:keys [doc name]} meta]
-       (when doc
-         (list [:h2 "Namespace Docs"]
-               [:p doc])))
+       (let [{:keys [doc name]} meta]
+         (when doc
+           (list [:h2 "Namespace Docs"]
+                 [:p doc])))
 
-     (when (succeed? ?notes)
-       (let [[[_ notes]] (result ?notes)]
-         (when notes
-           (list [:h2 "Namespace Notes"]
-                 [:p (wutil/markdown-string notes)]))))
+       (when (succeed? ?notes)
+         (let [[[_ notes]] (result ?notes)]
+           (when notes
+             (list [:h2 "Namespace Notes"]
+                   [:p (wutil/markdown-string notes)]))))
 
-     (list [:h2 "Symbols"]
-           ;; FIXME: the fuck am I doing here srsly
-           (let [keys     [:special :macro :fn :var]
-                 mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
-                 ids      (zipmap keys ["sforms", "macros", "fns", "vars"])
-                 link-ids (zipmap keys ["sff", "mf", "ff", "vf"])
-                 grouping (->> (for [def-thing (-> (api/list-defs namespace-thing)
-                                                   result)
-                                     :let      [meta (-> (lib-grim-config)
-                                                         (api/read-meta def-thing)
-                                                         result)]]
-                                 {:url  (:href (link-to' def-thing))
-                                  :name (:name meta)
-                                  :type (:type meta)})
-                               (group-by :type))]
-             (for [k keys]
-               (when-let [records (get grouping k)]
-                 (list
-                  (let [links (emit-alphabetized-links records)]
-                    [:div.section
-                     [:h3.heading (get mapping k)
-                      " " (if (< 6 (count links))
-                            [:span.unhide "+"]
-                            [:span.hide "-"])]
-                     [:div {:class (str "autofold"
-                                        (when (< 6 (count links))
-                                          " prefold"))}
-                      links]]))))))
+       (list [:h2 "Symbols"]
+             ;; FIXME: the fuck am I doing here srsly
+             (let [keys     [:special :macro :fn :var]
+                   mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
+                   ids      (zipmap keys ["sforms", "macros", "fns", "vars"])
+                   link-ids (zipmap keys ["sff", "mf", "ff", "vf"])
+                   grouping (->> (for [def-thing (-> (api/list-defs namespace-thing)
+                                                     result)
+                                       :let      [meta (-> (lib-grim-config)
+                                                           (api/read-meta def-thing)
+                                                           result)]]
+                                   {:url  (:href (link-to' def-thing))
+                                    :name (:name meta)
+                                    :type (:type meta)})
+                                 (group-by :type))]
+               (for [k keys]
+                 (when-let [records (get grouping k)]
+                   (list
+                    (let [links (emit-alphabetized-links records)]
+                      [:div.section
+                       [:h3.heading (get mapping k)
+                        " " (if (< 6 (count links))
+                              [:span.unhide "+"]
+                              [:span.hide "-"])]
+                       [:div {:class (str "autofold"
+                                          (when (< 6 (count links))
+                                            " prefold"))}
+                        links]]))))))
 
-     [:script {:src "/public/jquery.js" :type "text/javascript"}]
-     [:script {:src "/public/fold.js" :type "text/javascript"}])))
+       [:script {:src "/public/jquery.js" :type "text/javascript"}]
+       [:script {:src "/public/fold.js" :type "text/javascript"}]))))
 
 (defn -render-html-symbol-page [def-thing meta]
   (let [{:keys [src type arglists doc name]} meta
@@ -250,7 +235,7 @@
             :page {:description (str namespace "/" symbol
                                      " - documentation and examples")
                    :summary doc})
-
+     ;;------------------------------------------------------------
      [:h1 {:class "page-title"}
       (header (assoc def-thing :name (str symbol)))]
 
@@ -273,7 +258,7 @@
            (list [:h2 "Community Documentation"]
                  ;; FIXME: Add edit URL!
                  (wutil/markdown-string notes)))))
-            
+
      ;; FIXME: examples needs a _lot_ of work
      (when (succeed? ?examples)
        [:div.section

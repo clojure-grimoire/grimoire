@@ -75,7 +75,7 @@
          [:h1 {:class "page-title"}
           (header group-thing)]
 
-         (let [?notes (api/read-note (lib-grim-config) group-thing)]
+         (let [?notes (api/list-notes (lib-grim-config) group-thing)]
            (when (succeed? ?notes)
              (let [notes (result ?notes)]
                (when notes
@@ -102,13 +102,12 @@
        [:h1 {:class "page-title"}
         (header artifact-thing)]
 
-       (let [?note (api/read-note (lib-grim-config) artifact-thing)]
-         (when (succeed? ?note)
-           (let [note (result ?note)]
-             (when note
-               (list
-                [:h2 "Arifact Notes"]
-                (wutil/markdown-string note))))))
+       (let [?notes (api/list-notes (lib-grim-config) artifact-thing)]
+         (when (succeed? ?notes)
+           (let [note (result (api/read-note (lib-grim-config) (first (result ?notes))))]
+             (list
+              [:h2 "Arifact Notes"]
+              (wutil/markdown-string note)))))
 
        (list
         [:h2 "Known release versions"]
@@ -134,8 +133,13 @@
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"} (header version-thing)]
        (when (succeed? ?notes)
-         (list [:h2 "Release Notes"]
-               (wutil/markdown-string (-> ?notes result first second))))
+         (let [notes (result ?notes)]
+           (println notes)
+           (when-not (empty? notes)
+             (list
+              [:h2 "Release Notes"]
+              (wutil/markdown-string
+               (-> notes first second))))))
 
        [:h2 "Platforms"]
        [:ul (for [platform-thing (->> (api/list-platforms (lib-grim-config) version-thing)
@@ -153,8 +157,9 @@
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"} (header platform-thing)]
        (when (succeed? ?notes)
-         (list [:h2 "Platform Notes"]
-               (wutil/markdown-string (-> ?notes result first second))))
+         (when-let [note (second (first (result ?notes)))]
+           (list [:h2 "Platform Notes"]
+                 (wutil/markdown-string note))))
 
        [:h2 "Namespaces"]
        [:ul (for [ns-thing (->> (api/list-namespaces (lib-grim-config) platform-thing)
@@ -186,10 +191,9 @@
                  [:p doc])))
 
        (when (succeed? ?notes)
-         (let [[[_ notes]] (result ?notes)]
-           (when notes
-             (list [:h2 "Namespace Notes"]
-                   [:p (wutil/markdown-string notes)]))))
+         (when-let [notes (second (first (result ?notes)))]
+           (list [:h2 "Namespace Notes"]
+                 [:p (wutil/markdown-string notes)])))
 
        (list [:h2 "Symbols"]
              ;; FIXME: the fuck am I doing here srsly
@@ -197,7 +201,7 @@
                    mapping  (zipmap keys ["Special Forms", "Macros", "Functions", "Vars"])
                    ids      (zipmap keys ["sforms", "macros", "fns", "vars"])
                    link-ids (zipmap keys ["sff", "mf", "ff", "vf"])
-                   grouping (->> (for [def-thing (-> (api/list-defs namespace-thing)
+                   grouping (->> (for [def-thing (-> (api/list-defs (lib-grim-config) namespace-thing)
                                                      result)
                                        :let      [meta (-> (lib-grim-config)
                                                            (api/read-meta def-thing)
@@ -264,8 +268,8 @@
        [:div.section
         [:h2.heading "Examples " [:span.hide "-"]]
         [:div.autofold
-         (for [[v e] (result ?examples)
-               :let  [e (result (api/read-example (lib-grim-config) e))]]
+         (for [et   (result ?examples)
+               :let [e (result (api/read-example (lib-grim-config) et))]]
            [:div.example
             [:div.source
              (wutil/highlight-clojure e)]])]])

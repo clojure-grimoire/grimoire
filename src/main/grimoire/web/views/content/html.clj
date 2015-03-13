@@ -75,9 +75,9 @@
          [:h1 {:class "page-title"}
           (header group-thing)]
 
-         (let [?notes (api/read-notes (lib-grim-config) group-thing)]
+         (let [?notes (api/read-note (lib-grim-config) group-thing)]
            (when (succeed? ?notes)
-             (let [[[_ notes]] (result ?notes)]
+             (let [notes (result ?notes)]
                (when notes
                  (list
                   [:h2 "Group Notes"]
@@ -102,13 +102,13 @@
        [:h1 {:class "page-title"}
         (header artifact-thing)]
 
-       (let [?notes-seq (api/read-notes (lib-grim-config) artifact-thing)]
-         (when (succeed? ?notes-seq)
-           (let [[[_ notes]] (result ?notes-seq)]
-             (when notes
+       (let [?note (api/read-note (lib-grim-config) artifact-thing)]
+         (when (succeed? ?note)
+           (let [note (result ?note)]
+             (when note
                (list
                 [:h2 "Arifact Notes"]
-                (wutil/markdown-string notes))))))
+                (wutil/markdown-string note))))))
 
        (list
         [:h2 "Known release versions"]

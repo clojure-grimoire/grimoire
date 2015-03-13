@@ -7,6 +7,7 @@
             [grimoire.web.util :as wutil]
             [grimoire.things :as t]
             [grimoire.either :as either]
+            [grimoire.web.config :as cfg]
             [grimoire.web.views :as v]
             [grimoire.web.views.content.html :as v.c.h]
             [grimoire.web.views.errors :as v.e]
@@ -28,27 +29,34 @@
   
   ;; what do I want to know
   ;; - inc user-agent string tracking
-  (sdb/update! :clients update
-               (get-in request [:headers "user-agent"] "Unknown") incf)
+  (let [service* @cfg/service
+        db      (:simpledb service*)]
+    (sdb/update! db
+                 :clients update
+                 (get-in request [:headers "user-agent"] "Unknown") incf)
 
-  ;; - inc the thing URI in the "thing"
-  (when thing
-    ;; - if def, inc in the def store at ":artifact/:ns/:def"
-    (when (t/def? thing)
-      (sdb/update! :defs update
-                   (t/thing->relative-path t/version thing) incf))
+    ;; - inc the thing URI in the "thing"
+    (when thing
+      ;; - if def, inc in the def store at ":artifact/:ns/:def"
+      (when (t/def? thing)
+        (sdb/update! db
+                     :defs update
+                     (t/thing->relative-path t/version thing) incf))
 
-    (when-let [ns (t/thing->namespace thing)]
-      (sdb/update! :namespaces update
-                   (t/thing->name ns) incf))
+      (when-let [ns (t/thing->namespace thing)]
+        (sdb/update! db
+                     :namespaces update
+                     (t/thing->name ns) incf))
 
-    (when-let [platform (t/thing->platform thing)]
-      (sdb/update! :platforms update
-                   (t/thing->name platform) incf))
+      (when-let [platform (t/thing->platform thing)]
+        (sdb/update! db
+                     :platforms update
+                     (t/thing->name platform) incf))
 
-    (when-let [artifact (t/thing->artifact thing)]
-      (sdb/update! :artifacts update
-                   (t/thing->name artifact) incf))))
+      (when-let [artifact (t/thing->artifact thing)]
+        (sdb/update! db
+                     :artifacts update
+                     (t/thing->name artifact) incf)))))
 
 (defn store-v0
   [{header-type :content-type
@@ -281,7 +289,7 @@
              (context "/:ns" [ns]
                (context "/:symbol" [symbol]
                  (fn [request]
-                   (when-let [v-thing (-> ns v/ns-version-index)]
+                   (when-let [v-thing ((v/ns-version-index) ns)]
                      (let [user-agent (get-in request [:headers "user-agent"])
                            new-uri    (format "/store/v0/%s/%s/%s/%s/%s/%s"
                                               (t/thing->name (t/thing->group v-thing))
@@ -313,7 +321,7 @@
                (context "/:ns" [ns]
                  (context "/:symbol" [symbol]
                    (fn [request]
-                     (when-let [v-thing (-> ns v/ns-version-index)]
+                     (when-let [v-thing ((v/ns-version-index) ns)]
                        (let [user-agent (get-in request [:headers "user-agent"])
                              new-uri    (format "/store/v0/%s/%s/%s/%s/%s/%s"
                                                 (t/thing->name (t/thing->group v-thing))
@@ -403,9 +411,10 @@
       [store-v group artifact]
     (fn [request]
       (let [user-agent (get-in request [:headers "user-agent"])
-            t          (-> (t/->Group group)
+            t          (-> (v/lib-grim-config)
+                           (t/->Group group)
                            (t/->Artifact artifact))
-            versions   (-> v/site-config
+            versions   (-> (v/lib-grim-config)
                            (api/list-versions t)
                            either/result)
             artifact-v (first versions)

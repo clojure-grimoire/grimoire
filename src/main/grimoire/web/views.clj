@@ -8,6 +8,7 @@
             [grimoire.web.layout
              :refer [layout]]
             [grimoire.web.util :as wutil]
+            [grimoire.web.config :refer [service]]
             [grimoire.api :as api]
             [grimoire.api.fs.read]
             [ring.util.response :as response]
@@ -15,24 +16,14 @@
 
 ;; Site configuration
 ;;--------------------------------------------------------------------
+(defn site-config []
+  (:site-config @service))
 
-(def site-config
-  {:url                 "http://conj.io/"
-   :repo                "https://github.com/clojure-grimoire/grimoire/"
-   :baseurl             "/"
-   :datastore           {:docs  "doc-store"
-                         :notes "notes-store"
-                         :mode  :filesystem}
-   :version             (slurp "VERSION")
-   :google-analytics-id "UA-44001831-2"
-   :year                "2015"
-   :author              {:me          "http://arrdem.com/"
-                         :email       "me@arrdem.com"
-                         :gittip      "https://gittip.com/arrdem/"}
-   :style               {:header-sep  "/"
-                         :title       "Grimoire - Community Clojure Documentation"
-                         :description "Community documentation of Clojure"
-                         :quote       "Even the most powerful wizard must consult grimoires as an aid against forgetfulness."}})
+(defn lib-grim-config []
+  (:lib-grim @service))
+
+(defn rethinkdb-config []
+  (:rethinkdb @service))
 
 ;; Common partial pages
 ;;--------------------------------------------------------------------
@@ -40,14 +31,12 @@
 (defn link-to [prefix x]
   {:href (str prefix (thing->path x))})
 
-(def store-baseurl "/store/v0/")
-
-(def link-to' (partial link-to store-baseurl))
+(def link-to' (fn [x] (link-to (-> (site-config) :store-url) x)))
 
 (defn header [t]
   (cond
     (t/group? t)
-    ,,(list [:a {:href store-baseurl}
+    ,,(list [:a {:href (-> (site-config) :store-url)}
              "store"] "/"
              [:a (link-to' t)
               ,,(t/thing->name t)])
@@ -60,7 +49,7 @@
     (t/version? t)
     ,,(let [artifact (t/thing->artifact t)
             group    (t/thing->group artifact)]
-        (list [:a {:href store-baseurl}
+        (list [:a {:href (-> (site-config) :store-url)}
                "store"] "/"
                "[" [:a (link-to' group)
                     ,,(t/thing->name group)]
@@ -143,28 +132,32 @@
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
+(println (lib-grim-config))
+
 ;; FIXME: How to deal with namespaces in different platforms?
 ;; FIXME: Probably belongs somewhere else
 (def ns-version-index
-  (->> (for [groupid   (result (api/list-groups     site-config))
-             artifact  (result (api/list-artifacts  site-config groupid))
-             :let      [version  (->> artifact
-                                      (api/list-versions site-config)
-                                      result first)
-                        platform (->> version
-                                      (api/list-platforms site-config)
-                                      result (sort-by t/thing->name) first)]
-             namespace (result (api/list-namespaces site-config platform))]
-         [(t/thing->name namespace)
-          version])
-       (into {})))
+  (memoize
+   (fn []
+     (->> (for [groupid   (result (api/list-groups     (lib-grim-config)))
+                artifact  (result (api/list-artifacts  (lib-grim-config) groupid))
+                :let      [version  (->> artifact
+                                         (api/list-versions (lib-grim-config))
+                                         result first)
+                           platform (->> version
+                                         (api/list-platforms (lib-grim-config))
+                                         result (sort-by t/thing->name) first)]
+                namespace (result (api/list-namespaces (lib-grim-config) platform))]
+            [(t/thing->name namespace)
+             version])
+          (into {})))))
 
 (def -const-pages
   ["/"
    "/about"
    "/api"
    "/contributing"
-   store-baseurl])
+   (-> (site-config) :store-url)])
 
 (def maybe
   (fn [x]
@@ -174,12 +167,12 @@
 (def -sitemap-fn
   (memoize
    (fn []
-     (->> (let [groups     ,,,,,,,,(maybe (api/list-groups site-config))
-                artifacts  (mapcat (comp maybe (partial api/list-artifacts site-config)) groups)
-                versions   (mapcat (comp maybe (partial api/list-versions site-config)) artifacts)
-                platforms  (mapcat (comp maybe (partial api/list-platforms site-config)) versions)
-                namespaces (mapcat (comp maybe (partial api/list-namespaces site-config)) platforms)
-                defs       (mapcat (comp maybe (partial api/list-defs site-config)) namespaces)]
+     (->> (let [groups     ,,,,,,,,(maybe (api/list-groups (lib-grim-config)))
+                artifacts  (mapcat (comp maybe (partial api/list-artifacts (lib-grim-config))) groups)
+                versions   (mapcat (comp maybe (partial api/list-versions (lib-grim-config))) artifacts)
+                platforms  (mapcat (comp maybe (partial api/list-platforms (lib-grim-config))) versions)
+                namespaces (mapcat (comp maybe (partial api/list-namespaces (lib-grim-config))) platforms)
+                defs       (mapcat (comp maybe (partial api/list-defs (lib-grim-config))) namespaces)]
             (concat groups artifacts versions platforms namespaces defs))
           (map link-to')
           (concat -const-pages)

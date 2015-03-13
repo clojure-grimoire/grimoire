@@ -52,9 +52,9 @@
          (try
            (let [{:keys [doc name type arglists src]
                   :as   meta} (result ?meta)
-                  ?notes      (api/read-notes    site-config def-thing)
-                  ?related    (api/read-related  site-config def-thing)
-                  ?examples   (api/read-examples site-config def-thing)]
+                  ?notes      (api/read-notes    (lib-grim-config) def-thing)
+                  ?related    (api/list-related  (lib-grim-config) def-thing)
+                  ?examples   (api/list-examples (lib-grim-config) def-thing)]
              ;; FIXME: else what? doesn't make sense w/o doc...
              (str (format "# [%s/%s \"%s\"] %s/%s\n"
                           (:name groupid)
@@ -93,8 +93,9 @@
                     (when-let [examples (result ?examples)]
                       (str "## Examples\n"
                            ;; line40 "\n"
-                           (->> (for [[v e] examples] e)
-                              (apply str "\n"))
+                           (->> (for [[v e] examples
+                                      :let [e (result (api/read-example (lib-grim-config) e))]] e)
+                                (apply str "\n"))
                            "\n\n")))
 
                   (when (succeed? ?related)
@@ -102,8 +103,8 @@
                       (str "## See Also\n"
                            ;; line40 "\n"
                            (->> related
-                              (map str)
-                              (apply str))
+                                (map str)
+                                (apply str))
                            "\n\n")))))
 
            (catch AssertionError e

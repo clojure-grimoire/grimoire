@@ -4,7 +4,7 @@
             [grimoire.either
              :refer [succeed? result]]
             [grimoire.web.views
-             :refer [site-config ns-version-index]]
+             :refer [lib-grim-config ns-version-index]]
             [grimoire.things :as t]
             [cheshire.core
              :refer [generate-string]]))
@@ -65,7 +65,7 @@
   "Returns a success result representing the known groups."
   [type _]
   (try
-    (-> (for [g (-> site-config
+    (-> (for [g (-> (lib-grim-config)
                     api/list-groups
                     result)]
           {:name     (t/thing->name g)
@@ -86,7 +86,7 @@
   namespace is defined."
   [type params]
   (-> (if-let [ns (get params :ns)]
-        (if-let [r (get ns-version-index ns)]
+        (if-let [r (get (ns-version-index) ns)]
           (let [version-t  r
                 artifact-t (t/thing->artifact version-t)
                 group-t    (t/thing->group artifact-t)
@@ -118,7 +118,7 @@
   [type thing]
   (try
     (->> thing
-         (api/read-notes site-config)
+         (api/read-notes (lib-grim-config))
          result
          succeed
          ((-tm type)))
@@ -133,7 +133,7 @@
   [type thing]
   (try
     (->> thing
-         (api/read-meta site-config)
+         (api/read-meta (lib-grim-config))
          result
          succeed
          ((-tm type)))
@@ -147,7 +147,7 @@
   "Returns the artifacts for the target group."
   [type group-thing]
   (try
-    (-> (for [t (-> site-config
+    (-> (for [t (-> (lib-grim-config)
                     (api/list-artifacts group-thing)
                     result)]
           {:name     (t/thing->name t)
@@ -176,7 +176,7 @@
   "Returns the versions for the target artifact."
   [type artifact-thing]
   (try
-    (-> (for [t (-> site-config
+    (-> (for [t (-> (lib-grim-config)
                     (api/list-versions artifact-thing)
                     result)]
           {:name     (t/thing->name t)
@@ -205,7 +205,7 @@
   "Returns a Succeed of the platforms in the target version."
   [type group-thing]
   (try
-    (-> (for [t (-> site-config
+    (-> (for [t (-> (lib-grim-config)
                     (api/list-platforms group-thing)
                     result)]
           {:name     (t/thing->name t)
@@ -233,7 +233,7 @@
   "Returns a Succeed of the namespaces in the target platform."
   [type platform-thing]
   (try
-    (-> (for [t (-> site-config
+    (-> (for [t (-> (lib-grim-config)
                     (api/list-namespaces platform-thing)
                     result)]
           {:name     (t/thing->name t)
@@ -269,10 +269,10 @@
   operations thereon."
   [filter-pred type ns-thing]
   (try
-    (-> (for [t     (-> site-config
+    (-> (for [t     (-> (lib-grim-config)
                         (api/list-defs ns-thing)
                         result)
-              :let  [meta (api/read-meta site-config t)]
+              :let  [meta (api/read-meta (lib-grim-config) t)]
               :when (filter-pred (get t :type :fn))]
           {:name     (t/thing->name t)
            :url      (t/thing->path t)
@@ -303,9 +303,9 @@
   [type def-thing]
   (try
     (->> def-thing
-         (api/read-examples site-config)
+         (api/list-examples (lib-grim-config))
          result
-         (map second)
+         (map (comp result (partial api/read-example (lib-grim-config))))
          succeed
          ((-tm type)))
 
@@ -319,8 +319,8 @@
   encoded as strings if any exist in the datastore."
   [type def-thing]
   (try
-    (->> (for [t (-> site-config
-                     (api/read-related def-thing)
+    (->> (for [t (-> (lib-grim-config)
+                     (api/list-related def-thing)
                      result)]
            {:name     (t/thing->name t)
             :url      (t/thing->path t)

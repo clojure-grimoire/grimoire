@@ -12,18 +12,18 @@
 
 (defn error-404 []
   (layout
-   site-config
+   (site-config)
    (slurp (io/resource "404.html"))))
 
 (defn error-unknown-group [groupid]
   (let [groupid (t/thing->name groupid)]
     (layout
-     site-config
+     (site-config)
      [:h1 {:class "page-title"}
       [:a {:href "/store/"} "Store"]]
      [:p "Unknown group " (pr-str (str groupid))]
      [:p "If you found a broken link, please report the issue encountered on the "
-      [:a {:href (:repo site-config)}
+      [:a {:href (:repo (site-config))}
        " github bugtracker."]])))
 
 (defn error-unknown-artifact
@@ -31,12 +31,12 @@
   (let [group      (t/thing->group artifact-thing)
         artifactid (t/thing->name artifact-thing)]
     (layout
-     site-config
+     (site-config)
      [:h1 {:class "page-title"}
       (header group)]
      [:p "Unknown artifact " (pr-str (str artifactid))]
      [:p "If you found a broken link, please report the issue encountered on the "
-      [:a {:href (:repo site-config)}
+      [:a {:href (:repo (site-config))}
        " github bugtracker."]])))
 
 (defn error-unknown-version
@@ -45,12 +45,12 @@
         artifactid (t/thing->name (t/thing->artifact version-thing))
         version    (t/thing->name version-thing)]
     (layout
-     site-config
+     (site-config)
      [:h1 {:class "page-title"}
       (header (:parent version-thing))]
      [:p "Unknown artifact version " (pr-str version)]
      [:p "If you found a broken link, please report the issue encountered on the "
-      [:a {:href (:repo site-config)}
+      [:a {:href (:repo (site-config))}
        " github bugtracker."]])))
 
 (defn error-unknown-platform
@@ -60,12 +60,12 @@
         version    (t/thing->name (t/thing->version platform-thing))
         platformid (t/thing->name platform-thing)]
     (layout
-     site-config
+     (site-config)
      [:h1 {:class "page-title"}
       (header (:parent platform-thing))]
      [:p "Unknown platform identifier " (pr-str (str platformid))]
      [:p "If you found a broken link, please report the issue encountered on the "
-      [:a {:href (:repo site-config)}
+      [:a {:href (:repo (site-config))}
        " github bugtracker."]])))
 
 (defn error-unknown-namespace
@@ -76,12 +76,12 @@
         platform   (t/thing->name (t/thing->platform ns-thing))
         namespace  (t/thing->name ns-thing)]
     (layout
-     site-config
+     (site-config)
      [:h1 {:class "page-title"}
       (header (:parent ns-thing))]
      [:p "Unknown namespace identifier " (pr-str namespace)]
      [:p "If you found a broken link, please report the issue encountered on the "
-      [:a {:href (:repo site-config)}
+      [:a {:href (:repo (site-config))}
        " github bugtracker."]])))
 
 (defmulti error-unknown-symbol dispatch-fn

@@ -309,10 +309,16 @@
               (= :sentinel type)
               ;; chase a redirect
               ,,(when-let [target (:target meta)]
-                  (symbol-page :text/html
-                               (t/path->thing
-                                (str (t/thing->path (t/thing->version def-thing))
-                                     "/" target))))
+                  ;; FIXME: This limits the :target value to a fully
+                  ;; qualified symbol rather than some other
+                  ;; identifying structure like a full Thing. Whether
+                  ;; this is a feature or not is open to debate but it
+                  ;; works.
+                  (let [[_ ns n] (re-find #"([^/]+)/(.+)" (str target))]
+                    (symbol-page :text/html
+                                 (-> (t/thing->platform def-thing)
+                                     (t/->Ns ns)
+                                     (t/->Def n)))))
 
               :else
               ;; fail to find a redirect, error out

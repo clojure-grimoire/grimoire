@@ -101,13 +101,14 @@
                             "\n\n")))
 
                    (when (succeed? ?related)
-                     (when-let [related (result ?related)]
-                       (str "## See Also\n"
-                            ;; line40 "\n"
-                            (->> related
-                                 (map str)
-                                 (apply str))
-                            "\n\n")))))
+                     (let [related (result ?related)]
+                       (when-not (empty? related)
+                         (str "## See Also\n"
+                              ;; line40 "\n"
+                              (->> related
+                                   (map str)
+                                   (apply str))
+                              "\n\n"))))))
 
             (catch AssertionError e
               (str "# " (:uri def-thing) "\n\n"

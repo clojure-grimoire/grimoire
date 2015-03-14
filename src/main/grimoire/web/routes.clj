@@ -53,12 +53,13 @@
                      :platforms update
                      (t/thing->name platform) incf))
 
-      (let [artifact (t/thing->artifact thing)
-            group    (t/thing->group    artifact)]
-        (when artifact
-          (sdb/update! db
-                       :artifacts update
-                       (str (t/thing->name group) \/ (t/thing->name artifact)) incf))))))
+      (when (t/artifacted? thing)
+        (let [artifact (t/thing->artifact thing)
+              group    (t/thing->group    artifact)]
+          (when artifact
+            (sdb/update! db
+                         :artifacts update
+                         (str (t/thing->name group) \/ (t/thing->name artifact)) incf)))))))
 
 (defn store-v0
   [{header-type :content-type

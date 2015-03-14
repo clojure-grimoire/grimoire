@@ -8,8 +8,8 @@
 
 (defn start-web-server! [& [port? file?]]
   (println "starting!")
-  (let [jetty-cfg {:port (or port? 3000)
-                   :host "127.0.0.1"
+  (let [jetty-cfg {:port  (or port? 3000)
+                   :host  "127.0.0.1"
                    :join? false}
         jetty     (-> app
                       handler/site
@@ -18,11 +18,10 @@
 
     ;; boot the webapp itself
     (reset! cfg/service
-            (cfg/->Instance jetty
-                            (sdb/init! {:file     "/srv/www/grimoire/analytics.db"
-                                        :interval [:minutes 5]})
-                            cfg/lib-grim-config
-                            cfg/site-config))
+            (cfg/->Instance
+             ,,jetty
+             ,,(sdb/init! {:file     "/srv/www/grimoire/analytics.db"
+                           :interval [:minutes 5]})))
 
     ;; Return nil b/c side-effects
     nil))

@@ -1,6 +1,6 @@
 (ns grimoire.web.views.errors.txt
   (:require [clojure.java.io :as io]
-            [grimoire.web.views :refer [site-config]]
+            [grimoire.web.config :refer [site-config]]
             [grimoire.web.views.errors :refer :all]
             [grimoire.web.layout :refer [layout]]
             [grimoire.util :as util]

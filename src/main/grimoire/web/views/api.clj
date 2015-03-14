@@ -4,7 +4,9 @@
             [grimoire.either
              :refer [succeed? result]]
             [grimoire.web.views
-             :refer [lib-grim-config ns-version-index]]
+             :refer [ns-version-index]]
+            [grimoire.web.config
+             :refer [lib-grim-config]]
             [grimoire.things :as t]
             [cheshire.core
              :refer [generate-string]]))

@@ -8,22 +8,12 @@
             [grimoire.web.layout
              :refer [layout]]
             [grimoire.web.util :as wutil]
-            [grimoire.web.config :refer [service]]
+            [grimoire.web.config :refer [lib-grim-config
+                                         site-config]]
             [grimoire.api :as api]
             [grimoire.api.fs.read]
             [ring.util.response :as response]
             [sitemap.core :refer [generate-sitemap]]))
-
-;; Site configuration
-;;--------------------------------------------------------------------
-(defn site-config []
-  (:site-config @service))
-
-(defn lib-grim-config []
-  (:lib-grim @service))
-
-(defn rethinkdb-config []
-  (:rethinkdb @service))
 
 ;; Common partial pages
 ;;--------------------------------------------------------------------

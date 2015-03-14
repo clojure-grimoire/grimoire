@@ -1,6 +1,7 @@
 (ns grimoire.web.views.errors
   (:require [clojure.java.io :as io]
-            [grimoire.web.views :refer [site-config dispatch-fn header]]
+            [grimoire.web.views :refer [dispatch-fn header]]
+            [grimoire.web.config :refer [site-config]]
             [grimoire.web.layout :refer [layout]]
             [grimoire.util :as util]
             [grimoire.things :as t]

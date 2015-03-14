@@ -53,10 +53,12 @@
                      :platforms update
                      (t/thing->name platform) incf))
 
-      (when-let [artifact (t/thing->artifact thing)]
-        (sdb/update! db
-                     :artifacts update
-                     (t/thing->name artifact) incf)))))
+      (let [artifact (t/thing->artifact thing)
+            group    (t/thing->group    artifact)]
+        (when artifact
+          (sdb/update! db
+                       :artifacts update
+                       (str (t/thing->name group) \/ (t/thing->name artifact)) incf))))))
 
 (defn store-v0
   [{header-type :content-type
@@ -411,10 +413,10 @@
       [store-v group artifact]
     (fn [request]
       (let [user-agent (get-in request [:headers "user-agent"])
-            t          (-> (v/lib-grim-config)
+            t          (-> (cfg/lib-grim-config)
                            (t/->Group group)
                            (t/->Artifact artifact))
-            versions   (-> (v/lib-grim-config)
+            versions   (-> (cfg/lib-grim-config)
                            (api/list-versions t)
                            either/result)
             artifact-v (first versions)

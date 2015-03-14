@@ -1,5 +1,6 @@
 (ns grimoire.web.views.errors.html
-  (:require [grimoire.web.views :refer [site-config header]]
+  (:require [grimoire.web.views :refer [header]]
+            [grimoire.web.config :refer [site-config]]
             [grimoire.web.views.errors :refer :all]
             [clojure.string :as string]
             [grimoire.api :as api]

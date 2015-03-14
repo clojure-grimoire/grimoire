@@ -9,12 +9,12 @@
    lib-grim
    site-config])
 
-(def lib-grim-config
+(def -lib-grim-config
   (->Config "doc-store"
             "notes-store"
             "notes-store"))
 
-(def site-config
+(def -site-config
   {:url                 "http://conj.io/"
    :repo                "https://github.com/clojure-grimoire/grimoire/"
    :base-url            "/"
@@ -30,8 +30,25 @@
                          :description "Community documentation of Clojure"
                          :quote       "Even the most powerful wizard must consult grimoires as an aid against forgetfulness."}})
 
+(let [f ->Instance]
+  (defn ->Instance [jetty simpledb]
+    (f
+     ,,jetty
+     ,,simpledb
+     ,,-lib-grim-config
+     ,,-site-config)))
+
 (def service
-  (atom (->Instance nil
-                    nil
-                    lib-grim-config
-                    site-config)))
+  (atom nil))
+
+;; Site configuration
+;;------------------------------------------------------------------------------
+(defn site-config []
+  (:site-config @service))
+
+(defn lib-grim-config []
+  (:lib-grim @service))
+
+(defn simpledb-config []
+  (:simpledb @service))
+

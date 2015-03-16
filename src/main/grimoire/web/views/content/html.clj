@@ -53,7 +53,7 @@
             (kv-table (reverse (sort-by second (:clients db))))]))))
 
 (defmethod store-page :text/html [_]
-  (let [groups (api/list-groups (cfg/lib-grim-config) result)]
+  (let [groups (result (api/list-groups (cfg/lib-grim-config)))]
     (layout
      (cfg/site-config)
      ;;------------------------------------------------------------

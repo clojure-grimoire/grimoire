@@ -24,6 +24,7 @@
       [:td {:style "width: 90%;"} k]
       [:td {:style "width: 10%;"} v]])])
 
+;; FIXME: this entire fuction is too datastore-aware by a lot
 (defn heatmap-page []
   (layout
    (cfg/site-config)

@@ -134,7 +134,6 @@
        [:h1 {:class "page-title"} (header version-thing)]
        (when (succeed? ?notes)
          (let [notes (result ?notes)]
-           (println notes)
            (when-not (empty? notes)
              (list
               [:h2 "Release Notes"]

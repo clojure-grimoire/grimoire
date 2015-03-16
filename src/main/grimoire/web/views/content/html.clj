@@ -31,26 +31,27 @@
    [:h1 {:class "page-title"} "Analytics!"]
    [:p "Or at least some of it >:D"]
    (let [service @cfg/service
-         db      (-> service :simpledb :db deref)]
+         db      (-> service :simpledb :db deref)
+         sorted-table #(->> % (sort-by second) reverse (take 100) kv-table)]
      (list [:div
             [:h2 "Top 100 namespaces"]
-            (kv-table (take 100 (reverse (sort-by second (:namespaces db)))))]
+            (->> db :namespaces sorted-table)]
 
            [:div
             [:h2 "Top 100 defs"]
-            (kv-table (take 100 (reverse (sort-by second (:defs db)))))]
+            (->> db :defs sorted-table)]
 
            [:div
             [:h2 "Top artifacts"]
-            (kv-table (take 100 (reverse (sort-by second (:artifacts db)))))]
+            (->> db :artifacts sorted-table)]
 
            [:div
             [:h2 "Top platforms"]
-            (kv-table (reverse (sort-by second (:platforms db))))]
+            (->> db :platforms sorted-table)]
 
            [:div
             [:h2 "Top clients"]
-            (kv-table (reverse (sort-by second (:clients db))))]))))
+            (->> db :clients sorted-table)]))))
 
 (defmethod store-page :text/html [_]
   (let [groups (result (api/list-groups (cfg/lib-grim-config)))]

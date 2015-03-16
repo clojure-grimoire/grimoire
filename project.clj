@@ -6,7 +6,7 @@
   :aliases {"serve" ["with-profile" "server" "run"]}
   :profiles {:server
              {:dependencies [[org.clojure/clojure "[1.6.0,)"]
-                             [org.clojure-grimoire/lib-grimoire "0.8.0"
+                             [org.clojure-grimoire/lib-grimoire "0.8.1"
                               :exclusions [org.clojure/clojure
                                            me.arrdem/detritus]]
                              [org.clojure-grimoire/simpledb "0.1.5"

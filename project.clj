@@ -29,7 +29,7 @@
                               :exclusions [org.clojure/clojure]]
                              [me.raynes/conch "0.8.0"
                               :exclusions [org.clojure/clojure]]
-                             [me.arrdem/detritus "0.2.2-SNAPSHOT"
+                             [me.arrdem/detritus "0.2.2"
                               :exclusions [org.clojure/clojure]]
                              [sitemap "0.2.4"
                               :exclusions [org.clojure/clojure]]]

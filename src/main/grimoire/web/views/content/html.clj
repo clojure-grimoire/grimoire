@@ -82,7 +82,7 @@
          (when-let [docs (:doc meta)]
            (list
             [:h2 "Group Docs"]
-            [:pre docs]))
+            [:pre "  " docs]))
 
          (let [?notes (api/list-notes (cfg/lib-grim-config) group-thing)]
            (when (succeed? ?notes)
@@ -114,7 +114,7 @@
        (when-let [docs (:doc (result ?meta))]
          (list
           [:h2 "Artifact Docs"]
-          [:pre docs]))
+          [:pre "  " docs]))
 
        (let [?notes (api/list-notes (cfg/lib-grim-config) artifact-thing)]
          (when (succeed? ?notes)
@@ -150,7 +150,7 @@
        (when-let [docs (:doc (result ?meta))]
          (list
           [:h2 "Version Docs"]
-          [:pre docs]))
+          [:pre "  " docs]))
 
        (when (succeed? ?notes)
          (let [notes (result ?notes)]
@@ -179,7 +179,7 @@
        (when-let [docs (:doc (result ?meta))]
          (list
           [:h2 "Platform Docs"]
-          [:pre docs]))
+          [:pre "  " docs]))
 
        (when (succeed? ?notes)
          (when-let [note (second (first (result ?notes)))]
@@ -212,13 +212,15 @@
 
        (let [{:keys [doc name]} (result ?meta)]
          (when doc
-           (list [:h2 "Namespace Docs"]
-                 [:p doc])))
+           (list
+            [:h2 "Namespace Docs"]
+            [:pre "  " doc])))
 
        (when (succeed? ?notes)
          (when-let [notes (second (first (result ?notes)))]
-           (list [:h2 "Namespace Notes"]
-                 [:p (wutil/markdown-string notes)])))
+           (list
+            [:h2 "Namespace Notes"]
+            (wutil/markdown-string notes))))
 
        (list [:h2 "Symbols"]
              ;; FIXME: the fuck am I doing here srsly

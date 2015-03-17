@@ -157,12 +157,13 @@
 (def -sitemap-fn
   (memoize
    (fn []
-     (->> (let [groups     ,,,,,,,,(maybe (api/list-groups (lib-grim-config)))
-                artifacts  (mapcat (comp maybe (partial api/list-artifacts (lib-grim-config))) groups)
-                versions   (mapcat (comp maybe (partial api/list-versions (lib-grim-config))) artifacts)
-                platforms  (mapcat (comp maybe (partial api/list-platforms (lib-grim-config))) versions)
-                namespaces (mapcat (comp maybe (partial api/list-namespaces (lib-grim-config))) platforms)
-                defs       (mapcat (comp maybe (partial api/list-defs (lib-grim-config))) namespaces)]
+     (->> (let [cfg        (lib-grim-config)
+                groups     ,,,,,,,,(maybe (api/list-groups cfg))
+                artifacts  (mapcat (comp maybe (partial api/list-artifacts cfg)) groups)
+                versions   (mapcat (comp maybe (partial api/list-versions cfg)) artifacts)
+                platforms  (mapcat (comp maybe (partial api/list-platforms cfg)) versions)
+                namespaces (mapcat (comp maybe (partial api/list-namespaces cfg)) platforms)
+                defs       (mapcat (comp maybe (partial api/list-defs cfg)) namespaces)]
             (concat groups artifacts versions platforms namespaces defs))
           (map link-to')
           (concat -const-pages)

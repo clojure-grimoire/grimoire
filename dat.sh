@@ -55,11 +55,9 @@ git_get() {
 git_update() {
     # $1 is a repo dir
     pushd $1 > /dev/null
-    if git diff-index --quiet HEAD --; then
-        git pull --quiet origin master
-    else
-        echo "[warning] Not updating repo $1 due to local changes"
-    fi
+    (git reset --hard > /dev/null) &&
+      (git pull --quiet origin master) &&
+      (echo "Updated repo $1")
     popd > /dev/null
 }
 
@@ -95,9 +93,17 @@ install_docs() {
 ############################################################
 # Note that the notes are a single monolithic project, whereas
 # individual libraries are documented seperately.
-( [ -f "$NOTES" ] ||
-      git_get git@github.com:clojure-grimoire/datastore.git &&
-      mv "./datastore" "$NOTES" )
+if [ -a "$NOTES" ]
+then
+    pushd "$NOTES" > /dev/null &&
+    git reset --hard > /dev/null &&
+    git pull --quiet &&
+    echo "Updated datastore!" &&
+    popd > /dev/null
+else
+    git_get git@github.com:clojure-grimoire/datastore.git &&
+    mv "./datastore" "$NOTES"
+fi
 
 # Import the clojure.core docs & notes
 ############################################################

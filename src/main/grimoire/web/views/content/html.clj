@@ -68,14 +68,22 @@
                    (t/thing->name group)]])]))))
 
 (defmethod group-page :text/html [_ group-thing]
-  (let [?artifacts (api/list-artifacts (cfg/lib-grim-config) group-thing)]
-    (when (succeed? ?artifacts)
-      (let [artifacts (result ?artifacts)]
+  (let [?meta      (result (api/read-meta (cfg/lib-grim-config) group-thing))
+        ?artifacts (api/list-artifacts (cfg/lib-grim-config) group-thing)]
+    (when (and (succeed? ?artifacts)
+               (succeed? ?meta))
+      (let [artifacts (result ?artifacts)
+            meta      (result ?meta)]
         (layout
          (cfg/site-config)
          ;;------------------------------------------------------------
          [:h1 {:class "page-title"}
           (header group-thing)]
+
+         (when-let [docs (:doc meta)]
+           (list
+            [:h2 "Group Docs"]
+            [:pre docs]))
 
          (let [?notes (api/list-notes (cfg/lib-grim-config) group-thing)]
            (when (succeed? ?notes)
@@ -103,6 +111,11 @@
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"}
         (header artifact-thing)]
+
+       (when-let [docs (:doc (result ?meta))]
+         (list
+          [:h2 "Artifact Docs"]
+          [:pre docs]))
 
        (let [?notes (api/list-notes (cfg/lib-grim-config) artifact-thing)]
          (when (succeed? ?notes)
@@ -134,6 +147,12 @@
        (cfg/site-config) ;; FIXME: add artifact & group name to title somehow?
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"} (header version-thing)]
+
+       (when-let [docs (:doc (result ?meta))]
+         (list
+          [:h2 "Version Docs"]
+          [:pre docs]))
+
        (when (succeed? ?notes)
          (let [notes (result ?notes)]
            (when-not (empty? notes)
@@ -157,6 +176,12 @@
        (cfg/site-config) ;; FIXME: add artifact & group name to title somehow?
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"} (header platform-thing)]
+
+       (when-let [docs (:doc (result ?meta))]
+         (list
+          [:h2 "Platform Docs"]
+          [:pre docs]))
+
        (when (succeed? ?notes)
          (when-let [note (second (first (result ?notes)))]
            (list [:h2 "Platform Notes"]
@@ -186,7 +211,7 @@
        [:h1 {:class "page-title"}
         (header namespace-thing)]
 
-       (let [{:keys [doc name]} meta]
+       (let [{:keys [doc name]} (result ?meta)]
          (when doc
            (list [:h2 "Namespace Docs"]
                  [:p doc])))

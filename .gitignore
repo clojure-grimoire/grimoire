@@ -3,3 +3,9 @@ _site/*
 clojure-cheatsheets/*
 .nrepl-port
 resources/pygments
+dat
+notes-store
+doc-store
+checkouts
+resources/cheatsheet.html
+sdb.db

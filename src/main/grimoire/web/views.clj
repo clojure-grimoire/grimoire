@@ -1,5 +1,6 @@
 (ns grimoire.web.views
-  (:require [grimoire.util :as util]
+  (:require [detritus.variants :as var]
+            [grimoire.util :as util]
             [grimoire.things :as t
              :refer [thing->path]]
             [grimoire.either
@@ -7,30 +8,12 @@
             [grimoire.web.layout
              :refer [layout]]
             [grimoire.web.util :as wutil]
+            [grimoire.web.config :refer [lib-grim-config
+                                         site-config]]
             [grimoire.api :as api]
             [grimoire.api.fs.read]
-            [ring.util.response :as response]))
-
-;; Site configuration
-;;--------------------------------------------------------------------
-
-(def site-config
-  {:url                 "http://conj.io/"
-   :repo                "https://github.com/clojure-grimoire/grimoire/"
-   :baseurl             "/"
-   :datastore           {:docs  "doc-store"
-                         :notes "notes-store"
-                         :mode  :filesystem}
-   :version             (slurp "VERSION")
-   :google-analytics-id "UA-44001831-2"
-   :year                "2015"
-   :author              {:me          "http://arrdem.com/"
-                         :email       "me@arrdem.com"
-                         :gittip      "https://gittip.com/arrdem/"}
-   :style               {:header-sep  "/"
-                         :title       "Grimoire - Community Clojure Documentation"
-                         :description "Community documentation of Clojure"
-                         :quote       "Even the most powerful wizard must consult grimoires as an aid against forgetfulness."}})
+            [ring.util.response :as response]
+            [sitemap.core :refer [generate-sitemap]]))
 
 ;; Common partial pages
 ;;--------------------------------------------------------------------
@@ -38,50 +21,48 @@
 (defn link-to [prefix x]
   {:href (str prefix (thing->path x))})
 
-(def store-baseurl "/store/v0/")
+(def link-to' (fn [x] (link-to (-> (site-config) :store-url) x)))
 
-(def link-to' (partial link-to store-baseurl))
+(defn header [t]
+  (cond
+    (t/group? t)
+    ,,(list [:a {:href (-> (site-config) :store-url)}
+             "store"] "/"
+             [:a (link-to' t)
+              ,,(t/thing->name t)])
+        
+    (t/artifact? t)
+    ,,(list (header (t/thing->group t))
+            "/" [:a (link-to' t)
+                 ,,,(t/thing->name t)])
 
-(defmulti header :type)
+    (t/version? t)
+    ,,(let [artifact (t/thing->artifact t)
+            group    (t/thing->group artifact)]
+        (list [:a {:href (-> (site-config) :store-url)}
+               "store"] "/"
+               "[" [:a (link-to' group)
+                    ,,(t/thing->name group)]
+               "/" [:a (link-to' artifact)
+                    ,,(t/thing->name artifact)]
+               " " [:a (link-to' t)
+                    ,,,(pr-str (t/thing->name t))] "]"))
 
-(defmethod header :group [group]
-  (list [:a {:href store-baseurl}
-         "store"] "/"
-         [:a (link-to' group)
-          ,,(:name group)]))
+    (t/platform? t)
+    ,,(list (header (t/thing->version t)) " "
+            [:a (link-to' t)
+             ,,,(t/thing->name t)])
 
-(defmethod header :artifact [artifact]
-  (list (header (t/thing->group artifact))
-        "/" [:a (link-to' artifact)
-             ,,,(:name artifact)]))
+    (t/namespace? t)
+    ,,(list (header (t/thing->platform t)) "::"
+            [:a (link-to' t)
+             ,,,(t/thing->name t)])
 
-(defmethod header :version [version]
-  (let [artifact (t/thing->artifact version)
-        group    (t/thing->group artifact)]
-    (list [:a {:href store-baseurl}
-           "store"] "/"
-           "[" [:a (link-to' group)
-                ,,(:name group)]
-           "/" [:a (link-to' artifact)
-                ,,(:name artifact)]
-           " " [:a (link-to' version)
-                ,,,(pr-str (:name version))] "]")))
-
-(defmethod header :platform [platform]
-  (list (header (t/thing->version platform)) " "
-        [:a (link-to' platform)
-         ,,,(:name platform)]))
-
-(defmethod header :namespace [namespace]
-  (list (header (t/thing->platform namespace)) "::"
-        [:a (link-to' namespace)
-         ,,,(:name namespace)]))
-
-(defmethod header :def [symbol]
-  (let [sym' (util/munge (:name symbol))]
-    (list (header (t/thing->namespace symbol)) "/"
-          [:a (link-to' symbol)
-           ,,,(:name symbol)])))
+    (t/def? t)
+    ,,(let [sym' (util/munge (t/thing->name t))]
+        (list (header (t/thing->namespace t)) "/"
+              [:a (link-to' t)
+               ,,,(t/thing->name t)]))))
 
 ;; Pages
 ;;--------------------------------------------------------------------
@@ -141,20 +122,56 @@
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
+(println (lib-grim-config))
+
 ;; FIXME: How to deal with namespaces in different platforms?
 ;; FIXME: Probably belongs somewhere else
 (def ns-version-index
-  (->> (for [groupid   (result (api/list-groups     site-config))
-             artifact  (result (api/list-artifacts  site-config groupid))
-             :let      [version  (->> artifact
-                                      (api/list-versions site-config)
-                                      result first)
-                        platform (->> version
-                                      (api/list-platforms site-config)
-                                      result (sort-by :name) first)]
-             namespace (result (api/list-namespaces site-config platform))]
-         [(:name namespace) version])
-       (into {})))
+  (memoize
+   (fn []
+     (->> (for [groupid   (result (api/list-groups     (lib-grim-config)))
+                artifact  (result (api/list-artifacts  (lib-grim-config) groupid))
+                :let      [version  (->> artifact
+                                         (api/list-versions (lib-grim-config))
+                                         result first)
+                           platform (->> version
+                                         (api/list-platforms (lib-grim-config))
+                                         result (sort-by t/thing->name) first)]
+                namespace (result (api/list-namespaces (lib-grim-config) platform))]
+            [(t/thing->name namespace)
+             version])
+          (into {})))))
+
+(def -const-pages
+  ["/"
+   "/about"
+   "/api"
+   "/contributing"
+   (-> (site-config) :store-url)])
+
+(def maybe
+  (fn [x]
+    (when (succeed? x)
+      (result x))))
+
+(def -sitemap-fn
+  (memoize
+   (fn []
+     (->> (let [cfg        (lib-grim-config)
+                groups     ,,,,,,,,(maybe (api/list-groups cfg))
+                artifacts  (mapcat (comp maybe (partial api/list-artifacts cfg)) groups)
+                versions   (mapcat (comp maybe (partial api/list-versions cfg)) artifacts)
+                platforms  (mapcat (comp maybe (partial api/list-platforms cfg)) versions)
+                namespaces (mapcat (comp maybe (partial api/list-namespaces cfg)) platforms)
+                defs       (mapcat (comp maybe (partial api/list-defs cfg)) namespaces)]
+            (concat groups artifacts versions platforms namespaces defs))
+          (map link-to')
+          (concat -const-pages)
+          (map (fn [x] {:loc x}))
+          generate-sitemap))))
+
+(defn sitemap-page []
+  (-sitemap-fn))
 
 ;; Load view implementations
 ;;--------------------------------------------------------------------

@@ -1,5 +1,6 @@
 (ns grimoire.web.views.errors.html
-  (:require [grimoire.web.views :refer [site-config header]]
+  (:require [grimoire.web.views :refer [header]]
+            [grimoire.web.config :refer [site-config]]
             [grimoire.web.views.errors :refer :all]
             [clojure.string :as string]
             [grimoire.api :as api]
@@ -38,12 +39,12 @@
      " if you think this is a bug."])))
 
 (defmethod error-unknown-symbol :text/html [_type def-thing]
-  (let [groupid        (:name (t/thing->group def-thing))
-        artifactid     (:name (t/thing->artifact def-thing))
-        version        (:name (t/thing->version def-thing))
-        platform       (:name (t/thing->platform def-thing))
-        namespace      (:name (t/thing->namespace def-thing))
-        symbol         (:name def-thing)
+  (let [groupid        (t/thing->name (t/thing->group def-thing))
+        artifactid     (t/thing->name (t/thing->artifact def-thing))
+        version        (t/thing->name (t/thing->version def-thing))
+        platform       (t/thing->name (t/thing->platform def-thing))
+        namespace      (t/thing->name (t/thing->namespace def-thing))
+        symbol         (t/thing->name def-thing)
         version-string (format "[%s/%s \"%s\"] %s" groupid artifactid version platform)
         symbol-string  (format "%s/%s" namespace (util/update-munge symbol))]
     (layout

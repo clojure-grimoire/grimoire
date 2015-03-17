@@ -3,6 +3,7 @@
             [grimoire.api :as api]
             [grimoire.things :as t]
             [grimoire.either :refer [succeed? result]]
+            [grimoire.web.config :as cfg]
             [ring.util.response :as response]))
 
 (defmethod store-page :text/plain [_]
@@ -47,80 +48,83 @@
         namespace  (t/thing->namespace def-thing)
         line80     (apply str (repeat 80 "-"))
         line40     (apply str (repeat 40 "-"))
-        ?meta      (api/read-meta site-config def-thing)]
+        ?meta      (api/read-meta (cfg/lib-grim-config) def-thing)]
     (-> (if (succeed? ?meta)
-         (try
-           (let [{:keys [doc name type arglists src]
-                  :as   meta} (result ?meta)
-                  ?notes      (api/read-notes    site-config def-thing)
-                  ?related    (api/read-related  site-config def-thing)
-                  ?examples   (api/read-examples site-config def-thing)]
-             ;; FIXME: else what? doesn't make sense w/o doc...
-             (str (format "# [%s/%s \"%s\"] %s/%s\n"
-                          (:name groupid)
-                          (:name artifactid)
-                          (:name version)
-                          (:name namespace)
-                          name)
-                  ;; line80
-                  "\n"
+          (try
+            (let [{:keys [doc name type arglists src]
+                   :as   meta} (result ?meta)
+                   ?notes      (api/read-notes    (cfg/lib-grim-config) def-thing)
+                   ?related    (api/list-related  (cfg/lib-grim-config) def-thing)
+                   ?examples   (api/list-examples (cfg/lib-grim-config) def-thing)]
+              ;; FIXME: else what? doesn't make sense w/o doc...
+              (str (format "# [%s/%s \"%s\"] %s/%s\n"
+                           (:name groupid)
+                           (:name artifactid)
+                           (:name version)
+                           (:name namespace)
+                           name)
+                   ;; line80
+                   "\n"
 
-                  (when-not (empty? arglists)
-                    (str (if-not (= type :special)
-                           "## Usages\n"
-                           "## Arities\n")
-                         ;; line40 "\n"
-                         (->> arglists
-                            (map #(format "  %s\n" (pr-str %1)))
-                            (apply str))
-                         "\n"))
+                   (when-not (empty? arglists)
+                     (str (if-not (= type :special)
+                            "## Usages\n"
+                            "## Arities\n")
+                          ;; line40 "\n"
+                          (->> arglists
+                               (map #(format "  %s\n" (pr-str %1)))
+                               (apply str))
+                          "\n"))
 
-                  (when doc
-                    (str "## Documentation\n"
-                         ;; line40 "\n"
-                         "  " doc
-                         "\n\n"))
+                   (when doc
+                     (str "## Documentation\n"
+                          ;; line40 "\n"
+                          "  " doc
+                          "\n\n"))
 
-                  (when (succeed? ?notes)
-                    (when-let [notes (result ?notes)]
-                      (str "## User Documentation\n"
-                           ;; line40 "\n"
-                           (->> (for [[v n] notes] n)
-                              (apply str))
-                           "\n\n")))
+                   (when (succeed? ?notes)
+                     (when-let [notes (result ?notes)]
+                       (str "## User Documentation\n"
+                            ;; line40 "\n"
+                            (->> (for [[v n] notes] n)
+                                 (apply str))
+                            "\n\n")))
 
-                  (when (succeed? ?examples)
-                    (when-let [examples (result ?examples)]
-                      (str "## Examples\n"
-                           ;; line40 "\n"
-                           (->> (for [[v e] examples] e)
-                              (apply str "\n"))
-                           "\n\n")))
+                   (when (succeed? ?examples)
+                     (when-let [examples (result ?examples)]
+                       (str "## Examples\n"
+                            ;; line40 "\n"
+                            (->> (for [e-thing examples]
+                                   (result
+                                    (api/read-example (cfg/lib-grim-config) e-thing)))
+                                 (apply str "\n"))
+                            "\n\n")))
 
-                  (when (succeed? ?related)
-                    (when-let [related (result ?related)]
-                      (str "## See Also\n"
-                           ;; line40 "\n"
-                           (->> related
-                              (map str)
-                              (apply str))
-                           "\n\n")))))
+                   (when (succeed? ?related)
+                     (let [related (result ?related)]
+                       (when-not (empty? related)
+                         (str "## See Also\n"
+                              ;; line40 "\n"
+                              (->> related
+                                   (map str)
+                                   (apply str))
+                              "\n\n"))))))
 
-           (catch AssertionError e
-             (str "# " (:uri def-thing) "\n\n"
-                  "Well shit... something went wrong :c\n"
-                  "Please file a bug report at https://github.com/clojure-grimoire/grimoire <3\n\n"
-                  "## Message\n"
-                  "    "(.getMessage e) "\n\n"
-                  "## Stack trace\n"
-                  (->> (.getStackTrace e)
-                     (map #(str "    " % "\n"))
-                     (apply str))
-                  "\n")))
+            (catch AssertionError e
+              (str "# " (:uri def-thing) "\n\n"
+                   "Well shit... something went wrong :c\n"
+                   "Please file a bug report at https://github.com/clojure-grimoire/grimoire <3\n\n"
+                   "## Message\n"
+                   "    "(.getMessage e) "\n\n"
+                   "## Stack trace\n"
+                   (->> (.getStackTrace e)
+                        (map #(str "    " % "\n"))
+                        (apply str))
+                   "\n")))
 
-         (str "# " (:uri def-thing) "\n\n"
-              "No such symbol :c\n"
-              "Please file a bug report at https://github.com/clojure-grimoire/grimoire <3\n\n"))
+          (str "# " (:uri def-thing) "\n\n"
+               "No such symbol :c\n"
+               "Please file a bug report at https://github.com/clojure-grimoire/grimoire <3\n\n"))
 
-       response/response
-       (response/content-type "text/plain"))))
+        response/response
+        (response/content-type "text/plain"))))

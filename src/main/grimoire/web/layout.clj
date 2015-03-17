@@ -1,7 +1,7 @@
 (ns grimoire.web.layout
   (:require [hiccup.page :as page]))
 
-(defn header [{:keys [baseurl] :as c}]
+(defn header [{:keys [base-url] :as c}]
   [:head
    [:link {:rel "profile" :href "http://gmpg.org/xfn/11"}]
    [:meta {:content "IE=edge" :http-equiv "X-UA-Compatible"}]
@@ -17,20 +17,20 @@
                 :content summary}])))
    [:title (-> c :style :title)]
    (page/include-css
-    (str baseurl "public/css/poole.css")
-    (str baseurl "public/css/syntax.css")
-    (str baseurl "public/css/lanyon.css")
-    (str baseurl "public/css/headings.css"))
+    (str base-url "public/css/poole.css")
+    (str base-url "public/css/syntax.css")
+    (str base-url "public/css/lanyon.css")
+    (str base-url "public/css/headings.css"))
    [:link {:href "http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400"
            :rel "stylesheet"}]
-   [:link {:href (str baseurl "public/apple-touch-icon-precomposed.png") :sizes "144x144" :rel "apple-touch-icon-precomposed"}]
-   [:link {:href (str baseurl "public/favicon.ico") :rel "shortcut icon"}]])
+   [:link {:href (str base-url "public/apple-touch-icon-precomposed.png") :sizes "144x144" :rel "apple-touch-icon-precomposed"}]
+   [:link {:href (str base-url "public/favicon.ico") :rel "shortcut icon"}]])
 
-(defn masthead [{:keys [baseurl] :as c}]
+(defn masthead [{:keys [base-url] :as c}]
   [:div.masthead
    [:div.container
     [:h3.masthead-title
-     [:a {:title "Home" :href baseurl} (-> c :style :title)]
+     [:a {:title "Home" :href base-url} (-> c :style :title)]
      [:small]]]])
 
 (defn sidebar [{:keys [repo description author version year]}]

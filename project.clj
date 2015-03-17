@@ -6,29 +6,33 @@
   :aliases {"serve" ["with-profile" "server" "run"]}
   :profiles {:server
              {:dependencies [[org.clojure/clojure "[1.6.0,)"]
-                             [org.clojure-grimoire/lib-grimoire "0.7.0"
+                             [org.clojure-grimoire/lib-grimoire "0.8.1"
+                              :exclusions [org.clojure/clojure
+                                           me.arrdem/detritus]]
+                             [org.clojure-grimoire/simpledb "0.1.5"
                               :exclusions [org.clojure/clojure]]
                              [cheshire "5.4.0"
                               :exclusions [org.clojure/clojure]]
-                             [com.taoensso/timbre "3.3.1"
+                             [com.taoensso/timbre "3.4.0"
                               :exclusions [org.clojure/clojure]]
                              [ring/ring-core "1.3.2"
                               :exclusions [org.clojure/clojure]]
                              [ring/ring-jetty-adapter "1.3.2"
                               :exclusions [org.clojure/clojure]]
-                             [selmer "0.7.7"
+                             [selmer "0.8.0"
                               :exclusions [org.clojure/clojure]]
                              [compojure "1.3.1"
                               :exclusions [org.clojure/clojure]]
                              [hiccup "1.0.5"
                               :exclusions [org.clojure/clojure]]
-                             [markdown-clj "0.9.58"
+                             [markdown-clj "0.9.62"
                               :exclusions [org.clojure/clojure]]
                              [me.raynes/conch "0.8.0"
                               :exclusions [org.clojure/clojure]]
-                             [me.arrdem/detritus "0.2.0"
+                             [me.arrdem/detritus "0.2.2"
                               :exclusions [org.clojure/clojure]]
-                             [simpledb "0.1.4"]]
+                             [sitemap "0.2.4"
+                              :exclusions [org.clojure/clojure]]]
               :main         grimoire.web.service}
 
              :dev

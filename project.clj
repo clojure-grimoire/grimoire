@@ -9,7 +9,7 @@
                              [org.clojure-grimoire/lib-grimoire "0.8.1"
                               :exclusions [org.clojure/clojure
                                            me.arrdem/detritus]]
-                             [org.clojure-grimoire/simpledb "0.1.6"
+                             [org.clojure-grimoire/simpledb "0.1.8"
                               :exclusions [org.clojure/clojure]]
                              [cheshire "5.4.0"
                               :exclusions [org.clojure/clojure]]

@@ -21,7 +21,7 @@
             (cfg/->Instance
              ,,jetty
              ,,(sdb/init! {:file     "/srv/www/grimoire/analytics.db"
-                           :interval [:minutes 5]})))
+                           :interval [:minutes 1]})))
 
     ;; Return nil b/c side-effects
     nil))

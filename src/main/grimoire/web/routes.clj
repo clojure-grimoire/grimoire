@@ -29,8 +29,7 @@
   
   ;; what do I want to know
   ;; - inc user-agent string tracking
-  (let [service* @cfg/service
-        db      (:simpledb service*)]
+  (let [db (cfg/simpledb-config)]
     (sdb/update! db
                  :clients update
                  (get-in request [:headers "user-agent"] "Unknown") incf)

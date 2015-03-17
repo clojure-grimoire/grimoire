@@ -68,12 +68,11 @@
                    (t/thing->name group)]])]))))
 
 (defmethod group-page :text/html [_ group-thing]
-  (let [?meta      (result (api/read-meta (cfg/lib-grim-config) group-thing))
+  (let [?meta      (api/read-meta (cfg/lib-grim-config) group-thing)
         ?artifacts (api/list-artifacts (cfg/lib-grim-config) group-thing)]
-    (when (and (succeed? ?artifacts)
-               (succeed? ?meta))
+    (when (succeed? ?artifacts)
       (let [artifacts (result ?artifacts)
-            meta      (result ?meta)]
+            meta      (when (succeed? ?meta) (result ?meta))]
         (layout
          (cfg/site-config)
          ;;------------------------------------------------------------

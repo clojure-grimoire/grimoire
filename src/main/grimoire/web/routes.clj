@@ -387,7 +387,7 @@
           (wutil/moved-permanently new-uri))))) ;; everyone else
 
   (GET "/store" []
-    (wutil/moved-permanently "/store/v0"))
+    (wutil/moved-permanently (:store-url (cfg/site-config))))
   
   ;; Handle pre-versioned store (Grimoire 0.4) store links
   (context ["/store/:t", :t #"[^v][^0-9]*"] [t]

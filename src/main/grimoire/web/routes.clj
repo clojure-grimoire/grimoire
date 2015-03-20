@@ -458,6 +458,19 @@
             (#'app new-req) ;; pass it forwards
             (wutil/moved-permanently new-uri)))))) ;; everyone else
 
+  ;; Upgrade store version
+  (context ["/store/v0/"] []
+    (fn [request]
+      (let [user-agent (get-in request [:headers "user-agent"])
+            new-symbol (util/update-munge symbol)
+            new-uri    (str "/store/v1" (:path-info request))
+            new-req    (-> request
+                           (assoc :uri new-uri)
+                           (dissoc :context :path-info))]
+        (if (privilaged-user-agents user-agent)
+          (#'app new-req) ;; pass it forwards
+          (wutil/moved-permanently new-uri)))))
+  
   ;; The store itself
   store-v0
 

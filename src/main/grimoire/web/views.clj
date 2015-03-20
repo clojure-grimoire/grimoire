@@ -122,8 +122,6 @@
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
-(println (lib-grim-config))
-
 ;; FIXME: How to deal with namespaces in different platforms?
 ;; FIXME: Probably belongs somewhere else
 (def ns-version-index

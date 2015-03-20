@@ -105,38 +105,39 @@
 (defmethod artifact-page :text/html [_ artifact-thing]
   (let [?meta (api/read-meta (cfg/lib-grim-config) artifact-thing)]
     (when (succeed? ?meta)
-      (layout
-       (cfg/site-config)
-       ;;------------------------------------------------------------
-       [:h1 {:class "page-title"}
-        (header artifact-thing)]
+      (let [meta (result ?meta)]
+        (layout
+         (cfg/site-config)
+         ;;------------------------------------------------------------
+         [:h1 {:class "page-title"}
+          (header artifact-thing)]
 
-       (when-let [docs (:doc (result ?meta))]
+         (when-let [docs (:doc meta)]
+           (list
+            [:h2 "Artifact Docs"]
+            [:pre "  " docs]))
+
+         (let [?notes (api/list-notes (cfg/lib-grim-config) artifact-thing)]
+           (when (succeed? ?notes)
+             (let [note (result (api/read-note (cfg/lib-grim-config) (first (result ?notes))))]
+               (list
+                [:h2 "Arifact Notes"]
+                (wutil/markdown-string note)))))
+
          (list
-          [:h2 "Artifact Docs"]
-          [:pre "  " docs]))
-
-       (let [?notes (api/list-notes (cfg/lib-grim-config) artifact-thing)]
-         (when (succeed? ?notes)
-           (let [note (result (api/read-note (cfg/lib-grim-config) (first (result ?notes))))]
-             (list
-              [:h2 "Arifact Notes"]
-              (wutil/markdown-string note)))))
-
-       (list
-        [:h2 "Known release versions"]
-        [:ul (for [version (->> (api/list-versions (cfg/lib-grim-config) artifact-thing)
-                                result
-                                (sort-by t/thing->name)
-                                reverse)
-                   :let  [artifact (t/thing->artifact version)
-                          group    (t/thing->group artifact)]]
-               [:li
-                [:a (link-to' version)
-                 (format "[%s/%s \"%s\"]"
-                         (t/thing->name group)
-                         (t/thing->name artifact)
-                         (t/thing->name version))]])])))))
+          [:h2 "Known release versions"]
+          [:ul (for [version (->> (api/list-versions (cfg/lib-grim-config) artifact-thing)
+                                  result
+                                  (sort-by t/thing->name)
+                                  reverse)
+                     :let  [artifact (t/thing->artifact version)
+                            group    (t/thing->group artifact)]]
+                 [:li
+                  [:a (link-to' version)
+                   (format "[%s/%s \"%s\"]"
+                           (t/thing->name group)
+                           (t/thing->name artifact)
+                           (t/thing->name version))]])]))))))
 
 (defmethod version-page :text/html [_ version-thing]
   (let [?meta  (api/read-meta (cfg/lib-grim-config) version-thing)

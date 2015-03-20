@@ -435,26 +435,25 @@
           (#'app new-req) ;; pass it forwards
           (wutil/moved-permanently new-uri))))) ;; everyone else
 
-  ;; Upgrade munging
-  (context ["/store/:store-v/:group/:artifact/:version/:platform/:ns/:symbol"
-            :store-v  #"v[0-9]+"
+  ;; Upgrade v0 and previous munging
+  (context ["/store/v0/:group/:artifact/:version/:platform/:ns/:symbol"
             :platform platform-regex]
-      [store-v group artifact version platform ns symbol]
+      [group artifact version platform ns symbol]
     (fn [request]
       (let [user-agent (get-in request [:headers "user-agent"])
-            symbol'    (util/update-munge symbol)
-            new-uri    (str \/ "store"
-                            \/ store-v
-                            \/ group
-                            \/ artifact
-                            \/ version
-                            \/ platform
-                            \/ ns
-                            \/ symbol')
+            new-symbol (util/update-munge symbol)
+            new-uri    (str "/store/v1/"
+                            (-> (t/->Group group)
+                                (t/->Artifact artifact)
+                                (t/->Version version)
+                                (t/->Platform platform)
+                                (t/->Ns ns)
+                                (t/->Def new-symbol)
+                                (t/thing->url)))
             new-req    (-> request
                            (assoc :uri new-uri)
                            (dissoc :context :path-info))]
-        (when-not (= symbol symbol')
+        (when-not (= (:uri request) new-uri)
           (if (privilaged-user-agents user-agent)
             (#'app new-req) ;; pass it forwards
             (wutil/moved-permanently new-uri)))))) ;; everyone else

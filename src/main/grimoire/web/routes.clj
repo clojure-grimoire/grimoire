@@ -60,7 +60,7 @@
                          :artifacts update
                          (str (t/thing->name group) \/ (t/thing->name artifact)) incf)))))))
 
-(defn store-v0
+(defn store-v1
   [{header-type :content-type
     {param-type :type} :params
     :as req
@@ -72,7 +72,7 @@
         log-msg (pr-str {:uri        uri
                          :type       type
                          :user-agent (get-in req [:headers "user-agent"])})]
-    (->> (context "/store/v0" []
+    (->> (context "/store/v1" []
            (GET "/" {uri :uri}
              (when-let [r (v/store-page type)]
                (log! req nil)
@@ -472,7 +472,7 @@
           (wutil/moved-permanently new-uri)))))
   
   ;; The store itself
-  store-v0
+  store-v1
 
   ;; Symbol search interface
   ;;--------------------------------------------------------------------

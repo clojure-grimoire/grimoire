@@ -232,7 +232,7 @@
                                        :type       type
                                        :op         op
                                        :user-agent (get-in req [:headers "user-agent"])})]
-           (context ["/api/v1"] []
+           (context ["/api/v2"] []
              (GET "/" []
                (do-dispatch v.api/root-ops
                             type op params))

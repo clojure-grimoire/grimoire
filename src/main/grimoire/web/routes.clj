@@ -374,7 +374,7 @@
     (fn [request]
       (let [user-agent (get-in request [:headers "user-agent"])
             ;; FIXME: URI forging is evil
-            ;; FIXME: Forged URI doesn't have a platform part
+
             path       (string/split (:uri request) #"/")
             path       (list* (first path) (second path) "clj" (drop 2 path))
             new-uri    (str "/store/v0/org.clojure/clojure"

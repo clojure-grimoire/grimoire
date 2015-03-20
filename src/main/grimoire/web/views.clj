@@ -21,7 +21,7 @@
 (defn link-to [prefix x]
   {:href (str prefix (thing->path x))})
 
-(def link-to' (fn [x] (link-to (-> (site-config) :store-url) x)))
+(def link-to' (fn [x] (-> (site-config) :store-url (link-to x))))
 
 (defn header [t]
   (cond

@@ -18,7 +18,7 @@
   {:url                 "http://conj.io/"
    :repo                "https://github.com/clojure-grimoire/grimoire/"
    :base-url            "/"
-   :store-url           "/store/v0/"
+   :store-url           "/store/v1/"
    :version             (slurp "VERSION")
    :google-analytics-id "UA-44001831-2"
    :year                "2015"

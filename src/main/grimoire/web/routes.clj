@@ -217,7 +217,7 @@
                                                 type op t))))))))))))))
          (routing req))))
 
-(def api-v1
+(def api-v2
   (fn [{header-type :content-type
         {param-type :type
          op         :op :as params} :params
@@ -387,7 +387,7 @@
 
   (GET "/store" []
     (wutil/moved-permanently (:store-url (cfg/site-config))))
-  
+
   ;; Handle pre-versioned store (Grimoire 0.4) store links
   (context ["/store/:t", :t #"[^v][^0-9]*"] [t]
     (fn [request]
@@ -469,7 +469,7 @@
         (if (privilaged-user-agents user-agent)
           (#'app new-req) ;; pass it forwards
           (wutil/moved-permanently new-uri)))))
-  
+
   ;; The store itself
   store-v1
 
@@ -479,9 +479,37 @@
 
   ;; The v0 API
   ;;--------------------------------------------------------------------
+
+  ;; The old v0 api
   api-v0
-  api-v1
-  
+
+  ;; Upgrade v1 requests to v2 requests
+  (context ["/api/v1/:group/:artifact/:version/:platform/:ns/:symbol"
+            :platform platform-regex]
+      [group artifact version platform ns symbol]
+    (fn [request]
+      (let [user-agent (get-in request [:headers "user-agent"])
+            new-symbol (util/update-munge symbol)
+            new-uri    (str "/api/v2/"
+                            (-> (t/->Group group)
+                                (t/->Artifact artifact)
+                                (t/->Version version)
+                                (t/->Platform platform)
+                                (t/->Ns ns)
+                                (t/->Def new-symbol)
+                                (t/thing->url))
+                            (:query-string request))
+            new-req    (-> request
+                           (assoc :uri new-uri)
+                           (dissoc :context :path-info))]
+        (when-not (= (:uri request) new-uri)
+          (if (privilaged-user-agents user-agent)
+            (#'app new-req) ;; pass it forwards
+            (wutil/moved-permanently new-uri)))))) ;; everyone else
+
+  ;; The v2 api itself
+  api-v2
+
   ;; Articles
   ;;--------------------------------------------------------------------
   (GET "/api" []

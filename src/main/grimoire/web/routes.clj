@@ -110,7 +110,7 @@
                            (context "/:namespace" [namespace]
                              (let-routes [t (t/->Ns t namespace)]
                                (GET "/" []
-                                 (when-let [r (v/namespace-page-memo type t)]
+                                 (when-let [r (v/namespace-page type t)]
                                    (log! req t)
                                    r))
 

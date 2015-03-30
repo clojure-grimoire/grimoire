@@ -113,10 +113,6 @@
 ;; FIXME: application/edn
 ;; FIXME: application/json
 
-;; FIXME: this should be a smarter cache
-(def namespace-page-memo
-  (memoize namespace-page))
-
 (defmulti symbol-page dispatch-fn
   :default :text/plain)
 ;; FIXME: application/edn

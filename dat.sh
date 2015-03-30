@@ -108,8 +108,8 @@ fi
 # Import the clojure.core docs & notes
 ############################################################
 install_docs clojure-grimoire doc-clojure-core org.clojure clojure
-install_docs clojure-grimoire doc-cljs-core    org.clojure clojurescript
-install_docs clojure-grimoire doc-core-async   org.clojure core.async
-install_docs clojure-grimoire doc-core-typed   org.clojure core.typed
-install_docs clojure-grimoire doc-core-typed   org.clojure core.typed.rt
+#install_docs clojure-grimoire doc-cljs-core    org.clojure clojurescript
+#install_docs clojure-grimoire doc-core-async   org.clojure core.async
+#install_docs clojure-grimoire doc-core-typed   org.clojure core.typed
+#install_docs clojure-grimoire doc-core-typed   org.clojure core.typed.rt
 install_docs clojure-grimoire doc-lib-grimoire org.clojure-grimoire lib-grimoire

@@ -1,6 +1,7 @@
 (ns grimoire.web.config
   (:require [detritus.variants :refer [deftag]]
             [grimoire.github :as gh]
+            [grimoire.api.web :as web]
             [grimoire.api.fs :as fs]))
 
 (deftag Instance
@@ -9,6 +10,7 @@
    simpledb
    lib-grim
    site-config
+   web-config
    notes-config])
 
 (def -lib-grim-config
@@ -35,6 +37,9 @@
 (def -notes-config
   (gh/->repo "clojure-grimoire" "datastore"))
 
+(def -web-config
+  (web/->Config (:url -site-config)))
+
 (let [f ->Instance]
   (defn ->Instance [jetty simpledb]
     (f
@@ -42,6 +47,7 @@
      ,,simpledb
      ,,-lib-grim-config
      ,,-site-config
+     ,,-web-config
      ,,-notes-config)))
 
 (def service
@@ -60,3 +66,6 @@
 
 (defn notes-config []
   (:notes-config @service))
+
+(def web-config []
+  (:web-config @service))

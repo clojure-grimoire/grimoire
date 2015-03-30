@@ -320,15 +320,12 @@
              doc))
 
      (when (succeed? ?notes)
-       (let [[note] (result ?notes)]
-         (when note
+       (when-let [note-thing (first (result ?notes))]
+         (let [note-text (result (api/read-note *lg* note))]
            (editable
             "Community Documentation"
-            (edit-url' note)
-            (wutil/markdown-string
-             (result
-              (api/read-note *lg*
-                             note)))))))
+            (edit-url' note-thing)
+            (wutil/markdown-string note-text)))))
 
      ;; FIXME: examples needs a _lot_ of work
      (when (succeed? ?examples)

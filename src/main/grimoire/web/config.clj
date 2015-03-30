@@ -67,5 +67,5 @@
 (defn notes-config []
   (:notes-config @service))
 
-(def web-config []
+(defn web-config []
   (:web-config @service))

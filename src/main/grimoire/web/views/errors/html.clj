@@ -11,7 +11,7 @@
 
 (defmethod search-no-symbol :text/html [_type version ns]
   (layout
-   site-config
+   (site-config)
    [:h1 {:class "page-title"}
     ,,"Search - No symbol"]
    (list
@@ -25,7 +25,7 @@
 
 (defmethod search-no-version :text/html [_type version]
   (layout
-   site-config
+   (site-config)
    [:h1 {:class "page-title"}
     ,,"Search - No symbol"]
    (list
@@ -48,7 +48,7 @@
         version-string (format "[%s/%s \"%s\"] %s" groupid artifactid version platform)
         symbol-string  (format "%s/%s" namespace (util/update-munge symbol))]
     (layout
-     site-config
+     (site-config)
      [:h1 {:class "page-title"}
       (header (:parent def-thing))]
      [:p "Unknown symbol identifier " (pr-str symbol-string)]

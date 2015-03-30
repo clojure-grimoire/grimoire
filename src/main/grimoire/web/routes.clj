@@ -448,7 +448,7 @@
                                 (t/->Platform platform)
                                 (t/->Ns ns)
                                 (t/->Def new-symbol)
-                                (t/thing->url)))
+                                (t/thing->url-path)))
             new-req    (-> request
                            (assoc :uri new-uri)
                            (dissoc :context :path-info))]
@@ -497,7 +497,7 @@
                                 (t/->Platform platform)
                                 (t/->Ns ns)
                                 (t/->Def new-symbol)
-                                (t/thing->url))
+                                (t/thing->url-path))
                             (:query-string request))
             new-req    (-> request
                            (assoc :uri new-uri)

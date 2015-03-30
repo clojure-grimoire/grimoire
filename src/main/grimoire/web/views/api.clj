@@ -6,7 +6,8 @@
             [grimoire.web.views
              :refer [ns-version-index]]
             [grimoire.web.config
-             :refer [lib-grim-config]]
+             :refer [lib-grim-config
+                     site-config]]
             [grimoire.things :as t]
             [cheshire.core
              :refer [generate-string]]))
@@ -35,10 +36,7 @@
    :application/edn  edn-resp})
 
 (def -api-base-str
-  "/api/v1/")
-
-(def -store-base-str
-  "/store/v0/")
+  "/api/v2/")
 
 (defn unknown-op
   "This function should yield a JSON error result indicating what the requested
@@ -71,7 +69,7 @@
                     api/list-groups
                     result)]
           {:name     (t/thing->name g)
-           :html     (str -store-base-str (t/thing->path g))
+           :html     (str (:store-url (site-config)) (t/thing->path g))
            :children (->> (for [op (keys group-ops)]
                             [op (str -api-base-str (t/thing->path g) "?op=" op)])
                           (into {}))})
@@ -154,7 +152,7 @@
                     result)]
           {:name     (t/thing->name t)
            :url      (t/thing->path t)
-           :html     (str -store-base-str (t/thing->path t))
+           :html     (str (:store-url (site-config)) (t/thing->path t))
            :children (->> (for [op (keys artifact-ops)]
                             [op (str -api-base-str (t/thing->path t) "?op=" op)])
                           (into {}))})
@@ -183,7 +181,7 @@
                     result)]
           {:name     (t/thing->name t)
            :url      (t/thing->path t)
-           :html     (str -store-base-str (t/thing->path t))
+           :html     (str (:store-url (site-config)) (t/thing->path t))
            :children (->> (for [op (keys version-ops)]
                             [op (str -api-base-str (t/thing->path t) "?op=" op)])
                           (into {}))})
@@ -212,7 +210,7 @@
                     result)]
           {:name     (t/thing->name t)
            :url      (t/thing->path t)
-           :html     (str -store-base-str (t/thing->path t))
+           :html     (str (:store-url (site-config)) (t/thing->path t))
            :children (->> (for [op (keys platform-ops)]
                             [op (str "/api/v1/" (t/thing->path t) "?op=" op)])
                           (into {}))})
@@ -240,7 +238,7 @@
                     result)]
           {:name     (t/thing->name t)
            :url      (t/thing->path t)
-           :html     (str -store-base-str (t/thing->path t))
+           :html     (str (:store-url (site-config)) (t/thing->path t))
            :children (->> (for [op (keys namespace-ops)]
                             [op (str -api-base-str (t/thing->path t) "?op=" op)])
                           (into {}))})
@@ -278,7 +276,7 @@
               :when (filter-pred (get t :type :fn))]
           {:name     (t/thing->name t)
            :url      (t/thing->path t)
-           :html     (str -store-base-str (t/thing->path t))
+           :html     (str (:store-url (site-config)) (t/thing->path t))
            :children (->> (for [op (keys def-ops)]
                             [op (str -api-base-str (t/thing->path t) "?op=" op)])
                           (into {}))})
@@ -326,7 +324,7 @@
                      result)]
            {:name     (t/thing->name t)
             :url      (t/thing->path t)
-            :html     (str -store-base-str (t/thing->path t))
+            :html     (str (:store-url (site-config)) (t/thing->path t))
             :children (->> (for [op (keys def-ops)]
                              [op (str -api-base-str (t/thing->path t) "?op=" op)])
                        (into {}))})

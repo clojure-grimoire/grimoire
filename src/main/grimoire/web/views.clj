@@ -19,7 +19,7 @@
 ;;--------------------------------------------------------------------
 
 (defn link-to [prefix x]
-  {:href (str prefix (t/thing->url x))})
+  {:href (str prefix (t/thing->url-path x))})
 
 (def link-to' (fn [x] (-> (site-config) :store-url (link-to x))))
 
@@ -30,7 +30,7 @@
              "store"] "/"
              [:a (link-to' t)
               ,,(t/thing->name t)])
-        
+
     (t/artifact? t)
     ,,(list (header (t/thing->group t))
             "/" [:a (link-to' t)

@@ -9,31 +9,31 @@
              :refer [layout]]
             [grimoire.web.util :as wutil]
             [grimoire.web.config :refer [lib-grim-config
-                                         site-config]]
+                                         site-config
+                                         web-config]]
             [grimoire.api :as api]
             [grimoire.api.fs.read]
+            [grimoire.api.web :as web]
             [ring.util.response :as response]
             [sitemap.core :refer [generate-sitemap]]))
 
 ;; Common partial pages
 ;;--------------------------------------------------------------------
 
-(defn link-to [prefix x]
-  {:href (str prefix (t/thing->url-path x))})
-
-(def link-to' (fn [x] (-> (site-config) :store-url (link-to x))))
+(defn link-to [x]
+  {:href (web/make-html-url (web-config) x)})
 
 (defn header [t]
   (cond
     (t/group? t)
     ,,(list [:a {:href (-> (site-config) :store-url)}
              "store"] "/"
-             [:a (link-to' t)
+             [:a (link-to t)
               ,,(t/thing->name t)])
 
     (t/artifact? t)
     ,,(list (header (t/thing->group t))
-            "/" [:a (link-to' t)
+            "/" [:a (link-to t)
                  ,,,(t/thing->name t)])
 
     (t/version? t)
@@ -41,27 +41,27 @@
             group    (t/thing->group artifact)]
         (list [:a {:href (-> (site-config) :store-url)}
                "store"] "/"
-               "[" [:a (link-to' group)
+               "[" [:a (link-to group)
                     ,,(t/thing->name group)]
-               "/" [:a (link-to' artifact)
+               "/" [:a (link-to artifact)
                     ,,(t/thing->name artifact)]
-               " " [:a (link-to' t)
+               " " [:a (link-to t)
                     ,,,(pr-str (t/thing->name t))] "]"))
 
     (t/platform? t)
     ,,(list (header (t/thing->version t)) " "
-            [:a (link-to' t)
+            [:a (link-to t)
              ,,,(t/thing->name t)])
 
     (t/namespace? t)
     ,,(list (header (t/thing->platform t)) "::"
-            [:a (link-to' t)
+            [:a (link-to t)
              ,,,(t/thing->name t)])
 
     (t/def? t)
     ,,(let [sym' (util/munge (t/thing->name t))]
         (list (header (t/thing->namespace t)) "/"
-              [:a (link-to' t)
+              [:a (link-to t)
                ,,,(t/thing->name t)]))))
 
 ;; Pages
@@ -159,7 +159,7 @@
                 namespaces (mapcat (comp maybe (partial api/list-namespaces cfg)) platforms)
                 defs       (mapcat (comp maybe (partial api/list-defs cfg)) namespaces)]
             (concat groups artifacts versions platforms namespaces defs))
-          (map link-to')
+          (map link-to)
           (concat -const-pages)
           (map (fn [x] {:loc x}))
           generate-sitemap))))

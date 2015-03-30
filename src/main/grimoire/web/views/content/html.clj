@@ -82,7 +82,7 @@
      (list
       [:h2 "Known Maven groups"]
       [:ul (for [group (sort-by t/thing->name groups)]
-             [:li [:a (link-to' group)
+             [:li [:a (link-to group)
                    (t/thing->name group)]])]))))
 
 (defmethod group-page :text/html [_ group-thing]
@@ -117,7 +117,7 @@
           [:ul (for [artifact (sort-by t/thing->name artifacts)
                      :let     [group (t/thing->group artifact)]]
                  [:li
-                  [:a (link-to' artifact)
+                  [:a (link-to artifact)
                    (format "%s/%s"
                            (t/thing->name group)
                            (t/thing->name artifact))]])]))))))
@@ -156,7 +156,7 @@
                      :let  [artifact (t/thing->artifact version)
                             group    (t/thing->group artifact)]]
                  [:li
-                  [:a (link-to' version)
+                  [:a (link-to version)
                    (format "[%s/%s \"%s\"]"
                            (t/thing->name group)
                            (t/thing->name artifact)
@@ -189,7 +189,7 @@
        [:ul (for [platform-thing (->> (api/list-platforms *lg* version-thing)
                                       result
                                       (sort-by t/thing->name))]
-              [:li [:a (link-to' platform-thing)
+              [:li [:a (link-to platform-thing)
                     (t/thing->name platform-thing)]])]))))
 
 (defmethod platform-page :text/html [_ platform-thing]
@@ -218,7 +218,7 @@
        [:h2 "Namespaces"]
        [:ul (for [ns-thing (->> (api/list-namespaces *lg* platform-thing)
                                 result (sort-by :name))]
-              [:li [:a (link-to' ns-thing)
+              [:li [:a (link-to ns-thing)
                     (t/thing->name ns-thing)]])]))))
 
 (defn emit-alphabetized-links [records]
@@ -267,7 +267,7 @@
                                        :let      [meta (-> *lg*
                                                            (api/read-meta def-thing)
                                                            result)]]
-                                   {:url  (:href (link-to' def-thing))
+                                   {:url  (:href (link-to def-thing))
                                     :name (:name meta)
                                     :type (:type meta)})
                                  (group-by :type))]
@@ -353,7 +353,7 @@
                  [:ul (for [r    results
                             :let [sym r
                                   ns  (t/thing->namespace sym)]]
-                        [:a (link-to' sym) (:name r)])]))))
+                        [:a (link-to sym) (:name r)])]))))
 
      (when src
        (list

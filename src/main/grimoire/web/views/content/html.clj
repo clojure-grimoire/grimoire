@@ -321,7 +321,7 @@
 
      (when (succeed? ?notes)
        (when-let [note-thing (first (result ?notes))]
-         (let [note-text (result (api/read-note *lg* note))]
+         (let [note-text (result (api/read-note *lg* note-thing))]
            (editable
             "Community Documentation"
             (edit-url' note-thing)

@@ -317,7 +317,7 @@
 
      (when doc
        (list [:h2 "Official Documentation"]
-             [:pre "  " doc]))
+             doc))
 
      (when (succeed? ?notes)
        (let [[note] (result ?notes)]

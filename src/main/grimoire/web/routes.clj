@@ -388,17 +388,20 @@
   (GET "/store" []
     (wutil/moved-permanently (:store-url (cfg/site-config))))
 
-  ;; Handle pre-versioned store (Grimoire 0.4) store links
-  (context ["/store/:t", :t #"[^v][^0-9]*"] [t]
+  ;; Handle pre-versioned store (Grimoire 0.3) store links
+  (context ["/store/:group/:artifact/:version", :group #"[^v][^0-9/]*"]
+      [group artifact version tail]
     (fn [request]
       (let [user-agent (get-in request [:headers "user-agent"])
             ;; FIXME: URI forging is evil
             ;; FIXME: Forged URI doesn't have a platform part
-            path       (string/split (:path-info request) #"/")
-            path       (if (>= (count path) 3)
-                         (concat (take 2 path) '("clj") (drop 2 path))
-                         path)
-            new-uri    (str "/store/v0/" t (apply str (interpose "/" path)))
+            tail       (:path-info request)
+            new-uri    (str "/store/v0/"
+                            group "/"
+                            artifact "/"
+                            version "/"
+                            (when tail
+                                (str "clj" tail)))
             new-req    (-> request
                            (assoc :uri new-uri)
                            (dissoc :context :path-info))]

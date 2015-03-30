@@ -321,7 +321,6 @@
 
      (when (succeed? ?notes)
        (let [[note] (result ?notes)]
-         (println note)
          (when note
            (editable
             "Community Documentation"

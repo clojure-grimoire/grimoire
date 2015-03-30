@@ -292,7 +292,7 @@
   (let [*lg*                                 (cfg/lib-grim-config)
         {:keys [src type arglists doc name]} meta
         namespace                            (t/thing->name (t/thing->namespace def-thing))
-        symbol                               name
+        symbol                               (t/thing->name def-thing)
         ?related                             (api/list-related  *lg* def-thing) ;; Seq [ Thing [:def] ]
         ?examples                            (api/list-examples *lg* def-thing) ;; Seq [version, related]
         ?notes                               (api/list-notes    *lg* def-thing) ;; Seq [Note]

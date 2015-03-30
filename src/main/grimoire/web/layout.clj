@@ -1,5 +1,6 @@
 (ns grimoire.web.layout
-  (:require [hiccup.page :as page]))
+  (:require [hiccup.page :as page]
+            [grimoire.web.config :as cfg]))
 
 (defn header [{:keys [base-url] :as c}]
   [:head
@@ -42,10 +43,12 @@
      [:a.sidebar-nav-item {:href "/"} "Home"]
      
      [:br] "Artifacts" [:br]
-     [:a.sidebar-nav-item {:href "/store/v0/"} "Artifact store"]
-     [:a.sidebar-nav-item {:href "/store/v0/org.clojure/clojure/1.6.0/"} "Clojure 1.6"]
-     [:a.sidebar-nav-item {:href "/store/v0/org.clojure/clojure/1.5.0/"} "Clojure 1.5"]
-     [:a.sidebar-nav-item {:href "/store/v0/org.clojure/clojure/1.4.0/"} "Clojure 1.4"]
+     (let [cfg (cfg/site-config)]
+       (list
+        [:a.sidebar-nav-item {:href (:store-url cfg)} "Artifact store"]
+        [:a.sidebar-nav-item {:href (str (:store-url cfg) "org.clojure/clojure/1.6.0/")} "Clojure 1.6"]
+        [:a.sidebar-nav-item {:href (str (:store-url cfg) "org.clojure/clojure/1.5.0/")} "Clojure 1.5"]
+        [:a.sidebar-nav-item {:href (str (:store-url cfg) "org.clojure/clojure/1.4.0/")} "Clojure 1.4"]))
 
      [:br] "More" [:br]
      [:a.sidebar-nav-item {:href "/api"} "API"]

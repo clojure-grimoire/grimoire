@@ -60,7 +60,7 @@
                          :artifacts update
                          (str (t/thing->name group) \/ (t/thing->name artifact)) incf)))))))
 
-(defn store-v0
+(defn store-v1
   [{header-type :content-type
     {param-type :type} :params
     :as req
@@ -72,7 +72,7 @@
         log-msg (pr-str {:uri        uri
                          :type       type
                          :user-agent (get-in req [:headers "user-agent"])})]
-    (->> (context "/store/v0" []
+    (->> (context "/store/v1" []
            (GET "/" {uri :uri}
              (when-let [r (v/store-page type)]
                (log! req nil)
@@ -110,7 +110,7 @@
                            (context "/:namespace" [namespace]
                              (let-routes [t (t/->Ns t namespace)]
                                (GET "/" []
-                                 (when-let [r (v/namespace-page-memo type t)]
+                                 (when-let [r (v/namespace-page type t)]
                                    (log! req t)
                                    r))
 
@@ -217,7 +217,7 @@
                                                 type op t))))))))))))))
          (routing req))))
 
-(def api-v1
+(def api-v2
   (fn [{header-type :content-type
         {param-type :type
          op         :op :as params} :params
@@ -232,7 +232,7 @@
                                        :type       type
                                        :op         op
                                        :user-agent (get-in req [:headers "user-agent"])})]
-           (context ["/api/v1"] []
+           (context ["/api/v2"] []
              (GET "/" []
                (do-dispatch v.api/root-ops
                             type op params))
@@ -374,7 +374,6 @@
     (fn [request]
       (let [user-agent (get-in request [:headers "user-agent"])
             ;; FIXME: URI forging is evil
-            ;; FIXME: Forged URI doesn't have a platform part
             path       (string/split (:uri request) #"/")
             path       (list* (first path) (second path) "clj" (drop 2 path))
             new-uri    (str "/store/v0/org.clojure/clojure"
@@ -387,8 +386,8 @@
           (wutil/moved-permanently new-uri))))) ;; everyone else
 
   (GET "/store" []
-    (wutil/moved-permanently "/store/v0"))
-  
+    (wutil/moved-permanently (:store-url (cfg/site-config))))
+
   ;; Handle pre-versioned store (Grimoire 0.4) store links
   (context ["/store/:t", :t #"[^v][^0-9]*"] [t]
     (fn [request]
@@ -435,32 +434,44 @@
           (#'app new-req) ;; pass it forwards
           (wutil/moved-permanently new-uri))))) ;; everyone else
 
-  ;; Upgrade munging
-  (context ["/store/:store-v/:group/:artifact/:version/:platform/:ns/:symbol"
-            :store-v  #"v[0-9]+"
+  ;; Upgrade v0 and previous munging
+  (context ["/store/v0/:group/:artifact/:version/:platform/:ns/:symbol"
             :platform platform-regex]
-      [store-v group artifact version platform ns symbol]
+      [group artifact version platform ns symbol]
     (fn [request]
       (let [user-agent (get-in request [:headers "user-agent"])
-            symbol'    (util/update-munge symbol)
-            new-uri    (str \/ "store"
-                            \/ store-v
-                            \/ group
-                            \/ artifact
-                            \/ version
-                            \/ platform
-                            \/ ns
-                            \/ symbol')
+            new-symbol (util/update-munge symbol)
+            new-uri    (str "/store/v1/"
+                            (-> (t/->Group group)
+                                (t/->Artifact artifact)
+                                (t/->Version version)
+                                (t/->Platform platform)
+                                (t/->Ns ns)
+                                (t/->Def new-symbol)
+                                (t/thing->url-path)))
             new-req    (-> request
                            (assoc :uri new-uri)
                            (dissoc :context :path-info))]
-        (when-not (= symbol symbol')
+        (when-not (= (:uri request) new-uri)
           (if (privilaged-user-agents user-agent)
             (#'app new-req) ;; pass it forwards
             (wutil/moved-permanently new-uri)))))) ;; everyone else
 
+  ;; Upgrade store version
+  (context ["/store/v0/"] []
+    (fn [request]
+      (let [user-agent (get-in request [:headers "user-agent"])
+            new-symbol (util/update-munge symbol)
+            new-uri    (str "/store/v1" (:path-info request))
+            new-req    (-> request
+                           (assoc :uri new-uri)
+                           (dissoc :context :path-info))]
+        (if (privilaged-user-agents user-agent)
+          (#'app new-req) ;; pass it forwards
+          (wutil/moved-permanently new-uri)))))
+
   ;; The store itself
-  store-v0
+  store-v1
 
   ;; Symbol search interface
   ;;--------------------------------------------------------------------
@@ -468,9 +479,37 @@
 
   ;; The v0 API
   ;;--------------------------------------------------------------------
+
+  ;; The old v0 api
   api-v0
-  api-v1
-  
+
+  ;; Upgrade v1 requests to v2 requests
+  (context ["/api/v1/:group/:artifact/:version/:platform/:ns/:symbol"
+            :platform platform-regex]
+      [group artifact version platform ns symbol]
+    (fn [request]
+      (let [user-agent (get-in request [:headers "user-agent"])
+            new-symbol (util/update-munge symbol)
+            new-uri    (str "/api/v2/"
+                            (-> (t/->Group group)
+                                (t/->Artifact artifact)
+                                (t/->Version version)
+                                (t/->Platform platform)
+                                (t/->Ns ns)
+                                (t/->Def new-symbol)
+                                (t/thing->url-path))
+                            (:query-string request))
+            new-req    (-> request
+                           (assoc :uri new-uri)
+                           (dissoc :context :path-info))]
+        (when-not (= (:uri request) new-uri)
+          (if (privilaged-user-agents user-agent)
+            (#'app new-req) ;; pass it forwards
+            (wutil/moved-permanently new-uri)))))) ;; everyone else
+
+  ;; The v2 api itself
+  api-v2
+
   ;; Articles
   ;;--------------------------------------------------------------------
   (GET "/api" []

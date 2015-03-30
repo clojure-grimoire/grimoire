@@ -289,14 +289,14 @@
        [:script {:src "/public/fold.js" :type "text/javascript"}]))))
 
 (defn -render-html-symbol-page [def-thing meta]
-  (let [*lg*                                 (cfg/lib-grim-config)
-        {:keys [src type arglists doc name]} meta
-        namespace                            (t/thing->name (t/thing->namespace def-thing))
-        symbol                               (t/thing->name def-thing)
-        ?related                             (api/list-related  *lg* def-thing) ;; Seq [ Thing [:def] ]
-        ?examples                            (api/list-examples *lg* def-thing) ;; Seq [version, related]
-        ?notes                               (api/list-notes    *lg* def-thing) ;; Seq [Note]
-        -site-config                         (cfg/site-config)]
+  (let [*lg*                            (cfg/lib-grim-config)
+        {:keys [src type arglists doc]} meta
+        namespace                       (t/thing->name (t/thing->namespace def-thing))
+        symbol                          (t/thing->name def-thing)
+        ?related                        (api/list-related  *lg* def-thing) ;; Seq [ Thing [:def] ]
+        ?examples                       (api/list-examples *lg* def-thing) ;; Seq [version, related]
+        ?notes                          (api/list-notes    *lg* def-thing) ;; Seq [Note]
+        -site-config                    (cfg/site-config)]
     (layout
      (assoc -site-config
             :page {:description (str namespace "/" symbol

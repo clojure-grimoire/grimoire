@@ -1,17 +1,21 @@
 (ns grimoire.web.views.api
   (:refer-clojure :exclude [ns-resolve])
   (:require [grimoire.api :as api]
+            [grimoire.api.web :as web]
             [grimoire.either
              :refer [succeed? result]]
             [grimoire.web.views
              :refer [ns-version-index]]
             [grimoire.web.config
              :refer [lib-grim-config
-                     site-config]]
+                     site-config
+                     web-config]]
             [grimoire.things :as t]
             [cheshire.core
              :refer [generate-string]]))
 
+;; Helpers
+
 (defn fail [body]
   {:result :failure
    :body   body})
@@ -35,9 +39,8 @@
   {:application/json json-resp
    :application/edn  edn-resp})
 
-(def -api-base-str
-  "/api/v2/")
-
+;; Content implementations
+
 (defn unknown-op
   "This function should yield a JSON error result indicating what the requested
   unsupported operation was and what the path on which it was invoked was."
@@ -64,44 +67,46 @@
 (defn list-groups
   "Returns a success result representing the known groups."
   [type _]
-  (try
-    (-> (for [g (-> (lib-grim-config)
-                    api/list-groups
-                    result)]
-          {:name     (t/thing->name g)
-           :html     (str (:store-url (site-config)) (t/thing->path g))
-           :children (->> (for [op (keys group-ops)]
-                            [op (str -api-base-str (t/thing->path g) "?op=" op)])
-                          (into {}))})
-        succeed
-        ((-tm type)))
+  (let [*g-cfg* (lib-grim-config)
+        *w-cfg* (web-config)]
+    (try
+      (-> (for [g  (result (api/list-groups *g-cfg*))]
+            {:name     (t/thing->name g)
+             :html     (web/make-html-url *w-cfg* g)
+             :children (->> (for [op (keys group-ops)]
+                              [op (web/make-api-url *w-cfg* g op)])
+                            (into {}))})
+          succeed
+          ((-tm type)))
 
-    (catch Exception e
-      (-> (.getMessage e)
-          fail
-          ((-tm type))))))
+      (catch Exception e
+        (-> (.getMessage e)
+            fail
+            ((-tm type)))))))
 
 (defn ns-resolve
   "Returns a success result representing the version and artifact in which a
   namespace is defined."
   [type params]
-  (-> (if-let [ns (get params :ns)]
-        (if-let [r (get (ns-version-index) ns)]
-          (let [version-t  r
-                artifact-t (t/thing->artifact version-t)
-                group-t    (t/thing->group artifact-t)
-                ns-t       (t/->Ns version-t ns)]
-            (succeed {:namespace      ns
-                      :version        (t/thing->name version-t)
-                      :artifact       (t/thing->name artifact-t)
-                      :group          (t/thing->name group-t)
-                      :html           (str "/store/" (t/thing->path ns-t))
-                      :children       (->> (for [op (keys namespace-ops)]
-                                             [op (str -api-base-str (t/thing->path ns-t) "?op=" op)])
-                                           (into {}))}))
-          (fail "Unknown namespace :c"))
-        (fail "ns paramenter not set!"))
-      ((-tm type))))
+  (let [*g-cfg* (lib-grim-config)
+        *w-cfg* (web-config)]
+    (-> (if-let [ns (get params :ns)]
+          (if-let [r (get (ns-version-index) ns)]
+            (let [version-t  r
+                  artifact-t (t/thing->artifact version-t)
+                  group-t    (t/thing->group artifact-t)
+                  ns-t       (t/->Ns version-t ns)]
+              (succeed {:namespace ns
+                        :version   (t/thing->name version-t)
+                        :artifact  (t/thing->name artifact-t)
+                        :group     (t/thing->name group-t)
+                        :html      (web/make-html-url *w-cfg* ns-t)
+                        :children  (->> (for [op (keys namespace-ops)]
+                                          [op (web/make-api-url *w-cfg* ns-t op)])
+                                        (into {}))}))
+            (fail "Unknown namespace :c"))
+          (fail "ns paramenter not set!"))
+        ((-tm type)))))
 
 (declare group-notes
          group-meta
@@ -137,7 +142,7 @@
          result
          succeed
          ((-tm type)))
-    
+
     (catch Exception e
       (-> (.getMessage e)
           fail
@@ -146,23 +151,23 @@
 (defn group-artifacts
   "Returns the artifacts for the target group."
   [type group-thing]
-  (try
-    (-> (for [t (-> (lib-grim-config)
-                    (api/list-artifacts group-thing)
-                    result)]
-          {:name     (t/thing->name t)
-           :url      (t/thing->path t)
-           :html     (str (:store-url (site-config)) (t/thing->path t))
-           :children (->> (for [op (keys artifact-ops)]
-                            [op (str -api-base-str (t/thing->path t) "?op=" op)])
-                          (into {}))})
-        succeed
-        ((-tm type)))
+  (let [*w-cfg* (web-config)
+        *g-cfg* (lib-grim-config)]
+    (try
+      (-> (for [t (result (api/list-artifacts *g-cfg* group-thing))]
+            {:name     (t/thing->name t)
+             :url      (t/thing->path t)
+             :html     (web/make-html-url *w-cfg* t)
+             :children (->> (for [op (keys artifact-ops)]
+                              [op (web/make-api-url *w-cfg* t op)])
+                            (into {}))})
+          succeed
+          ((-tm type)))
 
-    (catch Exception e
-      (-> (.getMessage e)
-          fail
-          ((-tm type))))))
+      (catch Exception e
+        (-> (.getMessage e)
+            fail
+            ((-tm type)))))))
 
 (declare artifact-versions
          namespace-ops)
@@ -175,23 +180,23 @@
 (defn artifact-versions
   "Returns the versions for the target artifact."
   [type artifact-thing]
-  (try
-    (-> (for [t (-> (lib-grim-config)
-                    (api/list-versions artifact-thing)
-                    result)]
-          {:name     (t/thing->name t)
-           :url      (t/thing->path t)
-           :html     (str (:store-url (site-config)) (t/thing->path t))
-           :children (->> (for [op (keys version-ops)]
-                            [op (str -api-base-str (t/thing->path t) "?op=" op)])
-                          (into {}))})
-        succeed
-        ((-tm type)))
+  (let [*w-cfg* (web-config)
+        *g-cfg* (lib-grim-config)]
+    (try
+      (-> (for [t (result (api/list-versions *g-cfg* artifact-thing))]
+            {:name     (t/thing->name t)
+             :url      (t/thing->path t)
+             :html     (web/make-html-url *w-cfg* t)
+             :children (->> (for [op (keys version-ops)]
+                              [op (web/make-api-url *w-cfg* t op)])
+                            (into {}))})
+          succeed
+          ((-tm type)))
 
-    (catch Exception e
-      (-> (.getMessage e)
-          fail
-          ((-tm type))))))
+      (catch Exception e
+        (-> (.getMessage e)
+            fail
+            ((-tm type)))))))
 
 (declare version-platforms
          platform-ops)
@@ -204,23 +209,23 @@
 (defn version-platforms
   "Returns a Succeed of the platforms in the target version."
   [type group-thing]
-  (try
-    (-> (for [t (-> (lib-grim-config)
-                    (api/list-platforms group-thing)
-                    result)]
-          {:name     (t/thing->name t)
-           :url      (t/thing->path t)
-           :html     (str (:store-url (site-config)) (t/thing->path t))
-           :children (->> (for [op (keys platform-ops)]
-                            [op (str "/api/v1/" (t/thing->path t) "?op=" op)])
-                          (into {}))})
-        succeed
-        ((-tm type)))
+  (let [*g-cfg* (lib-grim-config)
+        *w-cfg* (web-config)]
+    (try
+      (-> (for [t (result (api/list-platforms *g-cfg* group-thing))]
+            {:name     (t/thing->name t)
+             :url      (t/thing->path t)
+             :html     (web/make-html-url *w-cfg* t)
+             :children (->> (for [op (keys platform-ops)]
+                              [op (web/make-api-url *w-cfg* t op)])
+                            (into {}))})
+          succeed
+          ((-tm type)))
 
-    (catch Exception e
-      (-> (.getMessage e)
-          fail
-          ((-tm type))))))
+      (catch Exception e
+        (-> (.getMessage e)
+            fail
+            ((-tm type)))))))
 
 (declare platform-namespaces)
 
@@ -232,23 +237,23 @@
 (defn platform-namespaces
   "Returns a Succeed of the namespaces in the target platform."
   [type platform-thing]
-  (try
-    (-> (for [t (-> (lib-grim-config)
-                    (api/list-namespaces platform-thing)
-                    result)]
-          {:name     (t/thing->name t)
-           :url      (t/thing->path t)
-           :html     (str (:store-url (site-config)) (t/thing->path t))
-           :children (->> (for [op (keys namespace-ops)]
-                            [op (str -api-base-str (t/thing->path t) "?op=" op)])
-                          (into {}))})
-        succeed
-        ((-tm type)))
+  (let [*g-cfg* (lib-grim-config)
+        *w-cfg* (web-config)]
+    (try
+      (-> (for [t (result (api/list-namespaces *g-cfg* platform-thing))]
+            {:name     (t/thing->name t)
+             :url      (t/thing->path t)
+             :html     (web/make-html-url *w-cfg* t)
+             :children (->> (for [op (keys namespace-ops)]
+                              [op (web/make-api-url *w-cfg* t op)])
+                            (into {}))})
+          succeed
+          ((-tm type)))
 
-    (catch Exception e
-      (-> (.getMessage e)
-          fail
-          ((-tm type))))))
+      (catch Exception e
+        (-> (.getMessage e)
+            fail
+            ((-tm type)))))))
 
 (declare def-ops
          namespace-search)
@@ -268,25 +273,25 @@
   "Returns a Succeed listing the defs of the target namespace and the supported
   operations thereon."
   [filter-pred type ns-thing]
-  (try
-    (-> (for [t     (-> (lib-grim-config)
-                        (api/list-defs ns-thing)
-                        result)
-              :let  [meta (api/read-meta (lib-grim-config) t)]
-              :when (filter-pred (get t :type :fn))]
-          {:name     (t/thing->name t)
-           :url      (t/thing->path t)
-           :html     (str (:store-url (site-config)) (t/thing->path t))
-           :children (->> (for [op (keys def-ops)]
-                            [op (str -api-base-str (t/thing->path t) "?op=" op)])
-                          (into {}))})
-        succeed
-        ((-tm type)))
+  (let [*g-cfg* (lib-grim-config)
+        *w-cfg* (web-config)]
+    (try
+      (-> (for [t     (result (api/list-defs *g-cfg* ns-thing))
+                :let  [meta (api/read-meta *g-cfg* t)]
+                :when (filter-pred (get t :type :fn))]
+            {:name     (t/thing->name t)
+             :url      (t/thing->path t)
+             :html     (web/make-html-url *w-cfg* t)
+             :children (->> (for [op (keys def-ops)]
+                              [op (web/make-api-url *w-cfg* t op)])
+                            (into {}))})
+          succeed
+          ((-tm type)))
 
-    (catch Exception e
-      (-> (.getMessage e)
-          fail
-          ((-tm type))))))
+      (catch Exception e
+        (-> (.getMessage e)
+            fail
+            ((-tm type)))))))
 
 (declare def-examples
          def-related)
@@ -301,37 +306,38 @@
   "Returns a Succeed of examples for the given def, if any exist in the
   datastore."
   [type def-thing]
-  (try
-    (->> def-thing
-         (api/list-examples (lib-grim-config))
-         result
-         (map (comp result (partial api/read-example (lib-grim-config))))
-         succeed
-         ((-tm type)))
+  (let [*g-cfg* (lib-grim-config)]
+    (try
+      (->> def-thing
+           (api/list-examples *g-cfg*)
+           result
+           (map (comp result (partial api/read-example *g-cfg*)))
+           succeed
+           ((-tm type)))
 
-    (catch Exception e
-      (-> (.getMessage e)
-          fail
-          ((-tm type))))))
+      (catch Exception e
+        (-> (.getMessage e)
+            fail
+            ((-tm type)))))))
 
 (defn def-related
   "Returns a Succeed of related, namespace qualified symbols for the given def
   encoded as strings if any exist in the datastore."
   [type def-thing]
-  (try
-    (->> (for [t (-> (lib-grim-config)
-                     (api/list-related def-thing)
-                     result)]
-           {:name     (t/thing->name t)
-            :url      (t/thing->path t)
-            :html     (str (:store-url (site-config)) (t/thing->path t))
-            :children (->> (for [op (keys def-ops)]
-                             [op (str -api-base-str (t/thing->path t) "?op=" op)])
-                       (into {}))})
-       succeed
-       ((-tm type)))
+  (let [*g-cfg* (lib-grim-config)
+        *w-cfg* (web-config)]
+    (try
+      (->> (for [t (result (api/list-related *g-cfg* def-thing))]
+             {:name     (t/thing->name t)
+              :url      (t/thing->path t)
+              :html     (web/make-html-url *w-cfg* t)
+              :children (->> (for [op (keys def-ops)]
+                               [op (web/make-api-url *w-cfg* t op)])
+                             (into {}))})
+           succeed
+           ((-tm type)))
 
-    (catch Exception e
-      (-> (.getMessage e)
-         fail
-         ((-tm type))))))
+      (catch Exception e
+        (-> (.getMessage e)
+            fail
+            ((-tm type)))))))

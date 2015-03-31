@@ -33,7 +33,9 @@
    [:div.editable
     [:span.header
      (when title [title-size title])
-     [:a.edit {:href link} "Edit"]]
+     [:a.edit {:href link
+               :rel "nofollow"}
+      "Edit"]]
     content]))
 
 (defn edit-url' [t]

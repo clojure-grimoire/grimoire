@@ -5,8 +5,8 @@
   :source-paths ["src/main"]
   :aliases {"serve" ["with-profile" "server" "run"]}
   :profiles {:server
-             {:dependencies [[org.clojure/clojure "[1.6.0,)"]
-                             [org.clojure-grimoire/lib-grimoire "0.9.0-alpha2"
+             {:dependencies [[org.clojure/clojure "1.7.0-alpha6"]
+                             [org.clojure-grimoire/lib-grimoire "0.9.1"
                               :exclusions [org.clojure/clojure
                                            me.arrdem/detritus]]
                              [org.clojure-grimoire/simpledb "0.1.8"
@@ -32,6 +32,8 @@
                              [me.arrdem/detritus "0.2.2"
                               :exclusions [org.clojure/clojure]]
                              [sitemap "0.2.4"
+                              :exclusions [org.clojure/clojure]]
+                             [instaparse "1.3.6"
                               :exclusions [org.clojure/clojure]]]
               :main         grimoire.web.service}
 

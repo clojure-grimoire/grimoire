@@ -19,13 +19,13 @@
                               :exclusions [org.clojure/clojure]]
                              [ring/ring-jetty-adapter "1.3.2"
                               :exclusions [org.clojure/clojure]]
-                             [selmer "0.8.0"
+                             [selmer "0.8.2"
                               :exclusions [org.clojure/clojure]]
-                             [compojure "1.3.1"
+                             [compojure "1.3.2"
                               :exclusions [org.clojure/clojure]]
                              [hiccup "1.0.5"
                               :exclusions [org.clojure/clojure]]
-                             [markdown-clj "0.9.62"
+                             [markdown-clj "0.9.65"
                               :exclusions [org.clojure/clojure]]
                              [me.raynes/conch "0.8.0"
                               :exclusions [org.clojure/clojure]]

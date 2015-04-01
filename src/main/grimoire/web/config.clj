@@ -50,7 +50,7 @@
      ,,-web-config
      ,,-notes-config)))
 
-(def service
+(defonce service
   (atom nil))
 
 ;; Site configuration

@@ -35,6 +35,7 @@
                               :exclusions [org.clojure/clojure]]
                              [instaparse "1.3.6"
                               :exclusions [org.clojure/clojure]]]
+              :env          {:url "http://conj.io"}
               :main         grimoire.web.service}
 
              :dev
@@ -44,6 +45,7 @@
                              [lein-environ "1.0.0"]]
               :source-paths ["src/dev"]
               :main         user
-              :env          {:squiggly {:checkers [:eastwood :typed :kibit]}}}
+              :env          {:squiggly {:checkers [:eastwood :typed :kibit]}
+                             :url      "http://127.0.0.1:3000"}}
              
              :user [:server :dev :arrdem]})

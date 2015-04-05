@@ -41,8 +41,7 @@
              :dev
              {:dependencies [[ring/ring-mock "0.2.0"]
                              [acyclic/squiggly-clojure "0.1.2-SNAPSHOT"]]
-              :plugins      [[cider/cider-nrepl "0.8.0-SNAPSHOT"]
-                             [lein-environ "1.0.0"]]
+              :plugins      [[lein-environ "1.0.0"]]
               :source-paths ["src/dev"]
               :main         user
               :env          {:squiggly {:checkers [:eastwood :typed :kibit]}

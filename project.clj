@@ -34,7 +34,10 @@
                              [sitemap "0.2.4"
                               :exclusions [org.clojure/clojure]]
                              [instaparse "1.3.6"
+                              :exclusions [org.clojure/clojure]]
+                             [environ "1.0.0"
                               :exclusions [org.clojure/clojure]]]
+              :plugins      [[lein-environ "1.0.0"]]
               :env          {:url "http://conj.io"}
               :main         grimoire.web.service}
 

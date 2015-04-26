@@ -33,6 +33,8 @@
                               :exclusions [org.clojure/clojure]]
                              [me.arrdem/detritus "0.2.2"
                               :exclusions [org.clojure/clojure]]
+                             [me.arrdem/guten-tag "0.1.0"
+                              :exclusions [org.clojure/clojure]]
                              [sitemap "0.2.4"
                               :exclusions [org.clojure/clojure]]
                              [instaparse "1.3.6"

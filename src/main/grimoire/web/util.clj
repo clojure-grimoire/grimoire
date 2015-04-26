@@ -39,12 +39,12 @@
   string and parse it out into a Clojure map. Returns a (possibly empty) map."
   [page]
   (when-let [header (some->> page
-			     (re-find header-regex)
-			     second)]
+                             (re-find header-regex)
+                             second)]
     (->> (string/split header #"\n")
-	 (map #(string/split % #": "))
-	 (map (juxt (comp keyword first) second))
-	 (into {}))))
+         (map #(string/split % #": "))
+         (map (juxt (comp keyword first) second))
+         (into {}))))
 
 (def maybe
   (fn [x]
@@ -99,10 +99,10 @@
   pygmentize."
   [text]
   (let-programs [pygmentize "pygmentize"]
-    (pygmentize "-fhtml"
-                "-lclojure"
-		"-Ostripnl=False,encoding=utf-8"
-		{:in text})))
+                (pygmentize "-fhtml"
+                            "-lclojure"
+                            "-Ostripnl=False,encoding=utf-8"
+                            {:in text})))
 
 (defn url-encode
   "Returns an UTF-8 URL encoded version of the given string."

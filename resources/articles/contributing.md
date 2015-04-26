@@ -52,4 +52,4 @@ Note that the generated editing and example addition links provide this behavior
 
 ## Legal
 
-Grimoire and related projects are developed and maintained under the Eclipse Public License 1.0 as noted on the [about page](/about).
+Grimoire and related projects are developed and maintained under a variety of licenses as noted on the [about page](/about).

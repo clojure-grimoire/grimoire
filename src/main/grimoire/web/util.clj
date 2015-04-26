@@ -1,8 +1,13 @@
 (ns grimoire.web.util
   (:require [clojure.java.io :as io]
-	    [clojure.string :as string]
-	    [markdown.core :as md]
-	    [me.raynes.conch :refer [let-programs]])
+            [clojure.string :as string]
+            [markdown.core :as md]
+            [me.raynes.conch :refer [let-programs]]
+            [grimoire.things :as t]
+            [grimoire.api :as api]
+            [grimoire.api.web :as web]
+            [grimoire.either :as e]
+            [grimoire.web.config :as cfg])
   (:import (java.net URLEncoder)))
 
 (defn cheatsheet
@@ -41,8 +46,41 @@
 	 (map (juxt (comp keyword first) second))
 	 (into {}))))
 
+(def maybe
+  (fn [x]
+    (when (e/succeed? x)
+      (e/result x))))
+
+(def mem-sts->t
+  (memoize
+   (fn [t]
+     (let [res (api/resolve-short-string
+                (cfg/lib-grim-config) t)]
+       (when (e/fail? res)
+         (println "Failed looking up" t))
+       (maybe res)))))
+
+(defn mem-sts->link
+  [s]
+  {:pre [(string? s)]}
+  (when-let [t (mem-sts->t s)]
+    [:a {:href (web/make-html-url (cfg/web-config) t)} s]))
+
+(defn mem-sts->md-link
+  [s]
+  (if-let [t (mem-sts->t s)]
+    (format "[%s](%s)"
+            s
+            (web/make-html-url (cfg/web-config) t))
+    s))
+
 (def markdown-string
-  md/md-to-html-string)
+  (comp md/md-to-html-string
+        (fn [m]
+          (string/replace m
+                          t/short-string-pattern
+                          #(mem-sts->md-link
+                            (get %1 0))))))
 
 (defn parse-markdown-page
   "Attempts to slurp a markdown file from the resource path, returning a

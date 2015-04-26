@@ -66,7 +66,7 @@
                                   (sort-by second)
                                   reverse
                                   (take 100)
-                                  (kv-table (fn [x] [:a {:href (wutil/mem-sts->link x)} x])))]
+                                  (kv-table wutil/mem-sts->link))]
      (list [:div
             [:h2 "Top 100 namespaces"]
             (->> db :namespaces sorted-thing-table)]

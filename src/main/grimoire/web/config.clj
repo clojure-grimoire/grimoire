@@ -1,5 +1,5 @@
 (ns grimoire.web.config
-  (:require [detritus.variants :refer [deftag]]
+  (:require [guten-tag.core :refer [deftag]]
             [environ.core :refer [env]]
             [grimoire.github :as gh]
             [grimoire.api.web :as web]

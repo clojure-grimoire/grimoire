@@ -9,3 +9,5 @@ doc-store
 checkouts
 resources/cheatsheet.html
 sdb.db
+analytics
+analytics.db

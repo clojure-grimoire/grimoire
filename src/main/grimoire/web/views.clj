@@ -7,10 +7,12 @@
              :refer [succeed? result]]
             [grimoire.web.layout
              :refer [layout]]
-            [grimoire.web.util :as wutil]
-            [grimoire.web.config :refer [lib-grim-config
-                                         site-config
-                                         web-config]]
+            [grimoire.web.util :as wutil
+             :refer [maybe]]
+            [grimoire.web.config
+             :refer [lib-grim-config
+                     site-config
+                     web-config]]
             [grimoire.api :as api]
             [grimoire.api.fs.read]
             [grimoire.api.web :as web]

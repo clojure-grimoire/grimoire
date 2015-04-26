@@ -312,12 +312,10 @@
         ?related                        (api/list-related  *lg* def-thing) ;; Seq [ Thing [:def] ]
         ?examples                       (api/list-examples *lg* def-thing) ;; Seq [version, related]
         ?notes                          (api/list-notes    *lg* def-thing) ;; Seq [Note]
-        -site-config                    (cfg/site-config)]
+        *site-config*                   (cfg/site-config)]
     (layout
-     (assoc -site-config
-            :page {:description (str namespace "/" symbol
-                                     " - documentation and examples")
-                   :summary doc})
+     (-> *site-config*
+         (assoc :summary doc))
      ;;------------------------------------------------------------
      [:h1 {:class "page-title"}
       (header (assoc def-thing :name (str symbol)))]

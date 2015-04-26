@@ -50,6 +50,6 @@ PRs against `master` will not be accepted.
 All prs should target the `develop` branch.
 Note that the generated editing and example addition links provide this behavior already.
 
-## Legal
+## License
 
 Grimoire and related projects are developed and maintained under a variety of licenses as noted on the [about page](/about).

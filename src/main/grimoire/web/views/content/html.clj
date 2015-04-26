@@ -77,7 +77,7 @@
 
            [:div
             [:h2 "Top artifacts"]
-            (->> db :artifacts sorted-thing-table)]
+            (->> db :artifacts sorted-table)]
 
            [:div
             [:h2 "Top platforms"]

@@ -146,11 +146,6 @@
    "/contributing"
    (-> (site-config) :store-url)])
 
-(def maybe
-  (fn [x]
-    (when (succeed? x)
-      (result x))))
-
 (def -sitemap-fn
   (memoize
    (fn []

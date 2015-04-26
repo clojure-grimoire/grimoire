@@ -1,5 +1,6 @@
 (ns grimoire.web.routes
   (:require [clojure.string :as string]
+            [clojure.core.match :refer [match]]
             [compojure.core :refer [defroutes context GET let-routes routing]]
             [compojure.route :as route]
             [grimoire.util :as util]
@@ -352,6 +353,97 @@
 
          (routing req))))
 
+(declare app)
+
+(defn upgrade-unstored-req [request _]
+  (let [user-agent (get-in request [:headers "user-agent"])
+        uri        (:uri request)
+        path       (rest (string/split uri #"/"))
+        new-uri    (match [path]
+                     [([version ns name] :seq)]
+                     ,,(str "/store/v0/org.clojure/clojure/" version "/clj/" ns "/" name)
+                     
+                     [([version ns] :seq)]
+                     ,,(str "/store/v0/org.clojure/clojure/" version "/clj/" ns)
+                     
+                     [([version] :seq)]
+                     ,,(str "/store/v0/org.clojure/clojure/" version))
+        new-req    (-> request
+                       (assoc :uri new-uri)
+                       (dissoc :context :path-info))]
+    (if (privilaged-user-agents user-agent)
+      (#'app new-req) ;; pass it forwards
+      (wutil/moved-permanently new-uri))))
+
+(defn upgrade-unversioned-store-req
+  [request group]
+  (let [user-agent (get-in request [:headers "user-agent"])
+        ;; FIXME: Forged URI doesn't have a platform part
+        tail       (:path-info request)
+        new-uri    (str "/store/v0/"
+                        group
+                        tail)
+        new-req    (-> request
+                       (assoc :uri new-uri)
+                       (dissoc :context :path-info))]
+    (if (privilaged-user-agents user-agent)
+      (#'app new-req) ;; pass it forwards
+      (wutil/moved-permanently new-uri))))
+
+(defn rewrite-latest->version-req [request store-v group artifact]
+  (let [user-agent (get-in request [:headers "user-agent"])
+        t          (-> (cfg/lib-grim-config)
+                       (t/->Group group)
+                       (t/->Artifact artifact))
+        versions   (-> (cfg/lib-grim-config)
+                       (api/list-versions t)
+                       either/result)
+        artifact-v (first versions)
+        uri        (:uri request)
+        ;; FIXME: URI forging is evil
+        new-uri    (str "/store/"
+                        store-v "/"
+                        group "/"
+                        artifact "/"
+                        (t/thing->name artifact-v)
+                        (:path-info request))
+        new-req    (-> request
+                       (assoc :uri new-uri)
+                       (dissoc :context :path-info))]
+    (if (privilaged-user-agents user-agent)
+      (#'app new-req) ;; pass it forwards
+      (wutil/moved-permanently new-uri))))
+
+(defn upgrade-v0-munged->v1-req [request group artifact version platform ns symbol]
+  (let [user-agent (get-in request [:headers "user-agent"])
+        new-symbol (util/update-munge symbol)
+        new-uri    (str "/store/v1/"
+                        (-> (t/->Group group)
+                            (t/->Artifact artifact)
+                            (t/->Version version)
+                            (t/->Platform platform)
+                            (t/->Ns ns)
+                            (t/->Def new-symbol)
+                            (t/thing->url-path)))
+        new-req    (-> request
+                       (assoc :uri new-uri)
+                       (dissoc :context :path-info))]
+    (when-not (= (:uri request) new-uri)
+      (if (privilaged-user-agents user-agent)
+        (#'app new-req) ;; pass it forwards
+        (wutil/moved-permanently new-uri)))))
+
+(defn upgrade-v0->v1-req [request]
+  (let [user-agent (get-in request [:headers "user-agent"])
+        new-symbol (util/update-munge symbol)
+        new-uri    (str "/store/v1" (:path-info request))
+        new-req    (-> request
+                       (assoc :uri new-uri)
+                       (dissoc :context :path-info))]
+    (if (privilaged-user-agents user-agent)
+      (#'app new-req) ;; pass it forwards
+      (wutil/moved-permanently new-uri))))
+
 (defroutes app
   (GET "/" {uri :uri :as req}
     (do (log! req nil)
@@ -371,107 +463,31 @@
   (context ["/:version",
             :version #"[0-9]+.[0-9]+.[0-9]+"]
       [version]
-    (fn [request]
-      (let [user-agent (get-in request [:headers "user-agent"])
-            ;; FIXME: URI forging is evil
-            path       (string/split (:uri request) #"/")
-            path       (list* (first path) (second path) "clj" (drop 2 path))
-            new-uri    (str "/store/v0/org.clojure/clojure"
-                            (->> path (interpose "/") (apply str)))
-            new-req    (-> request
-                           (assoc :uri new-uri)
-                           (dissoc :context :path-info))]
-        (if (privilaged-user-agents user-agent)
-          (#'app new-req) ;; pass it forwards
-          (wutil/moved-permanently new-uri))))) ;; everyone else
+    #(upgrade-unstored-req %1 version))
 
   (GET "/store" []
     (wutil/moved-permanently (:store-url (cfg/site-config))))
 
   ;; Handle pre-versioned store (Grimoire 0.3) store links
-  (context ["/store/:group/:artifact/:version", :group #"[^v][^0-9/]*"]
-      [group artifact version tail]
-    (fn [request]
-      (let [user-agent (get-in request [:headers "user-agent"])
-            ;; FIXME: URI forging is evil
-            ;; FIXME: Forged URI doesn't have a platform part
-            tail       (:path-info request)
-            new-uri    (str "/store/v0/"
-                            group "/"
-                            artifact "/"
-                            version "/"
-                            (when tail
-                                (str "clj" tail)))
-            new-req    (-> request
-                           (assoc :uri new-uri)
-                           (dissoc :context :path-info))]
-        (if (privilaged-user-agents user-agent)
-          (#'app new-req) ;; pass it forwards
-          (wutil/moved-permanently new-uri))))) ;; everyone else
-
-  ;; Handle "latest" links
-  (context ["/store/:store-v/:group/:artifact/latest",
-            :store-v #"v[0-9]+"]
-      [store-v group artifact]
-    (fn [request]
-      (let [user-agent (get-in request [:headers "user-agent"])
-            t          (-> (cfg/lib-grim-config)
-                           (t/->Group group)
-                           (t/->Artifact artifact))
-            versions   (-> (cfg/lib-grim-config)
-                           (api/list-versions t)
-                           either/result)
-            artifact-v (first versions)
-            uri        (:uri request)
-            ;; FIXME: URI forging is evil
-            new-uri    (str "/store/"
-                            store-v "/"
-                            group "/"
-                            artifact "/"
-                            (t/thing->name artifact-v)
-                            (:path-info request))
-            new-req    (-> request
-                           (assoc :uri new-uri)
-                           (dissoc :context :path-info))]
-        (if (privilaged-user-agents user-agent)
-          (#'app new-req) ;; pass it forwards
-          (wutil/moved-permanently new-uri))))) ;; everyone else
+  (context ["/store/:group", :group #"[^v][^0-9/]*"]
+      [group]
+    #(upgrade-unversioned-store-req %1 group))
 
   ;; Upgrade v0 and previous munging
   (context ["/store/v0/:group/:artifact/:version/:platform/:ns/:symbol"
             :platform platform-regex]
       [group artifact version platform ns symbol]
-    (fn [request]
-      (let [user-agent (get-in request [:headers "user-agent"])
-            new-symbol (util/update-munge symbol)
-            new-uri    (str "/store/v1/"
-                            (-> (t/->Group group)
-                                (t/->Artifact artifact)
-                                (t/->Version version)
-                                (t/->Platform platform)
-                                (t/->Ns ns)
-                                (t/->Def new-symbol)
-                                (t/thing->url-path)))
-            new-req    (-> request
-                           (assoc :uri new-uri)
-                           (dissoc :context :path-info))]
-        (when-not (= (:uri request) new-uri)
-          (if (privilaged-user-agents user-agent)
-            (#'app new-req) ;; pass it forwards
-            (wutil/moved-permanently new-uri)))))) ;; everyone else
+    #(upgrade-v0-munged->v1-req %1 group artifact version platform ns symbol))
 
   ;; Upgrade store version
-  (context ["/store/v0/"] []
-    (fn [request]
-      (let [user-agent (get-in request [:headers "user-agent"])
-            new-symbol (util/update-munge symbol)
-            new-uri    (str "/store/v1" (:path-info request))
-            new-req    (-> request
-                           (assoc :uri new-uri)
-                           (dissoc :context :path-info))]
-        (if (privilaged-user-agents user-agent)
-          (#'app new-req) ;; pass it forwards
-          (wutil/moved-permanently new-uri)))))
+  (context ["/store/v0"] []
+    upgrade-v0->v1-req)
+
+  ;; Handle "latest" links
+  (context ["/store/:store-v/:group/:artifact/latest",
+            :store-v #"v[0-9]+"]
+      [store-v group artifact]
+    #(rewrite-latest->version-req %1 store-v group artifact))
 
   ;; The store itself
   store-v1

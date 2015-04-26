@@ -6,6 +6,8 @@
   :aliases {"serve" ["with-profile" "server" "run"]}
   :profiles {:server
              {:dependencies [[org.clojure/clojure "1.7.0-alpha6"]
+                             [org.clojure/core.match "0.3.0-alpha4"
+                              :exclusions [org.clojure/clojure]]
                              [org.clojure-grimoire/lib-grimoire "0.9.1"
                               :exclusions [org.clojure/clojure
                                            me.arrdem/detritus]]

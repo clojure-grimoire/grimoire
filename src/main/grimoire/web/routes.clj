@@ -40,12 +40,12 @@
       (when (t/def? thing)
         (sdb/update! db
                      :defs update
-                     (t/thing->relative-path t/version thing) incf))
+                     (t/thing->short-string thing) incf))
 
       (when-let [ns (t/thing->namespace thing)]
         (sdb/update! db
                      :namespaces update
-                     (t/thing->name ns) incf))
+                     (t/thing->short-string ns) incf))
 
       (when-let [platform (t/thing->platform thing)]
         (sdb/update! db

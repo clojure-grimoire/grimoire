@@ -73,12 +73,13 @@
 (defn markdown-page
   "Helper for rendering a markdown page off of the resource path as HTML"
   [page]
-  (let [[header page] (wutil/parse-markdown-page page)]
+  (let [[header page] (wutil/parse-markdown-page page)
+        title         (get header :title (clojure.string/capitalize page))]
     (layout
-     site-config
+     (update-in (site-config)
+                [:style :title] #(str title " - " %))
      (if page
-       (list (when-let [title (:title header)]
-               [:h1 title])
+       (list [:h1 {:class "page-title"} title]
              page)
        (response/not-found "Resource not found, sorry. Please file an issue on the github bugtracker.")))))
 

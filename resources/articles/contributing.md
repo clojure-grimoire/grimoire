@@ -136,13 +136,14 @@ Both of these directory trees share roughly the same structure as the Things des
 
 The included `cheatsheet.sh` script automatically clones, builds and patches [a fork](https://github.com/arrdem/clojure-cheatsheets) of [AndyF's Cheatsheet](https://github.com/jafingerhut/clojure-cheatsheets) and installs the resulting HTML for Grimoire to use.
 
-## Submitting changes
+# Submitting changes
 
 Grimoire strictly follows the [git-flow](http://nvie.com/posts/a-successful-git-branching-model/) branching model.
 PRs against `master` will not be accepted.
 All prs should target the `develop` branch.
 Note that the generated editing and example addition links provide this behavior already.
 
-## License
+# License
 
 Grimoire and related projects are developed and maintained under a variety of licenses as noted on the [about page](/about).
+By submitting changes to this or another project you acknowledge the license of the project and release your contribution(s) under the same license.

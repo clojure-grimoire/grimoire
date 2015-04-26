@@ -7,10 +7,12 @@
              :refer [succeed? result]]
             [grimoire.web.layout
              :refer [layout]]
-            [grimoire.web.util :as wutil]
-            [grimoire.web.config :refer [lib-grim-config
-                                         site-config
-                                         web-config]]
+            [grimoire.web.util :as wutil
+             :refer [maybe]]
+            [grimoire.web.config
+             :refer [lib-grim-config
+                     site-config
+                     web-config]]
             [grimoire.api :as api]
             [grimoire.api.fs.read]
             [grimoire.api.web :as web]
@@ -71,12 +73,13 @@
 (defn markdown-page
   "Helper for rendering a markdown page off of the resource path as HTML"
   [page]
-  (let [[header page] (wutil/parse-markdown-page page)]
+  (let [[header page] (wutil/parse-markdown-page page)
+        title         (get header :title (clojure.string/capitalize page))]
     (layout
-     site-config
+     (update-in (site-config)
+                [:style :title] #(str title " - " %))
      (if page
-       (list (when-let [title (:title header)]
-               [:h1 title])
+       (list [:h1 {:class "page-title"} title]
              page)
        (response/not-found "Resource not found, sorry. Please file an issue on the github bugtracker.")))))
 
@@ -142,11 +145,6 @@
    "/api"
    "/contributing"
    (-> (site-config) :store-url)])
-
-(def maybe
-  (fn [x]
-    (when (succeed? x)
-      (result x))))
 
 (def -sitemap-fn
   (memoize

@@ -10,19 +10,13 @@
             [grimoire.github :as gh]
             [simpledb.core :as sdb]))
 
-;; FIXME: probably belongs somewhere else
-(defn home-page []
-  (layout
-   (cfg/site-config)
-   ;;------------------------------------------------------------
-   [:blockquote [:p (-> (cfg/site-config) :style :quote)]]
-   (wutil/cheatsheet-memo (cfg/site-config))))
-
-(defn kv-table [kv-seq]
+;; Helpers
+;;------------------------------------------------------------------------------
+(defn kv-table [f kv-seq]
   [:table
    (for [[k v] kv-seq]
      [:tr
-      [:td {:style "width: 90%;"} k]
+      [:td {:style "width: 90%;"} (f k)]
       [:td {:style "width: 10%;"} v]])])
 
 (defn editable
@@ -43,6 +37,16 @@
              (t/example? t))]}
   (gh/->edit-url (cfg/notes-config) "develop" (::t/file t)))
 
+;; Pages
+;;------------------------------------------------------------------------------
+;; FIXME: probably belongs somewhere else
+(defn home-page []
+  (layout
+   (cfg/site-config)
+   ;;------------------------------------------------------------
+   [:blockquote [:p (-> (cfg/site-config) :style :quote)]]
+   (wutil/cheatsheet-memo (cfg/site-config))))
+
 ;; FIXME: this entire fuction is too datastore-aware by a lot
 (defn heatmap-page []
   (layout
@@ -50,20 +54,30 @@
    ;;------------------------------------------------------------
    [:h1 {:class "page-title"} "Analytics!"]
    [:p "Or at least some of it >:D"]
-   (let [service @cfg/service
-         db      (-> service :simpledb :db deref)
-         sorted-table #(->> % (sort-by second) reverse (take 100) kv-table)]
+   (let [service            @cfg/service
+         db                 (-> service :simpledb :db deref)
+         sorted-table       #(->> %
+                                  (sort-by second)
+                                  reverse
+                                  (take 100)
+                                  (kv-table identity))
+         
+         sorted-thing-table #(->> %
+                                  (sort-by second)
+                                  reverse
+                                  (take 100)
+                                  (kv-table wutil/mem-sts->link))]
      (list [:div
             [:h2 "Top 100 namespaces"]
-            (->> db :namespaces sorted-table)]
+            (->> db :namespaces sorted-thing-table)]
 
            [:div
             [:h2 "Top 100 defs"]
-            (->> db :defs sorted-table)]
+            (->> db :defs sorted-thing-table)]
 
            [:div
             [:h2 "Top artifacts"]
-            (->> db :artifacts sorted-table)]
+            (->> db :artifacts sorted-thing-table)]
 
            [:div
             [:h2 "Top platforms"]
@@ -298,12 +312,10 @@
         ?related                        (api/list-related  *lg* def-thing) ;; Seq [ Thing [:def] ]
         ?examples                       (api/list-examples *lg* def-thing) ;; Seq [version, related]
         ?notes                          (api/list-notes    *lg* def-thing) ;; Seq [Note]
-        -site-config                    (cfg/site-config)]
+        *site-config*                   (cfg/site-config)]
     (layout
-     (assoc -site-config
-            :page {:description (str namespace "/" symbol
-                                     " - documentation and examples")
-                   :summary doc})
+     (-> *site-config*
+         (assoc :summary doc))
      ;;------------------------------------------------------------
      [:h1 {:class "page-title"}
       (header (assoc def-thing :name (str symbol)))]

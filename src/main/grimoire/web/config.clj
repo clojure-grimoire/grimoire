@@ -1,5 +1,6 @@
 (ns grimoire.web.config
-  (:require [detritus.variants :refer [deftag]]
+  (:require [guten-tag.core :refer [deftag]]
+            [environ.core :refer [env]]
             [grimoire.github :as gh]
             [grimoire.api.web :as web]
             [grimoire.api.fs :as fs]))
@@ -19,7 +20,7 @@
                "notes-store"))
 
 (def -site-config
-  {:url                 "http://conj.io"
+  {:url                 (env :url)
    :repo                "https://github.com/clojure-grimoire/grimoire"
    :base-url            "/"
    :store-url           "/store/v1/"
@@ -50,7 +51,7 @@
      ,,-web-config
      ,,-notes-config)))
 
-(def service
+(defonce service
   (atom nil))
 
 ;; Site configuration

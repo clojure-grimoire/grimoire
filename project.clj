@@ -6,6 +6,8 @@
   :aliases {"serve" ["with-profile" "server" "run"]}
   :profiles {:server
              {:dependencies [[org.clojure/clojure "1.7.0-alpha6"]
+                             [org.clojure/core.match "0.3.0-alpha4"
+                              :exclusions [org.clojure/clojure]]
                              [org.clojure-grimoire/lib-grimoire "0.9.1"
                               :exclusions [org.clojure/clojure
                                            me.arrdem/detritus]]
@@ -19,31 +21,37 @@
                               :exclusions [org.clojure/clojure]]
                              [ring/ring-jetty-adapter "1.3.2"
                               :exclusions [org.clojure/clojure]]
-                             [selmer "0.8.0"
+                             [selmer "0.8.2"
                               :exclusions [org.clojure/clojure]]
-                             [compojure "1.3.1"
+                             [compojure "1.3.2"
                               :exclusions [org.clojure/clojure]]
                              [hiccup "1.0.5"
                               :exclusions [org.clojure/clojure]]
-                             [markdown-clj "0.9.62"
+                             [markdown-clj "0.9.65"
                               :exclusions [org.clojure/clojure]]
                              [me.raynes/conch "0.8.0"
                               :exclusions [org.clojure/clojure]]
                              [me.arrdem/detritus "0.2.2"
                               :exclusions [org.clojure/clojure]]
+                             [me.arrdem/guten-tag "0.1.0"
+                              :exclusions [org.clojure/clojure]]
                              [sitemap "0.2.4"
                               :exclusions [org.clojure/clojure]]
                              [instaparse "1.3.6"
+                              :exclusions [org.clojure/clojure]]
+                             [environ "1.0.0"
                               :exclusions [org.clojure/clojure]]]
+              :plugins      [[lein-environ "1.0.0"]]
+              :env          {:url "http://conj.io"}
               :main         grimoire.web.service}
 
              :dev
              {:dependencies [[ring/ring-mock "0.2.0"]
                              [acyclic/squiggly-clojure "0.1.2-SNAPSHOT"]]
-              :plugins      [[cider/cider-nrepl "0.8.0-SNAPSHOT"]
-                             [lein-environ "1.0.0"]]
+              :plugins      [[lein-environ "1.0.0"]]
               :source-paths ["src/dev"]
               :main         user
-              :env          {:squiggly {:checkers [:eastwood :typed :kibit]}}}
+              :env          {:squiggly {:checkers [:eastwood :typed :kibit]}
+                             :url      "http://127.0.0.1:3000"}}
              
              :user [:server :dev :arrdem]})

@@ -7,10 +7,10 @@ Grimoire was designed to be built and maintained by taking changes in the form o
 
 The Grimoire project itself is now partitioned into several pieces:
 
- - The site itself (the main repo)
- - [lib-grimoire](https://github.com/clojure-grimoire/lib-grimoire)
- - [datastore](https://github.com/clojure-grimoire/datastore)
- - [lein-grim](https://github.com/clojure-grimoire/lein-grim)
+- The site itself (the main repo)
+- [lib-grimoire](https://github.com/clojure-grimoire/lib-grimoire)
+- [datastore](https://github.com/clojure-grimoire/datastore)
+- [lein-grim](https://github.com/clojure-grimoire/lein-grim)
 
 ## Building & Running Grimoire
 

@@ -414,24 +414,23 @@
            ]
    ])
 
-;; FIXME
 (def clojure.vars
-  [:box "blue2"
-   :section {:latex "Vars and global environment (\\href{http://clojure.org/vars}{clojure.org/vars})"
-             :html "Vars and global environment (<a href=\"http://clojure.org/vars\">clojure.org/vars</a>)"}
-   :table [["Def variants" :cmds '[def defn defn- definline defmacro
-                                   defmethod defmulti defonce
-                                   defrecord]]
-           ["Interned vars" :cmds '[declare intern binding
-                                    find-var var]]
-           ["Var objects" :cmds '[with-local-vars var-get var-set
-                                  alter-var-root var? bound?
-                                  thread-bound?]]
-           ["Var validators" :cmds '[set-validator! get-validator]]
-           ;; Now covered in Metadata section
-           ;;                      ["Var metadata" :cmds '[meta clojure.repl/doc
-           ;;                                              clojure.repl/find-doc test]]
-           ]])
+  [:box {:style "blue2"}
+   [:section {:title "Vars and global environment (<a href=\"http://clojure.org/vars\">clojure.org/vars</a>)"}
+    [:table {}
+     `[:row {:title "Def variants"}
+       ~@(map →clj ["def" "defn" "defn-" "definline" "defmacro" "defmethod"
+                    "defmulti" "defonce" "defrecord"])]
+
+     `[:row {:title "Interned vars"}
+       ~@(map →clj ["declare" "intern" "binding" "find-var" "var"])]
+
+     `[:row {:title "Var objects"}
+       ~@(map →clj ["with-local-vars" "var-get" "var-set" "alter-var-root"
+                    "var?" "bound?" "thread-bound?"])]
+     
+     `[:row {:title "Var validators"}
+       ~@(map →clj ["set-validator!" "get-validator"])]]]])
 
 (def clojure.namespaces
   [:box {:style "yellow"}

@@ -396,6 +396,7 @@
            ]
    ])
 
+;; FIXME
 (def clojure.special-forms
   [:box "red"
    :section {:latex "Special Forms (\\href{http://clojure.org/special\\_forms}{clojure.org/special\\_forms})"

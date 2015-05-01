@@ -433,25 +433,32 @@
            ;;                                              clojure.repl/find-doc test]]
            ]])
 
-;; FIXME
 (def clojure.namespaces
-  [:box "yellow"
-   :section "Namespace"
-   :table [["Current" :cmds '[*ns*]]
-           ["Create/Switch" :cmds '[{:latex "(\\href{http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html}{tutorial})"
-                                     :html "(<a href=\"http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html\">tutorial</a>)"}
-                                    ns in-ns create-ns]]
-           ["Add" :cmds '[alias def import intern refer]]
-           ["Find" :cmds '[all-ns find-ns]]
-           ;;                      ["Examine" :cmds '[ns-name ns-aliases ns-map
-           ;;                                         ns-interns ns-publics ns-refers
-           ;;                                         ns-imports]]
-           ["Examine" :cmds '[[:common-prefix ns-
-                               name aliases map interns publics
-                               refers imports]]]
-           ["From symbol" :cmds '[resolve ns-resolve namespace
-                                  the-ns]]
-           ["Remove" :cmds '[ns-unalias ns-unmap remove-ns]]]])
+  [:box {:style "yellow"}
+   [:section {:title "Namespace"}
+    [:table {}
+     [:row {:title "Current"}
+      (→clj "*ns*")]
+     
+     `[:row {:title "Create/Switch"}
+       "(<a href=\"http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html\">tutorial</a>)"
+       ~@(map →clj ["ns" "in-ns" "create-ns"])]
+     
+     `[:row {:title "Add"}
+       ~@(map →clj ["alias" "def" "import" "intern" "refer"])]
+     
+     `[:row {:title "Find"}
+       ~@(map →clj ["all-ns" "find-ns"])]
+     
+     `[:row {:title "Examine"}
+       ~@(map →clj ["ns-name" "ns-aliases" "ns-map" "ns-interns" "ns-publics"
+                    "ns-refers" "ns-imports"])]
+
+     `[:row {:title "From symbol"}
+       ~@(map →clj ["resolve" "ns-resolve" "namespace" "the-ns"])]
+
+     `[:row {:title "Remove"}
+       ~@(map →clj ["ns-unalias" "ns-unmap" "remove-ns"])]]]])
 
 (def clojure.loading
   [:box {:style "green"}

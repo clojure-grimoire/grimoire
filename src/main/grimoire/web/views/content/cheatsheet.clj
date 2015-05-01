@@ -550,27 +550,26 @@
 
 ;; FIXME
 (def clojure.msc
-  [:box "green2"
-   :section "Other"
-   :table [["XML" :cmds '[clojure.xml/parse xml-seq]]
-           ["REPL" :cmds '[*1 *2 *3 *e *print-dup* *print-length*
-                           *print-level* *print-meta*
-                           *print-readably*]]
-           ["Code" :cmds '[*compile-files* *compile-path* *file*
-                           *warn-on-reflection* compile gen-class
-                           gen-interface loaded-libs test]]
-           ["Misc" :cmds '[eval force hash name *clojure-version*
-                           clojure-version *command-line-args*]]
-           [{:latex "\\begin{tabular}[t]{@{}l@{}} Browser \\\\ / Shell \\end{tabular}"
-             :html "Browser / Shell"}
-            :cmds '[{:latex "\\textmd{\\textsf{(clojure.java.browse/)}}",
-                     :html "(clojure.java.browse/)"}
-                    clojure.java.browse/browse-url
-                    {:latex "\\textmd{\\textsf{(clojure.java.shell/)}}",
-                     :html "(clojure.java.shell/)"}
-                    clojure.java.shell/sh
-                    clojure.java.shell/with-sh-dir
-                    clojure.java.shell/with-sh-env]]]])
+  [:box {:style "green2"}
+   [:section {:title "Other"}
+    [:table {}
+     `[:row {:title "XML"}
+       ~@(map →clj ["clojure.xml/parse" "xml-seq"])]
+
+     `[:row {:title "REPL"}
+       ~@(map →clj ["*1" "*2" "*3" "*e" "*print-dup*" "*print-length*" "*print-level*" "*print-meta*" "*print-readably*"])]
+
+     `[:row {:title "Code"}
+       ~@(map →clj ["*compile-files*" "*compile-path*" "*file*" "*warn-on-reflection*" "compile" "gen-class" "gen-interface" "loaded-libs" "test"])]
+
+     `[:row {:title "Misc"}
+       ~@(map →clj ["eval" "force" "hash" "name" "*clojure-version*" "clojure-version" "*command-line-args*"])]
+
+     `[:row {:title "Browser / Shell"}
+       ~@(map →clj ["clojure.java.browse/browse-url"
+                    "clojure.java.shell/sh"
+                    "clojure.java.shell/with-sh-dir"
+                    "clojure.java.shell/with-sh-env"])]]]])
 
 ;; The Cheatsheet
 ;;------------------------------------------------------------------------------

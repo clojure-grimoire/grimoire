@@ -452,16 +452,19 @@
                                   the-ns]]
            ["Remove" :cmds '[ns-unalias ns-unmap remove-ns]]]])
 
-;; FIXME
 (def clojure.loading
-  [:box "green"
-   :section "Loading"
-   :table [["Load libs" :cmds '[{:latex "(\\href{http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html}{tutorial})"
-                                 :html "(<a href=\"http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html\">tutorial</a>)"}
-                                require use import refer]]
-           ["List loaded" :cmds '[loaded-libs]]
-           ["Load misc" :cmds '[load load-file load-reader
-                                load-string]]]])
+  [:box {:style "green"}
+   [:section {:title "Loading"}
+    [:table {}
+     `[:row {:title "Load libs"}
+       "(<a href=\"http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html\">tutorial</a>)"
+       ~@(map →clj ["require" "use" "import" "refer"])]
+     
+     `[:row {:title "List loaded"}
+       ~@(map →clj ["loaded-libs"])]
+     
+     `[:row {:title "Load misc"}
+       ~@(map →clj ["load" "load-file" "load-reader" "load-string"])]]]])
 
 (def clojure.concurrency
   [:box "magenta"

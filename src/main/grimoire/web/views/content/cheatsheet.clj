@@ -548,7 +548,6 @@
                               construct init]]]
            ["Misc" :cmds '[proxy-mappings proxy-super update-proxy]]]])
 
-;; FIXME
 (def clojure.msc
   [:box {:style "green2"}
    [:section {:title "Other"}

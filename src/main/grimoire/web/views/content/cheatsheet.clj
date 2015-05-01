@@ -507,7 +507,6 @@
                             error-mode set-error-mode!]]
            ["Misc" :cmds '[*agent* release-pending-sends]]]])
 
-;; FIXME
 ;; FIXME: Clojurescript?
 ;; FIXME: ClojureCLJ?
 (def clojure.interop

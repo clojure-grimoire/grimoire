@@ -463,49 +463,80 @@
            ["Load misc" :cmds '[load load-file load-reader
                                 load-string]]]])
 
-;; FIXME
 (def clojure.concurrency
   [:box "magenta"
-   :section "Concurrency"
-   :table [["Atoms" :cmds '[atom swap! reset! compare-and-set!]]
-           ["Futures" :cmds '[future
-                              [:common-prefix future-
-                               call done? cancel cancelled?]
-                              future?]]
-           ["Threads" :cmds '[bound-fn bound-fn*
-                              [:common-suffix -thread-bindings
-                               get push pop]
-                              thread-bound?]]
-           ["Misc" :cmds '[locking pcalls pvalues pmap seque
-                           promise deliver]]]
-   :subsection {:latex "Refs and Transactions (\\href{http://clojure.org/refs}{clojure.org/refs})"
-                :html "Refs and Transactions (<a href=\"http://clojure.org/refs\">clojure.org/refs</a>)"}
-   :table [["Create" :cmds '[ref]]
-           ["Examine"
-            :cmds '[deref "@"
-                    {:latex "\\textmd{\\textsf{(@form $\\to$ (deref form))}}",
-                     :html "(<code>@<var>form</var></code> &rarr; <code>(deref <var>form</var>)</code>)"}]]
-           ["Transaction" :cmds '[sync dosync io!]]
-           ["In transaction" :cmds '[ensure ref-set alter commute]]
-           ["Validators" :cmds '[set-validator! get-validator]]
-           ["History" :cmds '[ref-history-count
-                              [:common-prefix-suffix
-                               ref- -history min max]]]]
-   :subsection {:latex "Agents and Asynchronous Actions (\\href{http://clojure.org/agents}{clojure.org/agents})"
-                :html "Agents and Asynchronous Actions (<a href=\"http://clojure.org/agents\">clojure.org/agents</a>)"}
-   :table [["Create" :cmds '[agent]]
-           ["Examine" :cmds '[agent-error]]
-           ["Change state" :cmds '[send send-off restart-agent
-                                   "(1.5)"
-                                   send-via set-agent-send-executor!
-                                   set-agent-send-off-executor!]]
-           ["Block waiting" :cmds '[await await-for]]
-           ["Ref validators" :cmds '[set-validator! get-validator]]
-           ["Watchers" :cmds '[add-watch remove-watch]]
-           ["Thread handling" :cmds '[shutdown-agents]]
-           ["Error" :cmds '[error-handler set-error-handler!
-                            error-mode set-error-mode!]]
-           ["Misc" :cmds '[*agent* release-pending-sends]]]])
+   [:section {:title "Concurrency"}
+    [:table {}
+     `[:row {:title "Atoms"}
+       ~@(map →clj ["atom" "swap!" "reset!" "compare-and-set!"])]
+
+     `[:row {:title "Futures"}
+       ~@(map →clj ["future" "future-call" "future-done?" "future-cancel"
+                    "cancelled?" "future?"])]
+     
+     `[:row {:title "Threads"}
+       ~@(map →clj ["bound-fn" "bound-fn*" "get-thread-bindings"
+                    "get-thread-bindings" "push-thread-bindings"
+                    "pop-thread-bindings" "thread-bound?"])]
+     
+     `[:row {:title "Misc"}
+       ~@(map →clj ["locking" "pcalls" "pvalues" "pmap" "seque" "promise"
+                    "deliver"])]]
+
+    [:subsection {:title "Refs and Transactions (<a href=\"http://clojure.org/refs\">clojure.org/refs</a>)"}
+     [:table {}
+      `[:row {:title "Create"}
+        ~@(map →clj ["ref"])]
+
+      [:row {:title "Examine"}
+       (→clj "deref")
+       "(<code>@<var>form</var></code> &rarr; <code>(deref <var>form</var>)</code>)"]
+      
+      `[:row {:title "Transaction"}
+        ~@(map →clj ["sync" "dosync" "io!"])]
+
+      
+      `[:row {:title "In transaction"}
+        ~@(map →clj ["ensure" "ref-set" "alter" "commute"])]
+
+      `[:row {:title "Validators"}
+        ~@(map →clj ["set-validator!" "get-validator"])]
+      
+      `[:row {:title "History"}
+        ~@(map →clj ["ref-history-count" "ref-max-history" "ref-min-history"])]]]
+
+    [:subsection {:title "Agents and Asynchronous Actions (<a href=\"http://clojure.org/agents\">clojure.org/agents</a>)"}
+     [:table {}
+      [:row {:title "Create"}
+       (→clj "agent")]]
+     
+     [:row {:title "Examine"}
+      (→clj "agent-error")]
+
+     `[:row {:title "Change state"}
+       ~@(map →clj ["send" "send-off" "restart-agent"])
+       "(1.5)"
+       ~@(map →clj ["send-via" "set-agent-send-executor!"
+                    "set-agent-send-off-executor!"])]
+     
+     `[:row {:title "Block waiting"}
+       ~@(map →clj ["await" "await-for"])]
+     
+     `[:row {:title "Ref validators"}
+       ~@(map →clj ["set-validator!" "get-validator"])]
+     
+     `[:row {:title "Watchers"}
+       ~@(map →clj ["add-watch" "remove-watch"])]
+     
+     `[:row {:title "Thread handling"}
+       ~@(map →clj ["shutdown-agents"])]
+     
+     `[:row {:title "Error"}
+       ~@(map →clj ["error-handler" "set-error-handler!" "error-mode"
+                    "set-error-mode!"])]
+     
+     `[:row {:title "Misc"}
+       ~@(map →clj ["*agent*" "release-pending-sends"])]]]])
 
 ;; FIXME: Clojurescript?
 ;; FIXME: ClojureCLJ?

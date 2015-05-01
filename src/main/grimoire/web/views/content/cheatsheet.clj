@@ -511,42 +511,49 @@
 ;; FIXME: Clojurescript?
 ;; FIXME: ClojureCLJ?
 (def clojure.interop
-  [:box "orange"
-   :section {:latex "Java Interoperation (\\href{http://clojure.org/java\\_interop}{clojure.org/java\\_interop})"
-             :html "Java Interoperation (<a href=\"http://clojure.org/java_interop\">clojure.org/java_interop</a>)"}
-   :table [["General" :cmds '[.. doto "Classname/" "Classname."
-                              new bean comparator enumeration-seq
-                              import iterator-seq memfn set! class
-                              class? bases supers type]]
-           ["Cast" :cmds '[boolean byte short char int long
-                           float double bigdec bigint num cast
-                           biginteger]]
-           ["Exceptions" :cmds '[throw try catch finally
-                                 clojure.repl/pst
-                                 "(1.4)" ex-info ex-data]]]
-   :subsection "Arrays"
-   :table [["Create" :cmds '[make-array
-                             [:common-suffix -array object
-                              boolean byte short char int long
-                              float double]
-                             aclone to-array to-array-2d into-array]]
-           ["Use" :cmds '[aget aset
-                          [:common-prefix aset- boolean byte short
-                           char int long float double]
-                          alength amap areduce]]
-           ;; TBD: This would be a good place to give an
-           ;; example like ^"[Ljava.lang.BigInteger", yes?
-           ;; Also the cast ^objects?  Is there a doc page
-           ;; for that?
-           ["Cast" :cmds '[booleans bytes shorts chars
-                           ints longs floats doubles]]
-           ]
-   :subsection {:latex "Proxy (\\href{https://github.com/cemerick/clojure-type-selection-flowchart}{Clojure type selection flowchart})"
-                :html "Proxy (<a href=\"https://github.com/cemerick/clojure-type-selection-flowchart\">Clojure type selection flowchart</a>)"}
-   :table [["Create" :cmds '[proxy get-proxy-class
-                             [:common-suffix -proxy
-                              construct init]]]
-           ["Misc" :cmds '[proxy-mappings proxy-super update-proxy]]]])
+  [:box {:style "orange"}
+   [:section  {:title "Java Interoperation (<a href=\"http://clojure.org/java_interop\">clojure.org/java_interop</a>)"}
+    [:table {}
+     `[:row {:title "General"}
+       ~@(map →clj [".." "doto" "new" "bean" "comparator" "enumeration-seq"
+                    "import" "iterator-seq" "memfn" "set!" "class" "class?"
+                    "bases" "supers" "type"]) "Classname/" "Classname."]
+
+     `[:row {:title "Cast"}
+       ~@(map →clj ["boolean" "byte" "short" "char" "int" "long" "float"
+                    "double" "bigdec" "bigint" "num" "cast" "biginteger"])]
+
+     `[:row {:title "Exceptions"}
+       ~@(map →clj ["throw" "try" "catch" "finally"
+                    "clojure.repl/pst"])
+       "(1.4)"
+       ~@(map →clj ["ex-info" "ex-data"])]]]
+
+   [:subsection {:title "Arrays"}
+    [:table {}
+     `[:row {:title "Create"}
+       ~@(map →clj (concat ["make-array" "to-array-2d" "aclone"]
+                           (map #(str % "-array")
+                                ["object" "boolean" "byte" "short" "char" "int"
+                                 "long" "float" "double" "into" "to"
+                                 "into-array"])))]
+
+     `[:row {:title "Use"}
+       ~@(map →clj ["aget" "aset" "aset-boolean" "aset-byte" "aset-short"
+                    "aset-char" "aset-int" "aset-long" "aset-float"
+                    "aset-double" "alength" "amap" "areduce"])]
+     
+     `[:row {:title "Cast"}
+       ~@(map →clj ["booleans" "bytes" "shorts" "chars" "ints" "longs" "floats"
+                    "doubles"])]]]
+   
+   [:subsection {:title "Proxy (<a href=\"https://github.com/cemerick/clojure-type-selection-flowchart\">Clojure type selection flowchart</a>)"}
+    [:table {}
+     `[:row {:title "Create"}
+       ~@(map →clj ["proxy" "get-proxy-class" "construct-proxy" "init-proxy"])]
+
+     `[:row {:title "Misc"}
+       ~@(map →clj ["proxy-mappings" "proxy-super" "update-proxy"])]]]])
 
 (def clojure.msc
   [:box {:style "green2"}

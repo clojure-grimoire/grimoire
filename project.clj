@@ -39,17 +39,23 @@
                   :exclusions [org.clojure/clojure]]
                  [instaparse "1.3.6"
                   :exclusions [org.clojure/clojure]]
+                 [rethinkdb "0.5.39"
+                  :exclusions [org.clojure/clojure]]
                  [environ "1.0.0"
                   :exclusions [org.clojure/clojure]]]
   
   :aliases {"serve" ["with-profile" "server" "run"]}
 
-  :profiles {:server {:env  {:url "http://conj.io"}
+  :profiles {:server {:env  {:url "http://conj.io"
+                             :rethinkdb/host "127.0.0.1"
+                             :rethinkdb/port "28015"}
                       :main grimoire.web.service}
 
              :dev {:dependencies [[ring/ring-mock "0.2.0"]]
                    :source-paths ["src/dev"]
                    :main         user
-                   :env          {:url "http://127.0.0.1:3000"}}
+                   :env          {:url "http://127.0.0.1:3000"
+                                  :rethinkdb/host "127.0.0.1"
+                                  :rethinkdb/port "28015"}}
              
              :user [:server :dev :arrdem]})

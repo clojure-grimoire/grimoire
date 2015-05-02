@@ -94,9 +94,14 @@
                      (when-let [examples (result ?examples)]
                        (str "## Examples\n"
                             ;; line40 "\n"
-                            (->> (for [e-thing examples]
-                                   (result
-                                    (api/read-example (cfg/lib-grim-config) e-thing)))
+                            (->> (for [e-thing examples
+                                       :let [ex (result (api/read-example (cfg/lib-grim-config) e-thing))
+                                             ex (if-not (.endsWith ex "\n")
+                                                  (str ex "\n") ex)]]
+                                   (str "```Clojure\n"
+                                        ex
+                                        "```"))
+                                 (interpose "\n\n")
                                  (apply str "\n"))
                             "\n\n")))
 

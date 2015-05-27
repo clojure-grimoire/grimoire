@@ -117,6 +117,8 @@ Grimoire is built as a matching pair of programs: a "database" generator which u
 - Maven
 - Git
 
+Mac users should install `coreutils` via [brew](http://brew.sh)
+
 
 ### Usage
 

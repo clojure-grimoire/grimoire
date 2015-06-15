@@ -23,6 +23,10 @@
 (def ^:private privilaged-user-agents
   #{"URL/Emacs"})
 
+(defn ^:private bot? [uas]
+  (or (re-find #"[Bb]ot" uas)
+      (re-find #"[Ss]pider" uas)))
+
 (def ^:private incf (fnil inc 0))
 
 (defn- log! [request thing]
@@ -30,36 +34,37 @@
   
   ;; what do I want to know
   ;; - inc user-agent string tracking
-  (let [db (cfg/simpledb-config)]
-    (sdb/update! db
-                 :clients update
-                 (get-in request [:headers "user-agent"] "Unknown") incf)
+  (let [user-agent (get-in request [:headers "user-agent"] "Unknown")
+        db (cfg/simpledb-config)]
+    (when-not (bot? user-agent)
+      (sdb/update! db
+                   :clients update
+                   user-agent incf)
 
-    ;; - inc the thing URI in the "thing"
-    (when thing
-      ;; - if def, inc in the def store at ":artifact/:ns/:def"
-      (when (t/def? thing)
-        (sdb/update! db
-                     :defs update
-                     (t/thing->short-string thing) incf))
+      ;; - inc the thing URI in the "thing"
+      (when thing
+        ;; - if def, inc in the def store at ":artifact/:ns/:def"
+        (when (t/def? thing)
+          (sdb/update! db
+                       :defs update
+                       (t/thing->short-string thing) incf))
 
-      (when-let [ns (t/thing->namespace thing)]
-        (sdb/update! db
-                     :namespaces update
-                     (t/thing->short-string ns) incf))
+        (when-let [ns (t/thing->namespace thing)]
+          (sdb/update! db
+                       :namespaces update
+                       (t/thing->short-string ns) incf))
 
-      (when-let [platform (t/thing->platform thing)]
-        (sdb/update! db
-                     :platforms update
-                     (t/thing->name platform) incf))
-
-      (when (t/artifacted? thing)
-        (let [artifact (t/thing->artifact thing)
-              group    (t/thing->group    artifact)]
-          (when artifact
-            (sdb/update! db
-                         :artifacts update
-                         (str (t/thing->name group) \/ (t/thing->name artifact)) incf)))))))
+        (when-let [platform (t/thing->platform thing)]
+          (sdb/update! db
+                       :platforms update
+                       (t/thing->name platform) incf))
+        (when (t/artifacted? thing)
+          (let [artifact (t/thing->artifact thing)
+                group    (t/thing->group    artifact)]
+            (when artifact
+              (sdb/update! db
+                           :artifacts update
+                           (str (t/thing->name group) \/ (t/thing->name artifact)) incf))))))))
 
 (defn store-v1
   [{header-type :content-type

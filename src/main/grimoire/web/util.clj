@@ -104,6 +104,26 @@
                             "-Ostripnl=False,encoding=utf-8"
                             {:in text})))
 
+(defn highlight-example
+  "Helper for rendering a Grimoire Example Thing to HTML, using a filesystem
+  cache of rendered examples to improve performance."
+  [ex]
+  {:pre [(t/example? ex)]}
+  (let [url        (:grimoire.things/url ex)
+        ex-file    (:handle ex)
+        cache-dir  (io/file "render-cache")
+        cache-file (io/file cache-dir (str (hash url) ".html"))] ;; FIXME: use a different hash algo?
+    (if-not (.exists cache-dir)
+      (.mkdirs cache-dir))
+
+    (if (.exists cache-file)
+      (slurp cache-file)
+
+      (let [text (e/result (api/read-example (cfg/lib-grim-config) ex))
+            html (highlight-clojure text)]
+        (spit cache-file html)
+        html))))
+
 (defn url-encode
   "Returns an UTF-8 URL encoded version of the given string."
   [unencoded]

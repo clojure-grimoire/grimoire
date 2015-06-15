@@ -10,4 +10,4 @@ deploy:
 	git push deployment master
 
 clean:
-	rm -rf doc-store notes-store
+	rm -rf doc-store notes-store render-cache

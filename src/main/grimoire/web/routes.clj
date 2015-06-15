@@ -157,7 +157,8 @@
 (defmacro api-log []
   `(log! ~'req ~'t))
 
-(defmacro do-dispatch [dispatch type op t]
+(defmacro do-dispatch
+  [dispatch type op t]
   `(or (when-let [f# (~dispatch ~op)]
          (when-let [r# (f# ~type ~t)]
            (log! ~'req ~'t)
@@ -390,7 +391,8 @@
       (#'app new-req) ;; pass it forwards
       (wutil/moved-permanently new-uri))))
 
-(defn rewrite-latest->version-req [request store-v group artifact]
+(defn rewrite-latest->version-req
+  [request store-v group artifact]
   (let [user-agent (get-in request [:headers "user-agent"])
         t          (-> (cfg/lib-grim-config)
                        (t/->Group group)
@@ -414,7 +416,8 @@
       (#'app new-req) ;; pass it forwards
       (wutil/moved-permanently new-uri))))
 
-(defn upgrade-v0-munged->v1-req [request group artifact version platform ns symbol]
+(defn upgrade-v0-munged->v1-req
+  [request group artifact version platform ns symbol]
   (let [user-agent (get-in request [:headers "user-agent"])
         new-symbol (util/update-munge symbol)
         new-uri    (str "/store/v1/"

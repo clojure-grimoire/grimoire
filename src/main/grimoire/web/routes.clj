@@ -433,10 +433,16 @@
         (#'app new-req) ;; pass it forwards
         (wutil/moved-permanently new-uri)))))
 
-(defn upgrade-v0->v1-req [request]
+(defn upgrade-v0->v1-req
+  [request]
   (let [user-agent (get-in request [:headers "user-agent"])
         new-symbol (util/update-munge symbol)
-        new-uri    (str "/store/v1" (:path-info request))
+        rest-path  (rest (string/split (:path-info request) #"/"))
+        _          (println rest-path)
+        rest-path  (if (> (count rest-path) 3)
+                     (concat (take 3 rest-path) ["clj"] (drop 3 rest-path))
+                     rest-path)
+        new-uri    (str "/store/v1/" (string/join "/" rest-path))
         new-req    (-> request
                        (assoc :uri new-uri)
                        (dissoc :context :path-info))]

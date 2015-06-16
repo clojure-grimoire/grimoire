@@ -37,3 +37,8 @@ div.source {
     max-width: 80ch;
     border-left: 2px solid #515151;
 }
+
+.container {
+    max-width: 85ch;
+    min-width: 85ch;
+}

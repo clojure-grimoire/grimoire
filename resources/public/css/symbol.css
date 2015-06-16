@@ -19,6 +19,7 @@ div.editable {
 
 div.editable div.header {
     border-bottom: 2px solid #515151;
+    border-left: 4px solid #515151;
 }
 
 div.editable div.header h2 {
@@ -34,5 +35,5 @@ div.editable div.header a.edit {
 
 div.source {
     max-width: 80ch;
-    border-left: 6px solid #515151;
+    border-left: 2px solid #515151;
 }

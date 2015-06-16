@@ -2,7 +2,7 @@
   (:require [hiccup.page :as page]
             [grimoire.web.config :as cfg]))
 
-(defn header [{:keys [base-url] :as c}]
+(defn header [{:keys [base-url css] :as c}]
   [:head
    [:link {:rel "profile" :href "http://gmpg.org/xfn/11"}]
    [:meta {:content "IE=edge" :http-equiv "X-UA-Compatible"}]
@@ -22,6 +22,7 @@
     (str base-url "public/css/syntax.css")
     (str base-url "public/css/lanyon.css")
     (str base-url "public/css/headings.css"))
+   (map page/include-css css)
    [:link {:href "http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400"
            :rel "stylesheet"}]
    [:link {:href (str base-url "public/apple-touch-icon-precomposed.png") :sizes "144x144" :rel "apple-touch-icon-precomposed"}]
@@ -64,10 +65,10 @@
     [:div.sidebar-item
      [:p "© " year ". All rights reserved."]]]))
 
-(defn foot [{:keys [google-analytics-id]}]
+(defn foot [{:keys [google-analytics-id js]}]
   [:footer
-   [:script {:type "text/javascript"
-             :src "/public/sidebar.js"}]
+   [:script {:type "text/javascript" :src "/public/sidebar.js"}]
+   (map #(vector :script {:type "text/javascript" :src %}) js)
    [:script {:type "text/javascript"}
     "var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '" google-analytics-id "']);

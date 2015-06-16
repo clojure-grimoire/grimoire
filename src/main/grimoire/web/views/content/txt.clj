@@ -42,26 +42,27 @@
      (response/content-type "text/plain")))
 
 (defmethod symbol-page :text/plain [_ def-thing]
-  (let [groupid    (t/thing->group     def-thing)
+  (let [*cfg*      (cfg/lib-grim-config)
+        groupid    (t/thing->group     def-thing)
         artifactid (t/thing->artifact  def-thing)
         version    (t/thing->version   def-thing)
         namespace  (t/thing->namespace def-thing)
         line80     (apply str (repeat 80 "-"))
         line40     (apply str (repeat 40 "-"))
-        ?meta      (api/read-meta (cfg/lib-grim-config) def-thing)]
+        ?meta      (api/read-meta *cfg* def-thing)]
     (-> (if (succeed? ?meta)
           (try
             (let [{:keys [doc name type arglists src]
                    :as   meta} (result ?meta)
-                   ?notes      (api/read-notes    (cfg/lib-grim-config) def-thing)
-                   ?related    (api/list-related  (cfg/lib-grim-config) def-thing)
-                   ?examples   (api/list-examples (cfg/lib-grim-config) def-thing)]
+                   ?notes      (api/read-notes    *cfg* def-thing)
+                   ?related    (api/list-related  *cfg* def-thing)
+                   ?examples   (api/list-examples *cfg* def-thing)]
               ;; FIXME: else what? doesn't make sense w/o doc...
               (str (format "# [%s/%s \"%s\"] %s/%s\n"
-                           (:name groupid)
-                           (:name artifactid)
-                           (:name version)
-                           (:name namespace)
+                           (t/thing->name groupid)
+                           (t/thing->name artifactid)
+                           (t/thing->name version)
+                           (t/thing->name namespace)
                            name)
                    ;; line80
                    "\n"
@@ -94,9 +95,14 @@
                      (when-let [examples (result ?examples)]
                        (str "## Examples\n"
                             ;; line40 "\n"
-                            (->> (for [e-thing examples]
-                                   (result
-                                    (api/read-example (cfg/lib-grim-config) e-thing)))
+                            (->> (for [e-thing examples
+                                       :let [ex (result (api/read-example *cfg* e-thing))
+                                             ex (if-not (.endsWith ex "\n")
+                                                  (str ex "\n") ex)]]
+                                   (str "```Clojure\n"
+                                        ex
+                                        "```"))
+                                 (interpose "\n\n")
                                  (apply str "\n"))
                             "\n\n")))
 

@@ -14,17 +14,7 @@ designed to be largely self-enumerating so experimentation is highly encouraged.
 ## Notation
 
 `$SYMBOL` as used in this document is a string representing the name
-of an intered and documented var munged as follows:
-
-```Clojure
-(defn munge [s]
-  (-> s
-      (replace "?" "_QMARK_")
-      (replace "." "_DOT_")
-      (replace "/" "_SLASH_")
-      (replace #"^_*" "")
-      (replace #"_*$" "")))
-```
+of an intered and documented var URL encoded as via clj::grimoire.util/munge .
 
 **Note:** Individuals wanting to interact with Grimoire are strongly advised to
 take advantage of
@@ -75,7 +65,8 @@ shall return plain text or un-rendered markdown documentation of
 80-character display.
 
 `GET http://conj.io/store/v0/org.clojure/clojure/1.6.0/clojure.core/conj/?type=text/plain`
-shall give the same result as if the type header were set to `text/plain`.
+shall give the same result as if `TYPE` header were set to `text/plain` no matter the
+value of the `TYPE` header.
 
 ### Searching
 

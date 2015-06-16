@@ -25,7 +25,7 @@
 
   ([title-size title link content]
    [:div.editable
-    [:span.header
+    [:div {:class "header clearfix"}
      (when title [title-size title])
      [:a.edit {:href link
                :rel "nofollow"}
@@ -42,7 +42,8 @@
 ;; FIXME: probably belongs somewhere else
 (defn home-page []
   (layout
-   (cfg/site-config)
+   (-> (cfg/site-config)
+       (assoc :css ["/public/css/cheatsheet.css"]))
    ;;------------------------------------------------------------
    [:blockquote [:p (-> (cfg/site-config) :style :quote)]]
    (wutil/cheatsheet-memo (cfg/site-config))))
@@ -315,7 +316,8 @@
         *site-config*                   (cfg/site-config)]
     (layout
      (-> *site-config*
-         (assoc :summary doc))
+         (assoc :summary doc)
+         (assoc :css ["/public/css/symbol.css"]))
      ;;------------------------------------------------------------
      [:h1 {:class "page-title"}
       (header (assoc def-thing :name (str symbol)))]
@@ -329,31 +331,31 @@
                         (map #(str "   " %))
                         (interpose \newline))]))
 
-     (when doc
-       (list [:h2 "Official Documentation"]
-             [:pre "  " doc]))
+     (or (when (succeed? ?notes)
+           (when-let [note-thing (first (result ?notes))]
+             (let [note-text (result (api/read-note *lg* note-thing))]
+               (editable
+                "Community Documentation"
+                (edit-url' note-thing)
+                (wutil/markdown-string note-text)))))
 
-     (when (succeed? ?notes)
-       (when-let [note-thing (first (result ?notes))]
-         (let [note-text (result (api/read-note *lg* note-thing))]
-           (editable
-            "Community Documentation"
-            (edit-url' note-thing)
-            (wutil/markdown-string note-text)))))
+         (when doc
+           [:div.official-docs
+            [:h2 "Official Documentation"]
+            [:pre "  " doc]]))
 
      ;; FIXME: examples needs a _lot_ of work
      (when (succeed? ?examples)
        [:div.section
         [:h2.heading "Examples " [:span.hide "-"]]
         [:div.autofold
-         (for [et   (result ?examples)
-               :let [e (result (api/read-example *lg* et))]]
+         (for [[et n] (map vector (result ?examples) (range))]
            [:div.example
             (editable
-             nil
+             (str "Example " (inc n))
              (edit-url' et)
              [:div.source
-              (wutil/highlight-clojure e)])])]])
+              (wutil/highlight-example et)])])]])
 
      (when-not (= :special type)
        [:a {:href (str "http://crossclj.info/fun/"
@@ -374,7 +376,8 @@
         [:div.section
          [:h2.heading "Source " [:span.unhide "+"]]
          [:div.autofold.prefold
-          (wutil/highlight-clojure src)]]))
+          [:div.source 
+           (wutil/highlight-clojure src)]]]))
 
      [:script {:src "/public/jquery.js" :type "text/javascript"}]
      [:script {:src "/public/fold.js" :type "text/javascript"}])))

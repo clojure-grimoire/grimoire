@@ -32,8 +32,3 @@ div.editable div.header a.edit {
 div.editable div.content {
     padding: 1rem;
 }
-
-div.source {
-    max-width: 80ch;
-    border-left: 2px solid #515151;
-}

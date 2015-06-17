@@ -19,6 +19,20 @@
       [:td {:style "width: 90%;"} (f k)]
       [:td {:style "width: 10%;"} v]])])
 
+(defn addable
+  ([title link content]
+   (editable :h2 title link content))
+
+  ([title-size title link content]
+   [:div.editable
+    [:div {:class "header clearfix"}
+     (when title [title-size title])
+     [:a.edit {:href link
+               :rel "nofollow"}
+      "Add notes"]]
+    [:div.content
+     content]]))
+
 (defn editable
   ([title link content]
    (editable :h2 title link content))
@@ -134,18 +148,19 @@
          [:h1 {:class "page-title"}
           (header group-thing)]
 
-         (when-let [docs (:doc meta)]
-           (list
-            [:h2 "Group Docs"]
-            [:pre "  " docs]))
+         (or (when (succeed? ?notes)
+               (when-let [note-thing (first (result ?notes))]
+                 (let [note-text (result (api/read-note *lg* note-thing))]
+                   (editable
+                    "Group Notes"
+                    (edit-url' note-thing)
+                    (wutil/markdown-string note-text)))))
 
-         (when (succeed? ?notes)
-           (when-let [note-thing (first (result ?notes))]
-             (let [note-text (result (api/read-note *lg* note-thing))]
-               (editable
-                "Group Notes"
-                (edit-url' note-thing)
-                (wutil/markdown-string note-text)))))
+             (when-let [docs (:doc meta)]
+               (addable
+                "Group Docs"
+                (add-note-url group-thing)
+                [:pre "  " docs])))
 
          (list
           [:h2 "Known Artifacts"]
@@ -170,18 +185,19 @@
          [:h1 {:class "page-title"}
           (header artifact-thing)]
 
-         (when-let [docs (:doc meta)]
-           (list
-            [:h2 "Artifact Docs"]
-            [:pre "  " docs]))
+         (or (when (succeed? ?notes)
+               (when-let [note-thing (first (result ?notes))]
+                 (let [note-text (result (api/read-note *lg* note-thing))]
+                   (editable
+                    "Arifact Notes"
+                    (edit-url' note-thing)
+                    (wutil/markdown-string note-text)))))
 
-         (when (succeed? ?notes)
-           (when-let [note-thing (first (result ?notes))]
-             (let [note-text (result (api/read-note *lg* note-thing))]
-               (editable
-                "Arifact Notes"
-                (edit-url' note-thing)
-                (wutil/markdown-string note-text)))))
+             (when-let [docs (:doc meta)]
+               (addable
+                "Artifact Docs"
+                (add-note-url artifact-thing)
+                [:pre "  " docs])))
 
          (list
           [:h2 "Known release versions"]
@@ -209,18 +225,19 @@
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"} (header version-thing)]
 
-       (when-let [docs (:doc (result ?meta))]
-         (list
-          [:h2 "Version Docs"]
-          [:pre "  " docs]))
+       (or (when (succeed? ?notes)
+             (when-let [note-thing (first (result ?notes))]
+               (let [note-text (result (api/read-note *lg* note-thing))]
+                 (editable
+                  "Release Notes"
+                  (edit-url' note-thing)
+                  (wutil/markdown-string note-text)))))
 
-       (when (succeed? ?notes)
-         (when-let [note-thing (first (result ?notes))]
-           (let [note-text (result (api/read-note *lg* note-thing))]
-             (editable
-              "Release Notes"
-              (edit-url' note-thing)
-              (wutil/markdown-string note-text)))))
+           (when-let [docs (:doc (result ?meta))]
+             (addable
+              "Version Docs"
+              (add-note-url version-thing)
+              [:pre "  " docs])))
 
        [:h2 "Platforms"]
        [:ul (for [platform-thing (->> (api/list-platforms *lg* version-thing)
@@ -240,18 +257,19 @@
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"} (header platform-thing)]
 
-       (when-let [docs (:doc (result ?meta))]
-         (list
-          [:h2 "Platform Docs"]
-          [:pre "  " docs]))
-
-       (when (succeed? ?notes)
-         (when-let [note-thing (first (result ?notes))]
-           (let [note-text (api/read-note *lg* note-thing)]
-             (editable
-              "Platform Notes"
-              (edit-url' note-thing)
-              (wutil/markdown-string note-text)))))
+       (or (when (succeed? ?notes)
+             (when-let [note-thing (first (result ?notes))]
+               (let [note-text (api/read-note *lg* note-thing)]
+                 (editable
+                  "Platform Notes"
+                  (edit-url' note-thing)
+                  (wutil/markdown-string note-text)))))
+           
+           (when-let [docs (:doc (result ?meta))]
+             (addable
+              "Official Documentation"
+              (add-note-url platform-thing)
+              [:pre "  " docs])))
 
        [:h2 "Namespaces"]
        [:ul (for [ns-thing (->> (api/list-namespaces *lg* platform-thing)
@@ -291,8 +309,9 @@
 
            (let [{:keys [doc name]} (result ?meta)]
              (when doc
-               (list
-                [:h2 "Namespace Docs"]
+               (addable
+                "Official Documentation"
+                (add-note-url namespace-thing)
                 [:pre "  " doc]))))
 
        (list [:h2 "Symbols"]
@@ -345,15 +364,6 @@
      [:h1 {:class "page-title"}
       (header (assoc def-thing :name (str symbol)))]
 
-     (when arglists
-       (list [:h2 (if (= type :special)
-                    "Usage"
-                    "Arities")]
-             [:pre (->> arglists
-                        (map pr-str)
-                        (map #(str "   " %))
-                        (interpose \newline))]))
-
      (or (when (succeed? ?notes)
            (when-let [note-thing (first (result ?notes))]
              (let [note-text (result (api/read-note *lg* note-thing))]
@@ -363,11 +373,24 @@
                 (wutil/markdown-string note-text)))))
 
          (when doc
-           [:div.official-docs
-            [:h2 "Official Documentation"]
-            [:pre "  " doc]
-            [:a {:href (add-note-url def-thing)}
-             [:h2 "Add a note"]]]))
+           (addable
+            "Official Documentation"
+            (add-note-url def-thing)
+            
+            [:pre
+             (when arglists
+               (list (if (= type :special)
+                       "Usage"
+                       "Arities")
+                     "\n==================================================\n"
+                     (->> arglists
+                          (map pr-str)
+                          (map #(str "   " %))
+                          (interpose \newline))))
+             "\n\n"
+             "Docstring\n"
+             "==================================================\n"
+             "  " doc])))
 
      ;; FIXME: examples needs a _lot_ of work
      (when (succeed? ?examples)

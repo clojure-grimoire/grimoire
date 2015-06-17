@@ -43,8 +43,5 @@
   "Helper function for translating a Repo, an optional branch and a directory
   into a GitHub link for creating a new file at the targeted location."
 
-  ([repo path]
-     (->new-url repo "master" path))
-
-  ([{:keys [repo]} branch path]
-     (str repo "/new/" branch "/" path)))
+  ([{:keys [repo]} branch path filename]
+   (str repo "/new/" branch "/" path "?filename=" filename)))

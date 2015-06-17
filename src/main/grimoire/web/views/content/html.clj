@@ -30,7 +30,8 @@
      [:a.edit {:href link
                :rel "nofollow"}
       "Edit"]]
-    content]))
+    [:div.content
+     content]]))
 
 (defn edit-url' [t]
   {:pre [(or (t/note? t)

@@ -1,8 +1,8 @@
-.clearfix:after { 
-   content: " ";
-   display: block; 
-   height: 0; 
-   clear: both;
+.clearfix:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
 }
 
 div.editable {
@@ -27,6 +27,10 @@ div.editable div.header a.edit {
     float: right;
     padding-right: 1em;
     padding-top: 1em;
+}
+
+div.editable div.content {
+    padding: 1rem;
 }
 
 div.source {

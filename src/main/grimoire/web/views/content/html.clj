@@ -38,6 +38,22 @@
              (t/example? t))]}
   (gh/->edit-url (cfg/notes-config) "develop" (::t/file t)))
 
+(defn add-ex-url [t n]
+  (println t n)
+  (let [*cfg* (cfg/lib-grim-config)
+        t     (last (result (api/thing->prior-versions *cfg* t)))]
+    (as-> t v
+      (#'grimoire.api.fs.impl/thing->handle *cfg* :else v)
+      (gh/->new-url (cfg/notes-config) "develop" v (str n)))))
+
+(defn add-note-url [t]
+  (println t)
+  (let [*cfg* (cfg/lib-grim-config)
+        t     (last (result (api/thing->prior-versions *cfg* t)))]
+    (as-> t v
+      (#'grimoire.api.fs.impl/thing->handle *cfg* :else v)
+      (gh/->new-url (cfg/notes-config) "develop" v "notes.md"))))
+
 ;; Pages
 ;;------------------------------------------------------------------------------
 ;; FIXME: probably belongs somewhere else
@@ -349,7 +365,9 @@
          (when doc
            [:div.official-docs
             [:h2 "Official Documentation"]
-            [:pre "  " doc]]))
+            [:pre "  " doc]
+            [:a {:href (add-note-url def-thing)}
+             [:h2 "Add a note"]]]))
 
      ;; FIXME: examples needs a _lot_ of work
      (when (succeed? ?examples)
@@ -362,7 +380,9 @@
              (str "Example " (inc n))
              (edit-url' et)
              [:div.source
-              (wutil/highlight-example et)])])]])
+              (wutil/highlight-example et)])])]
+        [:a {:href (add-ex-url def-thing (rand-int Integer/MAX_VALUE))}
+         [:h2 "Add an example"]]])
 
      (when-not (= :special type)
        [:a {:href (str "http://crossclj.info/fun/"

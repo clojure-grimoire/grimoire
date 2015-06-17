@@ -111,7 +111,8 @@
       (let [artifacts (result ?artifacts)
             meta      (when (succeed? ?meta) (result ?meta))]
         (layout
-         (cfg/site-config)
+         (assoc (cfg/site-config)
+                :css ["/public/css/editable.css"])
          ;;------------------------------------------------------------
          [:h1 {:class "page-title"}
           (header group-thing)]
@@ -146,7 +147,8 @@
     (when (succeed? ?meta)
       (let [meta (result ?meta)]
         (layout
-         (cfg/site-config)
+         (assoc (cfg/site-config)
+                :css ["/public/css/editable.css"])
          ;;------------------------------------------------------------
          [:h1 {:class "page-title"}
           (header artifact-thing)]
@@ -185,7 +187,8 @@
         ?notes (api/list-notes *lg* version-thing)]
     (when (succeed? ?meta)
       (layout
-       (cfg/site-config) ;; FIXME: add artifact & group name to title somehow?
+       (assoc (cfg/site-config) ;; FIXME: add artifact & group name to title somehow?
+              :css ["/public/css/editable.css"])
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"} (header version-thing)]
 
@@ -215,7 +218,8 @@
         ?notes (api/list-notes *lg* platform-thing)]
     (when (succeed? ?meta)
       (layout
-       (cfg/site-config) ;; FIXME: add artifact & group name to title somehow?
+       (assoc (cfg/site-config)  ;; FIXME: add artifact & group name to title somehow?
+              :css ["/public/css/editable.css"])
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"} (header platform-thing)]
 
@@ -252,26 +256,27 @@
         ?notes (api/list-notes *lg* namespace-thing)]
     (when (succeed? ?meta)
       (layout
-       (cfg/site-config) ;; FIXME: add artifact, namespace?
+       (assoc (cfg/site-config) ;; FIXME: add artifact, namespace?
+              :css ["/public/css/editable.css"]) 
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"}
         (header namespace-thing)]
 
-       (let [{:keys [doc name]} (result ?meta)]
-         (when doc
-           (list
-            [:h2 "Namespace Docs"]
-            [:pre "  " doc])))
+       (or (when (succeed? ?notes)
+             (when-let [note-thing (first (result ?notes))]
+               (let [note-text (-> *lg*
+                                   (api/read-note note-thing)
+                                   result)]
+                 (editable
+                  "Namespace Notes"
+                  (edit-url' note-thing)
+                  (wutil/markdown-string note-text)))))
 
-       (when (succeed? ?notes)
-         (when-let [note-thing (first (result ?notes))]
-           (let [note-text (-> *lg*
-                               (api/read-note note-thing)
-                               result)]
-             (editable
-              "Namespace Notes"
-              (edit-url' note-thing)
-              (wutil/markdown-string note-text)))))
+           (let [{:keys [doc name]} (result ?meta)]
+             (when doc
+               (list
+                [:h2 "Namespace Docs"]
+                [:pre "  " doc]))))
 
        (list [:h2 "Symbols"]
              ;; FIXME: the fuck am I doing here srsly
@@ -317,7 +322,8 @@
     (layout
      (-> *site-config*
          (assoc :summary doc)
-         (assoc :css ["/public/css/symbol.css"]))
+         (assoc :css ["/public/css/editable.css"
+                      "/public/css/symbol.css"]))
      ;;------------------------------------------------------------
      [:h1 {:class "page-title"}
       (header (assoc def-thing :name (str symbol)))]

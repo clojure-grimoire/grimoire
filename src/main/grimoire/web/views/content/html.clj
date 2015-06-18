@@ -19,6 +19,20 @@
       [:td {:style "width: 90%;"} (f k)]
       [:td {:style "width: 10%;"} v]])])
 
+(defn addable
+  ([title link content]
+   (addable :h2 title link content))
+
+  ([title-size title link content]
+   [:div.editable
+    [:div {:class "header clearfix"}
+     (when title [title-size title])
+     [:a.edit {:href link
+               :rel "nofollow"}
+      "Add notes"]]
+    [:div.content
+     content]]))
+
 (defn editable
   ([title link content]
    (editable :h2 title link content))
@@ -30,12 +44,29 @@
      [:a.edit {:href link
                :rel "nofollow"}
       "Edit"]]
-    content]))
+    [:div.content
+     content]]))
 
 (defn edit-url' [t]
   {:pre [(or (t/note? t)
              (t/example? t))]}
   (gh/->edit-url (cfg/notes-config) "develop" (::t/file t)))
+
+(defn add-ex-url [t n]
+  (println t n)
+  (let [*cfg* (cfg/lib-grim-config)
+        t     (last (result (api/thing->prior-versions *cfg* t)))]
+    (as-> t v
+      (#'grimoire.api.fs.impl/thing->handle *cfg* :else v)
+      (gh/->new-url (cfg/notes-config) "develop" v (str n)))))
+
+(defn add-note-url [t]
+  (println t)
+  (let [*cfg* (cfg/lib-grim-config)
+        t     (last (result (api/thing->prior-versions *cfg* t)))]
+    (as-> t v
+      (#'grimoire.api.fs.impl/thing->handle *cfg* :else v)
+      (gh/->new-url (cfg/notes-config) "develop" v "notes.md"))))
 
 ;; Pages
 ;;------------------------------------------------------------------------------
@@ -111,23 +142,25 @@
       (let [artifacts (result ?artifacts)
             meta      (when (succeed? ?meta) (result ?meta))]
         (layout
-         (cfg/site-config)
+         (assoc (cfg/site-config)
+                :css ["/public/css/editable.css"])
          ;;------------------------------------------------------------
          [:h1 {:class "page-title"}
           (header group-thing)]
 
-         (when-let [docs (:doc meta)]
-           (list
-            [:h2 "Group Docs"]
-            [:pre "  " docs]))
+         (or (when (succeed? ?notes)
+               (when-let [note-thing (first (result ?notes))]
+                 (let [note-text (result (api/read-note *lg* note-thing))]
+                   (editable
+                    "Group Notes"
+                    (edit-url' note-thing)
+                    (wutil/markdown-string note-text)))))
 
-         (when (succeed? ?notes)
-           (when-let [note-thing (first (result ?notes))]
-             (let [note-text (result (api/read-note *lg* note-thing))]
-               (editable
-                "Group Notes"
-                (edit-url' note-thing)
-                (wutil/markdown-string note-text)))))
+             (when-let [docs (:doc meta)]
+               (addable
+                "Group Docs"
+                (add-note-url group-thing)
+                [:pre "  " docs])))
 
          (list
           [:h2 "Known Artifacts"]
@@ -146,23 +179,25 @@
     (when (succeed? ?meta)
       (let [meta (result ?meta)]
         (layout
-         (cfg/site-config)
+         (assoc (cfg/site-config)
+                :css ["/public/css/editable.css"])
          ;;------------------------------------------------------------
          [:h1 {:class "page-title"}
           (header artifact-thing)]
 
-         (when-let [docs (:doc meta)]
-           (list
-            [:h2 "Artifact Docs"]
-            [:pre "  " docs]))
+         (or (when (succeed? ?notes)
+               (when-let [note-thing (first (result ?notes))]
+                 (let [note-text (result (api/read-note *lg* note-thing))]
+                   (editable
+                    "Arifact Notes"
+                    (edit-url' note-thing)
+                    (wutil/markdown-string note-text)))))
 
-         (when (succeed? ?notes)
-           (when-let [note-thing (first (result ?notes))]
-             (let [note-text (result (api/read-note *lg* note-thing))]
-               (editable
-                "Arifact Notes"
-                (edit-url' note-thing)
-                (wutil/markdown-string note-text)))))
+             (when-let [docs (:doc meta)]
+               (addable
+                "Artifact Docs"
+                (add-note-url artifact-thing)
+                [:pre "  " docs])))
 
          (list
           [:h2 "Known release versions"]
@@ -185,22 +220,24 @@
         ?notes (api/list-notes *lg* version-thing)]
     (when (succeed? ?meta)
       (layout
-       (cfg/site-config) ;; FIXME: add artifact & group name to title somehow?
+       (assoc (cfg/site-config) ;; FIXME: add artifact & group name to title somehow?
+              :css ["/public/css/editable.css"])
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"} (header version-thing)]
 
-       (when-let [docs (:doc (result ?meta))]
-         (list
-          [:h2 "Version Docs"]
-          [:pre "  " docs]))
+       (or (when (succeed? ?notes)
+             (when-let [note-thing (first (result ?notes))]
+               (let [note-text (result (api/read-note *lg* note-thing))]
+                 (editable
+                  "Release Notes"
+                  (edit-url' note-thing)
+                  (wutil/markdown-string note-text)))))
 
-       (when (succeed? ?notes)
-         (when-let [note-thing (first (result ?notes))]
-           (let [note-text (result (api/read-note *lg* note-thing))]
-             (editable
-              "Release Notes"
-              (edit-url' note-thing)
-              (wutil/markdown-string note-text)))))
+           (when-let [docs (:doc (result ?meta))]
+             (addable
+              "Version Docs"
+              (add-note-url version-thing)
+              [:pre "  " docs])))
 
        [:h2 "Platforms"]
        [:ul (for [platform-thing (->> (api/list-platforms *lg* version-thing)
@@ -215,22 +252,24 @@
         ?notes (api/list-notes *lg* platform-thing)]
     (when (succeed? ?meta)
       (layout
-       (cfg/site-config) ;; FIXME: add artifact & group name to title somehow?
+       (assoc (cfg/site-config)  ;; FIXME: add artifact & group name to title somehow?
+              :css ["/public/css/editable.css"])
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"} (header platform-thing)]
 
-       (when-let [docs (:doc (result ?meta))]
-         (list
-          [:h2 "Platform Docs"]
-          [:pre "  " docs]))
-
-       (when (succeed? ?notes)
-         (when-let [note-thing (first (result ?notes))]
-           (let [note-text (api/read-note *lg* note-thing)]
-             (editable
-              "Platform Notes"
-              (edit-url' note-thing)
-              (wutil/markdown-string note-text)))))
+       (or (when (succeed? ?notes)
+             (when-let [note-thing (first (result ?notes))]
+               (let [note-text (api/read-note *lg* note-thing)]
+                 (editable
+                  "Platform Notes"
+                  (edit-url' note-thing)
+                  (wutil/markdown-string note-text)))))
+           
+           (when-let [docs (:doc (result ?meta))]
+             (addable
+              "Official Documentation"
+              (add-note-url platform-thing)
+              [:pre "  " docs])))
 
        [:h2 "Namespaces"]
        [:ul (for [ns-thing (->> (api/list-namespaces *lg* platform-thing)
@@ -252,26 +291,28 @@
         ?notes (api/list-notes *lg* namespace-thing)]
     (when (succeed? ?meta)
       (layout
-       (cfg/site-config) ;; FIXME: add artifact, namespace?
+       (assoc (cfg/site-config) ;; FIXME: add artifact, namespace?
+              :css ["/public/css/editable.css"]) 
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"}
         (header namespace-thing)]
 
-       (let [{:keys [doc name]} (result ?meta)]
-         (when doc
-           (list
-            [:h2 "Namespace Docs"]
-            [:pre "  " doc])))
+       (or (when (succeed? ?notes)
+             (when-let [note-thing (first (result ?notes))]
+               (let [note-text (-> *lg*
+                                   (api/read-note note-thing)
+                                   result)]
+                 (editable
+                  "Namespace Notes"
+                  (edit-url' note-thing)
+                  (wutil/markdown-string note-text)))))
 
-       (when (succeed? ?notes)
-         (when-let [note-thing (first (result ?notes))]
-           (let [note-text (-> *lg*
-                               (api/read-note note-thing)
-                               result)]
-             (editable
-              "Namespace Notes"
-              (edit-url' note-thing)
-              (wutil/markdown-string note-text)))))
+           (let [{:keys [doc name]} (result ?meta)]
+             (when doc
+               (addable
+                "Official Documentation"
+                (add-note-url namespace-thing)
+                [:pre "  " doc]))))
 
        (list [:h2 "Symbols"]
              ;; FIXME: the fuck am I doing here srsly
@@ -317,19 +358,11 @@
     (layout
      (-> *site-config*
          (assoc :summary doc)
-         (assoc :css ["/public/css/symbol.css"]))
+         (assoc :css ["/public/css/editable.css"
+                      "/public/css/symbol.css"]))
      ;;------------------------------------------------------------
      [:h1 {:class "page-title"}
       (header (assoc def-thing :name (str symbol)))]
-
-     (when arglists
-       (list [:h2 (if (= type :special)
-                    "Usage"
-                    "Arities")]
-             [:pre (->> arglists
-                        (map pr-str)
-                        (map #(str "   " %))
-                        (interpose \newline))]))
 
      (or (when (succeed? ?notes)
            (when-let [note-thing (first (result ?notes))]
@@ -340,14 +373,34 @@
                 (wutil/markdown-string note-text)))))
 
          (when doc
-           [:div.official-docs
-            [:h2 "Official Documentation"]
-            [:pre "  " doc]]))
+           (addable
+            "Official Documentation"
+            (add-note-url def-thing)
+            
+            [:pre
+             (when arglists
+               (list (if (= type :special)
+                       "Usage"
+                       "Arities")
+                     "\n==================================================\n"
+                     (->> arglists
+                          (map pr-str)
+                          (map #(str "   " %))
+                          (interpose \newline))))
+             "\n\n"
+             "Docstring\n"
+             "==================================================\n"
+             "  " doc])))
 
      ;; FIXME: examples needs a _lot_ of work
      (when (succeed? ?examples)
        [:div.section
-        [:h2.heading "Examples " [:span.hide "-"]]
+        [:div {:class "clearfix"}
+         [:h2.heading {:style "float:left;"}
+          "Examples " [:span.hide "-"]]
+         [:a {:style "float:right;"
+              :href  (add-ex-url def-thing (str (rand-int Integer/MAX_VALUE) ".clj"))}
+          "Add an example"]]
         [:div.autofold
          (for [[et n] (map vector (result ?examples) (range))]
            [:div.example

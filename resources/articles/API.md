@@ -25,6 +25,10 @@ duplicating this function.
 however the formatting is not enforced and qualfiers such as `-alpha4` are
 supported.
 
+`$PLATFORM` is the cannonical name of a Clojure dialect. Acceptable values of
+`$PLATFORM` are enumerated
+[here in lib-grimoire](https://github.com/clojure-grimoire/lib-grimoire/blob/master/src/grimoire/util.clj#L40-L53).
+
 `$NAMESPACE` is the cannonical name of a Clojure namespace with no munging
 applied.
 
@@ -33,18 +37,18 @@ applied.
 For user access to much of this data, Grimoire 0.4.7 Uses the following link
 structure for serving HTML and plaintext markup documentation:
 
-The path `/store/v0/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/` for
-symbol being either a def or a known special form will yield a HTML page
+The path `/store/v1/$GROUPID/$ARTIFACTID/$VERSION/$PLATFORM/$NAMESPACE/$SYMBOL/`
+for symbol being either a def or a known special form will yield a HTML page
 representing either a failure to find documentation (404) or a HTML page
 containing all available notes, examples and possibly other content. If the type
-"text/plain" is provided either as a GET paramenter to `type`, or as a request
+"text/plain" is provided either as the `GET` paramenter `type`, or as a request
 type, these paths will yield plain text rather than HTML results.
 
 The paths
-`/store/v0/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/docstring`,
-`/store/v0/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/extended-docstring`,
-`/store/v0/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/related` and
-`/store/v0/$GROUPID/$ARTIFACTID/$VERSION/$NAMESPACE/$SYMBOL/examples` are also
+`/store/v1/$GRP/$ART/$V/$PLAT/$NS/$SYM/docstring`,
+`/store/v1/$GRP/$ART/$V/$PLAT/$NS/$SYM/extended-docstring`,
+`/store/v1/$GRP/$ART/$V/$PLAT/$NS/$SYM/related` and
+`/store/v1/$GRP/$ART/$V/$PLAT/$NS/$SYM/examples` are also
 defined for all defs and special forms. These resources will only ever yield
 plain text results.
 
@@ -55,18 +59,27 @@ redirects.
 
 ### Examples
 
-`GET http://conj.io/store/v0/org.clojure/clojure/1.6.0/clojure.core/conj/ TYPE: text/html`
-shall return HTML formatted documentation of `clojure.core/conj` as
-of the release of `[org.clojure/clojure "1.6.0"]` as per convention.
+```
+$ curl -XGET http://conj.io/store/v1/org.clojure/clojure/1.6.0/clj/clojure.core/conj/
+```
 
-`GET http://conj.io/store/v0/org.clojure/clojure/1.6.0/clojure.core/conj/ TYPE: text/plain`
+shall return HTML formatted documentation of `clojure.core/conj` as of the
+release of `[org.clojure/clojure "1.6.0"]` as per convention.
+
+```
+$ curl -XGET -H 'Content-Type:text/plain' http://conj.io/store/v1/org.clojure/clojure/1.6.0/clj/clojure.core/conj/
+```
+
 shall return plain text or un-rendered markdown documentation of
 `clojure.core/conj` as of `[org.clojure/clojure "1.6.0"]` formatted for an
 80-character display.
 
-`GET http://conj.io/store/v0/org.clojure/clojure/1.6.0/clojure.core/conj/?type=text/plain`
-shall give the same result as if `TYPE` header were set to `text/plain` no matter the
-value of the `TYPE` header.
+```
+$ curl -XGET http://conj.io/store/v1/org.clojure/clojure/1.6.0/clojure.core/conj/?type=text/plain
+```
+
+shall give the same result as if `TYPE` header were set to `text/plain` no
+matter the value of the `TYPE` header.
 
 ### Searching
 
@@ -80,7 +93,7 @@ server side.
 ### Compatibility
 
 Note that prior to Grimoire 0.4.0, the path prefix
-`/store/v0/$ARTIFACTID/$GROUPID` was not required. In the interest of preserving
+`/store/v1/$ARTIFACTID/$GROUPID` was not required. In the interest of preserving
 links and escaping link rot, all versioned Grimoire URLs will be supported going
 forwards indefinitely. Existing URLs from Grimoire 0.1-0.3 of the
 `$VERSION/$NS/$DEF` schema are supported, and compatability is provided for
@@ -95,9 +108,9 @@ and later resolve that limitation adding a HTTP API with support for both JSON
 and EDN responses.
 
 As of the writing of this document, the JSON/EDN API is at version `v1`. The API
-will still respond to `v0` calls, however `v0` is limited to viewing Clojure
+will still respond to `v1` calls, however `v1` is limited to viewing Clojure
 ("clj") namespaces and defs, and as of this writing generates API `v1` and store
-`v0` URLs. No API `v0` URLs are generated, and all such URLs should be
+`v1` URLs. No API `v1` URLs are generated, and all such URLs should be
 considered deprecated.
 
 All routes in the API return an object, representing either success or failure.
@@ -129,7 +142,11 @@ URLs enumerated in API results. These URLs while they may have an obvious schema
 at the current version are not guaranteed in future versions and will always
 point to the same data accessed via the latest API version. However 
 
-## `http://conj.io/api/v1?op=groups`
+### groups
+
+```
+$ curl http://conj.io/api/v2?op=groups | jq .
+```
 
 Succeeds returning a list of records representing the various groups
 known to Grimoire.
@@ -138,14 +155,50 @@ In JSON:
 ```javascript
 {"result": "success",
  "body"  : [{"name":     "/org.clojure",
-             "html":     "/store/v0/org.clojure",
-             "children": {"notes":     "/api/v1/org.clojure?op=notes",
-                          "meta":      "/api/v1/org.clojure?op=meta",
-                          "artifacts": "/api/v1/org.clojure?op=artifacts"}},
+             "html":     "/store/v2/org.clojure",
+             "children": {"notes":     "/api/v2/org.clojure?op=notes",
+                          "meta":      "/api/v2/org.clojure?op=meta",
+                          "artifacts": "/api/v2/org.clojure?op=artifacts"}},
              ...]}
 ```
 
-## `http://conj.io/api/v1/$GROUP?op=notes`
+#### ns-resolve
+
+```
+$ curl http://conj.io/api/v2?op=ns-resolve&ns=clojure.core | jq .
+$ curl http://conj.io/api/v2?op=ns-resolve&ns=cljs.core&platform=cljs | jq .
+```
+
+Succeeds returning an augmented namespace result indicating the newest
+documented artifact with the namespace in question. The `GET` parameter
+`platform=` may be set to any supported platform, otherwise "clj" will be used
+by default.
+
+Fails if the given platform/namespace pair isn't known.
+
+```javascript
+{"result": "success",
+ "body":   {"namespace": "clojure.core",
+            "version":   "1.7.0-alpha4",
+            "artifact":  "clojure",
+            "group":     "org.clojure",
+            "html":      "/store/v2/org.clojure/clojure/1.7.0-alpha4/clojure.core",
+            "children":  {"all": "/api/v2/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=all",
+                          "macros":    "/api/v2/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=macros",
+                          "vars":      "/api/v2/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=vars",
+                          "fns":       "/api/v2/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=fns",
+                          "specials":  "/api/v2/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=specials",
+                          "sentinels": "/api/v2/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=sentinels",
+                          "notes":     "/api/v2/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=notes",
+                          "meta":      "/api/v2/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=meta"}}}
+```
+
+### Anything ?op=notes
+
+```
+$ curl http://conj.io/api/v2/org.clojure?op=notes | jq .
+$ curl http://conj.io/api/v2/org.clojure/core.typed?op=notes | jq .
+```
 
 Succeeds returning a simple string, being markdown formatted but
 unrendered notes about the group in question.
@@ -162,33 +215,14 @@ In JSON:
 Note that `?op=notes` is defined over every path in this API except
 for the base path, so further mention of it is elided.
 
-## `http://conj.io/api/v1?op=ns-resolve&ns=$NAMESPACE`
+### Anything ?op=meta
 
-Succeeds returning an augmented namespace result indicating the newest
-documented artifact with the namespace in question. The `GET` parameter
-`platform=` may be set to any supported platform, otherwise "clj" will be used
-by default.
-
-Fails if the given platform/namespace pair isn't known.
-
-```javascript
-{"result": "success",
- "body":   {"namespace": "clojure.core",
-            "version":   "1.7.0-alpha4",
-            "artifact":  "clojure",
-            "group":     "org.clojure",
-            "html":      "/store/v0/org.clojure/clojure/1.7.0-alpha4/clojure.core",
-            "children":  {"all": "/api/v1/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=all",
-                          "macros":    "/api/v1/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=macros",
-                          "vars":      "/api/v1/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=vars",
-                          "fns":       "/api/v1/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=fns",
-                          "specials":  "/api/v1/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=specials",
-                          "sentinels": "/api/v1/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=sentinels",
-                          "notes":     "/api/v1/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=notes",
-                          "meta":      "/api/v1/org.clojure/clojure/1.7.0-alpha4/clojure.core?op=meta"}}}
 ```
-
-## `http://conj.io/api/v1/$GROUP?op=meta`
+$ curl http://conj.io/api/v2/org.clojure?op=meta | jq .
+$ curl http://conj.io/api/v2/org.clojure/clojure?op=meta | jq .
+...
+$ curl http://conj.io/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core/conj?op=meta | jq .
+```
 
 Succeeds returning a map, being the metadata known about the group in
 question, or the empty map if nothing is known.
@@ -200,7 +234,11 @@ Note that `?op=meta` is defined over every path in this API except the
 base path, so further mentions of it are elided pending documentation
 of the metadata which may be expected from different resources.
 
-## `http://conj.io/api/v1/$GROUP?op=artifacts`
+### Group ?op=artifacts
+
+```
+$ curl http://conj.io/api/v2/org.clojure?op=artifacts | jq .
+```
 
 Succeeds returning a list of records representing the various
 artifacts in a known group.
@@ -212,14 +250,18 @@ In JSON:
 ```javascript
 {"result": "success",
  "body"  : [{"name":     "org.clojure/clojure",
-             "html":     "/store/v0/org.clojure/clojure",
-             "children": {"notes":    "/api/v1/org.clojure/clojure?op=notes",
-                          "meta":     "/api/v1/org.clojure/clojure?op=meta",
-                          "versions": "/api/v1/org.clojure/clojure?op=versions"}},
+             "html":     "/store/v2/org.clojure/clojure",
+             "children": {"notes":    "/api/v2/org.clojure/clojure?op=notes",
+                          "meta":     "/api/v2/org.clojure/clojure?op=meta",
+                          "versions": "/api/v2/org.clojure/clojure?op=versions"}},
              ...]}
 ```
 
-## `http://conj.io/api/v1/$GROUP/$ARTIFACT?op=versions`
+### Artifact ?op=versions
+
+```
+$ curl http://conj.io/api/v2/org.clojure/clojure?op=versions | jq .
+```
 
 Succeeds returning a list of records representing the known versions
 of a the artifact in question.
@@ -230,14 +272,18 @@ In JSON:
 ```javascript
 {"result": "success",
  "body"  : [{"name":     "org.clojure/clojure/1.6.0",
-             "html":     "/store/v0/org.clojure/clojure/1.6.0",
-             "children": {"notes":      "/api/v1/org.clojure/clojure/1.6.0?op=notes",
-                          "meta":       "/api/v1/org.clojure/clojure/1.6.0?op=meta",
-                          "platforms":  "/api/v1/org.clojure/clojure/1.6.0?op=platforms"}},
+             "html":     "/store/v2/org.clojure/clojure/1.6.0",
+             "children": {"notes":      "/api/v2/org.clojure/clojure/1.6.0?op=notes",
+                          "meta":       "/api/v2/org.clojure/clojure/1.6.0?op=meta",
+                          "platforms":  "/api/v2/org.clojure/clojure/1.6.0?op=platforms"}},
              ...]}
 ```
 
-## `http://conj.io/api/v1/$GROUP/$ARTIFACT/$VERSION?op=platforms`
+### Version ?op=platforms
+
+```
+$ curl http://conj.io/api/v2/org.clojure/clojure/1.6.0?op=platforms | jq .
+```
 
 Succeeds returning a list of records representing the platforms for which the
 given version contains namespaces. Supported platforms include
@@ -250,14 +296,18 @@ In JSON:
 ```javascript
 {"result": "success",
  "body"  : [{"name":     "org.clojure/clojure/1.6.0/clj",
-             "html":     "/store/v0/org.clojure/clojure/1.6.0/clj",
-             "children": {"notes":    "/api/v1/org.clojure/clojure/1.6.0/clj?op=notes",
-                          "meta":     "/api/v1/org.clojure/clojure/1.6.0/clj?op=meta",
-                          "macros":   "/api/v1/org.clojure/clojure/1.6.0/clj?op=namespaces"}},
+             "html":     "/store/v2/org.clojure/clojure/1.6.0/clj",
+             "children": {"notes":    "/api/v2/org.clojure/clojure/1.6.0/clj?op=notes",
+                          "meta":     "/api/v2/org.clojure/clojure/1.6.0/clj?op=meta",
+                          "macros":   "/api/v2/org.clojure/clojure/1.6.0/clj?op=namespaces"}},
              ...]}
 ```
 
-## `http://conj.io/api/v1/$GROUP/$ARTIFACT/$VERSION/$PLATFORM?op=namespaces`
+### Platform ?op=namespaces
+
+```
+$ curl http://conj.io/api/v2/org.clojure/clojure/1.6.0/clj?op=namespaces | jq .
+```
 
 Succeeds returning a list of records representing all the namespaces that the
 given artifact contains for the specified platform.
@@ -268,19 +318,23 @@ In JSON:
 ```javascript
 {"result": "success",
  "body"  : [{"name":     "org.clojure/clojure/1.6.0/clj/clojure.core",
-             "html":     "/store/v0/org.clojure/clojure/1.6.0/clj/clojure.core",
-             "children": {"notes":     "/api/v1/org.clojure/clojure/1.6.0/clj/clojure.core?op=notes",
-                          "meta":      "/api/v1/org.clojure/clojure/1.6.0/clj/clojure.core?op=meta",
-                          "all":       "/api/v1/org.clojure/clojure/1.6.0/clj/clojure.core?op=all",
-                          "macros":    "/api/v1/org.clojure/clojure/1.6.0/clj/clojure.core?op=macros",
-                          "vars":      "/api/v1/org.clojure/clojure/1.6.0/clj/clojure.core?op=vars",
-                          "fns":       "/api/v1/org.clojure/clojure/1.6.0/clj/clojure.core?op=fns",
-                          "specials":  "/api/v1/org.clojure/clojure/1.6.0/clj/clojure.core?op=specials",
-                          "sentinels": "/api/v1/org.clojure/clojure/1.6.0/clj/clojure.core?op=sentinels"}},
+             "html":     "/store/v2/org.clojure/clojure/1.6.0/clj/clojure.core",
+             "children": {"notes":     "/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core?op=notes",
+                          "meta":      "/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core?op=meta",
+                          "all":       "/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core?op=all",
+                          "macros":    "/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core?op=macros",
+                          "vars":      "/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core?op=vars",
+                          "fns":       "/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core?op=fns",
+                          "specials":  "/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core?op=specials",
+                          "sentinels": "/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core?op=sentinels"}},
              ...]}
 ```
 
-## `http://conj.io/api/v1/$GROUP/$ARTIFACT/$VERSION/$PLATFORM/$NS?op=all`
+### Ns ?op=all
+
+```
+$ curl http://conj.io/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core?op=all | jq .
+```
 
 Succeeds returning a list of records representing all the defs and
 sentinels in the given namespace.
@@ -291,10 +345,10 @@ In JSON:
 ```javascript
 {"result": "success",
  "body"  : [{"name":     "org.clojure/clojure/1.6.0/clj/clojure.core/concat",
-             "html":     "/store/v0/org.clojure/clojure/1.6.0/clj/clojure.core/concat",
-             "children": {"notes":    "/api/v1/org.clojure/clojure/1.6.0/clj/clojure.core/concat?op=notes",
-                          "meta":     "/api/v1/org.clojure/clojure/1.6.0/clj/clojure.core/concat?op=meta",
-                          "examples": "/api/v1/org.clojure/clojure/1.6.0/clj/clojure.core/concat?op=examples"}},
+             "html":     "/store/v2/org.clojure/clojure/1.6.0/clj/clojure.core/concat",
+             "children": {"notes":    "/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core/concat?op=notes",
+                          "meta":     "/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core/concat?op=meta",
+                          "examples": "/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core/concat?op=examples"}},
              ...]}
 ```
 
@@ -302,8 +356,21 @@ The ops, `macros`, `vars`, `fns`, `specials` and `sentinels` are
 simply type selectors which return distinct subsets of thes `all`
 results.
 
-## `http://conj.io/api/v1/$GROUP/$ARTIFACT/$VERSION/$PLATFORM/$NS/$SYMBOL?op=examples`
+### Def op=examples
+
+```
+$ curl http://conj.io/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core/for?op=examples | jq .
+```
 
 Succeeds returning a list of examples for this version of the symbol
 as strings of plain text. Note that this does not return all examples
 for all prior versions.
+
+```javascript
+{"result": "success",
+ "body": [
+   "(for [[x y] '([:a 1] [:b 2] [:c 0]) :when (= y 0)] x)\n;; => (:c)\n",
+   ...
+   ]
+}
+```

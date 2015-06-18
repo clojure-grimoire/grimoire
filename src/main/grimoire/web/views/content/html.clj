@@ -21,7 +21,7 @@
 
 (defn addable
   ([title link content]
-   (editable :h2 title link content))
+   (addable :h2 title link content))
 
   ([title-size title link content]
    [:div.editable
@@ -395,7 +395,12 @@
      ;; FIXME: examples needs a _lot_ of work
      (when (succeed? ?examples)
        [:div.section
-        [:h2.heading "Examples " [:span.hide "-"]]
+        [:div {:class "clearfix"}
+         [:h2.heading {:style "float:left;"}
+          "Examples " [:span.hide "-"]]
+         [:a {:style "float:right;"
+              :href  (add-ex-url def-thing (str (rand-int Integer/MAX_VALUE) ".clj"))}
+          "Add an example"]]
         [:div.autofold
          (for [[et n] (map vector (result ?examples) (range))]
            [:div.example
@@ -403,9 +408,7 @@
              (str "Example " (inc n))
              (edit-url' et)
              [:div.source
-              (wutil/highlight-example et)])])]
-        [:a {:href (add-ex-url def-thing (rand-int Integer/MAX_VALUE))}
-         [:h2 "Add an example"]]])
+              (wutil/highlight-example et)])])]])
 
      (when-not (= :special type)
        [:a {:href (str "http://crossclj.info/fun/"

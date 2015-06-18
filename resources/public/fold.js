@@ -3,8 +3,12 @@
     $(".section .autofold.prefold").hide();
     $(".section .heading").click(
 	function(){
-	    $(this).parent().children(".autofold").toggle("slow");
-	    
+	    p=$(this).parent();
+	    while(!p.hasClass("section"))
+		p=p.parent();
+
+	    p.find(".autofold").toggle("slow");
+
  	    v=$(this).children("span.unhide");
 	    u=$(this).children("span.hide");
 

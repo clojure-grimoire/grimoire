@@ -323,11 +323,13 @@
 
 (defn emit-alphabetized-links [records]
   (let [segments (group-by (comp first str :name) records)]
-    (for [k (sort (keys segments))]
-      (list [:h4 (string/capitalize k)]
-            [:p (for [r (sort-by :name (get segments k))]
-                  [:a {:href (:url r) :style "padding: 0 0.2em;"}
-                   (:name r)])]))))
+    [:table
+     (for [k (sort (keys segments))]
+       [:tr
+        [:td [:h4 (string/capitalize k)]]
+        [:td (for [r (sort-by :name (get segments k))]
+               [:a {:href (:url r) :style "padding: 0 0.2em;"}
+                (:name r)])]])]))
 
 (defmethod namespace-page :text/html [_ namespace-thing]
   (let [*lg*   (cfg/lib-grim-config)
@@ -376,14 +378,15 @@
                (for [k keys]
                  (when-let [records (get grouping k)]
                    (list
-                    (let [links (emit-alphabetized-links records)]
+                    (let [links (emit-alphabetized-links records)
+                          flag  (< 6 (count (second links)))]
                       [:div.section
                        [:h3.heading (get mapping k)
-                        " " (if (< 6 (count links))
+                        " " (if flag
                               [:span.unhide "+"]
                               [:span.hide "-"])]
                        [:div {:class (str "autofold"
-                                          (when (< 6 (count links))
+                                          (when flag
                                             " prefold"))}
                         links]]))))))
 

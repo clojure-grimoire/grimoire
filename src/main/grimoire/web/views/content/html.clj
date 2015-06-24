@@ -405,6 +405,7 @@
          (for [[et n] (map vector (result ?examples) (range))]
            [:div.example
             (editable
+             :h3
              (str "Example " (inc n))
              (edit-url' et)
              [:div.source

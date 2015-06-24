@@ -7,8 +7,7 @@
             [grimoire.web.layout :refer [layout]]
             [grimoire.web.util :as wutil]
             [grimoire.web.config :as cfg]
-            [grimoire.github :as gh]
-            [simpledb.core :as sdb]))
+            [grimoire.github :as gh]))
 
 ;; Helpers
 ;;------------------------------------------------------------------------------

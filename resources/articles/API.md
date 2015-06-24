@@ -162,7 +162,7 @@ In JSON:
              ...]}
 ```
 
-#### ns-resolve
+### ns-resolve
 
 ```
 $ curl http://conj.io/api/v2?op=ns-resolve&ns=clojure.core | jq .

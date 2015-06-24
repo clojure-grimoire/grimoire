@@ -9,7 +9,7 @@
   :dependencies [[org.clojure/clojure "1.7.0-beta1"]
                  [org.clojure/core.match "0.3.0-alpha4"
                   :exclusions [org.clojure/clojure]]
-                 [org.clojure-grimoire/lib-grimoire "0.9.2"
+                 [org.clojure-grimoire/lib-grimoire "0.9.3"
                   :exclusions [org.clojure/clojure]]
                  [org.clojure-grimoire/simpledb "0.1.8"
                   :exclusions [org.clojure/clojure]]
@@ -31,11 +31,7 @@
                   :exclusions [org.clojure/clojure]]
                  [me.raynes/conch "0.8.0"
                   :exclusions [org.clojure/clojure]]
-                 [me.arrdem/detritus "0.2.2"
-                  :exclusions [org.clojure/clojure]]
-                 [me.arrdem/guten-tag "0.1.0"
-                  :exclusions [org.clojure/clojure]]
-                 [sitemap "0.2.4"
+                [sitemap "0.2.4"
                   :exclusions [org.clojure/clojure]]
                  [instaparse "1.3.6"
                   :exclusions [org.clojure/clojure]]

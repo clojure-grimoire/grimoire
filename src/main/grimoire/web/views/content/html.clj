@@ -7,8 +7,7 @@
             [grimoire.web.layout :refer [layout]]
             [grimoire.web.util :as wutil]
             [grimoire.web.config :as cfg]
-            [grimoire.github :as gh]
-            [simpledb.core :as sdb]))
+            [grimoire.github :as gh]))
 
 ;; Helpers
 ;;------------------------------------------------------------------------------
@@ -53,7 +52,7 @@
   (gh/->edit-url (cfg/notes-config) "develop" (::t/file t)))
 
 (defn add-ex-url [t n]
-  (println t n)
+  {:pre [(t/thing? t)]}
   (let [*cfg* (cfg/lib-grim-config)
         t     (last (result (api/thing->prior-versions *cfg* t)))]
     (as-> t v
@@ -61,7 +60,7 @@
       (gh/->new-url (cfg/notes-config) "develop" v (str n)))))
 
 (defn add-note-url [t]
-  (println t)
+  {:pre [(t/thing? t)]}
   (let [*cfg* (cfg/lib-grim-config)
         t     (last (result (api/thing->prior-versions *cfg* t)))]
     (as-> t v
@@ -79,6 +78,20 @@
    [:blockquote [:p (-> (cfg/site-config) :style :quote)]]
    (wutil/cheatsheet-memo (cfg/site-config))))
 
+(def sorted-table
+  #(->> %
+        (sort-by second)
+        reverse
+        (take 100)
+        (kv-table identity)))
+  
+(def sorted-thing-table
+  #(->> %
+        (sort-by second)
+        reverse
+        (take 100)
+        (kv-table wutil/mem-sts->link)))
+
 ;; FIXME: this entire fuction is too datastore-aware by a lot
 (defn heatmap-page []
   (layout
@@ -87,18 +100,7 @@
    [:h1 {:class "page-title"} "Analytics!"]
    [:p "Or at least some of it >:D"]
    (let [service            @cfg/service
-         db                 (-> service :simpledb :db deref)
-         sorted-table       #(->> %
-                                  (sort-by second)
-                                  reverse
-                                  (take 100)
-                                  (kv-table identity))
-         
-         sorted-thing-table #(->> %
-                                  (sort-by second)
-                                  reverse
-                                  (take 100)
-                                  (kv-table wutil/mem-sts->link))]
+         db                 (-> service :simpledb :db deref)]
      (list [:div
             [:h2 "Top 100 namespaces"]
             (->> db :namespaces sorted-thing-table)]
@@ -118,6 +120,47 @@
            [:div
             [:h2 "Top clients"]
             (->> db :clients sorted-table)]))))
+
+(defn worklist-page []
+  (let [*cfg* (cfg/lib-grim-config)
+        i     (ns-version-index)
+        service            @cfg/service
+        db                 (-> service :simpledb :db deref)]
+    (layout
+     (cfg/site-config)
+     @(future
+        [:div {:style "width:50%;float:left"}
+         [:h1 {:class "page-title"} "Symbols without notes"]
+         (->> (for [d (result (api/search *cfg* [:def
+                                                 "org.clojure"
+                                                 "clojure"
+                                                 (t/thing->name (i "clojure.core"))
+                                                 :any
+                                                 :any
+                                                 :any]))
+                    :when (let [res (api/read-notes *cfg* d)]
+                            (or (not (succeed? res))
+                                (empty? (result res))))]
+                ((juxt identity (:defs db))
+                 (t/thing->short-string d)))
+              sorted-thing-table)])
+
+     @(future
+        [:div {:style "width:50%;float:left"}
+         [:h1 {:class "page-title"} "Symbols without examples"]
+         (->> (for [d (result (api/search *cfg* [:def
+                                                 "org.clojure"
+                                                 "clojure"
+                                                 (t/thing->name (i "clojure.core"))
+                                                 :any
+                                                 :any
+                                                 :any]))
+                    :when (let [res (api/list-examples *cfg* d)]
+                            (or (not (succeed? res))
+                                (empty? (result res))))]
+                ((juxt identity (:defs db))
+                 (t/thing->short-string d)))
+              sorted-thing-table)]))))
 
 (defmethod store-page :text/html [_]
   (let [*lg*   (cfg/lib-grim-config)
@@ -279,11 +322,13 @@
 
 (defn emit-alphabetized-links [records]
   (let [segments (group-by (comp first str :name) records)]
-    (for [k (sort (keys segments))]
-      (list [:h4 (string/capitalize k)]
-            [:p (for [r (sort-by :name (get segments k))]
-                  [:a {:href (:url r) :style "padding: 0 0.2em;"}
-                   (:name r)])]))))
+    [:table
+     (for [k (sort (keys segments))]
+       [:tr
+        [:td [:h4 (string/capitalize k)]]
+        [:td (for [r (sort-by :name (get segments k))]
+               [:a {:href (:url r) :style "padding: 0 0.2em;"}
+                (:name r)])]])]))
 
 (defmethod namespace-page :text/html [_ namespace-thing]
   (let [*lg*   (cfg/lib-grim-config)
@@ -332,14 +377,15 @@
                (for [k keys]
                  (when-let [records (get grouping k)]
                    (list
-                    (let [links (emit-alphabetized-links records)]
+                    (let [links (emit-alphabetized-links records)
+                          flag  (< 6 (count (second links)))]
                       [:div.section
                        [:h3.heading (get mapping k)
-                        " " (if (< 6 (count links))
+                        " " (if flag
                               [:span.unhide "+"]
                               [:span.hide "-"])]
                        [:div {:class (str "autofold"
-                                          (when (< 6 (count links))
+                                          (when flag
                                             " prefold"))}
                         links]]))))))
 
@@ -405,6 +451,7 @@
          (for [[et n] (map vector (result ?examples) (range))]
            [:div.example
             (editable
+             :h3
              (str "Example " (inc n))
              (edit-url' et)
              [:div.source

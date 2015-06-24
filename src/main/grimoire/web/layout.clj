@@ -40,21 +40,26 @@
    [:input#sidebar-checkbox.sidebar-checkbox {:type "checkbox"}]
    [:div#sidebar.sidebar
     [:div.sidebar-item [:p description]]
-    [:nav.sidebar-nav
-     [:a.sidebar-nav-item {:href "/"} "Home"]
-     
+    [:nav.sidebar-nav    
      [:br] "Artifacts" [:br]
      (let [cfg (cfg/site-config)]
        (list
         [:a.sidebar-nav-item {:href (:store-url cfg)} "Artifact store"]
+        [:a.sidebar-nav-item {:href (str (:store-url cfg) "org.clojure/clojure/latest/")} "Clojure LATEST"]
         [:a.sidebar-nav-item {:href (str (:store-url cfg) "org.clojure/clojure/1.6.0/")} "Clojure 1.6"]
         [:a.sidebar-nav-item {:href (str (:store-url cfg) "org.clojure/clojure/1.5.0/")} "Clojure 1.5"]
         [:a.sidebar-nav-item {:href (str (:store-url cfg) "org.clojure/clojure/1.4.0/")} "Clojure 1.4"]))
 
-     [:br] "More" [:br]
+     [:br] "About" [:br]
      [:a.sidebar-nav-item {:href "/api"} "API"]
-     [:a.sidebar-nav-item {:href "/contributing"} "Contributing"]
      [:a.sidebar-nav-item {:href "/about"} "About"]
+     [:a.sidebar-nav-item {:href "/contributing"} "Contributing"]
+
+     [:br] "Bits and Bats" [:br]
+     [:a.sidebar-nav-item {:href "/heatmap"} "Heatmap"]
+     [:a.sidebar-nav-item {:href "/worklist"} "Worklist"]
+
+     [:br] "Me" [:br]
      (let [{:keys [gittip me]} author]
        (list
         [:a.sidebar-nav-item {:href repo} "Github Repo"]

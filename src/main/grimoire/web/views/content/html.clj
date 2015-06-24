@@ -53,7 +53,7 @@
   (gh/->edit-url (cfg/notes-config) "develop" (::t/file t)))
 
 (defn add-ex-url [t n]
-  (println t n)
+  {:pre [(t/thing? t)]}
   (let [*cfg* (cfg/lib-grim-config)
         t     (last (result (api/thing->prior-versions *cfg* t)))]
     (as-> t v
@@ -61,7 +61,7 @@
       (gh/->new-url (cfg/notes-config) "develop" v (str n)))))
 
 (defn add-note-url [t]
-  (println t)
+  {:pre [(t/thing? t)]}
   (let [*cfg* (cfg/lib-grim-config)
         t     (last (result (api/thing->prior-versions *cfg* t)))]
     (as-> t v

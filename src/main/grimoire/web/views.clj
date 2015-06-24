@@ -1,6 +1,5 @@
 (ns grimoire.web.views
-  (:require [detritus.variants :as var]
-            [grimoire.util :as util]
+  (:require [grimoire.util :as util]
             [grimoire.things :as t
              :refer [thing->path]]
             [grimoire.either

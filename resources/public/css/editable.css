@@ -18,15 +18,16 @@ div.editable div.header {
     border-left: 4px solid #515151;
 }
 
-div.editable div.header h2 {
+div.editable div.header h2, h3, h4 {
     float: left;
     padding-left: 1em;
+    margin-bottom: 1em;
 }
 
 div.editable div.header a.edit {
+    padding-top: 1em;
     float: right;
     padding-right: 1em;
-    padding-top: 1em;
 }
 
 div.editable div.content {

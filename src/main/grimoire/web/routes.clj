@@ -557,6 +557,9 @@
   (GET "/heatmap" []
     (v.c.h/heatmap-page))
 
+  (GET "/worklist" []
+    (v.c.h/worklist-page))
+
   (GET "/sitemap.xml" []
     (v/sitemap-page))
 

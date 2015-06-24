@@ -79,6 +79,20 @@
    [:blockquote [:p (-> (cfg/site-config) :style :quote)]]
    (wutil/cheatsheet-memo (cfg/site-config))))
 
+(def sorted-table
+  #(->> %
+        (sort-by second)
+        reverse
+        (take 100)
+        (kv-table identity)))
+  
+(def sorted-thing-table
+  #(->> %
+        (sort-by second)
+        reverse
+        (take 100)
+        (kv-table wutil/mem-sts->link)))
+
 ;; FIXME: this entire fuction is too datastore-aware by a lot
 (defn heatmap-page []
   (layout
@@ -87,18 +101,7 @@
    [:h1 {:class "page-title"} "Analytics!"]
    [:p "Or at least some of it >:D"]
    (let [service            @cfg/service
-         db                 (-> service :simpledb :db deref)
-         sorted-table       #(->> %
-                                  (sort-by second)
-                                  reverse
-                                  (take 100)
-                                  (kv-table identity))
-         
-         sorted-thing-table #(->> %
-                                  (sort-by second)
-                                  reverse
-                                  (take 100)
-                                  (kv-table wutil/mem-sts->link))]
+         db                 (-> service :simpledb :db deref)]
      (list [:div
             [:h2 "Top 100 namespaces"]
             (->> db :namespaces sorted-thing-table)]
@@ -118,6 +121,47 @@
            [:div
             [:h2 "Top clients"]
             (->> db :clients sorted-table)]))))
+
+(defn worklist-page []
+  (let [*cfg* (cfg/lib-grim-config)
+        i     (ns-version-index)
+        service            @cfg/service
+        db                 (-> service :simpledb :db deref)]
+    (layout
+     (cfg/site-config)
+     @(future
+        [:div {:style "width:50%;float:left"}
+         [:h1 {:class "page-title"} "Symbols without notes"]
+         (->> (for [d (result (api/search *cfg* [:def
+                                                 "org.clojure"
+                                                 "clojure"
+                                                 (t/thing->name (i "clojure.core"))
+                                                 :any
+                                                 :any
+                                                 :any]))
+                    :when (let [res (api/read-notes *cfg* d)]
+                            (or (not (succeed? res))
+                                (empty? (result res))))]
+                ((juxt identity (:defs db))
+                 (t/thing->short-string d)))
+              sorted-thing-table)])
+
+     @(future
+        [:div {:style "width:50%;float:left"}
+         [:h1 {:class "page-title"} "Symbols without examples"]
+         (->> (for [d (result (api/search *cfg* [:def
+                                                 "org.clojure"
+                                                 "clojure"
+                                                 (t/thing->name (i "clojure.core"))
+                                                 :any
+                                                 :any
+                                                 :any]))
+                    :when (let [res (api/list-examples *cfg* d)]
+                            (or (not (succeed? res))
+                                (empty? (result res))))]
+                ((juxt identity (:defs db))
+                 (t/thing->short-string d)))
+              sorted-thing-table)]))))
 
 (defmethod store-page :text/html [_]
   (let [*lg*   (cfg/lib-grim-config)

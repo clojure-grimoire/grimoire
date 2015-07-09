@@ -6,10 +6,10 @@
 
   :source-paths ["src/main"]
   
-  :dependencies [[org.clojure/clojure "1.7.0-beta1"]
+  :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/core.match "0.3.0-alpha4"
                   :exclusions [org.clojure/clojure]]
-                 [org.clojure-grimoire/lib-grimoire "0.9.3"
+                 [org.clojure-grimoire/lib-grimoire "0.10.2"
                   :exclusions [org.clojure/clojure]]
                  [org.clojure-grimoire/simpledb "0.1.8"
                   :exclusions [org.clojure/clojure]]

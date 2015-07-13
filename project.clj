@@ -13,27 +13,27 @@
                   :exclusions [org.clojure/clojure]]
                  [org.clojure-grimoire/simpledb "0.1.8"
                   :exclusions [org.clojure/clojure]]
-                 [cheshire "5.4.0"
+                 [cheshire "5.5.0"
                   :exclusions [org.clojure/clojure]]
-                 [com.taoensso/timbre "3.4.0"
+                 [com.taoensso/timbre "4.0.2"
                   :exclusions [org.clojure/clojure]]
-                 [ring/ring-core "1.3.2"
+                 [ring/ring-core "1.4.0"
                   :exclusions [org.clojure/clojure]]
-                 [ring/ring-jetty-adapter "1.3.2"
+                 [ring/ring-jetty-adapter "1.4.0"
                   :exclusions [org.clojure/clojure]]
                  [selmer "0.8.2"
                   :exclusions [org.clojure/clojure]]
-                 [compojure "1.3.2"
+                 [compojure "1.3.4"
                   :exclusions [org.clojure/clojure]]
                  [hiccup "1.0.5"
                   :exclusions [org.clojure/clojure]]
-                 [markdown-clj "0.9.65"
+                 [markdown-clj "0.9.67"
                   :exclusions [org.clojure/clojure]]
                  [me.raynes/conch "0.8.0"
                   :exclusions [org.clojure/clojure]]
                 [sitemap "0.2.4"
                   :exclusions [org.clojure/clojure]]
-                 [instaparse "1.3.6"
+                 [instaparse "1.4.1"
                   :exclusions [org.clojure/clojure]]
                  [environ "1.0.0"
                   :exclusions [org.clojure/clojure]]]

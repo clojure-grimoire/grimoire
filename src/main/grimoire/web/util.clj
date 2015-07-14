@@ -74,8 +74,21 @@
             (web/make-html-url (cfg/web-config) t))
     s))
 
+(declare highlight-text)
+
+(defn markdown-highlight [text state]
+  (let [text (string/join text)]
+    [(string/replace text
+                     #"(?si)```(\w*)\n\r?(.*?)```"
+                     (fn [[_ lang code :as match]]
+                       (highlight-text lang code)))
+     state]))
+
 (def markdown-string
-  (comp md/md-to-html-string
+  (comp (fn [m]
+          (md/md-to-html-string m
+                                :replacement-transformers
+                                (cons markdown-highlight md.t/transformer-vector)))
         (fn [m]
           (string/replace m
                           t/short-string-pattern

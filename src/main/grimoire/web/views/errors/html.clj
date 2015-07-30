@@ -19,7 +19,7 @@
     [:p
      "Huh, looks like you searched just for a namespace :c"
      "This isn't supported right now. See " [:a {:href "/api"} "the API docs"] " for more info."
-     "Please file an issue on " [:a {:href (str (:repo site-config) "issues/")}
+     "Please file an issue on " [:a {:href (str (:repo (site-config)) "issues/")}
                                  "the bugtracker"]
      " if you think this is a bug."])))
 
@@ -34,7 +34,7 @@
      "Huh, looks like you tried to use an unknown search version or just forgot the namespace and symbol."
      "See " [:a {:href "/api"} "the API docs"] " for more info."
      "Please file an issue on "
-     [:a {:href (str (:repo site-config) "issues/")}
+     [:a {:href (str (:repo (site-config)) "issues/")}
       "the bugtracker"]
      " if you think this is a bug."])))
 
@@ -53,5 +53,5 @@
       (header (:parent def-thing))]
      [:p "Unknown symbol identifier " (pr-str symbol-string)]
      [:p "If you found a broken link, please report the issue encountered on the "
-      [:a {:href (:repo site-config)}
+      [:a {:href (:repo (site-config))}
        " github bugtracker."]])))

@@ -2,6 +2,7 @@
   (:require [clojure.java.io :as io]
             [clojure.string :as string]
             [markdown.core :as md]
+            [markdown.transformers :as md.t]
             [me.raynes.conch :refer [let-programs]]
             [grimoire.things :as t]
             [grimoire.api :as api]
@@ -107,15 +108,18 @@
   "Helper for rendering a file on the resource path to HTML via markdown."
   (comp markdown-string resource-file-contents))
 
-(defn highlight-clojure
-  "Helper for rendering a string of Clojure to syntax highlighted HTML via
-  pygmentize."
-  [text]
+(defn highlight-text
+  "Helper for rendering a string of program source to syntax
+  highlighted HTML via pygmentize."
+  [lang text]
   (let-programs [pygmentize "pygmentize"]
                 (pygmentize "-fhtml"
-                            "-lclojure"
+                            (str "-l" lang)
                             "-Ostripnl=False,encoding=utf-8"
                             {:in text})))
+
+(def highlight-clojure
+  (partial highlight-text "clojure"))
 
 (defn highlight-example
   "Helper for rendering a Grimoire Example Thing to HTML, using a filesystem

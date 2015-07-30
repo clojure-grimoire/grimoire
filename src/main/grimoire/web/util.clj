@@ -2,6 +2,7 @@
   (:require [clojure.java.io :as io]
             [clojure.string :as string]
             [markdown.core :as md]
+            [markdown.transformers :as md.t]
             [me.raynes.conch :refer [let-programs]]
             [grimoire.things :as t]
             [grimoire.api :as api]

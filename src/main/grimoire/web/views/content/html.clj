@@ -67,6 +67,27 @@
       (#'grimoire.api.fs.impl/thing->handle *cfg* :else v)
       (gh/->new-url (cfg/notes-config) "develop" v "notes.md"))))
 
+(defn local-add-ex-url [t]
+  {:pre [(t/thing? t)]}
+  (let [*cfg* (cfg/lib-grim-config)
+        t     (last (result (api/thing->prior-versions *cfg* t)))]
+    (as-> t v
+      (#'grimoire.api.fs.impl/thing->handle *cfg* :else v)
+      (.getAbsolutePath v)
+      (format "file://%s/examples/%s.clj"
+              (str v) (rand-int Integer/MAX_VALUE))
+      [:a {:href v} (t/thing->short-string t)])))
+
+(defn local-add-note-url [t]
+  {:pre [(t/thing? t)]}
+  (let [*cfg* (cfg/lib-grim-config)
+        t     (last (result (api/thing->prior-versions *cfg* t)))]
+    (as-> t v
+      (#'grimoire.api.fs.impl/thing->handle *cfg* :notes v)
+      (.getAbsolutePath v)
+      (format "file://%s" (str v))
+      [:a {:href v} (t/thing->short-string t)])))
+
 ;; Pages
 ;;------------------------------------------------------------------------------
 ;; FIXME: probably belongs somewhere else
@@ -84,13 +105,16 @@
         reverse
         (take 100)
         (kv-table identity)))
-  
-(def sorted-thing-table
+
+(defn sorted-table-of [fx]
   #(->> %
         (sort-by second)
         reverse
         (take 100)
-        (kv-table wutil/mem-sts->link)))
+        (kv-table fx)))
+
+(def sorted-thing-table
+  (sorted-table-of wutil/mem-sts->link))
 
 ;; FIXME: this entire fuction is too datastore-aware by a lot
 (defn heatmap-page []
@@ -99,68 +123,64 @@
    ;;------------------------------------------------------------
    [:h1 {:class "page-title"} "Analytics!"]
    [:p "Or at least some of it >:D"]
-   (let [service            @cfg/service
-         db                 (-> service :simpledb :db deref)]
-     (list [:div
-            [:h2 "Top 100 namespaces"]
-            (->> db :namespaces sorted-thing-table)]
+   (let [service @cfg/service
+         db      (-> service :simpledb :db deref)
+         l       (fn [x] [:div {:style "width:50%;float:left;"} x])
+         r       (fn [x] [:div {:style "width:50%;float:right;"} x])]
+     (list (l [:div
+               [:h2 "Top 100 namespaces"]
+               (->> db :namespaces sorted-thing-table)])
+           (l [:div
+               [:h2 "Top 100 defs"]
+               (->> db :defs sorted-thing-table)])
+           (l [:div
+               [:h2 "Top artifacts"]
+               (->> db :artifacts sorted-table)])
+           (l [:div
+               [:h2 "Top platforms"]
+               (->> db :platforms sorted-table)])
+           (l [:div
+               [:h2 "Top clients"]
+               (->> db :clients sorted-table)])))))
 
-           [:div
-            [:h2 "Top 100 defs"]
-            (->> db :defs sorted-thing-table)]
-
-           [:div
-            [:h2 "Top artifacts"]
-            (->> db :artifacts sorted-table)]
-
-           [:div
-            [:h2 "Top platforms"]
-            (->> db :platforms sorted-table)]
-
-           [:div
-            [:h2 "Top clients"]
-            (->> db :clients sorted-table)]))))
+(def *everything*
+  (->> (api/search *cfg*
+                   [:def
+                    "org.clojure"
+                    "clojure"
+                    (t/thing->name (i "clojure.core"))
+                    :any
+                    :any
+                    :any])
+       (let [*cfg* (cfg/lib-grim-config)
+             i     (ns-version-index)])
+       (result)
+       delay))
 
 (defn worklist-page []
-  (let [*cfg* (cfg/lib-grim-config)
-        i     (ns-version-index)
-        service            @cfg/service
-        db                 (-> service :simpledb :db deref)]
+  (let [*cfg*   (cfg/lib-grim-config)
+        service @cfg/service
+        db      (-> service :simpledb :db deref)
+        q!      #(get (:defs db) (t/thing->short-string %) 0)]
     (layout
      (cfg/site-config)
-     @(future
-        [:div {:style "width:50%;float:left"}
-         [:h1 {:class "page-title"} "Symbols without notes"]
-         (->> (for [d (result (api/search *cfg* [:def
-                                                 "org.clojure"
-                                                 "clojure"
-                                                 (t/thing->name (i "clojure.core"))
-                                                 :any
-                                                 :any
-                                                 :any]))
-                    :when (let [res (api/read-notes *cfg* d)]
-                            (or (not (succeed? res))
-                                (empty? (result res))))]
-                ((juxt identity (:defs db))
-                 (t/thing->short-string d)))
-              sorted-thing-table)])
+     [:div {:style "width:50%;float:left"}
+      [:h1 {:class "page-title"} "Symbols without notes"]
+      (->> (for [[d res] (-> (juxt identity #(api/read-notes *cfg* %)) 
+                             (pmap @*everything*))
+                 :when (or (not (succeed? res))
+                           (empty? (result res)))]
+             [d (q! d)])
+           ((sorted-table-of local-add-note-url)))]
 
-     @(future
-        [:div {:style "width:50%;float:left"}
-         [:h1 {:class "page-title"} "Symbols without examples"]
-         (->> (for [d (result (api/search *cfg* [:def
-                                                 "org.clojure"
-                                                 "clojure"
-                                                 (t/thing->name (i "clojure.core"))
-                                                 :any
-                                                 :any
-                                                 :any]))
-                    :when (let [res (api/list-examples *cfg* d)]
-                            (or (not (succeed? res))
-                                (empty? (result res))))]
-                ((juxt identity (:defs db))
-                 (t/thing->short-string d)))
-              sorted-thing-table)]))))
+     [:div {:style "width:50%;float:left"}
+      [:h1 {:class "page-title"} "Symbols without examples"]
+      (->> (for [[d res] (-> (juxt identity #(api/read-notes *cfg* %))
+                             (pmap @*everything*))
+                 :when (or (not (succeed? res))
+                           (empty? (result res)))]
+             [d (q! d)])
+           ((sorted-table-of local-add-ex-url)))])))
 
 (defmethod store-page :text/html [_]
   (let [*lg*   (cfg/lib-grim-config)
@@ -307,7 +327,7 @@
                   "Platform Notes"
                   (edit-url' note-thing)
                   (wutil/markdown-string note-text)))))
-           
+
            (when-let [docs (:doc (result ?meta))]
              (addable
               "Official Documentation"
@@ -337,7 +357,7 @@
     (when (succeed? ?meta)
       (layout
        (assoc (cfg/site-config) ;; FIXME: add artifact, namespace?
-              :css ["/public/css/editable.css"]) 
+              :css ["/public/css/editable.css"])
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"}
         (header namespace-thing)]
@@ -422,7 +442,7 @@
            (addable
             "Official Documentation"
             (add-note-url def-thing)
-            
+
             [:pre
              (when arglists
                (list (if (= type :special)
@@ -476,7 +496,7 @@
         [:div.section
          [:h2.heading "Source " [:span.unhide "+"]]
          [:div.autofold.prefold
-          [:div.source 
+          [:div.source
            (wutil/highlight-clojure src)]]]))
 
      [:script {:src "/public/jquery.js" :type "text/javascript"}]

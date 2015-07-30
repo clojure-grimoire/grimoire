@@ -42,13 +42,14 @@
     [:div.sidebar-item [:p description]]
     [:nav.sidebar-nav    
      [:br] "Artifacts" [:br]
-     (let [cfg (cfg/site-config)]
+     (let [cfg   (cfg/site-config)
+           linkf (fn [v]
+                   [:a.sidebar-nav-item
+                    {:href (format "%sorg.clojure/clojure/%s.0/" (:store-url cfg) v)}
+                    (str "Clojure " v)])]
        (list
         [:a.sidebar-nav-item {:href (:store-url cfg)} "Artifact store"]
-        [:a.sidebar-nav-item {:href (str (:store-url cfg) "org.clojure/clojure/latest/")} "Clojure LATEST"]
-        [:a.sidebar-nav-item {:href (str (:store-url cfg) "org.clojure/clojure/1.6.0/")} "Clojure 1.6"]
-        [:a.sidebar-nav-item {:href (str (:store-url cfg) "org.clojure/clojure/1.5.0/")} "Clojure 1.5"]
-        [:a.sidebar-nav-item {:href (str (:store-url cfg) "org.clojure/clojure/1.4.0/")} "Clojure 1.4"]))
+        (map linkf ["1.7" "1.6" "1.5" "1.4"])))
 
      [:br] "About" [:br]
      [:a.sidebar-nav-item {:href "/api"} "API"]

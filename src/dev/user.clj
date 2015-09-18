@@ -1,5 +1,10 @@
 (ns user
-  (:require [grimoire.web.service :as web]))
+  (:require [grimoire.web.service :as web]
+            [grimoire.api :as api]
+            [grimoire.either :refer [succeed? result]]
+            [grimoire.web.config :as cfg]
+            [grimoire.web.views :refer [ns-version-index]]
+            [grimoire.things :as t]))
 
 (defn start! []
   (web/start-web-server!)

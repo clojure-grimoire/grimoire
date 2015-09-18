@@ -22,9 +22,8 @@ In order to be accepted, examples must conform to [bbatsov/clojure-style-guide](
 
 Examples must be copy/pastable in full into a REPL with no editing.
 This means that error messages, println output and soforth should be commented out.
-Prompts such as `user>`, `user=>`, `λx.x>` and soforth should be omitted.
 
-For instance
+**Prompts** such as `user>`, `user=>`, `λx.x>` and soforth should be omitted. For instance
 
 ```Clojure
 user=> 4
@@ -51,6 +50,25 @@ For instance
 ```
 
 Is totally OK.
+
+**Input**, as to clj::clojure.core/read or other functions should also be commented out...
+
+```Clojure
+(read)
+;; < (1 2 3)
+;; => (1 2 3)
+```
+
+**Output**, as to stdout or stderr should also be commented out.
+
+```Clojure
+(do (.write *err* "To error!\n")
+    (.write *out* "To out!\n")
+	nil)
+;; >> To error!
+;; > To out!
+;; => nil
+```
 
 ### Adding an Example
 
@@ -116,6 +134,8 @@ Grimoire is built as a matching pair of programs: a "database" generator which u
 - Leiningen
 - Maven
 - Git
+
+Mac users should install `coreutils` via [brew](http://brew.sh)
 
 
 ### Usage

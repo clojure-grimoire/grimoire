@@ -1,6 +1,5 @@
 (ns grimoire.web.views
-  (:require [detritus.variants :as var]
-            [grimoire.util :as util]
+  (:require [grimoire.util :as util]
             [grimoire.things :as t
              :refer [thing->path]]
             [grimoire.either
@@ -17,7 +16,8 @@
             [grimoire.api.fs.read]
             [grimoire.api.web :as web]
             [ring.util.response :as response]
-            [sitemap.core :refer [generate-sitemap]]))
+            [sitemap.core
+             :refer [generate-sitemap]]))
 
 ;; Common partial pages
 ;;--------------------------------------------------------------------
@@ -81,7 +81,8 @@
      (if page
        (list [:h1 {:class "page-title"} title]
              page)
-       (response/not-found "Resource not found, sorry. Please file an issue on the github bugtracker.")))))
+       (response/not-found
+        "Resource not found, sorry. Please file an issue on the github bugtracker.")))))
 
 (defmulti store-page identity)
 
@@ -92,34 +93,21 @@
 
 (defmulti group-page dispatch-fn
   :default :text/plain)
-;; FIXME: application/edn
-;; FIXME: application/json
 
 (defmulti artifact-page dispatch-fn
   :default :text/plain)
-;; FIXME: application/edn
-;; FIXME: application/json
 
 (defmulti version-page dispatch-fn
   :default :text/plain)
-;; FIXME: application/edn
-;; FIXME: application/json
 
 (defmulti platform-page dispatch-fn
   :default :text/plain)
-;;FIXME: text/plain
-;;FIXME: application/json
-;;FIXME: application/edn
 
 (defmulti namespace-page dispatch-fn
   :default :text/plain)
-;; FIXME: application/edn
-;; FIXME: application/json
 
 (defmulti symbol-page dispatch-fn
   :default :text/plain)
-;; FIXME: application/edn
-;; FIXME: application/json
 
 ;; FIXME: How to deal with namespaces in different platforms?
 ;; FIXME: Probably belongs somewhere else

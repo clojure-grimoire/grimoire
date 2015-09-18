@@ -1,0 +1,14 @@
+.container {
+  max-width: 52rem;
+}
+
+@media (min-width: 28em) {
+  .container {
+    max-width: 28rem;
+  }
+}
+@media (min-width: 60em) {
+  .container {
+    max-width: 60rem;
+  }
+}

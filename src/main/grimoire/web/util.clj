@@ -2,6 +2,7 @@
   (:require [clojure.java.io :as io]
             [clojure.string :as string]
             [markdown.core :as md]
+            [markdown.transformers :as md.t]
             [me.raynes.conch :refer [let-programs]]
             [grimoire.things :as t]
             [grimoire.api :as api]
@@ -74,8 +75,21 @@
             (web/make-html-url (cfg/web-config) t))
     s))
 
+(declare highlight-text)
+
+(defn markdown-highlight [text state]
+  (let [text (string/join text)]
+    [(string/replace text
+                     #"(?si)```(\w*)\n\r?(.*?)```"
+                     (fn [[_ lang code :as match]]
+                       (highlight-text lang code)))
+     state]))
+
 (def markdown-string
-  (comp md/md-to-html-string
+  (comp (fn [m]
+          (md/md-to-html-string m
+                                :replacement-transformers
+                                (cons markdown-highlight md.t/transformer-vector)))
         (fn [m]
           (string/replace m
                           t/short-string-pattern
@@ -94,15 +108,38 @@
   "Helper for rendering a file on the resource path to HTML via markdown."
   (comp markdown-string resource-file-contents))
 
-(defn highlight-clojure
-  "Helper for rendering a string of Clojure to syntax highlighted HTML via
-  pygmentize."
-  [text]
+(defn highlight-text
+  "Helper for rendering a string of program source to syntax
+  highlighted HTML via pygmentize."
+  [lang text]
   (let-programs [pygmentize "pygmentize"]
                 (pygmentize "-fhtml"
-                            "-lclojure"
+                            (str "-l" lang)
                             "-Ostripnl=False,encoding=utf-8"
                             {:in text})))
+
+(def highlight-clojure
+  (partial highlight-text "clojure"))
+
+(defn highlight-example
+  "Helper for rendering a Grimoire Example Thing to HTML, using a filesystem
+  cache of rendered examples to improve performance."
+  [ex]
+  {:pre [(t/example? ex)]}
+  (let [url        (:grimoire.things/url ex)
+        ex-file    (:handle ex)
+        cache-dir  (io/file "render-cache")
+        cache-file (io/file cache-dir (str (hash url) ".html"))] ;; FIXME: use a different hash algo?
+    (if-not (.exists cache-dir)
+      (.mkdirs cache-dir))
+
+    (if (.exists cache-file)
+      (slurp cache-file)
+
+      (let [text (e/result (api/read-example (cfg/lib-grim-config) ex))
+            html (highlight-clojure text)]
+        (spit cache-file html)
+        html))))
 
 (defn url-encode
   "Returns an UTF-8 URL encoded version of the given string."

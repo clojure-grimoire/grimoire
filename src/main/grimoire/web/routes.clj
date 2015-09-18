@@ -23,6 +23,10 @@
 (def ^:private privilaged-user-agents
   #{"URL/Emacs"})
 
+(defn ^:private bot? [uas]
+  (or (re-find #"[Bb]ot" uas)
+      (re-find #"[Ss]pider" uas)))
+
 (def ^:private incf (fnil inc 0))
 
 (defn- log! [request thing]
@@ -30,36 +34,37 @@
   
   ;; what do I want to know
   ;; - inc user-agent string tracking
-  (let [db (cfg/simpledb-config)]
-    (sdb/update! db
-                 :clients update
-                 (get-in request [:headers "user-agent"] "Unknown") incf)
+  (let [user-agent (get-in request [:headers "user-agent"] "Unknown")
+        db (cfg/simpledb-config)]
+    (when-not (bot? user-agent)
+      (sdb/update! db
+                   :clients update
+                   user-agent incf)
 
-    ;; - inc the thing URI in the "thing"
-    (when thing
-      ;; - if def, inc in the def store at ":artifact/:ns/:def"
-      (when (t/def? thing)
-        (sdb/update! db
-                     :defs update
-                     (t/thing->short-string thing) incf))
+      ;; - inc the thing URI in the "thing"
+      (when thing
+        ;; - if def, inc in the def store at ":artifact/:ns/:def"
+        (when (t/def? thing)
+          (sdb/update! db
+                       :defs update
+                       (t/thing->short-string thing) incf))
 
-      (when-let [ns (t/thing->namespace thing)]
-        (sdb/update! db
-                     :namespaces update
-                     (t/thing->short-string ns) incf))
+        (when-let [ns (t/thing->namespace thing)]
+          (sdb/update! db
+                       :namespaces update
+                       (t/thing->short-string ns) incf))
 
-      (when-let [platform (t/thing->platform thing)]
-        (sdb/update! db
-                     :platforms update
-                     (t/thing->name platform) incf))
-
-      (when (t/artifacted? thing)
-        (let [artifact (t/thing->artifact thing)
-              group    (t/thing->group    artifact)]
-          (when artifact
-            (sdb/update! db
-                         :artifacts update
-                         (str (t/thing->name group) \/ (t/thing->name artifact)) incf)))))))
+        (when-let [platform (t/thing->platform thing)]
+          (sdb/update! db
+                       :platforms update
+                       (t/thing->name platform) incf))
+        (when (t/artifacted? thing)
+          (let [artifact (t/thing->artifact thing)
+                group    (t/thing->group    artifact)]
+            (when artifact
+              (sdb/update! db
+                           :artifacts update
+                           (str (t/thing->name group) \/ (t/thing->name artifact)) incf))))))))
 
 (defn store-v1
   [{header-type :content-type
@@ -157,7 +162,8 @@
 (defmacro api-log []
   `(log! ~'req ~'t))
 
-(defmacro do-dispatch [dispatch type op t]
+(defmacro do-dispatch
+  [dispatch type op t]
   `(or (when-let [f# (~dispatch ~op)]
          (when-let [r# (f# ~type ~t)]
            (log! ~'req ~'t)
@@ -390,7 +396,8 @@
       (#'app new-req) ;; pass it forwards
       (wutil/moved-permanently new-uri))))
 
-(defn rewrite-latest->version-req [request store-v group artifact]
+(defn rewrite-latest->version-req
+  [request store-v group artifact]
   (let [user-agent (get-in request [:headers "user-agent"])
         t          (-> (cfg/lib-grim-config)
                        (t/->Group group)
@@ -414,7 +421,8 @@
       (#'app new-req) ;; pass it forwards
       (wutil/moved-permanently new-uri))))
 
-(defn upgrade-v0-munged->v1-req [request group artifact version platform ns symbol]
+(defn upgrade-v0-munged->v1-req
+  [request group artifact version platform ns symbol]
   (let [user-agent (get-in request [:headers "user-agent"])
         new-symbol (util/update-munge symbol)
         new-uri    (str "/store/v1/"
@@ -433,10 +441,16 @@
         (#'app new-req) ;; pass it forwards
         (wutil/moved-permanently new-uri)))))
 
-(defn upgrade-v0->v1-req [request]
+(defn upgrade-v0->v1-req
+  [request]
   (let [user-agent (get-in request [:headers "user-agent"])
         new-symbol (util/update-munge symbol)
-        new-uri    (str "/store/v1" (:path-info request))
+        rest-path  (rest (string/split (:path-info request) #"/"))
+        _          (println rest-path)
+        rest-path  (if (> (count rest-path) 3)
+                     (concat (take 3 rest-path) ["clj"] (drop 3 rest-path))
+                     rest-path)
+        new-uri    (str "/store/v1/" (string/join "/" rest-path))
         new-req    (-> request
                        (assoc :uri new-uri)
                        (dissoc :context :path-info))]
@@ -542,6 +556,9 @@
 
   (GET "/heatmap" []
     (v.c.h/heatmap-page))
+
+  (GET "/worklist" []
+    (v.c.h/worklist-page))
 
   (GET "/sitemap.xml" []
     (v/sitemap-page))

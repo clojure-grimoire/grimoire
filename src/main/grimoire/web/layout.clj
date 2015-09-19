@@ -28,7 +28,7 @@
    [:link {:href (str base-url "public/apple-touch-icon-precomposed.png") :sizes "144x144" :rel "apple-touch-icon-precomposed"}]
    [:link {:href (str base-url "public/favicon.ico") :rel "shortcut icon"}]])
 
-(defn masthead [{:keys [base-url] :as c}]
+(defn masthead [{:keys [base-url funding-flag] :as c}]
   [:div.masthead
    [:div.container
     [:h3.masthead-title
@@ -40,7 +40,7 @@
    [:input#sidebar-checkbox.sidebar-checkbox {:type "checkbox"}]
    [:div#sidebar.sidebar
     [:div.sidebar-item [:p description]]
-    [:nav.sidebar-nav    
+    [:nav.sidebar-nav
      [:br] "Artifacts" [:br]
      (let [cfg   (cfg/site-config)
            linkf (fn [v]
@@ -80,6 +80,10 @@
   _gaq.push(['_setAccount', '" google-analytics-id "']);
   _gaq.push(['_trackPageview']);
 
+  function closefunding() {
+    $('#funding').slideUp('slow', function(){$('#funding').remove();});
+  }
+
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
@@ -92,8 +96,21 @@
    (header page)
    [:body
     (sidebar page)
-    [:div.wrap (masthead page)
-     [:div {:class "container content"}
+    [:div.wrap
+     (masthead page)
+
+     (when (:funding-flag page false)
+       [:div {:id "funding"
+              :style "padding: 2em; background-color: #3EC53E; color: white;"}
+        [:center
+         [:h1 "Hey listen!"]
+         [:h2
+          "It looks like you're getting some use out of Grimoire. Great!" [:br]
+          "Please " [:a {:style "color: blue;" :href "/funding"} "help me keep it online"] [:br]
+          "Or " [:a {:style "color: blue;" :onclick "closefunding()"} "make this go away"]]]])
+
+     [:div {:class "container content"
+            :style "margin-top: 3em;"}
       [:div {:class "page"}
        content]]]
     [:label.sidebar-toggle {:for "sidebar-checkbox"}]]

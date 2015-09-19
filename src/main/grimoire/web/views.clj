@@ -84,12 +84,14 @@
        (response/not-found
         "Resource not found, sorry. Please file an issue on the github bugtracker.")))))
 
-(defmulti store-page identity)
-
 (def dispatch-fn
   (fn [x & more]
-    {:pre [(keyword? x)]}
-    x))
+    (cond (keyword? x) x
+          (map? x)     (:content-type x)
+          :else        nil)))
+
+(defmulti store-page dispatch-fn
+  :default :text/html)
 
 (defmulti group-page dispatch-fn
   :default :text/plain)

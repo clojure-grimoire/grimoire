@@ -25,11 +25,13 @@
    :base-url            "/"
    :store-url           "/store/v1/"
    :version             (slurp "VERSION")
+   :fundraising         {:active true
+                         :rate   10}
    :google-analytics-id "UA-44001831-2"
    :year                "2015"
    :author              {:me          "http://arrdem.com"
                          :email       "me@arrdem.com"
-                         :gittip      "https://gittip.com/arrdem"}
+                         :gittip      "/funding"}
    :style               {:header-sep  "/"
                          :title       "Grimoire - Community Clojure Documentation"
                          :description "Community documentation of Clojure"

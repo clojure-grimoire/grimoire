@@ -2,27 +2,27 @@
 (function () {
     $(".section .autofold.prefold").hide();
     $(".section").find(".heading").click(
-	function(){
-	    p=$(this);
-	    while(!p.hasClass("section"))
-		p=p.parent();
+        function(){
+            p=$(this);
+            while(!p.hasClass("section"))
+                p=p.parent();
 
-	    p.children(".autofold").toggle("slow");
-	    
- 	    v=p.find("span.unhide");
-	    u=p.find("span.hide");
+            p.children(".autofold").slideToggle("slow");
 
-	    v.removeClass("unhide")
-		.addClass("hide")
-		.html("-");
+            v=p.find("span.unhide");
+            u=p.find("span.hide");
 
-	    u.removeClass("hide")
-		.addClass("unhide")
-		.html("+");
-	});
+            v.removeClass("unhide")
+                .addClass("hide")
+                .html("-");
+
+            u.removeClass("hide")
+                .addClass("unhide")
+                .html("+");
+        });
 
     $(document).on("keydown",
-		   function (e) {
+                   function (e) {
                        if (e.keyCode == 70 && e.ctrlKey) {
                            $('.section .heading').click(); // show all flaps
                        }

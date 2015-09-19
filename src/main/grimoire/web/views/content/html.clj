@@ -11,7 +11,7 @@
 
 
 ;; Helpers
-;;------------------------------------------------------------------------------
+
 (defn kv-table [f kv-seq]
   [:table
    (for [[k v] kv-seq]
@@ -101,7 +101,7 @@
 
 
 ;; Pages
-;;------------------------------------------------------------------------------
+
 ;; FIXME: probably belongs somewhere else
 (defn home-page [req]
   (layout

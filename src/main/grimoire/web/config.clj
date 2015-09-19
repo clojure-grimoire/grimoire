@@ -25,7 +25,7 @@
    :base-url            "/"
    :store-url           "/store/v1/"
    :version             (slurp "VERSION")
-   :fundraising         {:active true
+   :fundraising         {:active false
                          :rate   10}
    :google-analytics-id "UA-44001831-2"
    :year                "2015"

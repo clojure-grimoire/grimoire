@@ -9,6 +9,7 @@
             [grimoire.web.config :as cfg]
             [grimoire.github :as gh]))
 
+
 ;; Helpers
 ;;------------------------------------------------------------------------------
 (defn kv-table [f kv-seq]
@@ -88,12 +89,24 @@
       (format "file://%s" (str v))
       [:a {:href v} (t/thing->short-string t)])))
 
+(defn set-funding-flag [cfg req]
+  (let [{:keys [active rate]
+         :or   {active false,
+                rate   5}}
+        (:fundraising cfg)]
+    (assoc cfg :funding-flag
+           (and active
+                (-> req :session (:thought-about-it false) not)
+                (-> req :session (:counter 1) (mod rate) (= 0))))))
+
+
 ;; Pages
 ;;------------------------------------------------------------------------------
 ;; FIXME: probably belongs somewhere else
-(defn home-page []
+(defn home-page [req]
   (layout
    (-> (cfg/site-config)
+       (set-funding-flag req)
        (assoc :css ["/public/css/cheatsheet.css"]))
    ;;------------------------------------------------------------
    [:blockquote [:p (-> (cfg/site-config) :style :quote)]]
@@ -182,11 +195,12 @@
              [d (q! d)])
            ((sorted-table-of local-add-ex-url)))])))
 
-(defmethod store-page :text/html [_]
+(defmethod store-page :text/html [req]
   (let [*lg*   (cfg/lib-grim-config)
         groups (result (api/list-groups *lg*))]
     (layout
-     (cfg/site-config)
+     (-> (cfg/site-config)
+         (set-funding-flag req))
      ;;------------------------------------------------------------
      [:h1 {:class "page-title"}
       ,,"Artifact store"]
@@ -196,7 +210,7 @@
              [:li [:a (link-to group)
                    (t/thing->name group)]])]))))
 
-(defmethod group-page :text/html [_ group-thing]
+(defmethod group-page :text/html [req group-thing]
   (let [*lg*       (cfg/lib-grim-config)
         ?meta      (api/read-meta *lg* group-thing)
         ?artifacts (api/list-artifacts *lg* group-thing)
@@ -205,8 +219,9 @@
       (let [artifacts (result ?artifacts)
             meta      (when (succeed? ?meta) (result ?meta))]
         (layout
-         (assoc (cfg/site-config)
-                :css ["/public/css/editable.css"])
+         (-> (cfg/site-config)
+             (set-funding-flag req)
+             (assoc :css ["/public/css/editable.css"]))
          ;;------------------------------------------------------------
          [:h1 {:class "page-title"}
           (header group-thing)]
@@ -235,15 +250,16 @@
                            (t/thing->name group)
                            (t/thing->name artifact))]])]))))))
 
-(defmethod artifact-page :text/html [_ artifact-thing]
+(defmethod artifact-page :text/html [req artifact-thing]
   (let [*lg*   (cfg/lib-grim-config)
         ?meta  (api/read-meta *lg* artifact-thing)
         ?notes (api/list-notes *lg* artifact-thing)]
     (when (succeed? ?meta)
       (let [meta (result ?meta)]
         (layout
-         (assoc (cfg/site-config)
-                :css ["/public/css/editable.css"])
+         (-> (cfg/site-config)
+             (set-funding-flag req)
+             (assoc :css ["/public/css/editable.css"]))
          ;;------------------------------------------------------------
          [:h1 {:class "page-title"}
           (header artifact-thing)]
@@ -277,14 +293,16 @@
                            (t/thing->name artifact)
                            (t/thing->name version))]])]))))))
 
-(defmethod version-page :text/html [_ version-thing]
+(defmethod version-page :text/html [req version-thing]
   (let [*lg*   (cfg/lib-grim-config)
         ?meta  (api/read-meta *lg* version-thing)
         ?notes (api/list-notes *lg* version-thing)]
     (when (succeed? ?meta)
       (layout
-       (assoc (cfg/site-config) ;; FIXME: add artifact & group name to title somehow?
-              :css ["/public/css/editable.css"])
+       (-> (cfg/site-config)
+           (set-funding-flag req)
+           (assoc ;; FIXME: add artifact & group name to title somehow?
+            :css ["/public/css/editable.css"]))
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"} (header version-thing)]
 
@@ -309,14 +327,16 @@
               [:li [:a (link-to platform-thing)
                     (t/thing->name platform-thing)]])]))))
 
-(defmethod platform-page :text/html [_ platform-thing]
+(defmethod platform-page :text/html [req platform-thing]
   (let [*lg*   (cfg/lib-grim-config)
         ?meta  (api/read-meta *lg* platform-thing)
         ?notes (api/list-notes *lg* platform-thing)]
     (when (succeed? ?meta)
       (layout
-       (assoc (cfg/site-config)  ;; FIXME: add artifact & group name to title somehow?
-              :css ["/public/css/editable.css"])
+       (-> (cfg/site-config)
+           (set-funding-flag req)
+           (assoc  ;; FIXME: add artifact & group name to title somehow?
+            :css ["/public/css/editable.css"]))
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"} (header platform-thing)]
 
@@ -350,14 +370,16 @@
                [:a {:href (:url r) :style "padding: 0 0.2em;"}
                 (:name r)])]])]))
 
-(defmethod namespace-page :text/html [_ namespace-thing]
+(defmethod namespace-page :text/html [req namespace-thing]
   (let [*lg*   (cfg/lib-grim-config)
         ?meta  (api/read-meta *lg* namespace-thing)
         ?notes (api/list-notes *lg* namespace-thing)]
     (when (succeed? ?meta)
       (layout
-       (assoc (cfg/site-config) ;; FIXME: add artifact, namespace?
-              :css ["/public/css/editable.css"])
+       (-> (cfg/site-config)
+           (set-funding-flag req)
+           (assoc ;; FIXME: add artifact, namespace?
+            :css ["/public/css/editable.css"]))
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"}
         (header namespace-thing)]
@@ -412,7 +434,7 @@
        [:script {:src "/public/jquery.js" :type "text/javascript"}]
        [:script {:src "/public/fold.js" :type "text/javascript"}]))))
 
-(defn -render-html-symbol-page [def-thing meta]
+(defn -render-html-symbol-page [req def-thing meta]
   (let [*lg*                            (cfg/lib-grim-config)
         {:keys [src type arglists doc]} meta
         namespace                       (t/thing->name (t/thing->namespace def-thing))
@@ -423,6 +445,7 @@
         *site-config*                   (cfg/site-config)]
     (layout
      (-> *site-config*
+         (set-funding-flag req)
          (assoc :summary doc)
          (assoc :css ["/public/css/editable.css"
                       "/public/css/symbol.css"]))
@@ -502,14 +525,14 @@
      [:script {:src "/public/jquery.js" :type "text/javascript"}]
      [:script {:src "/public/fold.js" :type "text/javascript"}])))
 
-(defmethod symbol-page :text/html [_ def-thing]
+(defmethod symbol-page :text/html [req def-thing]
   (let [*lg*  (cfg/lib-grim-config)
         ?meta (api/read-meta *lg* def-thing)]
     (when (succeed? ?meta)
       (let [{:keys [type] :as meta} (result ?meta)]
         (cond (and meta (not= :sentinel type))
               ;; non-sentinel case
-              ,,(-render-html-symbol-page def-thing meta)
+              ,,(-render-html-symbol-page req def-thing meta)
 
               (= :sentinel type)
               ;; chase a redirect
@@ -520,10 +543,10 @@
                   ;; this is a feature or not is open to debate but it
                   ;; works.
                   (let [[_ ns n] (re-find #"([^/]+)/(.+)" (str target))]
-                    (symbol-page :text/html
-                                 (-> (t/thing->platform def-thing)
-                                     (t/->Ns ns)
-                                     (t/->Def n)))))
+                    (recur :text/html
+                           (-> (t/thing->platform def-thing)
+                               (t/->Ns ns)
+                               (t/->Def n)))))
 
               :else
               ;; fail to find a redirect, error out

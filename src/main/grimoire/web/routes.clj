@@ -71,37 +71,38 @@
     {param-type :type} :params
     :as req
     uri :uri}]
-  (let [type    (-> (or header-type
-                        param-type
-                        :html)
-                    wutil/normalize-type)
+  (let [req (assoc req :content-type
+                   (-> (or header-type
+                           param-type
+                           :html)
+                       wutil/normalize-type))
         log-msg (pr-str {:uri        uri
                          :type       type
                          :user-agent (get-in req [:headers "user-agent"])})]
     (->> (context "/store/v1" []
            (GET "/" {uri :uri}
-             (when-let [r (v/store-page type)]
+             (when-let [r (v/store-page req)]
                (log! req nil)
                r))
 
            (context "/:groupid" [groupid]
              (let-routes [t (t/->Group groupid)]
                (GET "/" []
-                 (when-let [r (v/group-page type t)]
+                 (when-let [r (v/group-page req t)]
                    (log! req t)
                    r))
 
                (context "/:artifactid" [artifactid]
                  (let-routes [t (t/->Artifact t artifactid)]
                    (GET "/" []
-                     (when-let [r (v/artifact-page type t)]
+                     (when-let [r (v/artifact-page req t)]
                        (log! req t)
                        r))
 
                    (context "/:version" [version]
                      (let-routes [t (t/->Version t version)]
                        (GET "/" []
-                         (when-let [r (v/version-page type t)]
+                         (when-let [r (v/version-page req t)]
                            (log! req t)
                            r))
 
@@ -109,28 +110,28 @@
                                  :platform platform-regex] [platform]
                          (let-routes [t (t/->Platform t platform)]
                            (GET "/" []
-                             (when-let [r (v/platform-page type t)]
+                             (when-let [r (v/platform-page req t)]
                                (log! req t)
                                r))
 
                            (context "/:namespace" [namespace]
                              (let-routes [t (t/->Ns t namespace)]
                                (GET "/" []
-                                 (when-let [r (v/namespace-page type t)]
+                                 (when-let [r (v/namespace-page req t)]
                                    (log! req t)
                                    r))
 
                                (context "/:symbol" [symbol]
                                  (let-routes [t (t/->Def t symbol)]
                                    (GET "/" []
-                                     (when-let [r (v/symbol-page type t)]
+                                     (when-let [r (v/symbol-page req t)]
                                        (log! req t)
                                        r))
 
                                    (route/not-found
                                     (fn [req]
                                       (warn log-msg)
-                                      (v.e/error-unknown-symbol type t)))))
+                                      (v.e/error-unknown-symbol req t)))))
 
                                (route/not-found
                                 (fn [req]
@@ -458,10 +459,10 @@
       (#'app new-req) ;; pass it forwards
       (wutil/moved-permanently new-uri))))
 
-(defroutes app
+(defroutes app-routes
   (GET "/" {uri :uri :as req}
     (do (log! req nil)
-        (v.c.h/home-page)))
+        (v.c.h/home-page req)))
 
   (GET "/favicon.ico" []
     (response/redirect "/public/favicon.ico"))
@@ -557,6 +558,12 @@
   (GET "/heatmap" []
     (v.c.h/heatmap-page))
 
+  (context ["/funding"] []
+    (fn [request]
+      (merge
+       (assoc-in request [:session :thought-about-it] true)
+       (response/redirect "https://gratipay.com/~arrdem/"))))
+
   (GET "/worklist" []
     (v.c.h/worklist-page))
 
@@ -569,3 +576,15 @@
                     :type       :html
                     :user-agent (get-in req [:headers "user-agent"])}))
      (v.e/error-404))))
+
+(defn update-cookie-counter [request]
+  (-> request
+      (update-in [:session :counter]          (fnil inc 0))
+      (update-in [:session :thought-about-it] (fnil identity false))))
+
+(defn app [request]
+  (let [request (update-cookie-counter request)
+        resp    (app-routes request)]
+    (if-not (:session resp)
+      (assoc resp :session (:session request))
+      resp)))

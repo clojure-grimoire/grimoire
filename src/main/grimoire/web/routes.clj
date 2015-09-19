@@ -562,7 +562,7 @@
     (fn [request]
       (merge
        (assoc-in request [:session :thought-about-it] true)
-       (response/redirect "https://gratipay.com/~arrdem/"))))
+       (response/redirect "https://gratipay.com/grimoire/"))))
 
   (GET "/worklist" []
     (v.c.h/worklist-page))

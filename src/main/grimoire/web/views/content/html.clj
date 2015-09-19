@@ -184,7 +184,7 @@
                  :when (or (not (succeed? res))
                            (empty? (result res)))]
              [d (q! d)])
-           ((sorted-table-of local-add-note-url)))]
+           ((sorted-table-of add-note-url)))]
 
      [:div {:style "width:50%;float:left"}
       [:h1 {:class "page-title"} "Symbols without examples"]
@@ -193,7 +193,7 @@
                  :when (or (not (succeed? res))
                            (empty? (result res)))]
              [d (q! d)])
-           ((sorted-table-of local-add-ex-url)))])))
+           ((sorted-table-of add-ex-url)))])))
 
 (defmethod store-page :text/html [req]
   (let [*lg*   (cfg/lib-grim-config)

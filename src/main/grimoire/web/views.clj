@@ -140,12 +140,13 @@
   (memoize
    (fn []
      (->> (let [cfg        (lib-grim-config)
-                groups     ,,,,,,,,(maybe (api/list-groups cfg))
-                artifacts  (mapcat (comp maybe (partial api/list-artifacts cfg)) groups)
-                versions   (mapcat (comp maybe (partial api/list-versions cfg)) artifacts)
-                platforms  (mapcat (comp maybe (partial api/list-platforms cfg)) versions)
-                namespaces (mapcat (comp maybe (partial api/list-namespaces cfg)) platforms)
-                defs       (mapcat (comp maybe (partial api/list-defs cfg)) namespaces)]
+                φ          (fn [f g] (mapcat (comp maybe (partial f cfg)) g))
+                groups     (maybe (api/list-groups cfg))
+                artifacts  (φ api/list-artifacts groups)
+                versions   (φ api/list-versions artifacts)
+                platforms  (φ api/list-platforms versions)
+                namespaces (φ api/list-namespaces platforms)
+                defs       (φ  api/list-defs namespaces)]
             (concat groups artifacts versions platforms namespaces defs))
           (map link-to)
           (concat -const-pages)

@@ -101,7 +101,7 @@
 
      (when (:funding-flag page false)
        [:div {:id "funding"
-              :style "padding: 0.25em; background-color: #3EC53E; color: white;"}
+              :style "padding:0.25em;background-color:#3EC53E;color:white;"}
         [:center
          [:h2 "Hey listen!"]
          [:p {:style "color:#313131"}

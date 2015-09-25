@@ -129,6 +129,16 @@
              version])
           (into {})))))
 
+(defn -clj-versions []
+  (let [*cfg* (lib-grim-config)
+        γ     (fn [f coll] (maybe (f *cfg* coll)))
+        a     (t/path->thing "org.clojure/clojure")]
+    (for [v (γ api/list-versions a)]
+      (t/thing->name v))))
+
+(def clj-versions
+  (memoize -clj-versions))
+
 (def -const-pages
   ["/"
    "/about"

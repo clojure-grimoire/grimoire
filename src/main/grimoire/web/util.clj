@@ -155,6 +155,13 @@
    :headers {"Location" url}
    :body    ""})
 
+(defn moved-temporary
+  "Returns a Ring response for a HTTP 307 'moved temporarily' redirect."
+  [url]
+  {:status  307
+   :headers {"Location" url}
+   :body    ""})
+
 (def normalize-type
   {:html              :text/html
    :text/html         :text/html

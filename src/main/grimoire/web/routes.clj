@@ -420,7 +420,7 @@
                        (dissoc :context :path-info))]
     (if (privilaged-user-agents user-agent)
       (#'app new-req) ;; pass it forwards
-      (wutil/moved-permanently new-uri))))
+      (wutil/moved-temporary new-uri))))
 
 (defn upgrade-v0-munged->v1-req
   [request group artifact version platform ns symbol]

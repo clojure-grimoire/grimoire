@@ -87,6 +87,12 @@ install_docs() {
     mkdir -p "$DOCS/$3/"
     ([ -a "$tgt" ] && rm "$tgt" )
     ln -s "$src" "$tgt"
+    ([ -a "$DOCS/$3/meta.edn" ] ||
+         (echo "nil" > "$DOCS/$3/meta.edn" &&
+          echo "Added nil org meta!"))
+    ([ -a "$DOCS/meta.edn" ] ||
+         (echo "nil" > "$DOCS/meta.edn" &&
+          echo "Added nil store meta!"))
 }
 
 # Install the notes

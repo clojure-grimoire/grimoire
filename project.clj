@@ -31,7 +31,7 @@
                   :exclusions [org.clojure/clojure]]
                  [me.raynes/conch "0.8.0"
                   :exclusions [org.clojure/clojure]]
-                [sitemap "0.2.4"
+                 [sitemap "0.2.4"
                   :exclusions [org.clojure/clojure]]
                  [instaparse "1.4.1"
                   :exclusions [org.clojure/clojure]]

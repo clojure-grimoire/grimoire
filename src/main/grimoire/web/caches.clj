@@ -1,0 +1,41 @@
+(ns grimoire.web.caches
+  (:require [grimoire.web.util :refer [maybe]]
+            [grimoire.web.config :refer [lib-grim-config]]
+            [grimoire.api :as api]
+            [sitemap.core :refer [generate-sitemap]]
+            [grimoire.things :as t]
+            [grimoire.web.util :refer [maybe]]
+            [grimoire.web.config :refer [lib-grim-config]]
+            [grimoire.api :as api]
+            [grimoire.things :as t]
+            [grimoire.web.util :refer [maybe]]
+            [grimoire.web.config :refer [lib-grim-config]]
+            [grimoire.api :as api]
+            [grimoire.things :as t]
+            [grimoire.either :refer [result]]
+            [grimoire.web.util :refer [maybe]]
+            [grimoire.web.config :refer [lib-grim-config]]
+            [grimoire.api :as api]))
+
+(defn -clj-versions []
+  (let [*cfg* (lib-grim-config)
+        γ     (fn [f coll] (maybe (f *cfg* coll)))
+        a     (t/path->thing "org.clojure/clojure")]
+    (for [v (γ api/list-versions a)]
+      (t/thing->name v))))
+
+(def clj-versions
+  (memoize -clj-versions))
+
+(defn -ns-version-index []
+  (let [*cfg* (lib-grim-config)
+        γ     (fn [f coll] (maybe (f *cfg* coll)))]
+    (->> (for [groupid   (result (api/list-groups *cfg*))
+               artifact  (γ api/list-artifacts groupid)
+               :let      [version  (first (γ api/list-versions artifact))
+                          platform (->> (γ api/list-platforms version)
+                                        (sort-by t/thing->name)
+                                        first)]
+               namespace (γ api/list-namespaces platform)]
+           [(t/thing->name namespace) version])
+         (into {}))))

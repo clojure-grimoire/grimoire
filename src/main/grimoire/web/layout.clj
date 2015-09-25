@@ -1,7 +1,7 @@
 (ns grimoire.web.layout
   (:require [hiccup.page :as page]
-            [grimoire.web.views :as v]
-            [grimoire.web.config :as cfg]))
+            [grimoire.web.config :as cfg]
+            [grimoire.web.caches :as c]))
 
 (defn header [{:keys [base-url css] :as c}]
   [:head
@@ -50,7 +50,7 @@
                     (str "Clojure " v)])]
        (list
         [:a.sidebar-nav-item {:href (:store-url cfg)} "Artifact store"]
-        (map linkf (v/clj-versions))))
+        (map linkf (c/clj-versions))))
 
      [:br] "About" [:br]
      [:a.sidebar-nav-item {:href "/api"} "API"]

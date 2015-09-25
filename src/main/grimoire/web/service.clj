@@ -4,7 +4,9 @@
             [grimoire.web.routes :refer [app]]
             [grimoire.web.config :as cfg]
             [ring.adapter.jetty :as jetty]
-            [simpledb.core :as sdb]))
+            [simpledb.core :as sdb]
+            [grimoire.api]
+            [grimoire.api.fs.read]))
 
 (defn start-web-server! [& [port? file?]]
   (println "starting!")

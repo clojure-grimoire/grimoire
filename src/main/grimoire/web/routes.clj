@@ -314,7 +314,7 @@
                        (log! req nil)
                        (if (privilaged-user-agents user-agent)
                          (#'app new-req) ;; pass it forwards
-                         (response/redirect new-uri))))))
+                         (response/redirect new-uri 307))))))
 
                (route/not-found
                 (fn [req]
@@ -346,7 +346,7 @@
                          (log! req nil)
                          (if (privilaged-user-agents user-agent)
                            (#'app new-req) ;; pass it forwards
-                           (response/redirect new-uri))))))
+                           (response/redirect new-uri 307))))))
 
                  (route/not-found
                   (fn [req]

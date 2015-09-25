@@ -13,8 +13,9 @@
                      site-config
                      web-config]]
             [grimoire.api :as api]
-            [grimoire.api.fs.read]
             [grimoire.api.web :as web]
+            [grimoire.api.fs.read]
+            [grimoire.web.caches :as c]
             [ring.util.response :as response]
             [sitemap.core
              :refer [generate-sitemap]]))
@@ -113,31 +114,21 @@
 
 ;; FIXME: How to deal with namespaces in different platforms?
 ;; FIXME: Probably belongs somewhere else
-(def ns-version-index
-  (memoize
-   (fn []
-     (->> (for [groupid   (result (api/list-groups     (lib-grim-config)))
-                artifact  (result (api/list-artifacts  (lib-grim-config) groupid))
-                :let      [version  (->> artifact
-                                         (api/list-versions (lib-grim-config))
-                                         result first)
-                           platform (->> version
-                                         (api/list-platforms (lib-grim-config))
-                                         result (sort-by t/thing->name) first)]
-                namespace (result (api/list-namespaces (lib-grim-config) platform))]
-            [(t/thing->name namespace)
-             version])
-          (into {})))))
-
-(defn -clj-versions []
+(defn -ns-version-index []
   (let [*cfg* (lib-grim-config)
-        γ     (fn [f coll] (maybe (f *cfg* coll)))
-        a     (t/path->thing "org.clojure/clojure")]
-    (for [v (γ api/list-versions a)]
-      (t/thing->name v))))
+        γ     (fn [f coll] (maybe (f *cfg* coll)))]
+    (->> (for [groupid   (result (api/list-groups *cfg*))
+               artifact  (γ api/list-artifacts groupid)
+               :let      [version  (first (γ api/list-versions artifact))
+                          platform (->> (γ api/list-platforms version)
+                                        (sort-by t/thing->name)
+                                        first)]
+               namespace (γ api/list-namespaces platform)]
+           [(t/thing->name namespace) version])
+         (into {}))))
 
-(def clj-versions
-  (memoize -clj-versions))
+(def ns-version-index
+  (memoize -ns-version-index))
 
 (def -const-pages
   ["/"

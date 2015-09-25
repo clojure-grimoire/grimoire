@@ -106,8 +106,8 @@
          [:h2 "Hey listen!"]
          [:p {:style "color:#313131"}
           "It looks like you're getting some use out of Grimoire. Great!" [:br]
-          "Please " [:a {:style "color: purple;" :href "/funding"} [:b "help me keep it online"]] [:br]
-          "Or " [:a {:style "color: purple;" :onclick "closefunding()"} [:b "make this go away"]]]]])
+          "Please " [:a {:style "color:#A300CC;" :href "/funding"} [:b "help me keep it online"]] [:br]
+          "Or " [:a {:style "color:#A300CC;" :onclick "closefunding()"} [:b "make this go away"]]]]])
 
      [:div {:class "container content"
             :style "margin-top: 3em;"}

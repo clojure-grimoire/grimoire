@@ -85,7 +85,7 @@ install_docs() {
     ( [ -d "$src" ] || ( echo "No such dir $src" && exit 1 ))
 
     mkdir -p "$DOCS/$3/"
-    ([ -f "$tgt" ] && rm "$tgt" )
+    ([ -a "$tgt" ] && rm "$tgt" )
     ln -s "$src" "$tgt"
 }
 

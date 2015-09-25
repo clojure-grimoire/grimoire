@@ -52,13 +52,28 @@
              (t/example? t))]}
   (gh/->edit-url (cfg/notes-config) "develop" (::t/file t)))
 
-(defn add-ex-url [t n]
-  {:pre [(t/thing? t)]}
-  (let [*cfg* (cfg/lib-grim-config)
-        t     (last (result (api/thing->prior-versions *cfg* t)))]
-    (as-> t v
-      (#'grimoire.api.fs.impl/thing->handle *cfg* :else v)
-      (gh/->new-url (cfg/notes-config) "develop" v (str n)))))
+(defn ->short-url-fn [f]
+  (fn [t]
+    [:a {:href (f t)}
+     (t/thing->short-string t)]))
+
+(defn add-ex-url
+  ([t]
+   (->> Integer/MAX_VALUE
+        rand-int
+        (format "%s.clj")
+        (add-ex-url t)))
+  
+  ([t n]
+   {:pre [(t/thing? t)]}
+   (let [*cfg* (cfg/lib-grim-config)
+         t     (last (result (api/thing->prior-versions *cfg* t)))]
+     (as-> t v
+       (#'grimoire.api.fs.impl/thing->handle *cfg* :else v)
+       (gh/->new-url (cfg/notes-config)
+                     "develop"
+                     (#'clojure.java.io/file v "examples")
+                     n)))))
 
 (defn add-note-url [t]
   {:pre [(t/thing? t)]}
@@ -76,8 +91,7 @@
       (#'grimoire.api.fs.impl/thing->handle *cfg* :else v)
       (.getAbsolutePath v)
       (format "file://%s/examples/%s.clj"
-              (str v) (rand-int Integer/MAX_VALUE))
-      [:a {:href v} (t/thing->short-string t)])))
+              (str v) (rand-int Integer/MAX_VALUE)))))
 
 (defn local-add-note-url [t]
   {:pre [(t/thing? t)]}
@@ -86,8 +100,7 @@
     (as-> t v
       (#'grimoire.api.fs.impl/thing->handle *cfg* :notes v)
       (.getAbsolutePath v)
-      (format "file://%s" (str v))
-      [:a {:href v} (t/thing->short-string t)])))
+      (format "file://%s" (str v)))))
 
 (defn set-funding-flag [cfg req]
   (let [{:keys [active rate]
@@ -174,7 +187,9 @@
   (let [*cfg*   (cfg/lib-grim-config)
         service @cfg/service
         db      (-> service :simpledb :db deref)
-        q!      #(get (:defs db) (t/thing->short-string %) 0)]
+        q!      #(get (:defs db) (t/thing->short-string %) 0)
+        f       (->short-url-fn add-note-url)
+        g       (->short-url-fn add-ex-url)]
     (layout
      (cfg/site-config)
      [:div {:style "width:50%;float:left"}
@@ -184,7 +199,7 @@
                  :when (or (not (succeed? res))
                            (empty? (result res)))]
              [d (q! d)])
-           ((sorted-table-of add-note-url)))]
+           ((sorted-table-of f)))]
 
      [:div {:style "width:50%;float:left"}
       [:h1 {:class "page-title"} "Symbols without examples"]
@@ -193,7 +208,7 @@
                  :when (or (not (succeed? res))
                            (empty? (result res)))]
              [d (q! d)])
-           ((sorted-table-of add-ex-url)))])))
+           ((sorted-table-of g)))])))
 
 (defmethod store-page :text/html [req]
   (let [*lg*   (cfg/lib-grim-config)

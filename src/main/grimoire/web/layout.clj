@@ -76,13 +76,11 @@
    [:script {:type "text/javascript" :src "/public/sidebar.js"}]
    (map #(vector :script {:type "text/javascript" :src %}) js)
    [:script {:type "text/javascript"}
+    "function closefunding(){$('#funding').slideUp('slow',function(){$('#funding').remove();});}"]
+   [:script {:type "text/javascript"}
     "var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '" google-analytics-id "']);
   _gaq.push(['_trackPageview']);
-
-  function closefunding() {
-    $('#funding').slideUp('slow', function(){$('#funding').remove();});
-  }
 
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;

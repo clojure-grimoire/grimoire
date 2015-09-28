@@ -184,8 +184,8 @@
        delay))
 
 (def -no-notes-
-  (let [*cfg* (cfg/lib-grim-config)]
-    (delay
+  (delay
+   (let [*cfg* (cfg/lib-grim-config)]
      (loop [[d & defs] @-everything-
             acc []]
        (if d
@@ -198,8 +198,8 @@
          acc)))))
 
 (def -no-examples-
-  (let [*cfg* (cfg/lib-grim-config)]
-    (delay
+  (delay
+   (let [*cfg* (cfg/lib-grim-config)]
      (loop [[d & defs] @-everything-
             acc []]
        (if d
@@ -210,12 +210,6 @@
              (recur defs (conj acc d))
              (recur defs acc)))
          acc)))))
-
-;; prime the cache
-(do (future @-no-examples-
-            @-no-notes-
-            (println "Worklist caches primed!"))
-    nil)
 
 (defn worklist-page []
   (let [*cfg*   (cfg/lib-grim-config)

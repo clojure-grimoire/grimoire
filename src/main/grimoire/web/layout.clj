@@ -1,6 +1,7 @@
 (ns grimoire.web.layout
   (:require [hiccup.page :as page]
-            [grimoire.web.config :as cfg]))
+            [grimoire.web.config :as cfg]
+            [grimoire.web.caches :as c]))
 
 (defn header [{:keys [base-url css] :as c}]
   [:head
@@ -45,11 +46,11 @@
      (let [cfg   (cfg/site-config)
            linkf (fn [v]
                    [:a.sidebar-nav-item
-                    {:href (format "%sorg.clojure/clojure/%s.0/" (:store-url cfg) v)}
+                    {:href (format "%sorg.clojure/clojure/%s/" (:store-url cfg) v)}
                     (str "Clojure " v)])]
        (list
         [:a.sidebar-nav-item {:href (:store-url cfg)} "Artifact store"]
-        (map linkf ["1.7" "1.6" "1.5" "1.4"])))
+        (map linkf (c/clj-versions))))
 
      [:br] "About" [:br]
      [:a.sidebar-nav-item {:href "/api"} "API"]
@@ -76,13 +77,11 @@
    [:script {:type "text/javascript" :src "/public/sidebar.js"}]
    (map #(vector :script {:type "text/javascript" :src %}) js)
    [:script {:type "text/javascript"}
+    "function closefunding(){$('#funding').slideUp('slow',function(){$('#funding').remove();});}"]
+   [:script {:type "text/javascript"}
     "var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '" google-analytics-id "']);
   _gaq.push(['_trackPageview']);
-
-  function closefunding() {
-    $('#funding').slideUp('slow', function(){$('#funding').remove();});
-  }
 
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -101,13 +100,13 @@
 
      (when (:funding-flag page false)
        [:div {:id "funding"
-              :style "padding: 0.25em; background-color: #3EC53E; color: white;"}
+              :style "padding:0.25em;background-color:#3EC53E;color:white;"}
         [:center
          [:h2 "Hey listen!"]
          [:p {:style "color:#313131"}
           "It looks like you're getting some use out of Grimoire. Great!" [:br]
-          "Please " [:a {:style "color: purple;" :href "/funding"} [:b "help me keep it online"]] [:br]
-          "Or " [:a {:style "color: purple;" :onclick "closefunding()"} [:b "make this go away"]]]]])
+          "Please " [:a {:style "color:#A300CC;" :href "/funding"} [:b "help me keep it online"]] [:br]
+          "Or " [:a {:style "color:#A300CC;" :onclick "closefunding()"} [:b "make this go away"]]]]])
 
      [:div {:class "container content"
             :style "margin-top: 3em;"}

@@ -13,8 +13,9 @@
                      site-config
                      web-config]]
             [grimoire.api :as api]
-            [grimoire.api.fs.read]
             [grimoire.api.web :as web]
+            [grimoire.api.fs.read]
+            [grimoire.web.caches :as c]
             [ring.util.response :as response]
             [sitemap.core
              :refer [generate-sitemap]]))
@@ -113,21 +114,21 @@
 
 ;; FIXME: How to deal with namespaces in different platforms?
 ;; FIXME: Probably belongs somewhere else
+(defn -ns-version-index []
+  (let [*cfg* (lib-grim-config)
+        γ     (fn [f coll] (maybe (f *cfg* coll)))]
+    (->> (for [groupid   (result (api/list-groups *cfg*))
+               artifact  (γ api/list-artifacts groupid)
+               :let      [version  (first (γ api/list-versions artifact))
+                          platform (->> (γ api/list-platforms version)
+                                        (sort-by t/thing->name)
+                                        first)]
+               namespace (γ api/list-namespaces platform)]
+           [(t/thing->name namespace) version])
+         (into {}))))
+
 (def ns-version-index
-  (memoize
-   (fn []
-     (->> (for [groupid   (result (api/list-groups     (lib-grim-config)))
-                artifact  (result (api/list-artifacts  (lib-grim-config) groupid))
-                :let      [version  (->> artifact
-                                         (api/list-versions (lib-grim-config))
-                                         result first)
-                           platform (->> version
-                                         (api/list-platforms (lib-grim-config))
-                                         result (sort-by t/thing->name) first)]
-                namespace (result (api/list-namespaces (lib-grim-config) platform))]
-            [(t/thing->name namespace)
-             version])
-          (into {})))))
+  (memoize -ns-version-index))
 
 (def -const-pages
   ["/"
@@ -140,12 +141,13 @@
   (memoize
    (fn []
      (->> (let [cfg        (lib-grim-config)
-                groups     ,,,,,,,,(maybe (api/list-groups cfg))
-                artifacts  (mapcat (comp maybe (partial api/list-artifacts cfg)) groups)
-                versions   (mapcat (comp maybe (partial api/list-versions cfg)) artifacts)
-                platforms  (mapcat (comp maybe (partial api/list-platforms cfg)) versions)
-                namespaces (mapcat (comp maybe (partial api/list-namespaces cfg)) platforms)
-                defs       (mapcat (comp maybe (partial api/list-defs cfg)) namespaces)]
+                φ          (fn [f g] (mapcat (comp maybe (partial f cfg)) g))
+                groups     (-> cfg api/list-groups maybe)
+                artifacts  (φ api/list-artifacts groups)
+                versions   (φ api/list-versions artifacts)
+                platforms  (φ api/list-platforms versions)
+                namespaces (φ api/list-namespaces platforms)
+                defs       (φ api/list-defs namespaces)]
             (concat groups artifacts versions platforms namespaces defs))
           (map link-to)
           (concat -const-pages)

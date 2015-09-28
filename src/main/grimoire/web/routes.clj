@@ -314,7 +314,7 @@
                        (log! req nil)
                        (if (privilaged-user-agents user-agent)
                          (#'app new-req) ;; pass it forwards
-                         (response/redirect new-uri))))))
+                         (response/redirect new-uri 307))))))
 
                (route/not-found
                 (fn [req]
@@ -346,7 +346,7 @@
                          (log! req nil)
                          (if (privilaged-user-agents user-agent)
                            (#'app new-req) ;; pass it forwards
-                           (response/redirect new-uri))))))
+                           (response/redirect new-uri 307))))))
 
                  (route/not-found
                   (fn [req]
@@ -420,7 +420,7 @@
                        (dissoc :context :path-info))]
     (if (privilaged-user-agents user-agent)
       (#'app new-req) ;; pass it forwards
-      (wutil/moved-permanently new-uri))))
+      (wutil/moved-temporary new-uri))))
 
 (defn upgrade-v0-munged->v1-req
   [request group artifact version platform ns symbol]
@@ -562,7 +562,7 @@
     (fn [request]
       (merge
        (assoc-in request [:session :thought-about-it] true)
-       (response/redirect "https://gratipay.com/grimoire/"))))
+       (response/redirect "https://www.patreon.com/arrdem"))))
 
   (GET "/worklist" []
     (v.c.h/worklist-page))

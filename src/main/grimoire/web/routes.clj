@@ -560,6 +560,9 @@
 
   (context ["/funding"] []
     (fn [request]
+      (sdb/update! (cfg/simpledb-config)
+                   [:funding :thought-about-it]
+                   incf)
       (merge
        (assoc-in request [:session :thought-about-it] true)
        (response/redirect "https://www.patreon.com/arrdem"))))

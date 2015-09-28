@@ -169,19 +169,53 @@
                [:h2 "Top clients"]
                (->> db :clients sorted-table)])))))
 
-(def *everything*
+(def -everything-
   (->> (api/search *cfg*
                    [:def
                     "org.clojure"
                     "clojure"
                     (t/thing->name (i "clojure.core"))
-                    :any
+                    "clj"
                     :any
                     :any])
        (let [*cfg* (cfg/lib-grim-config)
              i     (ns-version-index)])
        (result)
        delay))
+
+(def -no-notes-
+  (let [*cfg* (cfg/lib-grim-config)]
+    (delay
+     (loop [[d & defs] @-everything-
+            acc []]
+       (if d
+         (let [notes (api/read-notes *cfg* d)]
+           (if (or (not (succeed? notes))
+                   (and (succeed? notes)
+                        (empty? (result notes))))
+             (recur defs (conj acc d))
+             (recur defs acc)))
+         acc)))))
+
+(def -no-examples-
+  (let [*cfg* (cfg/lib-grim-config)]
+    (delay
+     (loop [[d & defs] @-everything-
+            acc []]
+       (if d
+         (let [exs (api/list-examples *cfg* d)]
+           (if (or (not (succeed? exs))
+                   (and (succeed? exs)
+                        (empty? (result exs))))
+             (recur defs (conj acc d))
+             (recur defs acc)))
+         acc)))))
+
+;; prime the cache
+(do (future @-no-examples-
+            @-no-notes-
+            (println "Worklist caches primed!"))
+    nil)
 
 (defn worklist-page []
   (let [*cfg*   (cfg/lib-grim-config)
@@ -194,20 +228,12 @@
      (cfg/site-config)
      [:div {:style "width:50%;float:left"}
       [:h1 {:class "page-title"} "Symbols without notes"]
-      (->> (for [[d res] (-> (juxt identity #(api/read-notes *cfg* %)) 
-                             (pmap @*everything*))
-                 :when (or (not (succeed? res))
-                           (empty? (result res)))]
-             [d (q! d)])
+      (->> (for [d @-no-notes-] [d (q! d)])
            ((sorted-table-of f)))]
 
      [:div {:style "width:50%;float:left"}
       [:h1 {:class "page-title"} "Symbols without examples"]
-      (->> (for [[d res] (-> (juxt identity #(api/list-examples *cfg* %))
-                             (pmap @*everything*))
-                 :when (or (not (succeed? res))
-                           (empty? (result res)))]
-             [d (q! d)])
+      (->> (for [d @-no-examples-] [d (q! d)])
            ((sorted-table-of g)))])))
 
 (defmethod store-page :text/html [req]

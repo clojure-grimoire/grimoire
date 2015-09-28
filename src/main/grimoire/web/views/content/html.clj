@@ -203,7 +203,7 @@
 
      [:div {:style "width:50%;float:left"}
       [:h1 {:class "page-title"} "Symbols without examples"]
-      (->> (for [[d res] (-> (juxt identity #(api/read-notes *cfg* %))
+      (->> (for [[d res] (-> (juxt identity #(api/list-examples *cfg* %))
                              (pmap @*everything*))
                  :when (or (not (succeed? res))
                            (empty? (result res)))]

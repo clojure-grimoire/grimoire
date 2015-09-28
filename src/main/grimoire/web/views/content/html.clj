@@ -211,12 +211,6 @@
              (recur defs acc)))
          acc)))))
 
-;; prime the cache
-(do (future @-no-examples-
-            @-no-notes-
-            (println "Worklist caches primed!"))
-    nil)
-
 (defn worklist-page []
   (let [*cfg*   (cfg/lib-grim-config)
         service @cfg/service

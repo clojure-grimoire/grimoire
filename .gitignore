@@ -12,3 +12,4 @@ sdb.db
 analytics
 analytics.db
 .lein-env
+render-cache

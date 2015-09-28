@@ -14,6 +14,9 @@
 
 (defn kv-table [f kv-seq]
   [:table
+   [:tr
+    [:th {:style "width: 90%;"} "Symbol"]
+    [:th {:style "width: 10%;"} "View count"]]
    (for [[k v] kv-seq]
      [:tr
       [:td {:style "width: 90%;"} (f k)]
@@ -54,8 +57,10 @@
 
 (defn ->short-url-fn [f]
   (fn [t]
-    [:a {:href (f t)}
-     (t/thing->short-string t)]))
+    [:span (t/thing->short-string t)
+     [:span {:style "float: right;"}
+      [:a {:href (link-to t)} "Article"] " "
+      [:a {:href (f t)} "Add"]]]))
 
 (defn add-ex-url
   ([t]

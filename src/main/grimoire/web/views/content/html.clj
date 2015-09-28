@@ -184,8 +184,8 @@
        delay))
 
 (def -no-notes-
-  (let [*cfg* (cfg/lib-grim-config)]
-    (delay
+  (delay
+   (let [*cfg* (cfg/lib-grim-config)]
      (loop [[d & defs] @-everything-
             acc []]
        (if d
@@ -198,8 +198,8 @@
          acc)))))
 
 (def -no-examples-
-  (let [*cfg* (cfg/lib-grim-config)]
-    (delay
+  (delay
+   (let [*cfg* (cfg/lib-grim-config)]
      (loop [[d & defs] @-everything-
             acc []]
        (if d

@@ -158,21 +158,25 @@
          db      (-> service :simpledb :db deref)
          l       (fn [x] [:div {:style "width:50%;float:left;"} x])
          r       (fn [x] [:div {:style "width:50%;float:right;"} x])]
-     (list (l [:div
-               [:h2 "Top 100 namespaces"]
-               (->> db :namespaces sorted-thing-table)])
-           (l [:div
-               [:h2 "Top 100 defs"]
-               (->> db :defs sorted-thing-table)])
-           (l [:div
-               [:h2 "Top artifacts"]
-               (->> db :artifacts sorted-table)])
-           (l [:div
-               [:h2 "Top platforms"]
-               (->> db :platforms sorted-table)])
-           (l [:div
-               [:h2 "Top clients"]
-               (->> db :clients sorted-table)])))))
+     (list
+      [:div {:style "width:100%;clear:both;"}
+       (format "%s people thought about funding!"
+               (get db [:funding :thought-about-it] 0))]
+      (l [:div
+          [:h2 "Top 100 namespaces"]
+          (->> db :namespaces sorted-thing-table)])
+      (l [:div
+          [:h2 "Top 100 defs"]
+          (->> db :defs sorted-thing-table)])
+      (l [:div
+          [:h2 "Top artifacts"]
+          (->> db :artifacts sorted-table)])
+      (l [:div
+          [:h2 "Top platforms"]
+          (->> db :platforms sorted-table)])
+      (l [:div
+          [:h2 "Top clients"]
+          (->> db :clients sorted-table)])))))
 
 (def -everything-
   (->> (api/search *cfg*

@@ -59,7 +59,7 @@
   (fn [t]
     [:span (t/thing->short-string t)
      [:span {:style "float: right;"}
-      [:a {:href (link-to t)} "Article"] " "
+      [:a (link-to t) "Article"] " "
       [:a {:href (f t)} "Add"]]]))
 
 (defn add-ex-url

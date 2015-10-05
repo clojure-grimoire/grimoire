@@ -71,7 +71,9 @@
   [s]
   (if-let [t (-> s mem-sts->t)]
     (format "[%s](%s)"
-            (string/replace s "*" "\\*")
+            (-> s
+                (string/replace "*" "\\*")
+                (string/replace "_" "\\_"))
             (web/make-html-url (cfg/web-config) t))
     s))
 

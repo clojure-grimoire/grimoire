@@ -69,9 +69,9 @@
 
 (defn mem-sts->md-link
   [s]
-  (if-let [t (mem-sts->t s)]
+  (if-let [t (-> s mem-sts->t)]
     (format "[%s](%s)"
-            s
+            (string/replace s "*" "\\*")
             (web/make-html-url (cfg/web-config) t))
     s))
 
@@ -85,16 +85,16 @@
                        (highlight-text lang code)))
      state]))
 
-(def markdown-string
-  (comp (fn [m]
-          (md/md-to-html-string m
-                                :replacement-transformers
-                                (cons markdown-highlight md.t/transformer-vector)))
-        (fn [m]
-          (string/replace m
-                          t/short-string-pattern
-                          #(mem-sts->md-link
-                            (get %1 0))))))
+(defn thing-string->link [s]
+  (-> (get s 0)
+      (mem-sts->md-link)))
+
+(defn markdown-string [m]
+  (-> m
+      (string/replace t/short-string-pattern thing-string->link)
+      (md/md-to-html-string :replacement-transformers
+                            (list* markdown-highlight
+                                   md.t/transformer-vector))))
 
 (defn parse-markdown-page
   "Attempts to slurp a markdown file from the resource path, returning a

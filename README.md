@@ -1,6 +1,3 @@
-[![Latest release](http://img.shields.io/github/tag/clojure-grimoire/grimoire.svg)](http://conj.io/)
-[![Gittip button](http://img.shields.io/gittip/arrdem.svg)](https://www.gittip.com/arrdem/ "Support this project")
-
 Grimoire
 =================
 
@@ -13,6 +10,8 @@ Grimoire is community web documentation of the Clojure programming language inte
  - Check out [the API](http://conj.io/api)!
  - [Contribute to grimoire](http://conj.io/contributing).
  - Read the [original post](http://www.arrdem.com/2014/07/12/of_mages_and_grimoires/)!
+
+If you're a Grimoire user I'd ask that you either [support me on patreon](https://patreon.com/arrdem) or participate in the project!
 
 ### Official Clients
 

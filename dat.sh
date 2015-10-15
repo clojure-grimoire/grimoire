@@ -14,7 +14,11 @@ then
 fi
 
 [ -f `which gawk` ] && AWK=`which gawk` || AWK=`which awk`
-echo "[debug] Using " $AWK " for awk imp'l"
+if [ -z "$AWK" ]
+then
+    echo "Could not locate an AWK implementation! Aborting"
+    exit 1
+fi
 
 git_get() {
     # This is a quick little git extension designed to allow me to

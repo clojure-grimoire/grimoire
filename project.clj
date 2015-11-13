@@ -21,7 +21,7 @@
                   :exclusions [org.clojure/clojure]]
                  [ring/ring-jetty-adapter "1.4.0"
                   :exclusions [org.clojure/clojure]]
-                 [selmer "0.8.2"
+                 [selmer "0.9.5"
                   :exclusions [org.clojure/clojure]]
                  [compojure "1.3.4"
                   :exclusions [org.clojure/clojure]]

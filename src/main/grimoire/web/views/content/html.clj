@@ -82,8 +82,8 @@
   
   ([t file]
    {:pre [(t/thing? t)]}
-   (let [root  (make-file-root t)
-         dir   (#'clojure.java.io/file root "examples")]
+   (let [root (make-file-root t)
+         dir  (#'clojure.java.io/file root "examples")]
      (gh/->new-url (cfg/notes-config)
                    "develop"
                    dir
@@ -91,7 +91,7 @@
 
 (defn add-note-url [t]
   {:pre [(t/thing? t)]}
-  (let [root  (make-file-root t)]
+  (let [root (make-file-root t)]
     (gh/->new-url (cfg/notes-config)
                   "develop"
                   root

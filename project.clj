@@ -15,7 +15,7 @@
                   :exclusions [org.clojure/clojure]]
                  [cheshire "5.5.0"
                   :exclusions [org.clojure/clojure]]
-                 [com.taoensso/timbre "4.0.2"
+                 [com.taoensso/timbre "4.1.4"
                   :exclusions [org.clojure/clojure]]
                  [ring/ring-core "1.4.0"
                   :exclusions [org.clojure/clojure]]

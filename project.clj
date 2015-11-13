@@ -27,7 +27,7 @@
                   :exclusions [org.clojure/clojure]]
                  [hiccup "1.0.5"
                   :exclusions [org.clojure/clojure]]
-                 [markdown-clj "0.9.67"
+                 [markdown-clj "0.9.80"
                   :exclusions [org.clojure/clojure]]
                  [me.raynes/conch "0.8.0"
                   :exclusions [org.clojure/clojure]]

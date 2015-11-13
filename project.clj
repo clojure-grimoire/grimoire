@@ -43,9 +43,9 @@
   :profiles {:server {:env  {:url "http://conj.io"}
                       :main grimoire.web.service}
 
-             :dev {:dependencies [[ring/ring-mock "0.3.0"]]
-                   :source-paths ["src/dev"]
-                   :main         user
-                   :env          {:url "http://127.0.0.1:3000"}}
+             :dev    {:dependencies [[ring/ring-mock "0.3.0"]]
+                      :source-paths ["src/dev"]
+                      :main         user
+                      :env          {:url "http://127.0.0.1:3000"}}
              
-             :user [:server :dev :arrdem]})
+             :user   [:server :dev :arrdem]})

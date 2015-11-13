@@ -62,8 +62,7 @@
       [:a (link-to t) "Article"] " "
       [:a {:href (f t)} "Add"]]]))
 
-(defn make-file-root
-  [t]
+(defn make-file-root [t]
   (let [*cfg* (cfg/lib-grim-config)]
     (as-> t t
       (api/thing->prior-versions *cfg* t)

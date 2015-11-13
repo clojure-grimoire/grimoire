@@ -5,13 +5,20 @@
 NOTES="$PWD/notes-store"
 DOCS="$PWD/doc-store"
 
-mkdir -p dat     # dir for git repos to live in
 mkdir -p "$DOCS" # dir used by Grimoire as the doc tree
 
-GIT_DAT="$PWD/dat"
+if [ -z "$GIT_DAT" ]
+then
+    mkdir -p dat     # dir for git repos to live in
+    GIT_DAT="$PWD/dat"
+fi
 
 [ -f `which gawk` ] && AWK=`which gawk` || AWK=`which awk`
-echo "[debug] Using " $AWK " for awk imp'l"
+if [ -z "$AWK" ]
+then
+    echo "Could not locate an AWK implementation! Aborting"
+    exit 1
+fi
 
 git_get() {
     # This is a quick little git extension designed to allow me to

@@ -11,7 +11,7 @@
                   :exclusions [org.clojure/clojure]]
                  [org.clojure-grimoire/lib-grimoire "0.10.2"
                   :exclusions [org.clojure/clojure]]
-                 [org.clojure-grimoire/simpledb "0.1.8"
+                 [org.clojure-grimoire/simpledb "0.1.9"
                   :exclusions [org.clojure/clojure]]
                  [cheshire "5.5.0"
                   :exclusions [org.clojure/clojure]]

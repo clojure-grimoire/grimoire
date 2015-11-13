@@ -23,7 +23,7 @@
                   :exclusions [org.clojure/clojure]]
                  [selmer "0.9.5"
                   :exclusions [org.clojure/clojure]]
-                 [compojure "1.3.4"
+                 [compojure "1.4.0"
                   :exclusions [org.clojure/clojure]]
                  [hiccup "1.0.5"
                   :exclusions [org.clojure/clojure]]

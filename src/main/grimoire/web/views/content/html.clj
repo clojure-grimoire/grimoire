@@ -62,6 +62,17 @@
       [:a (link-to t) "Article"] " "
       [:a {:href (f t)} "Add"]]]))
 
+(defn make-file-root [t]
+  (let [*cfg* (cfg/lib-grim-config)]
+    (as-> t t
+      (api/thing->prior-versions *cfg* t)
+      (result t)
+      (last t)
+      (#'grimoire.api.fs.impl/thing->handle *cfg* :else t)
+      (.getPath t)
+      (string/replace t #"(doc|notes)-store/" "")
+      (#'clojure.java.io/file t))))
+
 (defn add-ex-url
   ([t]
    (->> Integer/MAX_VALUE
@@ -69,24 +80,22 @@
         (format "%s.clj")
         (add-ex-url t)))
   
-  ([t n]
+  ([t file]
    {:pre [(t/thing? t)]}
-   (let [*cfg* (cfg/lib-grim-config)
-         t     (last (result (api/thing->prior-versions *cfg* t)))]
-     (as-> t v
-       (#'grimoire.api.fs.impl/thing->handle *cfg* :else v)
-       (gh/->new-url (cfg/notes-config)
-                     "develop"
-                     (#'clojure.java.io/file v "examples")
-                     n)))))
+   (let [root (make-file-root t)
+         dir  (#'clojure.java.io/file root "examples")]
+     (gh/->new-url (cfg/notes-config)
+                   "develop"
+                   dir
+                   file))))
 
 (defn add-note-url [t]
   {:pre [(t/thing? t)]}
-  (let [*cfg* (cfg/lib-grim-config)
-        t     (last (result (api/thing->prior-versions *cfg* t)))]
-    (as-> t v
-      (#'grimoire.api.fs.impl/thing->handle *cfg* :else v)
-      (gh/->new-url (cfg/notes-config) "develop" v "notes.md"))))
+  (let [root (make-file-root t)]
+    (gh/->new-url (cfg/notes-config)
+                  "develop"
+                  root
+                  "notes.md")))
 
 (defn local-add-ex-url [t]
   {:pre [(t/thing? t)]}

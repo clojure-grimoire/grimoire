@@ -1,21 +1,11 @@
 (ns grimoire.web.caches
-  (:require [grimoire.web.util :refer [maybe]]
-            [grimoire.web.config :refer [lib-grim-config]]
-            [grimoire.api :as api]
-            [sitemap.core :refer [generate-sitemap]]
-            [grimoire.things :as t]
-            [grimoire.web.util :refer [maybe]]
-            [grimoire.web.config :refer [lib-grim-config]]
-            [grimoire.api :as api]
-            [grimoire.things :as t]
-            [grimoire.web.util :refer [maybe]]
-            [grimoire.web.config :refer [lib-grim-config]]
-            [grimoire.api :as api]
-            [grimoire.things :as t]
-            [grimoire.either :refer [result]]
-            [grimoire.web.util :refer [maybe]]
-            [grimoire.web.config :refer [lib-grim-config]]
-            [grimoire.api :as api]))
+  (:require [grimoire
+             [api :as api]
+             [either :refer [result]]
+             [things :as t]]
+            [grimoire.web
+             [config :refer [lib-grim-config]]
+             [util :refer [maybe]]]))
 
 (defn -clj-versions []
   (let [*cfg* (lib-grim-config)

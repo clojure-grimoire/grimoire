@@ -1,20 +1,17 @@
 (ns grimoire.web.views.autocomplete
   (:refer-clojure :exclude [ns-resolve])
-  (:require [grimoire.api :as api]
-            [grimoire.api.web :as web]
-            [grimoire.either
-             :refer [succeed? result]]
-            [grimoire.web.views
-             :refer [ns-version-index]]
-            [grimoire.web.config
-             :refer [lib-grim-config
-                     site-config
-                     web-config]]
-            [grimoire.things :as t]
-            [cheshire.core
+  (:require [cheshire.core
              :refer [generate-string]]
-            [grimoire.web.config :as cfg])
-  (:import [java.lang.ref SoftReference]))
+            [grimoire
+             [things :as t]
+             [api :as api]
+             [either :refer [result]]]
+            [grimoire.api.web :as web]
+            [grimoire.web
+             [config :as cfg
+              :refer [lib-grim-config
+                      web-config]]
+             [util :as u]]))
 
 (def reader-shit
   [])
@@ -28,16 +25,8 @@
     {:result :success
      :body   results}))
 
-(defmacro softref-cached [& body]
-  `(let [cache# (atom (SoftReference. nil))]
-     (fn []
-       (or (.get ^SoftReference @cache#)
-           (let [res# (do ~@body)]
-             (reset! cache# (SoftReference. res#))
-             res#)))))
-
 (def get-nss
-  (softref-cached
+  (u/softref-cached
    (try
      (result
       (api/search (lib-grim-config)
@@ -47,7 +36,7 @@
        nil))))
 
 (def get-vars
-  (softref-cached
+  (u/softref-cached
    (try
      (result
       (api/search (lib-grim-config)
@@ -61,7 +50,7 @@
         nss   (:namespaces db)]
     (->> (get-nss)
          (keep (fn [t]
-                 (if-let [name (:name t)]
+                 (if-let [name (t/thing->name t)]
                    (if (.startsWith name qstr)
                      {:label name
                       :url   (web/make-html-url *cfg* t)
@@ -76,8 +65,8 @@
         defs  (:defs db)]
     (->> (get-vars)
          (keep (fn [t]
-                 (let [name  (:name t)
-                       pname (:name (:parent t))
+                 (let [name  (t/thing->name t)
+                       pname (t/thing->name (t/thing->parent t))
                        fname (str pname "/" name)]
                    (if (and name
                             (or (.startsWith name qstr)
@@ -99,7 +88,7 @@
 
            (re-find #"[:]?([\\D&&[^/]].*/)?(/|[\\D&&[^/]][^/]*)" qstr)
            ,,(complete-vars qstr)
-           
+
            ;; Links for namespaces (one . and no / yet)
            (re-find #"^[^A-Z.\W]*?\.[^/]+" qstr)
            ,,(complete-nss qstr)

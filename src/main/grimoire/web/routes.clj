@@ -462,10 +462,7 @@
 
 (defroutes dev
   (GET "/cheatsheet" []
-    (v.c.cs/cheatsheet))
-
-  (GET "/masonry" []
-    (v.c.cs/masonry)))
+    (v.c.cs/cheatsheet)))
 
 (defroutes app-routes
   (GET "/" {uri :uri :as req}

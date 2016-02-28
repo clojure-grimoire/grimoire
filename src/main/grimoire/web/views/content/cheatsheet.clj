@@ -514,19 +514,6 @@
      `[:row {:title "XML"}
        ~@(map →clj ["clojure.xml/parse" "xml-seq"])]]]])
 
-;; The test page
-;;------------------------------------------------------------------------------
-(defn masonry []
-  (layout ;; FIXME: is this a standard layout instance?
-   (assoc (cfg/site-config)
-          :page false
-          :css ["/public/css/cheatsheet.css"
-                "/public/style.css"]
-          :js  ["/public/jquery.js"
-                "/public/masonry.pkgd.min.js"
-                "/public/cheatsheet.js"])
-   (slurp "foo")))
-
 ;; The Cheatsheet
 ;;------------------------------------------------------------------------------
 

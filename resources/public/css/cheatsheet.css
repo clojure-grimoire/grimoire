@@ -33,6 +33,8 @@
   background-color: #ebebeb;
   margin: 0.5em;
   padding: 0 0.5em 0.5em;
+  border-radius: 5px;
+  border: 1px solid #ddd;
 }
 #cheatsheet table {
   width: 100%;

@@ -11,43 +11,37 @@
              [util :as u]]))
 
 (def reader-shit
-  [{:label "["
-    :url   "http://clojure.org/reference/reader#_vectors"}
-   {:label "{"
-    :url   "http://clojure.org/reference/reader#_lists"}
-   {:label "'"
-    :url   "http://clojure.org/reference/reader#_quote"}
-   {:label "\\"
-    :url   "http://clojure.org/reference/reader#_character"}
-   {:label ";"
-    :url   "http://clojure.org/reference/reader#_comment"}
-   {:label "@"
-    :url   "http://clojure.org/reference/reader#_deref"}
-   {:label "^"
-    :url   "http://clojure.org/reference/reader#_metadata"}
+  (let [dispatch-url    "http://clojure.org/reference/reader#_dispatch"
+        syntax-url      "http://clojure.org/reference/reader#__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing"
+        reader-cond-url "http://clojure.org/reference/reader#_reader_conditionals"]
+    [{:label "["
+      :url   "http://clojure.org/reference/reader#_vectors"}
+     {:label "{"
+      :url   "http://clojure.org/reference/reader#_lists"}
+     {:label "'"
+      :url   "http://clojure.org/reference/reader#_quote"}
+     {:label "\\"
+      :url   "http://clojure.org/reference/reader#_character"}
+     {:label ";"
+      :url   "http://clojure.org/reference/reader#_comment"}
+     {:label "@"
+      :url   "http://clojure.org/reference/reader#_deref"}
+     {:label "^"
+      :url   "http://clojure.org/reference/reader#_metadata"}
 
-   {:label "`"
-    :url   "http://clojure.org/reference/reader#__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing"}
-   {:label "~"
-    :url   "http://clojure.org/reference/reader#__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing"}
-   {:label "~@"
-    :url   "http://clojure.org/reference/reader#__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing"}
+     {:label "`" :url syntax-url}
+     {:label "~" :url syntax-url}
+     {:label "~@" :url syntax-url}
 
-   {:label "#?"
-    :url   "http://clojure.org/reference/reader#_reader_conditionals"}
-   {:label "#?@"
-    :url   "http://clojure.org/reference/reader#_reader_conditionals"}
-   
-   {:label "#"
-    :url   "http://clojure.org/reference/reader#_dispatch"}
-   {:label "#\""
-    :url   "http://clojure.org/reference/reader#_dispatch"}
-   {:label "#'"
-    :url   "http://clojure.org/reference/reader#_dispatch"}
-   {:label "#("
-    :url   "http://clojure.org/reference/reader#_dispatch"}
-   {:label "#{"
-    :url   "http://clojure.org/reference/reader#_sets"}])
+     {:label "#?" :url reader-cond-url}
+     {:label "#?@" :url reader-cond-url}
+     
+     {:label "#" :url dispatch-url}
+     {:label "#\"" :url dispatch-url}
+     {:label "#'" :url dispatch-url}
+     {:label "#(" :url dispatch-url}
+     
+     {:label "#{" :url "http://clojure.org/reference/reader#_sets"}]))
 
 (def autocomplete-limit
   15)

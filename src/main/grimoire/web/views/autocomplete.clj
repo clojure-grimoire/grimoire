@@ -11,23 +11,18 @@
              [util :as u]]))
 
 (def reader-shit
-  (let [dispatch-url    "http://clojure.org/reference/reader#_dispatch"
-        syntax-url      "http://clojure.org/reference/reader#__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing"
-        reader-cond-url "http://clojure.org/reference/reader#_reader_conditionals"]
-    [{:label "["
-      :url   "http://clojure.org/reference/reader#_vectors"}
-     {:label "{"
-      :url   "http://clojure.org/reference/reader#_lists"}
-     {:label "'"
-      :url   "http://clojure.org/reference/reader#_quote"}
-     {:label "\\"
-      :url   "http://clojure.org/reference/reader#_character"}
-     {:label ";"
-      :url   "http://clojure.org/reference/reader#_comment"}
-     {:label "@"
-      :url   "http://clojure.org/reference/reader#_deref"}
-     {:label "^"
-      :url   "http://clojure.org/reference/reader#_metadata"}
+  (let [prefix          "http://clojure.org/reference/reader#"
+        url             (fn [postfix] (str prefix postfix))
+        dispatch-url    (url "_dispatch")
+        syntax-url      (url "__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing")
+        reader-cond-url (url "_reader_conditionals")]
+    [{:label "[" :url (url "_vectors")}
+     {:label "{" :url (url "_lists")}
+     {:label "'" :url (url "_quote")}
+     {:label "\\" :url (url "_character")}
+     {:label ";" :url (url "_comment")}
+     {:label "@" :url (url "_deref")}
+     {:label "^" :url (url "_metadata")}
 
      {:label "`" :url syntax-url}
      {:label "~" :url syntax-url}

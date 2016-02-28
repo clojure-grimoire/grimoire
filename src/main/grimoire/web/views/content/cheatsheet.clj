@@ -522,9 +522,11 @@
    (assoc (cfg/site-config)
           :page false
           :css ["/public/css/cheatsheet.css"
-                "/public/style.css"]
+                "/public/style.css"
+                "/public/jquery-ui.css"]
           :js  ["/public/jquery.js"
-                "/public/masonry.pkgd.min.js"
+                "/public/jquery-ui.js"
+                "/public/masonry.js"
                 "/public/cheatsheet.js"])
 
    `[:div {:class "grid"

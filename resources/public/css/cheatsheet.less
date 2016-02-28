@@ -81,7 +81,6 @@ body { font-family: sans-serif; }
 /* ---- grid ---- */
 
 .grid {
-    //max-width: 1200px;
 }
 
 /* clearfix */
@@ -94,56 +93,51 @@ body { font-family: sans-serif; }
 /* ---- grid-item ---- */
 
 .grid-item {
-    width: 500px;
+    min-width: 21em;
     float: left;
 }
 
-@media screen and (min-width: 500px) {
-  /* 5 columns for larger screens */
-    .search { width: 500px; }
+div.container {
+    min-width: 400px;
 }
 
-@media screen and (min-width: 1000px) {
-  /* 5 columns for larger screens */
-    .search { width: 1000px; }
+@media (min-width: 400px) {
+    .grid-item {
+        width: 100%;
+    }
 }
 
-@media screen and (min-width: 1500px) {
-  /* 5 columns for larger screens */
-    .search { width: 1500px; }
+@media (min-width: 750px) {
+    .grid-item {
+        width: 50%;
+        max-width: 32em;
+    }
 }
 
-@media screen and (min-width: 2000px) {
-  /* 5 columns for larger screens */
-    .search { width: 2000px; }
+@media (min-width: 1070px) {
+    .grid-item {
+        width: 33.3333333%;
+        max-width: 32em;
+    }
 }
 
-@media screen and (min-width: 2500px) {
-  /* 5 columns for larger screens */
-    .search { width: 2500px; }
+@media (min-width: 1500px) {
+    .grid-item {
+        width: 25%;
+        max-width: 32em;
+    }
 }
 
-@media screen and (min-width: 3000px) {
-  /* 5 columns for larger screens */
-    .search { width: 3000px; }
+@media (min-width: 2100px) {
+    .grid-item {
+        width: 20%;
+        max-width: 32em;
+    }
 }
 
-@media screen and (min-width: 3500px) {
-  /* 5 columns for larger screens */
-    .search { width: 3500px; }
-}
-
-@media screen and (min-width: 4000px) {
-  /* 5 columns for larger screens */
-    .search { width: 4000px; }
-}
-
-@media screen and (min-width: 4500px) {
-  /* 5 columns for larger screens */
-    .search { width: 4500px; }
-}
-
-@media screen and (min-width: 5000px) {
-  /* 5 columns for larger screens */
-    .search { width: 5000px; }
+@media (min-width: 2600px) {
+    .grid-item {
+        width: 16.666666666%;
+        max-width: 32em;
+    }
 }

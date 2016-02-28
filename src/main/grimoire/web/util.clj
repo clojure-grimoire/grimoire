@@ -1,15 +1,18 @@
 (ns grimoire.web.util
   (:require [clojure.java.io :as io]
             [clojure.string :as string]
-            [markdown.core :as md]
-            [markdown.transformers :as md.t]
-            [me.raynes.conch :refer [let-programs]]
-            [grimoire.things :as t]
-            [grimoire.api :as api]
+            [grimoire
+             [api :as api]
+             [either :as e]
+             [things :as t]]
             [grimoire.api.web :as web]
-            [grimoire.either :as e]
-            [grimoire.web.config :as cfg])
-  (:import (java.net URLEncoder)))
+            [grimoire.web.config :as cfg]
+            [markdown
+             [core :as md]
+             [transformers :as md.t]]
+            [me.raynes.conch :refer [let-programs]])
+  (:import java.lang.ref.SoftReference
+           java.net.URLEncoder))
 
 (defn resource-file-contents
   "Slurps a file if it exists, otherwise returning nil."
@@ -171,3 +174,11 @@
    "application/edn"  :application/edn
    :application/edn   :application/edn
    })
+
+(defmacro softref-cached [& body]
+  `(let [cache# (atom (SoftReference. nil))]
+     (fn []
+       (or (.get ^SoftReference @cache#)
+           (let [res# (do ~@body)]
+             (reset! cache# (SoftReference. res#))
+             res#)))))

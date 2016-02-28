@@ -14,6 +14,7 @@
             [grimoire.web.views.content.cheatsheet :as v.c.cs]
             [grimoire.web.views.errors :as v.e]
             [grimoire.web.views.api :as v.api]
+            [grimoire.web.views.autocomplete :as v.auto]
             [ring.util.response :as response]
             [simpledb.core :as sdb]
             [taoensso.timbre :as timbre :refer [warn]]))
@@ -287,9 +288,10 @@
 (declare app)
 
 (defn search
-  [{header-type :content-type
+  [{header-type        :content-type
     {param-type :type} :params
-    :as req uri :uri}]
+    :as                req
+    uri                :uri}]
   (let [type    (-> (or header-type param-type :html)
                     wutil/normalize-type)
         log-msg (pr-str {:uri        uri
@@ -357,7 +359,10 @@
                (route/not-found
                 (fn [req]
                   (warn log-msg)
-                  (v.e/search-no-version type "v1"))))))
+                  (v.e/search-no-version type "v1")))))
+
+           (GET "/autocomplete" {{query :query} :params}
+             (v.auto/complete query)))
 
          (routing req))))
 
@@ -460,14 +465,10 @@
       (#'app new-req) ;; pass it forwards
       (wutil/moved-permanently new-uri))))
 
-(defroutes dev
-  (GET "/cheatsheet" []
-    (v.c.cs/cheatsheet)))
-
 (defroutes app-routes
   (GET "/" {uri :uri :as req}
     (do (log! req nil)
-        (v.c.h/home-page req)))
+        (v.c.cs/cheatsheet)))
 
   (GET "/favicon.ico" []
     (response/redirect "/public/favicon.ico"))
@@ -512,12 +513,6 @@
   ;; The store itself
   ;;--------------------------------------------------------------------
   store-v1
-
-  ;; The dev routes
-  ;;--------------------------------------------------------------------
-  (context ["/dev"]
-      []
-    dev)
   
   ;; Symbol search interface
   ;;--------------------------------------------------------------------

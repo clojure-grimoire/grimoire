@@ -1,5 +1,4 @@
 setup: clean
-	bash cheatsheet.sh
 	bash dat.sh
 	echo "Done!"
 

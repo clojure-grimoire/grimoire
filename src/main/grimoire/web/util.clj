@@ -11,20 +11,6 @@
             [grimoire.web.config :as cfg])
   (:import (java.net URLEncoder)))
 
-(defn cheatsheet
-  "Slurps in the cheatsheet off of the resource path and does the final
-  rendering to HTML."
-  [{:keys [baseurl clojure-version]}]
-  (-> "cheatsheet.html"
-      io/resource
-      slurp
-      (string/replace #"\{\{ site.baseurl \}\}" "")))
-
-(def cheatsheet-memo
-  "Since the cheatsheet isn't expected to change and is the highest traffic page
-  on the site just memoize it."
-  (memoize cheatsheet))
-
 (defn resource-file-contents
   "Slurps a file if it exists, otherwise returning nil."
   [file]

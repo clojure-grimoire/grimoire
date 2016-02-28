@@ -14,7 +14,43 @@
              [util :as u]]))
 
 (def reader-shit
-  [])
+  [{:label "["
+    :url   "http://clojure.org/reference/reader#_vectors"}
+   {:label "{"
+    :url   "http://clojure.org/reference/reader#_lists"}
+   {:label "'"
+    :url   "http://clojure.org/reference/reader#_quote"}
+   {:label "\\"
+    :url   "http://clojure.org/reference/reader#_character"}
+   {:label ";"
+    :url   "http://clojure.org/reference/reader#_comment"}
+   {:label "@"
+    :url   "http://clojure.org/reference/reader#_deref"}
+   {:label "^"
+    :url   "http://clojure.org/reference/reader#_metadata"}
+
+   {:label "`"
+    :url   "http://clojure.org/reference/reader#__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing"}
+   {:label "~"
+    :url   "http://clojure.org/reference/reader#__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing"}
+   {:label "~@"
+    :url   "http://clojure.org/reference/reader#__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing"}
+
+   {:label "#?"
+    :url   "http://clojure.org/reference/reader#_reader_conditionals"}
+   {:label "#?@"
+    :url   "http://clojure.org/reference/reader#_reader_conditionals"}
+   
+   {:label "#"
+    :url   "http://clojure.org/reference/reader#_dispatch"}
+   {:label "#\""
+    :url   "http://clojure.org/reference/reader#_dispatch"}
+   {:label "#'"
+    :url   "http://clojure.org/reference/reader#_dispatch"}
+   {:label "#("
+    :url   "http://clojure.org/reference/reader#_dispatch"}
+   {:label "#{"
+    :url   "http://clojure.org/reference/reader#_sets"}])
 
 (def autocomplete-limit
   15)
@@ -43,6 +79,13 @@
                   [:def nil nil :latest nil nil nil]))
      (catch Exception e
        nil))))
+
+(defn complete-reader [qstr]
+  (->> reader-shit
+       (keep (fn [{:keys [label url] :as res}]
+               (when (.startsWith label qstr)
+                 res)))
+       (take autocomplete-limit)))
 
 (defn complete-nss [qstr]
   (let [*cfg* (web-config)
@@ -84,7 +127,7 @@
     (->> (cond
            ;; FIXME: links for reader notation
            (re-find #"^\W" qstr)
-           ,,nil
+           ,,(complete-reader qstr)
 
            (re-find #"[:]?([\\D&&[^/]].*/)?(/|[\\D&&[^/]][^/]*)" qstr)
            ,,(complete-vars qstr)

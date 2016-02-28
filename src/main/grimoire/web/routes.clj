@@ -11,6 +11,7 @@
             [grimoire.web.config :as cfg]
             [grimoire.web.views :as v]
             [grimoire.web.views.content.html :as v.c.h]
+            [grimoire.web.views.content.cheatsheet :as v.c.cs]
             [grimoire.web.views.errors :as v.e]
             [grimoire.web.views.api :as v.api]
             [ring.util.response :as response]
@@ -459,6 +460,13 @@
       (#'app new-req) ;; pass it forwards
       (wutil/moved-permanently new-uri))))
 
+(defroutes dev
+  (GET "/cheatsheet" []
+    (v.c.cs/cheatsheet))
+
+  (GET "/masonry" []
+    (v.c.cs/masonry)))
+
 (defroutes app-routes
   (GET "/" {uri :uri :as req}
     (do (log! req nil)
@@ -505,8 +513,15 @@
     #(rewrite-latest->version-req %1 store-v group artifact))
 
   ;; The store itself
+  ;;--------------------------------------------------------------------
   store-v1
 
+  ;; The dev routes
+  ;;--------------------------------------------------------------------
+  (context ["/dev"]
+      []
+    dev)
+  
   ;; Symbol search interface
   ;;--------------------------------------------------------------------
   search

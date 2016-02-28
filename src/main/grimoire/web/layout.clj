@@ -99,7 +99,7 @@
      (masthead page)
 
      (when (:funding-flag page false)
-       [:div {:id "funding"
+       [:div {:id    "funding"
               :style "padding:0.25em;background-color:#3EC53E;color:white;"}
         [:center
          [:h2 "Hey listen!"]
@@ -110,7 +110,9 @@
 
      [:div {:class "container content"
             :style "margin-top: 3em;"}
-      [:div {:class "page"}
-       content]]]
+      (if (:page page)
+        [:div {:class "page"}
+         content]
+        content)]]
     [:label.sidebar-toggle {:for "sidebar-checkbox"}]]
    (foot page)))

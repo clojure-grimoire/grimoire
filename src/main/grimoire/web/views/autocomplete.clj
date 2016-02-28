@@ -1,16 +1,13 @@
 (ns grimoire.web.views.autocomplete
   (:refer-clojure :exclude [ns-resolve])
-  (:require [cheshire.core
-             :refer [generate-string]]
+  (:require [cheshire.core :refer [generate-string]]
             [grimoire
-             [things :as t]
              [api :as api]
-             [either :refer [result]]]
+             [either :refer [result]]
+             [things :as t]]
             [grimoire.api.web :as web]
             [grimoire.web
-             [config :as cfg
-              :refer [lib-grim-config
-                      web-config]]
+             [config :as cfg :refer [lib-grim-config web-config]]
              [util :as u]]))
 
 (def reader-shit

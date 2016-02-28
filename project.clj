@@ -9,7 +9,7 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/core.match "0.3.0-alpha4"
                   :exclusions [org.clojure/clojure]]
-                 [org.clojure-grimoire/lib-grimoire "0.10.4"
+                 [org.clojure-grimoire/lib-grimoire "0.10.5"
                   :exclusions [org.clojure/clojure]]
                  [org.clojure-grimoire/simpledb "0.1.10"
                   :exclusions [org.clojure/clojure]]

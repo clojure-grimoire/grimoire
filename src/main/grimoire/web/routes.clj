@@ -464,14 +464,10 @@
       (#'app new-req) ;; pass it forwards
       (wutil/moved-permanently new-uri))))
 
-(defroutes dev
-  (GET "/cheatsheet" []
-    (v.c.cs/cheatsheet)))
-
 (defroutes app-routes
   (GET "/" {uri :uri :as req}
     (do (log! req nil)
-        (v.c.h/home-page req)))
+        (v.c.cs/cheatsheet)))
 
   (GET "/favicon.ico" []
     (response/redirect "/public/favicon.ico"))
@@ -516,12 +512,6 @@
   ;; The store itself
   ;;--------------------------------------------------------------------
   store-v1
-
-  ;; The dev routes
-  ;;--------------------------------------------------------------------
-  (context ["/dev"]
-      []
-    dev)
   
   ;; Symbol search interface
   ;;--------------------------------------------------------------------

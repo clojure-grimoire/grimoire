@@ -87,7 +87,7 @@
 ;; Fragments
 ;;------------------------------------------------------------------------------
 
-(def repl
+(defn repl []
   [:box {:class "grid-item"}
    [:section {}
     [:subsection {:title "REPL Tools"}
@@ -121,7 +121,7 @@
                      "clojure.java.shell/with-sh-dir"
                      "clojure.java.shell/with-sh-env"])]]]]])
 
-(def numbers
+(defn numbers []
   [:box {:class "grid-item"}
    [:section {:title "Numbers"}
     [:subsection {}
@@ -182,7 +182,7 @@
         ~@(map (comp →clj (partial str "unchecked-"))
                ["add" "dec" "inc" "multiply" "negate" "subtract"])]]]]])
 
-(def functions
+(defn functions []
   [:box {:class "grid-item"}
    [:section {:title "Functions"}
     [:table {}
@@ -198,7 +198,7 @@
      `[:row {:title "Test"}
        ~@(map →clj ["fn?" "ifn?"])]]]])
 
-(def abstractions
+(defn abstractions []
   [:box {:title "Abstractions (<a href=\"https://github.com/cemerick/clojure-type-selection-flowchart\">Clojure type selection flowchart</a>)"
          :class "grid-item"}
    [:section {:title "Protocols (<a href=\"http://clojure.org/protocols\">clojure.org/protocols</a>)"}
@@ -285,7 +285,7 @@
      `[:row {:title "Relation"}
        ~@(map →clj ["derive" "isa?" "parents" "ancestors" "descendants" "make-hierarchy"])]]]])
 
-(def macros
+(defn macros []
   [:box {:class "green grid-item"}
    [:section {:title "Macros"}
     [:table {}
@@ -320,7 +320,7 @@
      `[:row {:title "Doc."}
        ~@(map →clj ["assert" "comment" "clojure.repl/doc"])]]]])
 
-(def vars
+(defn vars []
   [:box {:class "blue2 grid-item"}
    [:section {:title "Vars and global environment (<a href=\"http://clojure.org/reference/vars\">clojure.org/vars</a>)"}
     [:table {}
@@ -338,7 +338,7 @@
      `[:row {:title "Var validators"}
        ~@(map →clj ["set-validator!" "get-validator"])]]]])
 
-(def namespaces
+(defn namespaces []
   [:box {:class "yellow grid-item"}
    [:section {:title "Namespace"}
     [:table {}
@@ -365,7 +365,7 @@
      `[:row {:title "Remove"}
        ~@(map →clj ["ns-unalias" "ns-unmap" "remove-ns"])]]]])
 
-(def loading
+(defn loading []
   [:box {:class "green grid-item"}
    [:section {:title "Loading"}
     [:table {}
@@ -379,7 +379,7 @@
      `[:row {:title "Load misc"}
        ~@(map →clj ["load" "load-file" "load-reader" "load-string"])]]]])
 
-(def concurrency
+(defn concurrency []
   [:box {:class "magenta grid-item"}
    [:section {:title "Concurrency"}
     [:table {}
@@ -456,7 +456,7 @@
 
 ;; FIXME: Clojurescript?
 ;; FIXME: ClojureCLJ?
-(def interop
+(defn interop []
   [:box {:class "orange grid-item"}
    [:section  {:title "Java Interoperation (<a href=\"http://clojure.org/java_interop\">clojure.org/java_interop</a>)"}
     [:table {}
@@ -507,7 +507,7 @@
       `[:row {:title "Misc"}
         ~@(map →clj ["proxy-mappings" "proxy-super" "update-proxy"])]]]]])
 
-(def msc
+(defn msc []
   [:box {:class "green2 grid-item"}
    [:section {:title "Other"}
     [:table {}
@@ -529,26 +529,26 @@
                 "/public/masonry.js"
                 "/public/cheatsheet.js"])
 
-   `[:div {:class "grid"
-           :id    "cheatsheet"}
-     [:div {:class "grid-sizer grid-item"}]
-     [:nav {:class "search grid-item"}
-      [:input {:type        "text"
-               :id          "search"
-               :placeholder "Type to search..."
-               :autofocus   "autofocus"}]
-      [:div {:id "options"}]]
-     ~@(map render-fragment
-            [
-             repl
-             numbers
-             functions
-             abstractions
-             macros
-             vars
-             namespaces
-             loading
-             concurrency
-             interop
-             msc
-             ])]))
+   [:div {:class "grid"
+          :id    "cheatsheet"}
+    [:div {:class "grid-sizer grid-item"}]
+    [:nav {:class "search grid-item"}
+     [:input {:type        "text"
+              :id          "search"
+              :placeholder "Type to search..."
+              :autofocus   "autofocus"}]
+     [:div {:id "options"}]]
+    (map render-fragment
+         [
+          (repl)
+          (numbers)
+          (functions)
+          (abstractions)
+          (macros)
+          (vars)
+          (namespaces)
+          (loading)
+          (concurrency)
+          (interop)
+          (msc)
+          ])]))

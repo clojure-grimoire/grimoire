@@ -130,15 +130,6 @@
 ;; Pages
 
 ;; FIXME: probably belongs somewhere else
-(defn home-page [req]
-  (layout
-   (-> (cfg/site-config)
-       (set-funding-flag req)
-       (assoc :css ["/public/css/cheatsheet.css"]))
-   ;;------------------------------------------------------------
-   [:blockquote [:p (-> (cfg/site-config) :style :quote)]]
-   (wutil/cheatsheet-memo (cfg/site-config))))
-
 (def sorted-table
   #(->> %
         (sort-by second)

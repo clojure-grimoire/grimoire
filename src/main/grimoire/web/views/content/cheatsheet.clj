@@ -530,8 +530,14 @@
                 "/public/cheatsheet.js"])
 
    `[:div {:class "grid"
-           :id    "cheatsheet"
-           }
+           :id    "cheatsheet"}
+     [:div {:class "grid-sizer grid-item"}]
+     [:nav {:class "search grid-item"}
+      [:input {:type        "text"
+               :id          "search"
+               :placeholder "Type to search..."
+               :autofocus   "autofocus"}]
+      [:div {:id "options"}]]
      ~@(map render-fragment
             [
              repl

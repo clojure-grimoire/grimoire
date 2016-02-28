@@ -14,6 +14,7 @@
             [grimoire.web.views.content.cheatsheet :as v.c.cs]
             [grimoire.web.views.errors :as v.e]
             [grimoire.web.views.api :as v.api]
+            [grimoire.web.views.autocomplete :as v.auto]
             [ring.util.response :as response]
             [simpledb.core :as sdb]
             [taoensso.timbre :as timbre :refer [warn]]))
@@ -357,7 +358,10 @@
                (route/not-found
                 (fn [req]
                   (warn log-msg)
-                  (v.e/search-no-version type "v1"))))))
+                  (v.e/search-no-version type "v1")))))
+
+           (GET "/autocomplete" {{query :query} :params}
+             (v.auto/complete query)))
 
          (routing req))))
 

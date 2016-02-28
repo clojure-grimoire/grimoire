@@ -288,9 +288,10 @@
 (declare app)
 
 (defn search
-  [{header-type :content-type
+  [{header-type        :content-type
     {param-type :type} :params
-    :as req uri :uri}]
+    :as                req
+    uri                :uri}]
   (let [type    (-> (or header-type param-type :html)
                     wutil/normalize-type)
         log-msg (pr-str {:uri        uri

@@ -80,12 +80,16 @@
      (catch Exception e
        nil))))
 
+(defn empty->nil [coll]
+  (when-not (empty? coll) coll))
+
 (defn complete-reader [qstr]
   (->> reader-shit
        (keep (fn [{:keys [label url] :as res}]
                (when (.startsWith label qstr)
                  res)))
-       (take autocomplete-limit)))
+       (take autocomplete-limit)
+       empty->nil))
 
 (defn complete-nss [qstr]
   (let [*cfg* (web-config)
@@ -127,7 +131,8 @@
     (->> (cond
            ;; FIXME: links for reader notation
            (re-find #"^\W" qstr)
-           ,,(complete-reader qstr)
+           ,,(or (complete-reader qstr)
+                 (complete-vars qstr))
 
            (re-find #"[:]?([\\D&&[^/]].*/)?(/|[\\D&&[^/]][^/]*)" qstr)
            ,,(complete-vars qstr)

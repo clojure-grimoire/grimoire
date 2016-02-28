@@ -100,7 +100,7 @@
         (→clj "clojure.repl/source" "source")
         (→clj "clojure.repl/pst" "pst")
         (→clj "clojure.java.javadoc/javadoc")]
-       
+
        `[:row {:title "REPL Vars"}
          ~@(map →clj ["*1" "*2" "*3" "*e"])]
 
@@ -541,15 +541,14 @@
                  "/public/masonry.js"
                  "/public/cheatsheet.js"])
 
+    [:nav {:class "search"}
+     [:input {:type        "text"
+              :id          "search"
+              :placeholder "Type to search..."
+              :autofocus   "autofocus"}]]
     [:div {:class "grid"
            :id    "cheatsheet"}
      [:div {:class "grid-sizer grid-item"}]
-     [:nav {:class "search grid-item"}
-      [:input {:type        "text"
-               :id          "search"
-               :placeholder "Type to search..."
-               :autofocus   "autofocus"}]
-      [:div {:id "options"}]]
      (map render-fragment
           [
            (repl)

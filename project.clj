@@ -6,44 +6,32 @@
 
   :source-paths ["src/main"]
   :plugins      [[lein-environ "1.0.2"]]
-  :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/core.match "0.3.0-alpha4"
-                  :exclusions [org.clojure/clojure]]
-                 [org.clojure-grimoire/lib-grimoire "0.10.6"
-                  :exclusions [org.clojure/clojure]]
-                 [org.clojure-grimoire/simpledb "0.1.10"
-                  :exclusions [org.clojure/clojure]]
-                 [cheshire "5.5.0"
-                  :exclusions [org.clojure/clojure]]
-                 [com.taoensso/timbre "4.2.1"
-                  :exclusions [org.clojure/clojure]]
-                 [ring/ring-core "1.4.0"
-                  :exclusions [org.clojure/clojure]]
-                 [ring/ring-jetty-adapter "1.4.0"
-                  :exclusions [org.clojure/clojure]]
-                 [selmer "1.0.0"
-                  :exclusions [org.clojure/clojure]]
-                 [compojure "1.4.0"
-                  :exclusions [org.clojure/clojure]]
-                 [hiccup "1.0.5"
-                  :exclusions [org.clojure/clojure]]
-                 [markdown-clj "0.9.85"
-                  :exclusions [org.clojure/clojure]]
-                 [me.raynes/conch "0.8.0"
-                  :exclusions [org.clojure/clojure]]
-                 [sitemap "0.2.5"
-                  :exclusions [org.clojure/clojure]]
-                 [instaparse "1.4.1"
-                  :exclusions [org.clojure/clojure]]
-                 [environ "1.0.2"
-                  :exclusions [org.clojure/clojure]]]
+  :exclusions   [org.clojure/clojure]
+  :dependencies [[org.clojure/core.match "0.3.0-alpha4"]
+                 [org.clojure-grimoire/lib-grimoire "0.10.6"]
+                 [org.clojure-grimoire/simpledb "0.1.10"]
+                 [cheshire "5.5.0"]
+                 [com.taoensso/timbre "4.2.1"]
+                 [ring/ring-core "1.4.0"]
+                 [ring/ring-jetty-adapter "1.4.0"]
+                 [selmer "1.0.0"]
+                 [compojure "1.4.0"]
+                 [hiccup "1.0.5"]
+                 [markdown-clj "0.9.85"]
+                 [me.raynes/conch "0.8.0"]
+                 [sitemap "0.2.5"]
+                 [instaparse "1.4.1"]
+                 [environ "1.0.2"]
+                 [pandect "0.5.4"]]
   
   :aliases {"serve" ["with-profile" "server" "run"]}
 
-  :profiles {:server {:env  {:url "https://www.conj.io"}
-                      :main grimoire.web.service}
+  :profiles {:server {:dependencies [[org.jaunt-lang/jaunt "1.9.0-SNAPSHOT"]]
+                      :env          {:url "https://www.conj.io"}
+                      :main         grimoire.web.service}
 
-             :dev    {:dependencies [[ring/ring-mock "0.3.0"]]
+             :dev    {:dependencies [[ring/ring-mock "0.3.0"]
+                                     [org.clojure/clojure "1.8.0"]]
                       :source-paths ["src/dev"]
                       :main         user
                       :env          {:url "http://127.0.0.1:3000"}}})

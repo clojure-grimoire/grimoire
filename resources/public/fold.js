@@ -13,12 +13,10 @@
             u=p.find("span.hide");
 
             v.removeClass("unhide")
-                .addClass("hide")
-                .html("-");
+                .addClass("hide");
 
             u.removeClass("hide")
-                .addClass("unhide")
-                .html("+");
+                .addClass("unhide");
         });
 
     $(document).on("keydown",

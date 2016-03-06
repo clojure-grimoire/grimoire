@@ -1,56 +1,42 @@
 (ns grimoire.web.views.autocomplete
   (:refer-clojure :exclude [ns-resolve])
-  (:require [cheshire.core
-             :refer [generate-string]]
+  (:require [cheshire.core :refer [generate-string]]
             [grimoire
-             [things :as t]
              [api :as api]
-             [either :refer [result]]]
+             [either :refer [result]]
+             [things :as t]]
             [grimoire.api.web :as web]
             [grimoire.web
-             [config :as cfg
-              :refer [lib-grim-config
-                      web-config]]
+             [config :as cfg :refer [lib-grim-config web-config]]
              [util :as u]]))
 
 (def reader-shit
-  [{:label "["
-    :url   "http://clojure.org/reference/reader#_vectors"}
-   {:label "{"
-    :url   "http://clojure.org/reference/reader#_lists"}
-   {:label "'"
-    :url   "http://clojure.org/reference/reader#_quote"}
-   {:label "\\"
-    :url   "http://clojure.org/reference/reader#_character"}
-   {:label ";"
-    :url   "http://clojure.org/reference/reader#_comment"}
-   {:label "@"
-    :url   "http://clojure.org/reference/reader#_deref"}
-   {:label "^"
-    :url   "http://clojure.org/reference/reader#_metadata"}
+  (let [prefix          "http://clojure.org/reference/reader#"
+        url             (fn [postfix] (str prefix postfix))
+        dispatch-url    (url "_dispatch")
+        syntax-url      (url "__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing")
+        reader-cond-url (url "_reader_conditionals")]
+    [{:label "[" :url (url "_vectors")}
+     {:label "{" :url (url "_lists")}
+     {:label "'" :url (url "_quote")}
+     {:label "\\" :url (url "_character")}
+     {:label ";" :url (url "_comment")}
+     {:label "@" :url (url "_deref")}
+     {:label "^" :url (url "_metadata")}
 
-   {:label "`"
-    :url   "http://clojure.org/reference/reader#__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing"}
-   {:label "~"
-    :url   "http://clojure.org/reference/reader#__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing"}
-   {:label "~@"
-    :url   "http://clojure.org/reference/reader#__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing"}
+     {:label "`" :url syntax-url}
+     {:label "~" :url syntax-url}
+     {:label "~@" :url syntax-url}
 
-   {:label "#?"
-    :url   "http://clojure.org/reference/reader#_reader_conditionals"}
-   {:label "#?@"
-    :url   "http://clojure.org/reference/reader#_reader_conditionals"}
-   
-   {:label "#"
-    :url   "http://clojure.org/reference/reader#_dispatch"}
-   {:label "#\""
-    :url   "http://clojure.org/reference/reader#_dispatch"}
-   {:label "#'"
-    :url   "http://clojure.org/reference/reader#_dispatch"}
-   {:label "#("
-    :url   "http://clojure.org/reference/reader#_dispatch"}
-   {:label "#{"
-    :url   "http://clojure.org/reference/reader#_sets"}])
+     {:label "#?" :url reader-cond-url}
+     {:label "#?@" :url reader-cond-url}
+     
+     {:label "#" :url dispatch-url}
+     {:label "#\"" :url dispatch-url}
+     {:label "#'" :url dispatch-url}
+     {:label "#(" :url dispatch-url}
+     
+     {:label "#{" :url "http://clojure.org/reference/reader#_sets"}]))
 
 (def autocomplete-limit
   15)
@@ -80,12 +66,16 @@
      (catch Exception e
        nil))))
 
+(defn empty->nil [coll]
+  (when-not (empty? coll) coll))
+
 (defn complete-reader [qstr]
   (->> reader-shit
        (keep (fn [{:keys [label url] :as res}]
                (when (.startsWith label qstr)
                  res)))
-       (take autocomplete-limit)))
+       (take autocomplete-limit)
+       empty->nil))
 
 (defn complete-nss [qstr]
   (let [*cfg* (web-config)
@@ -127,7 +117,8 @@
     (->> (cond
            ;; FIXME: links for reader notation
            (re-find #"^\W" qstr)
-           ,,(complete-reader qstr)
+           ,,(or (complete-reader qstr)
+                 (complete-vars qstr))
 
            (re-find #"[:]?([\\D&&[^/]].*/)?(/|[\\D&&[^/]][^/]*)" qstr)
            ,,(complete-vars qstr)

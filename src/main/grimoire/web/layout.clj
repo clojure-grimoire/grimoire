@@ -75,9 +75,8 @@
 (defn foot [{:keys [google-analytics-id js]}]
   [:footer
    [:script {:type "text/javascript" :src "/public/sidebar.js"}]
-   (map #(vector :script {:type "text/javascript" :src %}) js)
-   [:script {:type "text/javascript"}
-    "function closefunding(){$('#funding').slideUp('slow',function(){$('#funding').remove();});}"]
+   [:script {:type "text/javascript" :src "/public/funding.js"}]
+   (map #(vector :script {:type "text/javascript" :src %}) js) 
    [:script {:type "text/javascript"}
     "var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '" google-analytics-id "']);

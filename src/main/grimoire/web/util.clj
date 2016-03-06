@@ -125,10 +125,9 @@
      (if (.exists cache-file#)
        (slurp cache-file#)
 
-       (do (println "Cache miss on thing" uri#)
-           (let [text# (do ~@body)]
-             (spit cache-file# text#)
-             text#)))))
+       (let [text# (do ~@body)]
+         (spit cache-file# text#)
+         text#))))
 
 (defn highlight-example
   "Helper for rendering a Grimoire Example Thing to HTML, using a filesystem

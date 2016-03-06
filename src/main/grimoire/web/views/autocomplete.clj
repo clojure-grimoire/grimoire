@@ -8,7 +8,8 @@
             [grimoire.api.web :as web]
             [grimoire.web
              [config :as cfg :refer [lib-grim-config web-config]]
-             [util :as u]]))
+             [util :as u]]
+            [taoensso.timbre :refer [info]]))
 
 (def reader-shit
   (let [prefix          "http://clojure.org/reference/reader#"
@@ -112,7 +113,7 @@
          (take autocomplete-limit))))
 
 (defn complete [qstr]
-  (println "Completing " qstr)
+  (info (str "Completing " qstr))
   (let [*cfg* (web-config)]
     (->> (cond
            ;; FIXME: links for reader notation

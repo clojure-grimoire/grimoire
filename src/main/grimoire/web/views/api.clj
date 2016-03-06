@@ -68,9 +68,10 @@
   "Returns a success result representing the known groups."
   [type _]
   (let [*g-cfg* (lib-grim-config)
-        *w-cfg* (web-config)]
+        *w-cfg* (assoc (web-config)
+                       :type type)]
     (try
-      (-> (for [g  (result (api/list-groups *g-cfg*))]
+      (-> (for [g (result (api/list-groups *g-cfg*))]
             {:name     (t/thing->name g)
              :html     (web/make-html-url *w-cfg* g)
              :children (->> (for [op (keys group-ops)]
@@ -89,7 +90,8 @@
   namespace is defined."
   [type params]
   (let [*g-cfg* (lib-grim-config)
-        *w-cfg* (web-config)]
+        *w-cfg* (assoc (web-config)
+                       :type type)]
     (-> (if-let [ns (get params :ns)]
           (if-let [r (get (ns-version-index) ns)]
             (let [version-t  r
@@ -151,8 +153,9 @@
 (defn group-artifacts
   "Returns the artifacts for the target group."
   [type group-thing]
-  (let [*w-cfg* (web-config)
-        *g-cfg* (lib-grim-config)]
+  (let [*g-cfg* (lib-grim-config)
+        *w-cfg* (assoc (web-config)
+                       :type type)]
     (try
       (-> (for [t (result (api/list-artifacts *g-cfg* group-thing))]
             {:name     (t/thing->name t)
@@ -180,8 +183,9 @@
 (defn artifact-versions
   "Returns the versions for the target artifact."
   [type artifact-thing]
-  (let [*w-cfg* (web-config)
-        *g-cfg* (lib-grim-config)]
+  (let [*g-cfg* (lib-grim-config)
+        *w-cfg* (assoc (web-config)
+                       :type type)]
     (try
       (-> (for [t (result (api/list-versions *g-cfg* artifact-thing))]
             {:name     (t/thing->name t)
@@ -210,7 +214,8 @@
   "Returns a Succeed of the platforms in the target version."
   [type group-thing]
   (let [*g-cfg* (lib-grim-config)
-        *w-cfg* (web-config)]
+        *w-cfg* (assoc (web-config)
+                       :type type)]
     (try
       (-> (for [t (result (api/list-platforms *g-cfg* group-thing))]
             {:name     (t/thing->name t)
@@ -238,7 +243,8 @@
   "Returns a Succeed of the namespaces in the target platform."
   [type platform-thing]
   (let [*g-cfg* (lib-grim-config)
-        *w-cfg* (web-config)]
+        *w-cfg* (assoc (web-config)
+                       :type type)]
     (try
       (-> (for [t (result (api/list-namespaces *g-cfg* platform-thing))]
             {:name     (t/thing->name t)
@@ -274,7 +280,8 @@
   operations thereon."
   [filter-pred type ns-thing]
   (let [*g-cfg* (lib-grim-config)
-        *w-cfg* (web-config)]
+        *w-cfg* (assoc (web-config)
+                       :type type)]
     (try
       (-> (for [t     (result (api/list-defs *g-cfg* ns-thing))
                 :let  [meta (api/read-meta *g-cfg* t)]
@@ -325,7 +332,8 @@
   encoded as strings if any exist in the datastore."
   [type def-thing]
   (let [*g-cfg* (lib-grim-config)
-        *w-cfg* (web-config)]
+        *w-cfg* (assoc (web-config)
+                       :type type)]
     (try
       (->> (for [t (result (api/list-related *g-cfg* def-thing))]
              {:name     (t/thing->name t)

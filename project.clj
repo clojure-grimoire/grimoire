@@ -2,14 +2,14 @@
   :description "THIS SHOULD NEVER BE DEPLOYED"
 
   :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+            :url  "http://www.eclipse.org/legal/epl-v10.html"}
 
   :source-paths ["src/main"]
-  
+  :plugins      [[lein-environ "1.0.2"]]
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/core.match "0.3.0-alpha4"
                   :exclusions [org.clojure/clojure]]
-                 [org.clojure-grimoire/lib-grimoire "0.10.5"
+                 [org.clojure-grimoire/lib-grimoire "0.10.6"
                   :exclusions [org.clojure/clojure]]
                  [org.clojure-grimoire/simpledb "0.1.10"
                   :exclusions [org.clojure/clojure]]
@@ -46,6 +46,4 @@
              :dev    {:dependencies [[ring/ring-mock "0.3.0"]]
                       :source-paths ["src/dev"]
                       :main         user
-                      :env          {:url "http://127.0.0.1:3000"}}
-             
-             :user   [:server :dev :arrdem]})
+                      :env          {:url "http://127.0.0.1:3000"}}})

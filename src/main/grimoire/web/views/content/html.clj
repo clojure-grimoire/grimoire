@@ -576,7 +576,8 @@
       (let [{:keys [type] :as meta} (result ?meta)]
         (cond (and meta (not= :sentinel type))
               ;; non-sentinel case
-              ,,(-render-html-symbol-page req def-thing meta)
+              ,,(wutil/html-cache-thing def-thing
+                  (-render-html-symbol-page req def-thing meta))
 
               (= :sentinel type)
               ;; chase a redirect

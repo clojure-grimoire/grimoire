@@ -36,7 +36,8 @@
                  [instaparse "1.4.1"
                   :exclusions [org.clojure/clojure]]
                  [environ "1.0.2"
-                  :exclusions [org.clojure/clojure]]]
+                  :exclusions [org.clojure/clojure]]
+                 [pandect "0.5.4"]]
   
   :aliases {"serve" ["with-profile" "server" "run"]}
 

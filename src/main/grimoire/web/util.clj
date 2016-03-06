@@ -10,7 +10,8 @@
             [markdown
              [core :as md]
              [transformers :as md.t]]
-            [me.raynes.conch :refer [let-programs]])
+            [me.raynes.conch :refer [let-programs]]
+            [pandect.algo.sha256 :refer [sha256]])
   (:import java.lang.ref.SoftReference
            java.net.URLEncoder))
 
@@ -112,25 +113,32 @@
 (def highlight-clojure
   (partial highlight-text "clojure"))
 
+(defmacro html-cache-thing
+  {:style/indent 1}
+  [t & body]
+  `(let [uri#        (t/thing->full-uri ~t)
+         cache-dir#  (io/file "render-cache")
+         cache-file# (io/file cache-dir# (str (sha256 uri#) ".html"))]
+     (if-not (.exists cache-dir#)
+       (.mkdirs cache-dir#))
+
+     (if (.exists cache-file#)
+       (slurp cache-file#)
+
+       (do (println "Cache miss on thing" uri#)
+           (let [text# (do ~@body)]
+             (spit cache-file# text#)
+             text#)))))
+
 (defn highlight-example
   "Helper for rendering a Grimoire Example Thing to HTML, using a filesystem
   cache of rendered examples to improve performance."
   [ex]
   {:pre [(t/example? ex)]}
-  (let [url        (:grimoire.things/url ex)
-        ex-file    (:handle ex)
-        cache-dir  (io/file "render-cache")
-        cache-file (io/file cache-dir (str (hash url) ".html"))] ;; FIXME: use a different hash algo?
-    (if-not (.exists cache-dir)
-      (.mkdirs cache-dir))
-
-    (if (.exists cache-file)
-      (slurp cache-file)
-
-      (let [text (e/result (api/read-example (cfg/lib-grim-config) ex))
-            html (highlight-clojure text)]
-        (spit cache-file html)
-        html))))
+  (html-cache-thing ex
+    (let [text (e/result (api/read-example (cfg/lib-grim-config) ex))
+          html (highlight-clojure text)]
+      html)))
 
 (defn url-encode
   "Returns an UTF-8 URL encoded version of the given string."

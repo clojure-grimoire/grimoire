@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :source-paths ["src/main"]
-  
+  :plugins      [[lein-environ "1.0.2"]]
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/core.match "0.3.0-alpha4"
                   :exclusions [org.clojure/clojure]]

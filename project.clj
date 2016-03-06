@@ -2,7 +2,7 @@
   :description "THIS SHOULD NEVER BE DEPLOYED"
 
   :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+            :url  "http://www.eclipse.org/legal/epl-v10.html"}
 
   :source-paths ["src/main"]
   :plugins      [[lein-environ "1.0.2"]]

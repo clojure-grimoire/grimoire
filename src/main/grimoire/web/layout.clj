@@ -74,6 +74,7 @@
 
 (defn foot [{:keys [google-analytics-id js]}]
   [:footer
+   [:script {:type "text/javascript" :src "/public/jquery.js"}]
    [:script {:type "text/javascript" :src "/public/sidebar.js"}]
    [:script {:type "text/javascript" :src "/public/funding.js"}]
    (map #(vector :script {:type "text/javascript" :src %}) js) 
@@ -96,16 +97,16 @@
     (sidebar page)
     [:div.wrap
      (masthead page)
-
-     (when (:funding-flag page false)
-       [:div {:id    "funding"
-              :style "padding:0.25em;background-color:#3EC53E;color:white;"}
-        [:center
-         [:h2 "Hey listen!"]
-         [:p {:style "color:#313131"}
-          "It looks like you're getting some use out of Grimoire. Great!" [:br]
-          "Please " [:a {:style "color:#A300CC;" :href "/funding"} [:b "help me keep it online"]] [:br]
-          "Or " [:a {:style "color:#A300CC;" :onclick "closefunding()"} [:b "make this go away"]]]]])
+     [:div {:id    "funding"
+            :style "padding:0.25em;background-color:#3EC53E;color:white;display:none;"}
+      [:center
+       [:h2 "Hey listen!"]
+       [:p {:style "color:#313131;"}
+        "It looks like you're getting some use out of Grimoire. Great!" [:br]
+        "Please " [:a {:style "color:#A300CC;" :onclick "hasFunded()" :href "/funding"}
+                   [:b "help me keep it online"]] [:br]
+        "Or " [:a {:style "color:#A300CC;" :onclick "closeFunding()"}
+               [:b "make this go away " [:span {:style "font-size:0.25em;"} "(for now)"]]]]]]
 
      [:div {:class "container content"
             :style "margin-top: 3em;"}

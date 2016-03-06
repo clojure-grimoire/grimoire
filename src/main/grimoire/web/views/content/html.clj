@@ -541,7 +541,7 @@
         [:div {:class "clearfix"}
          [:h2.heading {:style "float:left;"}
           "Examples " [:span.hide]]
-         [:a {:style "float:right;"
+         [:a {:style "float:right;margin-top:0.75em;"
               :href  (add-ex-url def-thing (str (rand-int Integer/MAX_VALUE) ".clj"))}
           "Add an example"]]
         [:div.autofold

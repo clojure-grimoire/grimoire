@@ -116,16 +116,6 @@
       (.getAbsolutePath v)
       (format "file://%s" (str v)))))
 
-(defn set-funding-flag [cfg req]
-  (let [{:keys [active rate]
-         :or   {active false,
-                rate   5}}
-        (:fundraising cfg)]
-    (assoc cfg :funding-flag
-           (and active
-                (-> req :session (:thought-about-it false) not)
-                (-> req :session (:counter 1) (mod rate) (= 0))))))
-
 
 ;; Pages
 
@@ -243,8 +233,7 @@
   (let [*lg*   (cfg/lib-grim-config)
         groups (result (api/list-groups *lg*))]
     (layout
-     (-> (cfg/site-config)
-         (set-funding-flag req))
+     (cfg/site-config)
      ;;------------------------------------------------------------
      [:h1 {:class "page-title"}
       ,,"Artifact store"]
@@ -264,7 +253,6 @@
             meta      (when (succeed? ?meta) (result ?meta))]
         (layout
          (-> (cfg/site-config)
-             (set-funding-flag req)
              (assoc :css ["/public/css/editable.css"]))
          ;;------------------------------------------------------------
          [:h1 {:class "page-title"}
@@ -302,7 +290,6 @@
       (let [meta (result ?meta)]
         (layout
          (-> (cfg/site-config)
-             (set-funding-flag req)
              (assoc :css ["/public/css/editable.css"]))
          ;;------------------------------------------------------------
          [:h1 {:class "page-title"}
@@ -328,8 +315,8 @@
                                   result
                                   (sort-by t/thing->name)
                                   reverse)
-                     :let  [artifact (t/thing->artifact version)
-                            group    (t/thing->group artifact)]]
+                     :let    [artifact (t/thing->artifact version)
+                              group    (t/thing->group artifact)]]
                  [:li
                   [:a (link-to version)
                    (format "[%s/%s \"%s\"]"
@@ -344,7 +331,6 @@
     (when (succeed? ?meta)
       (layout
        (-> (cfg/site-config)
-           (set-funding-flag req)
            (assoc ;; FIXME: add artifact & group name to title somehow?
             :css ["/public/css/editable.css"]))
        ;;------------------------------------------------------------
@@ -378,7 +364,6 @@
     (when (succeed? ?meta)
       (layout
        (-> (cfg/site-config)
-           (set-funding-flag req)
            (assoc  ;; FIXME: add artifact & group name to title somehow?
             :css ["/public/css/editable.css"]))
        ;;------------------------------------------------------------
@@ -421,7 +406,6 @@
     (when (succeed? ?meta)
       (layout
        (-> (cfg/site-config)
-           (set-funding-flag req)
            (assoc ;; FIXME: add artifact, namespace?
             :css ["/public/css/editable.css"
                   "/public/css/fold.css"]))
@@ -490,7 +474,6 @@
         *site-config*                   (cfg/site-config)]
     (layout
      (-> *site-config*
-         (set-funding-flag req)
          (assoc :summary doc)
          (assoc :css ["/public/css/editable.css"
                       "/public/css/symbol.css"

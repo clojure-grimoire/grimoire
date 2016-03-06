@@ -11,7 +11,8 @@
              [core :as md]
              [transformers :as md.t]]
             [me.raynes.conch :refer [let-programs]]
-            [pandect.algo.sha256 :refer [sha256]])
+            [pandect.algo.sha256 :refer [sha256]]
+            [taoensso.timbre :refer [info]])
   (:import java.lang.ref.SoftReference
            java.net.URLEncoder))
 
@@ -125,7 +126,7 @@
      (if (.exists cache-file#)
        (slurp cache-file#)
 
-       (do (println "Cache miss on thing" uri#)
+       (do (info (str "Cache miss on thing " uri#))
            (let [text# (do ~@body)]
              (spit cache-file# text#)
              text#)))))

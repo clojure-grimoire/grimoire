@@ -8,7 +8,7 @@
   :plugins      [[lein-environ "1.0.2"]]
   :exclusions   [org.clojure/clojure]
   :dependencies [[org.clojure/core.match "0.3.0-alpha4"]
-                 [org.clojure-grimoire/lib-grimoire "0.10.6"]
+                 [org.clojure-grimoire/lib-grimoire "0.10.7"]
                  [org.clojure-grimoire/simpledb "0.1.10"]
                  [cheshire "5.5.0"]
                  [com.taoensso/timbre "4.2.1"]
@@ -24,14 +24,16 @@
                  [environ "1.0.2"]
                  [pandect "0.5.4"]]
   
-  :aliases {"serve" ["with-profile" "server" "run"]}
+  :aliases {"serve" ["with-profile" "clj-1.8,server" "run"]}
 
-  :profiles {:server {:dependencies [[org.jaunt-lang/jaunt "1.9.0-SNAPSHOT"]]
-                      :env          {:url "https://www.conj.io"}
-                      :main         grimoire.web.service}
+  :profiles {:clj-1.8 {:dependencies [[org.clojure/clojure "1.8.0"]]}
+             :jnt-1.9 {:dependencies [[org.jaunt-lang/jaunt "1.9.0-SNAPSHOT"]]}
 
-             :dev    {:dependencies [[ring/ring-mock "0.3.0"]
-                                     [org.clojure/clojure "1.8.0"]]
-                      :source-paths ["src/dev"]
-                      :main         user
-                      :env          {:url "http://127.0.0.1:3000"}}})
+             :server  {:env  {:url "https://www.conj.io"}
+                       :main grimoire.web.service}
+
+             :dev     [:clj-1.8
+                       {:dependencies [[ring/ring-mock "0.3.0"]]
+                        :source-paths ["src/dev"]
+                        :main         user
+                        :env          {:url "http://127.0.0.1:3000"}}]})

@@ -537,7 +537,6 @@
     (assoc (cfg/site-config)
            :page false
            :css ["/public/css/cheatsheet.css"
-                 "/public/style.css"
                  "/public/jquery-ui.css"]
            :js  ["/public/jquery.js"
                  "/public/jquery-ui.js"

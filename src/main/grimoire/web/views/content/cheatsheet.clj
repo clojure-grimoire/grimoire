@@ -124,16 +124,18 @@
 
 (def numbers
   (u/softref-cached
-   [:box {:class "grid-item"}
-    [:section {:title "Numbers"}
-     [:subsection {}
-      [:table {:title (→ "http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html" "Long")}
+   [:box {:class "grid-item"
+          :title "Numbers"}
+    [:section {}
+     [:subsection {:title (→ "http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html" "Long literals")}
+      [:table {}
        [:row {:title "decimal"} (code "7")]
        [:row {:title "hexadecimal"} (code "0xff")]
        [:row {:title "octal"} (code "017")]
        [:row {:title "binary"} (code "2r1011")]
-       [:row {:title "base 36"} (code "36rCRAZY")]]
+       [:row {:title "base 36"} (code "36rCRAZY")]]]
 
+     [:subsection {:title "Other number literals"}
       [:table {:title ""}
        [:row {:title "BigInteger"} (code "7N")]
        [:row {:title "Ratio"} (code "-22/7")]
@@ -467,8 +469,9 @@
 ;; FIXME: ClojureCLJ?
 (def interop
   (u/softref-cached
-   [:box {:class "orange grid-item"}
-    [:section  {:title "Java Interoperation (<a href=\"http://clojure.org/java_interop\">clojure.org/java_interop</a>)"}
+   [:box {:class "orange grid-item"
+          :title "Java Interoperation (<a href=\"http://clojure.org/java_interop\">clojure.org/java_interop</a>)"}
+    [:section {}
      [:table {}
       `[:row {:title "General"}
         ~@(map →clj [".." "doto" "new" "bean" "comparator" "enumeration-seq"

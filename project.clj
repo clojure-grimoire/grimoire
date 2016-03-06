@@ -40,7 +40,7 @@
   
   :aliases {"serve" ["with-profile" "server" "run"]}
 
-  :profiles {:server {:env  {:url "https://wwww.conj.io"}
+  :profiles {:server {:env  {:url "https://www.conj.io"}
                       :main grimoire.web.service}
 
              :dev    {:dependencies [[ring/ring-mock "0.3.0"]]

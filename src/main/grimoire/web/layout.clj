@@ -24,7 +24,7 @@
     (str base-url "public/css/lanyon.css")
     (str base-url "public/css/headings.css"))
    (map page/include-css css)
-   [:link {:href "http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400"
+   [:link {:href "https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400"
            :rel "stylesheet"}]
    [:link {:href (str base-url "public/apple-touch-icon-precomposed.png") :sizes "144x144" :rel "apple-touch-icon-precomposed"}]
    [:link {:href (str base-url "public/favicon.ico") :rel "shortcut icon"}]])

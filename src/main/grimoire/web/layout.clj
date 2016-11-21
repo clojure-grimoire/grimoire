@@ -24,7 +24,7 @@
     (str base-url "public/css/lanyon.css")
     (str base-url "public/css/headings.css"))
    (map page/include-css css)
-   [:link {:href "http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400"
+   [:link {:href "https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400"
            :rel "stylesheet"}]
    [:link {:href (str base-url "public/apple-touch-icon-precomposed.png") :sizes "144x144" :rel "apple-touch-icon-precomposed"}]
    [:link {:href (str base-url "public/favicon.ico") :rel "shortcut icon"}]])
@@ -74,10 +74,10 @@
 
 (defn foot [{:keys [google-analytics-id js]}]
   [:footer
+   [:script {:type "text/javascript" :src "/public/jquery.js"}]
    [:script {:type "text/javascript" :src "/public/sidebar.js"}]
-   (map #(vector :script {:type "text/javascript" :src %}) js)
-   [:script {:type "text/javascript"}
-    "function closefunding(){$('#funding').slideUp('slow',function(){$('#funding').remove();});}"]
+   [:script {:type "text/javascript" :src "/public/funding.js"}]
+   (map #(vector :script {:type "text/javascript" :src %}) js) 
    [:script {:type "text/javascript"}
     "var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '" google-analytics-id "']);
@@ -97,20 +97,22 @@
     (sidebar page)
     [:div.wrap
      (masthead page)
-
-     (when (:funding-flag page false)
-       [:div {:id "funding"
-              :style "padding:0.25em;background-color:#3EC53E;color:white;"}
-        [:center
-         [:h2 "Hey listen!"]
-         [:p {:style "color:#313131"}
-          "It looks like you're getting some use out of Grimoire. Great!" [:br]
-          "Please " [:a {:style "color:#A300CC;" :href "/funding"} [:b "help me keep it online"]] [:br]
-          "Or " [:a {:style "color:#A300CC;" :onclick "closefunding()"} [:b "make this go away"]]]]])
+     [:div {:id    "funding"
+            :style "padding:0.25em;background-color:#3EC53E;color:white;display:none;"}
+      [:center
+       [:h2 "Hey listen!"]
+       [:p {:style "color:#313131;"}
+        "It looks like you're getting some use out of Grimoire. Great!" [:br]
+        "Please " [:a {:style "color:#A300CC;" :onclick "hasFunded()" :href "/funding"}
+                   [:b "help me keep it online"]] [:br]
+        "Or " [:a {:style "color:#A300CC;" :onclick "closeFunding()"}
+               [:b "make this go away " [:span {:style "font-size:0.25em;"} "(for now)"]]]]]]
 
      [:div {:class "container content"
             :style "margin-top: 3em;"}
-      [:div {:class "page"}
-       content]]]
+      (if (:page page)
+        [:div {:class "page"}
+         content]
+        content)]]
     [:label.sidebar-toggle {:for "sidebar-checkbox"}]]
    (foot page)))

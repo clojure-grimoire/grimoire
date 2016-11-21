@@ -116,29 +116,10 @@
       (.getAbsolutePath v)
       (format "file://%s" (str v)))))
 
-(defn set-funding-flag [cfg req]
-  (let [{:keys [active rate]
-         :or   {active false,
-                rate   5}}
-        (:fundraising cfg)]
-    (assoc cfg :funding-flag
-           (and active
-                (-> req :session (:thought-about-it false) not)
-                (-> req :session (:counter 1) (mod rate) (= 0))))))
-
 
 ;; Pages
 
 ;; FIXME: probably belongs somewhere else
-(defn home-page [req]
-  (layout
-   (-> (cfg/site-config)
-       (set-funding-flag req)
-       (assoc :css ["/public/css/cheatsheet.css"]))
-   ;;------------------------------------------------------------
-   [:blockquote [:p (-> (cfg/site-config) :style :quote)]]
-   (wutil/cheatsheet-memo (cfg/site-config))))
-
 (def sorted-table
   #(->> %
         (sort-by second)
@@ -252,8 +233,7 @@
   (let [*lg*   (cfg/lib-grim-config)
         groups (result (api/list-groups *lg*))]
     (layout
-     (-> (cfg/site-config)
-         (set-funding-flag req))
+     (cfg/site-config)
      ;;------------------------------------------------------------
      [:h1 {:class "page-title"}
       ,,"Artifact store"]
@@ -273,7 +253,6 @@
             meta      (when (succeed? ?meta) (result ?meta))]
         (layout
          (-> (cfg/site-config)
-             (set-funding-flag req)
              (assoc :css ["/public/css/editable.css"]))
          ;;------------------------------------------------------------
          [:h1 {:class "page-title"}
@@ -311,7 +290,6 @@
       (let [meta (result ?meta)]
         (layout
          (-> (cfg/site-config)
-             (set-funding-flag req)
              (assoc :css ["/public/css/editable.css"]))
          ;;------------------------------------------------------------
          [:h1 {:class "page-title"}
@@ -337,8 +315,8 @@
                                   result
                                   (sort-by t/thing->name)
                                   reverse)
-                     :let  [artifact (t/thing->artifact version)
-                            group    (t/thing->group artifact)]]
+                     :let    [artifact (t/thing->artifact version)
+                              group    (t/thing->group artifact)]]
                  [:li
                   [:a (link-to version)
                    (format "[%s/%s \"%s\"]"
@@ -353,7 +331,6 @@
     (when (succeed? ?meta)
       (layout
        (-> (cfg/site-config)
-           (set-funding-flag req)
            (assoc ;; FIXME: add artifact & group name to title somehow?
             :css ["/public/css/editable.css"]))
        ;;------------------------------------------------------------
@@ -387,7 +364,6 @@
     (when (succeed? ?meta)
       (layout
        (-> (cfg/site-config)
-           (set-funding-flag req)
            (assoc  ;; FIXME: add artifact & group name to title somehow?
             :css ["/public/css/editable.css"]))
        ;;------------------------------------------------------------
@@ -430,9 +406,9 @@
     (when (succeed? ?meta)
       (layout
        (-> (cfg/site-config)
-           (set-funding-flag req)
            (assoc ;; FIXME: add artifact, namespace?
-            :css ["/public/css/editable.css"]))
+            :css ["/public/css/editable.css"
+                  "/public/css/fold.css"]))
        ;;------------------------------------------------------------
        [:h1 {:class "page-title"}
         (header namespace-thing)]
@@ -477,8 +453,8 @@
                       [:div.section
                        [:h3.heading (get mapping k)
                         " " (if flag
-                              [:span.unhide "+"]
-                              [:span.hide "-"])]
+                              [:span.unhide]
+                              [:span.hide])]
                        [:div {:class (str "autofold"
                                           (when flag
                                             " prefold"))}
@@ -498,10 +474,10 @@
         *site-config*                   (cfg/site-config)]
     (layout
      (-> *site-config*
-         (set-funding-flag req)
          (assoc :summary doc)
          (assoc :css ["/public/css/editable.css"
-                      "/public/css/symbol.css"]))
+                      "/public/css/symbol.css"
+                      "/public/css/fold.css"]))
      ;;------------------------------------------------------------
      [:h1 {:class "page-title"}
       (header (assoc def-thing :name (str symbol)))]
@@ -534,13 +510,21 @@
              "==================================================\n"
              "  " doc])))
 
+     (when src
+       (list
+        [:div.section
+         [:h2.heading "Source " [:span.unhide]]
+         [:div.autofold.prefold
+          [:div.source
+           (wutil/highlight-clojure src)]]]))
+     
      ;; FIXME: examples needs a _lot_ of work
      (when (succeed? ?examples)
        [:div.section
         [:div {:class "clearfix"}
          [:h2.heading {:style "float:left;"}
-          "Examples " [:span.hide "-"]]
-         [:a {:style "float:right;"
+          "Examples " [:span.hide]]
+         [:a {:style "float:right;margin-top:0.75em;"
               :href  (add-ex-url def-thing (str (rand-int Integer/MAX_VALUE) ".clj"))}
           "Add an example"]]
         [:div.autofold
@@ -567,14 +551,6 @@
                                   ns  (t/thing->namespace sym)]]
                         [:a (link-to sym) (:name r)])]))))
 
-     (when src
-       (list
-        [:div.section
-         [:h2.heading "Source " [:span.unhide "+"]]
-         [:div.autofold.prefold
-          [:div.source
-           (wutil/highlight-clojure src)]]]))
-
      [:script {:src "/public/jquery.js" :type "text/javascript"}]
      [:script {:src "/public/fold.js" :type "text/javascript"}])))
 
@@ -585,7 +561,8 @@
       (let [{:keys [type] :as meta} (result ?meta)]
         (cond (and meta (not= :sentinel type))
               ;; non-sentinel case
-              ,,(-render-html-symbol-page req def-thing meta)
+              ,,(wutil/html-cache-thing def-thing
+                  (-render-html-symbol-page req def-thing meta))
 
               (= :sentinel type)
               ;; chase a redirect

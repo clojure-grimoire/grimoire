@@ -1,0 +1,7 @@
+span.hide::after {
+    content: "▲";
+}
+
+span.unhide::after {
+    content: "▼";
+}

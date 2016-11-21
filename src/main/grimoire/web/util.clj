@@ -1,29 +1,20 @@
 (ns grimoire.web.util
   (:require [clojure.java.io :as io]
             [clojure.string :as string]
-            [markdown.core :as md]
-            [markdown.transformers :as md.t]
-            [me.raynes.conch :refer [let-programs]]
-            [grimoire.things :as t]
-            [grimoire.api :as api]
+            [grimoire
+             [api :as api]
+             [either :as e]
+             [things :as t]]
             [grimoire.api.web :as web]
-            [grimoire.either :as e]
-            [grimoire.web.config :as cfg])
-  (:import (java.net URLEncoder)))
-
-(defn cheatsheet
-  "Slurps in the cheatsheet off of the resource path and does the final
-  rendering to HTML."
-  [{:keys [baseurl clojure-version]}]
-  (-> "cheatsheet.html"
-      io/resource
-      slurp
-      (string/replace #"\{\{ site.baseurl \}\}" "")))
-
-(def cheatsheet-memo
-  "Since the cheatsheet isn't expected to change and is the highest traffic page
-  on the site just memoize it."
-  (memoize cheatsheet))
+            [grimoire.web.config :as cfg]
+            [markdown
+             [core :as md]
+             [transformers :as md.t]]
+            [me.raynes.conch :refer [let-programs]]
+            [pandect.algo.sha256 :refer [sha256]]
+            [taoensso.timbre :refer [info]])
+  (:import java.lang.ref.SoftReference
+           java.net.URLEncoder))
 
 (defn resource-file-contents
   "Slurps a file if it exists, otherwise returning nil."
@@ -123,25 +114,32 @@
 (def highlight-clojure
   (partial highlight-text "clojure"))
 
+(defmacro html-cache-thing
+  {:style/indent 1}
+  [t & body]
+  `(let [uri#        (t/thing->full-uri ~t)
+         cache-dir#  (io/file "render-cache")
+         cache-file# (io/file cache-dir# (str (sha256 uri#) ".html"))]
+     (if-not (.exists cache-dir#)
+       (.mkdirs cache-dir#))
+
+     (if (.exists cache-file#)
+       (slurp cache-file#)
+
+       (do (info (str "Cache miss on thing " uri#))
+           (let [text# (do ~@body)]
+             (spit cache-file# text#)
+             text#)))))
+
 (defn highlight-example
   "Helper for rendering a Grimoire Example Thing to HTML, using a filesystem
   cache of rendered examples to improve performance."
   [ex]
   {:pre [(t/example? ex)]}
-  (let [url        (:grimoire.things/url ex)
-        ex-file    (:handle ex)
-        cache-dir  (io/file "render-cache")
-        cache-file (io/file cache-dir (str (hash url) ".html"))] ;; FIXME: use a different hash algo?
-    (if-not (.exists cache-dir)
-      (.mkdirs cache-dir))
-
-    (if (.exists cache-file)
-      (slurp cache-file)
-
-      (let [text (e/result (api/read-example (cfg/lib-grim-config) ex))
-            html (highlight-clojure text)]
-        (spit cache-file html)
-        html))))
+  (html-cache-thing ex
+    (let [text (e/result (api/read-example (cfg/lib-grim-config) ex))
+          html (highlight-clojure text)]
+      html)))
 
 (defn url-encode
   "Returns an UTF-8 URL encoded version of the given string."
@@ -185,3 +183,11 @@
    "application/edn"  :application/edn
    :application/edn   :application/edn
    })
+
+(defmacro softref-cached [& body]
+  `(let [cache# (atom (SoftReference. nil))]
+     (fn []
+       (or (.get ^SoftReference @cache#)
+           (let [res# (do ~@body)]
+             (reset! cache# (SoftReference. res#))
+             res#)))))

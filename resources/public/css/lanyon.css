@@ -34,12 +34,6 @@
  * Update the foundational and global aspects of the page.
  */
 
-/* Prevent scroll on narrow devices */
-html,
-body {
-  overflow-x: hidden;
-}
-
 html {
   font-family: "PT Serif", Georgia, "Times New Roman", serif;
 }
@@ -80,6 +74,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0;
   color: #505050;
+  padding-left: 2rem;
 }
 .masthead-title a {
   color: #505050;

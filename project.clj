@@ -23,18 +23,20 @@
                  [instaparse "1.4.1"]
                  [environ "1.0.2"]
                  [pandect "0.5.4"]]
-  
+
   :aliases {"serve" ["with-profile" "server" "run"]}
 
   :profiles {:clj-1.8 {:dependencies [[org.clojure/clojure "1.8.0"]]}
-             :jnt-1.9 {:dependencies [[org.jaunt-lang/jaunt "1.9.0-SNAPSHOT"]]}
+             :jnt-0.1 {:dependencies [[org.jaunt-lang/jaunt "0.1.0"]]}
+             :jnt-0.2 {:dependencies [[org.jaunt-lang/jaunt "0.2.0"]]}
+             :jnt-0.3 {:dependencies [[org.jaunt-lang/jaunt "0.3.0-SNAPSHOT"]]}
 
-             :server  [:clj-1.8
-                       {:env  {:url "https://www.conj.io"}
-                        :main grimoire.web.service}]
+             :server [:clj-1.8
+                      {:env  {:url "https://www.conj.io"}
+                       :main grimoire.web.service}]
 
-             :dev     [:clj-1.8
-                       {:dependencies [[ring/ring-mock "0.3.0"]]
-                        :source-paths ["src/dev"]
-                        :main         user
-                        :env          {:url "http://127.0.0.1:3000"}}]})
+             :dev [:clj-1.8
+                   {:dependencies [[ring/ring-mock "0.3.0"]]
+                    :source-paths ["src/dev"]
+                    :main         user
+                    :env          {:url "http://127.0.0.1:3000"}}]})

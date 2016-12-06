@@ -8,7 +8,7 @@
   :plugins      [[lein-environ "1.1.0"]]
   :exclusions   [org.clojure/clojure]
   :dependencies [[org.clojure/core.match "0.3.0-alpha4"]
-                 [org.clojure-grimoire/lib-grimoire "0.10.8"]
+                 [org.clojure-grimoire/lib-grimoire "0.10.9"]
                  [org.clojure-grimoire/simpledb "0.1.10"]
                  [cheshire "5.5.0"]
                  [com.taoensso/timbre "4.2.1"]

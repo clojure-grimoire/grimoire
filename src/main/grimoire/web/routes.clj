@@ -284,7 +284,7 @@
                                                 type op t))
 
                                  (context ["/:symbol"] [symbol]
-                                   (let-routes [t (t/->Def t symbol)]
+                                   (let-routes [t (t/->Def t (util/unmunge symbol))]
                                      (GET "/" []
                                        (do-dispatch v.api/def-ops
                                                     type op t))))))))))))))))

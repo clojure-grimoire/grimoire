@@ -21,6 +21,8 @@
 
 (def -site-config
   {:url                 (env :url)
+   :dev                 (Boolean/parseBoolean
+                         (env :dev "False"))
    :repo                "https://github.com/clojure-grimoire/grimoire"
    :base-url            "/"
    :store-url           "/store/v1/"

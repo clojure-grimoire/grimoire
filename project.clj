@@ -45,7 +45,8 @@
 
              :dev [:clj-1.8
                    :env-defaults
-                   {:env {:url "http://127.0.0.1:3000"}}
+                   {:env {:url "http://127.0.0.1:3000"
+                          :dev true}}
                    {:dependencies [[ring/ring-mock "0.3.0"]]
                     :source-paths ["src/dev"]
                     :main         user}]})

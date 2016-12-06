@@ -79,7 +79,7 @@
         rand-int
         (format "%s.clj")
         (add-ex-url t)))
-  
+
   ([t file]
    {:pre [(t/thing? t)]}
    (let [root (make-file-root t)
@@ -517,7 +517,7 @@
          [:div.autofold.prefold
           [:div.source
            (wutil/highlight-clojure src)]]]))
-     
+
      ;; FIXME: examples needs a _lot_ of work
      (when (succeed? ?examples)
        [:div.section

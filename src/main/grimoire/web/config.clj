@@ -24,14 +24,16 @@
    :repo                "https://github.com/clojure-grimoire/grimoire"
    :base-url            "/"
    :store-url           "/store/v1/"
-   :version             (slurp "VERSION")
-   :fundraising         {:active true
-                         :rate   10}
+   :version             (env :grimoire-version)
+   :fundraising         {:active (Boolean/parseBoolean
+                                  (env :fundraising-active))
+                         :rate   (Long/parseLong
+                                  (env :fundraising-rate))}
    :google-analytics-id "UA-44001831-2"
    :year                "2015"
-   :author              {:me          "http://arrdem.com"
-                         :email       "me@arrdem.com"
-                         :gittip      "/funding"}
+   :author              {:me     "http://arrdem.com"
+                         :email  "me@arrdem.com"
+                         :gittip "/funding"}
    :style               {:header-sep  "/"
                          :title       "Grimoire - Community Clojure Documentation"
                          :description "Community documentation of Clojure"

@@ -17,27 +17,33 @@
         dispatch-url    (url "_dispatch")
         syntax-url      (url "__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing")
         reader-cond-url (url "_reader_conditionals")]
-    [{:label "[" :url (url "_vectors")}
-     {:label "{" :url (url "_lists")}
+    [
+     {:label "[ ... ] - Vector literals" :url (url "_vectors")}
+     {:label "{ ... } - Map literals" :url (url "_lists")}
+     {:label "#{ ... } - Set literals" :url (url "_sets")}
+
      {:label "'" :url (url "_quote")}
-     {:label "\\" :url (url "_character")}
-     {:label ";" :url (url "_comment")}
-     {:label "@" :url (url "_deref")}
-     {:label "^" :url (url "_metadata")}
+     {:label "\\ - Character literal prefix" :url (url "_character")}
+     {:label "; - Line comment" :url (url "_comment")}
+     {:label "@ - Dereference" :url (url "_deref")}
+     {:label "^ - Metadata" :url (url "_metadata")}
 
-     {:label "`" :url syntax-url}
-     {:label "~" :url syntax-url}
-     {:label "~@" :url syntax-url}
+     {:label ":foo - Keywords" :url (url "_literals")}
+     {:label ":foo/bar - Qualified keywords" :url (url "_literals")}
+     {:label "::bar - Reader qualified keywords" :url (url "_literals")}
 
-     {:label "#?" :url reader-cond-url}
-     {:label "#?@" :url reader-cond-url}
-     
-     {:label "#" :url dispatch-url}
-     {:label "#\"" :url dispatch-url}
-     {:label "#'" :url dispatch-url}
-     {:label "#(" :url dispatch-url}
-     
-     {:label "#{" :url "http://clojure.org/reference/reader#_sets"}]))
+     {:label "` - Syntax quote" :url syntax-url}
+     {:label "~ - Unqote" :url syntax-url}
+     {:label "~@ - Unquote splicing" :url syntax-url}
+
+     {:label "# - Macro dispatch" :url dispatch-url}
+     {:label "#\"...\" - Regex literals" :url dispatch-url}
+     {:label "#'conj - Var literals" :url dispatch-url}
+     {:label "#( % %1 %2 %3 ) - Fn reader literals" :url dispatch-url}
+
+     {:label "#?(:clj ... :cljs ...) - Reader conditional" :url reader-cond-url}
+     {:label "#?@(:clj ... :cljs ...) - Splicing reader conditional" :url reader-cond-url}
+     ]))
 
 (def autocomplete-limit
   15)
@@ -108,6 +114,7 @@
                      {:label fname
                       :url   (web/make-html-url *cfg* t)
                       :fname fname}))))
+         ;; FIXME: sort by levenshtein distance or some equivalent
          (sort-by #(get (:fname %) defs 0))
          (reverse)
          (take autocomplete-limit))))

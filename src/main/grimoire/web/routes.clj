@@ -1,20 +1,25 @@
 (ns grimoire.web.routes
-  (:require [clojure.string :as string]
-            [clojure.core.match :refer [match]]
-            [compojure.core :refer [defroutes context GET let-routes routing]]
-            [compojure.route :as route]
-            [grimoire.util :as util]
-            [grimoire.api :as api]
-            [grimoire.web.util :as wutil]
-            [grimoire.things :as t]
-            [grimoire.either :as either]
-            [grimoire.web.config :as cfg]
-            [grimoire.web.views :as v]
-            [grimoire.web.views.content.html :as v.c.h]
-            [grimoire.web.views.content.cheatsheet :as v.c.cs]
-            [grimoire.web.views.errors :as v.e]
-            [grimoire.web.views.api :as v.api]
-            [grimoire.web.views.autocomplete :as v.auto]
+  (:require [clojure.core.match :refer [match]]
+            [clojure.string :as str]
+            [compojure
+             [core :refer [context defroutes GET let-routes routing]]
+             [route :as route]]
+            [grimoire
+             [api :as api]
+             [either :as either]
+             [things :as t]
+             [util :as util]]
+            [grimoire.web
+             [config :as cfg]
+             [util :as wutil]
+             [views :as v]]
+            [grimoire.web.views
+             [api :as v.api]
+             [autocomplete :as v.auto]
+             [errors :as v.e]]
+            [grimoire.web.views.content
+             [cheatsheet :as v.c.cs]
+             [html :as v.c.h]]
             [ring.util.response :as response]
             [simpledb.core :as sdb]
             [taoensso.timbre :as timbre :refer [warn]]))
@@ -33,11 +38,11 @@
 
 (defn- log! [request thing]
   ;; FIXME: could be one transaction
-  
+
   ;; what do I want to know
   ;; - inc user-agent string tracking
   (let [user-agent (get-in request [:headers "user-agent"] "Unknown")
-        db (cfg/simpledb-config)]
+        db         (cfg/simpledb-config)]
     (when-not (bot? user-agent)
       (sdb/update! db
                    :clients update
@@ -69,15 +74,15 @@
                            (str (t/thing->name group) \/ (t/thing->name artifact)) incf))))))))
 
 (defn store-v1
-  [{header-type :content-type
+  [{header-type        :content-type
     {param-type :type} :params
-    :as req
-    uri :uri}]
-  (let [req (assoc req :content-type
-                   (-> (or header-type
-                           param-type
-                           :html)
-                       wutil/normalize-type))
+    :as                req
+    uri                :uri}]
+  (let [req     (assoc req :content-type
+                       (-> (or header-type
+                               param-type
+                               :html)
+                           wutil/normalize-type))
         log-msg (pr-str {:uri        uri
                          :type       type
                          :user-agent (get-in req [:headers "user-agent"])})]
@@ -124,7 +129,7 @@
                                    r))
 
                                (context "/:symbol" [symbol]
-                                 (let-routes [t (t/->Def t symbol)]
+                                 (let-routes [t (t/->Def t (util/unmunge symbol))]
                                    (GET "/" []
                                      (when-let [r (v/symbol-page req t)]
                                        (log! req t)
@@ -175,11 +180,11 @@
            (v.api/unknown-op ~type ~op ~t))))
 
 (def api-v0
-  (fn [{header-type :content-type
+  (fn [{header-type                 :content-type
         {param-type :type
          op         :op :as params} :params
-        :as req
-        uri :uri}]
+        :as                         req
+        uri                         :uri}]
     (->> (let-routes [t       nil
                       type    (wutil/normalize-type
                                (or header-type
@@ -228,11 +233,11 @@
          (routing req))))
 
 (def api-v2
-  (fn [{header-type :content-type
+  (fn [{header-type                 :content-type
         {param-type :type
          op         :op :as params} :params
-        :as req
-        uri :uri}]
+        :as                         req
+        uri                         :uri}]
     (->> (let-routes [t       nil
                       type    (wutil/normalize-type
                                (or header-type
@@ -371,19 +376,19 @@
 (defn upgrade-unstored-req [request _]
   (let [user-agent (get-in request [:headers "user-agent"])
         uri        (:uri request)
-        path       (rest (string/split uri #"/"))
+        path       (rest (str/split uri #"/"))
         new-uri    (match [path]
                      [([version ns name] :seq)]
                      ,,(str "/store/v0/org.clojure/clojure/" version "/clj/" ns "/" name)
-                     
+
                      [([version ns] :seq)]
                      ,,(str "/store/v0/org.clojure/clojure/" version "/clj/" ns)
-                     
+
                      [([version] :seq)]
                      ,,(str "/store/v0/org.clojure/clojure/" version))
-        new-req    (-> request
-                       (assoc :uri new-uri)
-                       (dissoc :context :path-info))]
+        new-req (-> request
+                    (assoc :uri new-uri)
+                    (dissoc :context :path-info))]
     (if (privilaged-user-agents user-agent)
       (#'app new-req) ;; pass it forwards
       (wutil/moved-permanently new-uri))))
@@ -452,12 +457,12 @@
   [request]
   (let [user-agent (get-in request [:headers "user-agent"])
         new-symbol (util/update-munge symbol)
-        rest-path  (rest (string/split (:path-info request) #"/"))
+        rest-path  (rest (str/split (:path-info request) #"/"))
         _          (println rest-path)
         rest-path  (if (> (count rest-path) 3)
                      (concat (take 3 rest-path) ["clj"] (drop 3 rest-path))
                      rest-path)
-        new-uri    (str "/store/v1/" (string/join "/" rest-path))
+        new-uri    (str "/store/v1/" (str/join "/" rest-path))
         new-req    (-> request
                        (assoc :uri new-uri)
                        (dissoc :context :path-info))]
@@ -513,7 +518,7 @@
   ;; The store itself
   ;;--------------------------------------------------------------------
   store-v1
-  
+
   ;; Symbol search interface
   ;;--------------------------------------------------------------------
   search

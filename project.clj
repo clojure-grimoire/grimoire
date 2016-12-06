@@ -5,10 +5,10 @@
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
 
   :source-paths ["src/main"]
-  :plugins      [[lein-environ "1.0.2"]]
+  :plugins      [[lein-environ "1.1.0"]]
   :exclusions   [org.clojure/clojure]
   :dependencies [[org.clojure/core.match "0.3.0-alpha4"]
-                 [org.clojure-grimoire/lib-grimoire "0.10.7"]
+                 [org.clojure-grimoire/lib-grimoire "0.10.8"]
                  [org.clojure-grimoire/simpledb "0.1.10"]
                  [cheshire "5.5.0"]
                  [com.taoensso/timbre "4.2.1"]
@@ -31,12 +31,21 @@
              :jnt-0.2 {:dependencies [[org.jaunt-lang/jaunt "0.2.0"]]}
              :jnt-0.3 {:dependencies [[org.jaunt-lang/jaunt "0.3.0-SNAPSHOT"]]}
 
+             :env-defaults {:env {:fundraising-active      False
+                                  :fundraising-rate        10
+                                  :simpledb-file           "analytics.db"
+                                  :simpledb-write-interval 1
+                                  :grimoire-verson         :project/version}}
+
              :server [:clj-1.8
-                      {:env  {:url "https://www.conj.io"}
-                       :main grimoire.web.service}]
+                      :env-defaults
+                      {:env {:url           "https://www.conj.io"
+                             :simpledb-file "/srv/www/grimoire/analytics.db"}}
+                      {:main grimoire.web.service}]
 
              :dev [:clj-1.8
+                   :env-defaults
+                   {:env {:url "http://127.0.0.1:3000"}}
                    {:dependencies [[ring/ring-mock "0.3.0"]]
                     :source-paths ["src/dev"]
-                    :main         user
-                    :env          {:url "http://127.0.0.1:3000"}}]})
+                    :main         user}]})

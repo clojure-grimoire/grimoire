@@ -1,5 +1,6 @@
 (ns grimoire.web.service
-  (:require [compojure.handler :as handler]
+  (:require [environ.core :refer [env]]
+            [compojure.handler :as handler]
             [ring.middleware.session :as session]
             [grimoire.web.routes :refer [app]]
             [grimoire.web.config :as cfg]
@@ -16,14 +17,18 @@
         jetty     (-> app
                       handler/site
                       session/wrap-session
-                      (jetty/run-jetty jetty-cfg))]
+                      (jetty/run-jetty jetty-cfg))
+
+        simpledb-cfg {:file     (env :simpledb-file)
+                      :interval [:minutes (Long/parseLong
+                                           (env :simpledb-write-interval))]}
+        simpledb     (sdb/init! simpledb-cfg)]
 
     ;; boot the webapp itself
     (reset! cfg/service
             (cfg/->Instance
              ,,jetty
-             ,,(sdb/init! {:file     "/srv/www/grimoire/analytics.db"
-                           :interval [:minutes 1]})))
+             ,,simpledb))
 
     ;; Return nil b/c side-effects
     nil))

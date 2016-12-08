@@ -66,7 +66,9 @@
                 (string/replace "*" "\\*")
                 (string/replace "_" "\\_"))
             (web/make-html-url (cfg/web-config) t))
-    s))
+    (if (.endsWith s ".")
+      (str (mem-sts->md-link (.substring s 0 (dec (count s)))) ".")
+      s)))
 
 (declare highlight-text)
 

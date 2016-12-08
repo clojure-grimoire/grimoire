@@ -125,7 +125,8 @@
      (if-not (.exists cache-dir#)
        (.mkdirs cache-dir#))
 
-     (if (.exists cache-file#)
+     (if (and (.exists cache-file#)
+              (-> (cfg/site-config) :dev not))
        (slurp cache-file#)
 
        (do (info (str "Cache miss on thing " uri#))

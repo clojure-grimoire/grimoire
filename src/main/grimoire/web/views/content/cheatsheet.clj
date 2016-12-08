@@ -474,7 +474,7 @@
     [:section {}
      [:table {}
       `[:row {:title "General"}
-        ~@(map →clj [".." "doto" "new" "bean" "comparator" "enumeration-seq"
+        ~@(map →clj ["." ".." "doto" "new" "bean" "comparator" "enumeration-seq"
                      "import" "iterator-seq" "memfn" "set!" "class" "class?"
                      "bases" "supers" "type"])
         [:br]

@@ -22,7 +22,8 @@
                  [sitemap "0.2.5"]
                  [instaparse "1.4.1"]
                  [environ "1.0.2"]
-                 [pandect "0.5.4"]]
+                 [pandect "0.5.4"]
+                 [clj-fuzzy "0.3.0"]]
 
   :aliases {"serve" ["with-profile" "server" "run"]}
 
@@ -45,7 +46,8 @@
 
              :dev [:clj-1.8
                    :env-defaults
-                   {:env {:url "http://127.0.0.1:3000"}}
+                   {:env {:url "http://127.0.0.1:3000"
+                          :dev true}}
                    {:dependencies [[ring/ring-mock "0.3.0"]]
                     :source-paths ["src/dev"]
                     :main         user}]})

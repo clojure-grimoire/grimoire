@@ -1,16 +1,14 @@
 (ns grimoire.web.service
-  (:require [environ.core :refer [env]]
-            [compojure.handler :as handler]
-            [ring.middleware.session :as session]
-            [grimoire.web.routes :refer [app]]
-            [grimoire.web.config :as cfg]
+  (:require [compojure.handler :as handler]
+            [environ.core :refer [env]]
+            [grimoire.web
+             [config :as cfg]
+             [routes :refer [app]]]
             [ring.adapter.jetty :as jetty]
-            [simpledb.core :as sdb]
-            [grimoire.api]
-            [grimoire.api.fs.read]))
+            [ring.middleware.session :as session]
+            [simpledb.core :as sdb]))
 
 (defn start-web-server! [& [port? file?]]
-  (println "starting!")
   (let [jetty-cfg {:port  (or port? 3000)
                    :host  "127.0.0.1"
                    :join? false}
@@ -23,6 +21,8 @@
                       :interval [:minutes (Long/parseLong
                                            (env :simpledb-write-interval))]}
         simpledb     (sdb/init! simpledb-cfg)]
+
+    (println "starting!" jetty-cfg)
 
     ;; boot the webapp itself
     (reset! cfg/service

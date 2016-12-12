@@ -66,7 +66,9 @@
                 (string/replace "*" "\\*")
                 (string/replace "_" "\\_"))
             (web/make-html-url (cfg/web-config) t))
-    s))
+    (if (.endsWith s ".")
+      (str (mem-sts->md-link (.substring s 0 (dec (count s)))) ".")
+      s)))
 
 (declare highlight-text)
 
@@ -123,7 +125,8 @@
      (if-not (.exists cache-dir#)
        (.mkdirs cache-dir#))
 
-     (if (.exists cache-file#)
+     (if (and (.exists cache-file#)
+              (-> (cfg/site-config) :dev not))
        (slurp cache-file#)
 
        (do (info (str "Cache miss on thing " uri#))

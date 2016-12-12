@@ -106,19 +106,25 @@
         defs  (:defs db)]
     (->> (get-vars)
          (keep (fn [t]
-                 (let [name  (t/thing->name t)
-                       pname (t/thing->name (t/thing->parent t))
-                       fname (str pname "/" name)]
+                 (let [^String name  (t/thing->name t)
+                       ^String pname (t/thing->name (t/thing->parent t))
+                       ^String fname (str pname "/" name)]
                    (if (and name
-                            (or (.startsWith name qstr)
-                                (.startsWith fname qstr)))
+                            (or (.contains name qstr)
+                                (.contains fname qstr)))
                      {:label fname
                       :url   (web/make-html-url *cfg* t)
                       :fname fname}))))
-         ;; FIXME: sort by levenshtein distance or some equivalent
-         (sort-by #(get (:fname %) defs 0))
-         (reverse)
-         (sort-by #(levenshtein qstr (:fname %)))
+
+         ;; Sort by textual distance
+         (sort-by #(distance qstr (:fname %)))
+
+         ;; Sort (stabily) by popularity
+         (sort-by #(or (get (:fname %) defs)
+                       (get (str "clj::" (:fname %)) defs)
+                       (get (str "cljc::" (:fname %)) defs)
+                       0))
+
          (take autocomplete-limit))))
 
 (defn complete [qstr]

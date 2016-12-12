@@ -22,7 +22,8 @@
                  [sitemap "0.2.5"]
                  [instaparse "1.4.1"]
                  [environ "1.0.2"]
-                 [pandect "0.5.4"]]
+                 [pandect "0.5.4"]
+                 [clj-fuzzy "0.3.0"]]
 
   :aliases {"serve" ["with-profile" "server" "run"]}
 

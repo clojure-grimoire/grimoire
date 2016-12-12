@@ -1,18 +1,14 @@
 (ns grimoire.web.views.content.cheatsheet
   (:refer-clojure :exclude [munge])
   (:require [clojure.core.match :refer [match]]
-            [grimoire.web.views :refer :all]
-            [clojure.string :as string]
-            [grimoire.api :as api]
+            [grimoire
+             [things :as t]
+             [util :refer [munge]]]
             [grimoire.api.web :as web]
-            [grimoire.either :refer [succeed? result]]
-            [grimoire.things :as t]
-            [grimoire.web.layout :refer [layout]]
-            [grimoire.web.util :as u]
-            [grimoire.util :refer [munge]]
-            [grimoire.web.config :as cfg]
-            [grimoire.github :as gh]
-            [simpledb.core :as sdb]))
+            [grimoire.web
+             [config :as cfg]
+             [layout :refer [layout]]
+             [util :as u]]))
 
 ;; Helpers
 ;;------------------------------------------------------------------------------
@@ -59,8 +55,7 @@
   (match [kwd]
     [:box]
     ,,`[:div ~(-> opts
-                  (update :class #(str % " box"))
-                  )
+                  (update :class #(str % " box")))
         ~@(when-let [title (:title opts)]
             [[:h2 title]])
         ~@(map render-fragment body)]

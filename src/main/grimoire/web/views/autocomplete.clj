@@ -1,7 +1,7 @@
 (ns grimoire.web.views.autocomplete
   (:refer-clojure :exclude [ns-resolve])
   (:require [cheshire.core :refer [generate-string]]
-            [clj-fuzzy.levenshtein :rename {distance levenshtein}]
+            [clj-fuzzy.levenshtein :refer [distance]]
             [grimoire
              [api :as api]
              [either :refer [result]]

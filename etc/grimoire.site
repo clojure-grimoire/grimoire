@@ -1,0 +1,47 @@
+# -*- mode: nginx; -*-
+
+# A server to upgrade reeeeeally old requests
+server {
+    listen 80;
+    server_name grimoire.arrdem.com;
+    rewrite ^ https://www.conj.io$request_uri? permanent;
+}
+
+# A server to do http -> https promotion, handle letsencrypt
+server {
+    listen 80;
+    server_name conj.io www.conj.io;
+
+    location /.well-known {
+        root /srv/www/le;
+    }
+
+    location / {
+        return 301 https://www.conj.io$request_uri;
+    }
+}
+
+# Grimoire itself
+server {
+    listen 443 ssl;
+    server_name conj.io www.conj.io;
+
+    ssl_certificate     /etc/nginx/certs/conj.io/fullchain.pem;
+    ssl_certificate_key /etc/nginx/certs/conj.io/privkey.pem;
+
+    location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Host $host;
+        proxy_pass http://localhost:3000;
+        error_page 500 = /500.jpg;
+        error_page 501 = /500.jpg;
+        error_page 502 = /500.jpg;
+    }
+
+    location /500.jpg {
+        return 500 /srv/www/grimoire/resources/public/500.jpg;
+        internal;
+    }
+}
+

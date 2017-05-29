@@ -13,4 +13,6 @@ fi
 
 CP=$(cat "$CPFILE")
 
+rm -rf render-cache  # Clean out the cached pages
+
 exec java -cp "$CP" clojure.main -m grimoire.web.service

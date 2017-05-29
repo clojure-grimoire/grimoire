@@ -1,5 +1,5 @@
 [Unit]
-Description=Start Grimoire on port 3000
+Description=Start Grimoire on localhost:3000
 Author=Reid McKenzie
 
 [Service]
@@ -9,3 +9,4 @@ WorkingDirectory=/srv/www/grimoire
 ExecStartPre=/bin/bash -c '/usr/bin/git pull origin master && /usr/bin/make clean setup'
 ExecStartPost=/bin/bash -c 'echo "Service Grimoire started at `date +"%F %T"` on `/bin/hostname`" | /usr/bin/mail -s "[grimoire] started" me+logs@arrdem.com'
 ExecStart=/bin/bash /srv/www/grimoire/run.sh
+Restart=on-failure

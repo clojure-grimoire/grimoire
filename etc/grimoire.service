@@ -1,0 +1,11 @@
+[Unit]
+Description=Start Grimoire on port 3000
+Author=Reid McKenzie
+
+[Service]
+Type=simple
+User=git
+WorkingDirectory=/srv/www/grimoire
+ExecStartPre=git pull origin master && make clean setup
+ExecStartPost=echo "Service Grimoire started at `date +"%F %T"` on `hostname`" | mail -s "[grimoire] started" me+logs@arrdem.com
+ExecStart=bash run.sh

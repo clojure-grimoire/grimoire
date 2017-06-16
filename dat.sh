@@ -49,13 +49,18 @@ git_get() {
     [ ! -z $USER ] && [ ! -z $REPO ] || exit 1
 
     # Ensure the target dir exists
-    ([ -d "$GIT_DAT/$USER" ] || mkdir -p "$GIT_DAT/$USER" ) &&
+    ([ -e "$GIT_DAT/$USER" ] || mkdir -p "$GIT_DAT/$USER" ) &&
 
         # Get the data
-        ([ -d "$GIT_DAT/$USER/$REPO/.git/" ] || git clone $1 "$GIT_DAT/$USER/$REPO") &&
+        ([ -e "$GIT_DAT/$USER/$REPO/.git/" ] || git clone $1 "$GIT_DAT/$USER/$REPO") &&
 
         # Create a link to it
-        ln -s "$GIT_DAT/$USER/$REPO" "./$REPO" &&
+        ([ -e "./$REPO" ] ||
+             ( echo "Creating symlink $REPO" &&
+               ln -s "$GIT_DAT/$USER/$REPO" "./$REPO"
+             )
+        ) &&
+
         return 0
 }
 

@@ -24,12 +24,12 @@
     (str base-url "public/css/lanyon.css")
     (str base-url "public/css/headings.css"))
    (map page/include-css css)
-   [:link {:href "http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400"
+   [:link {:href "https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400"
            :rel "stylesheet"}]
    [:link {:href (str base-url "public/apple-touch-icon-precomposed.png") :sizes "144x144" :rel "apple-touch-icon-precomposed"}]
    [:link {:href (str base-url "public/favicon.ico") :rel "shortcut icon"}]])
 
-(defn masthead [{:keys [base-url funding-flag] :as c}]
+(defn masthead [{:keys [base-url] :as c}]
   [:div.masthead
    [:div.container
     [:h3.masthead-title
@@ -72,12 +72,13 @@
     [:div.sidebar-item
      [:p "© " year ". All rights reserved."]]]))
 
-(defn foot [{:keys [google-analytics-id js]}]
+(defn footer [{:keys [google-analytics-id js]}]
   [:footer
-   [:script {:type "text/javascript" :src "/public/jquery.js"}]
-   [:script {:type "text/javascript" :src "/public/sidebar.js"}]
-   [:script {:type "text/javascript" :src "/public/funding.js"}]
-   (map #(vector :script {:type "text/javascript" :src %}) js) 
+   (page/include-js "/public/jquery.js"
+                    "/public/sidebar.js")
+   (when (-> (cfg/site-config) :fundraising :active)
+     (page/include-js "/public/funding.js"))
+   (map page/include-js js)
    [:script {:type "text/javascript"}
     "var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '" google-analytics-id "']);
@@ -89,6 +90,25 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();"]])
 
+(defn funding [{:as page}]
+  [:div {:id    "funding"
+         :style "padding:0.25em;background-color:#3EC53E;color:white;display:none;"}
+   [:center
+    [:h2 "Hey listen!"]
+    [:p {:style "color:#313131;"}
+     "It looks like you're getting some use out of Grimoire. Great!" [:br]
+     "Please "
+     [:a {:style   "color:#A300CC;"
+          :onclick "hasFunded()"
+          :href    "/funding"}
+      [:b "help me keep it online"]]
+     [:br]
+     "Or "
+     [:a {:style   "color:#A300CC;"
+          :onclick "closeFunding()"}
+      [:b "make this go away "
+       [:span {:style "font-size:0.25em;"} "(for now)"]]]]]])
+
 (defn layout
   [page & content]
   (page/html5
@@ -97,17 +117,8 @@
     (sidebar page)
     [:div.wrap
      (masthead page)
-     [:div {:id    "funding"
-            :style "padding:0.25em;background-color:#3EC53E;color:white;display:none;"}
-      [:center
-       [:h2 "Hey listen!"]
-       [:p {:style "color:#313131;"}
-        "It looks like you're getting some use out of Grimoire. Great!" [:br]
-        "Please " [:a {:style "color:#A300CC;" :onclick "hasFunded()" :href "/funding"}
-                   [:b "help me keep it online"]] [:br]
-        "Or " [:a {:style "color:#A300CC;" :onclick "closeFunding()"}
-               [:b "make this go away " [:span {:style "font-size:0.25em;"} "(for now)"]]]]]]
-
+     (when (-> (cfg/site-config) :fundraising :active)
+       (funding page))
      [:div {:class "container content"
             :style "margin-top: 3em;"}
       (if (:page page)
@@ -115,4 +126,4 @@
          content]
         content)]]
     [:label.sidebar-toggle {:for "sidebar-checkbox"}]]
-   (foot page)))
+   (footer page)))

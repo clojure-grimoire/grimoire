@@ -60,14 +60,14 @@ redirects.
 ### Examples
 
 ```
-$ curl -XGET http://conj.io/store/v1/org.clojure/clojure/1.6.0/clj/clojure.core/conj/
+$ curl -XGET https://conj.io/store/v1/org.clojure/clojure/1.6.0/clj/clojure.core/conj/
 ```
 
 shall return HTML formatted documentation of `clojure.core/conj` as of the
 release of `[org.clojure/clojure "1.6.0"]` as per convention.
 
 ```
-$ curl -XGET -H 'Content-Type:text/plain' http://conj.io/store/v1/org.clojure/clojure/1.6.0/clj/clojure.core/conj/
+$ curl -XGET -H 'Content-Type:text/plain' https://conj.io/store/v1/org.clojure/clojure/1.6.0/clj/clojure.core/conj/
 ```
 
 shall return plain text or un-rendered markdown documentation of
@@ -75,7 +75,7 @@ shall return plain text or un-rendered markdown documentation of
 80-character display.
 
 ```
-$ curl -XGET http://conj.io/store/v1/org.clojure/clojure/1.6.0/clojure.core/conj/?type=text/plain
+$ curl -XGET https://conj.io/store/v1/org.clojure/clojure/1.6.0/clojure.core/conj/?type=text/plain
 ```
 
 shall give the same result as if `TYPE` header were set to `text/plain` no
@@ -145,7 +145,7 @@ point to the same data accessed via the latest API version. However
 ### groups
 
 ```
-$ curl http://conj.io/api/v2?op=groups | jq .
+$ curl https://conj.io/api/v2?op=groups | jq .
 ```
 
 Succeeds returning a list of records representing the various groups
@@ -165,8 +165,8 @@ In JSON:
 ### ns-resolve
 
 ```
-$ curl http://conj.io/api/v2?op=ns-resolve&ns=clojure.core | jq .
-$ curl http://conj.io/api/v2?op=ns-resolve&ns=cljs.core&platform=cljs | jq .
+$ curl https://conj.io/api/v2?op=ns-resolve&ns=clojure.core | jq .
+$ curl https://conj.io/api/v2?op=ns-resolve&ns=cljs.core&platform=cljs | jq .
 ```
 
 Succeeds returning an augmented namespace result indicating the newest
@@ -196,8 +196,8 @@ Fails if the given platform/namespace pair isn't known.
 ### Anything ?op=notes
 
 ```
-$ curl http://conj.io/api/v2/org.clojure?op=notes | jq .
-$ curl http://conj.io/api/v2/org.clojure/core.typed?op=notes | jq .
+$ curl https://conj.io/api/v2/org.clojure?op=notes | jq .
+$ curl https://conj.io/api/v2/org.clojure/core.typed?op=notes | jq .
 ```
 
 Succeeds returning a simple string, being markdown formatted but
@@ -218,10 +218,10 @@ for the base path, so further mention of it is elided.
 ### Anything ?op=meta
 
 ```
-$ curl http://conj.io/api/v2/org.clojure?op=meta | jq .
-$ curl http://conj.io/api/v2/org.clojure/clojure?op=meta | jq .
+$ curl https://conj.io/api/v2/org.clojure?op=meta | jq .
+$ curl https://conj.io/api/v2/org.clojure/clojure?op=meta | jq .
 ...
-$ curl http://conj.io/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core/conj?op=meta | jq .
+$ curl https://conj.io/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core/conj?op=meta | jq .
 ```
 
 Succeeds returning a map, being the metadata known about the group in
@@ -237,7 +237,7 @@ of the metadata which may be expected from different resources.
 ### Group ?op=artifacts
 
 ```
-$ curl http://conj.io/api/v2/org.clojure?op=artifacts | jq .
+$ curl https://conj.io/api/v2/org.clojure?op=artifacts | jq .
 ```
 
 Succeeds returning a list of records representing the various
@@ -260,7 +260,7 @@ In JSON:
 ### Artifact ?op=versions
 
 ```
-$ curl http://conj.io/api/v2/org.clojure/clojure?op=versions | jq .
+$ curl https://conj.io/api/v2/org.clojure/clojure?op=versions | jq .
 ```
 
 Succeeds returning a list of records representing the known versions
@@ -282,7 +282,7 @@ In JSON:
 ### Version ?op=platforms
 
 ```
-$ curl http://conj.io/api/v2/org.clojure/clojure/1.6.0?op=platforms | jq .
+$ curl https://conj.io/api/v2/org.clojure/clojure/1.6.0?op=platforms | jq .
 ```
 
 Succeeds returning a list of records representing the platforms for which the
@@ -306,7 +306,7 @@ In JSON:
 ### Platform ?op=namespaces
 
 ```
-$ curl http://conj.io/api/v2/org.clojure/clojure/1.6.0/clj?op=namespaces | jq .
+$ curl https://conj.io/api/v2/org.clojure/clojure/1.6.0/clj?op=namespaces | jq .
 ```
 
 Succeeds returning a list of records representing all the namespaces that the
@@ -333,7 +333,7 @@ In JSON:
 ### Ns ?op=all
 
 ```
-$ curl http://conj.io/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core?op=all | jq .
+$ curl https://conj.io/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core?op=all | jq .
 ```
 
 Succeeds returning a list of records representing all the defs and
@@ -359,7 +359,7 @@ results.
 ### Def op=examples
 
 ```
-$ curl http://conj.io/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core/for?op=examples | jq .
+$ curl https://conj.io/api/v2/org.clojure/clojure/1.6.0/clj/clojure.core/for?op=examples | jq .
 ```
 
 Succeeds returning a list of examples for this version of the symbol

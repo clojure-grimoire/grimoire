@@ -131,11 +131,12 @@
   (memoize -ns-version-index))
 
 (def -const-pages
-  ["/"
-   "/about"
-   "/api"
-   "/contributing"
-   (-> (site-config) :store-url)])
+  (->> ["/"
+        "/about"
+        "/api"
+        "/contributing"
+        (-> (site-config) :store-url)]
+       (map #(str (:host (web-config)) %))))
 
 (def -sitemap-fn
   (memoize
@@ -149,7 +150,7 @@
                 namespaces (φ api/list-namespaces platforms)
                 defs       (φ api/list-defs namespaces)]
             (concat groups artifacts versions platforms namespaces defs))
-          (map link-to)
+          (map #(web/make-html-url (web-config) %))
           (concat -const-pages)
           (map (fn [x] {:loc x}))
           generate-sitemap))))

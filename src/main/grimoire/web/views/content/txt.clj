@@ -53,10 +53,11 @@
     (-> (if (succeed? ?meta)
           (try
             (let [{:keys [doc name type arglists src]
+                   :or   {name (t/thing->name def-thing)}
                    :as   meta} (result ?meta)
-                   ?notes      (api/read-notes    *cfg* def-thing)
-                   ?related    (api/list-related  *cfg* def-thing)
-                   ?examples   (api/list-examples *cfg* def-thing)]
+                  ?notes       (api/read-notes    *cfg* def-thing)
+                  ?related     (api/list-related  *cfg* def-thing)
+                  ?examples    (api/list-examples *cfg* def-thing)]
               ;; FIXME: else what? doesn't make sense w/o doc...
               (str (format "# [%s/%s \"%s\"] %s/%s\n"
                            (t/thing->name groupid)
@@ -96,9 +97,9 @@
                        (str "## Examples\n"
                             ;; line40 "\n"
                             (->> (for [e-thing examples
-                                       :let [ex (result (api/read-example *cfg* e-thing))
-                                             ex (if-not (.endsWith ex "\n")
-                                                  (str ex "\n") ex)]]
+                                       :let    [ex (result (api/read-example *cfg* e-thing))
+                                                ex (if-not (.endsWith ex "\n")
+                                                     (str ex "\n") ex)]]
                                    (str "```Clojure\n"
                                         ex
                                         "```"))

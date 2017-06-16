@@ -84,9 +84,10 @@
 
 (def repl
   (u/softref-cached
-   [:box {:class "grid-item"}
+   [:box {:class "grid-item"
+          :title "REPL Tools"}
     [:section {}
-     [:subsection {:title "REPL Tools"}
+     [:subsection {}
       [:table {}
        [:row {:title "clojure.repl/"}
         (→clj "clojure.repl/doc" "doc")
@@ -229,6 +230,7 @@
 
       `[:row {:title "Other"}
         ~@(map →clj ["extend" "extend-protocol" "extenders"])]]]
+
     [:section {:title "Records (<a href=\"http://clojure.org/datatypes\">clojure.org/datatypes</a>)"}
      [:table {}
       [:row {:title "Define"}
@@ -324,8 +326,9 @@
 
 (def vars
   (u/softref-cached
-   [:box {:class "blue2 grid-item"}
-    [:section {:title "Vars and global environment (<a href=\"http://clojure.org/reference/vars\">clojure.org/vars</a>)"}
+   [:box {:class "blue2 grid-item"
+          :title "Vars and global environment (<a href=\"http://clojure.org/reference/vars\">clojure.org/vars</a>)"}
+    [:section {}
      [:table {}
       `[:row {:title "Def variants"}
         ~@(map →clj ["def" "defn" "defn-" "definline" "defmacro" "defmethod"

@@ -1,6 +1,5 @@
 [Unit]
 Description=Start Grimoire on localhost:3000
-Author=Reid McKenzie
 
 [Service]
 Type=simple

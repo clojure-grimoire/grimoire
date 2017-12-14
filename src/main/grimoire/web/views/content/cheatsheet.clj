@@ -49,35 +49,39 @@
   `(with-bindings [*prefix* ~p]
      []))
 
-(defn render-fragment [[kwd opts & body]]
-  {:pre [(keyword? kwd)
-         (map? opts)]}
-  (match [kwd]
-    [:box]
-    ,,`[:div ~(-> opts
-                  (update :class #(str % " box")))
-        ~@(when-let [title (:title opts)]
-            [[:h2 title]])
-        ~@(map render-fragment body)]
+(defn render-fragment [[kwd opts & body :as v]]
+  {:pre [(or (string? v)
+             (and (keyword? kwd)
+                  (map? opts)))]}
+  (if (string? v) v
+      (match [kwd]
+        [:box]
+        ,,`[:div ~(-> opts
+                      (update :class #(str % " box")))
+            ~@(when-let [title (:title opts)]
+                [[:h2 title]])
+            ~@(map render-fragment body)]
 
-    [(:or :section :subsection)]
-    ,,`[:div ~(update opts :class #(str % " " (name kwd)))
-        ~@(when-let [title (:title opts)]
-            [[:h3 title]])
-        ~@(map render-fragment body)]
+        [(:or :section :subsection)]
+        ,,`[:div ~(-> opts
+                      (update :class #(str % " " (name kwd)))
+                      (dissoc :title))
+            ~@(when-let [title (:title opts)]
+                [[:h3 title]])
+            ~@(map render-fragment body)]
 
-    [:table]
-    ,,`[:table ~opts
-        ~@(when-let [title (:title opts)]
-            [[:h4 title]])
-        [:tbody ~opts
-         ~@(map render-fragment body)]]
+        [:table]
+        ,,`[:table ~opts
+            ~@(when-let [title (:title opts)]
+                [[:h4 title]])
+            [:tbody ~opts
+             ~@(map render-fragment body)]]
 
-    [:row]
-    ,,`[:tr ~opts
-        ~@(when-let [title (:title opts)]
-            [[:td title]])
-        [:td ~@(interpose " " body)]]))
+        [:row]
+        ,,`[:tr ~opts
+            ~@(when-let [title (:title opts)]
+                [[:td title]])
+            [:td ~@(interpose (:join opts " ") body)]])))
 
 ;; Fragments
 ;;------------------------------------------------------------------------------
@@ -138,9 +142,10 @@
        [:row {:title (→ "http://docs.oracle.com/javase/7/docs/api/java/lang/Double.html" "Double")}
         (code "2.78") (code "-1.2e-5")]
        [:row {:title (→ "http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html" "BigDecimal:")}
-        (code "4.2M") (code "5M")]]]
+        (code "4.2M") (code "5M")]]]]
 
-     [:subsection {:title "Operations"}
+    [:section {:title "Operations"}
+     [:subsection {}
       [:table {}
        `[:row {:title "Arithmetic"}
          ~@(map →clj ["+" "-" "*" "/" "quot" "rem" "mod" "inc" "dec" "max" "min"
@@ -184,8 +189,9 @@
 
 (def functions
   (u/softref-cached
-   [:box {:class "grid-item"}
-    [:section {:title "Functions"}
+   [:box {:title "Functions"
+          :class "grid-item"}
+    [:section {}
      [:table {}
       `[:row {:title "Create"}
         ~@(map →clj ["fn" "defn" "defn-" "definline" "identity" "constantly" "memfn" "comp" "complement"
@@ -204,193 +210,199 @@
    [:box {:title "Abstractions (<a href=\"https://github.com/cemerick/clojure-type-selection-flowchart\">Clojure type selection flowchart</a>)"
           :class "grid-item"}
     [:section {:title "Protocols (<a href=\"http://clojure.org/protocols\">clojure.org/protocols</a>)"}
-     [:table {}
-      [:row {:title "Define"}
-       "<code>(</code>"
-       (→clj "defprotocol")
-       "<code>Slicey (slice [at]))</code>"]
+     [:subsection {}
+      [:table {}
+       [:row {:title "Define"
+              :join  ""}
+        "<span class=\"code\">(" (→clj "defprotocol") " Slicey (slice [at]))</span>"]
 
-      [:row {:title "Extends"}
-       "<code>(</code>"
-       (→clj "extend-type")
-       "<code>String Slicey (slice [at] ...))</code>"]
+       [:row {:title "Extends"
+              :join  ""}
+        "<span class=\"code\">(" (→clj "extend-type") " String Slicey (slice [at] ...))</span>"]
 
-      [:row {:title "Extend null"}
-       "<code>(</code>"
-       (→clj "extend-type")
-       "<code>nil Slicey (slice [_] nil))</code>"]
+       [:row {:title "Extend null"
+              :join  ""}
+        "<span class=\"code\">(" (→clj "extend-type") " nil Slicey (slice [_] nil))</span>"]
 
-      [:row {:title "Reify"}
-       "<code>(</code>"
-       (→clj "reify")
-       "<code>Slicey (slice [at] ...))</code>"]
+       [:row {:title "Reify"
+              :join  ""}
+        "<span class=\"code\">(" (→clj "reify") " Slicey (slice [at] ...))</span>"]
 
-      `[:row {:title "Test"}
-        ~@(map →clj ["satisfies?" "extends?"])]
+       `[:row {:title "Test"}
+         ~@(map →clj ["satisfies?" "extends?"])]
 
-      `[:row {:title "Other"}
-        ~@(map →clj ["extend" "extend-protocol" "extenders"])]]]
+       `[:row {:title "Other"}
+         ~@(map →clj ["extend" "extend-protocol" "extenders"])]]]]
 
     [:section {:title "Records (<a href=\"http://clojure.org/datatypes\">clojure.org/datatypes</a>)"}
-     [:table {}
-      [:row {:title "Define"}
-       "<code>(</code>"
-       (→clj "defrecord")
-       "<code>Pair [h t])</code>"]
+     [:subsection {}
+      [:table {}
+       [:row {:title "Define"
+              :join  ""}
+        "<span class=\"code\">(" (→clj "defrecord") " Pair [h t])</span>"]
 
-      [:row {:title "Access"}
-       "<code>(:h (Pair. 1 2))</code> &rarr; <code>1</code>"]
+       [:row {:title "Access"}
+        "<code>(:h (Pair. 1 2))</code> &rarr; <code>1</code>"]
 
-      `[:row {:title "Create"}
-        ~(map code ["Pair." "->Pair" "map->Pair"])]
+       `[:row {:title "Create"}
+         ~(map code ["Pair." "->Pair" "map->Pair"])]
 
-      [:row {:title "Test"}
-       (→clj "record?")]]]
+       [:row {:title "Test"}
+        (→clj "record?")]]]]
+
     [:section {:title "Types (<a href=\"http://clojure.org/datatypes\">clojure.org/datatypes</a>)"}
-     [:table {}
-      [:row {:title "Define"}
-       "<code>(</code>"
-       (→clj "deftype")
-       "<code>Pair [h t])</code>"]
+     [:subsection {}
+      [:table {}
+       [:row {:title "Define"
+              :join  ""}
+        "<span class=\"code\">(" (→clj "deftype") " Pair [h t])</span>"]
 
-      [:row {:title "Access"}
-       "<code>(.h (Pair. 1 2))</code> &rarr; <code>1</code>"]
+       [:row {:title "Access"}
+        "<code>(.h (Pair. 1 2))</code> &rarr; <code>1</code>"]
 
-      `[:row {:title "Create"}
-        ~(map code ["Pair." "->Pair"])]
+       `[:row {:title "Create"
+               :join  " or "}
+         ~@(map code ["Pair." "->Pair"])]
 
-      [:row {:title "With methods"}
-       "<code>(</code>"
-       (→clj "deftype")
-       "<code>Pair [h t]<br>&nbsp;&nbsp;Object<br>&nbsp;&nbsp;(toString [this] (str \"<\" h \",\" t \">\")))</code>"]]]
+       [:row {:title "With methods"
+              :join  ""}
+        "<div class=\"code\">(" (→clj "deftype") " Pair [h t]<br>&nbsp;&nbsp;Object<br>&nbsp;&nbsp;(toString [this]<br>&nbsp;&nbsp;&nbsp;&nbsp;(str \"<\" h \",\" t \">\")))</div>"]]]]
 
     [:section {:title "Multimethods (<a href=\"http://clojure.org/multimethods\">clojure.org/multimethods</a>)"}
-     [:table {}
-      [:row {:title "Define"}
-       "<code>(</code>"
-       (→clj "defmulti")
-       "<code>my-mm dispatch-fn)</code>"]
+     [:subsection {}
+      [:table {}
+       [:row {:title "Define"}
+        "<code>(</code>"
+        (→clj "defmulti")
+        "<code>my-mm dispatch-fn)</code>"]
 
-      [:row {:title "Method define"}
-       "<code>(</code>"
-       (→clj "defmethod")
-       "<code>my-mm :dispatch-value [args] ...)</code>"]
+       [:row {:title "Method define"}
+        "<code>(</code>"
+        (→clj "defmethod")
+        "<code>my-mm :dispatch-value [args] ...)</code>"]
 
-      `[:row {:title "Dispatch"}
-        ~@(map →clj ["get-method" "methods"])]
+       `[:row {:title "Dispatch"}
+         ~@(map →clj ["get-method" "methods"])]
 
-      `[:row {:title "Remove"}
-        ~@(map →clj ["remove-method" "remove-all-methods"])]
+       `[:row {:title "Remove"}
+         ~@(map →clj ["remove-method" "remove-all-methods"])]
 
-      `[:row {:title "Prefer"}
-        ~@(map →clj ["prefer-method" "prefers"])]
+       `[:row {:title "Prefer"}
+         ~@(map →clj ["prefer-method" "prefers"])]
 
-      `[:row {:title "Relation"}
-        ~@(map →clj ["derive" "isa?" "parents" "ancestors" "descendants" "make-hierarchy"])]]]]))
+       `[:row {:title "Relation"}
+         ~@(map →clj ["derive" "isa?" "parents" "ancestors" "descendants" "make-hierarchy"])]]]]]))
 
 (def macros
   (u/softref-cached
-   [:box {:class "green grid-item"}
-    [:section {:title "Macros"}
-     [:table {}
-      `[:row {:title "Create"}
-        ~@(map →clj ["defmacro" "definline"])]
+   [:box {:class "green grid-item"
+          :title "Macros"}
+    [:section {}
+     [:subsection {}
+      [:table {}
+       `[:row {:title "Create"}
+         ~@(map →clj ["defmacro" "definline"])]
 
-      `[:row {:title "Debug"}
-        ~@(map →clj ["macroexpand-1" "macroexpand" "clojure.walk/macroexpand-all"])]
+       `[:row {:title "Debug"}
+         ~@(map →clj ["macroexpand-1" "macroexpand" "clojure.walk/macroexpand-all"])]
 
-      `[:row {:title "Branch"}
-        ~@(map →clj ["and" "or" "when" "when-not" "when-let"
-                     "when-first" "if-not" "if-let" "cond" "condp"
-                     "case"])
-        [:br] "(1.6)"
-        ~@(map →clj ["when-some" "if-some"])]
+       `[:row {:title "Branch"}
+         ~@(map →clj ["and" "or" "when" "when-not" "when-let"
+                      "when-first" "if-not" "if-let" "cond" "condp"
+                      "case"])
+         [:br] "(1.6)"
+         ~@(map →clj ["when-some" "if-some"])]
 
-      `[:row {:title "Loop"}
-        ~@(map →clj ["for" "doseq" "dotimes" "while"])]
+       `[:row {:title "Loop"}
+         ~@(map →clj ["for" "doseq" "dotimes" "while"])]
 
-      `[:row {:title "Arrange"}
-        ~@(map →clj [".." "doto" "->" "->>"])
-        [:br] "(1.5)" ~@(map →clj ["as->" "cond->" "cond->>" "some->" "some->>"])]
+       `[:row {:title "Arrange"}
+         ~@(map →clj [".." "doto" "->" "->>"])
+         [:br] "(1.5)" ~@(map →clj ["as->" "cond->" "cond->>" "some->" "some->>"])]
 
-      `[:row {:title "Scope"}
-        ~@(map →clj ["binding" "locking" "time" "with-in-str" "with-local-vars"
-                     "with-open" "with-out-str" "with-precision" "with-redefs"
-                     "with-redefs-fn"])]
+       `[:row {:title "Scope"}
+         ~@(map →clj ["binding" "locking" "time" "with-in-str" "with-local-vars"
+                      "with-open" "with-out-str" "with-precision" "with-redefs"
+                      "with-redefs-fn"])]
 
-      `[:row {:title "Lazy"}
-        ~@(map →clj ["lazy-cat" "lazy-seq" "delay"])]
+       `[:row {:title "Lazy"}
+         ~@(map →clj ["lazy-cat" "lazy-seq" "delay"])]
 
-      `[:row {:title "Doc."}
-        ~@(map →clj ["assert" "comment" "clojure.repl/doc"])]]]]))
+       `[:row {:title "Doc."}
+         ~@(map →clj ["assert" "comment" "clojure.repl/doc"])]]]]]))
 
 (def vars
   (u/softref-cached
    [:box {:class "blue2 grid-item"
           :title "Vars and global environment (<a href=\"http://clojure.org/reference/vars\">clojure.org/vars</a>)"}
     [:section {}
-     [:table {}
-      `[:row {:title "Def variants"}
-        ~@(map →clj ["def" "defn" "defn-" "definline" "defmacro" "defmethod"
-                     "defmulti" "defonce" "defrecord"])]
+     [:subsection {}
+      [:table {}
+       `[:row {:title "Def variants"}
+         ~@(map →clj ["def" "defn" "defn-" "definline" "defmacro" "defmethod"
+                      "defmulti" "defonce" "defrecord"])]
 
-      `[:row {:title "Interned vars"}
-        ~@(map →clj ["declare" "intern" "binding" "find-var" "var"])]
+       `[:row {:title "Interned vars"}
+         ~@(map →clj ["declare" "intern" "binding" "find-var" "var"])]
 
-      `[:row {:title "Var objects"}
-        ~@(map →clj ["with-local-vars" "var-get" "var-set" "alter-var-root"
-                     "var?" "bound?" "thread-bound?"])]
+       `[:row {:title "Var objects"}
+         ~@(map →clj ["with-local-vars" "var-get" "var-set" "alter-var-root"
+                      "var?" "bound?" "thread-bound?"])]
 
-      `[:row {:title "Var validators"}
-        ~@(map →clj ["set-validator!" "get-validator"])]]]]))
+       `[:row {:title "Var validators"}
+         ~@(map →clj ["set-validator!" "get-validator"])]]]]]))
 
 (def namespaces
   (u/softref-cached
-   [:box {:class "yellow grid-item"}
-    [:section {:title "Namespace"}
-     [:table {}
-      [:row {:title "Current"}
-       (→clj "*ns*")]
+   [:box {:title "Namespaces (<a href=\"http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html\">tutorial</a>)"
+          :class "yellow grid-item"}
+    [:section {}
+     [:subsection {}
+      [:table {}
+       [:row {:title "Current"}
+        (→clj "*ns*")]
 
-      `[:row {:title "Create/Switch"}
-        "(<a href=\"http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html\">tutorial</a>)"
-        ~@(map →clj ["ns" "in-ns" "create-ns"])]
+       `[:row {:title "Create/Switch"}
+         ~@(map →clj ["ns" "in-ns" "create-ns"])]
 
-      `[:row {:title "Add"}
-        ~@(map →clj ["alias" "def" "import" "intern" "refer"])]
+       `[:row {:title "Add"}
+         ~@(map →clj ["alias" "def" "import" "intern" "refer"])]
 
-      `[:row {:title "Find"}
-        ~@(map →clj ["all-ns" "find-ns"])]
+       `[:row {:title "Find"}
+         ~@(map →clj ["all-ns" "find-ns"])]
 
-      `[:row {:title "Examine"}
-        ~@(map →clj ["ns-name" "ns-aliases" "ns-map" "ns-interns" "ns-publics"
-                     "ns-refers" "ns-imports"])]
+       `[:row {:title "Examine"}
+         ~@(map →clj ["ns-name" "ns-aliases" "ns-map" "ns-interns" "ns-publics"
+                      "ns-refers" "ns-imports"])]
 
-      `[:row {:title "From symbol"}
-        ~@(map →clj ["resolve" "ns-resolve" "namespace" "the-ns"])]
+       `[:row {:title "From symbol"}
+         ~@(map →clj ["resolve" "ns-resolve" "namespace" "the-ns"])]
 
-      `[:row {:title "Remove"}
-        ~@(map →clj ["ns-unalias" "ns-unmap" "remove-ns"])]]]]))
+       `[:row {:title "Remove"}
+         ~@(map →clj ["ns-unalias" "ns-unmap" "remove-ns"])]]]]]))
 
 (def loading
   (u/softref-cached
-   [:box {:class "green grid-item"}
-    [:section {:title "Loading"}
-     [:table {}
-      `[:row {:title "Load libs"}
-        "(<a href=\"http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html\">tutorial</a>)"
-        ~@(map →clj ["require" "use" "import" "refer"])]
+   [:box {:title "Loading"
+          :class "green grid-item"}
+    [:section {}
+     [:subsection {}
+      [:table {}
+       `[:row {:title "Load libs"}
+         "(<a href=\"http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html\">tutorial</a>)"
+         ~@(map →clj ["require" "use" "import" "refer"])]
 
-      `[:row {:title "List loaded"}
-        ~@(map →clj ["loaded-libs"])]
+       `[:row {:title "List loaded"}
+         ~@(map →clj ["loaded-libs"])]
 
-      `[:row {:title "Load misc"}
-        ~@(map →clj ["load" "load-file" "load-reader" "load-string"])]]]]))
+       `[:row {:title "Load misc"}
+         ~@(map →clj ["load" "load-file" "load-reader" "load-string"])]]]]]))
 
 (def concurrency
   (u/softref-cached
-   [:box {:class "magenta grid-item"}
-    [:section {:title "Concurrency"}
+   [:box {:title "Concurrency"
+          :class "magenta grid-item"}
+    [:section {}
      [:table {}
       `[:row {:title "Atoms"}
         ~@(map →clj ["atom" "swap!" "reset!" "compare-and-set!"])]
@@ -406,62 +418,61 @@
 
       `[:row {:title "Misc"}
         ~@(map →clj ["locking" "pcalls" "pvalues" "pmap" "seque" "promise"
-                     "deliver"])]]
+                     "deliver"])]]]
+    [:section {:title "Refs and Transactions (<a href=\"http://clojure.org/refs\">clojure.org/refs</a>)"}
+     [:table {}
+      `[:row {:title "Create"}
+        ~@(map →clj ["ref"])]
 
-     [:subsection {:title "Refs and Transactions (<a href=\"http://clojure.org/refs\">clojure.org/refs</a>)"}
-      [:table {}
-       `[:row {:title "Create"}
-         ~@(map →clj ["ref"])]
+      [:row {:title "Examine"}
+       (→clj "deref")
+       "(<code>@<var>form</var></code> &rarr; <code>(deref <var>form</var>)</code>)"]
 
-       [:row {:title "Examine"}
-        (→clj "deref")
-        "(<code>@<var>form</var></code> &rarr; <code>(deref <var>form</var>)</code>)"]
-
-       `[:row {:title "Transaction"}
-         ~@(map →clj ["sync" "dosync" "io!"])]
+      `[:row {:title "Transaction"}
+        ~@(map →clj ["sync" "dosync" "io!"])]
 
 
-       `[:row {:title "In transaction"}
-         ~@(map →clj ["ensure" "ref-set" "alter" "commute"])]
+      `[:row {:title "In transaction"}
+        ~@(map →clj ["ensure" "ref-set" "alter" "commute"])]
 
-       `[:row {:title "Validators"}
-         ~@(map →clj ["set-validator!" "get-validator"])]
+      `[:row {:title "Validators"}
+        ~@(map →clj ["set-validator!" "get-validator"])]
 
-       `[:row {:title "History"}
-         ~@(map →clj ["ref-history-count" "ref-max-history" "ref-min-history"])]]]
+      `[:row {:title "History"}
+        ~@(map →clj ["ref-history-count" "ref-max-history" "ref-min-history"])]]]
 
-     [:subsection {:title "Agents and Asynchronous Actions (<a href=\"http://clojure.org/agents\">clojure.org/agents</a>)"}
-      [:table {}
-       [:row {:title "Create"}
-        (→clj "agent")]
+    [:section {:title "Agents and Asynchronous Actions (<a href=\"http://clojure.org/agents\">clojure.org/agents</a>)"}
+     [:table {}
+      [:row {:title "Create"}
+       (→clj "agent")]
 
-       [:row {:title "Examine"}
-        (→clj "agent-error")]
+      [:row {:title "Examine"}
+       (→clj "agent-error")]
 
-       `[:row {:title "Change state"}
-         ~@(map →clj ["send" "send-off" "restart-agent"])
-         [:br] "(1.5)"
-         ~@(map →clj ["send-via" "set-agent-send-executor!"
-                      "set-agent-send-off-executor!"])]
+      `[:row {:title "Change state"}
+        ~@(map →clj ["send" "send-off" "restart-agent"])
+        [:br] "(1.5)"
+        ~@(map →clj ["send-via" "set-agent-send-executor!"
+                     "set-agent-send-off-executor!"])]
 
-       `[:row {:title "Block waiting"}
-         ~@(map →clj ["await" "await-for"])]
+      `[:row {:title "Block waiting"}
+        ~@(map →clj ["await" "await-for"])]
 
-       `[:row {:title "Ref validators"}
-         ~@(map →clj ["set-validator!" "get-validator"])]
+      `[:row {:title "Ref validators"}
+        ~@(map →clj ["set-validator!" "get-validator"])]
 
-       `[:row {:title "Watchers"}
-         ~@(map →clj ["add-watch" "remove-watch"])]
+      `[:row {:title "Watchers"}
+        ~@(map →clj ["add-watch" "remove-watch"])]
 
-       `[:row {:title "Thread handling"}
-         ~@(map →clj ["shutdown-agents"])]
+      `[:row {:title "Thread handling"}
+        ~@(map →clj ["shutdown-agents"])]
 
-       `[:row {:title "Error"}
-         ~@(map →clj ["error-handler" "set-error-handler!" "error-mode"
-                      "set-error-mode!"])]
+      `[:row {:title "Error"}
+        ~@(map →clj ["error-handler" "set-error-handler!" "error-mode"
+                     "set-error-mode!"])]
 
-       `[:row {:title "Misc"}
-         ~@(map →clj ["*agent*" "release-pending-sends"])]]]]]))
+      `[:row {:title "Misc"}
+        ~@(map →clj ["*agent*" "release-pending-sends"])]]]]))
 
 ;; FIXME: Clojurescript?
 ;; FIXME: ClojureCLJ?
@@ -490,9 +501,10 @@
         ~@(map →clj ["throw" "try" "catch" "finally"
                      "clojure.repl/pst"])
         [:br] "(1.4)"
-        ~@(map →clj ["ex-info" "ex-data"])]]
+        ~@(map →clj ["ex-info" "ex-data"])]]]
 
-     [:subsection {:title "Arrays"}
+    [:section {:title "Arrays"}
+     [:subsection {}
       [:table {}
        `[:row {:title "Create"}
          ~@(map →clj (concat ["make-array" "to-array-2d" "aclone"]
@@ -508,9 +520,10 @@
 
        `[:row {:title "Cast"}
          ~@(map →clj ["booleans" "bytes" "shorts" "chars" "ints" "longs" "floats"
-                      "doubles"])]]]
+                      "doubles"])]]]]
 
-     [:subsection {:title "Proxy"}
+    [:section {:title "Proxy"}
+     [:subsection {}
       [:table {}
        `[:row {:title "Create"}
          ~@(map →clj ["proxy" "get-proxy-class" "construct-proxy" "init-proxy"])]
@@ -520,11 +533,14 @@
 
 (def msc
   (u/softref-cached
-   [:box {:class "green2 grid-item"}
-    [:section {:title "Other"}
+   [:box {:title "Other"
+          :class "green2 grid-item"}
+    [:section {}
      [:table {}
       `[:row {:title "XML"}
-        ~@(map →clj ["clojure.xml/parse" "xml-seq"])]]]]))
+        ~@(map →clj ["clojure.xml/parse" "xml-seq"])]
+      `[:row {:title "Data"}
+        ~@(map →clj ["clojure.data/diff"])]]]]))
 
 ;; The Cheatsheet
 ;;------------------------------------------------------------------------------

@@ -10,10 +10,11 @@
 /* ---- cheatshseet CSS ---- */
 #cheatsheet {
   // Make .code have the same formatting as <code> in poole.css
-  .code {
+  div.code, span.code {
+    width: 100%;
+    padding: 0px;
     font-family: Menlo, Monaco, "Courier New", monospace;
     font-family: monospace;
-    padding: .25em .5em;
     font-size: 85%;
     color: #bf616a;
     background-color: #f9f9f9;
@@ -95,6 +96,7 @@
     float: left;
     padding: 8px;
   }
+
   div.container {
     min-width: 400px;
   }

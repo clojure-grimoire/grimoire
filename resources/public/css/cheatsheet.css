@@ -15,16 +15,19 @@
   @grid--six:   @grid-item-width*6px+@page-width-correction;
   */
 }
-#cheatsheet .code {
+#cheatsheet div.code,
+#cheatsheet span.code {
+  width: 100%;
+  padding: 0px;
   font-family: Menlo, Monaco, "Courier New", monospace;
   font-family: monospace;
-  padding: .25em .5em;
   font-size: 85%;
   color: #bf616a;
   background-color: #f9f9f9;
   border-radius: 3px;
 }
-#cheatsheet .code a {
+#cheatsheet div.code a,
+#cheatsheet span.code a {
   background-color: #f9f9f9;
 }
 #cheatsheet .page {

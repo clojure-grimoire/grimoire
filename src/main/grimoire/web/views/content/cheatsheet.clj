@@ -136,7 +136,7 @@
        [:row {:title "base 36"} (code "36rCRAZY")]]]
 
      [:subsection {:title "Other number literals"}
-      [:table {:title ""}
+      [:table {}
        [:row {:title "BigInteger"} (code "7N")]
        [:row {:title "Ratio"} (code "-22/7")]
        [:row {:title (→ "http://docs.oracle.com/javase/7/docs/api/java/lang/Double.html" "Double")}

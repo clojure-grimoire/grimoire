@@ -1,6 +1,6 @@
 .container {
   box-sizing: content-box;
-  min-width: 416px;
+  min-width: 343px;
 }
 /* ---- cheatshseet CSS ---- */
 #cheatsheet {
@@ -96,12 +96,12 @@
   clear: both;
 }
 #cheatsheet .grid-item {
-  min-width: 400px;
+  min-width: 335px;
   float: left;
   padding: 8px;
 }
 #cheatsheet div.container {
-  min-width: 400px;
+  min-width: 343px;
 }
 @media (min-width: 536px) {
   #cheatsheet .grid-item {
@@ -163,7 +163,7 @@
 }
 /* ---- Search box ---- */
 .search {
-  min-width: 416px;
+  min-width: 343px;
   padding: 0px 8px 0px 8px;
 }
 #search {

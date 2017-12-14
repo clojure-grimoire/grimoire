@@ -52,11 +52,16 @@ html {
   font-size: 16px;
   line-height: 1.5;
 }
-/* @media (min-width: 38em) { */
-/*   html { */
-/*     font-size: 20px; */
-/*   } */
-/* } */
+@media (min-width: 0px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media (min-width: 500px) {
+  html {
+    font-size: 16px;
+  }
+}
 
 body {
   color: #515151;
@@ -80,32 +85,32 @@ a:focus {
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-  margin-bottom: .5rem;
+  margin-bottom: 8em;
   font-weight: bold;
   line-height: 1.25;
   color: #313131;
   text-rendering: optimizeLegibility;
 }
 h1 {
-  font-size: 2rem;
+  font-size: 32px;
 }
 h2 {
-  margin-top: 1rem;
-  font-size: 1.5rem;
+  margin-top: 16px;
+  font-size: 24px;
 }
 h3 {
-  margin-top: 1.5rem;
-  font-size: 1.25rem;
+  margin-top: 24px;
+  font-size: 26px;
 }
 h4, h5, h6 {
-  margin-top: 1rem;
-  font-size: 1rem;
+  margin-top: 16px;
+  font-size: 16px;
 }
 
 /* Body text */
 p {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 strong {
@@ -116,20 +121,20 @@ strong {
 /* Lists */
 ul, ol, dl {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 dt {
   font-weight: bold;
 }
 dd {
-  margin-bottom: .5rem;
+  margin-bottom: 8px;
 }
 
 /* Misc */
 hr {
   position: relative;
-  margin: 1.5rem 0;
+  margin: 24px 0;
   border: 0;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #fff;
@@ -152,7 +157,7 @@ pre {
   font-family: Menlo, Monaco, "Courier New", monospace;
 }
 code {
-  padding: .25em .5em;
+  padding: 4px 8px;
   font-size: 85%;
   color: #bf616a;
   background-color: #f9f9f9;
@@ -162,7 +167,7 @@ pre {
   display: block;
   margin-top: 0;
   margin-bottom: 1rem;
-  font-size: .8rem;
+  font-size: 12.8px;
   line-height: 1.4;
   white-space: pre;
   white-space: pre-wrap;
@@ -179,7 +184,7 @@ pre code {
 
 /* Pygments via Jekyll */
 .highlight {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   border-radius: 4px;
 }
 .highlight pre {
@@ -191,14 +196,14 @@ pre code {
   font-family: Menlo, Monaco, "Courier New", monospace !important;
 }
 .gist .markdown-body {
-  padding: 15px;
+  padding: 16px;
 }
 .gist pre {
   padding: 0;
   background-color: transparent;
 }
 .gist .gist-file .gist-data {
-  font-size: .8rem !important;
+  font-size: 12.8px !important;
   line-height: 1.4;
 }
 .gist code {
@@ -210,38 +215,38 @@ pre code {
 
 /* Quotes */
 blockquote {
-  padding: .5rem 1rem;
+  padding: 8px 16px;
   margin: .8rem 0;
   color: #7a7a7a;
-  border-left: .25rem solid #e5e5e5;
+  border-left: 4px solid #e5e5e5;
 }
 blockquote p:last-child {
   margin-bottom: 0;
 }
 @media (min-width: 30em) {
   blockquote {
-    padding-right: 5rem;
-    padding-left: 1.25rem;
+    padding-right: 80px;
+    padding-left: 24px;
   }
 }
 
 img {
   display: block;
   max-width: 100%;
-  margin: 0 0 1rem;
+  margin: 0 0 16px;
   border-radius: 5px;
 }
 
 /* Tables */
 table {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   width: 100%;
   border: 1px solid #e5e5e5;
   border-collapse: collapse;
 }
 td,
 th {
-  padding: .25rem .5rem;
+  padding: 4px 8px;
   border: 1px solid #e5e5e5;
 }
 tbody tr:nth-child(odd) td,
@@ -257,7 +262,7 @@ tbody tr:nth-child(odd) th {
  */
 
 .lead {
-  font-size: 1.25rem;
+  font-size: 20px;
   font-weight: 300;
 }
 
@@ -270,8 +275,8 @@ tbody tr:nth-child(odd) th {
  */
 
 .message {
-  margin-bottom: 1rem;
-  padding: 1rem;
+  margin-bottom: 16px;
+  padding: 16px;
   color: #717171;
   background-color: #f9f9f9;
 }
@@ -283,11 +288,21 @@ tbody tr:nth-child(odd) th {
  * Center the page content.
  */
 
-.container {
-  padding-left: 4rem;
-  padding-right: 4rem;
-  margin-left:  auto;
-  margin-right: auto;
+@media (min-width: 0px) {
+  .container {
+    padding-left:  16px;
+    padding-right: 16px;
+    margin-left:  auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 536px) {
+  .container {
+    padding-left:  64px;
+    padding-right: 64px;
+    margin-left:  auto;
+    margin-right: auto;
+  }
 }
 
 
@@ -298,8 +313,8 @@ tbody tr:nth-child(odd) th {
  */
 
 .masthead {
-  padding-top:    1rem;
-  padding-bottom: 1rem;
+  padding-top:    16px;
+  padding-bottom: 16px;
 }
 .masthead-title {
   margin-top: 0;
@@ -326,7 +341,7 @@ tbody tr:nth-child(odd) th {
 
 .page,
 .post {
-  margin-bottom: 4em;
+  margin-bottom: 64px;
 }
 
 /* Blog post or page title */
@@ -343,15 +358,15 @@ tbody tr:nth-child(odd) th {
 /* Meta data line below post title */
 .post-date {
   display: block;
-  margin-top: -.5rem;
-  margin-bottom: 1rem;
+  margin-top: -8px;
+  margin-bottom: 16px;
   color: #9a9a9a;
 }
 
 /* Related posts */
 .related {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 32px;
+  padding-bottom: 32px;
   border-top: 1px solid #eee;
 }
 .related-posts {
@@ -371,56 +386,4 @@ tbody tr:nth-child(odd) th {
 }
 .related-posts li a:hover small {
   color: inherit;
-}
-
-
-/*
- * Pagination
- *
- * Super lightweight (HTML-wise) blog pagination. `span`s are provide for when
- * there are no more previous or next posts to show.
- */
-
-.pagination {
-  overflow: hidden; /* clearfix */
-  margin-left: -1rem;
-  margin-right: -1rem;
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
-  color: #ccc;
-  text-align: center;
-}
-
-/* Pagination items can be `span`s or `a`s */
-.pagination-item {
-  display: block;
-  padding: 1rem;
-  border: 1px solid #eee;
-}
-.pagination-item:first-child {
-  margin-bottom: -1px;
-}
-
-/* Only provide a hover state for linked pagination items */
-a.pagination-item:hover {
-  background-color: #f5f5f5;
-}
-
-@media (min-width: 30em) {
-  .pagination {
-    margin: 3rem 0;
-  }
-  .pagination-item {
-    float: left;
-    width: 50%;
-  }
-  .pagination-item:first-child {
-    margin-bottom: 0;
-    border-top-left-radius:    4px;
-    border-bottom-left-radius: 4px;
-  }
-  .pagination-item:last-child {
-    margin-left: -1px;
-    border-top-right-radius:    4px;
-    border-bottom-right-radius: 4px;
-  }
 }

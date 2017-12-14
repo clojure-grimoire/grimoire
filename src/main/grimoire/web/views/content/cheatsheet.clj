@@ -214,19 +214,19 @@
       [:table {}
        [:row {:title "Define"
               :join  ""}
-        "<span class=\"code\">(" (→clj "defprotocol") " Slicey (slice [at]))</span>"]
+        "<div class=\"code\">(" (→clj "defprotocol") " Slicey<br>&nbsp;&nbsp;(slice [at]))</div>"]
 
        [:row {:title "Extends"
               :join  ""}
-        "<span class=\"code\">(" (→clj "extend-type") " String Slicey (slice [at] ...))</span>"]
+        "<div class=\"code\">(" (→clj "extend-type") " String Slicey<br>&nbsp;&nbsp;(slice [at] ...))</div>"]
 
        [:row {:title "Extend null"
               :join  ""}
-        "<span class=\"code\">(" (→clj "extend-type") " nil Slicey (slice [_] nil))</span>"]
+        "<div class=\"code\">(" (→clj "extend-type") " nil Slicey<br>&nbsp;&nbsp;(slice [_] nil))</div>"]
 
        [:row {:title "Reify"
               :join  ""}
-        "<span class=\"code\">(" (→clj "reify") " Slicey (slice [at] ...))</span>"]
+        "<div class=\"code\">(" (→clj "reify") " Slicey (slice [at] ...))</div>"]
 
        `[:row {:title "Test"}
          ~@(map →clj ["satisfies?" "extends?"])]

@@ -271,15 +271,13 @@
     [:section {:title "Multimethods (<a href=\"http://clojure.org/multimethods\">clojure.org/multimethods</a>)"}
      [:subsection {}
       [:table {}
-       [:row {:title "Define"}
-        "<code>(</code>"
-        (→clj "defmulti")
-        "<code>my-mm dispatch-fn)</code>"]
+       [:row {:title "Define"
+              :join  ""}
+        "<span class=\"code\">(" (→clj "defmulti") " my-mm dispatch-fn)</span>"]
 
-       [:row {:title "Method define"}
-        "<code>(</code>"
-        (→clj "defmethod")
-        "<code>my-mm :dispatch-value [args] ...)</code>"]
+       [:row {:title "Method define"
+              :join  ""}
+        "<span class=\"code\">(" (→clj "defmethod") " my-mm :dispatch-value [args] ...)</span>"]
 
        `[:row {:title "Dispatch"}
          ~@(map →clj ["get-method" "methods"])]

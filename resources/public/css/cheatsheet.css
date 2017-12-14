@@ -15,8 +15,17 @@
   @grid--six:   @grid-item-width*6px+@page-width-correction;
   */
 }
-#cheatsheet code {
+#cheatsheet .code {
+  font-family: Menlo, Monaco, "Courier New", monospace;
   font-family: monospace;
+  padding: .25em .5em;
+  font-size: 85%;
+  color: #bf616a;
+  background-color: #f9f9f9;
+  border-radius: 3px;
+}
+#cheatsheet .code a {
+  background-color: #f9f9f9;
 }
 #cheatsheet .page {
   page-break-after: always;
@@ -31,20 +40,26 @@
 #cheatsheet .column:first-child {
   clear: both;
 }
+#cheatsheet h1 {
+  margin: 0px;
+  padding-bottom: 4px;
+  font-size: 1.8em;
+}
+#cheatsheet h2 {
+  margin: 0px;
+  padding-bottom: 4px;
+  font-size: 1.4em;
+}
+#cheatsheet h3 {
+  margin: 0px;
+  padding-bottom: 4px;
+  font-size: 1.2em;
+}
 #cheatsheet .header {
   text-align: center;
 }
 #cheatsheet .header h2 {
   font-style: italic;
-}
-#cheatsheet h1 {
-  font-size: 1.8em;
-}
-#cheatsheet h2 {
-  font-size: 1.4em;
-}
-#cheatsheet h3 {
-  font-size: 1.2em;
 }
 #cheatsheet .section {
   background-color: #ebebeb;
@@ -149,7 +164,7 @@
   padding: 0px 8px 0px 8px;
 }
 #search {
-  padding: 8px 8px 0px 8px;
+  padding: 8px;
   margin: 0;
   display: block;
   border-radius: 5px;

@@ -1,0 +1,200 @@
+@grid-item-width: 416px;
+@page-width-correction: 128px;
+
+.container {
+  // Min width for search bar, content
+  box-sizing: content-box;
+  min-width: @grid-item-width;
+}
+
+/* ---- cheatshseet CSS ---- */
+#cheatsheet {
+  code {
+    font-family: monospace;
+  }
+  .page {
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+  .column {
+    float: left;
+    padding: 0;
+    margin: 0;
+    width: 50%;
+  }
+  .column:first-child {
+    clear: both;
+  }
+  .header {
+    text-align: center;
+  }
+  .header h2 {
+    font-style: italic;
+  }
+  h1 {
+    font-size: 1.8em;
+  }
+  h2 {
+    font-size: 1.4em;
+  }
+  h3 {
+    font-size: 1.2em;
+  }
+  .section {
+    background-color: #ebebeb;
+    padding: 8px 8px 8px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  td,
+  .single_row {
+    vertical-align: top;
+    padding: 0 8px;
+  }
+  tr.odd,
+  .single_row {
+    background-color: #f5f5f5;
+  }
+  tr.even {
+    background-color: #fafafa;
+  }
+  .footer {
+    float: right;
+    text-align: right;
+    border-top: 1px solid gray;
+  }
+  #foot {
+    clear: both;
+  }
+
+  /* ---- grid ---- */ 
+  /* ---- grid-item ---- */
+  .grid-item {
+    min-width: 400px;
+    float: left;
+    padding: 8px;
+  }
+  div.container {
+    min-width: 400px;
+  }
+  /*
+  @grid--one:   @grid-item-width*1px+@page-width-correction;
+  @grid--two:   @grid-item-width*2px+@page-width-correction;
+  @grid--three: @grid-item-width*3px+@page-width-correction;
+  @grid--four:  @grid-item-width*4px+@page-width-correction;
+  @grid--five:  @grid-item-width*5px+@page-width-correction;
+  @grid--six:   @grid-item-width*6px+@page-width-correction;
+  */
+
+  @grid--one:    536px;
+  @grid--two:    944px;
+  @grid--three:  1352px;
+  @grid--four:   1760px;
+  @grid--five:   2168px;
+  @grid--six:    2576px;
+  @grid--seven:  2984px;
+  @grid--eight:  3392px;
+  @grid--nine:   3800px;
+  @grid--ten:    4208px;
+
+  @media (min-width: @grid--one ) {
+    .grid-item {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: @grid--two ) {
+    .grid-item {
+      width: 50%;
+    }
+  }
+
+  @media (min-width: @grid--three ) {
+    .grid-item {
+      width: 33.3333333%;
+    }
+  }
+
+  @media (min-width: @grid--four ) {
+    .grid-item {
+      width: 25%;
+    }
+  }
+
+  @media (min-width: @grid--five ) {
+    .grid-item {
+      width: 20%;
+    }
+  }
+
+  @media (min-width: @grid--six ) {
+    .grid-item {
+      width: 16.666666666666668%;
+    }
+  } 
+  
+  @media (min-width: @grid--seven ) {
+    .grid-item {
+      width: 14.285714285714286;
+    }
+  }
+  
+  @media (min-width: @grid--eight ) {
+    .grid-item {
+      width: 12.5%;
+      max-width: 32em;
+    }
+  }
+
+  @media (min-width: @grid--nine ) {
+    .grid-item {
+      width: 11.11111111111111%;
+      max-width: 32em;
+    }
+  }
+
+  @media (min-width: @grid--nine ) {
+    .grid-item {
+      width: 10%;
+      max-width: 32em;
+    }
+  }
+}
+
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+
+/* ---- Search box ---- */
+.search {
+  min-width: @grid-item-width;
+  padding: 0px 8px 0px 8px;
+}
+
+#search {
+  padding: 8px 8px 0px 8px;
+  margin: 0;
+  display: block;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background: #ebebeb;
+  font-size: 1.5em;
+  font-weight: bold;
+  outline: none;
+  box-sizing: border-box;
+  width: 100%;
+}
+#search:focus {
+  border: 1px solid #999;
+}
+#search.highlight {
+  background: red;
+}

@@ -1,3 +1,20 @@
+.container {
+  box-sizing: content-box;
+  min-width: 416px;
+}
+/* ---- cheatshseet CSS ---- */
+#cheatsheet {
+  /* ---- grid ---- */
+  /* ---- grid-item ---- */
+  /*
+  @grid--one:   @grid-item-width*1px+@page-width-correction;
+  @grid--two:   @grid-item-width*2px+@page-width-correction;
+  @grid--three: @grid-item-width*3px+@page-width-correction;
+  @grid--four:  @grid-item-width*4px+@page-width-correction;
+  @grid--five:  @grid-item-width*5px+@page-width-correction;
+  @grid--six:   @grid-item-width*6px+@page-width-correction;
+  */
+}
 #cheatsheet code {
   font-family: monospace;
 }
@@ -31,9 +48,9 @@
 }
 #cheatsheet .section {
   background-color: #ebebeb;
-  padding: 0 0.5em 0.5em;
-  margin-bottom: 0.5em;
-  border-radius: 5px;
+  padding: 8px 8px 8px;
+  margin-bottom: 8px;
+  border-radius: 8px;
   border: 1px solid #ddd;
 }
 #cheatsheet table {
@@ -43,7 +60,7 @@
 #cheatsheet td,
 #cheatsheet .single_row {
   vertical-align: top;
-  padding: 0 0.5em;
+  padding: 0 8px;
 }
 #cheatsheet tr.odd,
 #cheatsheet .single_row {
@@ -60,92 +77,93 @@
 #cheatsheet #foot {
   clear: both;
 }
-* {
-  box-sizing: border-box;
+#cheatsheet .grid-item {
+  min-width: 400px;
+  float: left;
+  padding: 8px;
 }
-body {
-  font-family: sans-serif;
+#cheatsheet div.container {
+  min-width: 400px;
 }
-/* ---- grid ---- */
-/* clearfix */
+@media (min-width: 536px) {
+  #cheatsheet .grid-item {
+    width: 100%;
+  }
+}
+@media (min-width: 944px) {
+  #cheatsheet .grid-item {
+    width: 50%;
+  }
+}
+@media (min-width: 1352px) {
+  #cheatsheet .grid-item {
+    width: 33.3333333%;
+  }
+}
+@media (min-width: 1760px) {
+  #cheatsheet .grid-item {
+    width: 25%;
+  }
+}
+@media (min-width: 2168px) {
+  #cheatsheet .grid-item {
+    width: 20%;
+  }
+}
+@media (min-width: 2576px) {
+  #cheatsheet .grid-item {
+    width: 16.666666666666668%;
+  }
+}
+@media (min-width: 2984px) {
+  #cheatsheet .grid-item {
+    width: 14.285714285714286;
+  }
+}
+@media (min-width: 3392px) {
+  #cheatsheet .grid-item {
+    width: 12.5%;
+    max-width: 32em;
+  }
+}
+@media (min-width: 3800px) {
+  #cheatsheet .grid-item {
+    width: 11.11111111111111%;
+    max-width: 32em;
+  }
+}
+@media (min-width: 3800px) {
+  #cheatsheet .grid-item {
+    width: 10%;
+    max-width: 32em;
+  }
+}
 .grid:after {
   content: '';
   display: block;
   clear: both;
 }
-/* ---- grid-item ---- */
-.grid-item {
-  min-width: 21em;
-  float: left;
-  padding: 0.5em;
-}
-div.container {
-  min-width: 400px;
-}
-@media (min-width: 400px) {
-  .grid-item {
-    width: 100%;
-  }
-}
-@media (min-width: 800px) {
-  .grid-item {
-    width: 50%;
-    max-width: 32em;
-  }
-}
-@media (min-width: 1100px) {
-  .grid-item {
-    width: 33.3333333%;
-    max-width: 32em;
-  }
-}
-@media (min-width: 1500px) {
-  .grid-item {
-    width: 25%;
-    max-width: 32em;
-  }
-}
-@media (min-width: 2100px) {
-  .grid-item {
-    width: 20%;
-    max-width: 32em;
-  }
-}
-@media (min-width: 2600px) {
-  .grid-item {
-    width: 16.666666666%;
-    max-width: 32em;
-  }
-}
+/* ---- Search box ---- */
 .search {
-  padding: 0.5em 0.5em 0;
+  min-width: 416px;
+  padding: 0px 8px 0px 8px;
 }
 #search {
+  padding: 8px 8px 0px 8px;
   margin: 0;
   display: block;
   border-radius: 5px;
   border: 1px solid #ddd;
   background: #ebebeb;
-  padding: 5px;
   font-size: 1.5em;
   font-weight: bold;
   outline: none;
   box-sizing: border-box;
   width: 100%;
-  min-width: 332px;
 }
 #search:focus {
   border: 1px solid #999;
 }
 #search.highlight {
   background: red;
-}
-.highlight {
-  background: yellow;
-}
-.page {
-  float: left;
-}
-.column {
-  min-width: 30em;
 }

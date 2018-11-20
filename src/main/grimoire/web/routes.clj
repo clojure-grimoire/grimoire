@@ -315,7 +315,7 @@
                                               (t/thing->name v-thing)
                                               "clj"
                                               ns
-                                              symbol)
+                                              (util/munge symbol))
                            new-req    (-> request
                                           (assoc :uri new-uri)
                                           (dissoc :context :path-info))]
@@ -347,7 +347,7 @@
                                                 (t/thing->name v-thing)
                                                 platform
                                                 ns
-                                                symbol)
+                                                (util/munge symbol))
                              new-req    (-> request
                                             (assoc :uri new-uri)
                                             (dissoc :context :path-info))]
